@@ -1,0 +1,68 @@
+{
+  "0x17ee7e4da37b01fc1bcc908fa63df343f23b4b7c": {
+    "chain": "metis",
+    "symbol": "m.SUSHI",
+    "decimals": 18,
+    "address": "0x17ee7e4da37b01fc1bcc908fa63df343f23b4b7c"
+  },
+  "0x186573b175adf5801cf95fb06b232ccab123c6f4": {
+    "chain": "metis",
+    "symbol": "MONKEX",
+    "decimals": 18,
+    "address": "0x186573b175adf5801cf95fb06b232ccab123c6f4"
+  },
+  "0x420000000000000000000000000000000000000a": {
+    "chain": "metis",
+    "symbol": "WETH",
+    "decimals": 18,
+    "address": "0x420000000000000000000000000000000000000a"
+  },
+  "0x4c078361fc9bbb78df910800a991c7c3dd2f6ce0": {
+    "chain": "metis",
+    "symbol": "m.DAI",
+    "decimals": 18,
+    "address": "0x4c078361fc9bbb78df910800a991c7c3dd2f6ce0"
+  },
+  "0x75cb093e4d61d2a2e65d8e0bbb01de8d89b53481": {
+    "chain": "metis",
+    "symbol": "WMETIS",
+    "decimals": 18,
+    "address": "0x75cb093e4d61d2a2e65d8e0bbb01de8d89b53481"
+  },
+  "0x8c5f5fac50a0a952b2fc084780fc04abc8201f0b": {
+    "chain": "metis",
+    "symbol": "WMONKEX",
+    "decimals": 18,
+    "address": "0x8c5f5fac50a0a952b2fc084780fc04abc8201f0b"
+  },
+  "0xa5b55ab1daf0f8e1efc0eb1931a957fd89b918f4": {
+    "chain": "metis",
+    "symbol": "WBTC",
+    "decimals": 8,
+    "address": "0xa5b55ab1daf0f8e1efc0eb1931a957fd89b918f4"
+  },
+  "0xbb06dca3ae6887fabf931640f67cab3e3a16f4dc": {
+    "chain": "metis",
+    "symbol": "m.USDT",
+    "decimals": 6,
+    "address": "0xbb06dca3ae6887fabf931640f67cab3e3a16f4dc"
+  },
+  "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000": {
+    "chain": "metis",
+    "symbol": "Metis",
+    "decimals": 18,
+    "address": "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000"
+  },
+  "0xdfa46478f9e5ea86d57387849598dbfb2e964b02": {
+    "chain": "metis",
+    "symbol": "MAI",
+    "decimals": 18,
+    "address": "0xdfa46478f9e5ea86d57387849598dbfb2e964b02"
+  },
+  "0xea32a96608495e54156ae48931a7c20f0dcc1a21": {
+    "chain": "metis",
+    "symbol": "m.USDC",
+    "decimals": 6,
+    "address": "0xea32a96608495e54156ae48931a7c20f0dcc1a21"
+  }
+}

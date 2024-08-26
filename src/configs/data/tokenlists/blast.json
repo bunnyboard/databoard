@@ -1,0 +1,200 @@
+{
+  "0x0000000000000000000000000000000000000000": {
+    "chain": "blast",
+    "symbol": "ETH",
+    "decimals": 18,
+    "address": "0x0000000000000000000000000000000000000000"
+  },
+  "0x0000000000a1c217530f17948cbb487c743b9f63": {
+    "chain": "blast",
+    "symbol": "ORE",
+    "decimals": 18,
+    "address": "0x0000000000a1c217530f17948cbb487c743b9f63"
+  },
+  "0x0872b71efc37cb8dde22b2118de3d800427fdba0": {
+    "chain": "blast",
+    "symbol": "oETH",
+    "decimals": 18,
+    "address": "0x0872b71efc37cb8dde22b2118de3d800427fdba0"
+  },
+  "0x0b4d0ee29857c3961b380d4ec138ea5814e346b9": {
+    "chain": "blast",
+    "symbol": "$PACM",
+    "decimals": 18,
+    "address": "0x0b4d0ee29857c3961b380d4ec138ea5814e346b9"
+  },
+  "0x12c69bfa3fb3cba75a1defa6e976b87e233fc7df": {
+    "chain": "blast",
+    "symbol": "T-LP",
+    "decimals": 18,
+    "address": "0x12c69bfa3fb3cba75a1defa6e976b87e233fc7df"
+  },
+  "0x20fe91f17ec9080e3cac2d688b4ecb48c5ac3a9c": {
+    "chain": "blast",
+    "symbol": "YES",
+    "decimals": 18,
+    "address": "0x20fe91f17ec9080e3cac2d688b4ecb48c5ac3a9c"
+  },
+  "0x216a5a1135a9dab49fa9ad865e0f22fe22b5630a": {
+    "chain": "blast",
+    "symbol": "PUMP",
+    "decimals": 18,
+    "address": "0x216a5a1135a9dab49fa9ad865e0f22fe22b5630a"
+  },
+  "0x2416092f143378750bb29b79ed961ab195cceea5": {
+    "chain": "blast",
+    "symbol": "ezETH",
+    "decimals": 18,
+    "address": "0x2416092f143378750bb29b79ed961ab195cceea5"
+  },
+  "0x2ef6ee4884892b15dfcf53b33ed139fef6141a49": {
+    "chain": "blast",
+    "symbol": "WIF",
+    "decimals": 18,
+    "address": "0x2ef6ee4884892b15dfcf53b33ed139fef6141a49"
+  },
+  "0x34050224f9ea1859790b7cbbbe2264f1204771a6": {
+    "chain": "blast",
+    "symbol": "BINU",
+    "decimals": 9,
+    "address": "0x34050224f9ea1859790b7cbbbe2264f1204771a6"
+  },
+  "0x3d4621fa5ff784dfb2fcdfd5b293224167f239db": {
+    "chain": "blast",
+    "symbol": "SLP-WETH",
+    "decimals": 18,
+    "address": "0x3d4621fa5ff784dfb2fcdfd5b293224167f239db"
+  },
+  "0x42e12d42b3d6c4a74a88a61063856756ea2db357": {
+    "chain": "blast",
+    "symbol": "ORBIT",
+    "decimals": 18,
+    "address": "0x42e12d42b3d6c4a74a88a61063856756ea2db357"
+  },
+  "0x4300000000000000000000000000000000000003": {
+    "chain": "blast",
+    "symbol": "USDB",
+    "decimals": 18,
+    "address": "0x4300000000000000000000000000000000000003"
+  },
+  "0x4300000000000000000000000000000000000004": {
+    "chain": "blast",
+    "symbol": "WETH",
+    "decimals": 18,
+    "address": "0x4300000000000000000000000000000000000004"
+  },
+  "0x56e0f6df03883611c9762e78d4091e39ad9c420e": {
+    "chain": "blast",
+    "symbol": "SLP-USDB",
+    "decimals": 18,
+    "address": "0x56e0f6df03883611c9762e78d4091e39ad9c420e"
+  },
+  "0x60701c37cd9fed322dde7c17dc1e356f09a35b88": {
+    "chain": "blast",
+    "symbol": "BD",
+    "decimals": 18,
+    "address": "0x60701c37cd9fed322dde7c17dc1e356f09a35b88"
+  },
+  "0x66714db8f3397c767d0a602458b5b4e3c0fe7dd1": {
+    "chain": "blast",
+    "symbol": "fwWETH",
+    "decimals": 18,
+    "address": "0x66714db8f3397c767d0a602458b5b4e3c0fe7dd1"
+  },
+  "0x6d5564584b70240691bd6ff7a834b9fab844e0d4": {
+    "chain": "blast",
+    "symbol": "W2ETH",
+    "decimals": 18,
+    "address": "0x6d5564584b70240691bd6ff7a834b9fab844e0d4"
+  },
+  "0x76da31d7c9cbeae102aff34d3398bc450c8374c1": {
+    "chain": "blast",
+    "symbol": "MIM",
+    "decimals": 18,
+    "address": "0x76da31d7c9cbeae102aff34d3398bc450c8374c1"
+  },
+  "0x837fe561e9c5dfa73f607fda679295dbc2be5e40": {
+    "chain": "blast",
+    "symbol": "MUSD",
+    "decimals": 18,
+    "address": "0x837fe561e9c5dfa73f607fda679295dbc2be5e40"
+  },
+  "0x84fc0e1dca50cf341b497a56f843d4dd7d818b84": {
+    "chain": "blast",
+    "symbol": "Dyor",
+    "decimals": 18,
+    "address": "0x84fc0e1dca50cf341b497a56f843d4dd7d818b84"
+  },
+  "0x866f2c06b83df2ed7ca9c2d044940e7cd55a06d6": {
+    "chain": "blast",
+    "symbol": "fwUSDB",
+    "decimals": 18,
+    "address": "0x866f2c06b83df2ed7ca9c2d044940e7cd55a06d6"
+  },
+  "0x9aecedcd6a82d26f2f86d331b17a1c1676442a87": {
+    "chain": "blast",
+    "symbol": "oUSDB",
+    "decimals": 18,
+    "address": "0x9aecedcd6a82d26f2f86d331b17a1c1676442a87"
+  },
+  "0x9bd75c164daf830733ac2ea71a0258f95aac7c57": {
+    "chain": "blast",
+    "symbol": "BCat",
+    "decimals": 18,
+    "address": "0x9bd75c164daf830733ac2ea71a0258f95aac7c57"
+  },
+  "0x9be8a40c9cf00fe33fd84eaedaa5c4fe3f04cbc3": {
+    "chain": "blast",
+    "symbol": "RING-V2",
+    "decimals": 18,
+    "address": "0x9be8a40c9cf00fe33fd84eaedaa5c4fe3f04cbc3"
+  },
+  "0xa4c7aa67189ec5623121c6c94ec757dfed932d4b": {
+    "chain": "blast",
+    "symbol": "MIA",
+    "decimals": 18,
+    "address": "0xa4c7aa67189ec5623121c6c94ec757dfed932d4b"
+  },
+  "0xb1a5700fa2358173fe465e6ea4ff52e36e88e2ad": {
+    "chain": "blast",
+    "symbol": "BLAST",
+    "decimals": 18,
+    "address": "0xb1a5700fa2358173fe465e6ea4ff52e36e88e2ad"
+  },
+  "0xb582dc28968c725d2868130752afa0c13ebf9b1a": {
+    "chain": "blast",
+    "symbol": "BEPE",
+    "decimals": 18,
+    "address": "0xb582dc28968c725d2868130752afa0c13ebf9b1a"
+  },
+  "0xcbf7b47e9da345812e3bd732e3ee369a7203b5ae": {
+    "chain": "blast",
+    "symbol": "PSTAKE",
+    "decimals": 18,
+    "address": "0xcbf7b47e9da345812e3bd732e3ee369a7203b5ae"
+  },
+  "0xd07379a755a8f11b57610154861d694b2a0f615a": {
+    "chain": "blast",
+    "symbol": "SBF",
+    "decimals": 18,
+    "address": "0xd07379a755a8f11b57610154861d694b2a0f615a"
+  },
+  "0xd43d8adac6a4c7d9aeece7c3151fca8f23752cf8": {
+    "chain": "blast",
+    "symbol": "ANDY",
+    "decimals": 9,
+    "address": "0xd43d8adac6a4c7d9aeece7c3151fca8f23752cf8"
+  },
+  "0xeb466342c4d449bc9f53a865d5cb90586f405215": {
+    "chain": "blast",
+    "symbol": "axlUSDC",
+    "decimals": 6,
+    "address": "0xeb466342c4d449bc9f53a865d5cb90586f405215"
+  },
+  "0xf7bc58b8d8f97adc129cfc4c9f45ce3c0e1d2692": {
+    "chain": "blast",
+    "symbol": "WBTC",
+    "decimals": 8,
+    "address": "0xf7bc58b8d8f97adc129cfc4c9f45ce3c0e1d2692"
+  }
+}
