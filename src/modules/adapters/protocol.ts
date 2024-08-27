@@ -139,6 +139,8 @@ export default class ProtocolAdapter implements IProtocolAdapter {
         category: this.protocolConfig.category,
         date: getDateString(startTime),
       });
+
+      startTime += TimeUnits.SecondsPerDay;
     }
   }
 
