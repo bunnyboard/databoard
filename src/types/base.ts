@@ -18,9 +18,19 @@ export interface Token {
   decimals: number;
 }
 
+export interface ProtocolInfo {
+  website: string;
+  socials: {
+    [key: string]: string;
+  };
+}
+
 export interface ProtocolConfig {
   protocol: string;
   category: ProtocolCategory;
+
+  // website and social links, etc, ...
+  info?: ProtocolInfo;
 
   // timestamp when protocol was deployed
   birthday: number;

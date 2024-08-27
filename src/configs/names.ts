@@ -67,6 +67,7 @@ export const ProtocolNames = {
   fluid: 'fluid',
   fraxether: 'fraxether',
   fraxlend: 'fraxlend',
+  geist: 'geist',
   gravita: 'gravita',
   hana: 'hana',
   ionic: 'ionic',
@@ -76,6 +77,7 @@ export const ProtocolNames = {
   kinza: 'kinza',
   kyberswap: 'kyberswap',
   layerbank: 'layerbank',
+  lendle: 'lendle',
   lido: 'lido',
   liquidcollective: 'liquidcollective',
   liquity: 'liquity',
@@ -115,5 +117,6 @@ export const ProtocolNames = {
   vvsfinancev3: 'vvsfinancev3',
   yeth: 'yeth',
   yeifinance: 'yeifinance',
+  yldr: 'yldr',
   zerolend: 'zerolend',
 };
