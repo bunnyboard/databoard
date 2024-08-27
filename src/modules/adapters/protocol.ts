@@ -121,7 +121,7 @@ export default class ProtocolAdapter implements IProtocolAdapter {
       });
       if (dataTimeframe24Hours) {
         await this.storages.database.update({
-          collection: envConfig.mongodb.collections.protocolDataStates.name,
+          collection: envConfig.mongodb.collections.protocolDataSnapshots.name,
           keys: {
             protocol: dataTimeframe24Hours.protocol,
             timestamp: dataTimeframe24Hours.timestamp,
