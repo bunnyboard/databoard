@@ -55,12 +55,6 @@ export interface LendingData extends LendingDataMetrics {
     blockchains: {
       [key: string]: LendingDataMetrics;
     };
-
-    // if a protocol have multiple versions
-    // we breakdown their data too
-    versions?: {
-      [key: string]: LendingDataMetrics;
-    };
   };
 }
 
