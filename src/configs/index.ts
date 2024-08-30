@@ -13,6 +13,7 @@ import { KinzaConfigs } from './protocols/kinza';
 import { LendleConfigs } from './protocols/lendle';
 import { MendiConfigs } from './protocols/mendi';
 import { MoonwellConfigs } from './protocols/moonwell';
+import { MorphoConfigs } from './protocols/morpho';
 import { OrbitConfigs } from './protocols/orbit';
 import { PacConfigs } from './protocols/pac';
 import { PolterConfigs } from './protocols/polter';
@@ -55,6 +56,7 @@ export const ProtocolConfigs = {
   lendle: LendleConfigs,
   mendi: MendiConfigs,
   moonwell: MoonwellConfigs,
+  morpho: MorphoConfigs,
   orbit: OrbitConfigs,
   pac: PacConfigs,
   polter: PolterConfigs,

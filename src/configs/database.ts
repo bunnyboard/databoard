@@ -5,13 +5,24 @@ import { DatabaseCollectionConfig } from '../types/configs';
 // load env
 dotenv.config();
 
-const CollectionPrefix = 'board.databoard';
+const CollectionPrefix = 'databoard';
 export const DatabaseCollectionConfigs: DatabaseCollectionConfig = {
   caching: {
     name: `${CollectionPrefix}.caching`,
     indies: [
       {
         name: 1,
+      },
+    ],
+  },
+  contractLogs: {
+    name: `${CollectionPrefix}.caching.contractLogs`,
+    indies: [
+      {
+        chain: 1,
+        address: 1,
+        transactionHash: 1,
+        logIndex: 1,
       },
     ],
   },

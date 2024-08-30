@@ -23,6 +23,9 @@ export interface DatabaseCollectionConfig {
   // safe to delete this collection anytime
   caching: MongoCollectionConfig;
 
+  // save contract logs
+  contractLogs: MongoCollectionConfig;
+
   // save protocol current data state
   protocolDataStates: MongoCollectionConfig;
 

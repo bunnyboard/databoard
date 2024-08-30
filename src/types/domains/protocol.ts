@@ -8,6 +8,8 @@ export interface ProtocolData {
 
   category: ProtocolCategory;
 
+  birthday: number;
+
   // timestamp where data were collected
   timestamp: number;
 

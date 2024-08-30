@@ -356,7 +356,7 @@ export default class BlockchainService extends CachingService implements IBlockc
       }
 
       await storages.database.bulkWrite({
-        collection: envConfig.mongodb.collections.caching.name,
+        collection: envConfig.mongodb.collections.contractLogs.name,
         operations: operations,
       });
 

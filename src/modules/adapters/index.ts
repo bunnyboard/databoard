@@ -5,6 +5,7 @@ import AjnaAdapter from './ajna/ajna';
 import BenqiAdapter from './benqi/benqi';
 import CompoundAdapter from './compound/compound';
 import MoonwellAdapter from './moonwell/moonwell';
+import MorphoAdapter from './morpho/morpho';
 import VenusAdapter from './venus/venus';
 
 export function getProtocolAdapters(
@@ -26,6 +27,7 @@ export function getProtocolAdapters(
     lendle: new AaveAdapter(services, storages, ProtocolConfigs.lendle),
     mendi: new CompoundAdapter(services, storages, ProtocolConfigs.mendi),
     moonwell: new MoonwellAdapter(services, storages, ProtocolConfigs.moonwell),
+    morpho: new MorphoAdapter(services, storages, ProtocolConfigs.morpho),
     orbit: new CompoundAdapter(services, storages, ProtocolConfigs.orbit),
     pac: new AaveAdapter(services, storages, ProtocolConfigs.pac),
     polter: new AaveAdapter(services, storages, ProtocolConfigs.polter),
