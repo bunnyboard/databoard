@@ -8,7 +8,7 @@ import AaveDataProviderV1Abi from '../../../configs/abi/aave/DataProviderV1.json
 import AaveDataProviderV2Abi from '../../../configs/abi/aave/DataProviderV2.json';
 import { AddressE, AddressZero } from '../../../configs/constants';
 import BigNumber from 'bignumber.js';
-import { compareAddress, formatBigNumberToString } from '../../../lib/utils';
+import { compareAddress, formatBigNumberToString, normalizeAddress } from '../../../lib/utils';
 import { ProtocolConfig, Token } from '../../../types/base';
 import ProtocolAdapter from '../protocol';
 
@@ -79,10 +79,17 @@ export default class AaveCore extends ProtocolAdapter {
   public async getReservesAndPrices(options: AaveHelperGetReservesAndPricesOptions): Promise<Array<ReserveAndPrice>> {
     const reservesAndPrices: Array<ReserveAndPrice> = [];
 
-    const reserveList = await this.getReservesList({
+    let reserveList: Array<string> = await this.getReservesList({
       config: options.config,
       blockNumber: options.blockNumber,
     });
+
+    if (options.config.blacklists) {
+      // remove ignored tokens and reserves
+      reserveList = reserveList.filter(
+        (reserve) => options.config.blacklists && !options.config.blacklists[normalizeAddress(reserve)],
+      );
+    }
 
     if (reserveList && options.config.oracle) {
       const reservePrices = await this.services.blockchain.evm.readContract({

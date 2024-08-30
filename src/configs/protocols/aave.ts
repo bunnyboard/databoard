@@ -39,6 +39,11 @@ export interface AaveLendingMarketConfig {
 
   // where market was deployed
   birthday: number;
+
+  // list of ignored tokens
+  blacklists?: {
+    [key: string]: boolean;
+  };
 }
 
 export interface AaveProtocolConfig extends ProtocolConfig {

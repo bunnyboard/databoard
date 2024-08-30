@@ -1529,6 +1529,12 @@
     "decimals": 18,
     "address": "0xc03078c9f3feea627994695bee6cb1acb95916ce"
   },
+  "0xc03e6ad83de7c58c9166ff08d66b960d78e64105": {
+    "chain": "polygon",
+    "symbol": "LAND",
+    "decimals": 18,
+    "address": "0xc03e6ad83de7c58c9166ff08d66b960d78e64105"
+  },
   "0xc2132d05d31c914a87c6611c10748aeb04b58e8f": {
     "chain": "polygon",
     "symbol": "USDT",

@@ -51,8 +51,9 @@ export interface LendingDataMetrics {
 }
 
 export interface LendingData extends LendingDataMetrics {
+  // chain => tokenAddress => LendingDataMetrics
   breakdown: {
-    blockchains: {
+    [key: string]: {
       [key: string]: LendingDataMetrics;
     };
   };
@@ -77,8 +78,6 @@ export function getInitialLendingDataMetrics(): LendingDataMetrics {
 export function getInitialLendingData(): LendingData {
   return {
     ...getInitialLendingDataMetrics(),
-    breakdown: {
-      blockchains: {},
-    },
+    breakdown: {},
   };
 }

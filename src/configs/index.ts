@@ -1,6 +1,7 @@
 import { Token } from '../types/base';
 import { TokenBookDexBase, TokensBook } from './data';
 import { AaveConfigs } from './protocols/aave';
+import { AjnaConfigs } from './protocols/ajna';
 import { AvalonConfigs } from './protocols/avalon';
 import { BenqiConfigs } from './protocols/benqi';
 import { ColendConfigs } from './protocols/colend';
@@ -41,6 +42,7 @@ export const TokenDexBase = TokenBookDexBase;
 
 export const ProtocolConfigs = {
   aave: AaveConfigs,
+  ajna: AjnaConfigs,
   avalon: AvalonConfigs,
   benqi: BenqiConfigs,
   colend: ColendConfigs,

@@ -107,6 +107,12 @@
     "decimals": 18,
     "address": "0x1d2665165a92bf8522cb432909d6f60e91f1bdaf"
   },
+  "0x1fba65de0a9cbd2d1df82d141897042d36bb6c86": {
+    "chain": "base",
+    "symbol": "WIF",
+    "decimals": 18,
+    "address": "0x1fba65de0a9cbd2d1df82d141897042d36bb6c86"
+  },
   "0x2228363213e6e16e8ccc556aa270a05f1f1a4e02": {
     "chain": "base",
     "symbol": "MOCHITOSHI",
@@ -773,6 +779,12 @@
     "decimals": 18,
     "address": "0xf7c1cefcf7e1dd8161e00099facd3e1db9e528ee"
   },
+  "0xf9569cfb8fd265e91aa478d86ae8c78b8af55df4": {
+    "chain": "base",
+    "symbol": "AUKI",
+    "decimals": 18,
+    "address": "0xf9569cfb8fd265e91aa478d86ae8c78b8af55df4"
+  },
   "0xfa980ced6895ac314e7de34ef1bfae90a5add21b": {
     "chain": "base",
     "symbol": "PRIME",
@@ -796,5 +808,11 @@
     "symbol": "Fren Pet",
     "decimals": 18,
     "address": "0xff0c532fdb8cd566ae169c1cb157ff2bdc83e105"
+  },
+  "0xff0c62a4979400841efaa6faadb07ac7d5c98b27": {
+    "chain": "base",
+    "symbol": "wxUSDT",
+    "decimals": 6,
+    "address": "0xff0c62a4979400841efaa6faadb07ac7d5c98b27"
   }
 }

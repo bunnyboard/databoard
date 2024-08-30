@@ -7,8 +7,9 @@ export interface FlashloanDataMetrics {
 }
 
 export interface FlashloanData extends FlashloanDataMetrics {
+  // chain => tokenAddress => LendingDataMetrics
   breakdown: {
-    blockchains: {
+    [key: string]: {
       [key: string]: FlashloanDataMetrics;
     };
   };
@@ -24,8 +25,6 @@ export function getInitialFlashloanDataMetrics(): FlashloanDataMetrics {
 export function getInitialFlashloanData(): FlashloanData {
   return {
     ...getInitialFlashloanDataMetrics(),
-    breakdown: {
-      blockchains: {},
-    },
+    breakdown: {},
   };
 }

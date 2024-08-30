@@ -67,15 +67,11 @@ export default class AaveAdapter extends AaveCore {
         lendingPool: marketConfig.lendingPool,
       });
 
-      if (!lendingData.breakdown.blockchains[marketConfig.chain]) {
-        lendingData.breakdown.blockchains[marketConfig.chain] = {
-          ...getInitialLendingDataMetrics(),
-          volumeDeposited: 0,
-          volumeWithdrawn: 0,
-        };
+      if (!lendingData.breakdown[marketConfig.chain]) {
+        lendingData.breakdown[marketConfig.chain] = {};
       }
-      if (!flashloanData.breakdown.blockchains[marketConfig.chain]) {
-        flashloanData.breakdown.blockchains[marketConfig.chain] = getInitialFlashloanDataMetrics();
+      if (!flashloanData.breakdown[marketConfig.chain]) {
+        flashloanData.breakdown[marketConfig.chain] = {};
       }
 
       const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
@@ -83,23 +79,20 @@ export default class AaveAdapter extends AaveCore {
         options.timestamp,
       );
 
-      let contractLogs: Array<any> = [];
-      if (options.beginTime && options.endTime) {
-        const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-          marketConfig.chain,
-          options.beginTime,
-        );
-        const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-          marketConfig.chain,
-          options.endTime,
-        );
-        contractLogs = await this.services.blockchain.evm.getContractLogs({
-          chain: marketConfig.chain,
-          address: marketConfig.lendingPool,
-          fromBlock: beginBlock,
-          toBlock: endBlock,
-        });
-      }
+      const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        marketConfig.chain,
+        options.beginTime,
+      );
+      const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        marketConfig.chain,
+        options.endTime,
+      );
+      const contractLogs: Array<any> = await this.services.blockchain.evm.getContractLogs({
+        chain: marketConfig.chain,
+        address: marketConfig.lendingPool,
+        fromBlock: beginBlock,
+        toBlock: endBlock,
+      });
 
       const reservesAndPrices = await this.getReservesAndPrices({
         config: marketConfig,
@@ -109,6 +102,18 @@ export default class AaveAdapter extends AaveCore {
 
       if (reservesAndPrices) {
         for (const reserveAndPrice of reservesAndPrices) {
+          if (!lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address]) {
+            lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address] = {
+              ...getInitialLendingDataMetrics(),
+              volumeDeposited: 0,
+              volumeWithdrawn: 0,
+            };
+          }
+          if (!flashloanData.breakdown[marketConfig.chain][reserveAndPrice.token.address]) {
+            flashloanData.breakdown[marketConfig.chain][reserveAndPrice.token.address] =
+              getInitialFlashloanDataMetrics();
+          }
+
           const [reserveData, reserveConfigData] = await this.getReserveData({
             config: marketConfig,
             blockNumber: blockNumber,
@@ -236,10 +241,11 @@ export default class AaveAdapter extends AaveCore {
                   reserveAndPrice.price;
                 flashloanData.volumeFlashloan += volumeAmountUsd;
 
-                // add to chain breakdown
-                flashloanData.breakdown.blockchains[marketConfig.chain].volumeFlashloan += volumeAmountUsd;
+                // add breakdown data
+                flashloanData.breakdown[marketConfig.chain][reserveAndPrice.token.address].volumeFlashloan +=
+                  volumeAmountUsd;
 
-                // v1 flashloan bo fees
+                // v1 flashloan has no fees
               } else if (compareAddress(event.args.asset, reserveAndPrice.token.address)) {
                 // version 2, 3
                 const volumeAmountUsd =
@@ -252,8 +258,9 @@ export default class AaveAdapter extends AaveCore {
                 flashloanData.flashloanFees += feesUsd;
 
                 // add to chain breakdown
-                flashloanData.breakdown.blockchains[marketConfig.chain].volumeFlashloan += volumeAmountUsd;
-                flashloanData.breakdown.blockchains[marketConfig.chain].flashloanFees += feesUsd;
+                flashloanData.breakdown[marketConfig.chain][reserveAndPrice.token.address].volumeFlashloan +=
+                  volumeAmountUsd;
+                flashloanData.breakdown[marketConfig.chain][reserveAndPrice.token.address].flashloanFees += feesUsd;
               }
             } else if (
               signature === Aavev1Events.Liquidate ||
@@ -268,7 +275,7 @@ export default class AaveAdapter extends AaveCore {
                     formatBigNumberToNumber(event.args._purchaseAmount.toString(), reserveAndPrice.token.decimals) *
                     reserveAndPrice.price;
                   lendingData.volumeRepaid += amountUsd;
-                  lendingData.breakdown.blockchains[marketConfig.chain].volumeRepaid += amountUsd;
+                  lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address].volumeRepaid += amountUsd;
                 } else if (compareAddress(event.args._collateral, reserveAndPrice.token.address)) {
                   // liquidate collateral assets
                   const collateralAmountUsd =
@@ -277,7 +284,8 @@ export default class AaveAdapter extends AaveCore {
                       reserveAndPrice.token.decimals,
                     ) * reserveAndPrice.price;
                   lendingData.volumeLiquidation += collateralAmountUsd;
-                  lendingData.breakdown.blockchains[marketConfig.chain].volumeLiquidation += collateralAmountUsd;
+                  lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address].volumeLiquidation +=
+                    collateralAmountUsd;
                 }
               } else {
                 // flashloan version 2, 3
@@ -287,7 +295,7 @@ export default class AaveAdapter extends AaveCore {
                     formatBigNumberToNumber(event.args.debtToCover.toString(), reserveAndPrice.token.decimals) *
                     reserveAndPrice.price;
                   lendingData.volumeRepaid += amountUsd;
-                  lendingData.breakdown.blockchains[marketConfig.chain].volumeRepaid += amountUsd;
+                  lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address].volumeRepaid += amountUsd;
                 } else if (compareAddress(event.args.collateralAsset, reserveAndPrice.token.address)) {
                   // liquidate collateral assets
                   const collateralAmountUsd =
@@ -296,7 +304,8 @@ export default class AaveAdapter extends AaveCore {
                       reserveAndPrice.token.decimals,
                     ) * reserveAndPrice.price;
                   lendingData.volumeLiquidation += collateralAmountUsd;
-                  lendingData.breakdown.blockchains[marketConfig.chain].volumeLiquidation += collateralAmountUsd;
+                  lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address].volumeLiquidation +=
+                    collateralAmountUsd;
                 }
               }
             } else if (
@@ -321,8 +330,10 @@ export default class AaveAdapter extends AaveCore {
                 case Aavev3Events.Deposit: {
                   (lendingData.volumeDeposited as number) += volumeAmountUsd;
                   lendingData.moneyFlowIn += volumeAmountUsd;
-                  (lendingData.breakdown.blockchains[marketConfig.chain].volumeDeposited as number) += volumeAmountUsd;
-                  lendingData.breakdown.blockchains[marketConfig.chain].moneyFlowIn += volumeAmountUsd;
+                  (lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address]
+                    .volumeDeposited as number) += volumeAmountUsd;
+                  lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address].moneyFlowIn +=
+                    volumeAmountUsd;
                   break;
                 }
                 case Aavev1Events.Withdraw:
@@ -330,8 +341,10 @@ export default class AaveAdapter extends AaveCore {
                 case Aavev3Events.Withdraw: {
                   (lendingData.volumeWithdrawn as number) += volumeAmountUsd;
                   lendingData.moneyFlowOut += volumeAmountUsd;
-                  (lendingData.breakdown.blockchains[marketConfig.chain].volumeWithdrawn as number) += volumeAmountUsd;
-                  lendingData.breakdown.blockchains[marketConfig.chain].moneyFlowOut += volumeAmountUsd;
+                  (lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address]
+                    .volumeWithdrawn as number) += volumeAmountUsd;
+                  lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address].moneyFlowOut +=
+                    volumeAmountUsd;
                   break;
                 }
                 case Aavev1Events.Borrow:
@@ -339,8 +352,10 @@ export default class AaveAdapter extends AaveCore {
                 case Aavev3Events.Borrow: {
                   lendingData.volumeBorrowed += volumeAmountUsd;
                   lendingData.moneyFlowOut += volumeAmountUsd;
-                  lendingData.breakdown.blockchains[marketConfig.chain].volumeBorrowed += volumeAmountUsd;
-                  lendingData.breakdown.blockchains[marketConfig.chain].moneyFlowOut += volumeAmountUsd;
+                  lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address].volumeBorrowed +=
+                    volumeAmountUsd;
+                  lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address].moneyFlowOut +=
+                    volumeAmountUsd;
                   break;
                 }
                 case Aavev1Events.Repay:
@@ -348,8 +363,10 @@ export default class AaveAdapter extends AaveCore {
                 case Aavev3Events.Repay: {
                   lendingData.volumeRepaid += volumeAmountUsd;
                   lendingData.moneyFlowIn += volumeAmountUsd;
-                  lendingData.breakdown.blockchains[marketConfig.chain].volumeRepaid += volumeAmountUsd;
-                  lendingData.breakdown.blockchains[marketConfig.chain].moneyFlowIn += volumeAmountUsd;
+                  lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address].volumeRepaid +=
+                    volumeAmountUsd;
+                  lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address].moneyFlowIn +=
+                    volumeAmountUsd;
                   break;
                 }
               }
@@ -363,12 +380,15 @@ export default class AaveAdapter extends AaveCore {
           lendingData.borrowFees += borrowFees;
           lendingData.revenue += revenue;
 
-          lendingData.breakdown.blockchains[marketConfig.chain].totalAssetDeposited += totalDeposited;
-          lendingData.breakdown.blockchains[marketConfig.chain].totalSupplied += totalDeposited;
-          lendingData.breakdown.blockchains[marketConfig.chain].totalBorrowed += totalBorrowed;
-          lendingData.breakdown.blockchains[marketConfig.chain].totalValueLocked += totalDeposited - totalBorrowed;
-          lendingData.breakdown.blockchains[marketConfig.chain].borrowFees += borrowFees;
-          lendingData.breakdown.blockchains[marketConfig.chain].revenue += revenue;
+          // chains breakdown
+          lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address].totalAssetDeposited +=
+            totalDeposited;
+          lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address].totalSupplied += totalDeposited;
+          lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address].totalBorrowed += totalBorrowed;
+          lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address].totalValueLocked +=
+            totalDeposited - totalBorrowed;
+          lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address].borrowFees += borrowFees;
+          lendingData.breakdown[marketConfig.chain][reserveAndPrice.token.address].revenue += revenue;
         }
       }
     }

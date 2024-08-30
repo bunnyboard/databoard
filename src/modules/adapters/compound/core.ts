@@ -251,12 +251,8 @@ export default class CompoundCore extends ProtocolAdapter {
         continue;
       }
 
-      if (!lendingData.breakdown.blockchains[comptrollerConfig.chain]) {
-        lendingData.breakdown.blockchains[comptrollerConfig.chain] = {
-          ...getInitialLendingDataMetrics(),
-          volumeDeposited: 0,
-          volumeWithdrawn: 0,
-        };
+      if (!lendingData.breakdown[comptrollerConfig.chain]) {
+        lendingData.breakdown[comptrollerConfig.chain] = {};
       }
 
       logger.debug('getting compound market data', {
@@ -285,6 +281,14 @@ export default class CompoundCore extends ProtocolAdapter {
         options.timestamp,
       );
       for (const marketAndPrice of marketTokensAndPrices) {
+        if (!lendingData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address]) {
+          lendingData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address] = {
+            ...getInitialLendingDataMetrics(),
+            volumeDeposited: 0,
+            volumeWithdrawn: 0,
+          };
+        }
+
         const borrowRate = await this.getBorrowRate(comptrollerConfig.chain, marketAndPrice.cToken, blockNumber);
 
         const [totalCash, totalBorrows, totalReserves] = await this.services.blockchain.evm.multicall({
@@ -338,13 +342,18 @@ export default class CompoundCore extends ProtocolAdapter {
         lendingData.borrowFees += (totalBorrowed * borrowRate) / TimeUnits.DaysPerYear;
         lendingData.revenue += (totalBorrowed * borrowRate * reserveFactor) / TimeUnits.DaysPerYear;
 
-        lendingData.breakdown.blockchains[comptrollerConfig.chain].totalAssetDeposited += totalDeposited;
-        lendingData.breakdown.blockchains[comptrollerConfig.chain].totalSupplied += totalDeposited;
-        lendingData.breakdown.blockchains[comptrollerConfig.chain].totalBorrowed += totalBorrowed;
-        lendingData.breakdown.blockchains[comptrollerConfig.chain].totalValueLocked += totalDeposited - totalBorrowed;
-        lendingData.breakdown.blockchains[comptrollerConfig.chain].borrowFees +=
+        // add to breakdown
+        lendingData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].totalAssetDeposited +=
+          totalDeposited;
+        lendingData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].totalSupplied +=
+          totalDeposited;
+        lendingData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].totalBorrowed +=
+          totalBorrowed;
+        lendingData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].totalValueLocked +=
+          totalDeposited - totalBorrowed;
+        lendingData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].borrowFees +=
           (totalBorrowed * borrowRate) / TimeUnits.DaysPerYear;
-        lendingData.breakdown.blockchains[comptrollerConfig.chain].revenue +=
+        lendingData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].revenue +=
           (totalBorrowed * borrowRate * reserveFactor) / TimeUnits.DaysPerYear;
 
         // process logs
@@ -360,19 +369,17 @@ export default class CompoundCore extends ProtocolAdapter {
           if (Object.values(CompoundEventSignatures).includes(signature)) {
             const event: any = this.decodeEventLog(comptrollerConfig, log);
 
-            if (signature === CompoundEventSignatures.Borrow) {
-              console.log(event);
-            }
-
             switch (signature) {
               case CompoundEventSignatures.Mint: {
                 const amountUsd =
                   formatBigNumberToNumber(event.args.mintAmount.toString(), marketAndPrice.underlying.decimals) *
                   marketAndPrice.underlyingPrice;
                 (lendingData.volumeDeposited as number) += amountUsd;
-                (lendingData.breakdown.blockchains[comptrollerConfig.chain].volumeDeposited as number) += amountUsd;
+                (lendingData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address]
+                  .volumeDeposited as number) += amountUsd;
                 lendingData.moneyFlowIn += amountUsd;
-                lendingData.breakdown.blockchains[comptrollerConfig.chain].moneyFlowIn += amountUsd;
+                lendingData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].moneyFlowIn +=
+                  amountUsd;
 
                 break;
               }
@@ -381,9 +388,11 @@ export default class CompoundCore extends ProtocolAdapter {
                   formatBigNumberToNumber(event.args.redeemAmount.toString(), marketAndPrice.underlying.decimals) *
                   marketAndPrice.underlyingPrice;
                 (lendingData.volumeWithdrawn as number) += amountUsd;
-                (lendingData.breakdown.blockchains[comptrollerConfig.chain].volumeWithdrawn as number) += amountUsd;
+                (lendingData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address]
+                  .volumeWithdrawn as number) += amountUsd;
                 lendingData.moneyFlowOut += amountUsd;
-                lendingData.breakdown.blockchains[comptrollerConfig.chain].moneyFlowOut += amountUsd;
+                lendingData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].moneyFlowOut +=
+                  amountUsd;
 
                 break;
               }
@@ -392,9 +401,11 @@ export default class CompoundCore extends ProtocolAdapter {
                   formatBigNumberToNumber(event.args.borrowAmount.toString(), marketAndPrice.underlying.decimals) *
                   marketAndPrice.underlyingPrice;
                 lendingData.volumeBorrowed += amountUsd;
-                lendingData.breakdown.blockchains[comptrollerConfig.chain].volumeBorrowed += amountUsd;
+                lendingData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].volumeBorrowed +=
+                  amountUsd;
                 lendingData.moneyFlowOut += amountUsd;
-                lendingData.breakdown.blockchains[comptrollerConfig.chain].moneyFlowOut += amountUsd;
+                lendingData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].moneyFlowOut +=
+                  amountUsd;
 
                 break;
               }
@@ -403,9 +414,11 @@ export default class CompoundCore extends ProtocolAdapter {
                   formatBigNumberToNumber(event.args.repayAmount.toString(), marketAndPrice.underlying.decimals) *
                   marketAndPrice.underlyingPrice;
                 lendingData.volumeRepaid += amountUsd;
-                lendingData.breakdown.blockchains[comptrollerConfig.chain].volumeRepaid += amountUsd;
+                lendingData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].volumeRepaid +=
+                  amountUsd;
                 lendingData.moneyFlowIn += amountUsd;
-                lendingData.breakdown.blockchains[comptrollerConfig.chain].moneyFlowIn += amountUsd;
+                lendingData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].moneyFlowIn +=
+                  amountUsd;
 
                 break;
               }
@@ -415,9 +428,11 @@ export default class CompoundCore extends ProtocolAdapter {
                   formatBigNumberToNumber(event.args.repayAmount.toString(), marketAndPrice.underlying.decimals) *
                   marketAndPrice.underlyingPrice;
                 lendingData.volumeRepaid += repayAmountUsd;
-                lendingData.breakdown.blockchains[comptrollerConfig.chain].volumeRepaid += repayAmountUsd;
+                lendingData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].volumeRepaid +=
+                  repayAmountUsd;
                 lendingData.moneyFlowIn += repayAmountUsd;
-                lendingData.breakdown.blockchains[comptrollerConfig.chain].moneyFlowIn += repayAmountUsd;
+                lendingData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].moneyFlowIn +=
+                  repayAmountUsd;
 
                 // liquidate collateral
                 const collateral = marketTokensAndPrices.filter((item) =>
@@ -441,9 +456,12 @@ export default class CompoundCore extends ProtocolAdapter {
                     const collateralAmount = seizeTokens.multipliedBy(oneCTokenInUnderlying).dividedBy(1e8).toNumber();
                     const collateralAmountUsd = collateralAmount * collateral.underlyingPrice;
                     lendingData.volumeLiquidation += collateralAmountUsd;
-                    lendingData.breakdown.blockchains[comptrollerConfig.chain].volumeLiquidation += collateralAmountUsd;
+                    lendingData.breakdown[comptrollerConfig.chain][
+                      marketAndPrice.underlying.address
+                    ].volumeLiquidation += collateralAmountUsd;
                     lendingData.moneyFlowOut += collateralAmountUsd;
-                    lendingData.breakdown.blockchains[comptrollerConfig.chain].moneyFlowOut += collateralAmountUsd;
+                    lendingData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].moneyFlowOut +=
+                      collateralAmountUsd;
                   }
                 }
 

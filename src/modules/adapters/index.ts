@@ -1,6 +1,7 @@
 import { ProtocolConfigs } from '../../configs';
 import { ContextServices, ContextStorages, IProtocolAdapter } from '../../types/namespaces';
 import AaveAdapter from './aave/aave';
+import AjnaAdapter from './ajna/ajna';
 import BenqiAdapter from './benqi/benqi';
 import CompoundAdapter from './compound/compound';
 import MoonwellAdapter from './moonwell/moonwell';
@@ -12,6 +13,7 @@ export function getProtocolAdapters(
 ): { [key: string]: IProtocolAdapter } {
   return {
     aave: new AaveAdapter(services, storages, ProtocolConfigs.aave),
+    ajna: new AjnaAdapter(services, storages, ProtocolConfigs.ajna),
     avalon: new AaveAdapter(services, storages, ProtocolConfigs.avalon),
     benqi: new BenqiAdapter(services, storages, ProtocolConfigs.benqi),
     colend: new AaveAdapter(services, storages, ProtocolConfigs.colend),

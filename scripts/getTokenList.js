@@ -88,6 +88,12 @@ const tokenlists = [
   'https://raw.githubusercontent.com/pancakeswap/token-list/main/lists/pancakeswap-top-100.json',
   'https://raw.githubusercontent.com/pancakeswap/token-list/main/lists/pancakeswap-top-15.json',
   'https://raw.githubusercontent.com/pancakeswap/token-list/main/lists/pancakeswap-zksync-default.json',
+
+  // coingecko
+  'https://tokens.coingecko.com/avalanche/all.json',
+  'https://tokens.coingecko.com/ethereum/all.json',
+  'https://tokens.coingecko.com/zksync/all.json',
+  'https://tokens.coingecko.com/zora-network/all.json',
 ];
 
 function getChainName(chainId) {
@@ -109,7 +115,7 @@ async function getTokens() {
   const tokens = {};
 
   for (const urlList of tokenlists) {
-    console.log(`> ...getting tokens from ${urlList}`);
+    console.log(`>... getting tokens from ${urlList}`);
 
     const response = await axios.get(urlList);
 

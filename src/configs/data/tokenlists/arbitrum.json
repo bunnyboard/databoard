@@ -563,6 +563,12 @@
     "decimals": 18,
     "address": "0x6985884c4392d348587b19cb9eaaf157f13271cd"
   },
+  "0x69b2cd28b205b47c8ba427e111dd486f9c461b57": {
+    "chain": "arbitrum",
+    "symbol": "PHAT",
+    "decimals": 0,
+    "address": "0x69b2cd28b205b47c8ba427e111dd486f9c461b57"
+  },
   "0x69eb4fa4a2fbd498c257c57ea8b7655a2559a581": {
     "chain": "arbitrum",
     "symbol": "DODO",
@@ -580,6 +586,12 @@
     "symbol": "DPX",
     "decimals": 18,
     "address": "0x6c2c06790b3e3e3c38e12ee22f8183b37a13ee55"
+  },
+  "0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40": {
+    "chain": "arbitrum",
+    "symbol": "tBTC",
+    "decimals": 18,
+    "address": "0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40"
   },
   "0x6db8b088c4d41d622b44cd81b900ba690f2d496c": {
     "chain": "arbitrum",
@@ -682,6 +694,12 @@
     "symbol": "ARBYS",
     "decimals": 18,
     "address": "0x86a1012d437bbff84fbdf62569d12d4fd3396f8c"
+  },
+  "0x86f65121804d2cdbef79f9f072d4e0c2eebabc08": {
+    "chain": "arbitrum",
+    "symbol": "SEED",
+    "decimals": 18,
+    "address": "0x86f65121804d2cdbef79f9f072d4e0c2eebabc08"
   },
   "0x876ec6be52486eeec06bc06434f3e629d695c6ba": {
     "chain": "arbitrum",
@@ -1150,6 +1168,12 @@
     "symbol": "Bridged mstETH",
     "decimals": 18,
     "address": "0xe367d4b1b9bb40e34adce448e1edb0141fc6a8ac"
+  },
+  "0xe4728f3e48e94c6da2b53610e677cc241dafb134": {
+    "chain": "arbitrum",
+    "symbol": "wxUSDT",
+    "decimals": 6,
+    "address": "0xe4728f3e48e94c6da2b53610e677cc241dafb134"
   },
   "0xe656165d39419c03d588515c835d109e19221e1e": {
     "chain": "arbitrum",

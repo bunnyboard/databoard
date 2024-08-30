@@ -1,5 +1,5 @@
-import { ProtocolCategories, ProtocolConfig } from "../../types/base";
-import { ChainNames, ProtocolNames } from "../names";
+import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ChainNames, ProtocolNames } from '../names';
 
 export interface AjnaFactoryConfig {
   chain: string;
@@ -84,16 +84,16 @@ export const AjnaConfigs: AjnaProtocolConfigs = {
       whitelistedPools: [],
     },
     {
-      chain: ChainNames.blast,
-      factory: '0xcfCB7fb8c13c7bEffC619c3413Ad349Cbc6D5c91',
-      birthday: 1709683200, // Wed Mar 06 2024 00:00:00 GMT+0000
-      whitelistedPools: [],
-    },
-    {
       chain: ChainNames.optimism,
       factory: '0x609C4e8804fafC07c96bE81A8a98d0AdCf2b7Dfa',
       birthday: 1705536000, // Thu Jan 18 2024 00:00:00 GMT+0000
       whitelistedPools: [],
     },
-  ]
-}
+    {
+      chain: ChainNames.gnosis,
+      factory: '0x87578E357358163FCAb1711c62AcDB5BBFa1C9ef',
+      birthday: 1706054400, // Wed Jan 24 2024 00:00:00 GMT+0000
+      whitelistedPools: [],
+    },
+  ],
+};
