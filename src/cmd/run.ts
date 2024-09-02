@@ -1,4 +1,5 @@
 import { ProtocolConfigs } from '../configs';
+import logger from '../lib/logger';
 import { sleep } from '../lib/utils';
 import { getProtocolAdapters } from '../modules/adapters';
 import { ContextServices, ContextStorages } from '../types/namespaces';
@@ -19,11 +20,20 @@ export class RunCommand extends BasicCommand {
     const storages: ContextStorages = await super.getStorages();
     const adapters = getProtocolAdapters(services, storages);
 
+    logger.info('attemp run command', {
+      service: 'command',
+      argvProtocol: argv.protocol,
+      argvService: argv.service,
+      argvFromTime: argv.fromTime,
+      argvForce: argv.force,
+    });
+
     do {
       for (const protocol of Object.keys(ProtocolConfigs as any)) {
         if (argv.protocol === undefined || argv.protocol === '' || argv.protocol === protocol) {
           if (adapters[protocol]) {
             await adapters[protocol].run({
+              service: argv.service === 'state' || argv.service === 'snapshot' ? argv.service : undefined,
               fromTime: argv.fromTime ? argv.fromTime : undefined,
               force: argv.force ? argv.force : false,
             });
@@ -46,6 +56,11 @@ export class RunCommand extends BasicCommand {
         default: '',
         describe:
           'Collect data of given protocol. You can pass a list of protocol seperated by comma, ex: --protocol "aavev3,uniswapv2".',
+      },
+      service: {
+        type: 'string',
+        default: 'undefined',
+        describe: 'Collect current data or historical snapshots or both.',
       },
       fromTime: {
         type: 'number',
