@@ -6,6 +6,7 @@ import AaveOracleV1Abi from '../../../configs/abi/aave/OracleV1.json';
 import AaveOracleV2Abi from '../../../configs/abi/aave/OracleV2.json';
 import AaveDataProviderV1Abi from '../../../configs/abi/aave/DataProviderV1.json';
 import AaveDataProviderV2Abi from '../../../configs/abi/aave/DataProviderV2.json';
+import AaveDataProviderV3Abi from '../../../configs/abi/aave/DataProviderV3.json';
 import { AddressE, AddressZero } from '../../../configs/constants';
 import BigNumber from 'bignumber.js';
 import { compareAddress, formatBigNumberToString, normalizeAddress } from '../../../lib/utils';
@@ -185,7 +186,7 @@ export default class AaveCore extends ProtocolAdapter {
           },
         ],
       });
-    } else {
+    } else if (options.config.version === 2) {
       return await this.services.blockchain.evm.multicall({
         chain: options.config.chain,
         blockNumber: options.blockNumber,
@@ -198,6 +199,25 @@ export default class AaveCore extends ProtocolAdapter {
           },
           {
             abi: AaveDataProviderV2Abi,
+            target: options.config.dataProvider,
+            method: 'getReserveConfigurationData',
+            params: [options.reserveAddress],
+          },
+        ],
+      });
+    } else if (options.config.version === 3) {
+      return await this.services.blockchain.evm.multicall({
+        chain: options.config.chain,
+        blockNumber: options.blockNumber,
+        calls: [
+          {
+            abi: AaveDataProviderV3Abi,
+            target: options.config.dataProvider,
+            method: 'getReserveData',
+            params: [options.reserveAddress],
+          },
+          {
+            abi: AaveDataProviderV3Abi,
             target: options.config.dataProvider,
             method: 'getReserveConfigurationData',
             params: [options.reserveAddress],

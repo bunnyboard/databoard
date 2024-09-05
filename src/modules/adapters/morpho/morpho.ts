@@ -8,11 +8,10 @@ import { MorphoBlueConfig, MorphoProtocolConfig } from '../../../configs/protoco
 import { decodeEventLog } from 'viem';
 import { formatBigNumberToNumber, getTimestamp, normalizeAddress } from '../../../lib/utils';
 import { GetProtocolDataOptions, TestAdapterOptions } from '../../../types/options';
-import { ProtocolData } from '../../../types/domains/protocol';
+import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import envConfig from '../../../configs/envConfig';
 import logger from '../../../lib/logger';
 import { MorphoBlueEvents } from './abis';
-import { getInitialLendingData, getInitialLendingDataMetrics, LendingData } from '../../../types/domains/lending';
 import BigNumber from 'bignumber.js';
 import { TimeUnits } from '../../../configs/constants';
 import { ChainNames } from '../../../configs/names';
@@ -196,7 +195,7 @@ export default class MorphoAdapter extends ProtocolAdapter {
     return Object.values(lendingPools);
   }
 
-  public async getMarketData(options: GetMarketDataOptions): Promise<LendingData> {
+  public async getMarketData(options: GetMarketDataOptions): Promise<ProtocolData> {
     logger.debug('getting morpho market data', {
       service: this.name,
       chain: options.morphoBlueConfig.chain,
@@ -206,12 +205,21 @@ export default class MorphoAdapter extends ProtocolAdapter {
       blockNumber: options.blockNumber,
     });
 
-    const marketLendingData: LendingData = {
-      ...getInitialLendingData(),
-      volumeDeposited: 0,
-      volumeWithdrawn: 0,
-      volumeCollateralDeposited: 0,
-      volumeCollateralWithdrawn: 0,
+    const marketLendingData: ProtocolData = {
+      protocol: this.protocolConfig.protocol,
+      category: this.protocolConfig.category,
+      birthday: this.protocolConfig.birthday,
+      timestamp: options.timestamp,
+      breakdown: {},
+
+      ...getInitialProtocolCoreMetrics(),
+      volumes: {
+        deposit: 0,
+        withdraw: 0,
+        borrow: 0,
+        repay: 0,
+        liquidation: 0,
+      },
     };
 
     const getTokenPriceResult = await this.services.oracle.getTokenPriceUsd({
@@ -331,20 +339,26 @@ export default class MorphoAdapter extends ProtocolAdapter {
       }
       if (!marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.debtToken.address]) {
         marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.debtToken.address] = {
-          ...getInitialLendingDataMetrics(),
-          volumeDeposited: 0,
-          volumeWithdrawn: 0,
-          volumeCollateralDeposited: 0,
-          volumeCollateralWithdrawn: 0,
+          ...getInitialProtocolCoreMetrics(),
+          volumes: {
+            deposit: 0,
+            withdraw: 0,
+            borrow: 0,
+            repay: 0,
+            liquidation: 0,
+          },
         };
       }
       if (!marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.collateralToken.address]) {
         marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.collateralToken.address] = {
-          ...getInitialLendingDataMetrics(),
-          volumeDeposited: 0,
-          volumeWithdrawn: 0,
-          volumeCollateralDeposited: 0,
-          volumeCollateralWithdrawn: 0,
+          ...getInitialProtocolCoreMetrics(),
+          volumes: {
+            deposit: 0,
+            withdraw: 0,
+            borrow: 0,
+            repay: 0,
+            liquidation: 0,
+          },
         };
       }
 
@@ -363,9 +377,9 @@ export default class MorphoAdapter extends ProtocolAdapter {
               const amountUsd =
                 formatBigNumberToNumber(event.args.assets.toString(), options.poolMetadata.debtToken.decimals) *
                 debtTokenPrice;
-              (marketLendingData.volumeDeposited as number) += amountUsd;
-              (marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.debtToken.address]
-                .volumeDeposited as number) += amountUsd;
+              (marketLendingData.volumes.deposit as number) += amountUsd;
+              (marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.debtToken.address].volumes
+                .deposit as number) += amountUsd;
               marketLendingData.moneyFlowIn += amountUsd;
               marketLendingData.breakdown[options.poolMetadata.chain][
                 options.poolMetadata.debtToken.address
@@ -376,9 +390,9 @@ export default class MorphoAdapter extends ProtocolAdapter {
               const amountUsd =
                 formatBigNumberToNumber(event.args.assets.toString(), options.poolMetadata.debtToken.decimals) *
                 debtTokenPrice;
-              (marketLendingData.volumeWithdrawn as number) += amountUsd;
-              (marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.debtToken.address]
-                .volumeWithdrawn as number) += amountUsd;
+              (marketLendingData.volumes.withdraw as number) += amountUsd;
+              (marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.debtToken.address].volumes
+                .withdraw as number) += amountUsd;
               marketLendingData.moneyFlowOut += amountUsd;
               marketLendingData.breakdown[options.poolMetadata.chain][
                 options.poolMetadata.debtToken.address
@@ -389,10 +403,9 @@ export default class MorphoAdapter extends ProtocolAdapter {
               const amountUsd =
                 formatBigNumberToNumber(event.args.assets.toString(), options.poolMetadata.debtToken.decimals) *
                 debtTokenPrice;
-              marketLendingData.volumeBorrowed += amountUsd;
-              marketLendingData.breakdown[options.poolMetadata.chain][
-                options.poolMetadata.debtToken.address
-              ].volumeBorrowed += amountUsd;
+              (marketLendingData.volumes.borrow as number) += amountUsd;
+              (marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.debtToken.address].volumes
+                .borrow as number) += amountUsd;
               marketLendingData.moneyFlowOut += amountUsd;
               marketLendingData.breakdown[options.poolMetadata.chain][
                 options.poolMetadata.debtToken.address
@@ -403,10 +416,9 @@ export default class MorphoAdapter extends ProtocolAdapter {
               const amountUsd =
                 formatBigNumberToNumber(event.args.assets.toString(), options.poolMetadata.debtToken.decimals) *
                 debtTokenPrice;
-              marketLendingData.volumeRepaid += amountUsd;
-              marketLendingData.breakdown[options.poolMetadata.chain][
-                options.poolMetadata.debtToken.address
-              ].volumeRepaid += amountUsd;
+              (marketLendingData.volumes.repay as number) += amountUsd;
+              (marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.debtToken.address].volumes
+                .repay as number) += amountUsd;
               marketLendingData.moneyFlowIn += amountUsd;
               marketLendingData.breakdown[options.poolMetadata.chain][
                 options.poolMetadata.debtToken.address
@@ -417,9 +429,9 @@ export default class MorphoAdapter extends ProtocolAdapter {
               const amountUsd =
                 formatBigNumberToNumber(event.args.assets.toString(), options.poolMetadata.collateralToken.decimals) *
                 collateralPriceUsd;
-              (marketLendingData.volumeCollateralDeposited as number) += amountUsd;
+              (marketLendingData.volumes.deposit as number) += amountUsd;
               (marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.collateralToken.address]
-                .volumeCollateralDeposited as number) += amountUsd;
+                .volumes.deposit as number) += amountUsd;
               marketLendingData.moneyFlowIn += amountUsd;
               marketLendingData.breakdown[options.poolMetadata.chain][
                 options.poolMetadata.collateralToken.address
@@ -430,9 +442,9 @@ export default class MorphoAdapter extends ProtocolAdapter {
               const amountUsd =
                 formatBigNumberToNumber(event.args.assets.toString(), options.poolMetadata.collateralToken.decimals) *
                 collateralPriceUsd;
-              (marketLendingData.volumeCollateralWithdrawn as number) += amountUsd;
+              (marketLendingData.volumes.withdraw as number) += amountUsd;
               (marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.collateralToken.address]
-                .volumeCollateralWithdrawn as number) += amountUsd;
+                .volumes.withdraw as number) += amountUsd;
               marketLendingData.moneyFlowOut += amountUsd;
               marketLendingData.breakdown[options.poolMetadata.chain][
                 options.poolMetadata.collateralToken.address
@@ -449,19 +461,17 @@ export default class MorphoAdapter extends ProtocolAdapter {
                   options.poolMetadata.collateralToken.decimals,
                 ) * collateralPriceUsd;
 
-              marketLendingData.volumeRepaid += repayAmountUsd;
-              marketLendingData.breakdown[options.poolMetadata.chain][
-                options.poolMetadata.debtToken.address
-              ].volumeRepaid += repayAmountUsd;
+              (marketLendingData.volumes.repay as number) += repayAmountUsd;
+              (marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.debtToken.address].volumes
+                .repay as number) += repayAmountUsd;
               marketLendingData.moneyFlowIn += repayAmountUsd;
               marketLendingData.breakdown[options.poolMetadata.chain][
                 options.poolMetadata.debtToken.address
               ].moneyFlowIn += repayAmountUsd;
 
-              marketLendingData.volumeLiquidation += repayAmountUsd;
-              marketLendingData.breakdown[options.poolMetadata.chain][
-                options.poolMetadata.collateralToken.address
-              ].volumeLiquidation += liquidateAmountUsd;
+              (marketLendingData.volumes.liquidation as number) += repayAmountUsd;
+              (marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.collateralToken.address]
+                .volumes.liquidation as number) += liquidateAmountUsd;
               marketLendingData.moneyFlowOut += liquidateAmountUsd;
               marketLendingData.breakdown[options.poolMetadata.chain][
                 options.poolMetadata.collateralToken.address
@@ -474,11 +484,11 @@ export default class MorphoAdapter extends ProtocolAdapter {
       }
 
       marketLendingData.totalAssetDeposited += totalDeposited;
-      marketLendingData.totalSupplied += totalDeposited;
-      marketLendingData.totalBorrowed += totalBorrowed;
+      (marketLendingData.totalSupplied as number) += totalDeposited;
+      (marketLendingData.totalBorrowed as number) += totalBorrowed;
       marketLendingData.totalValueLocked += totalDeposited - totalBorrowed;
-      marketLendingData.borrowFees += borrowFees;
-      marketLendingData.revenue += revenue;
+      marketLendingData.totalFees += borrowFees;
+      marketLendingData.protocolRevenue += revenue;
     }
 
     return marketLendingData;
@@ -492,14 +502,16 @@ export default class MorphoAdapter extends ProtocolAdapter {
       category: this.protocolConfig.category,
       birthday: this.protocolConfig.birthday,
       timestamp: options.timestamp,
-    };
+      breakdown: {},
 
-    const lendingData: LendingData = {
-      ...getInitialLendingData(),
-      volumeDeposited: 0,
-      volumeWithdrawn: 0,
-      volumeCollateralDeposited: 0,
-      volumeCollateralWithdrawn: 0,
+      ...getInitialProtocolCoreMetrics(),
+      volumes: {
+        deposit: 0,
+        withdraw: 0,
+        borrow: 0,
+        repay: 0,
+        liquidation: 0,
+      },
     };
 
     for (const morphoBlue of morphoBlueConfig.morphoBlues) {
@@ -576,51 +588,48 @@ export default class MorphoAdapter extends ProtocolAdapter {
               morphoBlueDatabaseLogs: databaseLogs,
             });
             if (marketLendingData) {
-              lendingData.totalAssetDeposited += marketLendingData.totalAssetDeposited;
-              lendingData.totalSupplied += marketLendingData.totalSupplied;
-              lendingData.totalBorrowed += marketLendingData.totalBorrowed;
-              lendingData.totalValueLocked += marketLendingData.totalValueLocked;
-              lendingData.borrowFees += marketLendingData.borrowFees;
-              lendingData.revenue += marketLendingData.revenue;
-              lendingData.moneyFlowIn += marketLendingData.moneyFlowIn;
-              lendingData.moneyFlowOut += marketLendingData.moneyFlowOut;
-              lendingData.volumeBorrowed += marketLendingData.volumeBorrowed;
-              lendingData.volumeRepaid += marketLendingData.volumeRepaid;
-              lendingData.volumeLiquidation += marketLendingData.volumeLiquidation;
-              (lendingData.volumeDeposited as number) += marketLendingData.volumeDeposited as number;
-              (lendingData.volumeWithdrawn as number) += marketLendingData.volumeWithdrawn as number;
-              (lendingData.volumeCollateralDeposited as number) +=
-                marketLendingData.volumeCollateralDeposited as number;
-              (lendingData.volumeCollateralWithdrawn as number) +=
-                marketLendingData.volumeCollateralWithdrawn as number;
+              protocolData.totalAssetDeposited += marketLendingData.totalAssetDeposited;
+              (protocolData.totalSupplied as number) += marketLendingData.totalSupplied as number;
+              (protocolData.totalBorrowed as number) += marketLendingData.totalBorrowed as number;
+              protocolData.totalValueLocked += marketLendingData.totalValueLocked;
+              protocolData.totalFees += marketLendingData.totalFees;
+              protocolData.protocolRevenue += marketLendingData.protocolRevenue;
+              protocolData.moneyFlowIn += marketLendingData.moneyFlowIn;
+              protocolData.moneyFlowOut += marketLendingData.moneyFlowOut;
+              (protocolData.volumes.deposit as number) += marketLendingData.volumes.deposit as number;
+              (protocolData.volumes.withdraw as number) += marketLendingData.volumes.withdraw as number;
+              (protocolData.volumes.borrow as number) += marketLendingData.volumes.borrow as number;
+              (protocolData.volumes.repay as number) += marketLendingData.volumes.repay as number;
+              (protocolData.volumes.liquidation as number) += marketLendingData.volumes.liquidation as number;
 
               for (const [chain, tokens] of Object.entries(marketLendingData.breakdown)) {
-                if (!lendingData.breakdown[chain]) {
-                  lendingData.breakdown[chain] = tokens;
+                if (!protocolData.breakdown[chain]) {
+                  protocolData.breakdown[chain] = tokens;
                 } else {
                   for (const [address, metrics] of Object.entries(tokens)) {
-                    if (!lendingData.breakdown[chain][address]) {
-                      lendingData.breakdown[chain][address] = metrics;
+                    if (!protocolData.breakdown[chain][address]) {
+                      protocolData.breakdown[chain][address] = metrics;
                     } else {
-                      lendingData.breakdown[chain][address].totalAssetDeposited += metrics.totalAssetDeposited;
-                      lendingData.breakdown[chain][address].totalSupplied += metrics.totalSupplied;
-                      lendingData.breakdown[chain][address].totalBorrowed += metrics.totalBorrowed;
-                      lendingData.breakdown[chain][address].totalValueLocked += metrics.totalValueLocked;
-                      lendingData.breakdown[chain][address].borrowFees += metrics.borrowFees;
-                      lendingData.breakdown[chain][address].revenue += metrics.revenue;
-                      lendingData.breakdown[chain][address].moneyFlowIn += metrics.moneyFlowIn;
-                      lendingData.breakdown[chain][address].moneyFlowOut += metrics.moneyFlowOut;
-                      lendingData.breakdown[chain][address].volumeBorrowed += metrics.volumeBorrowed;
-                      lendingData.breakdown[chain][address].volumeRepaid += metrics.volumeRepaid;
-                      lendingData.breakdown[chain][address].volumeLiquidation += metrics.volumeLiquidation;
-                      (lendingData.breakdown[chain][address].volumeDeposited as number) +=
-                        metrics.volumeDeposited as number;
-                      (lendingData.breakdown[chain][address].volumeWithdrawn as number) +=
-                        metrics.volumeWithdrawn as number;
-                      (lendingData.breakdown[chain][address].volumeCollateralDeposited as number) +=
-                        metrics.volumeCollateralDeposited as number;
-                      (lendingData.breakdown[chain][address].volumeCollateralWithdrawn as number) +=
-                        metrics.volumeCollateralWithdrawn as number;
+                      protocolData.breakdown[chain][address].totalAssetDeposited += metrics.totalAssetDeposited;
+                      (protocolData.breakdown[chain][address].totalSupplied as number) +=
+                        metrics.totalSupplied as number;
+                      (protocolData.breakdown[chain][address].totalBorrowed as number) +=
+                        metrics.totalBorrowed as number;
+                      protocolData.breakdown[chain][address].totalValueLocked += metrics.totalValueLocked;
+                      protocolData.breakdown[chain][address].totalFees += metrics.totalFees;
+                      protocolData.breakdown[chain][address].protocolRevenue += metrics.protocolRevenue;
+                      protocolData.breakdown[chain][address].moneyFlowIn += metrics.moneyFlowIn;
+                      protocolData.breakdown[chain][address].moneyFlowOut += metrics.moneyFlowOut;
+                      (protocolData.breakdown[chain][address].volumes.deposit as number) += metrics.volumes
+                        .deposit as number;
+                      (protocolData.breakdown[chain][address].volumes.withdraw as number) += metrics.volumes
+                        .withdraw as number;
+                      (protocolData.breakdown[chain][address].volumes.borrow as number) += metrics.volumes
+                        .borrow as number;
+                      (protocolData.breakdown[chain][address].volumes.repay as number) += metrics.volumes
+                        .repay as number;
+                      (protocolData.breakdown[chain][address].volumes.liquidation as number) += metrics.volumes
+                        .liquidation as number;
                     }
                   }
                 }
@@ -631,7 +640,19 @@ export default class MorphoAdapter extends ProtocolAdapter {
       }
     }
 
-    protocolData.lending = lendingData;
+    for (const value of Object.values(protocolData.volumes)) {
+      protocolData.totalVolume += value;
+      protocolData.moneyFlowNet = protocolData.moneyFlowIn - protocolData.moneyFlowOut;
+    }
+    for (const [chain, tokens] of Object.entries(protocolData.breakdown)) {
+      for (const [address, token] of Object.entries(tokens)) {
+        for (const value of Object.values(token.volumes)) {
+          protocolData.breakdown[chain][address].totalVolume += value;
+          protocolData.breakdown[chain][address].moneyFlowNet =
+            protocolData.breakdown[chain][address].moneyFlowIn - protocolData.breakdown[chain][address].moneyFlowOut;
+        }
+      }
+    }
 
     return protocolData;
   }
