@@ -30,8 +30,19 @@ export interface ComptrollerConfig {
   blacklists?: Array<string>;
 }
 
+// compound v3
+export interface CometConfig {
+  chain: string;
+
+  comet: string;
+
+  // where market was deployed
+  birthday: number;
+}
+
 export interface CompoundProtocolConfig extends ProtocolConfig {
   comptrollers: Array<ComptrollerConfig>;
+  comets?: Array<CometConfig>;
 }
 
 export const CompoundConfigs: CompoundProtocolConfig = {
@@ -64,6 +75,88 @@ export const CompoundConfigs: CompoundProtocolConfig = {
         '0xB3319f5D18Bc0D84dD1b4825Dcde5d5f7266d407',
         '0xF5DCe57282A584D2746FaF1593d3121Fcac444dC',
       ],
+    },
+  ],
+  comets: [
+    {
+      chain: ChainNames.ethereum,
+      birthday: 1660435200, // Sun Aug 14 2022 00:00:00 GMT+0000
+      comet: '0xc3d688b66703497daa19211eedff47f25384cdc3',
+    },
+    {
+      chain: ChainNames.ethereum,
+      birthday: 1673654400, // Sat Jan 14 2023 00:00:00 GMT+0000
+      comet: '0xA17581A9E3356d9A858b789D68B4d866e593aE94',
+    },
+    {
+      chain: ChainNames.ethereum,
+      birthday: 1719619200, // Sat Jun 29 2024 00:00:00 GMT+0000
+      comet: '0x3afdc9bca9213a35503b077a6072f3d0d5ab0840',
+    },
+    {
+      chain: ChainNames.polygon,
+      birthday: 1676764800, // Sun Feb 19 2023 00:00:00 GMT+0000
+      comet: '0xF25212E676D1F7F89Cd72fFEe66158f541246445',
+    },
+    {
+      chain: ChainNames.polygon,
+      birthday: 1719100800, // Sun Jun 23 2024 00:00:00 GMT+0000
+      comet: '0xaeb318360f27748acb200ce616e389a6c9409a07',
+    },
+    {
+      chain: ChainNames.arbitrum,
+      birthday: 1683244800, // Fri May 05 2023 00:00:00 GMT+0000
+      comet: '0xA5EDBDD9646f8dFF606d7448e414884C7d905dCA',
+    },
+    {
+      chain: ChainNames.arbitrum,
+      birthday: 1692230400, // Thu Aug 17 2023 00:00:00 GMT+0000
+      comet: '0x9c4ec768c28520B50860ea7a15bd7213a9fF58bf',
+    },
+    {
+      chain: ChainNames.arbitrum,
+      birthday: 1717804800, // Sat Jun 08 2024 00:00:00 GMT+0000
+      comet: '0x6f7d514bbd4aff3bcd1140b7344b32f063dee486',
+    },
+    {
+      chain: ChainNames.arbitrum,
+      birthday: 1718928000, // Fri Jun 21 2024 00:00:00 GMT+0000
+      comet: '0xd98be00b5d27fc98112bde293e487f8d4ca57d07',
+    },
+    {
+      chain: ChainNames.base,
+      birthday: 1691193600, // Sat Aug 05 2023 00:00:00 GMT+0000
+      comet: '0x9c4ec768c28520B50860ea7a15bd7213a9fF58bf',
+    },
+    {
+      chain: ChainNames.base,
+      birthday: 1710201600, // Tue Mar 12 2024 00:00:00 GMT+0000
+      comet: '0xb125E6687d4313864e53df431d5425969c15Eb2F',
+    },
+    {
+      chain: ChainNames.base,
+      birthday: 1691798400, // Sat Aug 12 2023 00:00:00 GMT+0000
+      comet: '0x46e6b214b524310239732D51387075E0e70970bf',
+    },
+    {
+      chain: ChainNames.scroll,
+      birthday: 1708128000, // Sat Feb 17 2024 00:00:00 GMT+0000
+      comet: '0xB2f97c1Bd3bf02f5e74d13f02E3e26F93D77CE44',
+    },
+    {
+      chain: ChainNames.optimism,
+      birthday: 1712448000, // Sun Apr 07 2024 00:00:00 GMT+0000
+      comet: '0x2e44e174f7D53F0212823acC11C01A11d58c5bCB', // cUSDCv3
+    },
+    {
+      chain: ChainNames.optimism,
+      birthday: 1716249600, // Tue May 21 2024 00:00:00 GMT+0000
+      comet: '0x995e394b8b2437ac8ce61ee0bc610d617962b214', // cUSDTv3
+    },
+    {
+      chain: ChainNames.optimism,
+      birthday: 1721088000, // Tue Jul 16 2024 00:00:00 GMT+0000
+      comet: '0xe36a30d249f7761327fd973001a32010b521b6fd', // cWETHv3
     },
   ],
 };

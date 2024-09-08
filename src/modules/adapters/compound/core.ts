@@ -10,12 +10,14 @@ import IronbankComptrollerOldAbi from '../../../configs/abi/ironbank/FirstComptr
 import { compareAddress, formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
 import { GetProtocolDataOptions } from '../../../types/options';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
-import { AddressZero, ChainBlockPeriods, TimeUnits } from '../../../configs/constants';
+import { AddressZero, ChainBlockPeriods, Erc20TransferEventSignature, TimeUnits } from '../../../configs/constants';
 import BigNumber from 'bignumber.js';
 import logger from '../../../lib/logger';
-import { CompoundEventSignatures } from './abis';
+import { CompoundEventSignatures, Compoundv3EventSignatures } from './abis';
 import { decodeEventLog } from 'viem';
 import envConfig from '../../../configs/envConfig';
+import CometAbi from '../../../configs/abi/compound/Comet.json';
+import { ContractCall } from '../../../services/blockchains/domains';
 
 interface MarketTokenAndPrice {
   cToken: string;
@@ -475,6 +477,312 @@ export default class CompoundCore extends ProtocolAdapter {
                 }
 
                 break;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    if (config.comets) {
+      for (const cometConfig of config.comets) {
+        if (cometConfig.birthday > options.timestamp) {
+          continue;
+        }
+
+        logger.info('get compound comet info', {
+          service: this.name,
+          protocol: this.protocolConfig.protocol,
+          category: this.protocolConfig.category,
+          chain: cometConfig.chain,
+          comet: cometConfig.comet,
+        });
+
+        if (!protocolData.breakdown[cometConfig.chain]) {
+          protocolData.breakdown[cometConfig.chain] = {};
+        }
+
+        const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+          cometConfig.chain,
+          options.timestamp,
+        );
+        const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+          cometConfig.chain,
+          options.beginTime,
+        );
+        const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+          cometConfig.chain,
+          options.endTime,
+        );
+
+        const [baseTokenAddress, numAssets] = await this.services.blockchain.evm.multicall({
+          chain: cometConfig.chain,
+          blockNumber: blockNumber,
+          calls: [
+            {
+              abi: CometAbi,
+              target: cometConfig.comet,
+              method: 'baseToken',
+              params: [],
+            },
+            {
+              abi: CometAbi,
+              target: cometConfig.comet,
+              method: 'numAssets',
+              params: [],
+            },
+          ],
+        });
+
+        const baseToken = await this.services.blockchain.evm.getTokenInfo({
+          chain: cometConfig.chain,
+          address: baseTokenAddress,
+        });
+
+        if (baseToken) {
+          if (!protocolData.breakdown[cometConfig.chain][baseToken.address]) {
+            protocolData.breakdown[cometConfig.chain][baseToken.address] = getInitialProtocolCoreMetrics();
+          }
+
+          const baseTokenPriceRaw = await this.services.oracle.getTokenPriceUsd({
+            chain: cometConfig.chain,
+            address: baseToken.address,
+            timestamp: options.timestamp,
+          });
+          const baseTokenPriceUsd = baseTokenPriceRaw ? Number(baseTokenPriceRaw) : 0;
+
+          const [totalSupply, totalBorrow, utilization] = await this.services.blockchain.evm.multicall({
+            chain: cometConfig.chain,
+            blockNumber: blockNumber,
+            calls: [
+              {
+                abi: CometAbi,
+                target: cometConfig.comet,
+                method: 'totalSupply',
+                params: [],
+              },
+              {
+                abi: CometAbi,
+                target: cometConfig.comet,
+                method: 'totalBorrow',
+                params: [],
+              },
+              {
+                abi: CometAbi,
+                target: cometConfig.comet,
+                method: 'getUtilization',
+                params: [],
+              },
+            ],
+          });
+          const [borrowRate] = await this.services.blockchain.evm.multicall({
+            chain: cometConfig.chain,
+            blockNumber: blockNumber,
+            calls: [
+              {
+                abi: CometAbi,
+                target: cometConfig.comet,
+                method: 'getBorrowRate',
+                params: [utilization.toString()],
+              },
+            ],
+          });
+
+          const totalSuppliedUsd =
+            formatBigNumberToNumber(totalSupply.toString(), baseToken.decimals) * baseTokenPriceUsd;
+          const totalBorrowedUsd =
+            formatBigNumberToNumber(totalBorrow.toString(), baseToken.decimals) * baseTokenPriceUsd;
+
+          const borrowApy = formatBigNumberToNumber(borrowRate.toString(), 18) * TimeUnits.SecondsPerYear;
+          const feesUsd = (totalBorrowedUsd * borrowApy) / TimeUnits.DaysPerYear;
+
+          let totalCollateralUsd = 0;
+          const calls: Array<ContractCall> = [];
+          for (let i = 0; i < Number(numAssets); i++) {
+            calls.push({
+              abi: CometAbi,
+              target: cometConfig.comet,
+              method: 'getAssetInfo',
+              params: [i],
+            });
+          }
+
+          const assetInfos = await this.services.blockchain.evm.multicall({
+            chain: cometConfig.chain,
+            calls: calls,
+            blockNumber: blockNumber,
+          });
+
+          const collaterals: {
+            [key: string]: {
+              token: Token;
+              priceUsd: number;
+            };
+          } = {};
+          for (const assetInfo of assetInfos) {
+            const collateral = await this.services.blockchain.evm.getTokenInfo({
+              chain: cometConfig.chain,
+              address: assetInfo.asset.toString(),
+            });
+
+            if (collateral) {
+              if (!protocolData.breakdown[cometConfig.chain][collateral.address]) {
+                protocolData.breakdown[cometConfig.chain][collateral.address] = getInitialProtocolCoreMetrics();
+              }
+
+              const collateralPriceRaw = await this.services.blockchain.evm.readContract({
+                chain: cometConfig.chain,
+                abi: CometAbi,
+                target: cometConfig.comet,
+                method: 'getPrice',
+                params: [assetInfo.priceFeed],
+                blockNumber: blockNumber,
+              });
+
+              // price vs base token - in 8 decimals
+              const collateralPriceVsBase = formatBigNumberToNumber(collateralPriceRaw.toString(), 8);
+              const collateralPriceUsd = collateralPriceVsBase * baseTokenPriceUsd;
+              collaterals[collateral.address] = {
+                token: collateral,
+                priceUsd: collateralPriceUsd,
+              };
+
+              const [totalSupplyAsset] = await this.services.blockchain.evm.readContract({
+                chain: cometConfig.chain,
+                abi: CometAbi,
+                target: cometConfig.comet,
+                method: 'totalsCollateral',
+                params: [collateral.address],
+                blockNumber: blockNumber,
+              });
+              const collateralUsd =
+                formatBigNumberToNumber(totalSupplyAsset.toString(), collateral.decimals) * collateralPriceUsd;
+
+              totalCollateralUsd += collateralUsd;
+
+              protocolData.breakdown[cometConfig.chain][collateral.address].totalAssetDeposited += totalCollateralUsd;
+              protocolData.breakdown[cometConfig.chain][collateral.address].totalValueLocked += totalCollateralUsd;
+            }
+          }
+
+          const totalAssetDeposited = totalSuppliedUsd + totalCollateralUsd;
+          const totalValueLocked = totalSuppliedUsd + totalCollateralUsd - totalBorrowedUsd;
+
+          protocolData.totalAssetDeposited += totalAssetDeposited;
+          protocolData.totalValueLocked += totalValueLocked;
+          (protocolData.totalSupplied as number) += totalSuppliedUsd;
+          (protocolData.totalBorrowed as number) += totalBorrowedUsd;
+          protocolData.totalFees += feesUsd;
+
+          protocolData.breakdown[cometConfig.chain][baseToken.address].totalAssetDeposited += totalSuppliedUsd;
+          protocolData.breakdown[cometConfig.chain][baseToken.address].totalValueLocked +=
+            totalSuppliedUsd - totalBorrowedUsd;
+          (protocolData.breakdown[cometConfig.chain][baseToken.address].totalSupplied as number) += totalSuppliedUsd;
+          (protocolData.breakdown[cometConfig.chain][baseToken.address].totalBorrowed as number) += totalBorrowedUsd;
+          protocolData.breakdown[cometConfig.chain][baseToken.address].totalFees += feesUsd;
+
+          const logs = await this.services.blockchain.evm.getContractLogs({
+            chain: cometConfig.chain,
+            address: cometConfig.comet,
+            fromBlock: beginBlock,
+            toBlock: endBlock,
+          });
+          for (const log of logs) {
+            const signature = log.topics[0];
+            if (Object.values(Compoundv3EventSignatures).includes(signature)) {
+              const event: any = decodeEventLog({
+                abi: CometAbi,
+                topics: log.topics,
+                data: log.data,
+              });
+              switch (signature) {
+                case Compoundv3EventSignatures.Supply:
+                case Compoundv3EventSignatures.Withdraw: {
+                  // on compound v3, we detect supply transaction by looking Comet Transfer event from the same transaction
+                  // when user deposit base asset, if there is a Transfer event emitted on transaction,
+                  // the transaction action is deposit, otherwise, the transaction action is repay.
+                  const amountUsd =
+                    formatBigNumberToNumber(event.args.amount.toString(), baseToken.decimals) * baseTokenPriceUsd;
+                  const cometTransferEvent = logs.filter(
+                    (item) =>
+                      item.transactionHash === log.transactionHash &&
+                      item.topics[0] === Erc20TransferEventSignature &&
+                      compareAddress(item.address, cometConfig.comet),
+                  )[0];
+                  if (signature === Compoundv3EventSignatures.Supply) {
+                    protocolData.moneyFlowIn += amountUsd;
+                    protocolData.breakdown[cometConfig.chain][baseToken.address].moneyFlowIn += amountUsd;
+
+                    if (cometTransferEvent) {
+                      (protocolData.volumes.deposit as number) += amountUsd;
+                      (protocolData.breakdown[cometConfig.chain][baseToken.address].volumes.deposit as number) +=
+                        amountUsd;
+                    } else {
+                      (protocolData.volumes.repay as number) += amountUsd;
+                      (protocolData.breakdown[cometConfig.chain][baseToken.address].volumes.repay as number) +=
+                        amountUsd;
+                    }
+                  } else {
+                    protocolData.moneyFlowOut += amountUsd;
+                    protocolData.breakdown[cometConfig.chain][baseToken.address].moneyFlowOut += amountUsd;
+
+                    if (cometTransferEvent) {
+                      (protocolData.volumes.withdraw as number) += amountUsd;
+                      (protocolData.breakdown[cometConfig.chain][baseToken.address].volumes.withdraw as number) +=
+                        amountUsd;
+                    } else {
+                      (protocolData.volumes.borrow as number) += amountUsd;
+                      (protocolData.breakdown[cometConfig.chain][baseToken.address].volumes.borrow as number) +=
+                        amountUsd;
+                    }
+                  }
+                  break;
+                }
+                case Compoundv3EventSignatures.AbsorbDebt: {
+                  // repay debts by liquidators
+                  const repayAmountUsd =
+                    formatBigNumberToNumber(event.args.basePaidOut.toString(), baseToken.decimals) * baseTokenPriceUsd;
+                  protocolData.moneyFlowIn += repayAmountUsd;
+                  protocolData.breakdown[cometConfig.chain][baseToken.address].moneyFlowIn += repayAmountUsd;
+                  (protocolData.volumes.repay as number) += repayAmountUsd;
+                  (protocolData.breakdown[cometConfig.chain][baseToken.address].volumes.repay as number) +=
+                    repayAmountUsd;
+                  break;
+                }
+                case Compoundv3EventSignatures.SupplyCollateral:
+                case Compoundv3EventSignatures.WithdrawCollateral: {
+                  const asset = normalizeAddress(event.args.asset);
+                  const collateralAmountUsd =
+                    formatBigNumberToNumber(event.args.amount.toString(), collaterals[asset].token.decimals) *
+                    collaterals[asset].priceUsd;
+                  if (signature === Compoundv3EventSignatures.SupplyCollateral) {
+                    protocolData.moneyFlowIn += collateralAmountUsd;
+                    protocolData.breakdown[cometConfig.chain][asset].moneyFlowIn += collateralAmountUsd;
+                    (protocolData.volumes.deposit as number) += collateralAmountUsd;
+                    (protocolData.breakdown[cometConfig.chain][asset].volumes.deposit as number) += collateralAmountUsd;
+                  } else {
+                    protocolData.moneyFlowOut += collateralAmountUsd;
+                    protocolData.breakdown[cometConfig.chain][asset].moneyFlowOut += collateralAmountUsd;
+                    (protocolData.volumes.withdraw as number) += collateralAmountUsd;
+                    (protocolData.breakdown[cometConfig.chain][asset].volumes.withdraw as number) +=
+                      collateralAmountUsd;
+                  }
+                  break;
+                }
+                case Compoundv3EventSignatures.AbsorbCollateral: {
+                  const asset = normalizeAddress(event.args.asset);
+                  const collateralAmountUsd =
+                    formatBigNumberToNumber(
+                      event.args.collateralAbsorbed.toString(),
+                      collaterals[asset].token.decimals,
+                    ) * collaterals[asset].priceUsd;
+                  protocolData.moneyFlowOut += collateralAmountUsd;
+                  protocolData.breakdown[cometConfig.chain][asset].moneyFlowOut += collateralAmountUsd;
+                  (protocolData.volumes.liquidation as number) += collateralAmountUsd;
+                  (protocolData.breakdown[cometConfig.chain][asset].volumes.liquidation as number) +=
+                    collateralAmountUsd;
+                  break;
+                }
               }
             }
           }
