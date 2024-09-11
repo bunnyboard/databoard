@@ -203,6 +203,7 @@ export default class AjnaAdapter extends ProtocolAdapter {
               (protocolData.totalBorrowed as number) += totalBorrowed;
               protocolData.totalValueLocked += totalDeposited + totalCollateralDeposited - totalBorrowed;
               protocolData.totalFees += borrowFees;
+              protocolData.supplySideRevenue += borrowFees;
 
               protocolData.breakdown[factoryConfig.chain][debtToken.address].totalAssetDeposited += totalDeposited;
               (protocolData.breakdown[factoryConfig.chain][debtToken.address].totalSupplied as number) +=
@@ -211,6 +212,7 @@ export default class AjnaAdapter extends ProtocolAdapter {
               protocolData.breakdown[factoryConfig.chain][debtToken.address].totalValueLocked +=
                 totalDeposited - totalBorrowed;
               protocolData.breakdown[factoryConfig.chain][debtToken.address].totalFees += borrowFees;
+              protocolData.breakdown[factoryConfig.chain][debtToken.address].supplySideRevenue += borrowFees;
 
               protocolData.breakdown[factoryConfig.chain][collateralToken.address].totalAssetDeposited +=
                 totalCollateralDeposited;
