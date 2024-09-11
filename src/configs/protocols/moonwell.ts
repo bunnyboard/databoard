@@ -35,5 +35,12 @@ export const MoonwellConfigs: CompoundProtocolConfig = {
       comptroller: '0xfbb21d0380bee3312b33c4353c8936a0f13ef26c',
       oracleSource: 'oracleUsd',
     },
+    {
+      chain: ChainNames.optimism,
+      marketName: 'Main Market',
+      birthday: 1720742400, // Fri Jul 12 2024 00:00:00 GMT+0000
+      comptroller: '0xCa889f40aae37FFf165BccF69aeF1E82b5C511B9',
+      oracleSource: 'oracleUsd',
+    },
   ],
 };

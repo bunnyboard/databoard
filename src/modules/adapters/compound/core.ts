@@ -301,8 +301,6 @@ export default class CompoundCore extends ProtocolAdapter {
           };
         }
 
-        const borrowRate = await this.getBorrowRate(comptrollerConfig.chain, marketAndPrice.cToken, blockNumber);
-
         const [totalCash, totalBorrows, totalReserves] = await this.services.blockchain.evm.multicall({
           chain: comptrollerConfig.chain,
           blockNumber: blockNumber,
@@ -351,8 +349,6 @@ export default class CompoundCore extends ProtocolAdapter {
         (protocolData.totalSupplied as number) += totalDeposited;
         (protocolData.totalBorrowed as number) += totalBorrowed;
         protocolData.totalValueLocked += totalDeposited - totalBorrowed;
-        protocolData.totalFees += (totalBorrowed * borrowRate) / TimeUnits.DaysPerYear;
-        protocolData.protocolRevenue += (totalBorrowed * borrowRate * reserveFactor) / TimeUnits.DaysPerYear;
 
         // add to breakdown
         protocolData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].totalAssetDeposited +=
@@ -363,10 +359,6 @@ export default class CompoundCore extends ProtocolAdapter {
           totalBorrowed;
         protocolData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].totalValueLocked +=
           totalDeposited - totalBorrowed;
-        protocolData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].totalFees +=
-          (totalBorrowed * borrowRate) / TimeUnits.DaysPerYear;
-        protocolData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].protocolRevenue +=
-          (totalBorrowed * borrowRate * reserveFactor) / TimeUnits.DaysPerYear;
 
         // process logs
         const contractLogs: Array<any> = await this.services.blockchain.evm.getContractLogs({
@@ -382,6 +374,21 @@ export default class CompoundCore extends ProtocolAdapter {
             const event: any = this.decodeEventLog(comptrollerConfig, log);
 
             switch (signature) {
+              case CompoundEventSignatures.AccrueInterest: {
+                const amountFeesUsd =
+                  formatBigNumberToNumber(
+                    event.args.interestAccumulated.toString(),
+                    marketAndPrice.underlying.decimals,
+                  ) * marketAndPrice.underlyingPrice;
+                const protocolFees = amountFeesUsd * reserveFactor;
+                const supplySideFees = amountFeesUsd - protocolFees;
+
+                protocolData.totalFees += amountFeesUsd;
+                protocolData.supplySideRevenue += supplySideFees;
+                protocolData.protocolRevenue += protocolFees;
+
+                break;
+              }
               case CompoundEventSignatures.Mint: {
                 const amountUsd =
                   formatBigNumberToNumber(event.args.mintAmount.toString(), marketAndPrice.underlying.decimals) *
