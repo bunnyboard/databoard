@@ -14,7 +14,6 @@ export const Aavev2Events = {
   Repay: '0x4cdde6e09bb755c9a5589ebaec640bbfedff1362d4b255ebf8339782b9942faa',
   Liquidate: '0xe413a321e8681d831f4dbccbca790d2952b56f977908e45be37335533e005286',
   Flashloan: '0x631042c832b07452973831137f2d73e395028b44b250dedc5abb0ee766e168ac',
-  ReserveDataUpdated: '0x804c9b842b2748a22bb64b345453a3de7ca54a6ca45ce00d415894979e22897a',
 };
 
 export const Aavev3Events = {
@@ -24,7 +23,6 @@ export const Aavev3Events = {
   Repay: '0xa534c8dbe71f871f9f3530e97a74601fea17b426cae02e1c5aee42c96c784051',
   Liquidate: '0xe413a321e8681d831f4dbccbca790d2952b56f977908e45be37335533e005286',
   Flashloan: '0xefefaba5e921573100900a3ad9cf29f222d995fb3b6045797eaea7521bd8d6f0',
-  ReserveDataUpdated: '0x804c9b842b2748a22bb64b345453a3de7ca54a6ca45ce00d415894979e22897a',
 };
 
 export const AaveStakingEvents = {

@@ -1,10 +1,10 @@
 import { AaveProtocolConfig } from '../../../configs/protocols/aave';
 import logger from '../../../lib/logger';
-import { ProtocolConfig } from '../../../types/base';
+import { ProtocolCategories, ProtocolConfig } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
-import { GetProtocolDataOptions } from '../../../types/options';
-import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
+import { GetProtocolDataOptions, TestAdapterOptions } from '../../../types/options';
+import { compareAddress, formatBigNumberToNumber, getTimestamp } from '../../../lib/utils';
 import { SolidityUnits, TimeUnits } from '../../../configs/constants';
 import AaveCore from './core';
 import { Aavev1Events, Aavev2Events, Aavev3Events } from './abis';
@@ -12,7 +12,7 @@ import { decodeEventLog } from 'viem';
 import AaveLendingPoolV1Abi from '../../../configs/abi/aave/LendingPoolV1.json';
 import AaveLendingPoolV2Abi from '../../../configs/abi/aave/LendingPoolV2.json';
 import AaveLendingPoolV3Abi from '../../../configs/abi/aave/LendingPoolV3.json';
-import BigNumber from 'bignumber.js';
+import { ChainNames } from '../../../configs/names';
 
 export default class AaveAdapter extends AaveCore {
   public readonly name: string = 'adapter.aave 👻';
@@ -143,6 +143,7 @@ export default class AaveAdapter extends AaveCore {
           borrowFees = (borrowFeesStable + borrowFeesVatiable) / TimeUnits.DaysPerYear;
 
           // no reserve rate for v1, no revenue
+          supplySideRevenue = borrowFees;
         } else if (marketConfig.version === 2) {
           const availableLiquidity =
             formatBigNumberToNumber(reserveData[0].toString(), reserve.token.decimals) * reserve.priceUsd;
@@ -153,6 +154,23 @@ export default class AaveAdapter extends AaveCore {
 
           totalBorrowed = totalStableDebt + totalVariableDebt;
           totalDeposited = availableLiquidity + totalBorrowed;
+
+          const stableBorrowRate = formatBigNumberToNumber(reserveData[5].toString(), SolidityUnits.RayDecimals);
+          const variableBorrowRate = formatBigNumberToNumber(reserveData[4].toString(), SolidityUnits.RayDecimals);
+
+          totalBorrowed = totalStableDebt + totalVariableDebt;
+
+          const borrowFeesStable = totalStableDebt * stableBorrowRate;
+          const borrowFeesVatiable = totalVariableDebt * variableBorrowRate;
+
+          // daily borrow fees
+          borrowFees = (borrowFeesStable + borrowFeesVatiable) / TimeUnits.DaysPerYear;
+
+          // 4 decimal places
+          const reserveRate = formatBigNumberToNumber(reserveConfigData[4].toString(), 4);
+          protocolRevenue = borrowFees * reserveRate;
+
+          supplySideRevenue = borrowFees - protocolRevenue;
         } else if (marketConfig.version === 3) {
           totalDeposited =
             formatBigNumberToNumber(reserveData[2].toString(), reserve.token.decimals) * reserve.priceUsd;
@@ -163,6 +181,21 @@ export default class AaveAdapter extends AaveCore {
             formatBigNumberToNumber(reserveData[4].toString(), reserve.token.decimals) * reserve.priceUsd;
 
           totalBorrowed = totalStableDebt + totalVariableDebt;
+
+          const stableBorrowRate = formatBigNumberToNumber(reserveData[7].toString(), SolidityUnits.RayDecimals);
+          const variableBorrowRate = formatBigNumberToNumber(reserveData[6].toString(), SolidityUnits.RayDecimals);
+
+          const borrowFeesStable = totalStableDebt * stableBorrowRate;
+          const borrowFeesVatiable = totalVariableDebt * variableBorrowRate;
+
+          // daily borrow fees
+          borrowFees = (borrowFeesStable + borrowFeesVatiable) / TimeUnits.DaysPerYear;
+
+          // 4 decimal places
+          const reserveRate = formatBigNumberToNumber(reserveConfigData[4].toString(), 4);
+          protocolRevenue = borrowFees * reserveRate;
+
+          supplySideRevenue = borrowFees - protocolRevenue;
         }
 
         // process contract logs
@@ -212,14 +245,15 @@ export default class AaveAdapter extends AaveCore {
               // version 2, 3
               const volumeAmountUsd =
                 formatBigNumberToNumber(event.args.amount.toString(), reserve.token.decimals) * reserve.priceUsd;
-
+              const feesUsd =
+                formatBigNumberToNumber(event.args.premium.toString(), reserve.token.decimals) * reserve.priceUsd;
               (protocolData.volumes.flashloan as number) += volumeAmountUsd;
+              protocolData.totalFees += feesUsd;
+
               // add to chain breakdown
               (protocolData.breakdown[marketConfig.chain][reserve.token.address].volumes.flashloan as number) +=
                 volumeAmountUsd;
-
-              // we don't add flashloan fees from flashloan events
-              // we already add them on ReserveDataUpdates events
+              protocolData.breakdown[marketConfig.chain][reserve.token.address].totalFees += feesUsd;
             }
           } else if (
             signature === Aavev1Events.Liquidate ||
@@ -262,49 +296,6 @@ export default class AaveAdapter extends AaveCore {
                 (protocolData.volumes.liquidation as number) += collateralAmountUsd;
                 (protocolData.breakdown[marketConfig.chain][reserve.token.address].volumes.liquidation as number) +=
                   collateralAmountUsd;
-              }
-            }
-          } else if (signature === Aavev2Events.ReserveDataUpdated || signature === Aavev3Events.ReserveDataUpdated) {
-            if (compareAddress(event.args.reserve, reserve.token.address)) {
-              const liquidityIndex = new BigNumber(event.args.liquidityIndex.toString()); // Ray decimals
-              const [reserveDataBlock] = await this.getReserveData(
-                marketConfig,
-                reserve.token.address,
-                Number(log.blockNumber) - 1,
-              );
-
-              if (reserveDataBlock) {
-                const liquidityIndexBlock = new BigNumber(
-                  marketConfig.version === 2 ? reserveDataBlock[7].toString() : reserveDataBlock[9].toString(),
-                );
-                let totalLiquidityBlock = new BigNumber(0);
-                if (marketConfig.version === 2) {
-                  totalLiquidityBlock = new BigNumber(reserveDataBlock[0].toString())
-                    .plus(new BigNumber(reserveDataBlock[1].toString()))
-                    .plus(new BigNumber(reserveDataBlock[2].toString()));
-                } else {
-                  totalLiquidityBlock = new BigNumber(reserveDataBlock[2].toString());
-                }
-                if (liquidityIndexBlock.gt(0)) {
-                  const liquidityIndexIncrease = liquidityIndex.minus(liquidityIndexBlock);
-                  const liquidityIncrease = liquidityIndexIncrease.multipliedBy(totalLiquidityBlock);
-
-                  const amountFeesUsd = liquidityIncrease
-                    .multipliedBy(reserve.priceUsd)
-                    .dividedBy(new BigNumber(10).pow(SolidityUnits.RayDecimals))
-                    .dividedBy(new BigNumber(10).pow(reserve.token.decimals))
-                    .toNumber();
-
-                  const reserveRate = formatBigNumberToNumber(
-                    marketConfig.version === 2 ? reserveConfigData[4].toString() : reserveConfigData[4].toString(),
-                    SolidityUnits.RayDecimals,
-                  );
-                  const protocolFees = amountFeesUsd * reserveRate;
-
-                  borrowFees += amountFeesUsd;
-                  protocolRevenue += protocolFees;
-                  supplySideRevenue += amountFeesUsd - protocolFees;
-                }
               }
             }
           } else if (
@@ -402,5 +393,42 @@ export default class AaveAdapter extends AaveCore {
     }
 
     return protocolData;
+  }
+
+  public async runTest(options: TestAdapterOptions): Promise<void> {
+    const config: AaveProtocolConfig = {
+      protocol: 'aave',
+      category: ProtocolCategories.lending,
+      birthday: 1674864000, // Sat Jan 28 2023 00:00:00 GMT+0000
+      lendingMarkets: [
+        {
+          chain: ChainNames.ethereum,
+          marketName: 'Main Market',
+          version: 3,
+          birthday: 1674864000, // Sat Jan 28 2023 00:00:00 GMT+0000
+          lendingPool: '0x87870bca3f3fd6335c3f4ce8392d69350b4fa4e2',
+          dataProvider: '0x7b4eb56e7cd4b454ba8ff71e4518426369a138a3',
+          oracle: {
+            currency: 'usd',
+            address: '0x54586be62e3c3580375ae3723c145253060ca0c2',
+          },
+        },
+      ],
+    };
+
+    // for testing only!
+    this.protocolConfig = config;
+
+    const timestamp = options.timestamp ? options.timestamp : getTimestamp();
+    const protocolData = await this.getProtocolData({
+      timestamp: timestamp,
+      beginTime: timestamp - TimeUnits.SecondsPerDay,
+      endTime: timestamp,
+    });
+    if (options.output === 'json') {
+      console.log(JSON.stringify(protocolData));
+    } else {
+      console.log(protocolData);
+    }
   }
 }

@@ -12,7 +12,8 @@ export default class ProtocolAdapter implements IProtocolAdapter {
   public readonly name: string = 'adapter';
   public readonly services: ContextServices;
   public readonly storages: ContextStorages;
-  public readonly protocolConfig: ProtocolConfig;
+
+  public protocolConfig: ProtocolConfig;
 
   public executeSession: ExecuteSession;
 

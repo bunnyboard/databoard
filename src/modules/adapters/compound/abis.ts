@@ -4,7 +4,6 @@ export const CompoundEventSignatures = {
   Borrow: '0x13ed6866d4e1ee6da46f845c46d7e54120883d75c5ea9a2dacc1c4ca8984ab80',
   Repay: '0x1a2a22cb034d26d1854bdc6666a5b91fe25efbbb5dcad3b0355478d6f5c362a1',
   Liquidate: '0x298637f684da70674f26509b10f07ec2fbc77a335ab1e7d6215a4b2484d8bb52',
-  AccrueInterest: '0x4dec04e750ca11537cabcd8a9eab06494de08da3735bc8871cd41250e190bc04',
 };
 
 export const Compoundv3EventSignatures = {

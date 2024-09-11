@@ -3,6 +3,7 @@ import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import ProtocolAdapter from '../protocol';
 import MorphoBlueAbi from '../../../configs/abi/morpho/MorphoBlue.json';
 import MorphoOracleAbi from '../../../configs/abi/morpho/MorphoOracle.json';
+import AdapterCurveIrmAbi from '../../../configs/abi/morpho/AdapterCurveIrm.json';
 import { MorphoBlueConfig, MorphoProtocolConfig } from '../../../configs/protocols/morpho';
 import { decodeEventLog } from 'viem';
 import { formatBigNumberToNumber, getTimestamp, normalizeAddress } from '../../../lib/utils';
@@ -13,6 +14,7 @@ import logger from '../../../lib/logger';
 import { MorphoBlueEvents } from './abis';
 import { TimeUnits } from '../../../configs/constants';
 import { ChainNames } from '../../../configs/names';
+import BigNumber from 'bignumber.js';
 
 interface MorphoBlueMarketMetadata {
   chain: string;
@@ -256,25 +258,50 @@ export default class MorphoAdapter extends ProtocolAdapter {
     const debtTokenPrice = getTokenPriceResult ? Number(getTokenPriceResult) : 0;
 
     if (debtTokenPrice) {
-      const [[totalSupplyAssets, , totalBorrowAssets, , ,], collateralPrice] =
-        await this.services.blockchain.evm.multicall({
+      const [totalSupplyAssets, totalSupplyShares, totalBorrowAssets, totalBorrowShares, lastUpdate, fee] =
+        await this.services.blockchain.evm.readContract({
           chain: options.morphoBlueConfig.chain,
-          calls: [
-            {
-              abi: MorphoBlueAbi,
-              target: options.morphoBlueConfig.morphoBlue,
-              method: 'market',
-              params: [options.poolMetadata.poolId],
-            },
-            {
-              abi: MorphoOracleAbi,
-              target: options.poolMetadata.oracle,
-              method: 'price',
-              params: [],
-            },
-          ],
+          abi: MorphoBlueAbi,
+          target: options.morphoBlueConfig.morphoBlue,
+          method: 'market',
+          params: [options.poolMetadata.poolId],
           blockNumber: options.blockNumber,
         });
+
+      const [borrowRateView, collateralPrice] = await this.services.blockchain.evm.multicall({
+        chain: options.morphoBlueConfig.chain,
+        calls: [
+          {
+            abi: AdapterCurveIrmAbi,
+            target: options.poolMetadata.irm,
+            method: 'borrowRateView',
+            params: [
+              [
+                options.poolMetadata.debtToken.address, // loanToken
+                options.poolMetadata.collateralToken.address, // collateralToken
+                options.poolMetadata.oracle, // oracle
+                options.poolMetadata.irm, // irm
+                options.poolMetadata.ltv, // ltv
+              ],
+              [
+                totalSupplyAssets.toString(),
+                totalSupplyShares.toString(),
+                totalBorrowAssets.toString(),
+                totalBorrowShares.toString(),
+                lastUpdate.toString(),
+                fee.toString(),
+              ],
+            ],
+          },
+          {
+            abi: MorphoOracleAbi,
+            target: options.poolMetadata.oracle,
+            method: 'price',
+            params: [],
+          },
+        ],
+        blockNumber: options.blockNumber,
+      });
 
       // https://docs.morpho.org/morpho-blue/contracts/oracles/#price
       const collateralPriceUsd = collateralPrice
@@ -284,10 +311,26 @@ export default class MorphoAdapter extends ProtocolAdapter {
           ) * debtTokenPrice
         : 0;
 
+      // https://docs.morpho.org/morpho/contracts/irm/#calculations
+      // borrowRatePerSecond from Morpho Irm
+      const borrowRate = new BigNumber(borrowRateView ? borrowRateView.toString() : '0').dividedBy(1e18);
+      const feeRate = formatBigNumberToNumber(fee.toString(), 18);
+      // compound per day
+      const borrowAPY = new BigNumber(1)
+        .plus(borrowRate.multipliedBy(TimeUnits.SecondsPerYear).dividedBy(TimeUnits.DaysPerYear))
+        .pow(TimeUnits.DaysPerYear)
+        .minus(1)
+        .toNumber();
+
       const totalDeposited =
         formatBigNumberToNumber(totalSupplyAssets.toString(), options.poolMetadata.debtToken.decimals) * debtTokenPrice;
       const totalBorrowed =
         formatBigNumberToNumber(totalBorrowAssets.toString(), options.poolMetadata.debtToken.decimals) * debtTokenPrice;
+
+      // 24h borrow fees
+      const borrowFees = (totalBorrowed * borrowAPY) / TimeUnits.DaysPerYear;
+      const protocolRevenue = borrowFees * feeRate;
+      const supplySideRevenue = borrowFees - protocolRevenue;
 
       marketLendingData.breakdown[options.poolMetadata.chain][
         options.poolMetadata.debtToken.address
@@ -299,6 +342,13 @@ export default class MorphoAdapter extends ProtocolAdapter {
         .totalSupplied as number) += totalDeposited;
       (marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.debtToken.address]
         .totalBorrowed as number) += totalBorrowed;
+      marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.debtToken.address].totalFees +=
+        borrowFees;
+      marketLendingData.breakdown[options.poolMetadata.chain][
+        options.poolMetadata.debtToken.address
+      ].supplySideRevenue += supplySideRevenue;
+      marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.debtToken.address].protocolRevenue +=
+        protocolRevenue;
 
       // process historical logs to cal total collateral deposited
       for (const log of options.morphoBlueDatabaseLogs) {
@@ -351,29 +401,6 @@ export default class MorphoAdapter extends ProtocolAdapter {
 
         if (event.args.id === options.poolMetadata.poolId) {
           switch (signature) {
-            case MorphoBlueEvents.AccrueInterest: {
-              const interestAmountUsd =
-                formatBigNumberToNumber(event.args.interest.toString(), options.poolMetadata.debtToken.decimals) *
-                debtTokenPrice;
-              const feesShareAmountUsd =
-                formatBigNumberToNumber(event.args.feeShares.toString(), options.poolMetadata.debtToken.decimals) *
-                debtTokenPrice;
-
-              marketLendingData.totalFees += interestAmountUsd;
-              marketLendingData.supplySideRevenue += interestAmountUsd - feesShareAmountUsd;
-              marketLendingData.protocolRevenue += feesShareAmountUsd;
-
-              marketLendingData.breakdown[options.poolMetadata.chain][
-                options.poolMetadata.debtToken.address
-              ].totalFees += interestAmountUsd;
-              marketLendingData.breakdown[options.poolMetadata.chain][
-                options.poolMetadata.debtToken.address
-              ].supplySideRevenue += interestAmountUsd - feesShareAmountUsd;
-              marketLendingData.breakdown[options.poolMetadata.chain][
-                options.poolMetadata.debtToken.address
-              ].protocolRevenue += feesShareAmountUsd;
-              break;
-            }
             case MorphoBlueEvents.Supply: {
               const amountUsd =
                 formatBigNumberToNumber(event.args.assets.toString(), options.poolMetadata.debtToken.decimals) *
@@ -485,6 +512,9 @@ export default class MorphoAdapter extends ProtocolAdapter {
       }
 
       marketLendingData.totalAssetDeposited += totalDeposited;
+      marketLendingData.totalFees += borrowFees;
+      marketLendingData.supplySideRevenue += supplySideRevenue;
+      marketLendingData.protocolRevenue += protocolRevenue;
       (marketLendingData.totalSupplied as number) += totalDeposited;
       (marketLendingData.totalBorrowed as number) += totalBorrowed;
       marketLendingData.totalValueLocked += totalDeposited - totalBorrowed;
@@ -619,6 +649,7 @@ export default class MorphoAdapter extends ProtocolAdapter {
                         metrics.totalBorrowed as number;
                       protocolData.breakdown[chain][address].totalValueLocked += metrics.totalValueLocked;
                       protocolData.breakdown[chain][address].totalFees += metrics.totalFees;
+                      protocolData.breakdown[chain][address].supplySideRevenue += metrics.supplySideRevenue;
                       protocolData.breakdown[chain][address].protocolRevenue += metrics.protocolRevenue;
                       protocolData.breakdown[chain][address].moneyFlowIn += metrics.moneyFlowIn;
                       protocolData.breakdown[chain][address].moneyFlowOut += metrics.moneyFlowOut;
