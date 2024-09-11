@@ -9,42 +9,30 @@ import AaveDataProviderV2Abi from '../../../configs/abi/aave/DataProviderV2.json
 import AaveDataProviderV3Abi from '../../../configs/abi/aave/DataProviderV3.json';
 import { AddressE, AddressZero } from '../../../configs/constants';
 import BigNumber from 'bignumber.js';
-import { compareAddress, formatBigNumberToString, normalizeAddress } from '../../../lib/utils';
+import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
 import { ProtocolConfig, Token } from '../../../types/base';
 import ProtocolAdapter from '../protocol';
-
-export interface AaveMarketRates {
-  supply: string;
-  borrow: string;
-  borrowStable: string;
-}
 
 export interface ReserveAndPrice {
   token: Token;
   price: number;
 }
 
-export interface AaveHelperGetReserveListOptions {
-  config: AaveLendingMarketConfig;
-  blockNumber: number;
+export interface ReserveData {
+  token: Token;
+  priceUsd: number;
+
+  // getReserveData from DataProvider contract
+  data: any;
+
+  // getReserveConfigurationData from DataProvider contract
+  configData: any;
 }
 
-export interface AaveHelperGetReservesAndPricesOptions {
+export interface GetReserveDataOptions {
   config: AaveLendingMarketConfig;
   blockNumber: number;
   timestamp: number;
-}
-
-export interface AaveHelperGetReserveDataOptions {
-  config: AaveLendingMarketConfig;
-  blockNumber: number;
-  reserveAddress: string;
-}
-
-export interface AaveHelperGetIncentiveRewardDataOptions {
-  config: AaveLendingMarketConfig;
-  blockNumber: number;
-  reserveAddress: string;
 }
 
 export default class AaveCore extends ProtocolAdapter {
@@ -54,7 +42,7 @@ export default class AaveCore extends ProtocolAdapter {
     super(services, storages, protocolConfig);
   }
 
-  public async getReservesList(options: AaveHelperGetReserveListOptions): Promise<any> {
+  public async getReservesList(options: GetReserveDataOptions): Promise<any> {
     if (options.config.version === 1) {
       return await this.services.blockchain.evm.readContract({
         chain: options.config.chain,
@@ -77,23 +65,12 @@ export default class AaveCore extends ProtocolAdapter {
     }
   }
 
-  public async getReservesAndPrices(options: AaveHelperGetReservesAndPricesOptions): Promise<Array<ReserveAndPrice>> {
-    const reservesAndPrices: Array<ReserveAndPrice> = [];
+  public async getAllReserveData(options: GetReserveDataOptions): Promise<Array<ReserveData>> {
+    const reserves: Array<ReserveData> = [];
 
-    let reserveList: Array<string> = await this.getReservesList({
-      config: options.config,
-      blockNumber: options.blockNumber,
-    });
-
-    if (options.config.blacklists) {
-      // remove ignored tokens and reserves
-      reserveList = reserveList.filter(
-        (reserve) => options.config.blacklists && !options.config.blacklists[normalizeAddress(reserve)],
-      );
-    }
-
+    const reserveList: Array<string> | null = await this.getReservesList(options);
     if (reserveList && options.config.oracle) {
-      const reservePrices = await this.services.blockchain.evm.readContract({
+      const reserveOraclePrices = await this.services.blockchain.evm.readContract({
         chain: options.config.chain,
         abi: options.config.version === 1 ? AaveOracleV1Abi : AaveOracleV2Abi,
         target: options.config.oracle.address,
@@ -101,11 +78,15 @@ export default class AaveCore extends ProtocolAdapter {
         params: [reserveList],
         blockNumber: options.blockNumber,
       });
-      if (reservePrices) {
-        // can get token price directly from aave oracle
-        for (let i = 0; i < reserveList.length; i++) {
-          let price = null;
-          if (reservePrices[i]) {
+
+      for (let i = 0; i < reserveList.length; i++) {
+        const token = await this.services.blockchain.evm.getTokenInfo({
+          chain: options.config.chain,
+          address: reserveList[i],
+        });
+        if (token) {
+          let tokenPriceUsd = 0;
+          if (reserveOraclePrices && reserveOraclePrices[i]) {
             if (options.config.oracle.currency === 'eth') {
               const ethPrice = await this.services.oracle.getTokenPriceUsd({
                 chain: 'ethereum',
@@ -113,114 +94,104 @@ export default class AaveCore extends ProtocolAdapter {
                 timestamp: options.timestamp,
               });
               if (ethPrice) {
-                price = new BigNumber(reservePrices[i].toString())
+                tokenPriceUsd = new BigNumber(reserveOraclePrices[i].toString())
                   .multipliedBy(new BigNumber(ethPrice))
                   .dividedBy(1e18)
-                  .toString(10);
+                  .toNumber();
               }
             } else {
-              price = formatBigNumberToString(
-                reservePrices[i].toString(),
+              tokenPriceUsd = formatBigNumberToNumber(
+                reserveOraclePrices[i].toString(),
                 options.config.oracle && options.config.oracle.decimals ? options.config.oracle.decimals : 8,
               );
             }
+          } else {
+            const priceRaw = await this.services.oracle.getTokenPriceUsd({
+              chain: options.config.chain,
+              address: token.address,
+              timestamp: options.timestamp,
+            });
+            tokenPriceUsd = priceRaw ? Number(priceRaw) : 0;
           }
 
-          const token = await this.services.blockchain.evm.getTokenInfo({
-            chain: options.config.chain,
-            address: reserveList[i],
-          });
-          if (!token) {
-            continue;
-          }
+          const [reserveData, reserveConfigurationData] = await this.getReserveData(
+            options.config,
+            token.address,
+            options.blockNumber,
+          );
 
-          reservesAndPrices.push({
+          reserves.push({
             token: token,
-            price: price ? Number(price) : 0,
-          });
-        }
-      } else {
-        // must get token prices from external sources
-        for (let i = 0; i < reserveList.length; i++) {
-          const token = await this.services.blockchain.evm.getTokenInfo({
-            chain: options.config.chain,
-            address: reserveList[i],
-          });
-          if (!token) {
-            continue;
-          }
-          const tokenPrice = await this.services.oracle.getTokenPriceUsd({
-            chain: options.config.chain,
-            address: reserveList[i],
-            timestamp: options.timestamp,
-          });
-
-          reservesAndPrices.push({
-            token: token,
-            price: tokenPrice ? Number(tokenPrice) : 0,
+            priceUsd: tokenPriceUsd,
+            data: reserveData,
+            configData: reserveConfigurationData,
           });
         }
       }
     }
 
-    return reservesAndPrices;
+    return reserves;
   }
 
-  public async getReserveData(options: AaveHelperGetReserveDataOptions): Promise<any> {
-    if (options.config.version === 1) {
+  public async getReserveData(
+    config: AaveLendingMarketConfig,
+    reserveAddress: string,
+    blockNumber: number,
+  ): Promise<any> {
+    if (config.version === 1) {
       return await this.services.blockchain.evm.multicall({
-        chain: options.config.chain,
-        blockNumber: options.blockNumber,
+        chain: config.chain,
+        blockNumber: blockNumber,
         calls: [
           {
             abi: AaveDataProviderV1Abi,
-            target: options.config.dataProvider,
+            target: config.dataProvider,
             method: 'getReserveData',
-            params: [compareAddress(options.reserveAddress, AddressZero) ? AddressE : options.reserveAddress],
+            params: [compareAddress(reserveAddress, AddressZero) ? AddressE : reserveAddress],
           },
           {
             abi: AaveDataProviderV1Abi,
-            target: options.config.dataProvider,
+            target: config.dataProvider,
             method: 'getReserveConfigurationData',
-            params: [compareAddress(options.reserveAddress, AddressZero) ? AddressE : options.reserveAddress],
+            params: [compareAddress(reserveAddress, AddressZero) ? AddressE : reserveAddress],
           },
         ],
       });
-    } else if (options.config.version === 2) {
+    } else if (config.version === 2) {
       return await this.services.blockchain.evm.multicall({
-        chain: options.config.chain,
-        blockNumber: options.blockNumber,
+        chain: config.chain,
+        blockNumber: blockNumber,
         calls: [
           {
             abi: AaveDataProviderV2Abi,
-            target: options.config.dataProvider,
+            target: config.dataProvider,
             method: 'getReserveData',
-            params: [options.reserveAddress],
+            params: [reserveAddress],
           },
           {
             abi: AaveDataProviderV2Abi,
-            target: options.config.dataProvider,
+            target: config.dataProvider,
             method: 'getReserveConfigurationData',
-            params: [options.reserveAddress],
+            params: [reserveAddress],
           },
         ],
       });
-    } else if (options.config.version === 3) {
+    } else if (config.version === 3) {
       return await this.services.blockchain.evm.multicall({
-        chain: options.config.chain,
-        blockNumber: options.blockNumber,
+        chain: config.chain,
+        blockNumber: blockNumber,
         calls: [
           {
             abi: AaveDataProviderV3Abi,
-            target: options.config.dataProvider,
+            target: config.dataProvider,
             method: 'getReserveData',
-            params: [options.reserveAddress],
+            params: [reserveAddress],
           },
           {
             abi: AaveDataProviderV3Abi,
-            target: options.config.dataProvider,
+            target: config.dataProvider,
             method: 'getReserveConfigurationData',
-            params: [options.reserveAddress],
+            params: [reserveAddress],
           },
         ],
       });

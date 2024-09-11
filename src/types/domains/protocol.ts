@@ -16,6 +16,9 @@ export interface ProtocolCoreMetrics {
   // total fees were generated
   totalFees: number;
 
+  // fees goes to supply side users
+  supplySideRevenue: number;
+
   // total revenue were collected by protocol
   protocolRevenue: number;
 
@@ -68,6 +71,7 @@ export function getInitialProtocolCoreMetrics(): ProtocolCoreMetrics {
     totalSupplied: 0,
     totalBorrowed: 0,
     totalFees: 0,
+    supplySideRevenue: 0,
     protocolRevenue: 0,
     moneyFlowIn: 0,
     moneyFlowOut: 0,
