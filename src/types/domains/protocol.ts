@@ -68,8 +68,6 @@ export function getInitialProtocolCoreMetrics(): ProtocolCoreMetrics {
   return {
     totalAssetDeposited: 0,
     totalValueLocked: 0,
-    totalSupplied: 0,
-    totalBorrowed: 0,
     totalFees: 0,
     supplySideRevenue: 0,
     protocolRevenue: 0,

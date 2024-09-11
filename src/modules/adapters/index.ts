@@ -6,6 +6,7 @@ import BenqiAdapter from './benqi/benqi';
 import CompoundAdapter from './compound/compound';
 import MoonwellAdapter from './moonwell/moonwell';
 import MorphoAdapter from './morpho/morpho';
+import UniswapAdapter from './uniswap/uniswap';
 import VenusAdapter from './venus/venus';
 
 export function getProtocolAdapters(
@@ -37,6 +38,7 @@ export function getProtocolAdapters(
     sonne: new CompoundAdapter(services, storages, ProtocolConfigs.sonne),
     spark: new AaveAdapter(services, storages, ProtocolConfigs.spark),
     tectonic: new CompoundAdapter(services, storages, ProtocolConfigs.tectonic),
+    uniswap: new UniswapAdapter(services, storages, ProtocolConfigs.uniswap),
     uwulend: new AaveAdapter(services, storages, ProtocolConfigs.uwulend),
     venus: new VenusAdapter(services, storages, ProtocolConfigs.venus),
     yeifinance: new AaveAdapter(services, storages, ProtocolConfigs.yeifinance),

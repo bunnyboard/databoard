@@ -6,7 +6,7 @@ import ERC20Abi from '../../configs/abi/ERC20.json';
 import UniswapV3PoolAbi from '../../configs/abi/uniswap/UniswapV3Pool.json';
 import { normalizeAddress } from '../../lib/utils';
 import BlockchainService from '../../services/blockchains/blockchain';
-import { LiquidityPoolConfig } from '../../types/base';
+import { LiquidityPoolConfig, Token } from '../../types/base';
 import { OracleSourcePool2 } from '../../types/oracles';
 
 export default class UniswapLibs {
@@ -151,5 +151,62 @@ export default class UniswapLibs {
     }
 
     return null;
+  }
+
+  public static async getPricePoolV3(
+    chain: string,
+    poolAddress: string,
+    baseToken: Token,
+    quotaToken: Token,
+    blockNumber: number,
+  ): Promise<number> {
+    const blockchain = new BlockchainService();
+
+    const [fee, state, liquidity] = await blockchain.multicall({
+      chain: chain,
+      blockNumber: blockNumber,
+      calls: [
+        {
+          abi: UniswapV3PoolAbi,
+          target: poolAddress,
+          method: 'fee',
+          params: [],
+        },
+        {
+          abi: UniswapV3PoolAbi,
+          target: poolAddress,
+          method: 'slot0',
+          params: [],
+        },
+        {
+          abi: UniswapV3PoolAbi,
+          target: poolAddress,
+          method: 'liquidity',
+          params: [],
+        },
+      ],
+    });
+
+    if (fee && state && liquidity) {
+      const baseTokenConfig = new UniswapSdkToken(1, baseToken.address, baseToken.decimals, '', '');
+      const quoteTokenConfig = new UniswapSdkToken(1, quotaToken.address, quotaToken.decimals, '', '');
+
+      const pool = new Pool(
+        baseTokenConfig,
+        quoteTokenConfig,
+        Number(fee.toString()),
+        state[0].toString(),
+        liquidity.toString(),
+        new BigNumber(state[1].toString()).toNumber(),
+      );
+
+      if (normalizeAddress(pool.token0.address) === normalizeAddress(baseToken.address)) {
+        return new BigNumber(pool.token0Price.toFixed(12)).toNumber();
+      } else {
+        return new BigNumber(pool.token1Price.toFixed(12)).toNumber();
+      }
+    }
+
+    return 0;
   }
 }

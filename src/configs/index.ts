@@ -23,6 +23,7 @@ import { SeamlessConfigs } from './protocols/seamless';
 import { SonneConfigs } from './protocols/sonne';
 import { SparkConfigs } from './protocols/spark';
 import { TectonicConfigs } from './protocols/tectonic';
+import { UniswapConfigs } from './protocols/uniswap';
 import { UwulendConfigs } from './protocols/uwulend';
 import { VenusConfigs } from './protocols/venus';
 import { YeifinanceConfigs } from './protocols/yeifinance';
@@ -39,7 +40,7 @@ export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
 export const DefaultMemcacheTime = 300; // 5 minutes
 
 export const TokenList: { [key: string]: { [key: string]: Token } } = TokensBook;
-export const TokenDexBase = TokenBookDexBase;
+export const TokenDexBase: { [key: string]: Array<string> } = TokenBookDexBase;
 
 export const ProtocolConfigs = {
   aave: AaveConfigs,
@@ -66,6 +67,7 @@ export const ProtocolConfigs = {
   sonne: SonneConfigs,
   spark: SparkConfigs,
   tectonic: TectonicConfigs,
+  uniswap: UniswapConfigs,
   uwulend: UwulendConfigs,
   venus: VenusConfigs,
   yeifinance: YeifinanceConfigs,
