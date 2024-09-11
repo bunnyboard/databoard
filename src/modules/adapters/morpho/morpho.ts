@@ -211,6 +211,34 @@ export default class MorphoAdapter extends ProtocolAdapter {
       breakdown: {},
 
       ...getInitialProtocolCoreMetrics(),
+      totalSupplied: 0,
+      totalBorrowed: 0,
+      volumes: {
+        deposit: 0,
+        withdraw: 0,
+        borrow: 0,
+        repay: 0,
+        liquidation: 0,
+      },
+    };
+
+    marketLendingData.breakdown[options.poolMetadata.chain] = {};
+    marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.debtToken.address] = {
+      ...getInitialProtocolCoreMetrics(),
+      totalSupplied: 0,
+      totalBorrowed: 0,
+      volumes: {
+        deposit: 0,
+        withdraw: 0,
+        borrow: 0,
+        repay: 0,
+        liquidation: 0,
+      },
+    };
+    marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.collateralToken.address] = {
+      ...getInitialProtocolCoreMetrics(),
+      totalSupplied: 0,
+      totalBorrowed: 0,
       volumes: {
         deposit: 0,
         withdraw: 0,
@@ -261,6 +289,17 @@ export default class MorphoAdapter extends ProtocolAdapter {
       const totalBorrowed =
         formatBigNumberToNumber(totalBorrowAssets.toString(), options.poolMetadata.debtToken.decimals) * debtTokenPrice;
 
+      marketLendingData.breakdown[options.poolMetadata.chain][
+        options.poolMetadata.debtToken.address
+      ].totalAssetDeposited += totalDeposited;
+      marketLendingData.breakdown[options.poolMetadata.chain][
+        options.poolMetadata.debtToken.address
+      ].totalValueLocked += totalDeposited - totalBorrowed;
+      (marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.debtToken.address]
+        .totalSupplied as number) += totalDeposited;
+      (marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.debtToken.address]
+        .totalBorrowed as number) += totalBorrowed;
+
       // process historical logs to cal total collateral deposited
       for (const log of options.morphoBlueDatabaseLogs) {
         const signature = log.topics[0];
@@ -278,8 +317,14 @@ export default class MorphoAdapter extends ProtocolAdapter {
               collateralPriceUsd;
             if (signature === MorphoBlueEvents.SupplyCollateral) {
               marketLendingData.totalAssetDeposited += collateralAmountUsd;
+              marketLendingData.breakdown[options.poolMetadata.chain][
+                options.poolMetadata.collateralToken.address
+              ].totalAssetDeposited += collateralAmountUsd;
             } else {
               marketLendingData.totalAssetDeposited -= collateralAmountUsd;
+              marketLendingData.breakdown[options.poolMetadata.chain][
+                options.poolMetadata.collateralToken.address
+              ].totalAssetDeposited -= collateralAmountUsd;
             }
           } else if (signature === MorphoBlueEvents.Liquidate) {
             const collateralAmountUsd =
@@ -288,36 +333,11 @@ export default class MorphoAdapter extends ProtocolAdapter {
                 options.poolMetadata.collateralToken.decimals,
               ) * collateralPriceUsd;
             marketLendingData.totalAssetDeposited -= collateralAmountUsd;
+            marketLendingData.breakdown[options.poolMetadata.chain][
+              options.poolMetadata.collateralToken.address
+            ].totalAssetDeposited -= collateralAmountUsd;
           }
         }
-      }
-
-      if (!marketLendingData.breakdown[options.poolMetadata.chain]) {
-        marketLendingData.breakdown[options.poolMetadata.chain] = {};
-      }
-      if (!marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.debtToken.address]) {
-        marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.debtToken.address] = {
-          ...getInitialProtocolCoreMetrics(),
-          volumes: {
-            deposit: 0,
-            withdraw: 0,
-            borrow: 0,
-            repay: 0,
-            liquidation: 0,
-          },
-        };
-      }
-      if (!marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.collateralToken.address]) {
-        marketLendingData.breakdown[options.poolMetadata.chain][options.poolMetadata.collateralToken.address] = {
-          ...getInitialProtocolCoreMetrics(),
-          volumes: {
-            deposit: 0,
-            withdraw: 0,
-            borrow: 0,
-            repay: 0,
-            liquidation: 0,
-          },
-        };
       }
 
       // process new event logs for volumes
@@ -484,6 +504,8 @@ export default class MorphoAdapter extends ProtocolAdapter {
       breakdown: {},
 
       ...getInitialProtocolCoreMetrics(),
+      totalSupplied: 0,
+      totalBorrowed: 0,
       volumes: {
         deposit: 0,
         withdraw: 0,
