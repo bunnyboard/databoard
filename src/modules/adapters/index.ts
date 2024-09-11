@@ -6,6 +6,7 @@ import BenqiAdapter from './benqi/benqi';
 import CompoundAdapter from './compound/compound';
 import MoonwellAdapter from './moonwell/moonwell';
 import MorphoAdapter from './morpho/morpho';
+import SushiAdapter from './sushi/sushi';
 import UniswapAdapter from './uniswap/uniswap';
 import VenusAdapter from './venus/venus';
 
@@ -37,6 +38,7 @@ export function getProtocolAdapters(
     seamless: new AaveAdapter(services, storages, ProtocolConfigs.seamless),
     sonne: new CompoundAdapter(services, storages, ProtocolConfigs.sonne),
     spark: new AaveAdapter(services, storages, ProtocolConfigs.spark),
+    sushi: new SushiAdapter(services, storages, ProtocolConfigs.sushi),
     tectonic: new CompoundAdapter(services, storages, ProtocolConfigs.tectonic),
     uniswap: new UniswapAdapter(services, storages, ProtocolConfigs.uniswap),
     uwulend: new AaveAdapter(services, storages, ProtocolConfigs.uwulend),

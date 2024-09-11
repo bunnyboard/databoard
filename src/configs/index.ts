@@ -22,6 +22,7 @@ import { RhoConfigs } from './protocols/rho';
 import { SeamlessConfigs } from './protocols/seamless';
 import { SonneConfigs } from './protocols/sonne';
 import { SparkConfigs } from './protocols/spark';
+import { SushiConfigs } from './protocols/sushi';
 import { TectonicConfigs } from './protocols/tectonic';
 import { UniswapConfigs } from './protocols/uniswap';
 import { UwulendConfigs } from './protocols/uwulend';
@@ -66,6 +67,7 @@ export const ProtocolConfigs = {
   seamless: SeamlessConfigs,
   sonne: SonneConfigs,
   spark: SparkConfigs,
+  sushi: SushiConfigs,
   tectonic: TectonicConfigs,
   uniswap: UniswapConfigs,
   uwulend: UwulendConfigs,
