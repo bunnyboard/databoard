@@ -2,7 +2,6 @@ import { ProtocolConfig, Token } from '../../../types/base';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import ProtocolAdapter from '../protocol';
 import MorphoBlueAbi from '../../../configs/abi/morpho/MorphoBlue.json';
-import AdapterCurveIrmAbi from '../../../configs/abi/morpho/AdapterCurveIrm.json';
 import MorphoOracleAbi from '../../../configs/abi/morpho/MorphoOracle.json';
 import { MorphoBlueConfig, MorphoProtocolConfig } from '../../../configs/protocols/morpho';
 import { decodeEventLog } from 'viem';
@@ -12,7 +11,6 @@ import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/doma
 import envConfig from '../../../configs/envConfig';
 import logger from '../../../lib/logger';
 import { MorphoBlueEvents } from './abis';
-import BigNumber from 'bignumber.js';
 import { TimeUnits } from '../../../configs/constants';
 import { ChainNames } from '../../../configs/names';
 
@@ -230,50 +228,25 @@ export default class MorphoAdapter extends ProtocolAdapter {
     const debtTokenPrice = getTokenPriceResult ? Number(getTokenPriceResult) : 0;
 
     if (debtTokenPrice) {
-      const [totalSupplyAssets, totalSupplyShares, totalBorrowAssets, totalBorrowShares, lastUpdate, fee] =
-        await this.services.blockchain.evm.readContract({
+      const [[totalSupplyAssets, , totalBorrowAssets, , ,], collateralPrice] =
+        await this.services.blockchain.evm.multicall({
           chain: options.morphoBlueConfig.chain,
-          abi: MorphoBlueAbi,
-          target: options.morphoBlueConfig.morphoBlue,
-          method: 'market',
-          params: [options.poolMetadata.poolId],
+          calls: [
+            {
+              abi: MorphoBlueAbi,
+              target: options.morphoBlueConfig.morphoBlue,
+              method: 'market',
+              params: [options.poolMetadata.poolId],
+            },
+            {
+              abi: MorphoOracleAbi,
+              target: options.poolMetadata.oracle,
+              method: 'price',
+              params: [],
+            },
+          ],
           blockNumber: options.blockNumber,
         });
-
-      const [borrowRateView, collateralPrice] = await this.services.blockchain.evm.multicall({
-        chain: options.morphoBlueConfig.chain,
-        calls: [
-          {
-            abi: AdapterCurveIrmAbi,
-            target: options.poolMetadata.irm,
-            method: 'borrowRateView',
-            params: [
-              [
-                options.poolMetadata.debtToken.address, // loanToken
-                options.poolMetadata.collateralToken.address, // collateralToken
-                options.poolMetadata.oracle, // oracle
-                options.poolMetadata.irm, // irm
-                options.poolMetadata.ltv, // ltv
-              ],
-              [
-                totalSupplyAssets.toString(),
-                totalSupplyShares.toString(),
-                totalBorrowAssets.toString(),
-                totalBorrowShares.toString(),
-                lastUpdate.toString(),
-                fee.toString(),
-              ],
-            ],
-          },
-          {
-            abi: MorphoOracleAbi,
-            target: options.poolMetadata.oracle,
-            method: 'price',
-            params: [],
-          },
-        ],
-        blockNumber: options.blockNumber,
-      });
 
       // https://docs.morpho.org/morpho-blue/contracts/oracles/#price
       const collateralPriceUsd = collateralPrice
@@ -283,25 +256,10 @@ export default class MorphoAdapter extends ProtocolAdapter {
           ) * debtTokenPrice
         : 0;
 
-      // https://docs.morpho.org/morpho/contracts/irm/#calculations
-      // borrowRatePerSecond from Morpho Irm
-      const borrowRate = new BigNumber(borrowRateView ? borrowRateView.toString() : '0').dividedBy(1e18);
-      const feeRate = formatBigNumberToNumber(fee.toString(), 18);
-      // compound per day
-      const borrowAPY = new BigNumber(1)
-        .plus(borrowRate.multipliedBy(TimeUnits.SecondsPerYear).dividedBy(TimeUnits.DaysPerYear))
-        .pow(TimeUnits.DaysPerYear)
-        .minus(1)
-        .toNumber();
-
       const totalDeposited =
         formatBigNumberToNumber(totalSupplyAssets.toString(), options.poolMetadata.debtToken.decimals) * debtTokenPrice;
       const totalBorrowed =
         formatBigNumberToNumber(totalBorrowAssets.toString(), options.poolMetadata.debtToken.decimals) * debtTokenPrice;
-
-      // 24h borrow fees
-      const borrowFees = (totalBorrowed * borrowAPY) / TimeUnits.DaysPerYear;
-      const revenue = borrowFees * feeRate;
 
       // process historical logs to cal total collateral deposited
       for (const log of options.morphoBlueDatabaseLogs) {
@@ -373,6 +331,29 @@ export default class MorphoAdapter extends ProtocolAdapter {
 
         if (event.args.id === options.poolMetadata.poolId) {
           switch (signature) {
+            case MorphoBlueEvents.AccrueInterest: {
+              const interestAmountUsd =
+                formatBigNumberToNumber(event.args.interest.toString(), options.poolMetadata.debtToken.decimals) *
+                debtTokenPrice;
+              const feesShareAmountUsd =
+                formatBigNumberToNumber(event.args.feeShares.toString(), options.poolMetadata.debtToken.decimals) *
+                debtTokenPrice;
+
+              marketLendingData.totalFees += interestAmountUsd;
+              marketLendingData.supplySideRevenue += interestAmountUsd - feesShareAmountUsd;
+              marketLendingData.protocolRevenue += feesShareAmountUsd;
+
+              marketLendingData.breakdown[options.poolMetadata.chain][
+                options.poolMetadata.debtToken.address
+              ].totalFees += interestAmountUsd;
+              marketLendingData.breakdown[options.poolMetadata.chain][
+                options.poolMetadata.debtToken.address
+              ].supplySideRevenue += interestAmountUsd - feesShareAmountUsd;
+              marketLendingData.breakdown[options.poolMetadata.chain][
+                options.poolMetadata.debtToken.address
+              ].protocolRevenue += feesShareAmountUsd;
+              break;
+            }
             case MorphoBlueEvents.Supply: {
               const amountUsd =
                 formatBigNumberToNumber(event.args.assets.toString(), options.poolMetadata.debtToken.decimals) *
@@ -487,8 +468,6 @@ export default class MorphoAdapter extends ProtocolAdapter {
       (marketLendingData.totalSupplied as number) += totalDeposited;
       (marketLendingData.totalBorrowed as number) += totalBorrowed;
       marketLendingData.totalValueLocked += totalDeposited - totalBorrowed;
-      marketLendingData.totalFees += borrowFees;
-      marketLendingData.protocolRevenue += revenue;
     }
 
     return marketLendingData;
@@ -593,6 +572,7 @@ export default class MorphoAdapter extends ProtocolAdapter {
               (protocolData.totalBorrowed as number) += marketLendingData.totalBorrowed as number;
               protocolData.totalValueLocked += marketLendingData.totalValueLocked;
               protocolData.totalFees += marketLendingData.totalFees;
+              protocolData.supplySideRevenue += marketLendingData.supplySideRevenue;
               protocolData.protocolRevenue += marketLendingData.protocolRevenue;
               protocolData.moneyFlowIn += marketLendingData.moneyFlowIn;
               protocolData.moneyFlowOut += marketLendingData.moneyFlowOut;
@@ -694,6 +674,14 @@ export default class MorphoAdapter extends ProtocolAdapter {
         );
         const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(morphoBlue.chain, timestamp);
 
+        const logs = await this.services.blockchain.evm.getContractLogs({
+          chain: morphoBlue.chain,
+          address: morphoBlue.morphoBlue,
+          fromBlock: beginBlock,
+          toBlock: endBlock,
+          blockRange: morphoBlue.chain === ChainNames.ethereum ? 200 : undefined,
+        });
+
         const marketData = await this.getMarketData({
           morphoBlueConfig: morphoBlue,
           poolMetadata: pools[morphoBlue.chain],
@@ -701,7 +689,7 @@ export default class MorphoAdapter extends ProtocolAdapter {
           blockNumber: endBlock,
           beginBlock: beginBlock,
           endBlock: endBlock,
-          morphoBlueLogs: [],
+          morphoBlueLogs: logs,
           morphoBlueDatabaseLogs: [],
         });
 
