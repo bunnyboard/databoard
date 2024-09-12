@@ -11033,6 +11033,12 @@
     "decimals": 18,
     "address": "0x50eec6d765792dcfb0913c8403ef2a12e1b861a6"
   },
+  "0x510100d5143e011db24e2aa38abe85d73d5b2177": {
+    "chain": "ethereum",
+    "symbol": "RLB",
+    "decimals": 18,
+    "address": "0x510100d5143e011db24e2aa38abe85d73d5b2177"
+  },
   "0x510975eda48a97e0ca228dd04d1217292487bea6": {
     "chain": "ethereum",
     "symbol": "GXE",

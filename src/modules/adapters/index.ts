@@ -4,6 +4,7 @@ import AaveAdapter from './aave/aave';
 import AjnaAdapter from './ajna/ajna';
 import BenqiAdapter from './benqi/benqi';
 import CompoundAdapter from './compound/compound';
+import CowswapAdapter from './cowswap/cowswap';
 import LidoAdapter from './lido/lido';
 import MakerAdapter from './maker/maker';
 import MoonwellAdapter from './moonwell/moonwell';
@@ -23,6 +24,7 @@ export function getProtocolAdapters(
     benqi: new BenqiAdapter(services, storages, ProtocolConfigs.benqi),
     colend: new AaveAdapter(services, storages, ProtocolConfigs.colend),
     compound: new CompoundAdapter(services, storages, ProtocolConfigs.compound),
+    cowswap: new CowswapAdapter(services, storages, ProtocolConfigs.cowswap),
     hana: new AaveAdapter(services, storages, ProtocolConfigs.hana),
     ionic: new CompoundAdapter(services, storages, ProtocolConfigs.ionic),
     // ironbank: new CompoundAdapter(services, storages, ProtocolConfigs.ironbank),

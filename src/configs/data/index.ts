@@ -17,6 +17,7 @@ import TokenListScroll from './tokenlists/scroll.json';
 import TokenListZksync from './tokenlists/zksync.json';
 import TokenListCronos from './tokenlists/cronos.json';
 import TokenListRonin from './tokenlists/ronin.json';
+import { AddressE } from '../constants';
 
 export const TokensBook = {
   ethereum: TokenListEthereum,
@@ -43,12 +44,19 @@ export const TokensBook = {
 // these tokens will be used for dex data calculation
 export const TokenBookDexBase = {
   ethereum: [
+    AddressE, // ETH
     '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2', // WETH
     '0xdac17f958d2ee523a2206206994597c13d831ec7', // USDT
     '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', // USDC
     '0x6b175474e89094c44da98b954eedeac495271d0f', // DAI
+    '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599', // WBTC
+    '0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0', // wstETH
+    '0xba100000625a3754423978a60c9317c58a424e3d', // BAL
+    '0x83f20f44975d03b1b09e64809b757c47f942beea', // sDAI
+    '0xd533a949740bb3306d119cc777fa900ba034cd52', // CRV
   ],
   arbitrum: [
+    AddressE, // ETH
     '0x82af49447d8a07e3bd95bd0d56f35241523fbab1', // WETH
     '0xaf88d065e77c8cc2239327c5edb3a432268e5831', // USDC
     '0xff970a61a04b1ca14834a43f5de4533ebddb5cc8', // USDC.e
@@ -88,5 +96,12 @@ export const TokenBookDexBase = {
     '0xe514d9deb7966c8be0ca922de8a064264ea6bcd4', // WRON
     '0xc99a6a985ed2cac1ef41640596c5a5f9f4e19ef5', // WETH
     '0x0b7007c13325c48911f73a2dad5fa5dcbf808adc', // USDC
+  ],
+  gnosis: [
+    AddressE, // XDAI
+    '0xe91d153e0b41518a2ce8dd3d7944fa863463a97d', // WXDAI
+    '0x44fa8e6f47987339850636f88629646662444217', // DAI
+    '0x6a023ccd1ff6f2045c3309768ead9e68f978f6e1', // WETH
+    '0x6c76971f98945ae98dd7d4dfca8711ebea946ea6', // wstETH
   ],
 };

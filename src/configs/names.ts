@@ -57,6 +57,7 @@ export const ProtocolNames = {
   bungee: 'bungee',
   colend: 'colend',
   compound: 'compound',
+  cowswap: 'cowswap',
   crvusd: 'crvusd',
   curvelend: 'curvelend',
   ethereum: 'ethereum',

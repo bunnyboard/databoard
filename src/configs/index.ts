@@ -6,6 +6,7 @@ import { AvalonConfigs } from './protocols/avalon';
 import { BenqiConfigs } from './protocols/benqi';
 import { ColendConfigs } from './protocols/colend';
 import { CompoundConfigs } from './protocols/compound';
+import { CowswapConfigs } from './protocols/cowswap';
 import { HanaConfigs } from './protocols/hana';
 import { IonicConfigs } from './protocols/ionic';
 import { IroncladConfigs } from './protocols/ironclad';
@@ -52,6 +53,7 @@ export const ProtocolConfigs = {
   benqi: BenqiConfigs,
   colend: ColendConfigs,
   compound: CompoundConfigs,
+  cowswap: CowswapConfigs,
   hana: HanaConfigs,
   ionic: IonicConfigs,
   // ironbank: IronabnkConfigs,
