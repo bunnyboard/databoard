@@ -7,17 +7,22 @@ import ProtocolAdapter from '../protocol';
 import MakerVatAbi from '../../../configs/abi/maker/Vat.json';
 import MakerJugAbi from '../../../configs/abi/maker/Jug.json';
 import MakerPotAbi from '../../../configs/abi/maker/Pot.json';
+import MakerDogAbi from '../../../configs/abi/maker/Dog.json';
+import MakerAuthGemJoinAbi from '../../../configs/abi/maker/AuthGemJoin.json';
 import Erc20Abi from '../../../configs/abi/ERC20.json';
-import { formatBigNumberToNumber } from '../../../lib/utils';
+import { compareAddress, formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
 import { SolidityUnits, TimeUnits } from '../../../configs/constants';
 import AaveLendingPoolV3Abi from '../../../configs/abi/aave/LendingPoolV3.json';
 import MakerDirectSparkPoolAbi from '../../../configs/abi/maker/D3MAaveV3NoSupplyCapTypePool.json';
 import MorphoBlueAbi from '../../../configs/abi/morpho/MorphoBlue.json';
 import MorphoAdapterCurveIrmAbi from '../../../configs/abi/morpho/AdapterCurveIrm.json';
 import BigNumber from 'bignumber.js';
+import { MakerEvents } from './abis';
+import { decodeAbiParameters, decodeEventLog } from 'viem';
 
 const LitePsmUsdcModule = {
   birthday: 1720742400,
+  earningRate: 0.0425, // 4.25% from Coinbase Custody
   address: '0xf6e72Db5454dd049d0788e411b06CfAF16853042',
   pocket: '0x37305B1cD40574E4C5Ce33f8e8306Be057fD7341',
   collateralAddress: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
@@ -48,6 +53,14 @@ const DirectMorphoModule = {
     '0x06cb6aaee2279b46185dc2c8c107b4a56ff6550ea86063ec011fa4a52920841b',
     '0xd95c5285ed6009b272a25a94539bd1ae5af0e9020ad482123e01539ae43844e1',
   ],
+};
+
+// there are collaterals have no actual stability fee parameter set,
+// revenue is generated off chain and transferred into the surplus buffer through an RwaJar
+const RwaEarningRates: any = {
+  '0x5257413031352d41000000000000000000000000000000000000000000000000': 0.045, // 4.5%
+  '0x5257413030372d41000000000000000000000000000000000000000000000000': 0.04, // 4%
+  '0x5257413030392d41000000000000000000000000000000000000000000000000': 0.0011, // 0.11%
 };
 
 export default class MakerAdapter extends ProtocolAdapter {
@@ -82,16 +95,16 @@ export default class MakerAdapter extends ProtocolAdapter {
       makerConfig.chain,
       options.timestamp,
     );
-    // const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-    //   cdpConfig.chain,
-    //   options.beginTime,
-    // );
-    // const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-    //   cdpConfig.chain,
-    //   options.endTime,
-    // );
+    const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+      makerConfig.chain,
+      options.beginTime,
+    );
+    const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+      makerConfig.chain,
+      options.endTime,
+    );
 
-    let totalBorrowFeesOneDay = 0;
+    let totalBorrowFees = 0;
     let daiPayToSavingOneDay = 0;
 
     const [vatDebt, jugBase, potDsr, potPie, potChi] = await this.services.blockchain.evm.multicall({
@@ -139,42 +152,42 @@ export default class MakerAdapter extends ProtocolAdapter {
     const daiSavingTotalDeposited =
       formatBigNumberToNumber(potPie.toString(), 18) *
       formatBigNumberToNumber(potChi.toString(), SolidityUnits.RayDecimals);
-    daiPayToSavingOneDay = (daiSavingRate * daiSavingTotalDeposited) / TimeUnits.DaysPerYear;
+    daiPayToSavingOneDay = daiSavingRate * daiSavingTotalDeposited;
 
     // get DAI events, DAI join
     // count borrow/repay volumes
-    // const daiJoinLogs = await this.services.blockchain.evm.getContractLogs({
-    //   chain: cdpConfig.chain,
-    //   address: cdpConfig.daiJoin,
-    //   fromBlock: beginBlock,
-    //   toBlock: endBlock,
-    // });
+    const daiJoinLogs = await this.services.blockchain.evm.getContractLogs({
+      chain: makerConfig.chain,
+      address: makerConfig.daiJoin,
+      fromBlock: beginBlock,
+      toBlock: endBlock,
+    });
 
-    // for (const log of daiJoinLogs) {
-    //   const signature = log.topics[0];
-    //   const address = normalizeAddress(log.address);
+    for (const log of daiJoinLogs) {
+      const signature = log.topics[0];
+      const address = normalizeAddress(log.address);
 
-    //   if (signature === MakerEvents.Join || signature === MakerEvents.PsmJoin || signature === MakerEvents.Exit) {
-    //     const rawAmount = decodeAbiParameters([{ type: 'uint256' }], log.topics[3])[0].toString();
+      if (signature === MakerEvents.Join || signature === MakerEvents.PsmJoin || signature === MakerEvents.Exit) {
+        const rawAmount = decodeAbiParameters([{ type: 'uint256' }], log.topics[3])[0].toString();
 
-    //     if (compareAddress(address, cdpConfig.daiJoin)) {
-    //       // borrow/repay DAI
-    //       const amountDai = formatBigNumberToNumber(rawAmount, 18);
-    //       if (signature === MakerEvents.Join) {
-    //         (protocolData.volumes.repay as number) += amountDai;
-    //       } else {
-    //         (protocolData.volumes.borrow as number) += amountDai;
-    //       }
-    //     }
-    //   }
-    // }
+        if (compareAddress(address, makerConfig.daiJoin)) {
+          // borrow/repay DAI
+          const amountDai = formatBigNumberToNumber(rawAmount, 18);
+          if (signature === MakerEvents.Join) {
+            (protocolData.volumes.repay as number) += amountDai;
+          } else {
+            (protocolData.volumes.borrow as number) += amountDai;
+          }
+        }
+      }
+    }
 
-    // const liquidationLogs = await this.services.blockchain.evm.getContractLogs({
-    //   chain: cdpConfig.chain,
-    //   address: cdpConfig.dog,
-    //   fromBlock: beginBlock,
-    //   toBlock: endBlock,
-    // });
+    const liquidationLogs = await this.services.blockchain.evm.getContractLogs({
+      chain: makerConfig.chain,
+      address: makerConfig.dog,
+      fromBlock: beginBlock,
+      toBlock: endBlock,
+    });
 
     for (const gemConfig of makerConfig.gems) {
       if (gemConfig.birthday <= options.timestamp) {
@@ -226,79 +239,78 @@ export default class MakerAdapter extends ProtocolAdapter {
 
           const elapsed = 3600;
           const deltaRate = (duty + base) ** elapsed * rate - rate;
-          const interestAmountOneDay =
-            (art * ((deltaRate * TimeUnits.SecondsPerYear) / elapsed)) / TimeUnits.DaysPerYear;
+          const interestAmountOneDay = art * ((deltaRate * TimeUnits.SecondsPerYear) / elapsed);
 
-          totalBorrowFeesOneDay += interestAmountOneDay;
+          totalBorrowFees += interestAmountOneDay;
+
+          if (RwaEarningRates[gemConfig.ilk]) {
+            totalBorrowFees += collateralBalanceUsd * RwaEarningRates[gemConfig.ilk];
+          }
 
           protocolData.totalAssetDeposited += collateralBalanceUsd;
           protocolData.totalValueLocked += collateralBalanceUsd;
 
-          // const gemLogs = await this.services.blockchain.evm.getContractLogs({
-          //   chain: cdpConfig.chain,
-          //   address: gemConfig.address,
-          //   fromBlock: beginBlock,
-          //   toBlock: endBlock,
-          // });
-          // for (const gemLog of gemLogs) {
-          //   const signature = gemLog.topics[0];
-          //   const address = normalizeAddress(gemLog.address);
+          const gemLogs = await this.services.blockchain.evm.getContractLogs({
+            chain: makerConfig.chain,
+            address: gemConfig.address,
+            fromBlock: beginBlock,
+            toBlock: endBlock,
+          });
+          for (const gemLog of gemLogs) {
+            const signature = gemLog.topics[0];
+            const address = normalizeAddress(gemLog.address);
 
-          //   if (
-          //     signature === MakerEvents.Join ||
-          //     signature === MakerEvents.PsmJoin ||
-          //     signature === MakerEvents.Exit
-          //   ) {
-          //     if (compareAddress(address, gemConfig.address)) {
-          //       const rawAmount = decodeAbiParameters([{ type: 'uint256' }], gemLog.topics[3])[0].toString();
-          //       const amountUsd =
-          //         formatBigNumberToNumber(rawAmount.toString(), collateralToken.decimals) * collateralPriceUsd;
-          //       if (signature === MakerEvents.Exit) {
-          //         // withdraw
-          //         (protocolData.volumes.withdraw as number) += amountUsd;
-          //       } else {
-          //         (protocolData.volumes.deposit as number) += amountUsd;
-          //       }
-          //     }
-          //   } else if (signature === MakerEvents.AuthJoin || signature === MakerEvents.AuthExit) {
-          //     if (compareAddress(address, gemConfig.address)) {
-          //       const event: any = decodeEventLog({
-          //         abi: MakerAuthGemJoinAbi,
-          //         data: gemLog.data,
-          //         topics: gemLog.topics,
-          //       });
+            if (signature === MakerEvents.Join || signature === MakerEvents.PsmJoin || signature === MakerEvents.Exit) {
+              if (compareAddress(address, gemConfig.address)) {
+                const rawAmount = decodeAbiParameters([{ type: 'uint256' }], gemLog.topics[3])[0].toString();
+                const amountUsd =
+                  formatBigNumberToNumber(rawAmount.toString(), collateralToken.decimals) * collateralPriceUsd;
+                if (signature === MakerEvents.Exit) {
+                  // withdraw
+                  (protocolData.volumes.withdraw as number) += amountUsd;
+                } else {
+                  (protocolData.volumes.deposit as number) += amountUsd;
+                }
+              }
+            } else if (signature === MakerEvents.AuthJoin || signature === MakerEvents.AuthExit) {
+              if (compareAddress(address, gemConfig.address)) {
+                const event: any = decodeEventLog({
+                  abi: MakerAuthGemJoinAbi,
+                  data: gemLog.data,
+                  topics: gemLog.topics,
+                });
 
-          //       const amountUsd =
-          //         formatBigNumberToNumber(event.args.amt.toString(), collateralToken.decimals) * collateralPriceUsd;
+                const amountUsd =
+                  formatBigNumberToNumber(event.args.amt.toString(), collateralToken.decimals) * collateralPriceUsd;
 
-          //       if (signature === MakerEvents.AuthJoin) {
-          //         (protocolData.volumes.deposit as number) += amountUsd;
-          //       } else {
-          //         (protocolData.volumes.withdraw as number) += amountUsd;
-          //       }
-          //     }
-          //   }
-          // }
+                if (signature === MakerEvents.AuthJoin) {
+                  (protocolData.volumes.deposit as number) += amountUsd;
+                } else {
+                  (protocolData.volumes.withdraw as number) += amountUsd;
+                }
+              }
+            }
+          }
 
-          // for (const log of liquidationLogs) {
-          //   const signature = log.topics[0];
+          for (const log of liquidationLogs) {
+            const signature = log.topics[0];
 
-          //   if (signature === MakerEvents.Bark) {
-          //     // liquidation
-          //     // https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation
-          //     // https://etherscan.io/tx/0x01c4e90a4c080a3d496030a8038f2c50d92de569ebc31866e28a575e37cb3da5#eventlog
-          //     const event: any = decodeEventLog({
-          //       abi: MakerDogAbi,
-          //       data: log.data,
-          //       topics: log.topics,
-          //     });
+            if (signature === MakerEvents.Bark) {
+              // liquidation
+              // https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation
+              // https://etherscan.io/tx/0x01c4e90a4c080a3d496030a8038f2c50d92de569ebc31866e28a575e37cb3da5#eventlog
+              const event: any = decodeEventLog({
+                abi: MakerDogAbi,
+                data: log.data,
+                topics: log.topics,
+              });
 
-          //     if (event.args.ilk === gemConfig.ilk) {
-          //       const amountUsd = formatBigNumberToNumber(event.args.ink.toString(), 18) * collateralPriceUsd;
-          //       (protocolData.volumes.liquidation as number) += amountUsd;
-          //     }
-          //   }
-          // }
+              if (event.args.ilk === gemConfig.ilk) {
+                const amountUsd = formatBigNumberToNumber(event.args.ink.toString(), 18) * collateralPriceUsd;
+                (protocolData.volumes.liquidation as number) += amountUsd;
+              }
+            }
+          }
         }
       }
     }
@@ -331,6 +343,8 @@ export default class MakerAdapter extends ProtocolAdapter {
 
         protocolData.totalAssetDeposited += collateralBalanceUsd;
         protocolData.totalValueLocked += collateralBalanceUsd;
+
+        totalBorrowFees += collateralBalanceUsd * LitePsmUsdcModule.earningRate;
       }
     }
 
@@ -360,7 +374,7 @@ export default class MakerAdapter extends ProtocolAdapter {
         SolidityUnits.RayDecimals,
       );
 
-      totalBorrowFeesOneDay += (balance * liquidityRate) / TimeUnits.DaysPerYear;
+      totalBorrowFees += balance * liquidityRate;
     }
 
     // direct morpho
@@ -433,11 +447,11 @@ export default class MakerAdapter extends ProtocolAdapter {
         totalEarnedFeesFromMorphoVault += supplyApy * formatBigNumberToNumber(totalSupplyAssets.toString(), 18);
       }
 
-      totalBorrowFeesOneDay += totalEarnedFeesFromMorphoVault / TimeUnits.DaysPerYear;
+      totalBorrowFees += totalEarnedFeesFromMorphoVault;
     }
 
-    protocolData.totalFees += totalBorrowFeesOneDay;
-    protocolData.protocolRevenue += totalBorrowFeesOneDay - daiPayToSavingOneDay;
+    protocolData.totalFees += totalBorrowFees / TimeUnits.DaysPerYear;
+    protocolData.protocolRevenue += (totalBorrowFees - daiPayToSavingOneDay) / TimeUnits.DaysPerYear;
 
     return protocolData;
   }
