@@ -11,6 +11,7 @@ import { IonicConfigs } from './protocols/ionic';
 import { IroncladConfigs } from './protocols/ironclad';
 import { KinzaConfigs } from './protocols/kinza';
 import { LendleConfigs } from './protocols/lendle';
+import { MakerConfigs } from './protocols/maker';
 import { MendiConfigs } from './protocols/mendi';
 import { MoonwellConfigs } from './protocols/moonwell';
 import { MorphoConfigs } from './protocols/morpho';
@@ -56,6 +57,7 @@ export const ProtocolConfigs = {
   ironclad: IroncladConfigs,
   kinza: KinzaConfigs,
   lendle: LendleConfigs,
+  maker: MakerConfigs,
   mendi: MendiConfigs,
   moonwell: MoonwellConfigs,
   morpho: MorphoConfigs,

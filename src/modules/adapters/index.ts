@@ -4,6 +4,7 @@ import AaveAdapter from './aave/aave';
 import AjnaAdapter from './ajna/ajna';
 import BenqiAdapter from './benqi/benqi';
 import CompoundAdapter from './compound/compound';
+import MakerAdapter from './maker/maker';
 import MoonwellAdapter from './moonwell/moonwell';
 import MorphoAdapter from './morpho/morpho';
 import SushiAdapter from './sushi/sushi';
@@ -27,6 +28,7 @@ export function getProtocolAdapters(
     ironclad: new CompoundAdapter(services, storages, ProtocolConfigs.ironclad),
     kinza: new AaveAdapter(services, storages, ProtocolConfigs.kinza),
     lendle: new AaveAdapter(services, storages, ProtocolConfigs.lendle),
+    maker: new MakerAdapter(services, storages, ProtocolConfigs.maker),
     mendi: new CompoundAdapter(services, storages, ProtocolConfigs.mendi),
     moonwell: new MoonwellAdapter(services, storages, ProtocolConfigs.moonwell),
     morpho: new MorphoAdapter(services, storages, ProtocolConfigs.morpho),
