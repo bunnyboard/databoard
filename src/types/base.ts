@@ -1,6 +1,7 @@
 export const ProtocolCategories = {
   lending: 'lending',
   dex: 'dex',
+  liquidStaking: 'liquidStaking',
 };
 
 const AllProtocolCategories = Object.values(ProtocolCategories);

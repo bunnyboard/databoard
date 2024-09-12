@@ -44,6 +44,9 @@ export interface ProtocolCoreMetrics {
     flashloan?: number;
     tokenSwap?: number;
   };
+
+  // for liquid staking protocol, we can have staking APR
+  liquidStakingApr?: number;
 }
 
 export interface ProtocolData extends ProtocolCoreMetrics {
