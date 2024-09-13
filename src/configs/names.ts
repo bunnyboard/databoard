@@ -110,4 +110,5 @@ export const ProtocolNames = {
   yeifinance: 'yeifinance',
   yldr: 'yldr',
   zerolend: 'zerolend',
+  euler: 'euler',
 };

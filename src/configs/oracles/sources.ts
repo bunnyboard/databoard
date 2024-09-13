@@ -981,4 +981,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.RLB_WETH],
   },
+  pzETH: {
+    currency: 'wstETH',
+    sources: [OracleSourceUniswapv3List.pzETH_wstETH],
+  },
 };

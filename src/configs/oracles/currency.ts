@@ -32,4 +32,8 @@ export const OracleCurrencyBaseConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceChainlinkList.EUR_USD],
   },
+  wstETH: {
+    currency: 'usd',
+    sources: [OracleSourceChainlinkList.wstETH_USD],
+  },
 };

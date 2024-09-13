@@ -5,6 +5,7 @@ import AjnaAdapter from './ajna/ajna';
 import BenqiAdapter from './benqi/benqi';
 import CompoundAdapter from './compound/compound';
 import CowswapAdapter from './cowswap/cowswap';
+import EulerAdapter from './euler/euler';
 import LidoAdapter from './lido/lido';
 import MakerAdapter from './maker/maker';
 import MoonwellAdapter from './moonwell/moonwell';
@@ -51,5 +52,6 @@ export function getProtocolAdapters(
     venus: new VenusAdapter(services, storages, ProtocolConfigs.venus),
     yeifinance: new AaveAdapter(services, storages, ProtocolConfigs.yeifinance),
     zerolend: new AaveAdapter(services, storages, ProtocolConfigs.zerolend),
+    euler: new EulerAdapter(services, storages, ProtocolConfigs.euler),
   };
 }

@@ -74,6 +74,7 @@ export default class LidoAdapter extends ProtocolAdapter {
       address: lidoConfig.stETH,
       fromBlock: beginBlock,
       toBlock: endBlock,
+      blockRange: 100,
     });
 
     for (const log of stEthLogs) {

@@ -255,4 +255,11 @@ export const OracleSourceChainlinkList: { [key: string]: OracleSourceChainlink }
     address: '0x63A9133cd7c611d6049761038C16f238FddA71d7',
     decimals: 8,
   },
+  wstETH_USD: {
+    type: 'chainlink',
+    chain: 'ethereum',
+    currency: 'usd',
+    address: '0x164b276057258d81941e97B0a900D4C7B358bCe0',
+    decimals: 8,
+  },
 };

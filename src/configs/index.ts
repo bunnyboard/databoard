@@ -7,6 +7,7 @@ import { BenqiConfigs } from './protocols/benqi';
 import { ColendConfigs } from './protocols/colend';
 import { CompoundConfigs } from './protocols/compound';
 import { CowswapConfigs } from './protocols/cowswap';
+import { EulerConfigs } from './protocols/euler';
 import { HanaConfigs } from './protocols/hana';
 import { IonicConfigs } from './protocols/ionic';
 import { IroncladConfigs } from './protocols/ironclad';
@@ -80,4 +81,5 @@ export const ProtocolConfigs = {
   venus: VenusConfigs,
   yeifinance: YeifinanceConfigs,
   zerolend: ZerolendConfigs,
+  euler: EulerConfigs,
 };
