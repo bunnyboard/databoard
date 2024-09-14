@@ -7,6 +7,7 @@ import CompoundAdapter from './compound/compound';
 import CowswapAdapter from './cowswap/cowswap';
 import EulerAdapter from './euler/euler';
 import LidoAdapter from './lido/lido';
+import LiquityAdapter from './liquity/liquity';
 import MakerAdapter from './maker/maker';
 import MoonwellAdapter from './moonwell/moonwell';
 import MorphoAdapter from './morpho/morpho';
@@ -53,5 +54,6 @@ export function getProtocolAdapters(
     yeifinance: new AaveAdapter(services, storages, ProtocolConfigs.yeifinance),
     zerolend: new AaveAdapter(services, storages, ProtocolConfigs.zerolend),
     euler: new EulerAdapter(services, storages, ProtocolConfigs.euler),
+    liquity: new LiquityAdapter(services, storages, ProtocolConfigs.liquity),
   };
 }

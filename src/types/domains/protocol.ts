@@ -43,6 +43,7 @@ export interface ProtocolCoreMetrics {
     liquidation?: number;
     flashloan?: number;
     tokenSwap?: number;
+    redeemtion?: number;
   };
 
   // for liquid staking protocol, we can have staking APR
