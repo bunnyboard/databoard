@@ -49,6 +49,14 @@ export default class FluidAdapter extends ProtocolAdapter {
 
     const fluidConfig = this.protocolConfig as FluidProtocolConfig;
     for (const marketConfig of fluidConfig.markets) {
+      if (marketConfig.birthday > options.timestamp) {
+        continue;
+      }
+
+      if (!protocolData.breakdown[marketConfig.chain]) {
+        protocolData.breakdown[marketConfig.chain] = {};
+      }
+
       const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
         marketConfig.chain,
         options.timestamp,
@@ -116,6 +124,21 @@ export default class FluidAdapter extends ProtocolAdapter {
             address: listedTokens[i],
           });
           if (token) {
+            if (!protocolData.breakdown[token.chain][token.address]) {
+              protocolData.breakdown[token.chain][token.address] = {
+                ...getInitialProtocolCoreMetrics(),
+                totalSupplied: 0,
+                totalBorrowed: 0,
+                volumes: {
+                  deposit: 0,
+                  withdraw: 0,
+                  borrow: 0,
+                  repay: 0,
+                  liquidation: 0,
+                },
+              };
+            }
+
             const rawPrice = await this.services.oracle.getTokenPriceUsd({
               chain: token.chain,
               address: token.address,
@@ -145,6 +168,14 @@ export default class FluidAdapter extends ProtocolAdapter {
             protocolData.supplySideRevenue += supplySideRevenue;
             protocolData.protocolRevenue += protocolRevenue;
 
+            protocolData.breakdown[token.chain][token.address].totalAssetDeposited += totalDeposited;
+            protocolData.breakdown[token.chain][token.address].totalValueLocked += totalDeposited - totalBorrowed;
+            (protocolData.breakdown[token.chain][token.address].totalSupplied as number) += totalDeposited;
+            (protocolData.breakdown[token.chain][token.address].totalBorrowed as number) += totalBorrowed;
+            protocolData.breakdown[token.chain][token.address].totalFees += totalFees;
+            protocolData.breakdown[token.chain][token.address].supplySideRevenue += supplySideRevenue;
+            protocolData.breakdown[token.chain][token.address].protocolRevenue += protocolRevenue;
+
             for (const log of liquidityLogs) {
               const signature = log.topics[0];
               if (signature === FluidVaultEvents.LogOperate) {
@@ -167,13 +198,17 @@ export default class FluidAdapter extends ProtocolAdapter {
 
                   if (supplyAmountUsd >= 0) {
                     (protocolData.volumes.deposit as number) += supplyAmountUsd;
+                    (protocolData.breakdown[token.chain][token.address].volumes.deposit as number) += supplyAmountUsd;
                   } else {
                     (protocolData.volumes.withdraw as number) += Math.abs(supplyAmountUsd);
+                    (protocolData.breakdown[token.chain][token.address].volumes.withdraw as number) += supplyAmountUsd;
                   }
                   if (borrowAamountUsd >= 0) {
                     (protocolData.volumes.borrow as number) += borrowAamountUsd;
+                    (protocolData.breakdown[token.chain][token.address].volumes.borrow as number) += borrowAamountUsd;
                   } else {
                     (protocolData.volumes.repay as number) += Math.abs(borrowAamountUsd);
+                    (protocolData.breakdown[token.chain][token.address].volumes.repay as number) += borrowAamountUsd;
                   }
                 }
               }
@@ -201,12 +236,16 @@ export default class FluidAdapter extends ProtocolAdapter {
 
                 if (compareAddress(supplyToken, token.address)) {
                   // liquidator liquidate collateral
-                  (protocolData.volumes.liquidation as number) +=
+                  const colAmountUsd =
                     formatBigNumberToNumber(event.args.colAmt_.toString(10), token.decimals) * tokenPriceUsd;
+                  (protocolData.volumes.liquidation as number) += colAmountUsd;
+                  (protocolData.breakdown[token.chain][token.address].volumes.liquidation as number) += colAmountUsd;
                 } else if (compareAddress(borrowToken, token.address)) {
                   // liquidator repay debt
-                  (protocolData.volumes.repay as number) +=
+                  const debtAmountUsd =
                     formatBigNumberToNumber(event.args.debtAmt_.toString(10), token.decimals) * tokenPriceUsd;
+                  (protocolData.volumes.repay as number) += debtAmountUsd;
+                  (protocolData.breakdown[token.chain][token.address].volumes.repay as number) += debtAmountUsd;
                 }
               }
             }
@@ -223,6 +262,20 @@ export default class FluidAdapter extends ProtocolAdapter {
     protocolData.moneyFlowNet = protocolData.moneyFlowIn - protocolData.moneyFlowOut;
     for (const value of Object.values(protocolData.volumes)) {
       protocolData.totalVolume += value;
+    }
+
+    // process tokens breakdown
+    for (const [chain, tokens] of Object.entries(protocolData.breakdown)) {
+      for (const [address, token] of Object.entries(tokens)) {
+        protocolData.breakdown[chain][address].moneyFlowIn =
+          (token.volumes.deposit as number) + (token.volumes.repay as number);
+        protocolData.breakdown[chain][address].moneyFlowOut =
+          (token.volumes.withdraw as number) + (token.volumes.borrow as number) + (token.volumes.liquidation as number);
+        protocolData.breakdown[chain][address].moneyFlowNet = token.moneyFlowIn - token.moneyFlowOut;
+        for (const value of Object.values(token.volumes)) {
+          protocolData.breakdown[chain][address].totalVolume += value;
+        }
+      }
     }
 
     return protocolData;

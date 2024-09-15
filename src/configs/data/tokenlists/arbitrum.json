@@ -653,6 +653,12 @@
     "decimals": 18,
     "address": "0x7cbaf5a14d953ff896e5b3312031515c858737c8"
   },
+  "0x7dff72693f6a4149b17e7c6314655f6a9f7c8b33": {
+    "chain": "arbitrum",
+    "symbol": "GHO",
+    "decimals": 18,
+    "address": "0x7dff72693f6a4149b17e7c6314655f6a9f7c8b33"
+  },
   "0x7f1fa204bb700853d36994da19f830b6ad18455c": {
     "chain": "arbitrum",
     "symbol": "GM",

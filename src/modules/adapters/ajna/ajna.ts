@@ -9,9 +9,19 @@ import AjnaErc20FactoryAbi from '../../../configs/abi/ajna/ERC20Factory.json';
 import AjnaErc20PoolAbi from '../../../configs/abi/ajna/ERC20Pool.json';
 import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
 import BigNumber from 'bignumber.js';
-import { AjnaPoolEvents } from './abis';
 import { decodeEventLog } from 'viem';
 import { TimeUnits } from '../../../configs/constants';
+
+export const AjnaPoolEvents = {
+  AddQuoteToken: '0x8b24a9808cf05d3d8e48ac09e4f649054994a88cfa657b3f4bf340b62137df1e',
+  RemoveQuoteToken: '0x0130a7b525bd6b1e72def1ee0b77f3467028a0e958e30174a0c95eb3860fc221',
+  DrawDebt: '0x49a2aab2f4f7ca5c6ba6d413b46a0a09d91d10188fd94b8e23c3225362d12b50',
+  RepayDebt: '0xef9d6dc34b1e6893b8746b03ac07fd084909654a5cedab240265a8d1bd584dc2',
+  AddCollateral: '0xa9387d09ded47dbc173eb751964c0c7b7e0a1165939b958fafc8109337597f94',
+  RemoveCollateral: '0x90895bc82397742e0cea4685e72279103862a03bee6bbe1d71265c7aeb111527',
+  Take: '0x4591b2dfbebff121b3ccd19ae2407e59a9cefd959b35e12d82752cb5bc6eb757',
+  Flashloan: '0x6b15284fe89dbd5c436c2e0b06b1bf72e3a0a8e96d1b4a2abd61dfae2d7849a6',
+};
 
 export default class AjnaAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.ajna 👁';
@@ -150,8 +160,22 @@ export default class AjnaAdapter extends ProtocolAdapter {
               address: collateralAddress,
             });
             if (debtToken && collateralToken) {
-              if (!protocolData.breakdown[factoryConfig.chain][debtToken.address]) {
-                protocolData.breakdown[factoryConfig.chain][debtToken.address] = {
+              if (!protocolData.breakdown[debtToken.chain][debtToken.address]) {
+                protocolData.breakdown[debtToken.chain][debtToken.address] = {
+                  ...getInitialProtocolCoreMetrics(),
+                  totalSupplied: 0,
+                  totalBorrowed: 0,
+                  volumes: {
+                    deposit: 0,
+                    withdraw: 0,
+                    borrow: 0,
+                    repay: 0,
+                    liquidation: 0,
+                  },
+                };
+              }
+              if (!protocolData.breakdown[collateralToken.chain][collateralToken.address]) {
+                protocolData.breakdown[collateralToken.chain][collateralToken.address] = {
                   ...getInitialProtocolCoreMetrics(),
                   totalSupplied: 0,
                   totalBorrowed: 0,

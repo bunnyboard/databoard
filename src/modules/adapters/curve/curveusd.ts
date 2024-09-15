@@ -125,112 +125,114 @@ export default class CurveusdAdapter extends ProtocolAdapter {
         ],
       });
 
-      // https://docs.curve.fi/crvUSD/amm/#rate
-      const borrowRate = formatBigNumberToNumber(rate.toString(), 18) * TimeUnits.SecondsPerYear;
-      const totalBorrowedUsd =
-        formatBigNumberToNumber(total_debt.toString(), curveusdConfig.stablecoin.decimals) * stablecoinPriceUsd;
-      const borrowFees = (totalBorrowedUsd * borrowRate) / TimeUnits.DaysPerYear;
+      if (total_debt && rate && price_oracle) {
+        // https://docs.curve.fi/crvUSD/amm/#rate
+        const borrowRate = formatBigNumberToNumber(rate.toString(), 18) * TimeUnits.SecondsPerYear;
+        const totalBorrowedUsd =
+          formatBigNumberToNumber(total_debt.toString(), curveusdConfig.stablecoin.decimals) * stablecoinPriceUsd;
+        const borrowFees = (totalBorrowedUsd * borrowRate) / TimeUnits.DaysPerYear;
 
-      const collateralPriceOracle = formatBigNumberToNumber(price_oracle.toString(), 18);
-      const collateralBalanceUsd =
-        formatBigNumberToNumber(balance.toString(), llammaConfig.collateral.decimals) * collateralPriceOracle;
+        const collateralPriceOracle = formatBigNumberToNumber(price_oracle.toString(), 18);
+        const collateralBalanceUsd =
+          formatBigNumberToNumber(balance.toString(), llammaConfig.collateral.decimals) * collateralPriceOracle;
 
-      protocolData.totalAssetDeposited += collateralBalanceUsd;
-      protocolData.totalValueLocked += collateralBalanceUsd;
-      (protocolData.totalBorrowed as number) += totalBorrowedUsd;
-      protocolData.totalFees += borrowFees;
-      protocolData.protocolRevenue += borrowFees;
+        protocolData.totalAssetDeposited += collateralBalanceUsd;
+        protocolData.totalValueLocked += collateralBalanceUsd;
+        (protocolData.totalBorrowed as number) += totalBorrowedUsd;
+        protocolData.totalFees += borrowFees;
+        protocolData.protocolRevenue += borrowFees;
 
-      // stablecoin
-      protocolData.breakdown[curveusdConfig.stablecoin.chain][curveusdConfig.stablecoin.address].totalFees +=
-        borrowFees;
-      protocolData.breakdown[curveusdConfig.stablecoin.chain][curveusdConfig.stablecoin.address].protocolRevenue +=
-        borrowFees;
-      (protocolData.breakdown[curveusdConfig.stablecoin.chain][curveusdConfig.stablecoin.address]
-        .totalBorrowed as number) += totalBorrowedUsd;
+        // stablecoin
+        protocolData.breakdown[curveusdConfig.stablecoin.chain][curveusdConfig.stablecoin.address].totalFees +=
+          borrowFees;
+        protocolData.breakdown[curveusdConfig.stablecoin.chain][curveusdConfig.stablecoin.address].protocolRevenue +=
+          borrowFees;
+        (protocolData.breakdown[curveusdConfig.stablecoin.chain][curveusdConfig.stablecoin.address]
+          .totalBorrowed as number) += totalBorrowedUsd;
 
-      // collateral
-      protocolData.breakdown[llammaConfig.chain][llammaConfig.collateral.address].totalAssetDeposited +=
-        collateralBalanceUsd;
-      protocolData.breakdown[llammaConfig.chain][llammaConfig.collateral.address].totalValueLocked +=
-        collateralBalanceUsd;
+        // collateral
+        protocolData.breakdown[llammaConfig.chain][llammaConfig.collateral.address].totalAssetDeposited +=
+          collateralBalanceUsd;
+        protocolData.breakdown[llammaConfig.chain][llammaConfig.collateral.address].totalValueLocked +=
+          collateralBalanceUsd;
 
-      const controllerLogs = await this.services.blockchain.evm.getContractLogs({
-        chain: llammaConfig.chain,
-        address: llammaConfig.controller,
-        fromBlock: beginBlock,
-        toBlock: endBlock,
-      });
-      for (const log of controllerLogs) {
-        const signature = log.topics[0];
-        if (Object.values(CurveusdEvents).includes(signature)) {
-          const event: any = decodeEventLog({
-            abi: CrvusdControllerAbi,
-            topics: log.topics,
-            data: log.data,
-          });
-          switch (signature) {
-            case CurveusdEvents.Borrow: {
-              const debtAmountUsd =
-                formatBigNumberToNumber(event.args.loan_increase.toString(), curveusdConfig.stablecoin.decimals) *
-                stablecoinPriceUsd;
-              const collateralAmountUsd =
-                formatBigNumberToNumber(event.args.collateral_increase.toString(), llammaConfig.collateral.decimals) *
-                collateralPriceOracle;
+        const controllerLogs = await this.services.blockchain.evm.getContractLogs({
+          chain: llammaConfig.chain,
+          address: llammaConfig.controller,
+          fromBlock: beginBlock,
+          toBlock: endBlock,
+        });
+        for (const log of controllerLogs) {
+          const signature = log.topics[0];
+          if (Object.values(CurveusdEvents).includes(signature)) {
+            const event: any = decodeEventLog({
+              abi: CrvusdControllerAbi,
+              topics: log.topics,
+              data: log.data,
+            });
+            switch (signature) {
+              case CurveusdEvents.Borrow: {
+                const debtAmountUsd =
+                  formatBigNumberToNumber(event.args.loan_increase.toString(), curveusdConfig.stablecoin.decimals) *
+                  stablecoinPriceUsd;
+                const collateralAmountUsd =
+                  formatBigNumberToNumber(event.args.collateral_increase.toString(), llammaConfig.collateral.decimals) *
+                  collateralPriceOracle;
 
-              (protocolData.volumes.borrow as number) += debtAmountUsd;
-              (protocolData.breakdown[curveusdConfig.stablecoin.chain][curveusdConfig.stablecoin.address].volumes
-                .borrow as number) += debtAmountUsd;
-              (protocolData.volumes.deposit as number) += collateralAmountUsd;
-              (protocolData.breakdown[llammaConfig.chain][llammaConfig.collateral.address].volumes.deposit as number) +=
-                collateralAmountUsd;
+                (protocolData.volumes.borrow as number) += debtAmountUsd;
+                (protocolData.breakdown[curveusdConfig.stablecoin.chain][curveusdConfig.stablecoin.address].volumes
+                  .borrow as number) += debtAmountUsd;
+                (protocolData.volumes.deposit as number) += collateralAmountUsd;
+                (protocolData.breakdown[llammaConfig.chain][llammaConfig.collateral.address].volumes
+                  .deposit as number) += collateralAmountUsd;
 
-              break;
-            }
-            case CurveusdEvents.Repay: {
-              const debtAmountUsd =
-                formatBigNumberToNumber(event.args.loan_decrease.toString(), curveusdConfig.stablecoin.decimals) *
-                stablecoinPriceUsd;
-              const collateralAmountUsd =
-                formatBigNumberToNumber(event.args.collateral_decrease.toString(), llammaConfig.collateral.decimals) *
-                collateralPriceOracle;
+                break;
+              }
+              case CurveusdEvents.Repay: {
+                const debtAmountUsd =
+                  formatBigNumberToNumber(event.args.loan_decrease.toString(), curveusdConfig.stablecoin.decimals) *
+                  stablecoinPriceUsd;
+                const collateralAmountUsd =
+                  formatBigNumberToNumber(event.args.collateral_decrease.toString(), llammaConfig.collateral.decimals) *
+                  collateralPriceOracle;
 
-              (protocolData.volumes.repay as number) += debtAmountUsd;
-              (protocolData.breakdown[curveusdConfig.stablecoin.chain][curveusdConfig.stablecoin.address].volumes
-                .repay as number) += debtAmountUsd;
-              (protocolData.volumes.withdraw as number) += collateralAmountUsd;
-              (protocolData.breakdown[llammaConfig.chain][llammaConfig.collateral.address].volumes
-                .withdraw as number) += collateralAmountUsd;
+                (protocolData.volumes.repay as number) += debtAmountUsd;
+                (protocolData.breakdown[curveusdConfig.stablecoin.chain][curveusdConfig.stablecoin.address].volumes
+                  .repay as number) += debtAmountUsd;
+                (protocolData.volumes.withdraw as number) += collateralAmountUsd;
+                (protocolData.breakdown[llammaConfig.chain][llammaConfig.collateral.address].volumes
+                  .withdraw as number) += collateralAmountUsd;
 
-              break;
-            }
-            case CurveusdEvents.RemoveCollateral: {
-              const collateralAmountUsd =
-                formatBigNumberToNumber(event.args.collateral_decrease.toString(), llammaConfig.collateral.decimals) *
-                collateralPriceOracle;
+                break;
+              }
+              case CurveusdEvents.RemoveCollateral: {
+                const collateralAmountUsd =
+                  formatBigNumberToNumber(event.args.collateral_decrease.toString(), llammaConfig.collateral.decimals) *
+                  collateralPriceOracle;
 
-              (protocolData.volumes.withdraw as number) += collateralAmountUsd;
-              (protocolData.breakdown[llammaConfig.chain][llammaConfig.collateral.address].volumes
-                .withdraw as number) += collateralAmountUsd;
+                (protocolData.volumes.withdraw as number) += collateralAmountUsd;
+                (protocolData.breakdown[llammaConfig.chain][llammaConfig.collateral.address].volumes
+                  .withdraw as number) += collateralAmountUsd;
 
-              break;
-            }
-            case CurveusdEvents.Liquidate: {
-              const debtAmountUsd =
-                formatBigNumberToNumber(event.args.debt.toString(), curveusdConfig.stablecoin.decimals) *
-                stablecoinPriceUsd;
-              const collateralAmountUsd =
-                formatBigNumberToNumber(event.args.collateral_received.toString(), llammaConfig.collateral.decimals) *
-                collateralPriceOracle;
+                break;
+              }
+              case CurveusdEvents.Liquidate: {
+                const debtAmountUsd =
+                  formatBigNumberToNumber(event.args.debt.toString(), curveusdConfig.stablecoin.decimals) *
+                  stablecoinPriceUsd;
+                const collateralAmountUsd =
+                  formatBigNumberToNumber(event.args.collateral_received.toString(), llammaConfig.collateral.decimals) *
+                  collateralPriceOracle;
 
-              (protocolData.volumes.repay as number) += debtAmountUsd;
-              (protocolData.breakdown[curveusdConfig.stablecoin.chain][curveusdConfig.stablecoin.address].volumes
-                .repay as number) += debtAmountUsd;
-              (protocolData.volumes.liquidation as number) += collateralAmountUsd;
-              (protocolData.breakdown[llammaConfig.chain][llammaConfig.collateral.address].volumes
-                .liquidation as number) += collateralAmountUsd;
+                (protocolData.volumes.repay as number) += debtAmountUsd;
+                (protocolData.breakdown[curveusdConfig.stablecoin.chain][curveusdConfig.stablecoin.address].volumes
+                  .repay as number) += debtAmountUsd;
+                (protocolData.volumes.liquidation as number) += collateralAmountUsd;
+                (protocolData.breakdown[llammaConfig.chain][llammaConfig.collateral.address].volumes
+                  .liquidation as number) += collateralAmountUsd;
 
-              break;
+                break;
+              }
             }
           }
         }
