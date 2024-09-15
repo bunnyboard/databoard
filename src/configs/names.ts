@@ -58,7 +58,7 @@ export const ProtocolNames = {
   colend: 'colend',
   compound: 'compound',
   cowswap: 'cowswap',
-  crvusd: 'crvusd',
+  curveusd: 'curveusd',
   curvelend: 'curvelend',
   ethereum: 'ethereum',
   fluid: 'fluid',

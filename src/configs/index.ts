@@ -7,11 +7,13 @@ import { BenqiConfigs } from './protocols/benqi';
 import { ColendConfigs } from './protocols/colend';
 import { CompoundConfigs } from './protocols/compound';
 import { CowswapConfigs } from './protocols/cowswap';
+import { CurveusdConfigs } from './protocols/curveusd';
 import { EulerConfigs } from './protocols/euler';
 import { FluidConfigs } from './protocols/fluid';
 import { FraxlendConfigs } from './protocols/fraxlend';
 import { HanaConfigs } from './protocols/hana';
 import { IonicConfigs } from './protocols/ionic';
+import { IronabnkConfigs } from './protocols/ironbank';
 import { IroncladConfigs } from './protocols/ironclad';
 import { KinzaConfigs } from './protocols/kinza';
 import { LendleConfigs } from './protocols/lendle';
@@ -60,7 +62,7 @@ export const ProtocolConfigs = {
   cowswap: CowswapConfigs,
   hana: HanaConfigs,
   ionic: IonicConfigs,
-  // ironbank: IronabnkConfigs,
+  ironbank: IronabnkConfigs,
   ironclad: IroncladConfigs,
   kinza: KinzaConfigs,
   lendle: LendleConfigs,
@@ -88,4 +90,5 @@ export const ProtocolConfigs = {
   liquity: LiquityConfigs,
   fluid: FluidConfigs,
   fraxlend: FraxlendConfigs,
+  curveusd: CurveusdConfigs,
 };

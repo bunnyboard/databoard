@@ -5,6 +5,7 @@ import AjnaAdapter from './ajna/ajna';
 import BenqiAdapter from './benqi/benqi';
 import CompoundAdapter from './compound/compound';
 import CowswapAdapter from './cowswap/cowswap';
+import CurveusdAdapter from './curveusd/curveusd';
 import EulerAdapter from './euler/euler';
 import FluidAdapter from './fluid/fluid';
 import FraxlendAdapter from './fraxlend/fraxlend';
@@ -31,7 +32,7 @@ export function getProtocolAdapters(
     cowswap: new CowswapAdapter(services, storages, ProtocolConfigs.cowswap),
     hana: new AaveAdapter(services, storages, ProtocolConfigs.hana),
     ionic: new CompoundAdapter(services, storages, ProtocolConfigs.ionic),
-    // ironbank: new CompoundAdapter(services, storages, ProtocolConfigs.ironbank),
+    ironbank: new CompoundAdapter(services, storages, ProtocolConfigs.ironbank),
     ironclad: new CompoundAdapter(services, storages, ProtocolConfigs.ironclad),
     kinza: new AaveAdapter(services, storages, ProtocolConfigs.kinza),
     lendle: new AaveAdapter(services, storages, ProtocolConfigs.lendle),
@@ -59,5 +60,6 @@ export function getProtocolAdapters(
     liquity: new LiquityAdapter(services, storages, ProtocolConfigs.liquity),
     fluid: new FluidAdapter(services, storages, ProtocolConfigs.fluid),
     fraxlend: new FraxlendAdapter(services, storages, ProtocolConfigs.fraxlend),
+    curveusd: new CurveusdAdapter(services, storages, ProtocolConfigs.curveusd),
   };
 }
