@@ -176,6 +176,11 @@ const testcases = [
     timestamp: 1672531200, // Sun Jan 01 2023 00:00:00 GMT+0000
     expectedBlockNumber: 20260913,
   },
+  {
+    ...EnvConfig.blockchains.fraxtal,
+    timestamp: 1722470400, // Thu Aug 01 2024 00:00:00 GMT+0000
+    expectedBlockNumber: 7829845,
+  },
 ];
 
 describe('getBlockNumberAtTimestamp', function () {

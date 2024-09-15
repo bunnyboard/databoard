@@ -635,6 +635,12 @@
     "decimals": 18,
     "address": "0xcb327b99ff831bf8223cced12b1338ff3aa322ff"
   },
+  "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf": {
+    "chain": "base",
+    "symbol": "cbBTC",
+    "decimals": 8,
+    "address": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"
+  },
   "0xcf3d55c10db69f28fd1a75bd73f3d8a2d9c595ad": {
     "chain": "base",
     "symbol": "aBascbETH",

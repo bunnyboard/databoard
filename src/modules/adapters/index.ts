@@ -6,6 +6,8 @@ import BenqiAdapter from './benqi/benqi';
 import CompoundAdapter from './compound/compound';
 import CowswapAdapter from './cowswap/cowswap';
 import EulerAdapter from './euler/euler';
+import FluidAdapter from './fluid/fluid';
+import FraxlendAdapter from './fraxlend/fraxlend';
 import LidoAdapter from './lido/lido';
 import LiquityAdapter from './liquity/liquity';
 import MakerAdapter from './maker/maker';
@@ -55,5 +57,7 @@ export function getProtocolAdapters(
     zerolend: new AaveAdapter(services, storages, ProtocolConfigs.zerolend),
     euler: new EulerAdapter(services, storages, ProtocolConfigs.euler),
     liquity: new LiquityAdapter(services, storages, ProtocolConfigs.liquity),
+    fluid: new FluidAdapter(services, storages, ProtocolConfigs.fluid),
+    fraxlend: new FraxlendAdapter(services, storages, ProtocolConfigs.fraxlend),
   };
 }

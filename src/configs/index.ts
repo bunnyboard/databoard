@@ -8,6 +8,8 @@ import { ColendConfigs } from './protocols/colend';
 import { CompoundConfigs } from './protocols/compound';
 import { CowswapConfigs } from './protocols/cowswap';
 import { EulerConfigs } from './protocols/euler';
+import { FluidConfigs } from './protocols/fluid';
+import { FraxlendConfigs } from './protocols/fraxlend';
 import { HanaConfigs } from './protocols/hana';
 import { IonicConfigs } from './protocols/ionic';
 import { IroncladConfigs } from './protocols/ironclad';
@@ -84,4 +86,6 @@ export const ProtocolConfigs = {
   zerolend: ZerolendConfigs,
   euler: EulerConfigs,
   liquity: LiquityConfigs,
+  fluid: FluidConfigs,
+  fraxlend: FraxlendConfigs,
 };

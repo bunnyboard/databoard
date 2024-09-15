@@ -157,6 +157,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x1a7e4e63778b4f12a199c062f3efdd288afcbce8': OracleSourceConfigs.agEUR,
     '0x046eee2cc3188071c02bfc1745a6b17c656e3f3d': OracleSourceConfigs.RLB,
     '0x8c9532a60e0e7c6bbd2b2c1303f63ace1c3e9811': OracleSourceConfigs.pzETH,
+    '0x917cee801a67f933f2e6b33fc0cd1ed2d5909d88': OracleSourceConfigs.weETHs,
+    '0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf': OracleSourceConfigs.BTC,
 
     // todo need to find better oracle source
     '0x9d39a5de30e57443bff2a8307a4256c8797a3497': OracleSourceConfigs.USDT,
@@ -257,6 +259,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xcafcd85d8ca7ad1e1c6f82f651fa15e33aefd07b': OracleSourceConfigs.WOO,
     '0x894134a25a5fac1c2c26f1d8fbf05111a3cb9487': OracleSourceConfigs.GRAI,
     '0x498bf2b1e120fed3ad3d42ea2165e9b73f99c1e5': OracleSourceConfigs.crvUSD,
+    '0x35751007a407ca6feffe80b3cb397736d2cf4dbe': OracleSourceConfigs.weETH,
   },
 
   // tokens on Optimism
@@ -330,6 +333,9 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xbf1aea8670d2528e08334083616dd9c5f3b087ae': OracleSourceConfigs.miMATIC,
     '0x57f5e098cad7a3d1eed53991d4d66c45c9af7812': OracleSourceConfigs.USDM,
     '0xcfa3ef56d303ae4faaba0592388f19d7c3399fb4': OracleSourceConfigs.USDe,
+    '0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf': OracleSourceConfigs.BTC,
+    '0x04c0599ae5a44757c0af6f9ec3b93da8976c150a': OracleSourceConfigs.weETH,
+    '0x60a3e35cc302bfa44cb288bc5a4f316fdb1adb42': OracleSourceConfigs.EUR,
   },
 
   // tokens on Polygon
@@ -654,5 +660,17 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xe514d9deb7966c8be0ca922de8a064264ea6bcd4': OracleSourceConfigs.RON,
     '0xc99a6a985ed2cac1ef41640596c5a5f9f4e19ef5': OracleSourceConfigs.ETH,
     '0x0b7007c13325c48911f73a2dad5fa5dcbf808adc': OracleSourceConfigs.USDC,
+  },
+
+  fraxtal: {
+    [AddressZero]: OracleSourceConfigs.frxETH,
+    [AddressE]: OracleSourceConfigs.frxETH,
+    [AddressF]: OracleSourceConfigs.frxETH,
+    '0xfc00000000000000000000000000000000000001': OracleSourceConfigs.FRAX,
+    '0xdcc0f2d8f90fde85b10ac1c8ab57dc0ae946a543': OracleSourceConfigs.USDC,
+    '0xfc00000000000000000000000000000000000005': OracleSourceConfigs.frxETH,
+    '0xfc00000000000000000000000000000000000008': OracleSourceConfigs.sFRAX,
+    '0xfc00000000000000000000000000000000000006': OracleSourceConfigs.frxETH,
+    '0x2416092f143378750bb29b79ed961ab195cceea5': OracleSourceConfigs.ezETH,
   },
 };

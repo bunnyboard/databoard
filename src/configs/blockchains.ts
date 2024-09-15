@@ -404,4 +404,16 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
       decimals: 18,
     },
   },
+  [ChainNames.fraxtal]: {
+    name: ChainNames.fraxtal,
+    family: 'evm',
+    chainId: 252,
+    nodeRpc: String(process.env.BUNNYBOARD_FRAXTAL_NODE),
+    nativeToken: {
+      chain: ChainNames.fraxtal,
+      address: AddressZero,
+      symbol: 'frxETH',
+      decimals: 18,
+    },
+  },
 };

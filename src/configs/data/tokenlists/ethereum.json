@@ -19793,6 +19793,12 @@
     "decimals": 9,
     "address": "0x916c5de09cf63f6602d1e1793fb41f6437814a62"
   },
+  "0x917cee801a67f933f2e6b33fc0cd1ed2d5909d88": {
+    "chain": "ethereum",
+    "symbol": "weETHs",
+    "decimals": 18,
+    "address": "0x917cee801a67f933f2e6b33fc0cd1ed2d5909d88"
+  },
   "0x918da91ccbc32b7a6a0cc4ecd5987bbab6e31e6d": {
     "chain": "ethereum",
     "symbol": "sTSLA",
@@ -27634,6 +27640,12 @@
     "symbol": "MOE",
     "decimals": 18,
     "address": "0xcba78d126f0b1feda0c538bcaf4c852a7a171099"
+  },
+  "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf": {
+    "chain": "ethereum",
+    "symbol": "cbBTC",
+    "decimals": 8,
+    "address": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"
   },
   "0xcbb8f1bda10b9696c57e13bc128fe674769dcec0": {
     "chain": "ethereum",
