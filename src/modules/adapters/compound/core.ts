@@ -666,8 +666,8 @@ export default class CompoundCore extends ProtocolAdapter {
 
               totalCollateralUsd += collateralUsd;
 
-              protocolData.breakdown[cometConfig.chain][collateral.address].totalAssetDeposited += totalCollateralUsd;
-              protocolData.breakdown[cometConfig.chain][collateral.address].totalValueLocked += totalCollateralUsd;
+              protocolData.breakdown[cometConfig.chain][collateral.address].totalAssetDeposited += collateralUsd;
+              protocolData.breakdown[cometConfig.chain][collateral.address].totalValueLocked += collateralUsd;
             }
           }
 
