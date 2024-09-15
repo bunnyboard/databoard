@@ -7,6 +7,7 @@ import { BenqiConfigs } from './protocols/benqi';
 import { ColendConfigs } from './protocols/colend';
 import { CompoundConfigs } from './protocols/compound';
 import { CowswapConfigs } from './protocols/cowswap';
+import { CurvelendConfigs } from './protocols/curvelend';
 import { CurveusdConfigs } from './protocols/curveusd';
 import { EulerConfigs } from './protocols/euler';
 import { FluidConfigs } from './protocols/fluid';
@@ -91,4 +92,5 @@ export const ProtocolConfigs = {
   fluid: FluidConfigs,
   fraxlend: FraxlendConfigs,
   curveusd: CurveusdConfigs,
+  curvelend: CurvelendConfigs,
 };

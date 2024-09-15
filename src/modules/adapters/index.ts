@@ -5,7 +5,8 @@ import AjnaAdapter from './ajna/ajna';
 import BenqiAdapter from './benqi/benqi';
 import CompoundAdapter from './compound/compound';
 import CowswapAdapter from './cowswap/cowswap';
-import CurveusdAdapter from './curveusd/curveusd';
+import CurvelendAdapter from './curve/curvelend';
+import CurveusdAdapter from './curve/curveusd';
 import EulerAdapter from './euler/euler';
 import FluidAdapter from './fluid/fluid';
 import FraxlendAdapter from './fraxlend/fraxlend';
@@ -61,5 +62,6 @@ export function getProtocolAdapters(
     fluid: new FluidAdapter(services, storages, ProtocolConfigs.fluid),
     fraxlend: new FraxlendAdapter(services, storages, ProtocolConfigs.fraxlend),
     curveusd: new CurveusdAdapter(services, storages, ProtocolConfigs.curveusd),
+    curvelend: new CurvelendAdapter(services, storages, ProtocolConfigs.curvelend),
   };
 }

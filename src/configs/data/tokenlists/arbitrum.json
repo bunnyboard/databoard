@@ -137,6 +137,12 @@
     "decimals": 9,
     "address": "0x1622bf67e6e5747b81866fe0b85178a93c7f86e3"
   },
+  "0x179f38f78346f5942e95c5c59cb1da7f55cf7cad": {
+    "chain": "arbitrum",
+    "symbol": "FXN",
+    "decimals": 18,
+    "address": "0x179f38f78346f5942e95c5c59cb1da7f55cf7cad"
+  },
   "0x17fc002b466eec40dae837fc4be5c67993ddbd6f": {
     "chain": "arbitrum",
     "symbol": "FRAX",
@@ -412,6 +418,12 @@
     "symbol": "GM",
     "decimals": 18,
     "address": "0x47c031236e19d024b42f8ae6780e44a573170703"
+  },
+  "0x498bf2b1e120fed3ad3d42ea2165e9b73f99c1e5": {
+    "chain": "arbitrum",
+    "symbol": "crvUSD",
+    "decimals": 18,
+    "address": "0x498bf2b1e120fed3ad3d42ea2165e9b73f99c1e5"
   },
   "0x498c620c7c91c6eba2e3cd5485383f41613b7eb6": {
     "chain": "arbitrum",

@@ -4007,6 +4007,12 @@
     "decimals": 18,
     "address": "0x1d00e86748573c322f4cc41518aa0e77bd912eb4"
   },
+  "0x1d08e7adc263cfc70b1babe6dc5bb339c16eec52": {
+    "chain": "ethereum",
+    "symbol": "USD0USD0++",
+    "decimals": 18,
+    "address": "0x1d08e7adc263cfc70b1babe6dc5bb339c16eec52"
+  },
   "0x1d2d542e6d9d85a712deb4d1a7d96a16ce00b8ce": {
     "chain": "ethereum",
     "symbol": "POA",
