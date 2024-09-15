@@ -547,7 +547,18 @@ export default class CompoundCore extends ProtocolAdapter {
 
         if (baseToken) {
           if (!protocolData.breakdown[cometConfig.chain][baseToken.address]) {
-            protocolData.breakdown[cometConfig.chain][baseToken.address] = getInitialProtocolCoreMetrics();
+            protocolData.breakdown[cometConfig.chain][baseToken.address] = {
+              ...getInitialProtocolCoreMetrics(),
+              totalSupplied: 0,
+              totalBorrowed: 0,
+              volumes: {
+                deposit: 0,
+                withdraw: 0,
+                borrow: 0,
+                repay: 0,
+                liquidation: 0,
+              },
+            };
           }
 
           const baseTokenPriceRaw = await this.services.oracle.getTokenPriceUsd({
@@ -632,8 +643,24 @@ export default class CompoundCore extends ProtocolAdapter {
             });
 
             if (collateral) {
+              collaterals[collateral.address] = {
+                token: collateral,
+                priceUsd: 0,
+              };
+
               if (!protocolData.breakdown[cometConfig.chain][collateral.address]) {
-                protocolData.breakdown[cometConfig.chain][collateral.address] = getInitialProtocolCoreMetrics();
+                protocolData.breakdown[cometConfig.chain][collateral.address] = {
+                  ...getInitialProtocolCoreMetrics(),
+                  totalSupplied: 0,
+                  totalBorrowed: 0,
+                  volumes: {
+                    deposit: 0,
+                    withdraw: 0,
+                    borrow: 0,
+                    repay: 0,
+                    liquidation: 0,
+                  },
+                };
               }
 
               const collateralPriceRaw = await this.services.blockchain.evm.readContract({
@@ -648,10 +675,7 @@ export default class CompoundCore extends ProtocolAdapter {
               // price vs base token - in 8 decimals
               const collateralPriceVsBase = formatBigNumberToNumber(collateralPriceRaw.toString(), 8);
               const collateralPriceUsd = collateralPriceVsBase * baseTokenPriceUsd;
-              collaterals[collateral.address] = {
-                token: collateral,
-                priceUsd: collateralPriceUsd,
-              };
+              collaterals[collateral.address].priceUsd = collateralPriceUsd;
 
               const [totalSupplyAsset] = await this.services.blockchain.evm.readContract({
                 chain: cometConfig.chain,
