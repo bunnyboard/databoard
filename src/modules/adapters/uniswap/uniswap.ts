@@ -24,6 +24,7 @@ interface GetDexDataOptions {
   toTime: number;
 }
 
+const poolCachingSyncKey = 'index-uniswap-pool';
 const poolCachingKey = 'uniswap-pool';
 
 export default class UniswapAdapter extends ProtocolAdapter {
@@ -38,6 +39,15 @@ export default class UniswapAdapter extends ProtocolAdapter {
     const pools: Array<Pool> = [];
 
     let syncFromBlock = config.birthblock;
+    const latestBlockSynced = await this.storages.database.find({
+      collection: envConfig.mongodb.collections.caching.name,
+      query: {
+        name: `${poolCachingSyncKey}-${config.chain}-${normalizeAddress(config.factory)}`,
+      },
+    });
+    if (latestBlockSynced) {
+      syncFromBlock = latestBlockSynced.blockNumber;
+    }
 
     const databasePools: Array<any> = await this.storages.database.query({
       collection: envConfig.mongodb.collections.caching.name,
@@ -190,7 +200,19 @@ export default class UniswapAdapter extends ProtocolAdapter {
         }
       }
 
-      syncFromBlock += blockRange + 1;
+      syncFromBlock = toBlock + 1;
+
+      await this.storages.database.update({
+        collection: envConfig.mongodb.collections.caching.name,
+        keys: {
+          name: `${poolCachingSyncKey}-${config.chain}-${normalizeAddress(config.factory)}`,
+        },
+        updates: {
+          name: `${poolCachingSyncKey}-${config.chain}-${normalizeAddress(config.factory)}`,
+          blockNumber: syncFromBlock,
+        },
+        upsert: true,
+      });
     }
 
     return pools;
@@ -303,8 +325,6 @@ export default class UniswapAdapter extends ProtocolAdapter {
         protocolData,
       );
     }
-
-    console.log(protocolData);
 
     return protocolData;
   }

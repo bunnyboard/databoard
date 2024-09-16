@@ -42,5 +42,5 @@ export const ChainBlockPeriods: { [key: string]: number } = {
   scroll: 3, // 3 seconds
 };
 
-// we track dex volume only on pools have more than $10k liquidity
-export const DexBaseTokenBalanceUsdMinToTrackVolume = 10_000;
+// we track dex volume only on pools have more than $20k liquidity (on all tokens)
+export const DexPoolMinimumLiquidityToTrackVolume = 20_000;

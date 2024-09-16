@@ -5,6 +5,7 @@ import UniswapV2PairAbi from '../../../configs/abi/uniswap/UniswapV2Pair.json';
 import { Uniswapv2Events } from './abis';
 import { decodeEventLog } from 'viem';
 import { GetUniswapPoolDataOptions, GetUniswapPoolDataResult } from './types';
+import { DexPoolMinimumLiquidityToTrackVolume } from '../../../configs/constants';
 
 export default class UniswapHelperV2 {
   public static async getPairData(options: GetUniswapPoolDataOptions): Promise<GetUniswapPoolDataResult> {
@@ -59,6 +60,10 @@ export default class UniswapHelperV2 {
           break;
         }
       }
+    }
+
+    if (data.totalLiquidityUsd < DexPoolMinimumLiquidityToTrackVolume) {
+      return data;
     }
 
     if (token0PriceUsd > 0 || token1PriceUsd > 0) {

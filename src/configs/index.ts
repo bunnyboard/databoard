@@ -32,6 +32,7 @@ import { RhoConfigs } from './protocols/rho';
 import { SeamlessConfigs } from './protocols/seamless';
 import { SonneConfigs } from './protocols/sonne';
 import { SparkConfigs } from './protocols/spark';
+import { SpookyConfigs } from './protocols/spooky';
 import { SushiConfigs } from './protocols/sushi';
 import { TectonicConfigs } from './protocols/tectonic';
 import { UniswapConfigs } from './protocols/uniswap';
@@ -46,6 +47,7 @@ export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
   merlin: 200,
   zklinknova: 50,
   ronin: 400,
+  fantom: 5000,
 };
 
 export const DefaultMemcacheTime = 300; // 5 minutes
@@ -93,4 +95,5 @@ export const ProtocolConfigs = {
   fraxlend: FraxlendConfigs,
   curveusd: CurveusdConfigs,
   curvelend: CurvelendConfigs,
+  spooky: SpookyConfigs,
 };

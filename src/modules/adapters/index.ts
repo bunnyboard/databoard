@@ -15,6 +15,7 @@ import LiquityAdapter from './liquity/liquity';
 import MakerAdapter from './maker/maker';
 import MoonwellAdapter from './moonwell/moonwell';
 import MorphoAdapter from './morpho/morpho';
+import SpookyAdapter from './spooky/spooky';
 import SushiAdapter from './sushi/sushi';
 import UniswapAdapter from './uniswap/uniswap';
 import VenusAdapter from './venus/venus';
@@ -63,5 +64,6 @@ export function getProtocolAdapters(
     fraxlend: new FraxlendAdapter(services, storages, ProtocolConfigs.fraxlend),
     curveusd: new CurveusdAdapter(services, storages, ProtocolConfigs.curveusd),
     curvelend: new CurvelendAdapter(services, storages, ProtocolConfigs.curvelend),
+    spooky: new SpookyAdapter(services, storages, ProtocolConfigs.spooky),
   };
 }
