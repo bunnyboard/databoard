@@ -5,16 +5,13 @@ import { CustomQueryContractLogsBlockRange, DefaultQueryContractLogsBlockRange, 
 import ERC20Abi from '../../configs/abi/ERC20.json';
 import { AddressE, AddressF, AddressMulticall3, AddressZero } from '../../configs/constants';
 import EnvConfig from '../../configs/envConfig';
-import envConfig from '../../configs/envConfig';
 import logger from '../../lib/logger';
 import { compareAddress, normalizeAddress, sleep } from '../../lib/utils';
-import { ContextStorages } from '../../types/namespaces';
 import { CachingService } from '../caching/caching';
 import {
   GetContractLogsOptions,
   GetTokenOptions,
   IBlockchainService,
-  IndexContractLogsOptions,
   MulticallOptions,
   ReadContractOptions,
 } from './domains';
@@ -22,7 +19,7 @@ import BlockDater from './dater';
 import { Token } from '../../types/base';
 
 export default class BlockchainService extends CachingService implements IBlockchainService {
-  public readonly name: string = 'blockchain';
+  public readonly name: string = 'blockchain.evm';
 
   constructor() {
     super();
@@ -150,9 +147,18 @@ export default class BlockchainService extends CachingService implements IBlockc
         ? CustomQueryContractLogsBlockRange[options.chain]
         : DefaultQueryContractLogsBlockRange;
 
+    logger.debug('getting contract event logs', {
+      service: this.name,
+      chain: options.chain,
+      address: options.address,
+      fromBlock: options.fromBlock,
+      toBlock: options.toBlock,
+    });
+
     let startBlock = options.fromBlock;
     while (startBlock <= options.toBlock) {
       const toBlock = startBlock + blockRange > options.toBlock ? options.toBlock : startBlock + blockRange;
+
       logs = logs.concat(
         await client.getLogs({
           address: options.address as Address,
@@ -161,15 +167,7 @@ export default class BlockchainService extends CachingService implements IBlockc
         }),
       );
 
-      logger.debug('got contract event logs', {
-        service: this.name,
-        chain: options.chain,
-        address: options.address,
-        processed: `${toBlock - options.fromBlock}/${options.toBlock - options.fromBlock}`,
-        events: logs.length,
-      });
-
-      startBlock += blockRange;
+      startBlock = toBlock + 1;
     }
 
     return logs;
@@ -291,97 +289,5 @@ export default class BlockchainService extends CachingService implements IBlockc
     await this.setCachingData(cachingKey, blockNumber);
 
     return blockNumber;
-  }
-
-  // some adapters need contract logs history in a timeframe
-  // get these logs every time need is very cost
-  // this function aims to index logs of given contract
-  public async indexContractLogs(storages: ContextStorages, options: IndexContractLogsOptions): Promise<void> {
-    let startBlock = options.fromBlock;
-
-    // query index state
-    const cachingKey = `index-contract-logs-${options.chain}-${options.address}`;
-    const cachingState = await storages.database.find({
-      collection: envConfig.mongodb.collections.caching.name,
-      query: {
-        name: cachingKey,
-      },
-    });
-    if (cachingState) {
-      startBlock = Number(cachingState.blockNumber);
-    }
-
-    const client = this.getPublicClient(options.chain);
-    const blockRange = options.blockRange
-      ? options.blockRange
-      : CustomQueryContractLogsBlockRange[options.chain]
-        ? CustomQueryContractLogsBlockRange[options.chain]
-        : DefaultQueryContractLogsBlockRange;
-
-    while (startBlock < options.toBlock) {
-      const toBlock = startBlock + blockRange > options.toBlock ? options.toBlock : startBlock + blockRange;
-
-      const logs = await client.getLogs({
-        address: options.address as Address,
-        fromBlock: BigInt(Number(startBlock)),
-        toBlock: BigInt(Number(toBlock)),
-      });
-
-      const operations: Array<any> = [];
-      for (const log of logs) {
-        if (options.signatures.indexOf(log.topics[0] as string) !== -1) {
-          operations.push({
-            updateOne: {
-              filter: {
-                chain: options.chain,
-                address: options.address,
-                transactionHash: log.transactionHash,
-                logIndex: log.logIndex,
-              },
-              update: {
-                $set: {
-                  chain: options.chain,
-                  address: options.address,
-                  transactionHash: log.transactionHash,
-                  logIndex: log.logIndex,
-                  blockNumber: Number(log.blockNumber),
-                  topics: log.topics,
-                  data: log.data,
-                },
-              },
-              upsert: true,
-            },
-          });
-        }
-      }
-
-      await storages.database.bulkWrite({
-        collection: envConfig.mongodb.collections.contractLogs.name,
-        operations: operations,
-      });
-
-      await storages.database.update({
-        collection: envConfig.mongodb.collections.caching.name,
-        keys: {
-          name: cachingKey,
-        },
-        updates: {
-          name: cachingKey,
-          blockNumber: toBlock,
-        },
-        upsert: true,
-      });
-
-      logger.debug('indexed contract event logs', {
-        service: this.name,
-        chain: options.chain,
-        address: options.address,
-        fromBlock: startBlock,
-        toBlock: toBlock,
-        events: operations.length,
-      });
-
-      startBlock += blockRange;
-    }
   }
 }

@@ -4,6 +4,7 @@ import { ChainNames, ProtocolNames } from '../names';
 export interface MorphoBlueConfig {
   chain: string;
   morphoBlue: string;
+  morphoFactory: string;
   birthday: number;
 
   // block number where MorphoBlue contract was deployed
@@ -28,6 +29,7 @@ export const MorphoConfigs: MorphoProtocolConfig = {
       birthday: 1704067200, // Mon Jan 01 2024 00:00:00 GMT+0000
       birthblock: 18883124,
       morphoBlue: '0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb',
+      morphoFactory: '0xa9c3d3a366466fa809d1ae982fb2c46e5fc41101',
       blacklistPoolIds: {
         '0xbd33e0ae076c82cfd0fa8d759ea83a296190f9f98d9f79b74a0eb4a294d8bf42': true,
       },
@@ -37,6 +39,7 @@ export const MorphoConfigs: MorphoProtocolConfig = {
       birthday: 1714780800, // Sat May 04 2024 00:00:00 GMT+0000
       birthblock: 13977148,
       morphoBlue: '0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb',
+      morphoFactory: '0xa9c3d3a366466fa809d1ae982fb2c46e5fc41101',
       blacklistPoolIds: {},
     },
   ],

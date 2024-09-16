@@ -3,25 +3,56 @@ import winston from 'winston';
 import EnvConfig from '../configs/envConfig';
 import { AxiosError } from 'axios';
 
-const customFormat = winston.format.printf((entry: any) => {
-  let propsLine = '';
+function formatLevel(entryLevel: string): string {
+  entryLevel = entryLevel
+    .replace('info', 'INFO')
+    .replace('warn', 'WARN')
+    .replace('error', 'ERROR')
+    .replace('erro', 'ERRO')
+    .replace('debug', 'DEBUG');
 
+  if (entryLevel.includes('DEBUG') || entryLevel.includes('ERROR')) {
+    return entryLevel;
+  } else {
+    return entryLevel + ' ';
+  }
+}
+
+function formatService(service: string): string {
+  return service.padEnd(20);
+}
+
+function formatMessage(message: string): string {
+  return message.padEnd(50);
+}
+
+const customFormat = winston.format.printf((entry: any) => {
+  const service = entry.service ? entry.service : 'unknown';
+
+  let propsLine = '';
   for (const [key, value] of Object.entries(entry)) {
-    if (['timestamp', 'service', 'level', 'message'].indexOf(key) === -1) {
+    if (['timestamp', 'service', 'level', 'message', 'configs'].indexOf(key) === -1) {
       propsLine += `${key}=${value} `;
     }
   }
 
-  const service = entry.service ? entry.service : 'unknown';
-
-  return `${entry.timestamp} ${entry.level.padEnd(5)} ${(service + ': ' + entry.message).padEnd(60)} ${
+  let logLine = `${formatLevel(entry.level)} ${('[' + entry.timestamp + ']').padStart(10)} ${formatService(service)} | ${formatMessage(entry.message)} ${
     propsLine.length > 0 ? propsLine.slice(0, -1) : ''
   }`;
+
+  if (entry.configs) {
+  }
+
+  return logLine;
 });
 
 const logger = winston.createLogger({
   level: EnvConfig.env.debug ? 'debug' : 'info',
-  format: winston.format.combine(winston.format.colorize(), winston.format.timestamp(), customFormat),
+  format: winston.format.combine(
+    winston.format.colorize(),
+    winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+    customFormat,
+  ),
   transports: [new winston.transports.Console({})],
 });
 
