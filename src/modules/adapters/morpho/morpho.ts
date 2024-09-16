@@ -9,7 +9,6 @@ import MorphoBlueAbi from '../../../configs/abi/morpho/MorphoBlue.json';
 import MorphoOracleAbi from '../../../configs/abi/morpho/MorphoOracle.json';
 import AdapterCurveIrmAbi from '../../../configs/abi/morpho/AdapterCurveIrm.json';
 import { formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
-import BigNumber from 'bignumber.js';
 import { TimeUnits } from '../../../configs/constants';
 import { decodeEventLog } from 'viem';
 import { ChainNames } from '../../../configs/names';
@@ -164,14 +163,9 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
 
       // https://docs.morpho.org/morpho/contracts/irm/#calculations
       // borrowRatePerSecond from Morpho Irm
-      const borrowRate = new BigNumber(borrowRateView ? borrowRateView.toString() : '0').dividedBy(1e18);
+      const borrowRate =
+        formatBigNumberToNumber(borrowRateView ? borrowRateView.toString() : '0', 18) * TimeUnits.SecondsPerYear;
       const feeRate = formatBigNumberToNumber(fee.toString(), 18);
-      // compound per day
-      const borrowAPY = new BigNumber(1)
-        .plus(borrowRate.multipliedBy(TimeUnits.SecondsPerYear).dividedBy(TimeUnits.DaysPerYear))
-        .pow(TimeUnits.DaysPerYear)
-        .minus(1)
-        .toNumber();
 
       const totalDeposited =
         formatBigNumberToNumber(totalSupplyAssets.toString(), options.marketMetadata.debtToken.decimals) *
@@ -181,7 +175,7 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
         debtTokenPrice;
 
       // 24h borrow fees
-      const borrowFees = (totalBorrowed * borrowAPY) / TimeUnits.DaysPerYear;
+      const borrowFees = (totalBorrowed * borrowRate) / TimeUnits.DaysPerYear;
       const protocolRevenue = borrowFees * feeRate;
       const supplySideRevenue = borrowFees - protocolRevenue;
 

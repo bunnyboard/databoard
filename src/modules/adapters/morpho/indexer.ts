@@ -30,6 +30,7 @@ export const Events = {
   WithdrawCollateral: '0xe80ebd7cc9223d7382aab2e0d1d6155c65651f83d53c8b9b06901d167e321142',
 };
 
+const KeyMarkets = 'morpho-blue-market';
 const SyncKeyMarkets = 'indexing-morpho-markets';
 
 // index vaults and markets from contract events
@@ -86,7 +87,7 @@ export default class MorphoIndexerAdapter extends ProtocolAdapter {
     const markets = await this.storages.database.query({
       collection: envConfig.mongodb.collections.caching.name,
       query: {
-        name: `${SyncKeyMarkets}-${morphoBlueConfig.chain}-${normalizeAddress(morphoBlueConfig.morphoBlue)}`,
+        name: `${KeyMarkets}-${morphoBlueConfig.chain}-${normalizeAddress(morphoBlueConfig.morphoBlue)}`,
       },
     });
 
@@ -150,11 +151,11 @@ export default class MorphoIndexerAdapter extends ProtocolAdapter {
             await this.storages.database.update({
               collection: envConfig.mongodb.collections.caching.name,
               keys: {
-                name: `morpho-blue-market-${marketMetadata.chain}-${marketMetadata.morphoBlue}`,
+                name: `${KeyMarkets}-${marketMetadata.chain}-${marketMetadata.morphoBlue}`,
                 poolId: marketMetadata.marketId,
               },
               updates: {
-                name: `morpho-blue-market-${marketMetadata.chain}-${marketMetadata.morphoBlue}`,
+                name: `${KeyMarkets}-${marketMetadata.chain}-${marketMetadata.morphoBlue}`,
                 ...marketMetadata,
               },
               upsert: true,
