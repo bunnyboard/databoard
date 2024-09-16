@@ -1,4 +1,5 @@
 import { Token } from '../types/base';
+import { ChainBoardConfigs } from './chainboards';
 import { TokenBookDexBase, TokensBook } from './data';
 import { AaveConfigs } from './protocols/aave';
 import { AjnaConfigs } from './protocols/ajna';
@@ -97,3 +98,5 @@ export const ProtocolConfigs = {
   curvelend: CurvelendConfigs,
   spooky: SpookyConfigs,
 };
+
+export const ChainConfigs = ChainBoardConfigs;

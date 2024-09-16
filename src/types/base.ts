@@ -38,6 +38,21 @@ export interface ProtocolConfig {
   birthday: number;
 }
 
-export interface LiquidityPoolConfig extends Token {
-  tokens: Array<Token>;
+export type ChainNativeCoin = 'ETH' | 'BNB' | 'POL' | 'AVAX' | 'FTM';
+
+// chain configs used for chainboard
+export interface ChainConfig {
+  chain: string;
+  family: ChainFamily;
+  nativeToken: ChainNativeCoin;
+
+  birthday: number;
+  birthblock: number;
+
+  // blockchain supports EIP-1559?
+  // https://eips.ethereum.org/EIPS/eip-1559
+  eip1559?: boolean;
+
+  // should use public nodes
+  nodeRpcs: Array<string>;
 }

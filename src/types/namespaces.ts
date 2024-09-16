@@ -2,7 +2,7 @@ import { IBlockchainService } from '../services/blockchains/domains';
 import { IMemcacheService } from '../services/caching/domains';
 import { IDatabaseService } from '../services/database/domains';
 import { IOracleService } from '../services/oracle/domains';
-import { ProtocolConfig } from './base';
+import { ChainConfig, ProtocolConfig } from './base';
 import { ProtocolData } from './domains/protocol';
 import { GetProtocolDataOptions, RunAdapterOptions, TestAdapterOptions } from './options';
 
@@ -31,10 +31,24 @@ export interface IProtocolAdapter {
   // query protocol data
   getProtocolData: (options: GetProtocolDataOptions) => Promise<ProtocolData | null>;
 
-  // run updater worker which interval query data and save to database
   run: (options: RunAdapterOptions) => Promise<void>;
 
   // run test and console output data
   // for testing or verifying purposes
   runTest: (options: TestAdapterOptions) => Promise<void>;
+}
+
+// chainboard chain adapter
+export interface IChainAdapter {
+  name: string;
+
+  // help to query tokjen prices
+  priceOracle: IOracleService;
+
+  // database
+  storages: ContextStorages;
+
+  chainConfig: ChainConfig;
+
+  run: (options: RunAdapterOptions) => Promise<void>;
 }

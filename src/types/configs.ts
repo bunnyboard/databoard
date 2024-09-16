@@ -26,11 +26,20 @@ export interface DatabaseCollectionConfig {
   // save contract logs
   contractLogs: MongoCollectionConfig;
 
+  // save caching chain blocks
+  chainBlocks: MongoCollectionConfig;
+
   // save protocol current data state
   protocolDataStates: MongoCollectionConfig;
 
   // save protocol data historical/snapshots
   protocolDataSnapshots: MongoCollectionConfig;
+
+  // save blockchains current data state
+  blockchainDataStates: MongoCollectionConfig;
+
+  // save blockchains data historical/snapshots
+  blockchainDataSnapshots: MongoCollectionConfig;
 }
 
 export interface EnvConfig {

@@ -26,6 +26,16 @@ export const DatabaseCollectionConfigs: DatabaseCollectionConfig = {
       },
     ],
   },
+  chainBlocks: {
+    name: `${CollectionPrefix}.caching.chainBlocks`,
+    indies: [
+      {
+        chain: 1,
+        number: 1,
+        timestamp: 1,
+      },
+    ],
+  },
   protocolDataStates: {
     name: `${CollectionPrefix}.protocolDataStates`,
     indies: [
@@ -39,6 +49,23 @@ export const DatabaseCollectionConfigs: DatabaseCollectionConfig = {
     indies: [
       {
         protocol: 1,
+        timestamp: 1,
+      },
+    ],
+  },
+  blockchainDataStates: {
+    name: `${CollectionPrefix}.blockchainDataStates`,
+    indies: [
+      {
+        chain: 1,
+      },
+    ],
+  },
+  blockchainDataSnapshots: {
+    name: `${CollectionPrefix}.blockchainDataSnapshots`,
+    indies: [
+      {
+        chain: 1,
         timestamp: 1,
       },
     ],
