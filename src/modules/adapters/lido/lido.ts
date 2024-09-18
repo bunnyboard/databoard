@@ -11,6 +11,7 @@ import { AddressZero, TimeUnits } from '../../../configs/constants';
 import { formatBigNumberToNumber } from '../../../lib/utils';
 import { LidoEvents } from './abis';
 import { decodeEventLog } from 'viem';
+import AdapterDataHelper from '../helpers';
 
 export default class LidoAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.lido 💧';
@@ -86,7 +87,6 @@ export default class LidoAdapter extends ProtocolAdapter {
         });
         (protocolData.volumes.deposit as number) +=
           formatBigNumberToNumber(event.args.amount.toString(), 18) * ethPriceUsd;
-        protocolData.moneyFlowIn += formatBigNumberToNumber(event.args.amount.toString(), 18) * ethPriceUsd;
       }
     }
 
@@ -165,28 +165,9 @@ export default class LidoAdapter extends ProtocolAdapter {
         });
         const amountUsd = formatBigNumberToNumber(event.args.amountOfETH.toString(), 18) * ethPriceUsd;
         (protocolData.volumes.withdraw as number) += amountUsd;
-        protocolData.moneyFlowOut += amountUsd;
       }
     }
 
-    protocolData.moneyFlowNet = protocolData.moneyFlowIn - protocolData.moneyFlowOut;
-    protocolData.totalVolume += (protocolData.volumes.deposit as number) + (protocolData.volumes.withdraw as number);
-
-    protocolData.breakdown[lidoConfig.chain] = {};
-    protocolData.breakdown[lidoConfig.chain][AddressZero] = {
-      totalAssetDeposited: protocolData.totalAssetDeposited,
-      totalValueLocked: protocolData.totalValueLocked,
-      totalFees: protocolData.totalFees,
-      protocolRevenue: protocolData.protocolRevenue,
-      supplySideRevenue: protocolData.supplySideRevenue,
-      moneyFlowIn: protocolData.moneyFlowIn,
-      moneyFlowOut: protocolData.moneyFlowOut,
-      moneyFlowNet: protocolData.moneyFlowNet,
-      totalVolume: protocolData.totalVolume,
-      totalSupplied: protocolData.totalSupplied,
-      volumes: protocolData.volumes,
-    };
-
-    return protocolData;
+    return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
   }
 }

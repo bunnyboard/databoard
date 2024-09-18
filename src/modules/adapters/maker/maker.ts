@@ -19,6 +19,7 @@ import MorphoAdapterCurveIrmAbi from '../../../configs/abi/morpho/AdapterCurveIr
 import BigNumber from 'bignumber.js';
 import { MakerEvents } from './abis';
 import { decodeAbiParameters, decodeEventLog } from 'viem';
+import AdapterDataHelper from '../helpers';
 
 const LitePsmUsdcModule = {
   birthday: 1720742400,
@@ -453,6 +454,6 @@ export default class MakerAdapter extends ProtocolAdapter {
     protocolData.totalFees += totalBorrowFees / TimeUnits.DaysPerYear;
     protocolData.protocolRevenue += (totalBorrowFees - daiPayToSavingOneDay) / TimeUnits.DaysPerYear;
 
-    return protocolData;
+    return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
   }
 }

@@ -10,6 +10,7 @@ import CrvusdControllerAbi from '../../../configs/abi/curve/CrvUsdController.jso
 import { formatBigNumberToNumber } from '../../../lib/utils';
 import { TimeUnits } from '../../../configs/constants';
 import { decodeEventLog } from 'viem';
+import AdapterDataHelper from '../helpers';
 
 export const CurveusdEvents = {
   Borrow: '0xe1979fe4c35e0cef342fef5668e2c8e7a7e9f5d5d1ca8fee0ac6c427fa4153af',
@@ -239,30 +240,6 @@ export default class CurveusdAdapter extends ProtocolAdapter {
       }
     }
 
-    protocolData.moneyFlowIn = (protocolData.volumes.deposit as number) + (protocolData.volumes.repay as number);
-    protocolData.moneyFlowOut =
-      (protocolData.volumes.withdraw as number) +
-      (protocolData.volumes.borrow as number) +
-      (protocolData.volumes.liquidation as number);
-    protocolData.moneyFlowNet = protocolData.moneyFlowIn - protocolData.moneyFlowOut;
-    for (const value of Object.values(protocolData.volumes)) {
-      protocolData.totalVolume += value;
-    }
-
-    // process tokens breakdown
-    for (const [chain, tokens] of Object.entries(protocolData.breakdown)) {
-      for (const [address, token] of Object.entries(tokens)) {
-        protocolData.breakdown[chain][address].moneyFlowIn =
-          (token.volumes.deposit as number) + (token.volumes.repay as number);
-        protocolData.breakdown[chain][address].moneyFlowOut =
-          (token.volumes.withdraw as number) + (token.volumes.borrow as number) + (token.volumes.liquidation as number);
-        protocolData.breakdown[chain][address].moneyFlowNet = token.moneyFlowIn - token.moneyFlowOut;
-        for (const value of Object.values(token.volumes)) {
-          protocolData.breakdown[chain][address].totalVolume += value;
-        }
-      }
-    }
-
-    return protocolData;
+    return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
   }
 }

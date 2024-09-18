@@ -993,8 +993,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceCurveList.eUSD_USDC],
   },
-  USDz: {
+  AUSD: {
     currency: 'usd',
-    sources: [OracleSourceCurveList.USDz_USDC],
+    sources: [OracleSourceUniswapv3List.AUSD_USDT],
   },
 };

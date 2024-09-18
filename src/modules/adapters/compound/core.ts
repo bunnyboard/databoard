@@ -18,6 +18,7 @@ import { decodeEventLog } from 'viem';
 import envConfig from '../../../configs/envConfig';
 import CometAbi from '../../../configs/abi/compound/Comet.json';
 import { ContractCall } from '../../../services/blockchains/domains';
+import AdapterDataHelper from '../helpers';
 
 interface MarketTokenAndPrice {
   cToken: string;
@@ -395,9 +396,6 @@ export default class CompoundCore extends ProtocolAdapter {
                 (protocolData.volumes.deposit as number) += amountUsd;
                 (protocolData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].volumes
                   .deposit as number) += amountUsd;
-                protocolData.moneyFlowIn += amountUsd;
-                protocolData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].moneyFlowIn +=
-                  amountUsd;
 
                 break;
               }
@@ -408,9 +406,6 @@ export default class CompoundCore extends ProtocolAdapter {
                 (protocolData.volumes.withdraw as number) += amountUsd;
                 (protocolData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].volumes
                   .withdraw as number) += amountUsd;
-                protocolData.moneyFlowOut += amountUsd;
-                protocolData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].moneyFlowOut +=
-                  amountUsd;
 
                 break;
               }
@@ -421,9 +416,6 @@ export default class CompoundCore extends ProtocolAdapter {
                 (protocolData.volumes.borrow as number) += amountUsd;
                 (protocolData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].volumes
                   .borrow as number) += amountUsd;
-                protocolData.moneyFlowOut += amountUsd;
-                protocolData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].moneyFlowOut +=
-                  amountUsd;
 
                 break;
               }
@@ -434,9 +426,6 @@ export default class CompoundCore extends ProtocolAdapter {
                 (protocolData.volumes.repay as number) += amountUsd;
                 (protocolData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].volumes
                   .repay as number) += amountUsd;
-                protocolData.moneyFlowIn += amountUsd;
-                protocolData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].moneyFlowIn +=
-                  amountUsd;
 
                 break;
               }
@@ -448,9 +437,6 @@ export default class CompoundCore extends ProtocolAdapter {
                 (protocolData.volumes.repay as number) += repayAmountUsd;
                 (protocolData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].volumes
                   .repay as number) += repayAmountUsd;
-                protocolData.moneyFlowIn += repayAmountUsd;
-                protocolData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].moneyFlowIn +=
-                  repayAmountUsd;
 
                 // liquidate collateral
                 const collateral = marketTokensAndPrices.filter((item) =>
@@ -476,9 +462,6 @@ export default class CompoundCore extends ProtocolAdapter {
                     (protocolData.volumes.liquidation as number) += collateralAmountUsd;
                     (protocolData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].volumes
                       .liquidation as number) += collateralAmountUsd;
-                    protocolData.moneyFlowOut += collateralAmountUsd;
-                    protocolData.breakdown[comptrollerConfig.chain][marketAndPrice.underlying.address].moneyFlowOut +=
-                      collateralAmountUsd;
                   }
                 }
 
@@ -740,9 +723,6 @@ export default class CompoundCore extends ProtocolAdapter {
                       compareAddress(item.address, cometConfig.comet),
                   )[0];
                   if (signature === Compoundv3EventSignatures.Supply) {
-                    protocolData.moneyFlowIn += amountUsd;
-                    protocolData.breakdown[cometConfig.chain][baseToken.address].moneyFlowIn += amountUsd;
-
                     if (cometTransferEvent) {
                       (protocolData.volumes.deposit as number) += amountUsd;
                       (protocolData.breakdown[cometConfig.chain][baseToken.address].volumes.deposit as number) +=
@@ -753,9 +733,6 @@ export default class CompoundCore extends ProtocolAdapter {
                         amountUsd;
                     }
                   } else {
-                    protocolData.moneyFlowOut += amountUsd;
-                    protocolData.breakdown[cometConfig.chain][baseToken.address].moneyFlowOut += amountUsd;
-
                     if (cometTransferEvent) {
                       (protocolData.volumes.withdraw as number) += amountUsd;
                       (protocolData.breakdown[cometConfig.chain][baseToken.address].volumes.withdraw as number) +=
@@ -772,8 +749,6 @@ export default class CompoundCore extends ProtocolAdapter {
                   // repay debts by liquidators
                   const repayAmountUsd =
                     formatBigNumberToNumber(event.args.basePaidOut.toString(), baseToken.decimals) * baseTokenPriceUsd;
-                  protocolData.moneyFlowIn += repayAmountUsd;
-                  protocolData.breakdown[cometConfig.chain][baseToken.address].moneyFlowIn += repayAmountUsd;
                   (protocolData.volumes.repay as number) += repayAmountUsd;
                   (protocolData.breakdown[cometConfig.chain][baseToken.address].volumes.repay as number) +=
                     repayAmountUsd;
@@ -786,13 +761,9 @@ export default class CompoundCore extends ProtocolAdapter {
                     formatBigNumberToNumber(event.args.amount.toString(), collaterals[asset].token.decimals) *
                     collaterals[asset].priceUsd;
                   if (signature === Compoundv3EventSignatures.SupplyCollateral) {
-                    protocolData.moneyFlowIn += collateralAmountUsd;
-                    protocolData.breakdown[cometConfig.chain][asset].moneyFlowIn += collateralAmountUsd;
                     (protocolData.volumes.deposit as number) += collateralAmountUsd;
                     (protocolData.breakdown[cometConfig.chain][asset].volumes.deposit as number) += collateralAmountUsd;
                   } else {
-                    protocolData.moneyFlowOut += collateralAmountUsd;
-                    protocolData.breakdown[cometConfig.chain][asset].moneyFlowOut += collateralAmountUsd;
                     (protocolData.volumes.withdraw as number) += collateralAmountUsd;
                     (protocolData.breakdown[cometConfig.chain][asset].volumes.withdraw as number) +=
                       collateralAmountUsd;
@@ -806,8 +777,6 @@ export default class CompoundCore extends ProtocolAdapter {
                       event.args.collateralAbsorbed.toString(),
                       collaterals[asset].token.decimals,
                     ) * collaterals[asset].priceUsd;
-                  protocolData.moneyFlowOut += collateralAmountUsd;
-                  protocolData.breakdown[cometConfig.chain][asset].moneyFlowOut += collateralAmountUsd;
                   (protocolData.volumes.liquidation as number) += collateralAmountUsd;
                   (protocolData.breakdown[cometConfig.chain][asset].volumes.liquidation as number) +=
                     collateralAmountUsd;
@@ -820,20 +789,6 @@ export default class CompoundCore extends ProtocolAdapter {
       }
     }
 
-    for (const value of Object.values(protocolData.volumes)) {
-      protocolData.totalVolume += value;
-      protocolData.moneyFlowNet = protocolData.moneyFlowIn - protocolData.moneyFlowOut;
-    }
-    for (const [chain, tokens] of Object.entries(protocolData.breakdown)) {
-      for (const [address, token] of Object.entries(tokens)) {
-        for (const value of Object.values(token.volumes)) {
-          protocolData.breakdown[chain][address].totalVolume += value;
-          protocolData.breakdown[chain][address].moneyFlowNet =
-            protocolData.breakdown[chain][address].moneyFlowIn - protocolData.breakdown[chain][address].moneyFlowOut;
-        }
-      }
-    }
-
-    return protocolData;
+    return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
   }
 }

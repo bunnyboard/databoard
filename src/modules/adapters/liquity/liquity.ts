@@ -8,6 +8,7 @@ import BorrowOperationsAbi from '../../../configs/abi/liquity/BorrowOperations.j
 import { formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
 import { LiquityProtocolConfig } from '../../../configs/protocols/liquity';
 import { decodeEventLog } from 'viem';
+import AdapterDataHelper from '../helpers';
 
 export const LiquityEvents = {
   // BorrowOperations
@@ -68,7 +69,32 @@ export default class LiquityAdapter extends ProtocolAdapter {
       birthday: this.protocolConfig.birthday,
       timestamp: options.timestamp,
       breakdown: {
-        [liquityConfig.chain]: {},
+        [liquityConfig.chain]: {
+          [normalizeAddress(liquityConfig.stablecoin.address)]: {
+            ...getInitialProtocolCoreMetrics(),
+            totalBorrowed: 0,
+            volumes: {
+              deposit: 0,
+              withdraw: 0,
+              borrow: 0,
+              repay: 0,
+              liquidation: 0,
+              redeemtion: 0,
+            },
+          },
+          [normalizeAddress(liquityConfig.collateral.address)]: {
+            ...getInitialProtocolCoreMetrics(),
+            totalBorrowed: 0,
+            volumes: {
+              deposit: 0,
+              withdraw: 0,
+              borrow: 0,
+              repay: 0,
+              liquidation: 0,
+              redeemtion: 0,
+            },
+          },
+        },
       },
 
       ...getInitialProtocolCoreMetrics(),
@@ -134,6 +160,13 @@ export default class LiquityAdapter extends ProtocolAdapter {
     protocolData.totalAssetDeposited += totalCollateralUsd;
     protocolData.totalValueLocked += totalCollateralUsd;
     (protocolData.totalBorrowed as number) += totalBorrowedUsd;
+    protocolData.breakdown[liquityConfig.chain][
+      normalizeAddress(liquityConfig.collateral.address)
+    ].totalAssetDeposited += totalCollateralUsd;
+    protocolData.breakdown[liquityConfig.chain][normalizeAddress(liquityConfig.collateral.address)].totalValueLocked +=
+      totalCollateralUsd;
+    (protocolData.breakdown[liquityConfig.chain][normalizeAddress(liquityConfig.stablecoin.address)]
+      .totalBorrowed as number) += totalBorrowedUsd;
 
     const operationLogs = await this.services.blockchain.evm.getContractLogs({
       chain: liquityConfig.chain,
@@ -157,12 +190,17 @@ export default class LiquityAdapter extends ProtocolAdapter {
         });
 
         if (signature === LiquityEvents.LUSDBorrowingFeePaid) {
-          protocolData.totalFees += debtPrice
+          const feeUsd = debtPrice
             ? formatBigNumberToNumber(event.args._LUSDFee.toString(), 18) * Number(debtPrice)
             : 0;
-          protocolData.protocolRevenue += debtPrice
-            ? formatBigNumberToNumber(event.args._LUSDFee.toString(), 18) * Number(debtPrice)
-            : 0;
+
+          protocolData.totalFees += feeUsd;
+          protocolData.protocolRevenue += feeUsd;
+          protocolData.breakdown[liquityConfig.chain][normalizeAddress(liquityConfig.stablecoin.address)].totalFees +=
+            feeUsd;
+          protocolData.breakdown[liquityConfig.chain][
+            normalizeAddress(liquityConfig.stablecoin.address)
+          ].protocolRevenue += feeUsd;
         } else {
           const operation = Number(event.args._operation);
 
@@ -177,10 +215,18 @@ export default class LiquityAdapter extends ProtocolAdapter {
             // open trove
             (protocolData.volumes.borrow as number) += debtAmountUsd;
             (protocolData.volumes.deposit as number) += collateralAmountUsd;
+            (protocolData.breakdown[liquityConfig.chain][normalizeAddress(liquityConfig.stablecoin.address)].volumes
+              .borrow as number) += debtAmountUsd;
+            (protocolData.breakdown[liquityConfig.chain][normalizeAddress(liquityConfig.collateral.address)].volumes
+              .deposit as number) += debtAmountUsd;
           } else if (operation === 1) {
             // close trove
             (protocolData.volumes.repay as number) += debtAmountUsd;
             (protocolData.volumes.withdraw as number) += collateralAmountUsd;
+            (protocolData.breakdown[liquityConfig.chain][normalizeAddress(liquityConfig.stablecoin.address)].volumes
+              .repay as number) += debtAmountUsd;
+            (protocolData.breakdown[liquityConfig.chain][normalizeAddress(liquityConfig.collateral.address)].volumes
+              .withdraw as number) += debtAmountUsd;
           } else {
             // update trove
             const troveInfo = await this.getTroveState(
@@ -196,9 +242,17 @@ export default class LiquityAdapter extends ProtocolAdapter {
             if (troveInfo.isBorrow) {
               (protocolData.volumes.borrow as number) += amountUsd;
               (protocolData.volumes.deposit as number) += collateralUsd;
+              (protocolData.breakdown[liquityConfig.chain][normalizeAddress(liquityConfig.stablecoin.address)].volumes
+                .borrow as number) += amountUsd;
+              (protocolData.breakdown[liquityConfig.chain][normalizeAddress(liquityConfig.collateral.address)].volumes
+                .deposit as number) += collateralUsd;
             } else {
               (protocolData.volumes.repay as number) += amountUsd;
               (protocolData.volumes.withdraw as number) += collateralUsd;
+              (protocolData.breakdown[liquityConfig.chain][normalizeAddress(liquityConfig.stablecoin.address)].volumes
+                .repay as number) += amountUsd;
+              (protocolData.breakdown[liquityConfig.chain][normalizeAddress(liquityConfig.collateral.address)].volumes
+                .withdraw as number) += collateralUsd;
             }
           }
         }
@@ -240,70 +294,21 @@ export default class LiquityAdapter extends ProtocolAdapter {
 
         protocolData.totalFees += feesUsd;
         protocolData.protocolRevenue += feesUsd;
+        protocolData.breakdown[liquityConfig.chain][normalizeAddress(liquityConfig.stablecoin.address)].totalFees +=
+          feesUsd;
+        protocolData.breakdown[liquityConfig.chain][
+          normalizeAddress(liquityConfig.stablecoin.address)
+        ].protocolRevenue += feesUsd;
+
         (protocolData.volumes.redeemtion as number) += amountUsd;
         (protocolData.volumes.withdraw as number) += collateralUsd;
+        (protocolData.breakdown[liquityConfig.chain][normalizeAddress(liquityConfig.stablecoin.address)].volumes
+          .redeemtion as number) += amountUsd;
+        (protocolData.breakdown[liquityConfig.chain][normalizeAddress(liquityConfig.collateral.address)].volumes
+          .withdraw as number) += collateralUsd;
       }
     }
 
-    protocolData.moneyFlowIn =
-      (protocolData.volumes.deposit as number) +
-      (protocolData.volumes.repay as number) +
-      (protocolData.volumes.redeemtion as number);
-    protocolData.moneyFlowOut =
-      (protocolData.volumes.withdraw as number) +
-      (protocolData.volumes.borrow as number) +
-      (protocolData.volumes.liquidation as number);
-    protocolData.moneyFlowNet = protocolData.moneyFlowIn - protocolData.moneyFlowOut;
-    for (const value of Object.values(protocolData.volumes)) {
-      protocolData.totalVolume += value;
-    }
-
-    protocolData.breakdown[liquityConfig.chain][normalizeAddress(liquityConfig.stablecoin.address)] = {
-      totalAssetDeposited: 0,
-      totalValueLocked: 0,
-      totalFees: protocolData.totalFees,
-      supplySideRevenue: 0,
-      protocolRevenue: protocolData.protocolRevenue,
-      totalBorrowed: protocolData.totalBorrowed,
-      moneyFlowIn: (protocolData.volumes.repay as number) + (protocolData.volumes.redeemtion as number),
-      moneyFlowOut: protocolData.volumes.borrow as number,
-      moneyFlowNet:
-        (protocolData.volumes.repay as number) +
-        (protocolData.volumes.redeemtion as number) -
-        (protocolData.volumes.borrow as number),
-      totalVolume:
-        (protocolData.volumes.repay as number) +
-        (protocolData.volumes.redeemtion as number) +
-        (protocolData.volumes.borrow as number),
-      volumes: {
-        borrow: protocolData.volumes.borrow,
-        repay: protocolData.volumes.repay,
-        redeemtion: protocolData.volumes.redeemtion,
-      },
-    };
-    protocolData.breakdown[liquityConfig.chain][normalizeAddress(liquityConfig.collateral.address)] = {
-      totalAssetDeposited: protocolData.totalAssetDeposited,
-      totalValueLocked: protocolData.totalValueLocked,
-      totalFees: 0,
-      supplySideRevenue: 0,
-      protocolRevenue: 0,
-      moneyFlowIn: protocolData.volumes.deposit as number,
-      moneyFlowOut: (protocolData.volumes.withdraw as number) + (protocolData.volumes.liquidation as number),
-      moneyFlowNet:
-        (protocolData.volumes.deposit as number) -
-        (protocolData.volumes.withdraw as number) +
-        (protocolData.volumes.liquidation as number),
-      totalVolume:
-        (protocolData.volumes.deposit as number) +
-        (protocolData.volumes.withdraw as number) +
-        (protocolData.volumes.liquidation as number),
-      volumes: {
-        deposit: protocolData.volumes.deposit,
-        withdraw: protocolData.volumes.withdraw,
-        liquidation: protocolData.volumes.liquidation,
-      },
-    };
-
-    return protocolData;
+    return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
   }
 }

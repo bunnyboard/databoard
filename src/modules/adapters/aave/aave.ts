@@ -13,6 +13,7 @@ import AaveLendingPoolV1Abi from '../../../configs/abi/aave/LendingPoolV1.json';
 import AaveLendingPoolV2Abi from '../../../configs/abi/aave/LendingPoolV2.json';
 import AaveLendingPoolV3Abi from '../../../configs/abi/aave/LendingPoolV3.json';
 import { ChainNames } from '../../../configs/names';
+import AdapterDataHelper from '../helpers';
 
 export default class AaveAdapter extends AaveCore {
   public readonly name: string = 'adapter.aave 👻';
@@ -318,40 +319,32 @@ export default class AaveAdapter extends AaveCore {
               case Aavev2Events.Deposit:
               case Aavev3Events.Deposit: {
                 (protocolData.volumes.deposit as number) += volumeAmountUsd;
-                protocolData.moneyFlowIn += volumeAmountUsd;
                 (protocolData.breakdown[marketConfig.chain][reserve.token.address].volumes.deposit as number) +=
                   volumeAmountUsd;
-                protocolData.breakdown[marketConfig.chain][reserve.token.address].moneyFlowIn += volumeAmountUsd;
                 break;
               }
               case Aavev1Events.Withdraw:
               case Aavev2Events.Withdraw:
               case Aavev3Events.Withdraw: {
                 (protocolData.volumes.withdraw as number) += volumeAmountUsd;
-                protocolData.moneyFlowOut += volumeAmountUsd;
                 (protocolData.breakdown[marketConfig.chain][reserve.token.address].volumes.withdraw as number) +=
                   volumeAmountUsd;
-                protocolData.breakdown[marketConfig.chain][reserve.token.address].moneyFlowOut += volumeAmountUsd;
                 break;
               }
               case Aavev1Events.Borrow:
               case Aavev2Events.Borrow:
               case Aavev3Events.Borrow: {
                 (protocolData.volumes.borrow as number) += volumeAmountUsd;
-                protocolData.moneyFlowOut += volumeAmountUsd;
                 (protocolData.breakdown[marketConfig.chain][reserve.token.address].volumes.borrow as number) +=
                   volumeAmountUsd;
-                protocolData.breakdown[marketConfig.chain][reserve.token.address].moneyFlowOut += volumeAmountUsd;
                 break;
               }
               case Aavev1Events.Repay:
               case Aavev2Events.Repay:
               case Aavev3Events.Repay: {
                 (protocolData.volumes.repay as number) += volumeAmountUsd;
-                protocolData.moneyFlowIn += volumeAmountUsd;
                 (protocolData.breakdown[marketConfig.chain][reserve.token.address].volumes.repay as number) +=
                   volumeAmountUsd;
-                protocolData.breakdown[marketConfig.chain][reserve.token.address].moneyFlowIn += volumeAmountUsd;
                 break;
               }
             }
@@ -378,21 +371,7 @@ export default class AaveAdapter extends AaveCore {
       }
     }
 
-    for (const value of Object.values(protocolData.volumes)) {
-      protocolData.totalVolume += value;
-      protocolData.moneyFlowNet = protocolData.moneyFlowIn - protocolData.moneyFlowOut;
-    }
-    for (const [chain, tokens] of Object.entries(protocolData.breakdown)) {
-      for (const [address, token] of Object.entries(tokens)) {
-        for (const value of Object.values(token.volumes)) {
-          protocolData.breakdown[chain][address].totalVolume += value;
-          protocolData.breakdown[chain][address].moneyFlowNet =
-            protocolData.breakdown[chain][address].moneyFlowIn - protocolData.breakdown[chain][address].moneyFlowOut;
-        }
-      }
-    }
-
-    return protocolData;
+    return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
   }
 
   public async runTest(options: TestAdapterOptions): Promise<void> {

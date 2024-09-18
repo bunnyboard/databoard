@@ -28,6 +28,7 @@ export const Events = {
   // save to databse these events
   SupplyCollateral: '0xa3b9472a1399e17e123f3c2e6586c23e504184d504de59cdaa2b375e880c6184',
   WithdrawCollateral: '0xe80ebd7cc9223d7382aab2e0d1d6155c65651f83d53c8b9b06901d167e321142',
+  Liquidate: '0xa4946ede45d0c6f06a0f5ce92c9ad3b4751452d2fe0e25010783bcab57a67e41',
 };
 
 const KeyMarkets = 'morpho-blue-market';
@@ -83,7 +84,7 @@ export default class MorphoIndexerAdapter extends ProtocolAdapter {
     return null;
   }
 
-  public async getMarkets(morphoBlueConfig: MorphoBlueConfig): Promise<Array<MorphoBlueMarketMetadata>> {
+  public async getMarketsMetadata(morphoBlueConfig: MorphoBlueConfig): Promise<Array<MorphoBlueMarketMetadata>> {
     const markets = await this.storages.database.query({
       collection: envConfig.mongodb.collections.caching.name,
       query: {
@@ -170,7 +171,11 @@ export default class MorphoIndexerAdapter extends ProtocolAdapter {
               collateral: marketMetadata.collateralToken.symbol,
             });
           }
-        } else if (log.topics[0] === Events.SupplyCollateral || log.topics[0] === Events.WithdrawCollateral) {
+        } else if (
+          log.topics[0] === Events.SupplyCollateral ||
+          log.topics[0] === Events.WithdrawCollateral ||
+          log.topics[0] === Events.Liquidate
+        ) {
           await this.storages.database.update({
             collection: envConfig.mongodb.collections.contractLogs.name,
             keys: {
