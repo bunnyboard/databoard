@@ -161,26 +161,35 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
   public async getProtocolData(options: GetProtocolDataOptions): Promise<ProtocolData | null> {
     const morphoConfig = this.protocolConfig as MorphoProtocolConfig;
 
-    const protocolData: ProtocolData = {
-      protocol: this.protocolConfig.protocol,
-      category: this.protocolConfig.category,
-      birthday: this.protocolConfig.birthday,
-      timestamp: options.timestamp,
-      breakdown: {},
+    const optimizerAdapter = new MorphoOptimizerAdapter(this.services, this.storages, this.protocolConfig);
+    let protocolData: ProtocolData | null = await optimizerAdapter.getProtocolData(options);
+    if (!protocolData) {
+      protocolData = {
+        protocol: this.protocolConfig.protocol,
+        category: this.protocolConfig.category,
+        birthday: this.protocolConfig.birthday,
+        timestamp: options.timestamp,
+        breakdown: {},
 
-      ...getInitialProtocolCoreMetrics(),
-      totalSupplied: 0,
-      totalBorrowed: 0,
-      volumes: {
-        deposit: 0,
-        withdraw: 0,
-        borrow: 0,
-        repay: 0,
-        liquidation: 0,
-      },
-    };
+        ...getInitialProtocolCoreMetrics(),
+        totalSupplied: 0,
+        totalBorrowed: 0,
+        volumes: {
+          deposit: 0,
+          withdraw: 0,
+          borrow: 0,
+          repay: 0,
+          liquidation: 0,
+          flashloan: 0,
+        },
+      };
+    }
 
     for (const morphoBlue of morphoConfig.morphoBlues) {
+      if (morphoBlue.birthday > options.timestamp) {
+        continue;
+      }
+
       await this.indexMarketsFromContractLogs(morphoBlue);
 
       const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
@@ -412,11 +421,6 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
       protocolData.totalValueLocked += totalCollateralUsd;
     }
 
-    if (protocolData) {
-      console.log(protocolData);
-      process.exit(0);
-    }
-
     return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
   }
 
@@ -425,9 +429,9 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
 
     console.log(
       await optimizerAdapter.getProtocolData({
-        timestamp: 1726617600,
-        beginTime: 1726444800,
-        endTime: 1726617600,
+        timestamp: 1672617600,
+        beginTime: 1672531200,
+        endTime: 1672617600,
       }),
     );
 
