@@ -106,7 +106,7 @@ export default class MakerAdapter extends ProtocolAdapter {
     );
 
     let totalBorrowFees = 0;
-    let daiPayToSavingOneDay = 0;
+    let daiPayToSavingOneYear = 0;
 
     const [vatDebt, jugBase, potDsr, potPie, potChi] = await this.services.blockchain.evm.multicall({
       chain: makerConfig.chain,
@@ -153,7 +153,7 @@ export default class MakerAdapter extends ProtocolAdapter {
     const daiSavingTotalDeposited =
       formatBigNumberToNumber(potPie.toString(), 18) *
       formatBigNumberToNumber(potChi.toString(), SolidityUnits.RayDecimals);
-    daiPayToSavingOneDay = daiSavingRate * daiSavingTotalDeposited;
+    daiPayToSavingOneYear = daiSavingRate * daiSavingTotalDeposited;
 
     // get DAI events, DAI join
     // count borrow/repay volumes
@@ -451,8 +451,14 @@ export default class MakerAdapter extends ProtocolAdapter {
       totalBorrowFees += totalEarnedFeesFromMorphoVault;
     }
 
+    // total fees were paid from DAI borrowers
     protocolData.totalFees += totalBorrowFees / TimeUnits.DaysPerYear;
-    protocolData.protocolRevenue += (totalBorrowFees - daiPayToSavingOneDay) / TimeUnits.DaysPerYear;
+
+    // total fees were paid to DAI saving suppliders
+    protocolData.supplySideRevenue += daiPayToSavingOneYear / TimeUnits.DaysPerYear;
+
+    // remaining fees will be collected by Maker
+    protocolData.protocolRevenue += (totalBorrowFees - daiPayToSavingOneYear) / TimeUnits.DaysPerYear;
 
     return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
   }

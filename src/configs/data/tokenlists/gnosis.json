@@ -11,6 +11,12 @@
     "decimals": 18,
     "address": "0x2995d1317dcd4f0ab89f4ae60f3f020a4f17c7ce"
   },
+  "0x2a22f9c3b484c3629090feed35f17ff8f88f76f0": {
+    "chain": "gnosis",
+    "symbol": "USDC.e",
+    "decimals": 6,
+    "address": "0x2a22f9c3b484c3629090feed35f17ff8f88f76f0"
+  },
   "0x3f56e0c36d275367b8c502090edf38289b3dea0d": {
     "chain": "gnosis",
     "symbol": "MIMATIC",

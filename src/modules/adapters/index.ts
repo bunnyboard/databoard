@@ -35,7 +35,7 @@ export function getProtocolAdapters(
     hana: new AaveAdapter(services, storages, ProtocolConfigs.hana),
     ionic: new CompoundAdapter(services, storages, ProtocolConfigs.ionic),
     ironbank: new CompoundAdapter(services, storages, ProtocolConfigs.ironbank),
-    ironclad: new CompoundAdapter(services, storages, ProtocolConfigs.ironclad),
+    ironclad: new AaveAdapter(services, storages, ProtocolConfigs.ironclad),
     kinza: new AaveAdapter(services, storages, ProtocolConfigs.kinza),
     lendle: new AaveAdapter(services, storages, ProtocolConfigs.lendle),
     lido: new LidoAdapter(services, storages, ProtocolConfigs.lido),

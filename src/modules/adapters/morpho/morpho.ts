@@ -205,6 +205,10 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
         options.endTime,
       );
 
+      if (!protocolData.breakdown[morphoBlue.chain]) {
+        protocolData.breakdown[morphoBlue.chain] = {};
+      }
+
       const markets = await this.getMarketsMetadata(morphoBlue);
       logger.debug('getting morpho markets data from contracts', {
         service: this.name,
@@ -233,6 +237,49 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
           if (marketLendingData) {
             marketsData.push(marketLendingData);
 
+            if (
+              !protocolData.breakdown[marketLendingData.marketMetadata.chain][
+                marketLendingData.marketMetadata.debtToken.address
+              ]
+            ) {
+              protocolData.breakdown[marketLendingData.marketMetadata.chain][
+                marketLendingData.marketMetadata.debtToken.address
+              ] = {
+                ...getInitialProtocolCoreMetrics(),
+                totalSupplied: 0,
+                totalBorrowed: 0,
+                volumes: {
+                  deposit: 0,
+                  withdraw: 0,
+                  borrow: 0,
+                  repay: 0,
+                  liquidation: 0,
+                  flashloan: 0,
+                },
+              };
+            }
+            if (
+              !protocolData.breakdown[marketLendingData.marketMetadata.chain][
+                marketLendingData.marketMetadata.collateralToken.address
+              ]
+            ) {
+              protocolData.breakdown[marketLendingData.marketMetadata.chain][
+                marketLendingData.marketMetadata.collateralToken.address
+              ] = {
+                ...getInitialProtocolCoreMetrics(),
+                totalSupplied: 0,
+                totalBorrowed: 0,
+                volumes: {
+                  deposit: 0,
+                  withdraw: 0,
+                  borrow: 0,
+                  repay: 0,
+                  liquidation: 0,
+                  flashloan: 0,
+                },
+              };
+            }
+
             protocolData.totalAssetDeposited += marketLendingData.totalSuppliedUsd;
             protocolData.totalValueLocked += marketLendingData.totalSuppliedUsd - marketLendingData.totalBorrowedUsd;
             (protocolData.totalSupplied as number) += marketLendingData.totalSuppliedUsd;
@@ -240,6 +287,28 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
             protocolData.totalFees += marketLendingData.totalFees;
             protocolData.supplySideRevenue += marketLendingData.supplySideRevenue;
             protocolData.protocolRevenue += marketLendingData.protocolRevenue;
+
+            protocolData.breakdown[marketLendingData.marketMetadata.chain][
+              marketLendingData.marketMetadata.debtToken.address
+            ].totalAssetDeposited = marketLendingData.totalSuppliedUsd;
+            protocolData.breakdown[marketLendingData.marketMetadata.chain][
+              marketLendingData.marketMetadata.debtToken.address
+            ].totalValueLocked = marketLendingData.totalSuppliedUsd - marketLendingData.totalBorrowedUsd;
+            (protocolData.breakdown[marketLendingData.marketMetadata.chain][
+              marketLendingData.marketMetadata.debtToken.address
+            ].totalSupplied as number) = marketLendingData.totalSuppliedUsd;
+            (protocolData.breakdown[marketLendingData.marketMetadata.chain][
+              marketLendingData.marketMetadata.debtToken.address
+            ].totalBorrowed as number) = marketLendingData.totalBorrowedUsd;
+            protocolData.breakdown[marketLendingData.marketMetadata.chain][
+              marketLendingData.marketMetadata.debtToken.address
+            ].totalFees = marketLendingData.totalFees;
+            protocolData.breakdown[marketLendingData.marketMetadata.chain][
+              marketLendingData.marketMetadata.debtToken.address
+            ].supplySideRevenue = marketLendingData.supplySideRevenue;
+            protocolData.breakdown[marketLendingData.marketMetadata.chain][
+              marketLendingData.marketMetadata.debtToken.address
+            ].protocolRevenue = marketLendingData.protocolRevenue;
           }
         }
       }
@@ -294,8 +363,20 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
 
                 if (signature === MorphoBlueEvents.SupplyCollateral) {
                   totalCollateralUsd += collateralAmountUsd;
+                  protocolData.breakdown[marketData.marketMetadata.chain][
+                    marketData.marketMetadata.collateralToken.address
+                  ].totalAssetDeposited += collateralAmountUsd;
+                  protocolData.breakdown[marketData.marketMetadata.chain][
+                    marketData.marketMetadata.collateralToken.address
+                  ].totalValueLocked += collateralAmountUsd;
                 } else {
                   totalCollateralUsd -= collateralAmountUsd;
+                  protocolData.breakdown[marketData.marketMetadata.chain][
+                    marketData.marketMetadata.collateralToken.address
+                  ].totalAssetDeposited -= collateralAmountUsd;
+                  protocolData.breakdown[marketData.marketMetadata.chain][
+                    marketData.marketMetadata.collateralToken.address
+                  ].totalValueLocked -= collateralAmountUsd;
                 }
               } else if (signature === MorphoBlueEvents.Liquidate) {
                 const collateralAmountUsd =
@@ -305,6 +386,12 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
                   ) * marketData.collateralTokenPriceUsd;
 
                 totalCollateralUsd -= collateralAmountUsd;
+                protocolData.breakdown[marketData.marketMetadata.chain][
+                  marketData.marketMetadata.collateralToken.address
+                ].totalAssetDeposited -= collateralAmountUsd;
+                protocolData.breakdown[marketData.marketMetadata.chain][
+                  marketData.marketMetadata.collateralToken.address
+                ].totalValueLocked -= collateralAmountUsd;
               }
             }
           }
@@ -343,6 +430,8 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
                 marketData.debtTokenPriceUsd;
 
               (protocolData.volumes.deposit as number) += amountUsd;
+              (protocolData.breakdown[marketData.marketMetadata.chain][marketData.marketMetadata.debtToken.address]
+                .volumes.deposit as number) += amountUsd;
 
               break;
             }
@@ -352,6 +441,8 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
                 marketData.debtTokenPriceUsd;
 
               (protocolData.volumes.withdraw as number) += amountUsd;
+              (protocolData.breakdown[marketData.marketMetadata.chain][marketData.marketMetadata.debtToken.address]
+                .volumes.withdraw as number) += amountUsd;
 
               break;
             }
@@ -361,6 +452,8 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
                 marketData.debtTokenPriceUsd;
 
               (protocolData.volumes.borrow as number) += amountUsd;
+              (protocolData.breakdown[marketData.marketMetadata.chain][marketData.marketMetadata.debtToken.address]
+                .volumes.borrow as number) += amountUsd;
 
               break;
             }
@@ -370,6 +463,8 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
                 marketData.debtTokenPriceUsd;
 
               (protocolData.volumes.repay as number) += amountUsd;
+              (protocolData.breakdown[marketData.marketMetadata.chain][marketData.marketMetadata.debtToken.address]
+                .volumes.repay as number) += amountUsd;
 
               break;
               break;
@@ -382,6 +477,9 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
                 ) * marketData.collateralTokenPriceUsd;
 
               (protocolData.volumes.deposit as number) += amountUsd;
+              (protocolData.breakdown[marketData.marketMetadata.chain][
+                marketData.marketMetadata.collateralToken.address
+              ].volumes.deposit as number) += amountUsd;
 
               break;
             }
@@ -393,6 +491,9 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
                 ) * marketData.collateralTokenPriceUsd;
 
               (protocolData.volumes.withdraw as number) += amountUsd;
+              (protocolData.breakdown[marketData.marketMetadata.chain][
+                marketData.marketMetadata.collateralToken.address
+              ].volumes.withdraw as number) += amountUsd;
 
               break;
             }
@@ -410,6 +511,11 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
 
               (protocolData.volumes.repay as number) += repayAmountUsd;
               (protocolData.volumes.liquidation as number) += liquidateAmountUsd;
+              (protocolData.breakdown[marketData.marketMetadata.chain][marketData.marketMetadata.debtToken.address]
+                .volumes.repay as number) += repayAmountUsd;
+              (protocolData.breakdown[marketData.marketMetadata.chain][
+                marketData.marketMetadata.collateralToken.address
+              ].volumes.liquidation as number) += liquidateAmountUsd;
 
               break;
             }
