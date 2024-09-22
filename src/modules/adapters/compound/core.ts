@@ -757,6 +757,11 @@ export default class CompoundCore extends ProtocolAdapter {
                 case Compoundv3EventSignatures.SupplyCollateral:
                 case Compoundv3EventSignatures.WithdrawCollateral: {
                   const asset = normalizeAddress(event.args.asset);
+                  if (!collaterals[asset]) {
+                    // ignore not found asset
+                    break;
+                  }
+
                   const collateralAmountUsd =
                     formatBigNumberToNumber(event.args.amount.toString(), collaterals[asset].token.decimals) *
                     collaterals[asset].priceUsd;

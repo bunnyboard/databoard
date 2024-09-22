@@ -326,6 +326,11 @@ export default class UniswapAdapter extends ProtocolAdapter {
       );
     }
 
+    if (protocolData) {
+      console.log(protocolData);
+      process.exit(0);
+    }
+
     return protocolData;
   }
 

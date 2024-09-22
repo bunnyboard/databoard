@@ -70,7 +70,7 @@ export default class AaveCore extends ProtocolAdapter {
 
     const reserveList: Array<string> | null = await this.getReservesList(options);
     if (reserveList && options.config.oracle) {
-      const reserveOraclePrices = await this.services.blockchain.evm.readContract({
+      let reserveOraclePrices = await this.services.blockchain.evm.readContract({
         chain: options.config.chain,
         abi: options.config.version === 1 ? AaveOracleV1Abi : AaveOracleV2Abi,
         target: options.config.oracle.address,
@@ -78,6 +78,14 @@ export default class AaveCore extends ProtocolAdapter {
         params: [reserveList],
         blockNumber: options.blockNumber,
       });
+
+      // lendle oracle errors on these days
+      if (
+        (options.timestamp === 1690070400 || options.timestamp === 1690243200) &&
+        compareAddress(options.config.lendingPool, '0xCFa5aE7c2CE8Fadc6426C1ff872cA45378Fb7cF3')
+      ) {
+        reserveOraclePrices = null;
+      }
 
       for (let i = 0; i < reserveList.length; i++) {
         const token = await this.services.blockchain.evm.getTokenInfo({

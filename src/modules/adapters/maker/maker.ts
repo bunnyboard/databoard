@@ -79,12 +79,27 @@ export default class MakerAdapter extends ProtocolAdapter {
       category: this.protocolConfig.category,
       birthday: this.protocolConfig.birthday,
       timestamp: options.timestamp,
-      breakdown: {},
+      breakdown: {
+        ethereum: {
+          [normalizeAddress(makerConfig.dai)]: {
+            ...getInitialProtocolCoreMetrics(),
+            totalBorrowed: 0,
+            volumes: {
+              deposit: 0, // deposit collateral/gem
+              withdraw: 0, // withdraw collateral/gem
+              borrow: 0,
+              repay: 0,
+              liquidation: 0,
+              flashloan: 0,
+            },
+          },
+        },
+      },
       ...getInitialProtocolCoreMetrics(),
       totalBorrowed: 0,
       volumes: {
-        deposit: 0, // deposit collateral/game
-        withdraw: 0, // withdraw collateral/game
+        deposit: 0, // deposit collateral/gem
+        withdraw: 0, // withdraw collateral/gem
         borrow: 0,
         repay: 0,
         liquidation: 0,
@@ -145,7 +160,12 @@ export default class MakerAdapter extends ProtocolAdapter {
       blockNumber: blockNumber,
     });
 
+    // add DAI debts
     (protocolData.totalBorrowed as number) = formatBigNumberToNumber(vatDebt.toString(), SolidityUnits.RadDecimals);
+    (protocolData.breakdown[makerConfig.chain][makerConfig.dai].totalBorrowed as number) = formatBigNumberToNumber(
+      vatDebt.toString(),
+      SolidityUnits.RadDecimals,
+    );
 
     // https://docs.makerdao.com/smart-contract-modules/rates-module#a-note-on-setting-rates
     const daiSavingRate =
@@ -176,8 +196,10 @@ export default class MakerAdapter extends ProtocolAdapter {
           const amountDai = formatBigNumberToNumber(rawAmount, 18);
           if (signature === MakerEvents.Join) {
             (protocolData.volumes.repay as number) += amountDai;
+            (protocolData.breakdown[makerConfig.chain][makerConfig.dai].volumes.repay as number) += amountDai;
           } else {
             (protocolData.volumes.borrow as number) += amountDai;
+            (protocolData.breakdown[makerConfig.chain][makerConfig.dai].volumes.borrow as number) += amountDai;
           }
         }
       }
@@ -192,6 +214,21 @@ export default class MakerAdapter extends ProtocolAdapter {
 
     for (const gemConfig of makerConfig.gems) {
       if (gemConfig.birthday <= options.timestamp) {
+        if (!protocolData.breakdown[makerConfig.chain][normalizeAddress(gemConfig.collateralAddress)]) {
+          protocolData.breakdown[makerConfig.chain][normalizeAddress(gemConfig.collateralAddress)] = {
+            ...getInitialProtocolCoreMetrics(),
+            totalBorrowed: 0,
+            volumes: {
+              deposit: 0, // deposit collateral/gem
+              withdraw: 0, // withdraw collateral/gem
+              borrow: 0,
+              repay: 0,
+              liquidation: 0,
+              flashloan: 0,
+            },
+          };
+        }
+
         const collateralToken = await this.services.blockchain.evm.getTokenInfo({
           chain: makerConfig.chain,
           address: gemConfig.collateralAddress,
@@ -250,6 +287,9 @@ export default class MakerAdapter extends ProtocolAdapter {
 
           protocolData.totalAssetDeposited += collateralBalanceUsd;
           protocolData.totalValueLocked += collateralBalanceUsd;
+          protocolData.breakdown[makerConfig.chain][collateralToken.address].totalAssetDeposited +=
+            collateralBalanceUsd;
+          protocolData.breakdown[makerConfig.chain][collateralToken.address].totalValueLocked += collateralBalanceUsd;
 
           const gemLogs = await this.services.blockchain.evm.getContractLogs({
             chain: makerConfig.chain,
@@ -269,8 +309,12 @@ export default class MakerAdapter extends ProtocolAdapter {
                 if (signature === MakerEvents.Exit) {
                   // withdraw
                   (protocolData.volumes.withdraw as number) += amountUsd;
+                  (protocolData.breakdown[makerConfig.chain][collateralToken.address].volumes.withdraw as number) +=
+                    amountUsd;
                 } else {
                   (protocolData.volumes.deposit as number) += amountUsd;
+                  (protocolData.breakdown[makerConfig.chain][collateralToken.address].volumes.deposit as number) +=
+                    amountUsd;
                 }
               }
             } else if (signature === MakerEvents.AuthJoin || signature === MakerEvents.AuthExit) {
@@ -286,8 +330,12 @@ export default class MakerAdapter extends ProtocolAdapter {
 
                 if (signature === MakerEvents.AuthJoin) {
                   (protocolData.volumes.deposit as number) += amountUsd;
+                  (protocolData.breakdown[makerConfig.chain][collateralToken.address].volumes.deposit as number) +=
+                    amountUsd;
                 } else {
                   (protocolData.volumes.withdraw as number) += amountUsd;
+                  (protocolData.breakdown[makerConfig.chain][collateralToken.address].volumes.withdraw as number) +=
+                    amountUsd;
                 }
               }
             }
@@ -309,6 +357,8 @@ export default class MakerAdapter extends ProtocolAdapter {
               if (event.args.ilk === gemConfig.ilk) {
                 const amountUsd = formatBigNumberToNumber(event.args.ink.toString(), 18) * collateralPriceUsd;
                 (protocolData.volumes.liquidation as number) += amountUsd;
+                (protocolData.breakdown[makerConfig.chain][collateralToken.address].volumes.liquidation as number) +=
+                  amountUsd;
               }
             }
           }
@@ -344,6 +394,8 @@ export default class MakerAdapter extends ProtocolAdapter {
 
         protocolData.totalAssetDeposited += collateralBalanceUsd;
         protocolData.totalValueLocked += collateralBalanceUsd;
+        protocolData.breakdown[makerConfig.chain][collateralToken.address].totalAssetDeposited += collateralBalanceUsd;
+        protocolData.breakdown[makerConfig.chain][collateralToken.address].totalValueLocked += collateralBalanceUsd;
 
         totalBorrowFees += collateralBalanceUsd * LitePsmUsdcModule.earningRate;
       }
@@ -453,12 +505,18 @@ export default class MakerAdapter extends ProtocolAdapter {
 
     // total fees were paid from DAI borrowers
     protocolData.totalFees += totalBorrowFees / TimeUnits.DaysPerYear;
+    protocolData.breakdown[makerConfig.chain][normalizeAddress(makerConfig.dai)].totalFees +=
+      totalBorrowFees / TimeUnits.DaysPerYear;
 
     // total fees were paid to DAI saving suppliders
     protocolData.supplySideRevenue += daiPayToSavingOneYear / TimeUnits.DaysPerYear;
+    protocolData.breakdown[makerConfig.chain][normalizeAddress(makerConfig.dai)].supplySideRevenue +=
+      daiPayToSavingOneYear / TimeUnits.DaysPerYear;
 
     // remaining fees will be collected by Maker
     protocolData.protocolRevenue += (totalBorrowFees - daiPayToSavingOneYear) / TimeUnits.DaysPerYear;
+    protocolData.breakdown[makerConfig.chain][normalizeAddress(makerConfig.dai)].protocolRevenue +=
+      (totalBorrowFees - daiPayToSavingOneYear) / TimeUnits.DaysPerYear;
 
     return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
   }
