@@ -9,6 +9,7 @@ import FraxlendPairV2Abi from '../../../configs/abi/frax/FraxlendPairV2.json';
 import FraxlendPairDeployerAbi from '../../../configs/abi/frax/FraxlendPairDeployer.json';
 import { formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
 import { TimeUnits } from '../../../configs/constants';
+import AdapterDataHelper from '../helpers';
 
 // const FraxPairEvents = {
 //   Deposit: '0xdcbc1c05240f31ff3ad067ef1ee35ce4997762752e3a095284754544f4c709d7',
@@ -185,6 +186,6 @@ export default class FraxlendAdapter extends ProtocolAdapter {
       }
     }
 
-    return protocolData;
+    return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
   }
 }

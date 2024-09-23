@@ -279,4 +279,9 @@ export default class OracleService extends CachingService implements IOracleServ
 
     return returnPrice;
   }
+
+  public async getTokenPriceUsdRounded(options: GetTokenPriceOptions): Promise<number> {
+    const rawPrice = await this.getTokenPriceUsd(options);
+    return rawPrice ? Number(rawPrice) : 0;
+  }
 }

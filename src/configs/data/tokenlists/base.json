@@ -89,6 +89,12 @@
     "decimals": 18,
     "address": "0x18a8bd1fe17a1bb9ffb39ecd83e9489cfd17a022"
   },
+  "0x18dd5b087bca9920562aff7a0199b96b9230438b": {
+    "chain": "base",
+    "symbol": "PRO",
+    "decimals": 8,
+    "address": "0x18dd5b087bca9920562aff7a0199b96b9230438b"
+  },
   "0x1bf77c0269e1af595421255acd7751dcd299d14b": {
     "chain": "base",
     "symbol": "DKC",
@@ -106,6 +112,12 @@
     "symbol": "NOTEAM",
     "decimals": 18,
     "address": "0x1d2665165a92bf8522cb432909d6f60e91f1bdaf"
+  },
+  "0x1f73eaf55d696bffa9b0ea16fa987b93b0f4d302": {
+    "chain": "base",
+    "symbol": "RPL",
+    "decimals": 18,
+    "address": "0x1f73eaf55d696bffa9b0ea16fa987b93b0f4d302"
   },
   "0x1fba65de0a9cbd2d1df82d141897042d36bb6c86": {
     "chain": "base",
@@ -196,6 +208,12 @@
     "symbol": "wBaseDOGE",
     "decimals": 18,
     "address": "0x373504da48418c67e6fcd071f33cb0b3b47613c7"
+  },
+  "0x37ab9f42051c112caaba55ab6487dd74286a0b29": {
+    "chain": "base",
+    "symbol": "KWENTA",
+    "decimals": 18,
+    "address": "0x37ab9f42051c112caaba55ab6487dd74286a0b29"
   },
   "0x38815a4455921667d673b4cb3d48f0383ee93400": {
     "chain": "base",
@@ -637,7 +655,7 @@
   },
   "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf": {
     "chain": "base",
-    "symbol": "cbBTC",
+    "symbol": "CBBTC",
     "decimals": 8,
     "address": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"
   },

@@ -6,9 +6,7 @@ import { GetProtocolDataOptions } from '../../../types/options';
 import ProtocolAdapter from '../protocol';
 import GPv2SettlementAbi from '../../../configs/abi/cowswap/GPv2Settlement.json';
 import { decodeEventLog } from 'viem';
-import { formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
-import { TokenDexBase } from '../../../configs';
-import logger from '../../../lib/logger';
+import { formatBigNumberToNumber } from '../../../lib/utils';
 
 const TradeEvent = '0xa07a543ab8a018198e99ca0184c93fe9050a79400a0a723441f84de1d972cc17';
 
@@ -28,7 +26,8 @@ export default class CowswapAdapter extends ProtocolAdapter {
       breakdown: {},
       ...getInitialProtocolCoreMetrics(),
       volumes: {
-        tokenSwap: 0,
+        sellToken: 0,
+        buyToken: 0,
       },
     };
 
@@ -48,6 +47,7 @@ export default class CowswapAdapter extends ProtocolAdapter {
         fromBlock: beginBlock,
         toBlock: endBlock,
       });
+
       for (const log of logs) {
         if (log.topics[0] === TradeEvent) {
           const event: any = decodeEventLog({
@@ -57,101 +57,68 @@ export default class CowswapAdapter extends ProtocolAdapter {
           });
 
           let amountUsd = 0;
-          let feesAmountUsd = 0;
+          let feesUsd = 0;
 
-          if (
-            TokenDexBase[settlementConfig.chain] &&
-            TokenDexBase[settlementConfig.chain].includes(normalizeAddress(event.args.sellToken))
-          ) {
-            const sellToken = await this.services.blockchain.evm.getTokenInfo({
-              chain: settlementConfig.chain,
-              address: event.args.sellToken,
+          const sellToken = await this.services.blockchain.evm.getTokenInfo({
+            chain: settlementConfig.chain,
+            address: event.args.sellToken,
+          });
+          const buyToken = await this.services.blockchain.evm.getTokenInfo({
+            chain: settlementConfig.chain,
+            address: event.args.buyToken,
+          });
+
+          if (sellToken && buyToken) {
+            const sellTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+              chain: sellToken.chain,
+              address: sellToken.address,
+              timestamp: options.timestamp,
             });
-            if (sellToken) {
-              const rawPrice = await this.services.oracle.getTokenPriceUsd({
-                chain: sellToken.chain,
-                address: sellToken.address,
-                timestamp: options.timestamp,
-              });
-              if (rawPrice) {
-                const sellTokenPriceUsd = rawPrice ? Number(rawPrice) : 0;
-                amountUsd =
-                  formatBigNumberToNumber(event.args.sellAmount.toString(), sellToken.decimals) * sellTokenPriceUsd;
-                feesAmountUsd =
-                  formatBigNumberToNumber(event.args.feeAmount.toString(), sellToken.decimals) * sellTokenPriceUsd;
-              }
-            }
-          } else if (
-            TokenDexBase[settlementConfig.chain] &&
-            TokenDexBase[settlementConfig.chain].includes(normalizeAddress(event.args.buyToken))
-          ) {
-            const buyToken = await this.services.blockchain.evm.getTokenInfo({
-              chain: settlementConfig.chain,
-              address: event.args.buyToken,
-            });
-            if (buyToken) {
-              const rawPrice = await this.services.oracle.getTokenPriceUsd({
+            amountUsd =
+              formatBigNumberToNumber(event.args.sellAmount.toString(), sellToken.decimals) * sellTokenPriceUsd;
+            feesUsd = formatBigNumberToNumber(event.args.feeAmount.toString(), sellToken.decimals) * sellTokenPriceUsd;
+
+            if (sellTokenPriceUsd === 0) {
+              const buyTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
                 chain: buyToken.chain,
                 address: buyToken.address,
                 timestamp: options.timestamp,
               });
-              if (rawPrice) {
-                const buyTokenPriceUsd = rawPrice ? Number(rawPrice) : 0;
-                amountUsd =
-                  formatBigNumberToNumber(event.args.buyAmount.toString(), buyToken.decimals) * buyTokenPriceUsd;
-              }
+              amountUsd =
+                formatBigNumberToNumber(event.args.buyAmount.toString(), buyToken.decimals) * buyTokenPriceUsd;
             }
-          } else {
-            let rawPrice = await this.services.oracle.getTokenPriceUsd({
-              chain: settlementConfig.chain,
-              address: event.args.sellToken,
-              timestamp: options.timestamp,
-            });
-            if (rawPrice) {
-              const sellToken = await this.services.blockchain.evm.getTokenInfo({
-                chain: settlementConfig.chain,
-                address: event.args.sellToken,
-              });
-              if (sellToken) {
-                const sellTokenPriceUsd = rawPrice ? Number(rawPrice) : 0;
-                amountUsd =
-                  formatBigNumberToNumber(event.args.sellAmount.toString(), sellToken.decimals) * sellTokenPriceUsd;
-                feesAmountUsd =
-                  formatBigNumberToNumber(event.args.feeAmount.toString(), sellToken.decimals) * sellTokenPriceUsd;
-              }
-            } else {
-              rawPrice = await this.services.oracle.getTokenPriceUsd({
-                chain: settlementConfig.chain,
-                address: event.args.buyToken,
-                timestamp: options.timestamp,
-              });
-              if (rawPrice) {
-                const buyToken = await this.services.blockchain.evm.getTokenInfo({
-                  chain: settlementConfig.chain,
-                  address: event.args.buyToken,
-                });
-                if (buyToken) {
-                  const buyTokenPriceUsd = rawPrice ? Number(rawPrice) : 0;
-                  amountUsd =
-                    formatBigNumberToNumber(event.args.sellAmount.toString(), buyToken.decimals) * buyTokenPriceUsd;
-                }
-              }
+
+            if (!protocolData.breakdown[sellToken.chain][sellToken.address]) {
+              protocolData.breakdown[sellToken.chain][sellToken.address] = {
+                ...getInitialProtocolCoreMetrics(),
+                volumes: {
+                  sellToken: 0,
+                  buyToken: 0,
+                },
+              };
             }
-          }
+            if (!protocolData.breakdown[buyToken.chain][buyToken.address]) {
+              protocolData.breakdown[buyToken.chain][buyToken.address] = {
+                ...getInitialProtocolCoreMetrics(),
+                volumes: {
+                  sellToken: 0,
+                  buyToken: 0,
+                },
+              };
+            }
 
-          if (amountUsd === 0) {
-            logger.warn('failed to calculate trade amount', {
-              service: this.name,
-              protocol: this.protocolConfig.protocol,
-              chain: settlementConfig.chain,
-              tx: log.transactionHash,
-            });
-          }
+            // fees collected from input tokens
+            protocolData.breakdown[sellToken.chain][sellToken.address].totalFees += feesUsd;
 
-          protocolData.totalFees += feesAmountUsd;
-          protocolData.protocolRevenue += feesAmountUsd;
-          protocolData.totalVolume += amountUsd;
-          (protocolData.volumes.tokenSwap as number) += amountUsd;
+            // buy/sell volumes
+            (protocolData.breakdown[sellToken.chain][sellToken.address].volumes.sellToken as number) += amountUsd;
+            (protocolData.breakdown[sellToken.chain][sellToken.address].volumes.buyToken as number) += amountUsd;
+
+            protocolData.totalFees += feesUsd;
+            protocolData.protocolRevenue += feesUsd;
+            (protocolData.volumes.buyToken as number) += amountUsd;
+            (protocolData.volumes.sellToken as number) += amountUsd;
+          }
         }
       }
     }

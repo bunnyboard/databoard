@@ -104,4 +104,8 @@ export const TokenBookDexBase = {
     '0x6a023ccd1ff6f2045c3309768ead9e68f978f6e1', // WETH
     '0x6c76971f98945ae98dd7d4dfca8711ebea946ea6', // wstETH
   ],
+  fantom: [
+    AddressE, // FTM
+    '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83', // WFTM
+  ],
 };

@@ -19,11 +19,11 @@ function formatLevel(entryLevel: string): string {
 }
 
 function formatService(service: string): string {
-  return service.padEnd(20);
+  return (service + ':').padEnd(20);
 }
 
 function formatMessage(message: string): string {
-  return message.padEnd(50);
+  return message.padEnd(40);
 }
 
 const customFormat = winston.format.printf((entry: any) => {
@@ -36,7 +36,7 @@ const customFormat = winston.format.printf((entry: any) => {
     }
   }
 
-  let logLine = `${formatLevel(entry.level)} ${('[' + entry.timestamp + ']').padStart(10)} ${formatService(service)} | ${formatMessage(entry.message)} ${
+  let logLine = `${formatLevel(entry.level)} ${('[' + entry.timestamp + ']').padStart(10)} ${formatService(service)} ${formatMessage(entry.message)} ${
     propsLine.length > 0 ? propsLine.slice(0, -1) : ''
   }`;
 

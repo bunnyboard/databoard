@@ -55,7 +55,7 @@ export class RunCommand extends BasicCommand {
         type: 'string',
         default: '',
         describe:
-          'Collect data of given protocol. You can pass a list of protocol seperated by comma, ex: --protocol "aavev3,uniswapv2".',
+          'Collect data of given protocol. You can pass a list of protocol seperated by comma, ex: --protocol "aave,uniswap".',
       },
       service: {
         type: 'string',

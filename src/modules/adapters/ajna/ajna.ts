@@ -11,6 +11,7 @@ import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
 import BigNumber from 'bignumber.js';
 import { decodeEventLog } from 'viem';
 import { TimeUnits } from '../../../configs/constants';
+import AdapterDataHelper from '../helpers';
 
 export const AjnaPoolEvents = {
   AddQuoteToken: '0x8b24a9808cf05d3d8e48ac09e4f649054994a88cfa657b3f4bf340b62137df1e',
@@ -277,20 +278,16 @@ export default class AjnaAdapter extends ProtocolAdapter {
                           const amountUsd =
                             formatBigNumberToNumber(event.args.amount.toString(), debtToken.decimals) * debtTokenPrice;
                           (protocolData.volumes.deposit as number) += amountUsd;
-                          protocolData.moneyFlowIn += amountUsd;
                           (protocolData.breakdown[factoryConfig.chain][debtToken.address].volumes.deposit as number) +=
                             amountUsd;
-                          protocolData.breakdown[factoryConfig.chain][debtToken.address].moneyFlowIn += amountUsd;
                           break;
                         }
                         case AjnaPoolEvents.RemoveQuoteToken: {
                           const amountUsd =
                             formatBigNumberToNumber(event.args.amount.toString(), debtToken.decimals) * debtTokenPrice;
                           (protocolData.volumes.withdraw as number) += amountUsd;
-                          protocolData.moneyFlowOut += amountUsd;
                           (protocolData.breakdown[factoryConfig.chain][debtToken.address].volumes.withdraw as number) +=
                             amountUsd;
-                          protocolData.breakdown[factoryConfig.chain][debtToken.address].moneyFlowOut += amountUsd;
                           break;
                         }
                         case AjnaPoolEvents.AddCollateral: {
@@ -298,10 +295,8 @@ export default class AjnaAdapter extends ProtocolAdapter {
                             formatBigNumberToNumber(event.args.amount.toString(), collateralToken.decimals) *
                             collateralTokenPrice;
                           (protocolData.volumes.deposit as number) += amountUsd;
-                          protocolData.moneyFlowIn += amountUsd;
                           (protocolData.breakdown[factoryConfig.chain][collateralToken.address].volumes
                             .deposit as number) += amountUsd;
-                          protocolData.breakdown[factoryConfig.chain][collateralToken.address].moneyFlowIn += amountUsd;
                           break;
                         }
                         case AjnaPoolEvents.RemoveCollateral: {
@@ -309,11 +304,9 @@ export default class AjnaAdapter extends ProtocolAdapter {
                             formatBigNumberToNumber(event.args.amount.toString(), collateralToken.decimals) *
                             collateralTokenPrice;
                           (protocolData.volumes.withdraw as number) += amountUsd;
-                          protocolData.moneyFlowOut += amountUsd;
                           (protocolData.breakdown[factoryConfig.chain][collateralToken.address].volumes
                             .withdraw as number) += amountUsd;
-                          protocolData.breakdown[factoryConfig.chain][collateralToken.address].moneyFlowOut +=
-                            amountUsd;
+                          amountUsd;
                           break;
                         }
                         case AjnaPoolEvents.DrawDebt: {
@@ -321,10 +314,8 @@ export default class AjnaAdapter extends ProtocolAdapter {
                             formatBigNumberToNumber(event.args.amountBorrowed.toString(), debtToken.decimals) *
                             debtTokenPrice;
                           (protocolData.volumes.borrow as number) += amountUsd;
-                          protocolData.moneyFlowOut += amountUsd;
                           (protocolData.breakdown[factoryConfig.chain][debtToken.address].volumes.borrow as number) +=
                             amountUsd;
-                          protocolData.breakdown[factoryConfig.chain][debtToken.address].moneyFlowOut += amountUsd;
                           break;
                         }
                         case AjnaPoolEvents.RepayDebt: {
@@ -332,30 +323,23 @@ export default class AjnaAdapter extends ProtocolAdapter {
                             formatBigNumberToNumber(event.args.quoteRepaid.toString(), debtToken.decimals) *
                             debtTokenPrice;
                           (protocolData.volumes.repay as number) += amountUsd;
-                          protocolData.moneyFlowIn += amountUsd;
                           (protocolData.breakdown[factoryConfig.chain][debtToken.address].volumes.repay as number) +=
                             amountUsd;
-                          protocolData.breakdown[factoryConfig.chain][debtToken.address].moneyFlowIn += amountUsd;
                           break;
                         }
                         case AjnaPoolEvents.Take: {
                           const repayAmountUsd =
                             formatBigNumberToNumber(event.args.amount.toString(), debtToken.decimals) * debtTokenPrice;
                           (protocolData.volumes.repay as number) += repayAmountUsd;
-                          protocolData.moneyFlowIn += repayAmountUsd;
                           (protocolData.breakdown[factoryConfig.chain][debtToken.address].volumes.repay as number) +=
                             repayAmountUsd;
-                          protocolData.breakdown[factoryConfig.chain][debtToken.address].moneyFlowIn += repayAmountUsd;
 
                           const collateralAmountUsd =
                             formatBigNumberToNumber(event.args.collateral.toString(), collateralToken.decimals) *
                             collateralTokenPrice;
                           (protocolData.volumes.liquidation as number) += collateralAmountUsd;
-                          protocolData.moneyFlowOut += collateralAmountUsd;
                           (protocolData.breakdown[factoryConfig.chain][collateralToken.address].volumes
                             .liquidation as number) += collateralAmountUsd;
-                          protocolData.breakdown[factoryConfig.chain][collateralToken.address].moneyFlowOut +=
-                            collateralAmountUsd;
                           break;
                         }
                       }
@@ -369,20 +353,6 @@ export default class AjnaAdapter extends ProtocolAdapter {
       }
     }
 
-    for (const value of Object.values(protocolData.volumes)) {
-      protocolData.totalVolume += value;
-      protocolData.moneyFlowNet = protocolData.moneyFlowIn - protocolData.moneyFlowOut;
-    }
-    for (const [chain, tokens] of Object.entries(protocolData.breakdown)) {
-      for (const [address, token] of Object.entries(tokens)) {
-        for (const value of Object.values(token.volumes)) {
-          protocolData.breakdown[chain][address].totalVolume += value;
-          protocolData.breakdown[chain][address].moneyFlowNet =
-            protocolData.breakdown[chain][address].moneyFlowIn - protocolData.breakdown[chain][address].moneyFlowOut;
-        }
-      }
-    }
-
-    return protocolData;
+    return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
   }
 }

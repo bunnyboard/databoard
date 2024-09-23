@@ -13,6 +13,7 @@ import PriceOracleAbi from '../../../configs/abi/curve/PriceOracle.json';
 import { formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
 import { TimeUnits } from '../../../configs/constants';
 import { decodeEventLog } from 'viem';
+import AdapterDataHelper from '../helpers';
 
 const VaultEvents = {
   Deposit: '0xdcbc1c05240f31ff3ad067ef1ee35ce4997762752e3a095284754544f4c709d7',
@@ -379,30 +380,6 @@ export default class CurvelendAdapter extends ProtocolAdapter {
       }
     }
 
-    protocolData.moneyFlowIn = (protocolData.volumes.deposit as number) + (protocolData.volumes.repay as number);
-    protocolData.moneyFlowOut =
-      (protocolData.volumes.withdraw as number) +
-      (protocolData.volumes.borrow as number) +
-      (protocolData.volumes.liquidation as number);
-    protocolData.moneyFlowNet = protocolData.moneyFlowIn - protocolData.moneyFlowOut;
-    for (const value of Object.values(protocolData.volumes)) {
-      protocolData.totalVolume += value;
-    }
-
-    // process tokens breakdown
-    for (const [chain, tokens] of Object.entries(protocolData.breakdown)) {
-      for (const [address, token] of Object.entries(tokens)) {
-        protocolData.breakdown[chain][address].moneyFlowIn =
-          (token.volumes.deposit as number) + (token.volumes.repay as number);
-        protocolData.breakdown[chain][address].moneyFlowOut =
-          (token.volumes.withdraw as number) + (token.volumes.borrow as number) + (token.volumes.liquidation as number);
-        protocolData.breakdown[chain][address].moneyFlowNet = token.moneyFlowIn - token.moneyFlowOut;
-        for (const value of Object.values(token.volumes)) {
-          protocolData.breakdown[chain][address].totalVolume += value;
-        }
-      }
-    }
-
-    return protocolData;
+    return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
   }
 }

@@ -94,13 +94,6 @@ export default class BlockchainService extends CachingService implements IBlockc
 
     // query on-chain data
     try {
-      if (!onchain) {
-        logger.warn('token not in the config list', {
-          service: this.name,
-          chain: chain,
-          address: address,
-        });
-      }
       const [symbol, decimals] = await this.multicall({
         chain: chain,
         calls: [

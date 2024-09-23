@@ -5,6 +5,7 @@ import { AaveConfigs } from './protocols/aave';
 import { AjnaConfigs } from './protocols/ajna';
 import { AvalonConfigs } from './protocols/avalon';
 import { BenqiConfigs } from './protocols/benqi';
+import { BungeeConfigs } from './protocols/bungee';
 import { ColendConfigs } from './protocols/colend';
 import { CompoundConfigs } from './protocols/compound';
 import { CowswapConfigs } from './protocols/cowswap';
@@ -97,6 +98,7 @@ export const ProtocolConfigs = {
   curveusd: CurveusdConfigs,
   curvelend: CurvelendConfigs,
   spooky: SpookyConfigs,
+  bungee: BungeeConfigs,
 };
 
 export const ChainConfigs = ChainBoardConfigs;
