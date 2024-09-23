@@ -276,5 +276,17 @@ export const AaveConfigs: AaveProtocolConfig = {
         address: '0x04421D8C506E2fA2371a08EfAaBf791F624054F3',
       },
     },
+    {
+      chain: ChainNames.zksync,
+      marketName: 'Main Market',
+      version: 3,
+      birthday: 1725840000, // Mon Sep 09 2024 00:00:00 GMT+0000
+      lendingPool: '0x78e30497a3c7527d953c6B1E3541b021A98Ac43c',
+      dataProvider: '0x48B96565291d1B23a014bb9f68E07F4B2bb3Cd6D',
+      oracle: {
+        currency: 'usd',
+        address: '0xC7F58Fca663a8d377B6D0c9703C697f56dC40088',
+      },
+    },
   ],
 };
