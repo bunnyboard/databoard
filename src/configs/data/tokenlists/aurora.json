@@ -1,14 +1,488 @@
 {
+  "0x0000000000000000000000000000000000000000": {
+    "chain": "aurora",
+    "symbol": "ETH",
+    "decimals": 18,
+    "address": "0x0000000000000000000000000000000000000000"
+  },
+  "0x026dda7f0f0a2e42163c9c80d2a5b6958e35fc49": {
+    "chain": "aurora",
+    "symbol": "CRF",
+    "decimals": 18,
+    "address": "0x026dda7f0f0a2e42163c9c80d2a5b6958e35fc49"
+  },
+  "0x07b2055fbd17b601c780aeb3abf4c2b3a30c7aae": {
+    "chain": "aurora",
+    "symbol": "OIN",
+    "decimals": 8,
+    "address": "0x07b2055fbd17b601c780aeb3abf4c2b3a30c7aae"
+  },
+  "0x07f9f7f963c5cd2bbffd30ccfb964be114332e30": {
+    "chain": "aurora",
+    "symbol": "STNEAR",
+    "decimals": 24,
+    "address": "0x07f9f7f963c5cd2bbffd30ccfb964be114332e30"
+  },
+  "0x098d5b6a26bca1d71f2335805d71b244f94e8a5f": {
+    "chain": "aurora",
+    "symbol": "UST",
+    "decimals": 18,
+    "address": "0x098d5b6a26bca1d71f2335805d71b244f94e8a5f"
+  },
+  "0x0f00576d07b594bdc1caf44b6014a6a02e5afd48": {
+    "chain": "aurora",
+    "symbol": "SOL",
+    "decimals": 18,
+    "address": "0x0f00576d07b594bdc1caf44b6014a6a02e5afd48"
+  },
+  "0x0fad0ed848a7a16526e8a7574e418b015dbf41b5": {
+    "chain": "aurora",
+    "symbol": "PAD",
+    "decimals": 18,
+    "address": "0x0fad0ed848a7a16526e8a7574e418b015dbf41b5"
+  },
+  "0x130e6203f05805cd8c44093a53c7b50775eb4ca3": {
+    "chain": "aurora",
+    "symbol": "BIVE",
+    "decimals": 4,
+    "address": "0x130e6203f05805cd8c44093a53c7b50775eb4ca3"
+  },
+  "0x17bc24b9bdd8a3e7486e3c3458a5954412f2ff60": {
+    "chain": "aurora",
+    "symbol": "VRA",
+    "decimals": 4,
+    "address": "0x17bc24b9bdd8a3e7486e3c3458a5954412f2ff60"
+  },
+  "0x18921f1e257038e538ba24d49fa6495c8b1617bc": {
+    "chain": "aurora",
+    "symbol": "REN",
+    "decimals": 18,
+    "address": "0x18921f1e257038e538ba24d49fa6495c8b1617bc"
+  },
+  "0x1bc741235ec0ee86ad488fa49b69bb6c823ee7b7": {
+    "chain": "aurora",
+    "symbol": "UNI",
+    "decimals": 18,
+    "address": "0x1bc741235ec0ee86ad488fa49b69bb6c823ee7b7"
+  },
+  "0x1bda7007c9e3bc33267e883864137af8eb53cc2d": {
+    "chain": "aurora",
+    "symbol": "SOLACE",
+    "decimals": 18,
+    "address": "0x1bda7007c9e3bc33267e883864137af8eb53cc2d"
+  },
+  "0x1d1f82d8b8fc72f29a8c268285347563cb6cd8b3": {
+    "chain": "aurora",
+    "symbol": "MKR",
+    "decimals": 18,
+    "address": "0x1d1f82d8b8fc72f29a8c268285347563cb6cd8b3"
+  },
+  "0x221292443758f63563a1ed04b547278b05845fcb": {
+    "chain": "aurora",
+    "symbol": "REF",
+    "decimals": 18,
+    "address": "0x221292443758f63563a1ed04b547278b05845fcb"
+  },
+  "0x25e801eb75859ba4052c4ac4233cec0264eadf8c": {
+    "chain": "aurora",
+    "symbol": "LUNAR",
+    "decimals": 18,
+    "address": "0x25e801eb75859ba4052c4ac4233cec0264eadf8c"
+  },
+  "0x291c8fceaca3342b29cc36171deb98106f712c66": {
+    "chain": "aurora",
+    "symbol": "PICKLE",
+    "decimals": 18,
+    "address": "0x291c8fceaca3342b29cc36171deb98106f712c66"
+  },
+  "0x293074789b247cab05357b08052468b5d7a23c5a": {
+    "chain": "aurora",
+    "symbol": "AUSDO",
+    "decimals": 8,
+    "address": "0x293074789b247cab05357b08052468b5d7a23c5a"
+  },
+  "0x2b9025aecc5ce7a8e6880d3e9c6e458927ecba04": {
+    "chain": "aurora",
+    "symbol": "BAT",
+    "decimals": 18,
+    "address": "0x2b9025aecc5ce7a8e6880d3e9c6e458927ecba04"
+  },
+  "0x2bae00c8bc1868a5f7a216e881bae9e662630111": {
+    "chain": "aurora",
+    "symbol": "ABR",
+    "decimals": 18,
+    "address": "0x2bae00c8bc1868a5f7a216e881bae9e662630111"
+  },
+  "0x4148d2ce7816f0ae378d98b40eb3a7211e1fcf0d": {
+    "chain": "aurora",
+    "symbol": "BBT",
+    "decimals": 18,
+    "address": "0x4148d2ce7816f0ae378d98b40eb3a7211e1fcf0d"
+  },
+  "0x449f661c53ae0611a24c2883a910a563a7e42489": {
+    "chain": "aurora",
+    "symbol": "NNECC",
+    "decimals": 18,
+    "address": "0x449f661c53ae0611a24c2883a910a563a7e42489"
+  },
   "0x4988a896b1227218e4a686fde5eabdcabd91571f": {
     "chain": "aurora",
     "symbol": "USDT",
     "decimals": 6,
     "address": "0x4988a896b1227218e4a686fde5eabdcabd91571f"
   },
+  "0x4e834cdcc911605227eedddb89fad336ab9dc00a": {
+    "chain": "aurora",
+    "symbol": "AAVE",
+    "decimals": 18,
+    "address": "0x4e834cdcc911605227eedddb89fad336ab9dc00a"
+  },
+  "0x5454ba0a9e3552f7828616d80a9d2d869726e6f5": {
+    "chain": "aurora",
+    "symbol": "TUSD",
+    "decimals": 18,
+    "address": "0x5454ba0a9e3552f7828616d80a9d2d869726e6f5"
+  },
+  "0x5ac53f985ea80c6af769b9272f35f122201d0f56": {
+    "chain": "aurora",
+    "symbol": "HAK",
+    "decimals": 18,
+    "address": "0x5ac53f985ea80c6af769b9272f35f122201d0f56"
+  },
+  "0x5c92a4a7f59a9484afd79dbe251ad2380e589783": {
+    "chain": "aurora",
+    "symbol": "ABBUSD",
+    "decimals": 18,
+    "address": "0x5c92a4a7f59a9484afd79dbe251ad2380e589783"
+  },
+  "0x5ce9f0b6afb36135b5ddbf11705ceb65e634a9dc": {
+    "chain": "aurora",
+    "symbol": "ATUST",
+    "decimals": 18,
+    "address": "0x5ce9f0b6afb36135b5ddbf11705ceb65e634a9dc"
+  },
+  "0x6454e4a4891c6b78a5a85304d34558dda5f3d6d8": {
+    "chain": "aurora",
+    "symbol": "JUMBO",
+    "decimals": 18,
+    "address": "0x6454e4a4891c6b78a5a85304d34558dda5f3d6d8"
+  },
+  "0x6eba841f1201ffdde7ddc2ba995d3308f6c4aea0": {
+    "chain": "aurora",
+    "symbol": "NECC",
+    "decimals": 9,
+    "address": "0x6eba841f1201ffdde7ddc2ba995d3308f6c4aea0"
+  },
+  "0x74974575d2f1668c63036d51ff48dbaa68e52408": {
+    "chain": "aurora",
+    "symbol": "MODA",
+    "decimals": 18,
+    "address": "0x74974575d2f1668c63036d51ff48dbaa68e52408"
+  },
+  "0x7821c773a12485b12a2b5b7bc451c3eb200986b1": {
+    "chain": "aurora",
+    "symbol": "SUSHI",
+    "decimals": 18,
+    "address": "0x7821c773a12485b12a2b5b7bc451c3eb200986b1"
+  },
+  "0x7ca1c28663b76cfde424a9494555b94846205585": {
+    "chain": "aurora",
+    "symbol": "XNL",
+    "decimals": 18,
+    "address": "0x7ca1c28663b76cfde424a9494555b94846205585"
+  },
+  "0x7faa64faf54750a2e3ee621166635feaf406ab22": {
+    "chain": "aurora",
+    "symbol": "WANNA",
+    "decimals": 18,
+    "address": "0x7faa64faf54750a2e3ee621166635feaf406ab22"
+  },
+  "0x802119e4e253d5c19aa06a5d567c5a41596d6803": {
+    "chain": "aurora",
+    "symbol": "XTRI",
+    "decimals": 18,
+    "address": "0x802119e4e253d5c19aa06a5d567c5a41596d6803"
+  },
+  "0x8828a5047d093f6354e3fe29ffcb2761300dc994": {
+    "chain": "aurora",
+    "symbol": "PULSE",
+    "decimals": 18,
+    "address": "0x8828a5047d093f6354e3fe29ffcb2761300dc994"
+  },
+  "0x885f8cf6e45bdd3fdcdc644efdcd0ac93880c781": {
+    "chain": "aurora",
+    "symbol": "PAD",
+    "decimals": 18,
+    "address": "0x885f8cf6e45bdd3fdcdc644efdcd0ac93880c781"
+  },
+  "0x8973c9ec7b79fe880697cdbca744892682764c37": {
+    "chain": "aurora",
+    "symbol": "BAKED",
+    "decimals": 18,
+    "address": "0x8973c9ec7b79fe880697cdbca744892682764c37"
+  },
+  "0x8bec47865ade3b172a928df8f990bc7f2a3b9f79": {
+    "chain": "aurora",
+    "symbol": "AURORA",
+    "decimals": 18,
+    "address": "0x8bec47865ade3b172a928df8f990bc7f2a3b9f79"
+  },
+  "0x90eb16621274fb47a071001fbbf7550948874cb5": {
+    "chain": "aurora",
+    "symbol": "NFD",
+    "decimals": 18,
+    "address": "0x90eb16621274fb47a071001fbbf7550948874cb5"
+  },
+  "0x94190d8ef039c670c6d6b9990142e0ce2a1e3178": {
+    "chain": "aurora",
+    "symbol": "LINK",
+    "decimals": 18,
+    "address": "0x94190d8ef039c670c6d6b9990142e0ce2a1e3178"
+  },
+  "0x943f4bf75d5854e92140403255a471950ab8a26f": {
+    "chain": "aurora",
+    "symbol": "HAPI",
+    "decimals": 18,
+    "address": "0x943f4bf75d5854e92140403255a471950ab8a26f"
+  },
+  "0x951cfdc9544b726872a8faf56792ef6704731aae": {
+    "chain": "aurora",
+    "symbol": "OCT",
+    "decimals": 18,
+    "address": "0x951cfdc9544b726872a8faf56792ef6704731aae"
+  },
+  "0x984c2505a14da732d7271416356f535953610340": {
+    "chain": "aurora",
+    "symbol": "UMINT",
+    "decimals": 18,
+    "address": "0x984c2505a14da732d7271416356f535953610340"
+  },
+  "0x99ec8f13b2afef5ec49073b9d20df109d25f78c0": {
+    "chain": "aurora",
+    "symbol": "WOO",
+    "decimals": 18,
+    "address": "0x99ec8f13b2afef5ec49073b9d20df109d25f78c0"
+  },
+  "0x9d6fc90b25976e40adad5a3edd08af9ed7a21729": {
+    "chain": "aurora",
+    "symbol": "SPOLAR",
+    "decimals": 18,
+    "address": "0x9d6fc90b25976e40adad5a3edd08af9ed7a21729"
+  },
+  "0x9f1f933c660a1dc856f0e0fe058435879c5ccef0": {
+    "chain": "aurora",
+    "symbol": "BSTN",
+    "decimals": 18,
+    "address": "0x9f1f933c660a1dc856f0e0fe058435879c5ccef0"
+  },
+  "0xa33c3b53694419824722c10d99ad7cb16ea62754": {
+    "chain": "aurora",
+    "symbol": "MECHA",
+    "decimals": 18,
+    "address": "0xa33c3b53694419824722c10d99ad7cb16ea62754"
+  },
+  "0xa64514a8af3ff7366ad3d5daa5a548eefcef85e0": {
+    "chain": "aurora",
+    "symbol": "YFI",
+    "decimals": 18,
+    "address": "0xa64514a8af3ff7366ad3d5daa5a548eefcef85e0"
+  },
+  "0xabe9818c5fb5e751c4310be6f0f18c8d85f9bd7f": {
+    "chain": "aurora",
+    "symbol": "CREAM",
+    "decimals": 18,
+    "address": "0xabe9818c5fb5e751c4310be6f0f18c8d85f9bd7f"
+  },
   "0xb12bfca5a55806aaf64e99521918a4bf0fc40802": {
     "chain": "aurora",
     "symbol": "USDC",
     "decimals": 6,
     "address": "0xb12bfca5a55806aaf64e99521918a4bf0fc40802"
+  },
+  "0xb4530aa877d25e51c18677753acd80ffa54009b2": {
+    "chain": "aurora",
+    "symbol": "AVRIT",
+    "decimals": 18,
+    "address": "0xb4530aa877d25e51c18677753acd80ffa54009b2"
+  },
+  "0xb59d0fdaf498182ff19c4e80c00ecfc4470926e2": {
+    "chain": "aurora",
+    "symbol": "BAL",
+    "decimals": 18,
+    "address": "0xb59d0fdaf498182ff19c4e80c00ecfc4470926e2"
+  },
+  "0xb7e3617adb58dc34068522bd20cfe1660780b750": {
+    "chain": "aurora",
+    "symbol": "ANGLE",
+    "decimals": 18,
+    "address": "0xb7e3617adb58dc34068522bd20cfe1660780b750"
+  },
+  "0xbb8831701e68b99616bf940b7dafbeb4cdb23e0b": {
+    "chain": "aurora",
+    "symbol": "FXS",
+    "decimals": 18,
+    "address": "0xbb8831701e68b99616bf940b7dafbeb4cdb23e0b"
+  },
+  "0xc21ff01229e982d7c8b8691163b0a3cb8f357453": {
+    "chain": "aurora",
+    "symbol": "$META",
+    "decimals": 24,
+    "address": "0xc21ff01229e982d7c8b8691163b0a3cb8f357453"
+  },
+  "0xc2aa4b56e325266e32582f5f5cece7e88f0c11d2": {
+    "chain": "aurora",
+    "symbol": "PACHA",
+    "decimals": 18,
+    "address": "0xc2aa4b56e325266e32582f5f5cece7e88f0c11d2"
+  },
+  "0xc42c30ac6cc15fac9bd938618bcaa1a1fae8501d": {
+    "chain": "aurora",
+    "symbol": "WNEAR",
+    "decimals": 24,
+    "address": "0xc42c30ac6cc15fac9bd938618bcaa1a1fae8501d"
+  },
+  "0xc4bdd27c33ec7daa6fcfd8532ddb524bf4038096": {
+    "chain": "aurora",
+    "symbol": "ATLUNA",
+    "decimals": 18,
+    "address": "0xc4bdd27c33ec7daa6fcfd8532ddb524bf4038096"
+  },
+  "0xc86ca2bb9c9c9c9f140d832de00bfa9e153fa1e3": {
+    "chain": "aurora",
+    "symbol": "NDOL",
+    "decimals": 18,
+    "address": "0xc86ca2bb9c9c9c9f140d832de00bfa9e153fa1e3"
+  },
+  "0xc8fdd32e0bf33f0396a18209188bb8c6fb8747d2": {
+    "chain": "aurora",
+    "symbol": "FXS",
+    "decimals": 18,
+    "address": "0xc8fdd32e0bf33f0396a18209188bb8c6fb8747d2"
+  },
+  "0xd126b48c072f4668e944a8895bc74044d5f2e85b": {
+    "chain": "aurora",
+    "symbol": "MNFT",
+    "decimals": 18,
+    "address": "0xd126b48c072f4668e944a8895bc74044d5f2e85b"
+  },
+  "0xd5c997724e4b5756d08e6464c01afbc5f6397236": {
+    "chain": "aurora",
+    "symbol": "FAME",
+    "decimals": 18,
+    "address": "0xd5c997724e4b5756d08e6464c01afbc5f6397236"
+  },
+  "0xd9a4c034e69e5162ac02bec627475470a53c9a14": {
+    "chain": "aurora",
+    "symbol": "RMC",
+    "decimals": 18,
+    "address": "0xd9a4c034e69e5162ac02bec627475470a53c9a14"
+  },
+  "0xda2585430fef327ad8ee44af8f1f989a2a91a3d2": {
+    "chain": "aurora",
+    "symbol": "FRAX",
+    "decimals": 18,
+    "address": "0xda2585430fef327ad8ee44af8f1f989a2a91a3d2"
+  },
+  "0xdc7acde9ff18b4d189010a21a44ce51ec874ea7c": {
+    "chain": "aurora",
+    "symbol": "AGEUR",
+    "decimals": 18,
+    "address": "0xdc7acde9ff18b4d189010a21a44ce51ec874ea7c"
+  },
+  "0xdc9be1ff012d3c6da818d136a3b2e5fdd4442f74": {
+    "chain": "aurora",
+    "symbol": "SNX",
+    "decimals": 18,
+    "address": "0xdc9be1ff012d3c6da818d136a3b2e5fdd4442f74"
+  },
+  "0xdeacf0faa2b80af41470003b5f6cd113d47b4dcd": {
+    "chain": "aurora",
+    "symbol": "COMP",
+    "decimals": 18,
+    "address": "0xdeacf0faa2b80af41470003b5f6cd113d47b4dcd"
+  },
+  "0xdfa46478f9e5ea86d57387849598dbfb2e964b02": {
+    "chain": "aurora",
+    "symbol": "MIMATIC",
+    "decimals": 18,
+    "address": "0xdfa46478f9e5ea86d57387849598dbfb2e964b02"
+  },
+  "0xe301ed8c7630c9678c39e4e45193d1e7dfb914f7": {
+    "chain": "aurora",
+    "symbol": "DODO",
+    "decimals": 18,
+    "address": "0xe301ed8c7630c9678c39e4e45193d1e7dfb914f7"
+  },
+  "0xe3520349f477a5f6eb06107066048508498a291b": {
+    "chain": "aurora",
+    "symbol": "DAI",
+    "decimals": 18,
+    "address": "0xe3520349f477a5f6eb06107066048508498a291b"
+  },
+  "0xe4b9e004389d91e4134a28f19bd833cba1d994b6": {
+    "chain": "aurora",
+    "symbol": "FRAX",
+    "decimals": 18,
+    "address": "0xe4b9e004389d91e4134a28f19bd833cba1d994b6"
+  },
+  "0xe4baf0af161bf03434d1c5a53957981493c12c99": {
+    "chain": "aurora",
+    "symbol": "BHOME",
+    "decimals": 6,
+    "address": "0xe4baf0af161bf03434d1c5a53957981493c12c99"
+  },
+  "0xe4eb03598f4dcab740331fa432f4b85ff58aa97e": {
+    "chain": "aurora",
+    "symbol": "KSW",
+    "decimals": 18,
+    "address": "0xe4eb03598f4dcab740331fa432f4b85ff58aa97e"
+  },
+  "0xea62791aa682d455614eaa2a12ba3d9a2fd197af": {
+    "chain": "aurora",
+    "symbol": "FLX",
+    "decimals": 18,
+    "address": "0xea62791aa682d455614eaa2a12ba3d9a2fd197af"
+  },
+  "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee": {
+    "chain": "aurora",
+    "symbol": "ETH",
+    "decimals": 18,
+    "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+  },
+  "0xf0f3b9eee32b1f490a4b8720cf6f005d4ae9ea86": {
+    "chain": "aurora",
+    "symbol": "POLAR",
+    "decimals": 18,
+    "address": "0xf0f3b9eee32b1f490a4b8720cf6f005d4ae9ea86"
+  },
+  "0xf34d508bac379825255cc80f66cbc89dfeff92e4": {
+    "chain": "aurora",
+    "symbol": "WSTR",
+    "decimals": 18,
+    "address": "0xf34d508bac379825255cc80f66cbc89dfeff92e4"
+  },
+  "0xf4eb217ba2454613b15dbdea6e5f22276410e89e": {
+    "chain": "aurora",
+    "symbol": "WBTC",
+    "decimals": 8,
+    "address": "0xf4eb217ba2454613b15dbdea6e5f22276410e89e"
+  },
+  "0xfa94348467f64d5a457f75f8bc40495d33c65abb": {
+    "chain": "aurora",
+    "symbol": "TRI",
+    "decimals": 18,
+    "address": "0xfa94348467f64d5a457f75f8bc40495d33c65abb"
+  },
+  "0xfbd1d8dce2f97bc14239fd507183b98ff1354b39": {
+    "chain": "aurora",
+    "symbol": "DLTA",
+    "decimals": 18,
+    "address": "0xfbd1d8dce2f97bc14239fd507183b98ff1354b39"
+  },
+  "0xfca152a9916895bf564e3f26a611f9e1e6aa6e73": {
+    "chain": "aurora",
+    "symbol": "LUNA",
+    "decimals": 18,
+    "address": "0xfca152a9916895bf564e3f26a611f9e1e6aa6e73"
   }
 }

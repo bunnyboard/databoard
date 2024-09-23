@@ -1901,6 +1901,12 @@
     "decimals": 18,
     "address": "0x070a9867ea49ce7afc4505817204860e823489fe"
   },
+  "0x07145ad7c7351c6fe86b6b841fc9bed74eb475a7": {
+    "chain": "bnbchain",
+    "symbol": "MUXLP",
+    "decimals": 18,
+    "address": "0x07145ad7c7351c6fe86b6b841fc9bed74eb475a7"
+  },
   "0x07190f3b51176daab89c715a22199258a440eceb": {
     "chain": "bnbchain",
     "symbol": "G9",
@@ -15709,7 +15715,7 @@
   },
   "0x3c037c4c2296f280bb318d725d0b454b76c199b9": {
     "chain": "bnbchain",
-    "symbol": "JNTR/b",
+    "symbol": "JNTR/B",
     "decimals": 18,
     "address": "0x3c037c4c2296f280bb318d725d0b454b76c199b9"
   },
@@ -21931,7 +21937,7 @@
   },
   "0x541e619858737031a1244a5d0cd47e5ef480342c": {
     "chain": "bnbchain",
-    "symbol": "wSOTE",
+    "symbol": "WSOTE",
     "decimals": 18,
     "address": "0x541e619858737031a1244a5d0cd47e5ef480342c"
   },
@@ -26623,7 +26629,7 @@
   },
   "0x66eff5221ca926636224650fd3b9c497ff828f7d": {
     "chain": "bnbchain",
-    "symbol": "sSPELL",
+    "symbol": "SSPELL",
     "decimals": 18,
     "address": "0x66eff5221ca926636224650fd3b9c497ff828f7d"
   },
@@ -34441,7 +34447,7 @@
   },
   "0x8506560320826e459f356cb56ccf721da8875414": {
     "chain": "bnbchain",
-    "symbol": "nICE",
+    "symbol": "NICE",
     "decimals": 18,
     "address": "0x8506560320826e459f356cb56ccf721da8875414"
   },
@@ -39529,7 +39535,7 @@
   },
   "0x988c11625472340b7b36ff1534893780e0d8d841": {
     "chain": "bnbchain",
-    "symbol": "wCCX",
+    "symbol": "WCCX",
     "decimals": 6,
     "address": "0x988c11625472340b7b36ff1534893780e0d8d841"
   },

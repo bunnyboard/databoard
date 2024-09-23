@@ -6,8 +6,12 @@ import ERC20Abi from '../../configs/abi/ERC20.json';
 import UniswapV3PoolAbi from '../../configs/abi/uniswap/UniswapV3Pool.json';
 import { normalizeAddress } from '../../lib/utils';
 import BlockchainService from '../../services/blockchains/blockchain';
-import { LiquidityPoolConfig, Token } from '../../types/base';
+import { Token } from '../../types/base';
 import { OracleSourcePool2 } from '../../types/oracles';
+
+export interface LiquidityPoolConfig extends Token {
+  tokens: Array<Token>;
+}
 
 export default class UniswapLibs {
   public static async getPool2Constant(chain: string, address: string): Promise<LiquidityPoolConfig | null> {

@@ -26,4 +26,7 @@ export interface IOracleService {
   // this function will get the base token price in usd
   // in case the base token is not usd
   getTokenPriceUsd: (options: GetTokenPriceOptions) => Promise<string | null>;
+
+  // same as getTokenPriceUsd but return number type
+  getTokenPriceUsdRounded: (options: GetTokenPriceOptions) => Promise<number>;
 }

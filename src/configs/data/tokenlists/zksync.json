@@ -71,6 +71,12 @@
     "decimals": 18,
     "address": "0x244c238325fc1bdf6eded726ee1b47d55895d944"
   },
+  "0x28a487240e4d45cff4a2980d334cc933b7483842": {
+    "chain": "zksync",
+    "symbol": "MATIC",
+    "decimals": 18,
+    "address": "0x28a487240e4d45cff4a2980d334cc933b7483842"
+  },
   "0x2b64237277c605d07f17b96f9627712340c32981": {
     "chain": "zksync",
     "symbol": "ZGEM",
@@ -239,6 +245,12 @@
     "decimals": 18,
     "address": "0x61b41e0244133b9c9c47a57e51a5ef70be2c5dd4"
   },
+  "0x6a5279e99ca7786fb13f827fc1fb4f61684933d6": {
+    "chain": "zksync",
+    "symbol": "AVAX",
+    "decimals": 18,
+    "address": "0x6a5279e99ca7786fb13f827fc1fb4f61684933d6"
+  },
   "0x6ee46cb7cd2f15ee1ec9534cf29a5b51c83283e6": {
     "chain": "zksync",
     "symbol": "KNC",
@@ -256,6 +268,12 @@
     "symbol": "BLT",
     "decimals": 18,
     "address": "0x71fd7dfa7db7094e0f857ad3040f1afef76fef85"
+  },
+  "0x7400793aad94c8ca801aa036357d10f5fd0ce08f": {
+    "chain": "zksync",
+    "symbol": "BNB",
+    "decimals": 18,
+    "address": "0x7400793aad94c8ca801aa036357d10f5fd0ce08f"
   },
   "0x75c568a970e54a075b2a5475264cfcff672d2b89": {
     "chain": "zksync",
@@ -601,7 +619,7 @@
   },
   "0xfc7e56298657b002b3e656400e746b7212912757": {
     "chain": "zksync",
-    "symbol": "ZKUSD",
+    "symbol": "zkUSD",
     "decimals": 6,
     "address": "0xfc7e56298657b002b3e656400e746b7212912757"
   },

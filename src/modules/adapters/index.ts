@@ -3,6 +3,7 @@ import { ContextServices, ContextStorages, IProtocolAdapter } from '../../types/
 import AaveAdapter from './aave/aave';
 import AjnaAdapter from './ajna/ajna';
 import BenqiAdapter from './benqi/benqi';
+import BungeeAdapter from './bungee/bungee';
 import CompoundAdapter from './compound/compound';
 import CowswapAdapter from './cowswap/cowswap';
 import CurvelendAdapter from './curve/curvelend';
@@ -65,5 +66,6 @@ export function getProtocolAdapters(
     curveusd: new CurveusdAdapter(services, storages, ProtocolConfigs.curveusd),
     curvelend: new CurvelendAdapter(services, storages, ProtocolConfigs.curvelend),
     spooky: new SpookyAdapter(services, storages, ProtocolConfigs.spooky),
+    bungee: new BungeeAdapter(services, storages, ProtocolConfigs.bungee),
   };
 }

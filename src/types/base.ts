@@ -2,6 +2,7 @@ export const ProtocolCategories = {
   lending: 'lending',
   dex: 'dex',
   liquidStaking: 'liquidStaking',
+  bridge: 'bridge',
 };
 
 const AllProtocolCategories = Object.values(ProtocolCategories);
@@ -36,8 +37,4 @@ export interface ProtocolConfig {
 
   // timestamp when protocol was deployed
   birthday: number;
-}
-
-export interface LiquidityPoolConfig extends Token {
-  tokens: Array<Token>;
 }

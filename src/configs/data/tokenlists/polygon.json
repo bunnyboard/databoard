@@ -1163,6 +1163,12 @@
     "decimals": 18,
     "address": "0x85955046df4668e1dd369d2de9f3aeb98dd2a369"
   },
+  "0x874e178a2f3f3f9d34db862453cd756e7eab0381": {
+    "chain": "polygon",
+    "symbol": "GFI",
+    "decimals": 18,
+    "address": "0x874e178a2f3f3f9d34db862453cd756e7eab0381"
+  },
   "0x89c296be2f904f3e99a6125815b4b78f5388d2dd": {
     "chain": "polygon",
     "symbol": "RCN",

@@ -997,4 +997,52 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv3List.AUSD_USDT],
   },
+  PSTAKE: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.PSTAKE_USDC],
+  },
+  PRO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.PRO_WETH],
+  },
+  DF: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.DF_USX],
+  },
+  KWENTA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.KWENTA_WETH],
+  },
+  ZRO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ZRO_WETH],
+  },
+  BURGER: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.BURGER_USDT],
+  },
+  DRIP: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.DRIP_BUSD],
+  },
+  ZK: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ZK_WETH],
+  },
+  TRADE: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.TRADE_USDT],
+  },
+  FET: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.FET_WETH],
+  },
+  STRK: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.STRK_WETH],
+  },
+  OPTIMUS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.OPTIMUS_WETH],
+  },
 };

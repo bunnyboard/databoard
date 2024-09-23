@@ -89,6 +89,12 @@
     "decimals": 8,
     "address": "0x078f358208685046a11c85e8ad32895ded33a249"
   },
+  "0x0802d66f029c46e042b74d543fc43b6705ccb4ba": {
+    "chain": "avalanche",
+    "symbol": "APE",
+    "decimals": 18,
+    "address": "0x0802d66f029c46e042b74d543fc43b6705ccb4ba"
+  },
   "0x089d3daf549f99553c2182db24bc4336a4f0c824": {
     "chain": "avalanche",
     "symbol": "IBEX",
@@ -1985,6 +1991,12 @@
     "decimals": 18,
     "address": "0xaf20f5f19698f1d19351028cd7103b63d30de7d7"
   },
+  "0xaf2d365e668baafedcfd256c0fbbe519e594e390": {
+    "chain": "avalanche",
+    "symbol": "MUXLP",
+    "decimals": 18,
+    "address": "0xaf2d365e668baafedcfd256c0fbbe519e594e390"
+  },
   "0xafc43610c7840b20b90caaf93759be5b54b291c9": {
     "chain": "avalanche",
     "symbol": "ABR",
@@ -2453,6 +2465,12 @@
     "decimals": 18,
     "address": "0xd5d0a9b3f2c264b955ae7161cfa6d38a7aea60a7"
   },
+  "0xd6070ae98b8069de6b494332d1a1a81b6179d960": {
+    "chain": "avalanche",
+    "symbol": "BIFI",
+    "decimals": 18,
+    "address": "0xd6070ae98b8069de6b494332d1a1a81b6179d960"
+  },
   "0xd60effed653f3f1b69047f2d2dc4e808a548767b": {
     "chain": "avalanche",
     "symbol": "UFARM",
@@ -2596,6 +2614,12 @@
     "symbol": "PEFI",
     "decimals": 18,
     "address": "0xe896cdeaac9615145c0ca09c8cd5c25bced6384c"
+  },
+  "0xeb8343d5284caec921f035207ca94db6baaacbcd": {
+    "chain": "avalanche",
+    "symbol": "ECD",
+    "decimals": 18,
+    "address": "0xeb8343d5284caec921f035207ca94db6baaacbcd"
   },
   "0xebb5d4959b2fba6318fbda7d03cd44ae771fc999": {
     "chain": "avalanche",

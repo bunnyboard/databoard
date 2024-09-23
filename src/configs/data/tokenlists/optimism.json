@@ -44,7 +44,7 @@
   "0x1da650c3b2daa8aa9ff6f661d4156ce24d08a062": {
     "chain": "optimism",
     "symbol": "DCN",
-    "decimals": 0,
+    "decimals": 18,
     "address": "0x1da650c3b2daa8aa9ff6f661d4156ce24d08a062"
   },
   "0x1db2466d9f5e10d7090e7152b68d62703a2245f0": {
@@ -169,7 +169,7 @@
   },
   "0x5029c236320b8f15ef0a657054b84d90bfbeded3": {
     "chain": "optimism",
-    "symbol": "BitANT",
+    "symbol": "BITANT",
     "decimals": 18,
     "address": "0x5029c236320b8f15ef0a657054b84d90bfbeded3"
   },
@@ -469,7 +469,7 @@
   },
   "0xc5db22719a06418028a40a9b5e9a7c02959d0d08": {
     "chain": "optimism",
-    "symbol": "sLINK",
+    "symbol": "SLINK",
     "decimals": 18,
     "address": "0xc5db22719a06418028a40a9b5e9a7c02959d0d08"
   },
@@ -481,7 +481,7 @@
   },
   "0xc98b98d17435aa00830c87ea02474c5007e1f272": {
     "chain": "optimism",
-    "symbol": "BitBTC",
+    "symbol": "BITBTC",
     "decimals": 18,
     "address": "0xc98b98d17435aa00830c87ea02474c5007e1f272"
   },
@@ -541,7 +541,7 @@
   },
   "0xe0bb0d3de8c10976511e5030ca403dbf4c25165b": {
     "chain": "optimism",
-    "symbol": "0xBTC",
+    "symbol": "0XBTC",
     "decimals": 8,
     "address": "0xe0bb0d3de8c10976511e5030ca403dbf4c25165b"
   },

@@ -272,7 +272,8 @@ export default class UniswapAdapter extends ProtocolAdapter {
         newProtocolData.totalAssetDeposited += poolData.totalLiquidityUsd;
         newProtocolData.totalValueLocked += poolData.totalLiquidityUsd;
         (newProtocolData.totalSupplied as number) += poolData.totalLiquidityUsd;
-        (newProtocolData.volumes.tokenSwap as number) += poolData.volumeSwapUsd;
+        (newProtocolData.volumes.sellToken as number) += poolData.volumeSwapUsd;
+        (newProtocolData.volumes.buyToken as number) += poolData.volumeSwapUsd;
         (newProtocolData.volumes.deposit as number) += poolData.volumeAddLiquidityUsd;
         (newProtocolData.volumes.withdraw as number) += poolData.volumeRemoveLiquidityUsd;
         newProtocolData.moneyFlowIn += poolData.volumeAddLiquidityUsd;
@@ -307,7 +308,8 @@ export default class UniswapAdapter extends ProtocolAdapter {
       volumes: {
         deposit: 0,
         withdraw: 0,
-        tokenSwap: 0,
+        sellToken: 0,
+        buyToken: 0,
       },
     };
 
@@ -378,7 +380,8 @@ export default class UniswapAdapter extends ProtocolAdapter {
       volumes: {
         deposit: 0,
         withdraw: 0,
-        tokenSwap: 0,
+        sellToken: 0,
+        buyToken: 0,
       },
     };
 
