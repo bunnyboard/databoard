@@ -50,9 +50,10 @@ export interface ChainConfig {
   birthday: number;
   birthblock: number;
 
-  // blockchain supports EIP-1559?
+  // blockchain supports EIP-1559
   // https://eips.ethereum.org/EIPS/eip-1559
-  eip1559?: boolean;
+  // the block number when EIP-1559 was actived
+  eip1559?: number;
 
   // should use public nodes
   nodeRpcs: Array<string>;

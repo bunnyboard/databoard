@@ -11,12 +11,12 @@ export interface ChainBlockData {
   number: number;
   timestamp: number;
   totalTransactions: number;
-  senderAddresses: Array<string>;
   totalFees: number;
   utilization: number;
-  totalFeesBurnt?: number;
+  totalFeesBurnt: number;
   validator: string;
   validatorReward: number;
+  senderAddresses: Array<string>;
 }
 
 export default class ChainAdapter implements IChainAdapter {
