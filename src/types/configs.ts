@@ -48,9 +48,4 @@ export interface EnvConfig {
   blockchains: {
     [key: string]: Blockchain;
   };
-
-  externalConfigs: {
-    alchemyAppKey: string;
-    etherscanApiKey: string;
-  };
 }

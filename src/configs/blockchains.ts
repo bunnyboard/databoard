@@ -12,7 +12,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.ethereum,
     family: 'evm',
     chainId: 1,
-    nodeRpc: String(process.env.BUNNYBOARD_ETHEREUM_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_ETHEREUM_NODE),
     nativeToken: {
       chain: ChainNames.ethereum,
       address: AddressZero,
@@ -24,7 +24,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.arbitrum,
     family: 'evm',
     chainId: 42161,
-    nodeRpc: String(process.env.BUNNYBOARD_ARBITRUM_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_ARBITRUM_NODE),
     nativeToken: {
       chain: ChainNames.arbitrum,
       address: AddressZero,
@@ -36,7 +36,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.base,
     family: 'evm',
     chainId: 8453,
-    nodeRpc: String(process.env.BUNNYBOARD_BASE_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_BASE_NODE),
     nativeToken: {
       chain: ChainNames.base,
       address: AddressZero,
@@ -48,7 +48,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.optimism,
     family: 'evm',
     chainId: 10,
-    nodeRpc: String(process.env.BUNNYBOARD_OPTIMISM_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_OPTIMISM_NODE),
     nativeToken: {
       chain: ChainNames.optimism,
       address: AddressZero,
@@ -60,7 +60,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.polygon,
     family: 'evm',
     chainId: 137,
-    nodeRpc: String(process.env.BUNNYBOARD_POLYGON_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_POLYGON_NODE),
     nativeToken: {
       chain: ChainNames.polygon,
       address: AddressZero,
@@ -72,7 +72,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.bnbchain,
     family: 'evm',
     chainId: 56,
-    nodeRpc: String(process.env.BUNNYBOARD_BNBCHAIN_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_BNBCHAIN_NODE),
     nativeToken: {
       chain: ChainNames.bnbchain,
       address: AddressZero,
@@ -84,7 +84,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.avalanche,
     family: 'evm',
     chainId: 43114,
-    nodeRpc: String(process.env.BUNNYBOARD_AVALANCHE_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_AVALANCHE_NODE),
     nativeToken: {
       chain: ChainNames.avalanche,
       address: AddressZero,
@@ -96,7 +96,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.fantom,
     family: 'evm',
     chainId: 250,
-    nodeRpc: String(process.env.BUNNYBOARD_FANTOM_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_FANTOM_NODE),
     nativeToken: {
       chain: ChainNames.fantom,
       address: AddressZero,
@@ -108,7 +108,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.metis,
     family: 'evm',
     chainId: 1088,
-    nodeRpc: String(process.env.BUNNYBOARD_METIS_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_METIS_NODE),
     nativeToken: {
       chain: ChainNames.metis,
       address: AddressZero,
@@ -120,7 +120,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.gnosis,
     family: 'evm',
     chainId: 100,
-    nodeRpc: String(process.env.BUNNYBOARD_GNOSIS_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_GNOSIS_NODE),
     nativeToken: {
       chain: ChainNames.gnosis,
       address: AddressZero,
@@ -132,7 +132,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.scroll,
     family: 'evm',
     chainId: 534352,
-    nodeRpc: String(process.env.BUNNYBOARD_SCROLL_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_SCROLL_NODE),
     nativeToken: {
       chain: ChainNames.scroll,
       address: AddressZero,
@@ -144,7 +144,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.blast,
     family: 'evm',
     chainId: 81457,
-    nodeRpc: String(process.env.BUNNYBOARD_BLAST_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_BLAST_NODE),
     nativeToken: {
       chain: ChainNames.blast,
       address: AddressZero,
@@ -156,7 +156,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.linea,
     family: 'evm',
     chainId: 59144,
-    nodeRpc: String(process.env.BUNNYBOARD_LINEA_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_LINEA_NODE),
     nativeToken: {
       chain: ChainNames.linea,
       address: AddressZero,
@@ -168,7 +168,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.zksync,
     family: 'evm',
     chainId: 324,
-    nodeRpc: String(process.env.BUNNYBOARD_ZKSYNC_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_ZKSYNC_NODE),
     nativeToken: {
       chain: ChainNames.zksync,
       address: AddressZero,
@@ -180,7 +180,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.mode,
     family: 'evm',
     chainId: 34443,
-    nodeRpc: String(process.env.BUNNYBOARD_MODE_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_MODE_NODE),
     nativeToken: {
       chain: ChainNames.mode,
       address: AddressZero,
@@ -192,7 +192,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.manta,
     family: 'evm',
     chainId: 169,
-    nodeRpc: String(process.env.BUNNYBOARD_MANTA_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_MANTA_NODE),
     nativeToken: {
       chain: ChainNames.manta,
       address: AddressZero,
@@ -204,7 +204,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.aurora,
     family: 'evm',
     chainId: 1313161554,
-    nodeRpc: String(process.env.BUNNYBOARD_AURORA_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_AURORA_NODE),
     nativeToken: {
       chain: ChainNames.aurora,
       address: AddressZero,
@@ -216,7 +216,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.celo,
     family: 'evm',
     chainId: 42220,
-    nodeRpc: String(process.env.BUNNYBOARD_CELO_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_CELO_NODE),
     nativeToken: {
       chain: ChainNames.celo,
       address: AddressZero,
@@ -228,7 +228,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.mantle,
     family: 'evm',
     chainId: 5000,
-    nodeRpc: String(process.env.BUNNYBOARD_MANTLE_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_MANTLE_NODE),
     nativeToken: {
       chain: ChainNames.mantle,
       address: AddressZero,
@@ -240,7 +240,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.polygonzkevm,
     family: 'evm',
     chainId: 1101,
-    nodeRpc: String(process.env.BUNNYBOARD_POLYGONZKEVM_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_POLYGONZKEVM_NODE),
     nativeToken: {
       chain: ChainNames.polygonzkevm,
       address: AddressZero,
@@ -252,7 +252,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.zora,
     family: 'evm',
     chainId: 7777777,
-    nodeRpc: String(process.env.BUNNYBOARD_ZORA_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_ZORA_NODE),
     nativeToken: {
       chain: ChainNames.zora,
       address: AddressZero,
@@ -264,7 +264,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.merlin,
     family: 'evm',
     chainId: 4200,
-    nodeRpc: String(process.env.BUNNYBOARD_MERLIN_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_MERLIN_NODE),
     nativeToken: {
       chain: ChainNames.merlin,
       address: AddressZero,
@@ -276,7 +276,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.zklinknova,
     family: 'evm',
     chainId: 810180,
-    nodeRpc: String(process.env.BUNNYBOARD_ZKLINKNOVA_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_ZKLINKNOVA_NODE),
     nativeToken: {
       chain: ChainNames.zklinknova,
       address: AddressZero,
@@ -288,7 +288,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.cronos,
     family: 'evm',
     chainId: 25,
-    nodeRpc: String(process.env.BUNNYBOARD_CRONOS_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_CRONOS_NODE),
     nativeToken: {
       chain: ChainNames.cronos,
       address: AddressZero,
@@ -300,7 +300,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.moonbeam,
     family: 'evm',
     chainId: 1284,
-    nodeRpc: String(process.env.BUNNYBOARD_MOONBEAM_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_MOONBEAM_NODE),
     nativeToken: {
       chain: ChainNames.moonbeam,
       address: AddressZero,
@@ -312,7 +312,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.moonriver,
     family: 'evm',
     chainId: 1285,
-    nodeRpc: String(process.env.BUNNYBOARD_MOONRIVER_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_MOONRIVER_NODE),
     nativeToken: {
       chain: ChainNames.moonriver,
       address: AddressZero,
@@ -324,7 +324,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.core,
     family: 'evm',
     chainId: 1116,
-    nodeRpc: String(process.env.BUNNYBOARD_CORE_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_CORE_NODE),
     nativeToken: {
       chain: ChainNames.core,
       address: AddressZero,
@@ -336,7 +336,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.bitlayer,
     family: 'evm',
     chainId: 200901,
-    nodeRpc: String(process.env.BUNNYBOARD_BITLAYER_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_BITLAYER_NODE),
     nativeToken: {
       chain: ChainNames.bitlayer,
       address: AddressZero,
@@ -348,7 +348,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.taiko,
     family: 'evm',
     chainId: 167000,
-    nodeRpc: String(process.env.BUNNYBOARD_TAIKO_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_TAIKO_NODE),
     nativeToken: {
       chain: ChainNames.taiko,
       address: AddressZero,
@@ -360,7 +360,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.seievm,
     family: 'evm',
     chainId: 1329,
-    nodeRpc: String(process.env.BUNNYBOARD_SEIEVM_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_SEIEVM_NODE),
     nativeToken: {
       chain: ChainNames.seievm,
       address: AddressZero,
@@ -372,7 +372,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.bob,
     family: 'evm',
     chainId: 60808,
-    nodeRpc: String(process.env.BUNNYBOARD_BOB_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_BOB_NODE),
     nativeToken: {
       chain: ChainNames.bob,
       address: AddressZero,
@@ -384,7 +384,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.bsquared,
     family: 'evm',
     chainId: 223,
-    nodeRpc: String(process.env.BUNNYBOARD_BSQUARED_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_BSQUARED_NODE),
     nativeToken: {
       chain: ChainNames.bsquared,
       address: AddressZero,
@@ -396,7 +396,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.ronin,
     family: 'evm',
     chainId: 2020,
-    nodeRpc: String(process.env.BUNNYBOARD_RONIN_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_RONIN_NODE),
     nativeToken: {
       chain: ChainNames.ronin,
       address: AddressZero,
@@ -408,7 +408,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.fraxtal,
     family: 'evm',
     chainId: 252,
-    nodeRpc: String(process.env.BUNNYBOARD_FRAXTAL_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_FRAXTAL_NODE),
     nativeToken: {
       chain: ChainNames.fraxtal,
       address: AddressZero,
