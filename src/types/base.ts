@@ -55,6 +55,10 @@ export interface ChainConfig {
   // the block number when EIP-1559 was actived
   eip1559?: number;
 
+  // if layer2 flag is enable, we count transaction fees
+  // from block = block.baseFeePerGas * block.gasUsed
+  layer2?: boolean;
+
   // should use public nodes
   nodeRpcs: Array<string>;
 }

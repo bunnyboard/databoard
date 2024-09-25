@@ -81,3 +81,13 @@ export const formatTime = (unix: number): string => {
     return `${inSeconds} ${inSeconds === 1 ? 'sec' : 'secs'} ago`;
   }
 };
+
+export function findLongestStringLength(items: Array<string>): number {
+  let maximum = 0;
+  for (const item of items) {
+    if (item.length > maximum) {
+      maximum = item.length;
+    }
+  }
+  return maximum;
+}

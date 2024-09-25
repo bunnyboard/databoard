@@ -12,5 +12,6 @@ export function getChainAdapters(
     arbitrum: new EvmChainAdapter(priceOracle, storages, ChainConfigs.arbitrum),
     bnbchain: new EvmChainAdapter(priceOracle, storages, ChainConfigs.bnbchain),
     polygon: new EvmChainAdapter(priceOracle, storages, ChainConfigs.polygon),
+    fantom: new EvmChainAdapter(priceOracle, storages, ChainConfigs.fantom),
   };
 }

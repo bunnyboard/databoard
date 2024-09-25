@@ -5,6 +5,9 @@ import { ChainConfig } from '../../types/base';
 import { ContextStorages } from '../../types/namespaces';
 import ChainAdapter, { ChainBlockData } from './adapter';
 import axios from 'axios';
+import ValidatorSetAbi from '../../configs/abi/binance/ValidatorSet.json';
+import { decodeEventLog } from 'viem';
+import { ChainNames } from '../../configs/names';
 
 export default class EvmChainAdapter extends ChainAdapter {
   public readonly name: string = 'chain.evm';
@@ -61,13 +64,13 @@ export default class EvmChainAdapter extends ChainAdapter {
         chain: this.chainConfig.chain,
         number: blockNumber,
         timestamp: parseInt(block.timestamp, 16),
-        totalTransactions: 0,
-        senderAddresses: [],
         totalFees: 0,
         totalFeesBurnt: 0,
-        utilization: (parseInt(block.gasUsed, 16) / parseInt(block.gasLimit, 16)) * 100,
-        validator: normalizeAddress(block.miner),
-        validatorReward: 0,
+        blockReward: 0,
+        resourceLimit: parseInt(block.gasLimit, 16).toString(),
+        resourceUsed: parseInt(block.gasUsed, 16).toString(),
+        totalTransactions: 0,
+        senderAddresses: [],
       };
 
       // update sender address list
@@ -83,21 +86,21 @@ export default class EvmChainAdapter extends ChainAdapter {
       }
       chainBlockData.senderAddresses = Object.keys(senders);
 
-      // layer 2 chains, just count total fees = baseFeePerGas * gasUsed
-      if (block.baseFeePerGas && !this.chainConfig.eip1559) {
-        const baseFeePerGas = parseInt(block.baseFeePerGas, 16);
-        const gasUsed = parseInt(block.gasUsed, 16);
-        block.totalFees += formatBigNumberToNumber((baseFeePerGas * gasUsed).toString(), 18);
-      } else {
-        const receipts = await this.queryNodeRpc('eth_getBlockReceipts', [`0x${blockNumber.toString(16)}`]);
+      const baseFeePerGas = parseInt(block.baseFeePerGas ? block.baseFeePerGas : '0x0', 16);
+      const gasUsed = parseInt(block.gasUsed, 16);
+      const baseFees = formatBigNumberToNumber((baseFeePerGas * gasUsed).toString(), 18);
 
-        if (block.baseFeePerGas && this.chainConfig.eip1559) {
-          // eip1559 chains
-          const baseFeePerGas = parseInt(block.baseFeePerGas, 16);
-          const gasUsed = parseInt(block.gasUsed, 16);
-          chainBlockData.totalFeesBurnt += formatBigNumberToNumber((baseFeePerGas * gasUsed).toString(), 18);
+      // if this is layer chain, baseFees is also total transaction fees
+      if (this.chainConfig.layer2) {
+        chainBlockData.totalFees += baseFees;
+      } else {
+        // eip1559 enabled, baseFees is burnt
+        if (this.chainConfig.eip1559 && this.chainConfig.eip1559 < blockNumber) {
+          chainBlockData.totalFeesBurnt += baseFees;
         }
 
+        // need to count receipts to calculate total fees
+        const receipts = await this.queryNodeRpc('eth_getBlockReceipts', [`0x${blockNumber.toString(16)}`]);
         if (receipts) {
           for (const receipt of receipts) {
             const gasUsed = parseInt(receipt.gasUsed, 16);
@@ -105,14 +108,29 @@ export default class EvmChainAdapter extends ChainAdapter {
             const transactionFee = formatBigNumberToNumber((gasUsed * effectiveGasPrice).toString(), 18);
 
             chainBlockData.totalFees += transactionFee;
+
+            if (this.chainConfig.chain === ChainNames.bnbchain) {
+              // on bsc, we track BNB burnt by count feeBurned events on BSC: Validator Set contract
+              // https://bscscan.com/tx/0x4d8fa84bb2e6e72da504c5f26c94a37530a42ddb8da19b9885dd2f23612784a9#eventlog
+              for (const log of receipt.logs) {
+                if (log.topics[0] === '0x627059660ea01c4733a328effb2294d2f86905bf806da763a89cee254de8bee5') {
+                  const event: any = decodeEventLog({
+                    abi: ValidatorSetAbi,
+                    topics: log.topics,
+                    data: log.data,
+                  });
+                  chainBlockData.totalFeesBurnt += formatBigNumberToNumber(event.args.amount.toString(), 18);
+                }
+              }
+            }
           }
-
-          // validator rewards
-          chainBlockData.validatorReward = chainBlockData.totalFees - chainBlockData.totalFeesBurnt;
-
-          return chainBlockData;
         }
       }
+
+      // validator rewards
+      chainBlockData.blockReward = chainBlockData.totalFees - chainBlockData.totalFeesBurnt;
+
+      return chainBlockData;
     }
 
     return null;

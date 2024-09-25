@@ -10,12 +10,24 @@ export interface ChainBlockData {
   chain: string;
   number: number;
   timestamp: number;
-  totalTransactions: number;
+
+  // total transaction fees
   totalFees: number;
-  utilization: number;
+  // total fees were burnt if any
   totalFeesBurnt: number;
-  validator: string;
-  validatorReward: number;
+  // blockReward = totalFees - totalFeesBurnt
+  blockReward: number;
+
+  // gas limit
+  resourceLimit: string;
+  // gas used
+  resourceUsed: string;
+
+  // total transaction in block
+  // execlude system transactions (on layer 2)
+  totalTransactions: number;
+
+  // list of transaction sender addresses
   senderAddresses: Array<string>;
 }
 

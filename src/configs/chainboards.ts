@@ -27,6 +27,7 @@ export const ChainBoardConfigs: { [key: string]: ChainConfig } = {
     nativeToken: 'ETH',
     birthday: 1704067200, // Mon Jan 01 2024 00:00:00 GMT+0000
     birthblock: 165147776,
+    layer2: true,
     nodeRpcs: [
       'https://arb1.arbitrum.io/rpc',
       'https://arb-pokt.nodies.app',
@@ -76,6 +77,21 @@ export const ChainBoardConfigs: { [key: string]: ChainConfig } = {
       'https://polygon.drpc.org',
       'https://polygon.gateway.tenderly.co',
       'https://polygon.meowrpc.com',
+    ],
+  },
+  fantom: {
+    chain: ChainNames.fantom,
+    family: ChainFamilies.evm,
+    nativeToken: 'FTM',
+    birthday: 1704067200, // Mon Jan 01 2024 00:00:00 GMT+0000
+    birthblock: 73513917,
+    nodeRpcs: [
+      'https://rpc.ftm.tools',
+      'https://rpcapi.fantom.network',
+      'https://rpc.ankr.com/fantom',
+      'https://rpc.fantom.network',
+      'https://rpc2.fantom.network',
+      'https://rpc3.fantom.network',
     ],
   },
 };

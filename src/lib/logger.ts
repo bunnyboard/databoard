@@ -2,6 +2,7 @@ import winston from 'winston';
 
 import EnvConfig from '../configs/envConfig';
 import { AxiosError } from 'axios';
+import { findLongestStringLength } from './utils';
 
 function formatLevel(entryLevel: string): string {
   entryLevel = entryLevel
@@ -41,6 +42,10 @@ const customFormat = winston.format.printf((entry: any) => {
   }`;
 
   if (entry.configs) {
+    const maxLength = findLongestStringLength(Object.keys(entry.configs));
+    for (const [key, value] of Object.entries(entry.configs)) {
+      logLine += `\n${''.padEnd(50)} - ${(key + ':').padEnd(maxLength + 1)} ${value}`;
+    }
   }
 
   return logLine;
