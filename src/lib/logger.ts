@@ -4,6 +4,10 @@ import EnvConfig from '../configs/envConfig';
 import { AxiosError } from 'axios';
 import { findLongestStringLength } from './utils';
 
+const fgCyan = '\x1b[36m';
+const fgGrey = '\x1b[90m';
+const reset = '\x1b[0m';
+
 function formatLevel(entryLevel: string): string {
   entryLevel = entryLevel
     .replace('info', 'INFO')
@@ -13,7 +17,11 @@ function formatLevel(entryLevel: string): string {
     .replace('debug', 'DEBUG');
 
   if (entryLevel.includes('DEBUG') || entryLevel.includes('ERROR')) {
-    return entryLevel;
+    if (entryLevel.includes('DEBUG')) {
+      return fgGrey + 'DEBUG' + reset;
+    } else {
+      return entryLevel;
+    }
   } else {
     return entryLevel + ' ';
   }
@@ -33,7 +41,7 @@ const customFormat = winston.format.printf((entry: any) => {
   let propsLine = '';
   for (const [key, value] of Object.entries(entry)) {
     if (['timestamp', 'service', 'level', 'message', 'configs'].indexOf(key) === -1) {
-      propsLine += `${key}=${value} `;
+      propsLine += `${fgCyan + key + reset}=${value} `;
     }
   }
 
@@ -44,7 +52,7 @@ const customFormat = winston.format.printf((entry: any) => {
   if (entry.configs) {
     const maxLength = findLongestStringLength(Object.keys(entry.configs));
     for (const [key, value] of Object.entries(entry.configs)) {
-      logLine += `\n${''.padEnd(50)} - ${(key + ':').padEnd(maxLength + 1)} ${value}`;
+      logLine += `\n${formatLevel(entry.level)} ${('[' + entry.timestamp + ']').padStart(10)} ${formatService(service)}  - ${(key + ':').padEnd(maxLength + 1)} ${value}`;
     }
   }
 
@@ -60,6 +68,12 @@ const logger = winston.createLogger({
   ),
   transports: [new winston.transports.Console({})],
 });
+
+export function breakLine() {
+  console.log(
+    '---------------------------------------------------------------------------------------------------------',
+  );
+}
 
 // extension
 export function logAxiosError(error: AxiosError) {
