@@ -18,11 +18,12 @@ export class RunCommand extends BasicCommand {
   }
 
   public async execute(argv: any) {
-    const cmdConfigs: any = {
-      service: argv.service,
-      fromTime: argv.fromTime,
-      force: argv.force,
-    };
+    if (argv.chain === '' && argv.protocol === '') {
+      console.log('required at least --chain or --protocol options');
+      process.exit(0);
+    }
+
+    const cmdConfigs: any = {};
     if (argv.chain && argv.chain !== '') {
       cmdConfigs.type = 'chain';
       cmdConfigs.chain = argv.chain;
@@ -30,6 +31,13 @@ export class RunCommand extends BasicCommand {
       cmdConfigs.type = 'protocol';
       cmdConfigs.protocol = argv.protocol;
     }
+
+    cmdConfigs.service = argv.service === 'state' || argv.service === 'snapshot' ? argv.service : 'state and snapshot';
+    if (argv.fromTime > 0) {
+      cmdConfigs.fromTime = argv.fromTime;
+    }
+    cmdConfigs.force = argv.force;
+    cmdConfigs.interval = `${argv.interval} seconds`;
 
     logger.info('attemp run command', {
       service: 'command',
@@ -78,7 +86,7 @@ export class RunCommand extends BasicCommand {
           await sleep(argv.interval);
         }
       } while (!argv.exit);
-    } else {
+    } else if (argv.protocol !== '') {
       do {
         for (const protocol of Object.keys(ProtocolConfigs as any)) {
           if (argv.protocol === undefined || argv.protocol === '' || argv.protocol === protocol) {
@@ -117,7 +125,7 @@ export class RunCommand extends BasicCommand {
       },
       service: {
         type: 'string',
-        default: 'undefined',
+        default: '',
         describe: 'Collect current data or historical snapshots or both.',
       },
       fromTime: {
