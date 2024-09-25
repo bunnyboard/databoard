@@ -170,6 +170,10 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x455e53cbb86018ac2b8092fdcd39d8444affc3f6': OracleSourceConfigs.MATIC,
     '0x74232704659ef37c08995e386a2e26cc27a8d7b1': OracleSourceConfigs.STRK,
     '0x562e362876c8aee4744fc2c6aac8394c312d215d': OracleSourceConfigs.OPTIMUS,
+    '0xcdb4a8742ed7d0259b51e3454c46c9d6c48d5e88': OracleSourceConfigs.GPT,
+    '0x168e209d7b2f58f1f24b8ae7b7d35e662bbf11cc': OracleSourceConfigs.LAI,
+    '0xfca59cd816ab1ead66534d82bc21e7515ce441cf': OracleSourceConfigs.RARI,
+    '0xd5f7838f5c461feff7fe49ea5ebaf7728bb0adfa': OracleSourceConfigs.mETH,
 
     // todo need to find better oracle source
     '0x9d39a5de30e57443bff2a8307a4256c8797a3497': OracleSourceConfigs.USDT,

@@ -1,6 +1,6 @@
 import { ProtocolData } from '../protocol';
 
-export interface BungeeDataExtended {
+export interface LifiDataExtended {
   // srcChain => destChain => volume usd
   volumeBridgeChainRoutes: {
     [key: string]: {
@@ -8,17 +8,22 @@ export interface BungeeDataExtended {
     };
   };
 
-  // bridge => bridge volume
   volumeBridges: {
+    // bridge => volume
+    [key: string]: number;
+  };
+
+  volumeIntegrators: {
+    // name => volume
     [key: string]: number;
   };
 
   // fee recipients
-  // https://docs.bungee.exchange/socket-api/guides/gateway-fee-collection
+  // https://docs.li.fi/monetization-take-fees
   // address => fee amount usd
   feeRecipients: {
     [key: string]: number;
   };
 }
 
-export interface BungeeProtocolData extends ProtocolData, BungeeDataExtended {}
+export interface LifiProtocolData extends ProtocolData, LifiDataExtended {}

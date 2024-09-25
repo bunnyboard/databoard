@@ -21,6 +21,7 @@ import { IroncladConfigs } from './protocols/ironclad';
 import { KinzaConfigs } from './protocols/kinza';
 import { LendleConfigs } from './protocols/lendle';
 import { LidoConfigs } from './protocols/lido';
+import { LifiConfigs } from './protocols/lifi';
 import { LiquityConfigs } from './protocols/liquity';
 import { MakerConfigs } from './protocols/maker';
 import { MendiConfigs } from './protocols/mendi';
@@ -99,6 +100,7 @@ export const ProtocolConfigs = {
   curvelend: CurvelendConfigs,
   spooky: SpookyConfigs,
   bungee: BungeeConfigs,
+  lifi: LifiConfigs,
 };
 
 export const ChainConfigs = ChainBoardConfigs;

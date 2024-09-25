@@ -45,6 +45,7 @@ export const BungeeKnownBridgeNames: { [key: string]: string } = {
   '0x86c029f16460117b4488dbcebd1ea3d4f22aee8859770297bc010a8caaa1b116': ProtocolNames.baseNativeBridge,
   '0xcc231b7032e768dd0a97e8b21d355ca609fe31ebcb2a827b8759fc5dd1d9c95f': ProtocolNames.scrollNativeBridge,
   '0xddc44bae4cec4168e76c8f60940ee0abbae677cacb55590a890235614317ef6b': ProtocolNames.zoraNativeBridge,
+  '0xc3bc0f52caacc5a87db3ce955e12a8538950098a0012cbacd0e6ff87c0606d33': ProtocolNames.mantleNativeBridge,
 };
 
 export default class BungeeAdapter extends ProtocolAdapter {
@@ -72,6 +73,7 @@ export default class BungeeAdapter extends ProtocolAdapter {
 
     const bungeeExtendedData: BungeeDataExtended = {
       volumeBridgeChainRoutes: {},
+      volumeBridges: {},
       feeRecipients: {},
     };
 
@@ -161,6 +163,11 @@ export default class BungeeAdapter extends ProtocolAdapter {
                 };
               }
               (protocolData.breakdown[gatewayConfig.chain][token.address].volumes.bridgeOut as number) += amountUsd;
+
+              if (!bungeeExtendedData.volumeBridges[bridgeName]) {
+                bungeeExtendedData.volumeBridges[bridgeName] = 0;
+              }
+              bungeeExtendedData.volumeBridges[bridgeName] += amountUsd;
 
               if (!bungeeExtendedData.volumeBridgeChainRoutes[gatewayConfig.chain][toChainName]) {
                 bungeeExtendedData.volumeBridgeChainRoutes[gatewayConfig.chain][toChainName] = 0;

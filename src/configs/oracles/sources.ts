@@ -1045,4 +1045,20 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.OPTIMUS_WETH],
   },
+  GPT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.GPT_WETH],
+  },
+  LAI: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.LAI_USDC],
+  },
+  RARI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.RARI_WETH],
+  },
+  mETH: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.mETH_WETH],
+  },
 };
