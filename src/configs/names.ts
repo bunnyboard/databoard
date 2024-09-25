@@ -44,6 +44,12 @@ export const ChainNames = {
   celo: 'celo',
   ronin: 'ronin',
   kaia: 'kaia',
+  rootstock: 'rootstock',
+  gravity: 'gravity',
+  bitcoin: 'bitcoin',
+  solana: 'solana',
+  immutablezkevm: 'immutablezkevm',
+  fuse: 'fuse',
 };
 
 export const ProtocolNames = {
@@ -132,6 +138,14 @@ export const ProtocolNames = {
   scrollNativeBridge: 'scrollNativeBridge',
   zoraNativeBridge: 'zoraNativeBridge',
   gnosisNativeBridge: 'gnosisNativeBridge',
+  mantleNativeBridge: 'mantleNativeBridge',
   oneinch: 'oneinch',
   zerox: 'zerox',
+  lifi: 'lifi',
+  squid: 'squid',
+  thorswap: 'thorswap',
+  mayan: 'mayan',
+  allbridge: 'allbridge',
+  amarok: 'amarok',
+  omni: 'omni',
 };

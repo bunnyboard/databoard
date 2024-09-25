@@ -12,6 +12,7 @@ import EulerAdapter from './euler/euler';
 import FluidAdapter from './fluid/fluid';
 import FraxlendAdapter from './fraxlend/fraxlend';
 import LidoAdapter from './lido/lido';
+import LifiAdapter from './lifi/lifi';
 import LiquityAdapter from './liquity/liquity';
 import MakerAdapter from './maker/maker';
 import MoonwellAdapter from './moonwell/moonwell';
@@ -67,5 +68,6 @@ export function getProtocolAdapters(
     curvelend: new CurvelendAdapter(services, storages, ProtocolConfigs.curvelend),
     spooky: new SpookyAdapter(services, storages, ProtocolConfigs.spooky),
     bungee: new BungeeAdapter(services, storages, ProtocolConfigs.bungee),
+    lifi: new LifiAdapter(services, storages, ProtocolConfigs.lifi),
   };
 }
