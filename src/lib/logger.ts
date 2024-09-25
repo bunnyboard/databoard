@@ -20,7 +20,7 @@ function formatLevel(entryLevel: string): string {
 }
 
 function formatService(service: string): string {
-  return (service + ':').padEnd(20);
+  return (service + ':').padEnd(25);
 }
 
 function formatMessage(message: string): string {

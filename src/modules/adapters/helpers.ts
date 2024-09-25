@@ -36,26 +36,27 @@ export default class AdapterDataHelper {
     for (const [chain, tokens] of Object.entries(protocolData.breakdown)) {
       for (const [address, token] of Object.entries(tokens)) {
         if (token.volumes.deposit) {
-          (protocolData.breakdown[chain][address].volumes.deposit as number) += token.volumes.deposit;
+          protocolData.breakdown[chain][address].moneyFlowIn += token.volumes.deposit;
         }
         if (token.volumes.repay) {
-          (protocolData.breakdown[chain][address].volumes.repay as number) += token.volumes.repay;
+          protocolData.breakdown[chain][address].moneyFlowIn += token.volumes.repay;
         }
 
         if (token.volumes.borrow) {
-          (protocolData.breakdown[chain][address].volumes.borrow as number) += token.volumes.borrow;
+          protocolData.breakdown[chain][address].moneyFlowOut += token.volumes.borrow;
         }
         if (token.volumes.withdraw) {
-          (protocolData.breakdown[chain][address].volumes.withdraw as number) += token.volumes.withdraw;
+          protocolData.breakdown[chain][address].moneyFlowOut += token.volumes.withdraw;
         }
         if (token.volumes.liquidation) {
-          (protocolData.breakdown[chain][address].volumes.liquidation as number) += token.volumes.liquidation;
+          protocolData.breakdown[chain][address].moneyFlowOut += token.volumes.liquidation;
         }
         if (token.volumes.redeemtion) {
-          (protocolData.breakdown[chain][address].volumes.redeemtion as number) += token.volumes.redeemtion;
+          protocolData.breakdown[chain][address].moneyFlowOut += token.volumes.redeemtion;
         }
 
-        protocolData.breakdown[chain][address].moneyFlowNet = token.moneyFlowIn - token.moneyFlowOut;
+        protocolData.breakdown[chain][address].moneyFlowNet =
+          protocolData.breakdown[chain][address].moneyFlowIn - protocolData.breakdown[chain][address].moneyFlowOut;
 
         for (const value of Object.values(token.volumes)) {
           protocolData.breakdown[chain][address].totalVolume += value;

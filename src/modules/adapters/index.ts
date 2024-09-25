@@ -17,6 +17,7 @@ import LiquityAdapter from './liquity/liquity';
 import MakerAdapter from './maker/maker';
 import MoonwellAdapter from './moonwell/moonwell';
 import MorphoAdapter from './morpho/morpho';
+import RocketpoolAdapter from './rocketpool/rocketpool';
 import SpookyAdapter from './spooky/spooky';
 import SushiAdapter from './sushi/sushi';
 import UniswapAdapter from './uniswap/uniswap';
@@ -69,5 +70,6 @@ export function getProtocolAdapters(
     spooky: new SpookyAdapter(services, storages, ProtocolConfigs.spooky),
     bungee: new BungeeAdapter(services, storages, ProtocolConfigs.bungee),
     lifi: new LifiAdapter(services, storages, ProtocolConfigs.lifi),
+    rocketpool: new RocketpoolAdapter(services, storages, ProtocolConfigs.rocketpool),
   };
 }

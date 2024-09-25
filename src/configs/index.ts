@@ -32,6 +32,7 @@ import { PacConfigs } from './protocols/pac';
 import { PolterConfigs } from './protocols/polter';
 import { RadiantConfigs } from './protocols/radiant';
 import { RhoConfigs } from './protocols/rho';
+import { RocketpoolConfigs } from './protocols/rocketpool';
 import { SeamlessConfigs } from './protocols/seamless';
 import { SonneConfigs } from './protocols/sonne';
 import { SparkConfigs } from './protocols/spark';
@@ -101,6 +102,7 @@ export const ProtocolConfigs = {
   spooky: SpookyConfigs,
   bungee: BungeeConfigs,
   lifi: LifiConfigs,
+  rocketpool: RocketpoolConfigs,
 };
 
 export const ChainConfigs = ChainBoardConfigs;

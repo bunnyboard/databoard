@@ -28,7 +28,18 @@ export default class LidoAdapter extends ProtocolAdapter {
       category: this.protocolConfig.category,
       birthday: this.protocolConfig.birthday,
       timestamp: options.timestamp,
-      breakdown: {},
+      breakdown: {
+        ethereum: {
+          [AddressZero]: {
+            ...getInitialProtocolCoreMetrics(),
+            totalSupplied: 0,
+            volumes: {
+              deposit: 0,
+              withdraw: 0,
+            },
+          },
+        },
+      },
 
       ...getInitialProtocolCoreMetrics(),
       totalSupplied: 0,
@@ -57,18 +68,20 @@ export default class LidoAdapter extends ProtocolAdapter {
       params: [],
       blockNumber: blockNumber,
     });
-    const rawPrice = await this.services.oracle.getTokenPriceUsd({
+    const ethPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
       chain: lidoConfig.chain,
       address: AddressZero,
       timestamp: options.timestamp,
     });
 
     const totalEthDeposited = formatBigNumberToNumber(getTotalPooledEther.toString(), 18);
-    const ethPriceUsd = rawPrice ? Number(rawPrice) : 0;
 
     protocolData.totalAssetDeposited += totalEthDeposited * ethPriceUsd;
     protocolData.totalValueLocked += totalEthDeposited * ethPriceUsd;
     (protocolData.totalSupplied as number) += totalEthDeposited * ethPriceUsd;
+    protocolData.breakdown[lidoConfig.chain][AddressZero].totalAssetDeposited += totalEthDeposited * ethPriceUsd;
+    protocolData.breakdown[lidoConfig.chain][AddressZero].totalValueLocked += totalEthDeposited * ethPriceUsd;
+    (protocolData.breakdown[lidoConfig.chain][AddressZero].totalSupplied as number) += totalEthDeposited * ethPriceUsd;
 
     const stEthLogs = await this.services.blockchain.evm.getContractLogs({
       chain: lidoConfig.chain,
@@ -85,8 +98,11 @@ export default class LidoAdapter extends ProtocolAdapter {
           topics: log.topics,
           data: log.data,
         });
-        (protocolData.volumes.deposit as number) +=
-          formatBigNumberToNumber(event.args.amount.toString(), 18) * ethPriceUsd;
+
+        const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), 18) * ethPriceUsd;
+
+        (protocolData.volumes.deposit as number) += amountUsd;
+        (protocolData.breakdown[lidoConfig.chain][AddressZero].volumes.deposit as number) += amountUsd;
       }
     }
 
@@ -146,9 +162,14 @@ export default class LidoAdapter extends ProtocolAdapter {
     const supplySideRevenue = totalFees - protocolRevenue; // Lido takes 10% staking rewards
 
     (protocolData.liquidStakingApr as number) = stakingApr * 100;
+    (protocolData.breakdown[lidoConfig.chain][AddressZero].liquidStakingApr as number) = stakingApr * 100;
+
     protocolData.totalFees += totalFees;
     protocolData.protocolRevenue += protocolRevenue;
     protocolData.supplySideRevenue += supplySideRevenue;
+    protocolData.breakdown[lidoConfig.chain][AddressZero].totalFees += totalFees;
+    protocolData.breakdown[lidoConfig.chain][AddressZero].protocolRevenue += protocolRevenue;
+    protocolData.breakdown[lidoConfig.chain][AddressZero].supplySideRevenue += supplySideRevenue;
 
     const withdrawalQueueLogs = await this.services.blockchain.evm.getContractLogs({
       chain: lidoConfig.chain,
@@ -165,6 +186,7 @@ export default class LidoAdapter extends ProtocolAdapter {
         });
         const amountUsd = formatBigNumberToNumber(event.args.amountOfETH.toString(), 18) * ethPriceUsd;
         (protocolData.volumes.withdraw as number) += amountUsd;
+        (protocolData.breakdown[lidoConfig.chain][AddressZero].volumes.withdraw as number) += amountUsd;
       }
     }
 

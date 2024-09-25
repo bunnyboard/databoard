@@ -61,7 +61,7 @@ export class RunCommand extends BasicCommand {
       configs: chainConfigs,
     });
 
-    await sleep(5);
+    await sleep(2);
 
     const services: ContextServices = await super.getServices();
     const storages: ContextStorages = await super.getStorages();
