@@ -1,6 +1,6 @@
 import { ChainConfigs, ProtocolConfigs } from '../configs';
 import envConfig from '../configs/envConfig';
-import logger, { breakLine } from '../lib/logger';
+import logger, { logBreakLine } from '../lib/logger';
 import { sleep } from '../lib/utils';
 import { getProtocolAdapters } from '../modules/adapters';
 import { getChainAdapters } from '../modules/chains';
@@ -44,7 +44,7 @@ export class RunCommand extends BasicCommand {
       configs: cmdConfigs,
     });
 
-    breakLine();
+    logBreakLine();
 
     logger.info('loaded mongo database configs', {
       service: 'configs',
@@ -63,7 +63,7 @@ export class RunCommand extends BasicCommand {
       configs: chainConfigs,
     });
 
-    breakLine();
+    logBreakLine();
 
     await sleep(2);
 

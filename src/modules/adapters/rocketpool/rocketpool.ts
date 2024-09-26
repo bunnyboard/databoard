@@ -155,9 +155,18 @@ export default class RocketpoolAdapter extends ProtocolAdapter {
       }
     }
 
+    // estimate staking APR beased last 7 day rewards
+    const last7DaysTime =
+      options.timestamp - TimeUnits.SecondsPerDay * 7 < rocketpoolConfig.birthday
+        ? rocketpoolConfig.birthday
+        : options.timestamp - TimeUnits.SecondsPerDay * 7;
+    const last7DaysBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+      rocketpoolConfig.chain,
+      last7DaysTime,
+    );
     const [preGetExchangeRate] = await this.services.blockchain.evm.multicall({
       chain: rocketpoolConfig.chain,
-      blockNumber: beginBlock,
+      blockNumber: last7DaysBlock,
       calls: [
         {
           abi: rETHAbi,
@@ -185,7 +194,7 @@ export default class RocketpoolAdapter extends ProtocolAdapter {
 
     const stakingApr =
       (TimeUnits.SecondsPerYear * ((postExchangeRate - preExchangeRate) / preExchangeRate)) /
-      (options.endTime - options.beginTime);
+      (options.endTime - last7DaysTime);
     protocolData.liquidStakingApr = stakingApr * 100;
     protocolData.breakdown[rocketpoolConfig.chain][AddressZero].liquidStakingApr = stakingApr * 100;
 

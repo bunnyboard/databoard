@@ -15,6 +15,7 @@ import LidoAdapter from './lido/lido';
 import LifiAdapter from './lifi/lifi';
 import LiquityAdapter from './liquity/liquity';
 import MakerAdapter from './maker/maker';
+import MethAdapter from './meth/meth';
 import MoonwellAdapter from './moonwell/moonwell';
 import MorphoAdapter from './morpho/morpho';
 import RocketpoolAdapter from './rocketpool/rocketpool';
@@ -22,6 +23,7 @@ import SpookyAdapter from './spooky/spooky';
 import SushiAdapter from './sushi/sushi';
 import UniswapAdapter from './uniswap/uniswap';
 import VenusAdapter from './venus/venus';
+import WbethAdapter from './wbeth/wbeth';
 
 export function getProtocolAdapters(
   services: ContextServices,
@@ -71,5 +73,7 @@ export function getProtocolAdapters(
     bungee: new BungeeAdapter(services, storages, ProtocolConfigs.bungee),
     lifi: new LifiAdapter(services, storages, ProtocolConfigs.lifi),
     rocketpool: new RocketpoolAdapter(services, storages, ProtocolConfigs.rocketpool),
+    wbeth: new WbethAdapter(services, storages, ProtocolConfigs.wbeth),
+    meth: new MethAdapter(services, storages, ProtocolConfigs.meth),
   };
 }

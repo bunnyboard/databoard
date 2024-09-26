@@ -5,6 +5,7 @@ import { AaveConfigs } from './protocols/aave';
 import { AjnaConfigs } from './protocols/ajna';
 import { AvalonConfigs } from './protocols/avalon';
 import { BenqiConfigs } from './protocols/benqi';
+import { WbethConfigs } from './protocols/wbeth';
 import { BungeeConfigs } from './protocols/bungee';
 import { ColendConfigs } from './protocols/colend';
 import { CompoundConfigs } from './protocols/compound';
@@ -44,6 +45,7 @@ import { UwulendConfigs } from './protocols/uwulend';
 import { VenusConfigs } from './protocols/venus';
 import { YeifinanceConfigs } from './protocols/yeifinance';
 import { ZerolendConfigs } from './protocols/zerolend';
+import { MethConfigs } from './protocols/meth';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -103,6 +105,8 @@ export const ProtocolConfigs = {
   bungee: BungeeConfigs,
   lifi: LifiConfigs,
   rocketpool: RocketpoolConfigs,
+  wbeth: WbethConfigs,
+  meth: MethConfigs,
 };
 
 export const ChainConfigs = ChainBoardConfigs;

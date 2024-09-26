@@ -148,4 +148,6 @@ export const ProtocolNames = {
   allbridge: 'allbridge',
   amarok: 'amarok',
   omni: 'omni',
+  wbeth: 'wbeth',
+  meth: 'meth',
 };

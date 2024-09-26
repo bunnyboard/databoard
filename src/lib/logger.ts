@@ -69,7 +69,7 @@ const logger = winston.createLogger({
   transports: [new winston.transports.Console({})],
 });
 
-export function breakLine() {
+export function logBreakLine() {
   console.log(
     '---------------------------------------------------------------------------------------------------------',
   );
