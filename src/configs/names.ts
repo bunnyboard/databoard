@@ -107,7 +107,7 @@ export const ProtocolNames = {
   strike: 'strike',
   sushi: 'sushi',
   stader: 'stader',
-  swellnetwork: 'swellnetwork',
+  sweth: 'sweth',
   tectonic: 'tectonic',
   uniswap: 'uniswap',
   uwulend: 'uwulend',
@@ -150,4 +150,5 @@ export const ProtocolNames = {
   omni: 'omni',
   wbeth: 'wbeth',
   meth: 'meth',
+  ethx: 'ethx',
 };

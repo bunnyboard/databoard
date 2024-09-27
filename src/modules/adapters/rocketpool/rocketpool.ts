@@ -198,10 +198,15 @@ export default class RocketpoolAdapter extends ProtocolAdapter {
     protocolData.liquidStakingApr = stakingApr * 100;
     protocolData.breakdown[rocketpoolConfig.chain][AddressZero].liquidStakingApr = stakingApr * 100;
 
-    const totalFees = (stakingApr * totalDepositedUsd) / TimeUnits.DaysPerYear;
+    // rewards were distribute on-chain to rETH holders
+    const supplySideRevenue = (stakingApr * totalDepositedUsd) / TimeUnits.DaysPerYear;
+
     // rETH stakers contribute a fee, approximately 14% of generated rewards,
     // to compensate node operators for maintaining, & operating their nodes.
-    const protocolRevenue = totalFees * 0.14;
+    const rocketpoolFeeRate = 0.1; // 10%
+    const protocolRevenue = (supplySideRevenue / (1 - rocketpoolFeeRate)) * rocketpoolFeeRate;
+
+    const totalFees = supplySideRevenue + protocolRevenue;
 
     protocolData.totalFees += totalFees;
     protocolData.protocolRevenue += protocolRevenue;

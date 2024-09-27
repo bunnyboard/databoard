@@ -157,9 +157,14 @@ export default class LidoAdapter extends ProtocolAdapter {
       }
     }
 
-    const totalFees = (stakingApr * totalEthDeposited * ethPriceUsd) / TimeUnits.DaysPerYear;
-    const protocolRevenue = totalFees * 0.1; // Lido takes 10% staking rewards
-    const supplySideRevenue = totalFees - protocolRevenue; // Lido takes 10% staking rewards
+    // rewards were distribute on-chain to stETH holders
+    const supplySideRevenue = (stakingApr * totalEthDeposited * ethPriceUsd) / TimeUnits.DaysPerYear;
+
+    // lido takes 10% staking rewards
+    const lidoFeeRate = 0.1; // 10%
+    const protocolRevenue = (supplySideRevenue / (1 - lidoFeeRate)) * lidoFeeRate;
+
+    const totalFees = supplySideRevenue + protocolRevenue;
 
     (protocolData.liquidStakingApr as number) = stakingApr * 100;
     (protocolData.breakdown[lidoConfig.chain][AddressZero].liquidStakingApr as number) = stakingApr * 100;

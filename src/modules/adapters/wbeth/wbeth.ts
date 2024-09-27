@@ -202,31 +202,17 @@ export default class WbethAdapter extends ProtocolAdapter {
     protocolData.breakdown.ethereum[AddressZero].liquidStakingApr = stakingApr * 100;
     protocolData.breakdown.bnbchain[EthOnBnbChain].liquidStakingApr = stakingApr * 100;
 
-    // 25% protocol fees
-    // source: https://defirate.com/staking
-    const totalFees = (protocolData.totalAssetDeposited * stakingApr) / TimeUnits.DaysPerYear;
-    const protocolFees = totalFees * 0.25;
+    // 25% protocol fees, source: https://defirate.com/staking
+    const wbethFeeRate = 0.25;
+
+    // rewards were distribute on-chain to wbETH holders
+    const supplySideRevenue = (stakingApr * protocolData.totalAssetDeposited) / TimeUnits.DaysPerYear;
+    const protocolRevenue = (supplySideRevenue / (1 - wbethFeeRate)) * wbethFeeRate;
+    const totalFees = supplySideRevenue + protocolRevenue;
+
     protocolData.totalFees += totalFees;
-    protocolData.protocolRevenue += protocolFees;
-    protocolData.supplySideRevenue += totalFees - protocolFees;
-
-    // ethereum
-    protocolData.breakdown.ethereum[AddressZero].totalFees =
-      (protocolData.breakdown.ethereum[AddressZero].totalAssetDeposited * stakingApr) / TimeUnits.DaysPerYear;
-    protocolData.breakdown.ethereum[AddressZero].protocolRevenue =
-      ((protocolData.breakdown.ethereum[AddressZero].totalAssetDeposited * stakingApr) / TimeUnits.DaysPerYear) * 0.25;
-    protocolData.breakdown.ethereum[AddressZero].supplySideRevenue =
-      ((protocolData.breakdown.ethereum[AddressZero].totalAssetDeposited * stakingApr) / TimeUnits.DaysPerYear) * 0.75;
-
-    // bnbchain
-    protocolData.breakdown.bnbchain[EthOnBnbChain].totalFees =
-      (protocolData.breakdown.bnbchain[EthOnBnbChain].totalAssetDeposited * stakingApr) / TimeUnits.DaysPerYear;
-    protocolData.breakdown.bnbchain[EthOnBnbChain].protocolRevenue =
-      ((protocolData.breakdown.bnbchain[EthOnBnbChain].totalAssetDeposited * stakingApr) / TimeUnits.DaysPerYear) *
-      0.25;
-    protocolData.breakdown.bnbchain[EthOnBnbChain].supplySideRevenue =
-      ((protocolData.breakdown.bnbchain[EthOnBnbChain].totalAssetDeposited * stakingApr) / TimeUnits.DaysPerYear) *
-      0.75;
+    protocolData.protocolRevenue += protocolRevenue;
+    protocolData.supplySideRevenue += supplySideRevenue;
 
     return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
   }

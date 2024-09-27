@@ -10,7 +10,8 @@ import CurvelendAdapter from './curve/curvelend';
 import CurveusdAdapter from './curve/curveusd';
 import EulerAdapter from './euler/euler';
 import FluidAdapter from './fluid/fluid';
-import FraxlendAdapter from './fraxlend/fraxlend';
+import FraxEtherAdapter from './frax/fraxether';
+import FraxlendAdapter from './frax/fraxlend';
 import LidoAdapter from './lido/lido';
 import LifiAdapter from './lifi/lifi';
 import LiquityAdapter from './liquity/liquity';
@@ -20,7 +21,10 @@ import MoonwellAdapter from './moonwell/moonwell';
 import MorphoAdapter from './morpho/morpho';
 import RocketpoolAdapter from './rocketpool/rocketpool';
 import SpookyAdapter from './spooky/spooky';
+import EthxAdapter from './stader/ethx';
+import StakeStoneAdapter from './stakestone/stakestone';
 import SushiAdapter from './sushi/sushi';
+import SwethAdapter from './swellnetwork/sweth';
 import UniswapAdapter from './uniswap/uniswap';
 import VenusAdapter from './venus/venus';
 import WbethAdapter from './wbeth/wbeth';
@@ -67,6 +71,7 @@ export function getProtocolAdapters(
     liquity: new LiquityAdapter(services, storages, ProtocolConfigs.liquity),
     fluid: new FluidAdapter(services, storages, ProtocolConfigs.fluid),
     fraxlend: new FraxlendAdapter(services, storages, ProtocolConfigs.fraxlend),
+    fraxether: new FraxEtherAdapter(services, storages, ProtocolConfigs.fraxether),
     curveusd: new CurveusdAdapter(services, storages, ProtocolConfigs.curveusd),
     curvelend: new CurvelendAdapter(services, storages, ProtocolConfigs.curvelend),
     spooky: new SpookyAdapter(services, storages, ProtocolConfigs.spooky),
@@ -75,5 +80,8 @@ export function getProtocolAdapters(
     rocketpool: new RocketpoolAdapter(services, storages, ProtocolConfigs.rocketpool),
     wbeth: new WbethAdapter(services, storages, ProtocolConfigs.wbeth),
     meth: new MethAdapter(services, storages, ProtocolConfigs.meth),
+    sweth: new SwethAdapter(services, storages, ProtocolConfigs.sweth),
+    ethx: new EthxAdapter(services, storages, ProtocolConfigs.ethx),
+    stakestone: new StakeStoneAdapter(services, storages, ProtocolConfigs.stakestone),
   };
 }

@@ -46,6 +46,10 @@ import { VenusConfigs } from './protocols/venus';
 import { YeifinanceConfigs } from './protocols/yeifinance';
 import { ZerolendConfigs } from './protocols/zerolend';
 import { MethConfigs } from './protocols/meth';
+import { SwethConfigs } from './protocols/swellnetwork';
+import { EthxConfigs } from './protocols/stader';
+import { FraxEtherConfigs } from './protocols/frax';
+import { StakeStoneConfigs } from './protocols/stakestone';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -107,6 +111,10 @@ export const ProtocolConfigs = {
   rocketpool: RocketpoolConfigs,
   wbeth: WbethConfigs,
   meth: MethConfigs,
+  sweth: SwethConfigs,
+  ethx: EthxConfigs,
+  fraxether: FraxEtherConfigs,
+  stakestone: StakeStoneConfigs,
 };
 
 export const ChainConfigs = ChainBoardConfigs;
