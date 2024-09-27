@@ -50,6 +50,7 @@ export const ChainNames = {
   solana: 'solana',
   immutablezkevm: 'immutablezkevm',
   fuse: 'fuse',
+  boba: 'boba',
 };
 
 export const ProtocolNames = {

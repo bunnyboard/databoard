@@ -1865,6 +1865,12 @@
     "decimals": 18,
     "address": "0xe61aa4e693d3ef8ebc8cd901df2fe1f0a6e2ce78"
   },
+  "0xe6a537a407488807f0bbeb0038b79004f19dddfb": {
+    "chain": "polygon",
+    "symbol": "BRLA",
+    "decimals": 18,
+    "address": "0xe6a537a407488807f0bbeb0038b79004f19dddfb"
+  },
   "0xe7804d91dfcde7f776c90043e03eaa6df87e6395": {
     "chain": "polygon",
     "symbol": "DFX",

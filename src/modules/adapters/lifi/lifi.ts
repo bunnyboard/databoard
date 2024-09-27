@@ -46,6 +46,7 @@ export const LifiChainIds: any = {
   '1625': ChainNames.gravity,
   '13371': ChainNames.immutablezkevm,
   '122': ChainNames.fuse,
+  '288': ChainNames.boba,
 };
 
 export default class LifiAdapter extends ProtocolAdapter {

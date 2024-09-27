@@ -1061,4 +1061,40 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.mETH_WETH],
   },
+  WLD: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.WLD_WETH],
+  },
+  ID: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.ID_USDC],
+  },
+  BRLA: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.BRLA_USDC],
+  },
+  BRETT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BRETT_WETH],
+  },
+  ALT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ALT_WETH],
+  },
+  KAS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.KAS_WETH],
+  },
+  OLAS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.OLAS_WETH],
+  },
+  PEPE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.PEPE_WETH],
+  },
+  BEAM: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BEAM_WETH],
+  },
 };
