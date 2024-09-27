@@ -85,7 +85,7 @@ export default class EvmChainAdapter extends ChainAdapter {
         chainBlockData.totalTransactions += 1;
 
         const sender = normalizeAddress(transaction.from);
-        if (chainBlockData.senderAddresses[sender]) {
+        if (!chainBlockData.senderAddresses[sender]) {
           chainBlockData.senderAddresses[sender] = 0;
         }
         chainBlockData.senderAddresses[sender] += 1;
