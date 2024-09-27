@@ -1097,4 +1097,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.BEAM_WETH],
   },
+  LOGX: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.LOGX_USDT],
+  },
 };

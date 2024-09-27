@@ -295,6 +295,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x7fe5e5befa99a57cd690f2e220c251c90422da8b': OracleSourceConfigs.KWENTA,
     '0x2416092f143378750bb29b79ed961ab195cceea5': OracleSourceConfigs.ezETH,
     '0x561877b6b3dd7651313794e5f2894b2f18be0766': OracleSourceConfigs.MATIC,
+    '0x59062301fb510f4ea2417b67404cb16d31e604ba': OracleSourceConfigs.LOGX,
   },
 
   // tokens on Optimism

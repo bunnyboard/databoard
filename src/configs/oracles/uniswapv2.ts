@@ -862,4 +862,11 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.avalanche['0x8729438eb15e2c8b576fcc6aecda6a148776c0f5'],
     quotaToken: TokensBook.avalanche['0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7'],
   },
+  LOGX_USDT: {
+    type: 'univ2',
+    chain: 'arbitrum',
+    address: '0x0f725b113979e025c69da0ffce3fbf5b6063cc5c',
+    baseToken: TokensBook.arbitrum['0x59062301fb510f4ea2417b67404cb16d31e604ba'],
+    quotaToken: TokensBook.arbitrum['0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9'],
+  },
 };
