@@ -190,18 +190,16 @@ export default class AjnaAdapter extends ProtocolAdapter {
                 };
               }
 
-              const debtTokenPriceRaw = await this.services.oracle.getTokenPriceUsd({
+              const debtTokenPrice = await this.services.oracle.getTokenPriceUsdRounded({
                 chain: factoryConfig.chain,
                 address: debtToken.address,
                 timestamp: options.timestamp,
               });
-              const collateralTokenPriceRaw = await this.services.oracle.getTokenPriceUsd({
+              const collateralTokenPrice = await this.services.oracle.getTokenPriceUsdRounded({
                 chain: factoryConfig.chain,
                 address: collateralToken.address,
                 timestamp: options.timestamp,
               });
-              const debtTokenPrice = debtTokenPriceRaw ? Number(debtTokenPriceRaw) : 0;
-              const collateralTokenPrice = collateralTokenPriceRaw ? Number(collateralTokenPriceRaw) : 0;
 
               // totalBorrowed = debtInfo * inflatorInfo
               // NOTE debtInfo has 18 decimal places

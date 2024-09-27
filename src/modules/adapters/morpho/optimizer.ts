@@ -116,12 +116,11 @@ export default class MorphoOptimizerAdapter extends ProtocolAdapter {
                   };
                 }
 
-                const priceRaw = await this.services.oracle.getTokenPriceUsd({
+                const underlyingPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
                   chain: underlying.chain,
                   address: underlying.address,
                   timestamp: options.timestamp,
                 });
-                const underlyingPriceUsd = priceRaw ? Number(priceRaw) : 0;
                 const [exchangeRate, cTokenBalance, borrowBalanceStored, borrowRatePerBlock] =
                   await this.services.blockchain.evm.multicall({
                     chain: optimizerConfig.chain,
@@ -224,12 +223,11 @@ export default class MorphoOptimizerAdapter extends ProtocolAdapter {
                   };
                 }
 
-                const rawPrice = await this.services.oracle.getTokenPriceUsd({
+                const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
                   chain: token.chain,
                   address: token.address,
                   timestamp: options.timestamp,
                 });
-                const tokenPriceUsd = rawPrice ? Number(rawPrice) : 0;
                 const [userReserveData, reserveData] = await this.services.blockchain.evm.multicall({
                   chain: optimizerConfig.chain,
                   blockNumber: blockNumber,
@@ -326,12 +324,11 @@ export default class MorphoOptimizerAdapter extends ProtocolAdapter {
                 };
               }
 
-              const rawPrice = await this.services.oracle.getTokenPriceUsd({
+              const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
                 chain: token.chain,
                 address: token.address,
                 timestamp: options.timestamp,
               });
-              const tokenPriceUsd = rawPrice ? Number(rawPrice) : 0;
               const [userReserveData, reserveData] = await this.services.blockchain.evm.multicall({
                 chain: optimizerConfig.chain,
                 blockNumber: blockNumber,

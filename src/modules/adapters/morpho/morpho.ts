@@ -67,12 +67,11 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
       protocolRevenue: 0,
     };
 
-    const getTokenPriceResult = await this.services.oracle.getTokenPriceUsd({
+    const debtTokenPrice = await this.services.oracle.getTokenPriceUsdRounded({
       chain: options.marketMetadata.debtToken.chain,
       address: options.marketMetadata.debtToken.address,
       timestamp: options.timestamp,
     });
-    const debtTokenPrice = getTokenPriceResult ? Number(getTokenPriceResult) : 0;
     marketData.debtTokenPriceUsd = debtTokenPrice;
 
     if (debtTokenPrice) {

@@ -96,7 +96,7 @@ export default class AaveCore extends ProtocolAdapter {
           let tokenPriceUsd = 0;
           if (reserveOraclePrices && reserveOraclePrices[i]) {
             if (options.config.oracle.currency === 'eth') {
-              const ethPrice = await this.services.oracle.getTokenPriceUsd({
+              const ethPrice = await this.services.oracle.getTokenPriceUsdRounded({
                 chain: 'ethereum',
                 address: AddressZero,
                 timestamp: options.timestamp,
@@ -114,12 +114,11 @@ export default class AaveCore extends ProtocolAdapter {
               );
             }
           } else {
-            const priceRaw = await this.services.oracle.getTokenPriceUsd({
+            tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
               chain: options.config.chain,
               address: token.address,
               timestamp: options.timestamp,
             });
-            tokenPriceUsd = priceRaw ? Number(priceRaw) : 0;
           }
 
           const [reserveData, reserveConfigurationData] = await this.getReserveData(

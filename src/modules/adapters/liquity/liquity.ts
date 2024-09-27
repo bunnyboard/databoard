@@ -141,20 +141,20 @@ export default class LiquityAdapter extends ProtocolAdapter {
       ],
     });
 
-    const debtPrice = await this.services.oracle.getTokenPriceUsd({
+    const debtPrice = await this.services.oracle.getTokenPriceUsdRounded({
       chain: liquityConfig.stablecoin.chain,
       address: liquityConfig.stablecoin.address,
       timestamp: options.timestamp,
     });
-    const collateralPrice = await this.services.oracle.getTokenPriceUsd({
+    const collateralPrice = await this.services.oracle.getTokenPriceUsdRounded({
       chain: liquityConfig.collateral.chain,
       address: liquityConfig.collateral.address,
       timestamp: options.timestamp,
     });
 
-    const totalBorrowedUsd = debtPrice ? formatBigNumberToNumber(totalDebt.toString(), 18) * Number(debtPrice) : 0;
+    const totalBorrowedUsd = debtPrice ? formatBigNumberToNumber(totalDebt.toString(), 18) * debtPrice : 0;
     const totalCollateralUsd = collateralPrice
-      ? formatBigNumberToNumber(totalColl.toString(), 18) * Number(collateralPrice)
+      ? formatBigNumberToNumber(totalColl.toString(), 18) * collateralPrice
       : 0;
 
     protocolData.totalAssetDeposited += totalCollateralUsd;

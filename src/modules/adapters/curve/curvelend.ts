@@ -140,13 +140,11 @@ export default class CurvelendAdapter extends ProtocolAdapter {
         });
 
         if (borrowToken && collateralToken) {
-          const tokenPrice = await this.services.oracle.getTokenPriceUsd({
+          const borrowTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
             chain: factoryConfig.chain,
             address: borrowed_token,
             timestamp: options.timestamp,
           });
-
-          const borrowTokenPriceUsd = tokenPrice ? Number(tokenPrice) : 0;
 
           const [borrow_apr, totalAssets, total_debt, collateralBalance, price, admin_fee] =
             await this.services.blockchain.evm.multicall({

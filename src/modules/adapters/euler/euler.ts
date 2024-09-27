@@ -123,12 +123,11 @@ export default class EulerAdapter extends ProtocolAdapter {
               };
             }
 
-            const priceRaw = await this.services.oracle.getTokenPriceUsd({
+            const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
               chain: factoryConfig.chain,
               address: asset,
               timestamp: options.timestamp,
             });
-            const tokenPriceUsd = priceRaw ? Number(priceRaw) : 0;
 
             const totalDepositUsd = formatBigNumberToNumber(totalAssets.toString(), token.decimals) * tokenPriceUsd;
             const totalBorrowUsd = formatBigNumberToNumber(totalBorrows.toString(), token.decimals) * tokenPriceUsd;
@@ -195,12 +194,11 @@ export default class EulerAdapter extends ProtocolAdapter {
                     address: collateralAddress,
                   });
                   if (collateralToken) {
-                    const rawPrice = await this.services.oracle.getTokenPriceUsd({
+                    const collateralPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
                       chain: factoryConfig.chain,
                       address: collateralToken.address,
                       timestamp: options.timestamp,
                     });
-                    const collateralPriceUsd = rawPrice ? Number(rawPrice) : 0;
                     const collateralAmount = await this.services.blockchain.evm.readContract({
                       chain: factoryConfig.chain,
                       abi: EVaultAbi,

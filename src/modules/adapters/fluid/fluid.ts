@@ -140,12 +140,11 @@ export default class FluidAdapter extends ProtocolAdapter {
               };
             }
 
-            const rawPrice = await this.services.oracle.getTokenPriceUsd({
+            const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
               chain: token.chain,
               address: token.address,
               timestamp: options.timestamp,
             });
-            const tokenPriceUsd = rawPrice ? Number(rawPrice) : 0;
 
             const borrowRate = formatBigNumberToNumber(getAllOverallTokensData[i].borrowRate.toString(), 4);
             const reserveFactorRate = formatBigNumberToNumber(getAllOverallTokensData[i].fee.toString(), 4);

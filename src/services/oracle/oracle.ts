@@ -3,7 +3,7 @@ import BigNumber from 'bignumber.js';
 import { OracleConfigs } from '../../configs/oracles/configs';
 import { OracleCurrencyBaseConfigs } from '../../configs/oracles/currency';
 import logger from '../../lib/logger';
-import { formatBigNumberToString, normalizeAddress } from '../../lib/utils';
+import { compareAddress, formatBigNumberToString, normalizeAddress } from '../../lib/utils';
 import ChainlinkLibs from '../../modules/libs/chainlink';
 import CurveLibs from '../../modules/libs/curve';
 import OracleLibs from '../../modules/libs/custom';
@@ -27,6 +27,9 @@ import { IBlockchainService } from '../blockchains/domains';
 import Erc20Abi from '../../configs/abi/ERC20.json';
 import Erc4626Abi from '../../configs/abi/ERC4626.json';
 import { OracleTokenBlacklists } from '../../configs/oracles/blacklists';
+import UniswapFactoryV2 from '../../configs/abi/uniswap/UniswapV2Factory.json';
+import { AutoOracleConfigs } from '../../configs/oracles';
+import { AddressZero } from '../../configs/constants';
 
 export default class OracleService extends CachingService implements IOracleService {
   public readonly name: string = 'oracle';
@@ -38,7 +41,7 @@ export default class OracleService extends CachingService implements IOracleServ
     this.blockchain = blockchain;
   }
 
-  public getBlockchainService(): IBlockchainService {
+  private getBlockchainService(): IBlockchainService {
     if (this.blockchain) {
       return this.blockchain;
     }
@@ -46,7 +49,7 @@ export default class OracleService extends CachingService implements IOracleServ
     return new BlockchainService();
   }
 
-  public async getTokenPriceSource(
+  private async getTokenPriceSource(
     source:
       | OracleSourceChainlink
       | OracleSourcePool2
@@ -191,19 +194,13 @@ export default class OracleService extends CachingService implements IOracleServ
     return null;
   }
 
-  public async getTokenPriceUsd(options: GetTokenPriceOptions): Promise<string | null> {
+  private async getTokenPriceUsd(options: GetTokenPriceOptions): Promise<string | null> {
     if (OracleTokenBlacklists[options.chain] && OracleTokenBlacklists[options.chain].includes(options.address)) {
       return null;
     }
 
     let returnPrice = null;
     options.address = normalizeAddress(options.address);
-
-    const cachingKey = `${options.chain}:${options.address}:${options.timestamp}`;
-    const cachingPriceUsd = await this.getCachingData(cachingKey);
-    if (cachingPriceUsd) {
-      return cachingPriceUsd;
-    }
 
     let priceUsd: string | null = null;
 
@@ -222,8 +219,6 @@ export default class OracleService extends CachingService implements IOracleServ
           });
           if (pricePerShare && underlyingPrice) {
             returnPrice = new BigNumber(pricePerShare).multipliedBy(new BigNumber(underlyingPrice)).toString(10);
-            await this.setCachingData(cachingKey, priceUsd);
-
             break;
           }
         } else {
@@ -242,10 +237,7 @@ export default class OracleService extends CachingService implements IOracleServ
             }
 
             if (priceUsd && priceUsd !== '0') {
-              await this.setCachingData(cachingKey, priceUsd);
-
               returnPrice = priceUsd;
-
               break;
             }
           }
@@ -269,7 +261,76 @@ export default class OracleService extends CachingService implements IOracleServ
       }
     }
 
-    if (returnPrice === null) {
+    return returnPrice;
+  }
+
+  private async tryGetTokenPriceUsdFromDexes(options: GetTokenPriceOptions): Promise<string | null> {
+    const blockchain = this.getBlockchainService();
+
+    if (AutoOracleConfigs[options.chain]) {
+      const baseToken = await blockchain.getTokenInfo({
+        chain: options.chain,
+        address: options.address,
+      });
+
+      for (const autoOracleConfig of AutoOracleConfigs[options.chain].dexes) {
+        if (autoOracleConfig.type === 'univ2') {
+          const pairAddress = await blockchain.readContract({
+            chain: options.chain,
+            abi: UniswapFactoryV2,
+            target: autoOracleConfig.address,
+            method: 'getPair',
+            params: [options.address, AutoOracleConfigs[options.chain].wrapToken.address],
+          });
+          if (!compareAddress(pairAddress, AddressZero)) {
+            if (baseToken) {
+              const priceVsBase = await this.getTokenPriceSource(
+                {
+                  type: OracleTypes.uniswapv2,
+                  chain: options.chain,
+                  address: pairAddress,
+                  baseToken: baseToken,
+                  quotaToken: AutoOracleConfigs[options.chain].wrapToken,
+                },
+                options.timestamp,
+              );
+              if (priceVsBase) {
+                const basePriceUsd = await this.getTokenPriceUsd({
+                  chain: options.chain,
+                  address: AutoOracleConfigs[options.chain].wrapToken.address,
+                  timestamp: options.timestamp,
+                });
+
+                if (basePriceUsd) {
+                  return new BigNumber(priceVsBase).multipliedBy(basePriceUsd).toString(10);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    return null;
+  }
+
+  public async getTokenPriceUsdRounded(options: GetTokenPriceOptions): Promise<number> {
+    const cachingKey = `${options.chain}:${options.address}:${options.timestamp}`;
+    const cachingPriceUsd = await this.getCachingData(cachingKey);
+    if (cachingPriceUsd !== undefined && cachingPriceUsd !== null) {
+      return cachingPriceUsd;
+    }
+
+    let rawPrice = await this.getTokenPriceUsd(options);
+    if (rawPrice) {
+      return Number(rawPrice);
+    }
+
+    rawPrice = await this.tryGetTokenPriceUsdFromDexes(options);
+
+    await this.setCachingData(cachingKey, rawPrice ? Number(rawPrice) : 0);
+
+    if (!rawPrice) {
       logger.warn('failed to get token price', {
         service: this.name,
         chain: options.chain,
@@ -278,13 +339,6 @@ export default class OracleService extends CachingService implements IOracleServ
       });
     }
 
-    await this.setCachingData(cachingKey, priceUsd);
-
-    return returnPrice;
-  }
-
-  public async getTokenPriceUsdRounded(options: GetTokenPriceOptions): Promise<number> {
-    const rawPrice = await this.getTokenPriceUsd(options);
     return rawPrice ? Number(rawPrice) : 0;
   }
 }

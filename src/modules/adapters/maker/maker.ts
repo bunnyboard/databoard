@@ -234,12 +234,11 @@ export default class MakerAdapter extends ProtocolAdapter {
           address: gemConfig.collateralAddress,
         });
         if (collateralToken) {
-          const rawPrice = await this.services.oracle.getTokenPriceUsd({
+          const collateralPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
             chain: makerConfig.chain,
             address: gemConfig.collateralAddress,
             timestamp: options.timestamp,
           });
-          const collateralPriceUsd = rawPrice ? Number(rawPrice) : 0;
 
           const [gemBalance, vatInfo, jugInfo] = await this.services.blockchain.evm.multicall({
             chain: makerConfig.chain,
@@ -373,12 +372,11 @@ export default class MakerAdapter extends ProtocolAdapter {
         address: LitePsmUsdcModule.collateralAddress,
       });
       if (collateralToken) {
-        const rawPrice = await this.services.oracle.getTokenPriceUsd({
+        const collateralPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
           chain: makerConfig.chain,
           address: LitePsmUsdcModule.collateralAddress,
           timestamp: options.timestamp,
         });
-        const collateralPriceUsd = rawPrice ? Number(rawPrice) : 0;
 
         const gemBalance = await this.services.blockchain.evm.readContract({
           chain: makerConfig.chain,

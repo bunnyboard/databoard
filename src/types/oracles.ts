@@ -107,3 +107,15 @@ export interface OracleConfig {
   // support to get token price when it was not available onchain yet
   offchainSources?: Array<OracleSourceOffchain>;
 }
+
+// if all pre-configs oracle failed to get price
+// we will try auto find pool
+export interface DexOracleConfig {
+  type: 'univ2' | 'univ3';
+  address: string;
+}
+
+export interface AutoOracleConfig {
+  wrapToken: Token;
+  dexes: Array<DexOracleConfig>;
+}

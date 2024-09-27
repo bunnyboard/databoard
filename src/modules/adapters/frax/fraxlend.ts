@@ -132,12 +132,11 @@ export default class FraxlendAdapter extends ProtocolAdapter {
           address: collateralContract,
         });
         if (token && collateral) {
-          const tokenPriceRaw = await this.services.oracle.getTokenPriceUsd({
+          const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
             chain: factoryConfig.chain,
             address: token.address,
             timestamp: blockNumber,
           });
-          const tokenPriceUsd = tokenPriceRaw ? Number(tokenPriceRaw) : 0;
 
           let collateralPriceUsd = 0;
 
@@ -152,12 +151,11 @@ export default class FraxlendAdapter extends ProtocolAdapter {
 
           if (collateralPriceUsd === 0) {
             // try get collateral price from oracle configs
-            const collateralPriceRaw = await this.services.oracle.getTokenPriceUsd({
+            collateralPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
               chain: factoryConfig.chain,
               address: collateral.address,
               timestamp: blockNumber,
             });
-            collateralPriceUsd = collateralPriceRaw ? Number(collateralPriceRaw) : 0;
           }
 
           console.log(pairAddress, token.symbol, collateral.symbol, collateralPriceUsd);

@@ -1,4 +1,3 @@
-import { OracleSourceChainlink, OracleSourcePool2, OracleSourceSavingDai } from '../../types/oracles';
 import { IBlockchainService } from '../blockchains/domains';
 
 export interface GetTokenPriceOptions {
@@ -16,16 +15,6 @@ export interface IOracleService {
   name: string;
 
   blockchain: IBlockchainService | null | undefined;
-
-  // this will get token price vs base token in the oracle config only
-  getTokenPriceSource: (
-    source: OracleSourceChainlink | OracleSourcePool2 | OracleSourceSavingDai,
-    blockNumber: number,
-  ) => Promise<string | null>;
-
-  // this function will get the base token price in usd
-  // in case the base token is not usd
-  getTokenPriceUsd: (options: GetTokenPriceOptions) => Promise<string | null>;
 
   // same as getTokenPriceUsd but return number type
   getTokenPriceUsdRounded: (options: GetTokenPriceOptions) => Promise<number>;

@@ -87,7 +87,7 @@ const timestamp = getTimestamp();
 
 test('should be able to get token prices', async function () {
   for (const token of tokens) {
-    const tokenPriceUsd = await oracle.getTokenPriceUsd({
+    const tokenPriceUsd = await oracle.getTokenPriceUsdRounded({
       chain: chain,
       address: token,
       timestamp: timestamp,

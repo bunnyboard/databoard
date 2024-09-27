@@ -46,12 +46,11 @@ export default class CurveusdAdapter extends ProtocolAdapter {
 
     const curveusdConfig = this.protocolConfig as CurveusdProtocolConfig;
 
-    const stablecoinPriceRaw = await this.services.oracle.getTokenPriceUsd({
+    const stablecoinPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
       chain: curveusdConfig.stablecoin.chain,
       address: curveusdConfig.stablecoin.address,
       timestamp: options.timestamp,
     });
-    const stablecoinPriceUsd = stablecoinPriceRaw ? Number(stablecoinPriceRaw) : 0;
 
     protocolData.breakdown[curveusdConfig.stablecoin.chain] = {};
     protocolData.breakdown[curveusdConfig.stablecoin.chain][curveusdConfig.stablecoin.address] = {

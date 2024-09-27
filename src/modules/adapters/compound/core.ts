@@ -136,7 +136,7 @@ export default class CompoundCore extends ProtocolAdapter {
           let underlyingPrice = null;
 
           if (config.oracleSource === 'external') {
-            underlyingPrice = await this.services.oracle.getTokenPriceUsd({
+            underlyingPrice = await this.services.oracle.getTokenPriceUsdRounded({
               chain: underlying.chain,
               address: underlying.address,
               timestamp: timestamp,
@@ -160,7 +160,7 @@ export default class CompoundCore extends ProtocolAdapter {
                 underlyingPrice = formatBigNumberToNumber(oraclePrice.toString(), 36 - underlying.decimals);
 
                 if (config.oracleSource === 'oracleEth') {
-                  const ethPrice = await this.services.oracle.getTokenPriceUsd({
+                  const ethPrice = await this.services.oracle.getTokenPriceUsdRounded({
                     chain: 'ethereum',
                     address: AddressZero,
                     timestamp: timestamp,
@@ -544,12 +544,11 @@ export default class CompoundCore extends ProtocolAdapter {
             };
           }
 
-          const baseTokenPriceRaw = await this.services.oracle.getTokenPriceUsd({
+          const baseTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
             chain: cometConfig.chain,
             address: baseToken.address,
             timestamp: options.timestamp,
           });
-          const baseTokenPriceUsd = baseTokenPriceRaw ? Number(baseTokenPriceRaw) : 0;
 
           const [totalSupply, totalBorrow, utilization] = await this.services.blockchain.evm.multicall({
             chain: cometConfig.chain,

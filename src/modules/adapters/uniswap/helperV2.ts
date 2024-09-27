@@ -23,12 +23,11 @@ export default class UniswapHelperV2 {
     if (TokenDexBase[options.dexConfig.chain]) {
       for (const baseTokenAddress of TokenDexBase[options.dexConfig.chain]) {
         if (compareAddress(baseTokenAddress, options.pool.token0.address)) {
-          const priceUsd = await options.services.oracle.getTokenPriceUsd({
+          token0PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
             chain: options.dexConfig.chain,
             address: options.pool.token0.address,
             timestamp: options.timestamp,
           });
-          token0PriceUsd = priceUsd ? Number(priceUsd) : 0;
           const balance = await options.services.blockchain.evm.readContract({
             chain: options.dexConfig.chain,
             abi: Erc20Abi,
@@ -41,12 +40,11 @@ export default class UniswapHelperV2 {
             formatBigNumberToNumber(balance.toString(), options.pool.token0.decimals) * 2 * token0PriceUsd;
           break;
         } else if (compareAddress(baseTokenAddress, options.pool.token1.address)) {
-          const priceUsd = await options.services.oracle.getTokenPriceUsd({
+          token1PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
             chain: options.dexConfig.chain,
             address: options.pool.token1.address,
             timestamp: options.timestamp,
           });
-          token1PriceUsd = priceUsd ? Number(priceUsd) : 0;
           const balance = await options.services.blockchain.evm.readContract({
             chain: options.dexConfig.chain,
             abi: Erc20Abi,
