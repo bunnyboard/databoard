@@ -59,80 +59,83 @@ export default class EvmChainAdapter extends ChainAdapter {
   public async getBlockData(blockNumber: number): Promise<ChainBlockData | null> {
     const block = await this.queryNodeRpc('eth_getBlockByNumber', [`0x${blockNumber.toString(16)}`, true]);
 
-    if (block) {
-      const chainBlockData: ChainBlockData = {
-        chain: this.chainConfig.chain,
-        number: blockNumber,
-        timestamp: parseInt(block.timestamp, 16),
-        totalFees: 0,
-        totalFeesBurnt: 0,
-        blockReward: 0,
-        resourceLimit: parseInt(block.gasLimit, 16).toString(),
-        resourceUsed: parseInt(block.gasUsed, 16).toString(),
-        totalTransactions: 0,
-        senderAddresses: [],
-      };
+    if (!block) {
+      return null;
+    }
 
-      // update sender address list
-      const senders: { [key: string]: boolean } = {};
-      for (const transaction of block.transactions) {
-        const gasPrice = parseInt(transaction.gasPrice, 16);
+    const chainBlockData: ChainBlockData = {
+      chain: this.chainConfig.chain,
+      number: blockNumber,
+      timestamp: parseInt(block.timestamp, 16),
+      totalFees: 0,
+      totalFeesBurnt: 0,
+      blockReward: 0,
+      resourceLimit: parseInt(block.gasLimit, 16).toString(),
+      resourceUsed: parseInt(block.gasUsed, 16).toString(),
+      totalTransactions: 0,
+      senderAddresses: {},
+    };
 
-        // ignore layer 2 system transactions with gasPrice is ZERO
-        if (gasPrice > 0) {
-          chainBlockData.totalTransactions += 1;
-          senders[normalizeAddress(transaction.from)] = true;
+    // update sender address list
+    for (const transaction of block.transactions) {
+      const gasPrice = parseInt(transaction.gasPrice, 16);
+
+      // ignore layer 2 system transactions with gasPrice is ZERO
+      if (gasPrice > 0) {
+        chainBlockData.totalTransactions += 1;
+
+        const sender = normalizeAddress(transaction.from);
+        if (chainBlockData.senderAddresses[sender]) {
+          chainBlockData.senderAddresses[sender] = 0;
         }
+        chainBlockData.senderAddresses[sender] += 1;
       }
-      chainBlockData.senderAddresses = Object.keys(senders);
+    }
 
-      const baseFeePerGas = parseInt(block.baseFeePerGas ? block.baseFeePerGas : '0x0', 16);
-      const gasUsed = parseInt(block.gasUsed, 16);
-      const baseFees = formatBigNumberToNumber((baseFeePerGas * gasUsed).toString(), 18);
+    const baseFeePerGas = parseInt(block.baseFeePerGas ? block.baseFeePerGas : '0x0', 16);
+    const gasUsed = parseInt(block.gasUsed, 16);
+    const baseFees = formatBigNumberToNumber((baseFeePerGas * gasUsed).toString(), 18);
 
-      // if this is layer chain, baseFees is also total transaction fees
-      if (this.chainConfig.layer2) {
-        chainBlockData.totalFees += baseFees;
-      } else {
-        // eip1559 enabled, baseFees is burnt
-        if (this.chainConfig.eip1559 && this.chainConfig.eip1559 < blockNumber) {
-          chainBlockData.totalFeesBurnt += baseFees;
-        }
+    // if this is layer chain, baseFees is also total transaction fees
+    if (this.chainConfig.layer2) {
+      chainBlockData.totalFees += baseFees;
+    } else {
+      // eip1559 enabled, baseFees is burnt
+      if (this.chainConfig.eip1559 && this.chainConfig.eip1559 < blockNumber) {
+        chainBlockData.totalFeesBurnt += baseFees;
+      }
 
-        // need to count receipts to calculate total fees
-        const receipts = await this.queryNodeRpc('eth_getBlockReceipts', [`0x${blockNumber.toString(16)}`]);
-        if (receipts) {
-          for (const receipt of receipts) {
-            const gasUsed = parseInt(receipt.gasUsed, 16);
-            const effectiveGasPrice = parseInt(receipt.effectiveGasPrice, 16);
-            const transactionFee = formatBigNumberToNumber((gasUsed * effectiveGasPrice).toString(), 18);
+      const receipts = await this.queryNodeRpc('eth_getBlockReceipts', [`0x${blockNumber.toString(16)}`]);
+      for (const receipt of receipts) {
+        const gasUsed = parseInt(receipt.gasUsed, 16);
+        const effectiveGasPrice = parseInt(receipt.effectiveGasPrice, 16);
+        const transactionFee = formatBigNumberToNumber((gasUsed * effectiveGasPrice).toString(), 18);
 
-            chainBlockData.totalFees += transactionFee;
+        chainBlockData.totalFees += transactionFee;
 
-            if (this.chainConfig.chain === ChainNames.bnbchain) {
-              // on bsc, we track BNB burnt by count feeBurned events on BSC: Validator Set contract
-              // https://bscscan.com/tx/0x4d8fa84bb2e6e72da504c5f26c94a37530a42ddb8da19b9885dd2f23612784a9#eventlog
-              for (const log of receipt.logs) {
-                if (log.topics[0] === '0x627059660ea01c4733a328effb2294d2f86905bf806da763a89cee254de8bee5') {
-                  const event: any = decodeEventLog({
-                    abi: ValidatorSetAbi,
-                    topics: log.topics,
-                    data: log.data,
-                  });
-                  chainBlockData.totalFeesBurnt += formatBigNumberToNumber(event.args.amount.toString(), 18);
-                }
-              }
+        // on bsc, we track BNB burnt by count feeBurned events on BSC: Validator Set contract
+        // https://bscscan.com/tx/0x4d8fa84bb2e6e72da504c5f26c94a37530a42ddb8da19b9885dd2f23612784a9#eventlog
+        if (this.chainConfig.chain === ChainNames.bnbchain) {
+          for (const log of receipt.logs) {
+            if (log.topics[0] === '0x627059660ea01c4733a328effb2294d2f86905bf806da763a89cee254de8bee5') {
+              const event: any = decodeEventLog({
+                abi: ValidatorSetAbi,
+                topics: log.topics,
+                data: log.data,
+              });
+              chainBlockData.totalFeesBurnt += formatBigNumberToNumber(event.args.amount.toString(), 18);
             }
           }
         }
       }
-
-      // validator rewards
-      chainBlockData.blockReward = chainBlockData.totalFees - chainBlockData.totalFeesBurnt;
-
-      return chainBlockData;
     }
 
-    return null;
+    // validator rewards
+    chainBlockData.blockReward =
+      chainBlockData.totalFees > chainBlockData.totalFeesBurnt
+        ? chainBlockData.totalFees - chainBlockData.totalFeesBurnt
+        : chainBlockData.totalFees;
+
+    return chainBlockData;
   }
 }

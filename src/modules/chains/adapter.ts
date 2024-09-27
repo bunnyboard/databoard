@@ -28,7 +28,8 @@ export interface ChainBlockData {
   totalTransactions: number;
 
   // list of transaction sender addresses
-  senderAddresses: Array<string>;
+  // address => sent transaction count
+  senderAddresses: { [key: string]: number };
 }
 
 export default class ChainAdapter implements IChainAdapter {
@@ -99,8 +100,8 @@ export default class ChainAdapter implements IChainAdapter {
         });
       }
 
-      if ((stateBlock - startBlock) % 20 === 0) {
-        logger.info('got chain blocks data', {
+      if ((stateBlock - startBlock) % 50 === 0) {
+        logger.info('indexing chain blocks data', {
           service: this.name,
           chain: this.chainConfig.chain,
           currentBlock: stateBlock,
