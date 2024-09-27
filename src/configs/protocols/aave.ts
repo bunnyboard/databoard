@@ -169,18 +169,6 @@ export const AaveConfigs: AaveProtocolConfig = {
       },
     },
     {
-      chain: ChainNames.arbitrum,
-      marketName: 'Main Market',
-      version: 3,
-      birthday: 1647043200, // Sat Mar 12 2022 00:00:00 GMT+0000
-      lendingPool: '0x794a61358d6845594f94dc1db02a252b5b4814ad',
-      dataProvider: '0x69fa688f1dc47d4b5d8029d5a35fb7a548310654',
-      oracle: {
-        currency: 'usd',
-        address: '0xb56c2f0b653b2e0b10c9b928c8580ac5df02c7c7',
-      },
-    },
-    {
       chain: ChainNames.polygon,
       marketName: 'Main Market',
       version: 3,
