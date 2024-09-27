@@ -50,6 +50,9 @@ import { SwethConfigs } from './protocols/swellnetwork';
 import { EthxConfigs } from './protocols/stader';
 import { FraxEtherConfigs } from './protocols/frax';
 import { StakeStoneConfigs } from './protocols/stakestone';
+import { StakewiseConfigs } from './protocols/stakewise';
+import { LiquidCollectiveConfigs } from './protocols/liquidcollective';
+import { DineroConfigs } from './protocols/dinero';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -115,6 +118,9 @@ export const ProtocolConfigs = {
   ethx: EthxConfigs,
   fraxether: FraxEtherConfigs,
   stakestone: StakeStoneConfigs,
+  stakewise: StakewiseConfigs,
+  liquidcollective: LiquidCollectiveConfigs,
+  dinero: DineroConfigs,
 };
 
 export const ChainConfigs = ChainBoardConfigs;

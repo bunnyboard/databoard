@@ -151,4 +151,6 @@ export const ProtocolNames = {
   wbeth: 'wbeth',
   meth: 'meth',
   ethx: 'ethx',
+  stakewise: 'stakewise',
+  dinero: 'dinero',
 };
