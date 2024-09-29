@@ -15,7 +15,6 @@ export const ChainBoardConfigs: { [key: string]: ChainConfig } = {
       'https://rpc.mevblocker.io/fast',
       'https://eth.meowrpc.com',
       'https://rpc.flashbots.net',
-      'https://cloudflare-eth.com',
       'https://eth-pokt.nodies.app',
       'https://rpc.ankr.com/eth',
       'https://ethereum.blockpi.network/v1/rpc/public',
