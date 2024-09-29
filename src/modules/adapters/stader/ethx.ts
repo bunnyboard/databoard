@@ -102,12 +102,15 @@ export default class EthxAdapter extends ProtocolAdapter {
       blockNumber: endBlock,
     });
 
-    const preExchangeRate = formatBigNumberToNumber(getPreExchangeRate.toString(), 18);
-    const postExchangeRate = formatBigNumberToNumber(getPostExchangeRate.toString(), 18);
+    let stakingApr = 0;
+    if (getPreExchangeRate && getPostExchangeRate) {
+      const preExchangeRate = formatBigNumberToNumber(getPreExchangeRate.toString(), 18);
+      const postExchangeRate = formatBigNumberToNumber(getPostExchangeRate.toString(), 18);
 
-    const stakingApr =
-      (TimeUnits.SecondsPerYear * ((postExchangeRate - preExchangeRate) / preExchangeRate)) /
-      (options.endTime - last7DaysTime);
+      stakingApr =
+        (TimeUnits.SecondsPerYear * ((postExchangeRate - preExchangeRate) / preExchangeRate)) /
+        (options.endTime - last7DaysTime);
+    }
 
     const totalDeposited =
       formatBigNumberToNumber(getExchangeRate.toString(), 18) * formatBigNumberToNumber(totalSupply.toString(), 18);

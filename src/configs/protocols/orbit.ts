@@ -5,12 +5,12 @@ import { CompoundProtocolConfig } from './compound';
 export const OrbitConfigs: CompoundProtocolConfig = {
   protocol: ProtocolNames.orbit,
   category: ProtocolCategories.lending,
-  birthday: 1624320000, // Tue Jun 22 2021 00:00:00 GMT+0000
+  birthday: 1709251200, // Fri Mar 01 2024 00:00:00 GMT+0000
   comptrollers: [
     {
       chain: ChainNames.blast,
       marketName: 'Main Market',
-      birthday: 1624320000, // Tue Jun 22 2021 00:00:00 GMT+0000
+      birthday: 1709251200, // Fri Mar 01 2024 00:00:00 GMT+0000
       comptroller: '0x1E18C3cb491D908241D0db14b081B51be7B6e652',
       oracleSource: 'oracleUsd',
       blacklists: ['0xf92996ddc677a8dcb032ac5fe62bbf00f92ae2ec', '0xd847b486fe612c51900f1da1a045741820dd5fa0'],

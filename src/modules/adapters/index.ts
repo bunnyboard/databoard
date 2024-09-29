@@ -85,9 +85,9 @@ export function getProtocolAdapters(
     meth: new MethAdapter(services, storages, ProtocolConfigs.meth),
     sweth: new SwethAdapter(services, storages, ProtocolConfigs.sweth),
     ethx: new EthxAdapter(services, storages, ProtocolConfigs.ethx),
-    stakestone: new StakeStoneAdapter(services, storages, ProtocolConfigs.stakestone),
     stakewise: new StakewiseAdapter(services, storages, ProtocolConfigs.stakewise),
     liquidcollective: new LiquidCollectiveAdapter(services, storages, ProtocolConfigs.liquidcollective),
     dinero: new DineroAdapter(services, storages, ProtocolConfigs.dinero),
+    stakestone: new StakeStoneAdapter(services, storages, ProtocolConfigs.stakestone),
   };
 }

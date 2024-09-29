@@ -1,10 +1,10 @@
 import { MorphoBlueConfig, MorphoProtocolConfig } from '../../../configs/protocols/morpho';
 import logger from '../../../lib/logger';
-import { ProtocolConfig } from '../../../types/base';
+import { ProtocolConfig, Token } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions, TestAdapterOptions } from '../../../types/options';
-import MorphoIndexerAdapter, { MorphoBlueMarketMetadata } from './indexer';
+import MorphoIndexerAdapter from './indexer';
 import MorphoBlueAbi from '../../../configs/abi/morpho/MorphoBlue.json';
 import MorphoOracleAbi from '../../../configs/abi/morpho/MorphoOracle.json';
 import AdapterCurveIrmAbi from '../../../configs/abi/morpho/AdapterCurveIrm.json';
@@ -26,9 +26,17 @@ export const MorphoBlueEvents = {
   Liquidate: '0xa4946ede45d0c6f06a0f5ce92c9ad3b4751452d2fe0e25010783bcab57a67e41',
 };
 
+export interface MorphoBlueMarketMetadata {
+  chain: string;
+  morphoBlue: string;
+  marketId: string;
+  debtToken: Token;
+  collateralToken: Token;
+}
+
 interface GetMarketDataOptions {
   morphoBlueConfig: MorphoBlueConfig;
-  marketMetadata: MorphoBlueMarketMetadata;
+  marketId: string;
   timestamp: number;
   blockNumber: number;
   beginBlock: number;
@@ -55,33 +63,51 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
     super(services, storages, protocolConfig);
   }
 
-  public async getMarketData(options: GetMarketDataOptions): Promise<MarketBasicData> {
-    const marketData: MarketBasicData = {
-      marketMetadata: options.marketMetadata,
-      debtTokenPriceUsd: 0,
-      collateralTokenPriceUsd: 0,
-      totalSuppliedUsd: 0,
-      totalBorrowedUsd: 0,
-      totalFees: 0,
-      supplySideRevenue: 0,
-      protocolRevenue: 0,
-    };
+  public async getMarketData(options: GetMarketDataOptions): Promise<MarketBasicData | null> {
+    const marketInfo = await this.services.blockchain.evm.readContract({
+      chain: options.morphoBlueConfig.chain,
+      abi: MorphoBlueAbi,
+      target: options.morphoBlueConfig.morphoBlue,
+      method: 'idToMarketParams',
+      params: [options.marketId],
+      blockNumber: options.blockNumber,
+    });
 
-    const debtTokenPrice = await this.services.oracle.getTokenPriceUsdRounded({
-      chain: options.marketMetadata.debtToken.chain,
-      address: options.marketMetadata.debtToken.address,
+    // market not found, return null
+    if (!marketInfo) {
+      return null;
+    }
+
+    const [loanTokenAddress, collateralTokenAddress, oracle, irm, ltv] = marketInfo;
+
+    const debtToken = await this.services.blockchain.evm.getTokenInfo({
+      chain: options.morphoBlueConfig.chain,
+      address: loanTokenAddress,
+    });
+    const collateralToken = await this.services.blockchain.evm.getTokenInfo({
+      chain: options.morphoBlueConfig.chain,
+      address: collateralTokenAddress,
+    });
+
+    // can not get debt/collateral token info, return null
+    if (!debtToken || !collateralToken) {
+      return null;
+    }
+
+    const debtTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+      chain: debtToken.chain,
+      address: debtToken.address,
       timestamp: options.timestamp,
     });
-    marketData.debtTokenPriceUsd = debtTokenPrice;
 
-    if (debtTokenPrice) {
+    if (debtTokenPriceUsd > 0) {
       const [totalSupplyAssets, totalSupplyShares, totalBorrowAssets, totalBorrowShares, lastUpdate, fee] =
         await this.services.blockchain.evm.readContract({
           chain: options.morphoBlueConfig.chain,
           abi: MorphoBlueAbi,
           target: options.morphoBlueConfig.morphoBlue,
           method: 'market',
-          params: [options.marketMetadata.marketId],
+          params: [options.marketId],
           blockNumber: options.blockNumber,
         });
 
@@ -90,15 +116,15 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
         calls: [
           {
             abi: AdapterCurveIrmAbi,
-            target: options.marketMetadata.irm,
+            target: irm,
             method: 'borrowRateView',
             params: [
               [
-                options.marketMetadata.debtToken.address, // loanToken
-                options.marketMetadata.collateralToken.address, // collateralToken
-                options.marketMetadata.oracle, // oracle
-                options.marketMetadata.irm, // irm
-                options.marketMetadata.ltv, // ltv
+                loanTokenAddress, // loanToken
+                collateralTokenAddress, // collateralToken
+                oracle, // oracle
+                irm, // irm
+                ltv, // ltv
               ],
               [
                 totalSupplyAssets.toString(),
@@ -112,7 +138,7 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
           },
           {
             abi: MorphoOracleAbi,
-            target: options.marketMetadata.oracle,
+            target: oracle,
             method: 'price',
             params: [],
           },
@@ -122,12 +148,9 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
 
       // https://docs.morpho.org/morpho-blue/contracts/oracles/#price
       const collateralPriceUsd = collateralPrice
-        ? formatBigNumberToNumber(
-            collateralPrice.toString(),
-            36 + options.marketMetadata.debtToken.decimals - options.marketMetadata.collateralToken.decimals,
-          ) * debtTokenPrice
+        ? formatBigNumberToNumber(collateralPrice.toString(), 36 + debtToken.decimals - collateralToken.decimals) *
+          debtTokenPriceUsd
         : 0;
-      marketData.collateralTokenPriceUsd = collateralPriceUsd;
 
       // https://docs.morpho.org/morpho/contracts/irm/#calculations
       // borrowRatePerSecond from Morpho Irm
@@ -136,25 +159,34 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
       const feeRate = formatBigNumberToNumber(fee.toString(), 18);
 
       const totalDeposited =
-        formatBigNumberToNumber(totalSupplyAssets.toString(), options.marketMetadata.debtToken.decimals) *
-        debtTokenPrice;
+        formatBigNumberToNumber(totalSupplyAssets.toString(), debtToken.decimals) * debtTokenPriceUsd;
       const totalBorrowed =
-        formatBigNumberToNumber(totalBorrowAssets.toString(), options.marketMetadata.debtToken.decimals) *
-        debtTokenPrice;
+        formatBigNumberToNumber(totalBorrowAssets.toString(), debtToken.decimals) * debtTokenPriceUsd;
 
       // 24h borrow fees
       const borrowFees = (totalBorrowed * borrowRate) / TimeUnits.DaysPerYear;
       const protocolRevenue = borrowFees * feeRate;
       const supplySideRevenue = borrowFees - protocolRevenue;
 
-      marketData.totalSuppliedUsd += totalDeposited;
-      marketData.totalBorrowedUsd += totalBorrowed;
-      marketData.totalFees += borrowFees;
-      marketData.supplySideRevenue += supplySideRevenue;
-      marketData.protocolRevenue += protocolRevenue;
+      return {
+        marketMetadata: {
+          chain: options.morphoBlueConfig.chain,
+          morphoBlue: options.morphoBlueConfig.morphoBlue,
+          marketId: options.marketId,
+          debtToken: debtToken,
+          collateralToken: collateralToken,
+        },
+        debtTokenPriceUsd: debtTokenPriceUsd,
+        collateralTokenPriceUsd: collateralPriceUsd,
+        totalSuppliedUsd: totalDeposited,
+        totalBorrowedUsd: totalBorrowed,
+        totalFees: borrowFees,
+        supplySideRevenue: supplySideRevenue,
+        protocolRevenue: protocolRevenue,
+      };
     }
 
-    return marketData;
+    return null;
   }
 
   public async getProtocolData(options: GetProtocolDataOptions): Promise<ProtocolData | null> {
@@ -189,7 +221,7 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
         continue;
       }
 
-      await this.indexMarketsFromContractLogs(morphoBlue);
+      await this.indexHistoricalLogs(morphoBlue);
 
       const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
         morphoBlue.chain,
@@ -208,107 +240,105 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
         protocolData.breakdown[morphoBlue.chain] = {};
       }
 
-      const markets = await this.getMarketsMetadata(morphoBlue);
-      logger.debug('getting morpho markets data from contracts', {
+      logger.debug('getting morpho markets data', {
         service: this.name,
         protocol: this.protocolConfig.protocol,
         chain: morphoBlue.chain,
         morphoBlue: morphoBlue.morphoBlue,
-        markets: markets.length,
+        markets: morphoBlue.whitelistedMarketIds.length,
       });
 
       const marketsData: Array<MarketBasicData> = [];
-      for (const marketMetadata of markets) {
-        if (
-          !morphoBlue.blacklistPoolIds[marketMetadata.marketId] &&
-          marketMetadata.birthday <= options.timestamp &&
-          marketMetadata.birthblock <= blockNumber
-        ) {
-          const marketLendingData = await this.getMarketData({
-            morphoBlueConfig: morphoBlue,
-            marketMetadata: marketMetadata,
-            timestamp: options.timestamp,
-            blockNumber: blockNumber,
-            beginBlock: beginBlock,
-            endBlock: endBlock,
-          });
+      for (const marketId of morphoBlue.whitelistedMarketIds) {
+        const marketLendingData = await this.getMarketData({
+          morphoBlueConfig: morphoBlue,
+          marketId: marketId,
+          timestamp: options.timestamp,
+          blockNumber: blockNumber,
+          beginBlock: beginBlock,
+          endBlock: endBlock,
+        });
 
-          if (marketLendingData) {
-            marketsData.push(marketLendingData);
+        if (marketLendingData) {
+          marketsData.push(marketLendingData);
 
-            if (
-              !protocolData.breakdown[marketLendingData.marketMetadata.chain][
-                marketLendingData.marketMetadata.debtToken.address
-              ]
-            ) {
-              protocolData.breakdown[marketLendingData.marketMetadata.chain][
-                marketLendingData.marketMetadata.debtToken.address
-              ] = {
-                ...getInitialProtocolCoreMetrics(),
-                totalSupplied: 0,
-                totalBorrowed: 0,
-                volumes: {
-                  deposit: 0,
-                  withdraw: 0,
-                  borrow: 0,
-                  repay: 0,
-                  liquidation: 0,
-                  flashloan: 0,
-                },
-              };
-            }
-            if (
-              !protocolData.breakdown[marketLendingData.marketMetadata.chain][
-                marketLendingData.marketMetadata.collateralToken.address
-              ]
-            ) {
-              protocolData.breakdown[marketLendingData.marketMetadata.chain][
-                marketLendingData.marketMetadata.collateralToken.address
-              ] = {
-                ...getInitialProtocolCoreMetrics(),
-                totalSupplied: 0,
-                totalBorrowed: 0,
-                volumes: {
-                  deposit: 0,
-                  withdraw: 0,
-                  borrow: 0,
-                  repay: 0,
-                  liquidation: 0,
-                  flashloan: 0,
-                },
-              };
-            }
-
-            protocolData.totalAssetDeposited += marketLendingData.totalSuppliedUsd;
-            protocolData.totalValueLocked += marketLendingData.totalSuppliedUsd - marketLendingData.totalBorrowedUsd;
-            (protocolData.totalSupplied as number) += marketLendingData.totalSuppliedUsd;
-            (protocolData.totalBorrowed as number) += marketLendingData.totalBorrowedUsd;
-            protocolData.totalFees += marketLendingData.totalFees;
-            protocolData.supplySideRevenue += marketLendingData.supplySideRevenue;
-            protocolData.protocolRevenue += marketLendingData.protocolRevenue;
-
+          if (
+            !protocolData.breakdown[marketLendingData.marketMetadata.chain][
+              marketLendingData.marketMetadata.debtToken.address
+            ]
+          ) {
             protocolData.breakdown[marketLendingData.marketMetadata.chain][
               marketLendingData.marketMetadata.debtToken.address
-            ].totalAssetDeposited = marketLendingData.totalSuppliedUsd;
-            protocolData.breakdown[marketLendingData.marketMetadata.chain][
-              marketLendingData.marketMetadata.debtToken.address
-            ].totalValueLocked = marketLendingData.totalSuppliedUsd - marketLendingData.totalBorrowedUsd;
-            (protocolData.breakdown[marketLendingData.marketMetadata.chain][
-              marketLendingData.marketMetadata.debtToken.address
-            ].totalSupplied as number) = marketLendingData.totalSuppliedUsd;
-            (protocolData.breakdown[marketLendingData.marketMetadata.chain][
-              marketLendingData.marketMetadata.debtToken.address
-            ].totalBorrowed as number) = marketLendingData.totalBorrowedUsd;
-            protocolData.breakdown[marketLendingData.marketMetadata.chain][
-              marketLendingData.marketMetadata.debtToken.address
-            ].totalFees = marketLendingData.totalFees;
-            protocolData.breakdown[marketLendingData.marketMetadata.chain][
-              marketLendingData.marketMetadata.debtToken.address
-            ].supplySideRevenue = marketLendingData.supplySideRevenue;
-            protocolData.breakdown[marketLendingData.marketMetadata.chain][
-              marketLendingData.marketMetadata.debtToken.address
-            ].protocolRevenue = marketLendingData.protocolRevenue;
+            ] = {
+              ...getInitialProtocolCoreMetrics(),
+              totalSupplied: 0,
+              totalBorrowed: 0,
+              volumes: {
+                deposit: 0,
+                withdraw: 0,
+                borrow: 0,
+                repay: 0,
+                liquidation: 0,
+                flashloan: 0,
+              },
+            };
           }
+          if (
+            !protocolData.breakdown[marketLendingData.marketMetadata.chain][
+              marketLendingData.marketMetadata.collateralToken.address
+            ]
+          ) {
+            protocolData.breakdown[marketLendingData.marketMetadata.chain][
+              marketLendingData.marketMetadata.collateralToken.address
+            ] = {
+              ...getInitialProtocolCoreMetrics(),
+              totalSupplied: 0,
+              totalBorrowed: 0,
+              volumes: {
+                deposit: 0,
+                withdraw: 0,
+                borrow: 0,
+                repay: 0,
+                liquidation: 0,
+                flashloan: 0,
+              },
+            };
+          }
+
+          if (marketLendingData.totalSuppliedUsd > 10000000000) {
+            console.log(marketLendingData);
+            process.exit(1);
+          }
+
+          protocolData.totalAssetDeposited += marketLendingData.totalSuppliedUsd;
+          protocolData.totalValueLocked += marketLendingData.totalSuppliedUsd - marketLendingData.totalBorrowedUsd;
+          (protocolData.totalSupplied as number) += marketLendingData.totalSuppliedUsd;
+          (protocolData.totalBorrowed as number) += marketLendingData.totalBorrowedUsd;
+          protocolData.totalFees += marketLendingData.totalFees;
+          protocolData.supplySideRevenue += marketLendingData.supplySideRevenue;
+          protocolData.protocolRevenue += marketLendingData.protocolRevenue;
+
+          protocolData.breakdown[marketLendingData.marketMetadata.chain][
+            marketLendingData.marketMetadata.debtToken.address
+          ].totalAssetDeposited = marketLendingData.totalSuppliedUsd;
+          protocolData.breakdown[marketLendingData.marketMetadata.chain][
+            marketLendingData.marketMetadata.debtToken.address
+          ].totalValueLocked = marketLendingData.totalSuppliedUsd - marketLendingData.totalBorrowedUsd;
+          (protocolData.breakdown[marketLendingData.marketMetadata.chain][
+            marketLendingData.marketMetadata.debtToken.address
+          ].totalSupplied as number) = marketLendingData.totalSuppliedUsd;
+          (protocolData.breakdown[marketLendingData.marketMetadata.chain][
+            marketLendingData.marketMetadata.debtToken.address
+          ].totalBorrowed as number) = marketLendingData.totalBorrowedUsd;
+          protocolData.breakdown[marketLendingData.marketMetadata.chain][
+            marketLendingData.marketMetadata.debtToken.address
+          ].totalFees = marketLendingData.totalFees;
+          protocolData.breakdown[marketLendingData.marketMetadata.chain][
+            marketLendingData.marketMetadata.debtToken.address
+          ].supplySideRevenue = marketLendingData.supplySideRevenue;
+          protocolData.breakdown[marketLendingData.marketMetadata.chain][
+            marketLendingData.marketMetadata.debtToken.address
+          ].protocolRevenue = marketLendingData.protocolRevenue;
         }
       }
 

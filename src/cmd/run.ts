@@ -116,12 +116,14 @@ export class RunCommand extends BasicCommand {
   public setOptions(yargs: any) {
     return yargs.option({
       chain: {
+        alias: 'c',
         type: 'string',
         default: '',
         describe:
           'Collect data of given blockchain. You can pass a list of chains seperated by comma, ex: --chain "ethereum,polygon".',
       },
       protocol: {
+        alias: 'p',
         type: 'string',
         default: '',
         describe:

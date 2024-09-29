@@ -49,6 +49,7 @@ export class TestCommand extends BasicCommand {
   public setOptions(yargs: any) {
     return yargs.option({
       protocol: {
+        alias: 'p',
         type: 'string',
         default: '',
         describe: 'Query and output JSON given protocol data.',
