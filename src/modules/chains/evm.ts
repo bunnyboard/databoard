@@ -1,9 +1,13 @@
+import BigNumber from 'bignumber.js';
+import { AddressZero } from '../../configs/constants';
+import envConfig from '../../configs/envConfig';
 import logger from '../../lib/logger';
 import { normalizeAddress } from '../../lib/utils';
 import { IOracleService } from '../../services/oracle/domains';
 import { ChainConfig } from '../../types/base';
+import { ChainData } from '../../types/domains/chain';
 import { ContextStorages } from '../../types/namespaces';
-import ChainAdapter, { ChainBlockData } from './adapter';
+import ChainAdapter, { ChainBlockData, GetChainDataOptions } from './adapter';
 import axios from 'axios';
 
 export default class EvmChainAdapter extends ChainAdapter {
@@ -131,5 +135,63 @@ export default class EvmChainAdapter extends ChainAdapter {
     //     : chainBlockData.totalFees;
 
     return chainBlockData;
+  }
+
+  public async getChainData(options: GetChainDataOptions): Promise<ChainData | null> {
+    const blocks: Array<ChainBlockData> = await this.storages.database.query({
+      collection: envConfig.mongodb.collections.chainBlocks.name,
+      query: {
+        chain: this.chainConfig.chain,
+        timestamp: {
+          $gte: options.beginTime,
+          $lte: options.endTime,
+        },
+      },
+    });
+
+    const chainData: ChainData = {
+      chain: this.chainConfig.chain,
+      family: this.chainConfig.family,
+      timestamp: options.timestamp,
+      nativeCoinPrice: await this.priceOracle.getTokenPriceUsdRounded({
+        chain: this.chainConfig.chain,
+        address: AddressZero,
+        timestamp: options.timestamp,
+      }),
+      totalTransactions: 0,
+      activeAddresses: 0,
+      blockUtilization: 0,
+      throughput: 0,
+      resourceLimit: '0',
+      resourceUsed: '0',
+    };
+
+    let addresses: { [key: string]: boolean } = {};
+    for (const block of blocks) {
+      chainData.resourceLimit = new BigNumber(chainData.resourceLimit)
+        .plus(new BigNumber(block.resourceLimit))
+        .toString(10);
+      chainData.resourceUsed = new BigNumber(chainData.resourceUsed)
+        .plus(new BigNumber(block.resourceUsed))
+        .toString(10);
+
+      for (const address of Object.keys(block.senderAddresses)) {
+        addresses[address] = true;
+      }
+
+      chainData.totalTransactions += block.totalTransactions;
+    }
+
+    if (chainData.resourceLimit !== '0') {
+      chainData.blockUtilization = new BigNumber(chainData.resourceUsed)
+        .dividedBy(new BigNumber(chainData.resourceLimit))
+        .toNumber();
+    }
+    chainData.throughput = new BigNumber(chainData.resourceUsed)
+      .dividedBy(options.endTime - options.beginTime)
+      .toNumber();
+    chainData.activeAddresses = Object.keys(addresses).length;
+
+    return chainData;
   }
 }

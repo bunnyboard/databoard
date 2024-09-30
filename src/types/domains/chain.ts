@@ -7,24 +7,20 @@ export interface ChainCoreMetrics {
   // active address - count sender addresses
   activeAddresses: number;
 
-  // total transaction fees (USD)
-  totalFees: number;
-
   // native token price USD
   nativeCoinPrice: number;
 
   // block space or gas utilization
-  utilization: number;
+  blockUtilization: number;
 
-  // there are some blockchains which burn transaction fees
-  // like ETH, BSC, ...
-  totalFeesBurnt?: number;
+  // we calculate throughput by how many gases/block resources were consume per second
+  throughput: number;
 
-  // list of miners / validators and their earned fees
-  // address => earn fees
-  validators?: {
-    [key: string]: number;
-  };
+  // gas limit
+  resourceLimit: string;
+
+  // gas used
+  resourceUsed: string;
 }
 
 export interface ChainData extends ChainCoreMetrics {

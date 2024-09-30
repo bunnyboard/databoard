@@ -1,8 +1,11 @@
+import { TimeUnits } from '../../configs/constants';
 import envConfig from '../../configs/envConfig';
 import logger from '../../lib/logger';
-import { formatTime } from '../../lib/utils';
+import { formatTime, getTimestamp } from '../../lib/utils';
+import ExecuteSession from '../../services/executeSession';
 import { IOracleService } from '../../services/oracle/domains';
 import { ChainConfig } from '../../types/base';
+import { ChainData } from '../../types/domains/chain';
 import { ContextStorages, IChainAdapter } from '../../types/namespaces';
 import { RunAdapterOptions } from '../../types/options';
 
@@ -25,16 +28,24 @@ export interface ChainBlockData {
   senderAddresses: { [key: string]: number };
 }
 
+export interface GetChainDataOptions {
+  timestamp: number;
+  beginTime: number;
+  endTime: number;
+}
+
 export default class ChainAdapter implements IChainAdapter {
   public readonly name: string = 'chain';
   public readonly priceOracle: IOracleService;
   public readonly storages: ContextStorages;
   public readonly chainConfig: ChainConfig;
+  public executeSession: ExecuteSession;
 
   constructor(priceOracle: IOracleService, storages: ContextStorages, chainConfig: ChainConfig) {
     this.priceOracle = priceOracle;
     this.storages = storages;
     this.chainConfig = chainConfig;
+    this.executeSession = new ExecuteSession();
   }
 
   public async getLatestBlockNumber(): Promise<number> {
@@ -42,6 +53,10 @@ export default class ChainAdapter implements IChainAdapter {
   }
 
   public async getBlockData(blockNumber: number): Promise<ChainBlockData | null> {
+    return null;
+  }
+
+  public async getChainData(options: GetChainDataOptions): Promise<ChainData | null> {
     return null;
   }
 
@@ -120,8 +135,69 @@ export default class ChainAdapter implements IChainAdapter {
     }
   }
 
+  public async calculateDayData(): Promise<void> {
+    this.executeSession.startSession('start to update chain current data', {
+      service: this.name,
+      chain: this.chainConfig.chain,
+      family: this.chainConfig.family,
+    });
+
+    const currentTimestamp = getTimestamp();
+    const last24HoursTimestamp = currentTimestamp - TimeUnits.SecondsPerDay;
+    const last48HoursTimestamp = last24HoursTimestamp - TimeUnits.SecondsPerDay;
+
+    const last24HoursData = await this.getChainData({
+      timestamp: currentTimestamp,
+      beginTime: last24HoursTimestamp,
+      endTime: currentTimestamp,
+    });
+    const last48HoursData = await this.getChainData({
+      timestamp: last24HoursTimestamp,
+      beginTime: last48HoursTimestamp,
+      endTime: last24HoursTimestamp,
+    });
+
+    if (last24HoursData) {
+      if (last48HoursData) {
+        await this.storages.database.update({
+          collection: envConfig.mongodb.collections.blockchainDataStates.name,
+          keys: {
+            chain: last24HoursData.chain,
+          },
+          updates: {
+            ...last24HoursData,
+            last24HoursData: last48HoursData,
+          },
+          upsert: true,
+        });
+      } else {
+        await this.storages.database.update({
+          collection: envConfig.mongodb.collections.blockchainDataStates.name,
+          keys: {
+            chain: last24HoursData.chain,
+          },
+          updates: {
+            ...last24HoursData,
+          },
+          upsert: true,
+        });
+      }
+
+      this.executeSession.endSession('updated chain current data', {
+        service: this.name,
+        chain: this.chainConfig.chain,
+        family: this.chainConfig.family,
+        txnCount: last24HoursData.totalTransactions,
+        addressCount: last24HoursData.activeAddresses,
+      });
+    }
+  }
+
   public async run(options: RunAdapterOptions): Promise<void> {
     // index blocks to latest block number
     await this.indexBlocks();
+
+    // calculate day data for chain
+    await this.calculateDayData();
   }
 }
