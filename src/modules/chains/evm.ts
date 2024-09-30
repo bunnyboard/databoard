@@ -8,18 +8,23 @@ import axios from 'axios';
 import ValidatorSetAbi from '../../configs/abi/binance/ValidatorSet.json';
 import { decodeEventLog } from 'viem';
 import { ChainNames } from '../../configs/names';
+import ExecuteSession from '../../services/executeSession';
 
 export default class EvmChainAdapter extends ChainAdapter {
   public readonly name: string = 'chain.evm';
+  private executeSession: ExecuteSession;
 
   constructor(priceOracle: IOracleService, storages: ContextStorages, chainConfig: ChainConfig) {
     super(priceOracle, storages, chainConfig);
+
+    this.executeSession = new ExecuteSession();
   }
 
   private async queryNodeRpc(method: string, params: Array<any>): Promise<any> {
     do {
       const randomNode = this.getRantomRpc();
       try {
+        this.executeSession.startSessionMuted();
         const response = await axios.post(randomNode, {
           id: 1,
           jsonrpc: '2.0',
@@ -27,6 +32,13 @@ export default class EvmChainAdapter extends ChainAdapter {
           params: params,
         });
         if (response && response.data && response.data.result) {
+          this.executeSession.endSession('made rpc request', {
+            service: this.name,
+            chain: this.chainConfig.chain,
+            nodeRpc: randomNode,
+            method: method,
+            params: JSON.stringify(params).toString(),
+          });
           return response.data.result;
         }
       } catch (e: any) {
