@@ -1,30 +1,22 @@
 import logger from '../../lib/logger';
-import { formatBigNumberToNumber, normalizeAddress } from '../../lib/utils';
+import { normalizeAddress } from '../../lib/utils';
 import { IOracleService } from '../../services/oracle/domains';
 import { ChainConfig } from '../../types/base';
 import { ContextStorages } from '../../types/namespaces';
 import ChainAdapter, { ChainBlockData } from './adapter';
 import axios from 'axios';
-import ValidatorSetAbi from '../../configs/abi/binance/ValidatorSet.json';
-import { decodeEventLog } from 'viem';
-import { ChainNames } from '../../configs/names';
-import ExecuteSession from '../../services/executeSession';
 
 export default class EvmChainAdapter extends ChainAdapter {
   public readonly name: string = 'chain.evm';
-  private executeSession: ExecuteSession;
 
   constructor(priceOracle: IOracleService, storages: ContextStorages, chainConfig: ChainConfig) {
     super(priceOracle, storages, chainConfig);
-
-    this.executeSession = new ExecuteSession();
   }
 
   private async queryNodeRpc(method: string, params: Array<any>): Promise<any> {
     do {
       const randomNode = this.getRantomRpc();
       try {
-        this.executeSession.startSessionMuted();
         const response = await axios.post(randomNode, {
           id: 1,
           jsonrpc: '2.0',
@@ -32,13 +24,6 @@ export default class EvmChainAdapter extends ChainAdapter {
           params: params,
         });
         if (response && response.data && response.data.result) {
-          this.executeSession.endSession('made rpc request', {
-            service: this.name,
-            chain: this.chainConfig.chain,
-            nodeRpc: randomNode,
-            method: method,
-            params: JSON.stringify(params).toString(),
-          });
           return response.data.result;
         }
       } catch (e: any) {
@@ -79,9 +64,6 @@ export default class EvmChainAdapter extends ChainAdapter {
       chain: this.chainConfig.chain,
       number: blockNumber,
       timestamp: parseInt(block.timestamp, 16),
-      totalFees: 0,
-      totalFeesBurnt: 0,
-      blockReward: 0,
       resourceLimit: parseInt(block.gasLimit, 16).toString(),
       resourceUsed: parseInt(block.gasUsed, 16).toString(),
       totalTransactions: 0,
@@ -104,49 +86,49 @@ export default class EvmChainAdapter extends ChainAdapter {
       }
     }
 
-    const baseFeePerGas = parseInt(block.baseFeePerGas ? block.baseFeePerGas : '0x0', 16);
-    const gasUsed = parseInt(block.gasUsed, 16);
-    const baseFees = formatBigNumberToNumber((baseFeePerGas * gasUsed).toString(), 18);
+    // const baseFeePerGas = parseInt(block.baseFeePerGas ? block.baseFeePerGas : '0x0', 16);
+    // const gasUsed = parseInt(block.gasUsed, 16);
+    // const baseFees = formatBigNumberToNumber((baseFeePerGas * gasUsed).toString(), 18);
 
-    // if this is layer chain, baseFees is also total transaction fees
-    if (this.chainConfig.layer2) {
-      chainBlockData.totalFees += baseFees;
-    } else {
-      // eip1559 enabled, baseFees is burnt
-      if (this.chainConfig.eip1559 && this.chainConfig.eip1559 < blockNumber) {
-        chainBlockData.totalFeesBurnt += baseFees;
-      }
+    // // if this is layer chain, baseFees is also total transaction fees
+    // if (this.chainConfig.layer2) {
+    //   chainBlockData.totalFees += baseFees;
+    // } else {
+    //   // eip1559 enabled, baseFees is burnt
+    //   if (this.chainConfig.eip1559 && this.chainConfig.eip1559 < blockNumber) {
+    //     chainBlockData.totalFeesBurnt += baseFees;
+    //   }
 
-      const receipts = await this.queryNodeRpc('eth_getBlockReceipts', [`0x${blockNumber.toString(16)}`]);
-      for (const receipt of receipts) {
-        const gasUsed = parseInt(receipt.gasUsed, 16);
-        const effectiveGasPrice = parseInt(receipt.effectiveGasPrice, 16);
-        const transactionFee = formatBigNumberToNumber((gasUsed * effectiveGasPrice).toString(), 18);
+    //   const receipts = await this.queryNodeRpc('eth_getBlockReceipts', [`0x${blockNumber.toString(16)}`]);
+    //   for (const receipt of receipts) {
+    //     const gasUsed = parseInt(receipt.gasUsed, 16);
+    //     const effectiveGasPrice = parseInt(receipt.effectiveGasPrice, 16);
+    //     const transactionFee = formatBigNumberToNumber((gasUsed * effectiveGasPrice).toString(), 18);
 
-        chainBlockData.totalFees += transactionFee;
+    //     chainBlockData.totalFees += transactionFee;
 
-        // on bsc, we track BNB burnt by count feeBurned events on BSC: Validator Set contract
-        // https://bscscan.com/tx/0x4d8fa84bb2e6e72da504c5f26c94a37530a42ddb8da19b9885dd2f23612784a9#eventlog
-        if (this.chainConfig.chain === ChainNames.bnbchain) {
-          for (const log of receipt.logs) {
-            if (log.topics[0] === '0x627059660ea01c4733a328effb2294d2f86905bf806da763a89cee254de8bee5') {
-              const event: any = decodeEventLog({
-                abi: ValidatorSetAbi,
-                topics: log.topics,
-                data: log.data,
-              });
-              chainBlockData.totalFeesBurnt += formatBigNumberToNumber(event.args.amount.toString(), 18);
-            }
-          }
-        }
-      }
-    }
+    //     // on bsc, we track BNB burnt by count feeBurned events on BSC: Validator Set contract
+    //     // https://bscscan.com/tx/0x4d8fa84bb2e6e72da504c5f26c94a37530a42ddb8da19b9885dd2f23612784a9#eventlog
+    //     if (this.chainConfig.chain === ChainNames.bnbchain) {
+    //       for (const log of receipt.logs) {
+    //         if (log.topics[0] === '0x627059660ea01c4733a328effb2294d2f86905bf806da763a89cee254de8bee5') {
+    //           const event: any = decodeEventLog({
+    //             abi: ValidatorSetAbi,
+    //             topics: log.topics,
+    //             data: log.data,
+    //           });
+    //           chainBlockData.totalFeesBurnt += formatBigNumberToNumber(event.args.amount.toString(), 18);
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
 
-    // validator rewards
-    chainBlockData.blockReward =
-      chainBlockData.totalFees > chainBlockData.totalFeesBurnt
-        ? chainBlockData.totalFees - chainBlockData.totalFeesBurnt
-        : chainBlockData.totalFees;
+    // // validator rewards
+    // chainBlockData.blockReward =
+    //   chainBlockData.totalFees > chainBlockData.totalFeesBurnt
+    //     ? chainBlockData.totalFees - chainBlockData.totalFeesBurnt
+    //     : chainBlockData.totalFees;
 
     return chainBlockData;
   }

@@ -11,13 +11,6 @@ export interface ChainBlockData {
   number: number;
   timestamp: number;
 
-  // total transaction fees
-  totalFees: number;
-  // total fees were burnt if any
-  totalFeesBurnt: number;
-  // blockReward = totalFees - totalFeesBurnt
-  blockReward: number;
-
   // gas limit
   resourceLimit: string;
   // gas used
@@ -54,7 +47,7 @@ export default class ChainAdapter implements IChainAdapter {
 
   // query block data and save them into database caching
   public async indexBlocks() {
-    let startBlock = this.chainConfig.birthblock;
+    let startBlock = 0;
 
     const latestBlock: any = (
       await this.storages.database.query({
@@ -75,6 +68,11 @@ export default class ChainAdapter implements IChainAdapter {
 
     const latestBlockNumber = await this.getLatestBlockNumber();
 
+    // start index the last 1000 blocks
+    if (startBlock === 0) {
+      startBlock = latestBlockNumber - 1000;
+    }
+
     logger.info('start indexing chain blocks data', {
       service: this.name,
       chain: this.chainConfig.chain,
@@ -83,6 +81,7 @@ export default class ChainAdapter implements IChainAdapter {
     });
 
     let stateBlock = startBlock;
+    let _startExeTime = new Date().getTime();
     while (stateBlock <= latestBlockNumber) {
       const blockData: ChainBlockData | null = await this.getBlockData(stateBlock);
 
@@ -100,14 +99,21 @@ export default class ChainAdapter implements IChainAdapter {
         });
       }
 
-      if ((stateBlock - startBlock) % 50 === 0) {
+      const blockCounts = 100;
+      if (stateBlock - startBlock > 0 && (stateBlock - startBlock) % blockCounts === 0) {
+        const _endExeTime = new Date().getTime();
+        const elapsed = _endExeTime - _startExeTime;
+        const elapsedSecs = elapsed / 1000;
         logger.info('indexing chain blocks data', {
           service: this.name,
           chain: this.chainConfig.chain,
           currentBlock: stateBlock,
           age: blockData ? formatTime(blockData.timestamp) : 'unknown',
           progress: `${stateBlock - startBlock}/${latestBlockNumber - startBlock}`,
+          took: `${elapsed}ms`,
+          speed: `${(blockCounts / elapsedSecs).toFixed(2)} blocks/s`,
         });
+        _startExeTime = new Date().getTime();
       }
 
       stateBlock += 1;

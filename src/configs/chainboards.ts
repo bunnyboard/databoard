@@ -7,8 +7,6 @@ export const ChainBoardConfigs: { [key: string]: ChainConfig } = {
     family: ChainFamilies.evm,
     nativeToken: 'ETH',
     eip1559: 12965000, // Ethereum's London Hardfork Upgrade
-    birthday: 1704067200, // Mon Jan 01 2024 00:00:00 GMT+0000
-    birthblock: 18896093,
     nodeRpcs: [
       'https://eth.llamarpc.com',
       'https://rpc.mevblocker.io',
@@ -24,8 +22,6 @@ export const ChainBoardConfigs: { [key: string]: ChainConfig } = {
     chain: ChainNames.arbitrum,
     family: ChainFamilies.evm,
     nativeToken: 'ETH',
-    birthday: 1704067200, // Mon Jan 01 2024 00:00:00 GMT+0000
-    birthblock: 165147776,
     layer2: true,
     nodeRpcs: [
       'https://arb1.arbitrum.io/rpc',
@@ -41,8 +37,6 @@ export const ChainBoardConfigs: { [key: string]: ChainConfig } = {
     chain: ChainNames.bnbchain,
     family: ChainFamilies.evm,
     nativeToken: 'BNB',
-    birthday: 1704067200, // Mon Jan 01 2024 00:00:00 GMT+0000
-    birthblock: 34812648,
     nodeRpcs: [
       'https://bscrpc.com',
       'https://binance.llamarpc.com',
@@ -59,8 +53,6 @@ export const ChainBoardConfigs: { [key: string]: ChainConfig } = {
     chain: ChainNames.polygon,
     family: ChainFamilies.evm,
     nativeToken: 'POL',
-    birthday: 1704067200, // Mon Jan 01 2024 00:00:00 GMT+0000
-    birthblock: 51787598,
     eip1559: 23850000, // Jan-18-2022 02:48:02 AM +UTC
     nodeRpcs: [
       'https://polygon.llamarpc.com',
@@ -79,8 +71,6 @@ export const ChainBoardConfigs: { [key: string]: ChainConfig } = {
     chain: ChainNames.fantom,
     family: ChainFamilies.evm,
     nativeToken: 'FTM',
-    birthday: 1704067200, // Mon Jan 01 2024 00:00:00 GMT+0000
-    birthblock: 73513917,
     nodeRpcs: [
       'https://rpc.ftm.tools',
       'https://rpcapi.fantom.network',
@@ -88,6 +78,43 @@ export const ChainBoardConfigs: { [key: string]: ChainConfig } = {
       'https://rpc.fantom.network',
       'https://rpc2.fantom.network',
       'https://rpc3.fantom.network',
+    ],
+  },
+  optimism: {
+    chain: ChainNames.optimism,
+    family: ChainFamilies.evm,
+    nativeToken: 'ETH',
+    nodeRpcs: [
+      'https://optimism.llamarpc.com',
+      'https://mainnet.optimism.io',
+      'https://rpc.ankr.com/optimism',
+      'https://optimism-mainnet.public.blastapi.io',
+      'https://1rpc.io/op',
+      'https://op-pokt.nodies.app',
+      'https://optimism.api.onfinality.io/public',
+      'https://optimism.blockpi.network/v1/rpc/public',
+      'https://optimism-rpc.publicnode.com',
+      'https://optimism.meowrpc.com',
+      'https://optimism.drpc.org',
+      'https://optimism.gateway.tenderly.co',
+      'https://gateway.tenderly.co/public/optimism',
+    ],
+  },
+  base: {
+    chain: ChainNames.base,
+    family: ChainFamilies.evm,
+    nativeToken: 'ETH',
+    nodeRpcs: [
+      'https://base.llamarpc.com',
+      'https://mainnet.base.org',
+      'https://developer-access-mainnet.base.org',
+      'https://base.blockpi.network/v1/rpc/public',
+      'https://1rpc.io/base',
+      'https://base-pokt.nodies.app',
+      'https://base.meowrpc.com',
+      'https://base-mainnet.public.blastapi.io',
+      'https://base.gateway.tenderly.co',
+      'https://gateway.tenderly.co/public/base',
     ],
   },
 };

@@ -13,5 +13,7 @@ export function getChainAdapters(
     bnbchain: new EvmChainAdapter(priceOracle, storages, ChainConfigs.bnbchain),
     polygon: new EvmChainAdapter(priceOracle, storages, ChainConfigs.polygon),
     fantom: new EvmChainAdapter(priceOracle, storages, ChainConfigs.fantom),
+    optimism: new EvmChainAdapter(priceOracle, storages, ChainConfigs.optimism),
+    base: new EvmChainAdapter(priceOracle, storages, ChainConfigs.base),
   };
 }

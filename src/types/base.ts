@@ -47,9 +47,6 @@ export interface ChainConfig {
   family: ChainFamily;
   nativeToken: ChainNativeCoin;
 
-  birthday: number;
-  birthblock: number;
-
   // blockchain supports EIP-1559
   // https://eips.ethereum.org/EIPS/eip-1559
   // the block number when EIP-1559 was actived
