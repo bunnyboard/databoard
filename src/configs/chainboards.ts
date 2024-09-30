@@ -6,7 +6,6 @@ export const ChainBoardConfigs: { [key: string]: ChainConfig } = {
     chain: ChainNames.ethereum,
     family: ChainFamilies.evm,
     nativeToken: 'ETH',
-    eip1559: 12965000, // Ethereum's London Hardfork Upgrade
     nodeRpcs: [
       'https://eth.llamarpc.com',
       'https://rpc.mevblocker.io',
@@ -22,7 +21,6 @@ export const ChainBoardConfigs: { [key: string]: ChainConfig } = {
     chain: ChainNames.arbitrum,
     family: ChainFamilies.evm,
     nativeToken: 'ETH',
-    layer2: true,
     nodeRpcs: [
       'https://arb1.arbitrum.io/rpc',
       'https://arb-pokt.nodies.app',
@@ -53,7 +51,6 @@ export const ChainBoardConfigs: { [key: string]: ChainConfig } = {
     chain: ChainNames.polygon,
     family: ChainFamilies.evm,
     nativeToken: 'POL',
-    eip1559: 23850000, // Jan-18-2022 02:48:02 AM +UTC
     nodeRpcs: [
       'https://polygon.llamarpc.com',
       'https://rpc.ankr.com/polygon',
@@ -113,6 +110,74 @@ export const ChainBoardConfigs: { [key: string]: ChainConfig } = {
       'https://base-mainnet.public.blastapi.io',
       'https://base.gateway.tenderly.co',
       'https://gateway.tenderly.co/public/base',
+    ],
+  },
+  avalanche: {
+    chain: ChainNames.avalanche,
+    family: ChainFamilies.evm,
+    nativeToken: 'AVAX',
+    nodeRpcs: [
+      'https://api.avax.network/ext/bc/C/rpc',
+      'https://avalanche.public-rpc.com',
+      'https://rpc.ankr.com/avalanche',
+      'https://ava-mainnet.public.blastapi.io/ext/bc/C/rpc',
+      'https://avalanche-c-chain-rpc.publicnode.com',
+      'https://avalanche.blockpi.network/v1/rpc/public',
+      'https://avax-pokt.nodies.app/ext/bc/C/rpc',
+      'https://avalanche-mainnet.gateway.tenderly.co',
+    ],
+  },
+  blast: {
+    chain: ChainNames.blast,
+    family: ChainFamilies.evm,
+    nativeToken: 'ETH',
+    nodeRpcs: [
+      'https://rpc.blast.io',
+      'https://blast.din.dev/rpc',
+      'https://blastl2-mainnet.public.blastapi.io',
+      'https://blast.blockpi.network/v1/rpc/public',
+      'https://rpc.ankr.com/blast',
+      'https://blast-rpc.publicnode.com',
+      'https://blast.gateway.tenderly.co',
+    ],
+  },
+  linea: {
+    chain: ChainNames.linea,
+    family: ChainFamilies.evm,
+    nativeToken: 'ETH',
+    nodeRpcs: [
+      'https://rpc.linea.build',
+      'https://linea.blockpi.network/v1/rpc/public',
+      'https://linea-rpc.publicnode.com',
+      'https://1rpc.io/linea',
+    ],
+  },
+  scroll: {
+    chain: ChainNames.scroll,
+    family: ChainFamilies.evm,
+    nativeToken: 'ETH',
+    nodeRpcs: [
+      'https://rpc.scroll.io',
+      'https://scroll-mainnet.public.blastapi.io',
+      'https://scroll.blockpi.network/v1/rpc/public',
+      'https://1rpc.io/scroll',
+      'https://scroll.api.onfinality.io/public',
+      'https://rpc.ankr.com/scroll',
+      'https://scroll-mainnet.chainstacklabs.com',
+      'https://scroll-rpc.publicnode.com',
+    ],
+  },
+  mantle: {
+    chain: ChainNames.mantle,
+    family: ChainFamilies.evm,
+    nativeToken: 'MNT',
+    nodeRpcs: [
+      'https://rpc.mantle.xyz',
+      'https://mantle-mainnet.public.blastapi.io',
+      'https://mantle-rpc.publicnode.com',
+      'https://rpc.ankr.com/mantle',
+      'https://1rpc.io/mantle',
+      'https://mantle.api.onfinality.io/public',
     ],
   },
 };

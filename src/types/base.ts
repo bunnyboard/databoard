@@ -39,22 +39,13 @@ export interface ProtocolConfig {
   birthday: number;
 }
 
-export type ChainNativeCoin = 'ETH' | 'BNB' | 'POL' | 'AVAX' | 'FTM';
+export type ChainNativeCoin = 'ETH' | 'BNB' | 'POL' | 'AVAX' | 'FTM' | 'MNT';
 
 // chain configs used for chainboard
 export interface ChainConfig {
   chain: string;
   family: ChainFamily;
   nativeToken: ChainNativeCoin;
-
-  // blockchain supports EIP-1559
-  // https://eips.ethereum.org/EIPS/eip-1559
-  // the block number when EIP-1559 was actived
-  eip1559?: number;
-
-  // if layer2 flag is enable, we count transaction fees
-  // from block = block.baseFeePerGas * block.gasUsed
-  layer2?: boolean;
 
   // should use public nodes
   nodeRpcs: Array<string>;
