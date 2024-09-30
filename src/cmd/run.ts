@@ -23,13 +23,15 @@ export class RunCommand extends BasicCommand {
       process.exit(0);
     }
 
+    const protocols = argv.protocol ? argv.protocol.split(',') : [];
+
     const cmdConfigs: any = {};
     if (argv.chain && argv.chain !== '') {
       cmdConfigs.type = 'chain';
       cmdConfigs.chain = argv.chain;
-    } else if (argv.protocol && argv.protocol !== '') {
+    } else if (protocols.length > 0) {
       cmdConfigs.type = 'protocol';
-      cmdConfigs.protocol = argv.protocol;
+      cmdConfigs.protocol = protocols.toString();
     }
 
     cmdConfigs.service = argv.service === 'state' || argv.service === 'snapshot' ? argv.service : 'state and snapshot';
@@ -92,15 +94,13 @@ export class RunCommand extends BasicCommand {
       } while (!argv.exit);
     } else if (argv.protocol !== '') {
       do {
-        for (const protocol of Object.keys(ProtocolConfigs as any)) {
-          if (argv.protocol === undefined || argv.protocol === '' || argv.protocol === protocol) {
-            if (protocolAdapters[protocol]) {
-              await protocolAdapters[protocol].run({
-                service: argv.service === 'state' || argv.service === 'snapshot' ? argv.service : undefined,
-                fromTime: argv.fromTime ? argv.fromTime : undefined,
-                force: argv.force ? argv.force : false,
-              });
-            }
+        for (const protocol of protocols) {
+          if ((ProtocolConfigs as any)[protocol] && protocolAdapters[protocol]) {
+            await protocolAdapters[protocol].run({
+              service: argv.service === 'state' || argv.service === 'snapshot' ? argv.service : undefined,
+              fromTime: argv.fromTime ? argv.fromTime : undefined,
+              force: argv.force ? argv.force : false,
+            });
           }
         }
 

@@ -77,7 +77,7 @@ export const AutoOracleConfigs: { [key: string]: AutoOracleConfig } = {
     dexes: [
       {
         type: 'univ2',
-        address: '0x8909Dc15e40173Ff4699343b6eB8132c65e18eC6', // pancakeswap v2 factory
+        address: '0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73', // pancakeswap v2 factory
       },
       {
         type: 'univ2',
