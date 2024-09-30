@@ -1,7 +1,7 @@
 import { TimeUnits } from '../../configs/constants';
 import envConfig from '../../configs/envConfig';
 import logger from '../../lib/logger';
-import { formatTime, getTimestamp } from '../../lib/utils';
+import { formatTime, getDateString, getStartDayTimestamp, getTimestamp, getTodayUTCTimestamp } from '../../lib/utils';
 import ExecuteSession from '../../services/executeSession';
 import { IOracleService } from '../../services/oracle/domains';
 import { ChainConfig } from '../../types/base';
@@ -136,6 +136,9 @@ export default class ChainAdapter implements IChainAdapter {
   }
 
   public async calculateDayData(): Promise<void> {
+    //
+    // collect current state data
+    //
     this.executeSession.startSession('start to update chain current data', {
       service: this.name,
       chain: this.chainConfig.chain,
@@ -190,6 +193,94 @@ export default class ChainAdapter implements IChainAdapter {
         txnCount: last24HoursData.totalTransactions,
         addressCount: last24HoursData.activeAddresses,
       });
+    }
+
+    //
+    // collect snapshots
+    //
+    let startTime = 0;
+
+    // we find the latest snapshot timestamp
+    const latestSnapshot = (
+      await this.storages.database.query({
+        collection: envConfig.mongodb.collections.blockchainDataSnapshots.name,
+        query: {
+          chain: this.chainConfig.chain,
+        },
+        options: {
+          limit: 1,
+          skip: 0,
+          order: { timestamp: -1 },
+        },
+      })
+    )[0];
+    if (latestSnapshot) {
+      startTime = latestSnapshot.timestamp;
+    }
+
+    if (startTime === 0) {
+      // we find the day of latest caching blocks were indexed
+      const oldestBlock = (
+        await this.storages.database.query({
+          collection: envConfig.mongodb.collections.chainBlocks.name,
+          query: {
+            chain: this.chainConfig.chain,
+          },
+          options: {
+            limit: 1,
+            skip: 0,
+            order: { timestamp: 1 },
+          },
+        })
+      )[0];
+      if (oldestBlock) {
+        startTime = oldestBlock.timestamp;
+      }
+    }
+
+    if (startTime > 0) {
+      startTime = getStartDayTimestamp(startTime);
+      const todayTimestamp = getTodayUTCTimestamp();
+
+      logger.info('start to update chain data snapshots', {
+        service: this.name,
+        chain: this.chainConfig.chain,
+        family: this.chainConfig.family,
+        fromDate: getDateString(startTime),
+        toDate: getDateString(todayTimestamp),
+      });
+
+      while (startTime <= todayTimestamp) {
+        this.executeSession.startSessionMuted();
+
+        const dataTimeframe24Hours = await this.getChainData({
+          timestamp: startTime,
+          beginTime: startTime,
+          endTime: startTime + TimeUnits.SecondsPerDay - 1,
+        });
+        if (dataTimeframe24Hours) {
+          await this.storages.database.update({
+            collection: envConfig.mongodb.collections.blockchainDataSnapshots.name,
+            keys: {
+              chain: dataTimeframe24Hours.chain,
+              timestamp: dataTimeframe24Hours.timestamp,
+            },
+            updates: {
+              ...dataTimeframe24Hours,
+            },
+            upsert: true,
+          });
+        }
+
+        this.executeSession.endSession('updated chain data snapshot', {
+          service: this.name,
+          chain: this.chainConfig.chain,
+          family: this.chainConfig.family,
+          date: getDateString(startTime),
+        });
+
+        startTime += TimeUnits.SecondsPerDay;
+      }
     }
   }
 
