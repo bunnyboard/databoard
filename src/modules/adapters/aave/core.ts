@@ -12,6 +12,7 @@ import BigNumber from 'bignumber.js';
 import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
 import { ProtocolConfig, Token } from '../../../types/base';
 import ProtocolAdapter from '../protocol';
+import { ChainNames } from '../../../configs/names';
 
 export interface ReserveAndPrice {
   token: Token;
@@ -83,6 +84,16 @@ export default class AaveCore extends ProtocolAdapter {
       if (
         (options.timestamp === 1690070400 || options.timestamp === 1690243200) &&
         compareAddress(options.config.lendingPool, '0xCFa5aE7c2CE8Fadc6426C1ff872cA45378Fb7cF3')
+      ) {
+        reserveOraclePrices = null;
+      }
+
+      // there are some issues with radiant oracle config on base
+      // before 1719014400
+      if (
+        options.timestamp < 1719014400 &&
+        compareAddress(options.config.lendingPool, '0x30798cfe2cca822321ceed7e6085e633aabc492f') &&
+        options.config.chain === ChainNames.base
       ) {
         reserveOraclePrices = null;
       }

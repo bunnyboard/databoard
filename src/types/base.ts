@@ -39,13 +39,11 @@ export interface ProtocolConfig {
   birthday: number;
 }
 
-export type ChainNativeCoin = 'ETH' | 'BNB' | 'POL' | 'AVAX' | 'FTM' | 'MNT';
-
 // chain configs used for chainboard
 export interface ChainConfig {
   chain: string;
   family: ChainFamily;
-  nativeToken: ChainNativeCoin;
+  nativeToken: string;
 
   // should use public nodes
   nodeRpcs: Array<string>;

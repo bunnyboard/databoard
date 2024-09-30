@@ -113,7 +113,7 @@ export default class ProtocolAdapter implements IProtocolAdapter {
           })
         )[0];
         if (latestSnapshot) {
-          startTime = latestSnapshot.timestamp + TimeUnits.SecondsPerDay;
+          startTime = latestSnapshot.timestamp;
         }
       }
 
