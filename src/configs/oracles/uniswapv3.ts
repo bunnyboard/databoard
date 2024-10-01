@@ -499,4 +499,21 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.polygon['0xe6a537a407488807f0bbeb0038b79004f19dddfb'],
     quotaToken: TokensBook.polygon['0x3c499c542cef5e3811e1192ce70d8cc03d5c3359'],
   },
+  WCORE_USDT: {
+    type: 'univ3',
+    chain: 'core',
+    address: '0x95dcc9e9bf80980375494346e00fc5aef6883ef7',
+    baseToken: {
+      chain: 'core',
+      symbol: 'WCORE',
+      decimals: 18,
+      address: '0x40375c92d9faf44d2f9db9bd9ba41a3317a2404f',
+    },
+    quotaToken: {
+      chain: 'core',
+      symbol: 'USDT',
+      decimals: 6,
+      address: '0x900101d06a7426441ae63e9ab3b9b0f63be145f1',
+    },
+  },
 };

@@ -1,6 +1,7 @@
 import { OracleConfig } from '../../types/oracles';
 import { OffchainOracleSourcesFromBinance } from './binance';
 import { OracleSourceChainlinkList } from './chainlink';
+import { OracleSourceUniswapv3List } from './uniswapv3';
 
 export const OracleCurrencyBaseConfigs: { [key: string]: OracleConfig } = {
   eth: {
@@ -35,5 +36,9 @@ export const OracleCurrencyBaseConfigs: { [key: string]: OracleConfig } = {
   wstETH: {
     currency: 'usd',
     sources: [OracleSourceChainlinkList.wstETH_USD],
+  },
+  core: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.WCORE_USDT],
   },
 };

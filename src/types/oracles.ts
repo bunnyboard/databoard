@@ -1,6 +1,6 @@
 import { Token } from './base';
 
-export type OracleCurrencyBase = 'usd' | 'eur' | 'eth' | 'btc' | 'bnb' | 'avax' | 'matic' | 'ftm' | 'wstETH';
+export type OracleCurrencyBase = 'usd' | 'eur' | 'eth' | 'btc' | 'bnb' | 'avax' | 'matic' | 'ftm' | 'wstETH' | 'core';
 
 export const OracleTypes = {
   // ChainLink price feed

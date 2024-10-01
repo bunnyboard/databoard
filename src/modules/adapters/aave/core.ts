@@ -98,6 +98,14 @@ export default class AaveCore extends ProtocolAdapter {
         reserveOraclePrices = null;
       }
 
+      // fix tokens oracle on seamless protocol
+      if (
+        options.config.chain === ChainNames.base &&
+        compareAddress(options.config.lendingPool, '0x8f44fd754285aa6a2b8b9b97739b79746e0475a7')
+      ) {
+        reserveOraclePrices = null;
+      }
+
       for (let i = 0; i < reserveList.length; i++) {
         const token = await this.services.blockchain.evm.getTokenInfo({
           chain: options.config.chain,

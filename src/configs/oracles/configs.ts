@@ -390,6 +390,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x37ab9f42051c112caaba55ab6487dd74286a0b29': OracleSourceConfigs.KWENTA,
     '0x2416092f143378750bb29b79ed961ab195cceea5': OracleSourceConfigs.ezETH,
     '0x532f27101965dd16442e59d40670faf5ebb142e4': OracleSourceConfigs.BRETT,
+    '0xc9ae3b5673341859d3ac55941d27c8be4698c9e4': OracleSourceConfigs.wstETH,
+    '0x3e8707557d4ad25d6042f590bcf8a06071da2c5f': OracleSourceConfigs.ETH,
   },
 
   // tokens on Polygon
@@ -762,5 +764,10 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xfc00000000000000000000000000000000000008': OracleSourceConfigs.sFRAX,
     '0xfc00000000000000000000000000000000000006': OracleSourceConfigs.frxETH,
     '0x2416092f143378750bb29b79ed961ab195cceea5': OracleSourceConfigs.ezETH,
+  },
+
+  core: {
+    [AddressZero]: OracleSourceConfigs.CORE,
+    '0xb3a8f0f0da9ffc65318aa39e55079796093029ad': OracleSourceConfigs.stCORE,
   },
 };

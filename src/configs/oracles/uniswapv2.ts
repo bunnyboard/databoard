@@ -869,4 +869,21 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.arbitrum['0x59062301fb510f4ea2417b67404cb16d31e604ba'],
     quotaToken: TokensBook.arbitrum['0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9'],
   },
+  stCORE_WCORE: {
+    type: 'univ2',
+    chain: 'core',
+    address: '0x1bf2e601366694aa8ed449d74d7badf1979fd5c3',
+    baseToken: {
+      chain: 'core',
+      symbol: 'stCORE',
+      decimals: 18,
+      address: '0xb3a8f0f0da9ffc65318aa39e55079796093029ad',
+    },
+    quotaToken: {
+      chain: 'core',
+      symbol: 'WCORE',
+      decimals: 18,
+      address: '0x40375c92d9faf44d2f9db9bd9ba41a3317a2404f',
+    },
+  },
 };

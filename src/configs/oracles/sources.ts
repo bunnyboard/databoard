@@ -1101,4 +1101,12 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.LOGX_USDT],
   },
+  CORE: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.WCORE_USDT],
+  },
+  stCORE: {
+    currency: 'core',
+    sources: [OracleSourceUniswapv2List.stCORE_WCORE],
+  },
 };

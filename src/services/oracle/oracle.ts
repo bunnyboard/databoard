@@ -206,9 +206,6 @@ export default class OracleService extends CachingService implements IOracleServ
 
     if (OracleConfigs[options.chain] && OracleConfigs[options.chain][options.address]) {
       for (const source of OracleConfigs[options.chain][options.address].sources) {
-        if (!source) {
-          console.log(options);
-        }
         if (source.type === 'stakingTokenWrapper') {
           const stakingTokenWrapperConfig = source as OracleSourceStakingTokenWrapper;
           const pricePerShare = await this.getTokenPriceSource(source, options.timestamp);
