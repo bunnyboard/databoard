@@ -17723,6 +17723,12 @@
     "decimals": 18,
     "address": "0x823556202e86763853b40e9cde725f412e294689"
   },
+  "0x8236a87084f8B84306f72007F36F2618A5634494": {
+    "chain": "ethereum",
+    "symbol": "LBTC",
+    "decimals": 8,
+    "address": "0x8236a87084f8b84306f72007f36f2618a5634494"
+  },
   "0x8236a87084f8b84306f72007f36f2618a5634494": {
     "chain": "ethereum",
     "symbol": "LBTC",
@@ -31828,6 +31834,12 @@
     "symbol": "CND",
     "decimals": 18,
     "address": "0xec505c81d6a7567b5bde804870b1038832fe6da1"
+  },
+  "0xec53bf9167f50cdeb3ae105f56099aaab9061f83": {
+    "chain": "ethereum",
+    "symbol": "EIGEN",
+    "decimals": 18,
+    "address": "0xec53bf9167f50cdeb3ae105f56099aaab9061f83"
   },
   "0xec5483804e637d45cde22fa0869656b64b5ab1ab": {
     "chain": "ethereum",

@@ -1109,4 +1109,16 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'core',
     sources: [OracleSourceUniswapv2List.stCORE_WCORE],
   },
+  LSK: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.LSK_WETH],
+  },
+  LBTC: {
+    currency: 'btc',
+    sources: [OracleSourceUniswapv3List.LBTC_WBTC],
+  },
+  EIGEN: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.EIGEN_WETH],
+  },
 };

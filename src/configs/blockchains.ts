@@ -416,4 +416,28 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
       decimals: 18,
     },
   },
+  [ChainNames.redstone]: {
+    name: ChainNames.redstone,
+    family: 'evm',
+    chainId: 690,
+    nodeRpc: String(process.env.BLOCKCHAIN_REDSTONE_NODE),
+    nativeToken: {
+      chain: ChainNames.redstone,
+      address: AddressZero,
+      symbol: 'ETH',
+      decimals: 18,
+    },
+  },
+  [ChainNames.lisk]: {
+    name: ChainNames.lisk,
+    family: 'evm',
+    chainId: 1135,
+    nodeRpc: String(process.env.BLOCKCHAIN_LISK_NODE),
+    nativeToken: {
+      chain: ChainNames.lisk,
+      address: AddressZero,
+      symbol: 'ETH',
+      decimals: 18,
+    },
+  },
 };

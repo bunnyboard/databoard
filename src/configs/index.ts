@@ -53,6 +53,7 @@ import { StakeStoneConfigs } from './protocols/stakestone';
 import { StakewiseConfigs } from './protocols/stakewise';
 import { LiquidCollectiveConfigs } from './protocols/liquidcollective';
 import { DineroConfigs } from './protocols/dinero';
+import { AcrossConfigs } from './protocols/across';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -121,6 +122,7 @@ export const ProtocolConfigs = {
   stakewise: StakewiseConfigs,
   liquidcollective: LiquidCollectiveConfigs,
   dinero: DineroConfigs,
+  across: AcrossConfigs,
 };
 
 export const ChainConfigs = ChainBoardConfigs;

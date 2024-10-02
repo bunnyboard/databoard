@@ -1,6 +1,7 @@
 import { ProtocolConfigs } from '../../configs';
 import { ContextServices, ContextStorages, IProtocolAdapter } from '../../types/namespaces';
 import AaveAdapter from './aave/aave';
+import AcrossAdapter from './across/across';
 import AjnaAdapter from './ajna/ajna';
 import BenqiAdapter from './benqi/benqi';
 import BungeeAdapter from './bungee/bungee';
@@ -89,5 +90,6 @@ export function getProtocolAdapters(
     liquidcollective: new LiquidCollectiveAdapter(services, storages, ProtocolConfigs.liquidcollective),
     dinero: new DineroAdapter(services, storages, ProtocolConfigs.dinero),
     stakestone: new StakeStoneAdapter(services, storages, ProtocolConfigs.stakestone),
+    across: new AcrossAdapter(services, storages, ProtocolConfigs.across),
   };
 }

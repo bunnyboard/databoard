@@ -181,6 +181,16 @@ const testcases = [
     timestamp: 1722470400, // Thu Aug 01 2024 00:00:00 GMT+0000
     expectedBlockNumber: 7829845,
   },
+  {
+    ...EnvConfig.blockchains.redstone,
+    timestamp: 1722470400, // Thu Aug 01 2024 00:00:00 GMT+0000
+    expectedBlockNumber: 5142655,
+  },
+  {
+    ...EnvConfig.blockchains.lisk,
+    timestamp: 1722470400, // Thu Aug 01 2024 00:00:00 GMT+0000
+    expectedBlockNumber: 3870805,
+  },
 ];
 
 describe('getBlockNumberAtTimestamp', function () {
