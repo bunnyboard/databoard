@@ -23,12 +23,13 @@ export class RunCommand extends BasicCommand {
       process.exit(0);
     }
 
+    const chains = argv.chain ? argv.chain.split(',') : [];
     const protocols = argv.protocol ? argv.protocol.split(',') : [];
 
     const cmdConfigs: any = {};
     if (argv.chain && argv.chain !== '') {
       cmdConfigs.type = 'chain';
-      cmdConfigs.chain = argv.chain;
+      cmdConfigs.chain = chains.toString();
     } else if (protocols.length > 0) {
       cmdConfigs.type = 'protocol';
       cmdConfigs.protocol = protocols.toString();
@@ -71,20 +72,20 @@ export class RunCommand extends BasicCommand {
 
     const services: ContextServices = await super.getServices();
     const storages: ContextStorages = await super.getStorages();
-    const protocolAdapters = getProtocolAdapters(services, storages);
+
+    // get adapters
     const chainAdapters = getChainAdapters(services.oracle, storages);
+    const protocolAdapters = getProtocolAdapters(services, storages);
 
     if (argv.chain !== '') {
       do {
-        for (const chain of Object.keys(ChainConfigs as any)) {
-          if (argv.chain === undefined || argv.chain === '' || argv.chain === chain) {
-            if (chainAdapters[chain]) {
-              await chainAdapters[chain].run({
-                service: argv.service === 'state' || argv.service === 'snapshot' ? argv.service : undefined,
-                fromTime: argv.fromTime ? argv.fromTime : undefined,
-                force: argv.force ? argv.force : false,
-              });
-            }
+        for (const chain of chains) {
+          if (ChainConfigs[chain] && chainAdapters[chain]) {
+            await chainAdapters[chain].run({
+              service: argv.service === 'state' || argv.service === 'snapshot' ? argv.service : undefined,
+              fromTime: argv.fromTime ? argv.fromTime : undefined,
+              force: argv.force ? argv.force : false,
+            });
           }
         }
 
