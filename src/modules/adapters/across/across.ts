@@ -8,6 +8,7 @@ import Erc20Abi from '../../../configs/abi/ERC20.json';
 import { decodeEventLog } from 'viem';
 import { formatBigNumberToNumber } from '../../../lib/utils';
 import { AcrossProtocolConfig } from '../../../configs/protocols/across';
+import { BlockchainConfigs } from '../../../configs/blockchains';
 
 const V3FundsDeposited = '0xa123dc29aebf7d0c3322c8eeb5b999e859f39937950ed31056532713d0de396f';
 const FilledV3Relay = '0x571749edf1d5c9599318cdbc4e28a6475d65e87fd3b2ddbe1e9a8d5e7a0f0ff7';
@@ -31,12 +32,17 @@ export default class AcrossAdapter extends ProtocolAdapter {
         bridgeOut: 0,
         bridgeIn: 0,
       },
+      volumeBridgePaths: {},
     };
 
     const acrossConfig = this.protocolConfig as AcrossProtocolConfig;
     for (const spokePoolConfig of acrossConfig.spokePools) {
       if (!protocolData.breakdown[spokePoolConfig.chain]) {
         protocolData.breakdown[spokePoolConfig.chain] = {};
+      }
+
+      if (!(protocolData.volumeBridgePaths as any)[spokePoolConfig.chain]) {
+        (protocolData.volumeBridgePaths as any)[spokePoolConfig.chain] = {};
       }
 
       const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
@@ -132,14 +138,14 @@ export default class AcrossAdapter extends ProtocolAdapter {
                 timestamp: options.timestamp,
               });
 
-              // const destinationChainId = Number(event.args.destinationChainId);
-              // let destChainName = `unknown:${destinationChainId}`;
-              // for (const chainConfig of Object.values(BlockchainConfigs)) {
-              //   if (chainConfig.chainId === destinationChainId) {
-              //     destChainName = chainConfig.name;
-              //     break;
-              //   }
-              // }
+              const destinationChainId = Number(event.args.destinationChainId);
+              let destChainName = `unknown:${destinationChainId}`;
+              for (const chainConfig of Object.values(BlockchainConfigs)) {
+                if (chainConfig.chainId === destinationChainId) {
+                  destChainName = chainConfig.name;
+                  break;
+                }
+              }
 
               const amountUsd =
                 formatBigNumberToNumber(event.args.inputAmount.toString(), inputToken.decimals) * inputTokenPrice;
@@ -157,6 +163,10 @@ export default class AcrossAdapter extends ProtocolAdapter {
                 };
               }
 
+              if (!(protocolData.volumeBridgePaths as any)[spokePoolConfig.chain][destChainName]) {
+                (protocolData.volumeBridgePaths as any)[spokePoolConfig.chain][destChainName] = 0;
+              }
+
               protocolData.totalFees += feesUsd;
               protocolData.supplySideRevenue += feesUsd;
               (protocolData.volumes.bridgeOut as number) += amountUsd;
@@ -164,6 +174,8 @@ export default class AcrossAdapter extends ProtocolAdapter {
               protocolData.breakdown[inputToken.chain][inputToken.address].totalFees += amountUsd;
               protocolData.breakdown[inputToken.chain][inputToken.address].supplySideRevenue += amountUsd;
               (protocolData.breakdown[inputToken.chain][inputToken.address].volumes.bridgeOut as number) += amountUsd;
+
+              (protocolData.volumeBridgePaths as any)[spokePoolConfig.chain][destChainName] += amountUsd;
             }
           } else if (log.topics[0] === FilledV3Relay) {
             const outputToken = await this.services.blockchain.evm.getTokenInfo({

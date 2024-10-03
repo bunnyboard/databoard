@@ -262,4 +262,11 @@ export const OracleSourceChainlinkList: { [key: string]: OracleSourceChainlink }
     address: '0x164b276057258d81941e97B0a900D4C7B358bCe0',
     decimals: 8,
   },
+  KLAY_USD: {
+    type: 'chainlink',
+    chain: 'bnbchain',
+    currency: 'usd',
+    address: '0xfD07b211044572898cDbcb1435f0a1369Fd15726',
+    decimals: 8,
+  },
 };

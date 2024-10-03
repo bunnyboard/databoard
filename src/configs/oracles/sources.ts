@@ -1121,4 +1121,16 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.EIGEN_WETH],
   },
+  KAVA: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.WKAVA_USDT],
+  },
+  KLAY: {
+    currency: 'usd',
+    sources: [OracleSourceChainlinkList.KLAY_USD],
+  },
+  TAP: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.TAP_WETH],
+  },
 };

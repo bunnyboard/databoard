@@ -57,6 +57,14 @@ export interface ProtocolCoreMetrics {
     bridgeIn?: number;
   };
 
+  // for bridge protocols
+  volumeBridgePaths?: {
+    // source chain -> dest chain -> volume usd
+    [key: string]: {
+      [key: string]: number;
+    };
+  };
+
   // for liquid staking protocol, we can have staking APR
   liquidStakingApr?: number;
 }

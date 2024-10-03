@@ -886,4 +886,38 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
       address: '0x40375c92d9faf44d2f9db9bd9ba41a3317a2404f',
     },
   },
+  WKAVA_USDT: {
+    type: 'univ2',
+    chain: 'kava',
+    address: '0x91098391cd135a95f775752f8cbf59286729a948',
+    baseToken: {
+      chain: 'kava',
+      symbol: 'WKAVA',
+      decimals: 18,
+      address: '0xc86c7c0efbd6a49b35e8714c5f59d99de09a225b',
+    },
+    quotaToken: {
+      chain: 'kava',
+      symbol: 'USDT',
+      decimals: 6,
+      address: '0x919c1c267bc06a7039e03fcc2ef738525769109c',
+    },
+  },
+  WKLAY_DAI: {
+    type: 'univ2',
+    chain: 'kaia',
+    address: '0xa3987cf6c14f1992e8b4a9e23192eb79dc2969b8',
+    baseToken: {
+      chain: 'kava',
+      symbol: 'WKAVA',
+      decimals: 18,
+      address: '0xc86c7c0efbd6a49b35e8714c5f59d99de09a225b',
+    },
+    quotaToken: {
+      chain: 'kava',
+      symbol: 'USDT',
+      decimals: 6,
+      address: '0x919c1c267bc06a7039e03fcc2ef738525769109c',
+    },
+  },
 };

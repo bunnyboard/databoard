@@ -191,6 +191,36 @@ const testcases = [
     timestamp: 1722470400, // Thu Aug 01 2024 00:00:00 GMT+0000
     expectedBlockNumber: 3870805,
   },
+  {
+    ...EnvConfig.blockchains.kava,
+    timestamp: 1722470400, // Thu Aug 01 2024 00:00:00 GMT+0000
+    expectedBlockNumber: 11016737,
+  },
+  {
+    ...EnvConfig.blockchains.kaia,
+    timestamp: 1722470400, // Thu Aug 01 2024 00:00:00 GMT+0000
+    expectedBlockNumber: 160477842,
+  },
+  {
+    ...EnvConfig.blockchains.iotaevm,
+    timestamp: 1722470400, // Thu Aug 01 2024 00:00:00 GMT+0000
+    expectedBlockNumber: 472798,
+  },
+  {
+    ...EnvConfig.blockchains.rari,
+    timestamp: 1722470400, // Thu Aug 01 2024 00:00:00 GMT+0000
+    expectedBlockNumber: 410861,
+  },
+  {
+    ...EnvConfig.blockchains.gravity,
+    timestamp: 1722470400, // Thu Aug 01 2024 00:00:00 GMT+0000
+    expectedBlockNumber: 45898,
+  },
+  {
+    ...EnvConfig.blockchains.flare,
+    timestamp: 1722470400, // Thu Aug 01 2024 00:00:00 GMT+0000
+    expectedBlockNumber: 27690677,
+  },
 ];
 
 describe('getBlockNumberAtTimestamp', function () {

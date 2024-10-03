@@ -30,4 +30,9 @@ export const StargateChainIds: { [key: number]: string } = {
   30211: ChainNames.aurora,
   30150: ChainNames.kaia,
   30290: ChainNames.taiko,
+  30235: ChainNames.rari,
+  30284: ChainNames.iotaevm,
+  30280: ChainNames.seievm,
+  30295: ChainNames.flare,
+  30294: ChainNames.gravity,
 };

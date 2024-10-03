@@ -51,6 +51,9 @@ export const ChainNames = {
   immutablezkevm: 'immutablezkevm',
   fuse: 'fuse',
   boba: 'boba',
+  iotaevm: 'iotaevm',
+  rari: 'rari',
+  flare: 'flare',
 };
 
 export const ProtocolNames = {
