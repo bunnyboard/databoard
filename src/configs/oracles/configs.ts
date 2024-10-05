@@ -678,6 +678,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xca77eb3fefe3725dc33bccb54edefc3d9f764f97': OracleSourceConfigs.DAI,
     '0xf55bec9cafdbe8730f096aa55dad6d22d44099df': OracleSourceConfigs.USDT,
     '0x3c1bca5a656e69edcd0d4e36bebb3fcdaca60cf1': OracleSourceConfigs.WBTC,
+    '0x01f0a31698c4d065659b9bdc21b3610292a1c506': OracleSourceConfigs.weETH,
+    '0xa25b25548b4c98b0c7d3d27dca5d5ca743d68b7f': OracleSourceConfigs.rsETH,
   },
 
   // tokens on blast
@@ -762,6 +764,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xf0f161fda2712db8b566946122a5af183995e2ed': OracleSourceConfigs.USDT,
     '0xe7798f023fc62146e8aa1b36da45fb70855a77ea': OracleSourceConfigs.DAI,
     '0xcdd475325d6f564d27247d1dddbb0dac6fa0a5cf': OracleSourceConfigs.WBTC,
+    '0x2416092f143378750bb29b79ed961ab195cceea5': OracleSourceConfigs.ezETH,
   },
 
   cronos: {
@@ -853,5 +856,9 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xfbda5f676cb37624f28265a144a48b0d6e87d3b6': OracleSourceConfigs.USDC,
     '0x816e810f9f787d669fb71932deabf6c83781cd48': OracleSourceConfigs.USDT,
     '0xf6f832466cd6c21967e0d954109403f36bc8ceaa': OracleSourceConfigs.ETH,
+  },
+
+  zklinknova: {
+    '0xda4aaed3a53962c83b35697cd138cc6df43af71f': OracleSourceConfigs.WBTC,
   },
 };

@@ -14,6 +14,7 @@ import EulerAdapter from './euler/euler';
 import FluidAdapter from './fluid/fluid';
 import FraxEtherAdapter from './frax/fraxether';
 import FraxlendAdapter from './frax/fraxlend';
+import LayerbankAdapter from './layerbank/layerbank';
 import LidoAdapter from './lido/lido';
 import LifiAdapter from './lifi/lifi';
 import LiquidCollectiveAdapter from './liquidcollective/lseth';
@@ -91,5 +92,6 @@ export function getProtocolAdapters(
     dinero: new DineroAdapter(services, storages, ProtocolConfigs.dinero),
     stakestone: new StakeStoneAdapter(services, storages, ProtocolConfigs.stakestone),
     across: new AcrossAdapter(services, storages, ProtocolConfigs.across),
+    layerbank: new LayerbankAdapter(services, storages, ProtocolConfigs.layerbank),
   };
 }

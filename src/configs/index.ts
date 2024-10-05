@@ -54,6 +54,7 @@ import { StakewiseConfigs } from './protocols/stakewise';
 import { LiquidCollectiveConfigs } from './protocols/liquidcollective';
 import { DineroConfigs } from './protocols/dinero';
 import { AcrossConfigs } from './protocols/across';
+import { LayerbankConfigs } from './protocols/layerbank';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -123,6 +124,7 @@ export const ProtocolConfigs = {
   liquidcollective: LiquidCollectiveConfigs,
   dinero: DineroConfigs,
   across: AcrossConfigs,
+  layerbank: LayerbankConfigs,
 };
 
 export const ChainConfigs = ChainBoardConfigs;
