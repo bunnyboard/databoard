@@ -10,6 +10,7 @@ import DineroAdapter from './dinero/dinero';
 import EulerAdapter from './euler/euler';
 import FluidAdapter from './fluid/fluid';
 import FraxEtherAdapter from './frax/fraxether';
+import FraxlendAdapter from './frax/fraxlend';
 import LayerbankAdapter from './layerbank/layerbank';
 import LidoAdapter from './lido/lido';
 import LiquidCollectiveAdapter from './liquidcollective/lseth';
@@ -66,7 +67,7 @@ export function getProtocolAdapters(
     euler: new EulerAdapter(services, storages, ProtocolConfigs.euler),
     liquity: new LiquityAdapter(services, storages, ProtocolConfigs.liquity),
     fluid: new FluidAdapter(services, storages, ProtocolConfigs.fluid),
-    // fraxlend: new FraxlendAdapter(services, storages, ProtocolConfigs.fraxlend),
+    fraxlend: new FraxlendAdapter(services, storages, ProtocolConfigs.fraxlend),
     fraxether: new FraxEtherAdapter(services, storages, ProtocolConfigs.fraxether),
     curveusd: new CurveusdAdapter(services, storages, ProtocolConfigs.curveusd),
     curvelend: new CurvelendAdapter(services, storages, ProtocolConfigs.curvelend),

@@ -64,4 +64,14 @@ export const OracleSourceCurveList: {
     quotaToken: TokensBook.ethereum['0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'],
     quotaTokenIndex: 1,
   },
+  OETH_WETH: {
+    type: 'curveFactoryPool',
+    chain: 'ethereum',
+    currency: 'eth',
+    address: '0x94b17476a93b3262d87b9a326965d1e91f9c13e7',
+    baseToken: TokensBook.ethereum['0x856c4efb76c1d1ae02e20ceb03a2a6a08b0b8dc3'],
+    baseTokenIndex: 1,
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+    quotaTokenIndex: 0,
+  },
 };

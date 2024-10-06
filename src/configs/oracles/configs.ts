@@ -149,10 +149,6 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xaf620e6913fc52acf7c5a5e08bd4cb8aa64be211': OracleSourceConfigs.ezETH,
     '0xa663b02cf0a4b149d2ad41910cb81e23e1c41c32': OracleSourceConfigs.sFRAX,
     '0xb45ad160634c528cc3d2926d9807104fa3157305': OracleSourceConfigs.sDOLA,
-    '0x5ca135cb8527d76e932f34b5145575f9d8cbe08e': OracleSourceConfigs.FPI, // FPI
-    '0x0de54cfdfed8005176f8b7a9d5438b45c4f1df1e': OracleSourceConfigs.FPI, // FXB_20240630
-    '0xf8fde8a259a3698902c88bdb1e13ff28cd7f6f09': OracleSourceConfigs.FPI, // FXB_20241231
-    '0x76237bcfdbe8e06fb774663add96216961df4ff3': OracleSourceConfigs.FPI, // FXB_20261231
     '0xa1290d69c65a6fe4df752f95823fae25cb99e5a7': OracleSourceConfigs.rsETH,
     '0x1a7e4e63778b4f12a199c062f3efdd288afcbce8': OracleSourceConfigs.agEUR,
     '0x046eee2cc3188071c02bfc1745a6b17c656e3f3d': OracleSourceConfigs.RLB,
@@ -191,6 +187,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x9e32b13ce7f2e80a01932b42553652e053d6ed8e': OracleSourceConfigs.METIS,
     '0x88909d489678dd17aa6d9609f89b0419bf78fd9a': OracleSourceConfigs.L3,
     '0x9ee91f9f426fa633d227f7a9b000e28b9dfd8599': OracleSourceConfigs.stMATIC,
+    '0x856c4efb76c1d1ae02e20ceb03a2a6a08b0b8dc3': OracleSourceConfigs.OETH,
+    '0xdcee70654261af21c44c093c300ed3bb97b78192': OracleSourceConfigs.OETH,
 
     // todo need to find better oracle source
     '0x9d39a5de30e57443bff2a8307a4256c8797a3497': OracleSourceConfigs.USDT,
@@ -224,6 +222,12 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xd6c7fd4392d328e4a8f8bc50f4128b64f4db2d4c': OracleSourceConfigs.MAKER_RWA013,
     '0x75dca04c4acc1ffb0aef940e5b49e2c17416008a': OracleSourceConfigs.MAKER_RWA014,
     '0xf5e5e706efc841bed1d24460cd04028075cdbfde': OracleSourceConfigs.MAKER_RWA015,
+
+    // fraxlend
+    '0x5ca135cb8527d76e932f34b5145575f9d8cbe08e': OracleSourceConfigs.FPI, // FPI
+    '0x0de54cfdfed8005176f8b7a9d5438b45c4f1df1e': OracleSourceConfigs.FPI, // FXB_20240630
+    '0xf8fde8a259a3698902c88bdb1e13ff28cd7f6f09': OracleSourceConfigs.FPI, // FXB_20241231
+    '0x76237bcfdbe8e06fb774663add96216961df4ff3': OracleSourceConfigs.FPI, // FXB_20261231
   },
 
   // tokens on Arbitrum One
@@ -308,6 +312,11 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34': OracleSourceConfigs.USDe,
     '0x53691596d1bce8cea565b84d4915e69e03d9c99d': OracleSourceConfigs.ACX,
     '0x2c650dab03a59332e2e0c0c4a7f726913e5028c1': OracleSourceConfigs.TAP,
+    '0x95ab45875cffdba1e5f451b950bc2e42c0053f39': OracleSourceConfigs.frxETH,
+    '0x371c7ec6d8039ff7933a2aa28eb827ffe1f52f07': OracleSourceConfigs.JOE,
+    '0x25d887ce7a35172c62febfd67a1856f20faebb00': OracleSourceConfigs.PEPE,
+    '0x8b0e6f19ee57089f7649a455d89d7bc6314d04e8': OracleSourceConfigs.DMT,
+    '0x4cb9a7ae498cedcbb5eae9f25736ae7d428c9d66': OracleSourceConfigs.XAI,
   },
 
   // tokens on Optimism
@@ -790,11 +799,19 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressE]: OracleSourceConfigs.frxETH,
     [AddressF]: OracleSourceConfigs.frxETH,
     '0xfc00000000000000000000000000000000000001': OracleSourceConfigs.FRAX,
-    '0xdcc0f2d8f90fde85b10ac1c8ab57dc0ae946a543': OracleSourceConfigs.USDC,
     '0xfc00000000000000000000000000000000000005': OracleSourceConfigs.frxETH,
     '0xfc00000000000000000000000000000000000008': OracleSourceConfigs.sFRAX,
     '0xfc00000000000000000000000000000000000006': OracleSourceConfigs.frxETH,
+    '0xfc00000000000000000000000000000000000002': OracleSourceConfigs.FXS,
+    '0xfc00000000000000000000000000000000000003': OracleSourceConfigs.FPI,
+    '0xdcc0f2d8f90fde85b10ac1c8ab57dc0ae946a543': OracleSourceConfigs.USDC,
     '0x2416092f143378750bb29b79ed961ab195cceea5': OracleSourceConfigs.ezETH,
+
+    // fraxlend
+    '0x8e9c334afc76106f08e0383907f4fca9bb10ba3e': OracleSourceConfigs.FPI,
+    '0xa71bb8c79dc8ffa90a6dd711aa9fbe5114c19cba': OracleSourceConfigs.FPI,
+    '0xf1e2b576af4c6a7ee966b14c810b772391e92153': OracleSourceConfigs.FPI,
+    '0xaca9a33698cf96413a40a4eb9e87906ff40fc6ca': OracleSourceConfigs.FPI,
   },
 
   core: {

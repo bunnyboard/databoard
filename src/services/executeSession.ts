@@ -19,7 +19,7 @@ export default class ExecuteSession {
 
     logger.info(message, {
       ...props,
-      took: `${elapsed}ms`,
+      took: elapsed < 1000 ? `${elapsed}ms` : `${Number(elapsed / 1000).toFixed(2)}s`,
     });
 
     // reset session
