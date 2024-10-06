@@ -1,13 +1,6 @@
 import { ProtocolData } from '../protocol';
 
 export interface BungeeDataExtended {
-  // srcChain => destChain => volume usd
-  volumeBridgeChainRoutes: {
-    [key: string]: {
-      [key: string]: number;
-    };
-  };
-
   // bridge => bridge volume
   volumeBridges: {
     [key: string]: number;

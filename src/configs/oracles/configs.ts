@@ -189,6 +189,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xec53bf9167f50cdeb3ae105f56099aaab9061f83': OracleSourceConfigs.EIGEN,
     '0x44108f0223a3c3028f5fe7aec7f9bb2e66bef82f': OracleSourceConfigs.ACX,
     '0x9e32b13ce7f2e80a01932b42553652e053d6ed8e': OracleSourceConfigs.METIS,
+    '0x88909d489678dd17aa6d9609f89b0419bf78fd9a': OracleSourceConfigs.L3,
+    '0x9ee91f9f426fa633d227f7a9b000e28b9dfd8599': OracleSourceConfigs.stMATIC,
 
     // todo need to find better oracle source
     '0x9d39a5de30e57443bff2a8307a4256c8797a3497': OracleSourceConfigs.USDT,
@@ -407,6 +409,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x3e8707557d4ad25d6042f590bcf8a06071da2c5f': OracleSourceConfigs.ETH,
     '0x4158734d47fc9692176b5085e0f52ee0da5d47f1': OracleSourceConfigs.BAL,
     '0xd652c5425aea2afd5fb142e120fecf79e18fafc3': OracleSourceConfigs.POOL,
+    '0x120edc8e391ba4c94cb98bb65d8856ae6ec1525f': OracleSourceConfigs.LOUDER,
   },
 
   // tokens on Polygon

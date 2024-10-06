@@ -53,6 +53,12 @@
     "decimals": 18,
     "address": "0x10c1b6f768e13c624a4a23337f1a5ba5c9be0e4b"
   },
+  "0x120edc8e391ba4c94cb98bb65d8856ae6ec1525f": {
+    "chain": "base",
+    "symbol": "LOUDER",
+    "decimals": 18,
+    "address": "0x120edc8e391ba4c94cb98bb65d8856ae6ec1525f"
+  },
   "0x122a3f185655847980639e8edf0f0f66cd91c5fe": {
     "chain": "base",
     "symbol": "FELLA",

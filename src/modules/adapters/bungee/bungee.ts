@@ -16,7 +16,7 @@ import { BungeeDataExtended, BungeeProtocolData } from '../../../types/domains/e
 export const BungeeSocketEvents = {
   SocketBridge: '0x74594da9e31ee4068e17809037db37db496702bf7d8d63afe6f97949277d1609',
   SocketFeesDeducted: '0x6ea2964966a13d361befaca87edb26595ca75a30f3b77887d67d5a7d0e4805c0',
-  SocketSwapTokens: '0xb346a959ba6c0f1c7ba5426b10fd84fe4064e392a0dfcf6609e9640a0dd260d3',
+  // SocketSwapTokens: '0xb346a959ba6c0f1c7ba5426b10fd84fe4064e392a0dfcf6609e9640a0dd260d3',
 };
 
 export const BungeeKnownBridgeNames: { [key: string]: string } = {
@@ -66,13 +66,11 @@ export default class BungeeAdapter extends ProtocolAdapter {
       volumes: {
         bridgeIn: 0,
         bridgeOut: 0,
-        sellToken: 0,
-        buyToken: 0,
       },
+      volumeBridgePaths: {},
     };
 
     const bungeeExtendedData: BungeeDataExtended = {
-      volumeBridgeChainRoutes: {},
       volumeBridges: {},
       feeRecipients: {},
     };
@@ -87,8 +85,8 @@ export default class BungeeAdapter extends ProtocolAdapter {
       if (!protocolData.breakdown[gatewayConfig.chain]) {
         protocolData.breakdown[gatewayConfig.chain] = {};
       }
-      if (!bungeeExtendedData.volumeBridgeChainRoutes[gatewayConfig.chain]) {
-        bungeeExtendedData.volumeBridgeChainRoutes[gatewayConfig.chain] = {};
+      if (!(protocolData.volumeBridgePaths as any)[gatewayConfig.chain]) {
+        (protocolData.volumeBridgePaths as any)[gatewayConfig.chain] = {};
       }
 
       const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
@@ -157,8 +155,6 @@ export default class BungeeAdapter extends ProtocolAdapter {
                   volumes: {
                     bridgeIn: 0,
                     bridgeOut: 0,
-                    sellToken: 0,
-                    buyToken: 0,
                   },
                 };
               }
@@ -169,10 +165,10 @@ export default class BungeeAdapter extends ProtocolAdapter {
               }
               bungeeExtendedData.volumeBridges[bridgeName] += amountUsd;
 
-              if (!bungeeExtendedData.volumeBridgeChainRoutes[gatewayConfig.chain][toChainName]) {
-                bungeeExtendedData.volumeBridgeChainRoutes[gatewayConfig.chain][toChainName] = 0;
+              if (!(protocolData.volumeBridgePaths as any)[gatewayConfig.chain][toChainName]) {
+                (protocolData.volumeBridgePaths as any)[gatewayConfig.chain][toChainName] = 0;
               }
-              bungeeExtendedData.volumeBridgeChainRoutes[gatewayConfig.chain][toChainName] += amountUsd;
+              (protocolData.volumeBridgePaths as any)[gatewayConfig.chain][toChainName] += amountUsd;
             }
           } else if (log.topics[0] === BungeeSocketEvents.SocketFeesDeducted) {
             const token = await this.services.blockchain.evm.getTokenInfo({
@@ -196,8 +192,6 @@ export default class BungeeAdapter extends ProtocolAdapter {
                   volumes: {
                     bridgeIn: 0,
                     bridgeOut: 0,
-                    sellToken: 0,
-                    buyToken: 0,
                   },
                 };
               }
@@ -209,68 +203,6 @@ export default class BungeeAdapter extends ProtocolAdapter {
                 bungeeExtendedData.feeRecipients[feeTaker] = 0;
               }
               bungeeExtendedData.feeRecipients[feeTaker] += amountUsd;
-            }
-          } else if (log.topics[0] === BungeeSocketEvents.SocketSwapTokens) {
-            const fromToken = await this.services.blockchain.evm.getTokenInfo({
-              chain: gatewayConfig.chain,
-              address: event.args.fromToken,
-            });
-            const toToken = await this.services.blockchain.evm.getTokenInfo({
-              chain: gatewayConfig.chain,
-              address: event.args.toToken,
-            });
-
-            if (fromToken && toToken) {
-              let amountUsd = 0;
-
-              const fromTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-                chain: gatewayConfig.chain,
-                address: fromToken.address,
-                timestamp: options.timestamp,
-              });
-              amountUsd =
-                formatBigNumberToNumber(event.args.sellAmount.toString(), fromToken.decimals) * fromTokenPriceUsd;
-
-              // can not get fromToken price
-              // we try with toToken
-              if (amountUsd === 0) {
-                const toTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-                  chain: gatewayConfig.chain,
-                  address: toToken.address,
-                  timestamp: options.timestamp,
-                });
-                amountUsd =
-                  formatBigNumberToNumber(event.args.buyAmount.toString(), toToken.decimals) * toTokenPriceUsd;
-              }
-
-              if (!protocolData.breakdown[gatewayConfig.chain][fromToken.address]) {
-                protocolData.breakdown[gatewayConfig.chain][fromToken.address] = {
-                  ...getInitialProtocolCoreMetrics(),
-                  volumes: {
-                    bridgeIn: 0,
-                    bridgeOut: 0,
-                    sellToken: 0,
-                    buyToken: 0,
-                  },
-                };
-              }
-              if (!protocolData.breakdown[gatewayConfig.chain][toToken.address]) {
-                protocolData.breakdown[gatewayConfig.chain][toToken.address] = {
-                  ...getInitialProtocolCoreMetrics(),
-                  volumes: {
-                    bridgeIn: 0,
-                    bridgeOut: 0,
-                    sellToken: 0,
-                    buyToken: 0,
-                  },
-                };
-              }
-
-              (protocolData.breakdown[fromToken.chain][fromToken.address].volumes.sellToken as number) += amountUsd;
-              (protocolData.breakdown[toToken.chain][toToken.address].volumes.buyToken as number) += amountUsd;
-
-              (protocolData.volumes.sellToken as number) += amountUsd;
-              (protocolData.volumes.buyToken as number) += amountUsd;
             }
           }
         }

@@ -113,9 +113,18 @@ export interface OracleConfig {
 export interface DexOracleConfig {
   type: 'univ2' | 'univ3';
   address: string;
+
+  // uniswap v3 fees enabled
+  fees?: Array<number>;
 }
 
-export interface AutoOracleConfig {
+export interface OnchainOracleConfig {
+  // the native wrap token: WETH
   wrapToken: Token;
+
+  // a list tokens can be used as quota for cal price
+  quotaTokens?: Array<Token>;
+
+  // list of dexes contracts
   dexes: Array<DexOracleConfig>;
 }

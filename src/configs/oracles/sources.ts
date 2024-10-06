@@ -1133,4 +1133,12 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.TAP_WETH],
   },
+  L3: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.L3_WETH],
+  },
+  LOUDER: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.LOUDER_WETH],
+  },
 };

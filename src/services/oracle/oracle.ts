@@ -28,8 +28,10 @@ import Erc20Abi from '../../configs/abi/ERC20.json';
 import Erc4626Abi from '../../configs/abi/ERC4626.json';
 import { OracleTokenBlacklists } from '../../configs/oracles/blacklists';
 import UniswapFactoryV2 from '../../configs/abi/uniswap/UniswapV2Factory.json';
+import UniswapFactoryV3 from '../../configs/abi/uniswap/UniswapV3Factory.json';
 import { AutoOracleConfigs } from '../../configs/oracles';
 import { AddressZero } from '../../configs/constants';
+import { Token } from '../../types/base';
 
 export default class OracleService extends CachingService implements IOracleService {
   public readonly name: string = 'oracle';
@@ -271,35 +273,79 @@ export default class OracleService extends CachingService implements IOracleServ
       });
 
       for (const autoOracleConfig of AutoOracleConfigs[options.chain].dexes) {
-        if (autoOracleConfig.type === 'univ2') {
-          const pairAddress = await blockchain.readContract({
-            chain: options.chain,
-            abi: UniswapFactoryV2,
-            target: autoOracleConfig.address,
-            method: 'getPair',
-            params: [options.address, AutoOracleConfigs[options.chain].wrapToken.address],
-          });
-          if (!compareAddress(pairAddress, AddressZero)) {
-            if (baseToken) {
-              const priceVsBase = await this.getTokenPriceSource(
-                {
-                  type: OracleTypes.uniswapv2,
-                  chain: options.chain,
-                  address: pairAddress,
-                  baseToken: baseToken,
-                  quotaToken: AutoOracleConfigs[options.chain].wrapToken,
-                },
-                options.timestamp,
-              );
-              if (priceVsBase) {
-                const basePriceUsd = await this.getTokenPriceUsd({
-                  chain: options.chain,
-                  address: AutoOracleConfigs[options.chain].wrapToken.address,
-                  timestamp: options.timestamp,
-                });
+        let quotaTokens: Array<Token> = [AutoOracleConfigs[options.chain].wrapToken];
+        if (AutoOracleConfigs[options.chain].quotaTokens) {
+          quotaTokens = quotaTokens.concat(AutoOracleConfigs[options.chain].quotaTokens as Array<Token>);
+        }
 
-                if (basePriceUsd) {
-                  return new BigNumber(priceVsBase).multipliedBy(basePriceUsd).toString(10);
+        if (autoOracleConfig.type === 'univ2') {
+          for (const quotaToken of quotaTokens) {
+            const pairAddress = await blockchain.readContract({
+              chain: options.chain,
+              abi: UniswapFactoryV2,
+              target: autoOracleConfig.address,
+              method: 'getPair',
+              params: [options.address, quotaToken.address],
+            });
+            if (!compareAddress(pairAddress, AddressZero)) {
+              if (baseToken) {
+                const priceVsQuota = await this.getTokenPriceSource(
+                  {
+                    type: OracleTypes.uniswapv2,
+                    chain: options.chain,
+                    address: pairAddress,
+                    baseToken: baseToken,
+                    quotaToken: quotaToken,
+                  },
+                  options.timestamp,
+                );
+                if (priceVsQuota) {
+                  const quotaPriceUsd = await this.getTokenPriceUsd({
+                    chain: options.chain,
+                    address: quotaToken.address,
+                    timestamp: options.timestamp,
+                  });
+
+                  if (quotaPriceUsd) {
+                    return new BigNumber(priceVsQuota).multipliedBy(quotaPriceUsd).toString(10);
+                  }
+                }
+              }
+            }
+          }
+        } else if (autoOracleConfig.type === 'univ3' && autoOracleConfig.fees) {
+          for (const quotaToken of quotaTokens) {
+            for (const feeConfig of autoOracleConfig.fees) {
+              const poolAddress = await blockchain.readContract({
+                chain: options.chain,
+                abi: UniswapFactoryV3,
+                target: autoOracleConfig.address,
+                method: 'getPool',
+                params: [options.address, quotaToken.address, feeConfig],
+              });
+              if (!compareAddress(poolAddress, AddressZero)) {
+                if (baseToken) {
+                  const priceVsQuota = await this.getTokenPriceSource(
+                    {
+                      type: OracleTypes.uniswapv3,
+                      chain: options.chain,
+                      address: poolAddress,
+                      baseToken: baseToken,
+                      quotaToken: quotaToken,
+                    },
+                    options.timestamp,
+                  );
+                  if (priceVsQuota) {
+                    const quotaPriceUsd = await this.getTokenPriceUsd({
+                      chain: options.chain,
+                      address: quotaToken.address,
+                      timestamp: options.timestamp,
+                    });
+
+                    if (quotaPriceUsd) {
+                      return new BigNumber(priceVsQuota).multipliedBy(quotaPriceUsd).toString(10);
+                    }
+                  }
                 }
               }
             }
