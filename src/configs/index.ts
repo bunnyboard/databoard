@@ -55,6 +55,7 @@ import { LiquidCollectiveConfigs } from './protocols/liquidcollective';
 import { DineroConfigs } from './protocols/dinero';
 import { AcrossConfigs } from './protocols/across';
 import { LayerbankConfigs } from './protocols/layerbank';
+import { PancakeConfigs } from './protocols/pancake';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -125,6 +126,7 @@ export const ProtocolConfigs = {
   dinero: DineroConfigs,
   across: AcrossConfigs,
   layerbank: LayerbankConfigs,
+  pancake: PancakeConfigs,
 };
 
 export const ChainConfigs = ChainBoardConfigs;

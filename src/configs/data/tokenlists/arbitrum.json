@@ -1115,6 +1115,12 @@
     "decimals": 18,
     "address": "0xc5102fe9359fd9a28f877a67e36b0f050d81a3cc"
   },
+  "0xc87b37a581ec3257b734886d9d3a581f5a9d056c": {
+    "chain": "arbitrum",
+    "symbol": "ATH",
+    "decimals": 18,
+    "address": "0xc87b37a581ec3257b734886d9d3a581f5a9d056c"
+  },
   "0xcafcd85d8ca7ad1e1c6f82f651fa15e33aefd07b": {
     "chain": "arbitrum",
     "symbol": "WOO",

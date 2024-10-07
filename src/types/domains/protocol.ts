@@ -44,17 +44,11 @@ export interface ProtocolCoreMetrics {
     flashloan?: number;
     redeemtion?: number;
 
-    // volume of swap/exchange this token to other tokens
-    sellToken?: number;
+    // volume of swap/exchange on this token
+    trade?: number;
 
-    // volume of swap/exchange from other token to this token
-    buyToken?: number;
-
-    // volume of token was bridged out from chain to other chains/tokens
-    bridgeOut?: number;
-
-    //volume of token was bridged from other chains/tokens to this token
-    bridgeIn?: number;
+    // volume of token was bridged from to other chains
+    bridge?: number;
   };
 
   // for bridge protocols

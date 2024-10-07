@@ -46,6 +46,16 @@ export const AutoOracleConfigs: { [key: string]: OnchainOracleConfig } = {
         address: '0x1F98431c8aD98523631AE4a59f267346ea31F984', // uniswap v3 factory
         fees: [500, 3000, 10000],
       },
+      {
+        type: 'univ3',
+        address: '0xbACEB8eC6b9355Dfc0269C18bac9d6E2Bdc29C4F', // sushi v3 factory
+        fees: [500, 3000, 10000],
+      },
+      {
+        type: 'univ3',
+        address: '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865', // pancakeswap v3 factory
+        fees: [500, 3000, 10000],
+      },
     ],
   },
   arbitrum: {
@@ -108,6 +118,14 @@ export const AutoOracleConfigs: { [key: string]: OnchainOracleConfig } = {
       decimals: 18,
       address: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
     },
+    quotaTokens: [
+      {
+        chain: 'bnbchain',
+        symbol: 'USDT',
+        decimals: 18,
+        address: '0x55d398326f99059ff775485246999027b3197955',
+      },
+    ],
     dexes: [
       {
         type: 'univ2',
@@ -116,6 +134,10 @@ export const AutoOracleConfigs: { [key: string]: OnchainOracleConfig } = {
       {
         type: 'univ2',
         address: '0x8909Dc15e40173Ff4699343b6eB8132c65e18eC6', // uniswap v2 factory
+      },
+      {
+        type: 'univ3',
+        address: '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865', // pancakeswap v3 factory
       },
     ],
   },

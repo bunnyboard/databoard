@@ -1,11 +1,11 @@
 import { UniswapDexConfig } from '../../../configs/protocols/uniswap';
 import { Token } from '../../../types/base';
-import { ContextServices } from '../../../types/namespaces';
 
-export interface Pool {
+export interface Pool2 {
   chain: string;
-  factory: string;
-  address: string;
+  protocol: string;
+  factoryAddress: string;
+  poolAddress: string;
   token0: Token;
   token1: Token;
   birthblock: number;
@@ -13,9 +13,8 @@ export interface Pool {
 }
 
 export interface GetUniswapPoolDataOptions {
-  services: ContextServices;
   dexConfig: UniswapDexConfig;
-  pool: Pool;
+  pool: Pool2;
   timestamp: number;
   blockNumber: number;
   beginBlock: number;
@@ -23,9 +22,25 @@ export interface GetUniswapPoolDataOptions {
 }
 
 export interface GetUniswapPoolDataResult {
-  totalLiquidityUsd: number;
-  totalSwapFeeUsd: number;
-  volumeSwapUsd: number;
-  volumeAddLiquidityUsd: number;
-  volumeRemoveLiquidityUsd: number;
+  total: {
+    totalLiquidityUsd: number;
+    totalSwapFeeUsd: number;
+    volumeSwapUsd: number;
+    volumeAddLiquidityUsd: number;
+    volumeRemoveLiquidityUsd: number;
+  };
+  token0: {
+    totalLiquidityUsd: number;
+    totalSwapFeeUsd: number;
+    volumeSwapUsd: number;
+    volumeAddLiquidityUsd: number;
+    volumeRemoveLiquidityUsd: number;
+  };
+  token1: {
+    totalLiquidityUsd: number;
+    totalSwapFeeUsd: number;
+    volumeSwapUsd: number;
+    volumeAddLiquidityUsd: number;
+    volumeRemoveLiquidityUsd: number;
+  };
 }

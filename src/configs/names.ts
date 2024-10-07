@@ -54,6 +54,9 @@ export const ChainNames = {
   iotaevm: 'iotaevm',
   rari: 'rari',
   flare: 'flare',
+  evmos: 'evmos',
+  velas: 'velas',
+  opbnb: 'opbnb',
 };
 
 export const ProtocolNames = {

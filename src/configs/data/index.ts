@@ -70,6 +70,9 @@ export const TokenBookDexBase = {
     '0x94b008aa00579c1307b0ef2c499ad98a8ce58e58', // USDT
     '0xda10009cbd5d07dd0cecc66161fc93d7c9000da1', // USDT
   ],
+  avalanche: [
+    '0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7', // WAVAX
+  ],
   base: [
     '0x4200000000000000000000000000000000000006', // WETH
     '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913', // USDC
@@ -107,5 +110,26 @@ export const TokenBookDexBase = {
   fantom: [
     AddressE, // FTM
     '0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83', // WFTM
+  ],
+  celo: [
+    '0x471ece3750da237f93b8e339c536989b8978a438', // CELO
+  ],
+  blast: [
+    '0x4300000000000000000000000000000000000004', // WETH
+  ],
+  zora: [
+    '0x4200000000000000000000000000000000000006', // WETH
+  ],
+  zksync: [
+    '0x5aea5775959fbc2557cc8789bc1bf90a239d9a91', // WETH
+  ],
+  linea: [
+    '0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f', // WETH
+  ],
+  scroll: [
+    '0x5300000000000000000000000000000000000004', // WETH
+  ],
+  polygonzkevm: [
+    '0x4f9a0e7fd2bf6067db6994cf12e4495df938e6e9', // WETH
   ],
 };

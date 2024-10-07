@@ -1,13 +1,6 @@
 import { ProtocolData } from '../protocol';
 
 export interface LifiDataExtended {
-  // srcChain => destChain => volume usd
-  volumeBridgeChainRoutes: {
-    [key: string]: {
-      [key: string]: number;
-    };
-  };
-
   volumeBridges: {
     // bridge => volume
     [key: string]: number;

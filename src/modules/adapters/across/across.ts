@@ -29,8 +29,7 @@ export default class AcrossAdapter extends ProtocolAdapter {
       breakdown: {},
       ...getInitialProtocolCoreMetrics(),
       volumes: {
-        bridgeOut: 0,
-        bridgeIn: 0,
+        bridge: 0,
       },
       volumeBridgePaths: {},
     };
@@ -97,8 +96,7 @@ export default class AcrossAdapter extends ProtocolAdapter {
               protocolData.breakdown[token.chain][token.address] = {
                 ...getInitialProtocolCoreMetrics(),
                 volumes: {
-                  bridgeIn: 0,
-                  bridgeOut: 0,
+                  bridge: 0,
                 },
               };
             }
@@ -157,8 +155,7 @@ export default class AcrossAdapter extends ProtocolAdapter {
                 protocolData.breakdown[inputToken.chain][inputToken.address] = {
                   ...getInitialProtocolCoreMetrics(),
                   volumes: {
-                    bridgeIn: 0,
-                    bridgeOut: 0,
+                    bridge: 0,
                   },
                 };
               }
@@ -169,43 +166,13 @@ export default class AcrossAdapter extends ProtocolAdapter {
 
               protocolData.totalFees += feesUsd;
               protocolData.supplySideRevenue += feesUsd;
-              (protocolData.volumes.bridgeOut as number) += amountUsd;
+              (protocolData.volumes.bridge as number) += amountUsd;
 
               protocolData.breakdown[inputToken.chain][inputToken.address].totalFees += amountUsd;
               protocolData.breakdown[inputToken.chain][inputToken.address].supplySideRevenue += amountUsd;
-              (protocolData.breakdown[inputToken.chain][inputToken.address].volumes.bridgeOut as number) += amountUsd;
+              (protocolData.breakdown[inputToken.chain][inputToken.address].volumes.bridge as number) += amountUsd;
 
               (protocolData.volumeBridgePaths as any)[spokePoolConfig.chain][destChainName] += amountUsd;
-            }
-          } else if (log.topics[0] === FilledV3Relay) {
-            const outputToken = await this.services.blockchain.evm.getTokenInfo({
-              chain: spokePoolConfig.chain,
-              address: event.args.outputToken,
-            });
-            if (outputToken) {
-              const outputTokenPrice = await this.services.oracle.getTokenPriceUsdRounded({
-                chain: outputToken.chain,
-                address: outputToken.address,
-                timestamp: options.timestamp,
-              });
-
-              const amountUsd =
-                formatBigNumberToNumber(event.args.outputAmount.toString(), outputToken.decimals) * outputTokenPrice;
-
-              if (!protocolData.breakdown[outputToken.chain][outputToken.address]) {
-                protocolData.breakdown[outputToken.chain][outputToken.address] = {
-                  ...getInitialProtocolCoreMetrics(),
-                  volumes: {
-                    bridgeIn: 0,
-                    bridgeOut: 0,
-                  },
-                };
-              }
-
-              (protocolData.volumes.bridgeIn as number) += amountUsd;
-              (protocolData.breakdown[outputToken.chain][outputToken.address].volumes.bridgeIn as number) += amountUsd;
-
-              // fees were already count on source chain spoke pool
             }
           }
         }

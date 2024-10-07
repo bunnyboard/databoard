@@ -512,4 +512,16 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
       decimals: 18,
     },
   },
+  [ChainNames.opbnb]: {
+    name: ChainNames.opbnb,
+    family: 'evm',
+    chainId: 204,
+    nodeRpc: String(process.env.BLOCKCHAIN_OPBNB_NODE),
+    nativeToken: {
+      chain: ChainNames.opbnb,
+      address: AddressZero,
+      symbol: 'BNB',
+      decimals: 18,
+    },
+  },
 };

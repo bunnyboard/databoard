@@ -47,6 +47,8 @@ export const LifiChainIds: any = {
   '13371': ChainNames.immutablezkevm,
   '122': ChainNames.fuse,
   '288': ChainNames.boba,
+  '9001': ChainNames.evmos,
+  '106': ChainNames.velas,
 };
 
 export default class LifiAdapter extends ProtocolAdapter {
@@ -65,13 +67,12 @@ export default class LifiAdapter extends ProtocolAdapter {
       breakdown: {},
       ...getInitialProtocolCoreMetrics(),
       volumes: {
-        bridgeIn: 0,
-        bridgeOut: 0,
+        bridge: 0,
       },
+      volumeBridgePaths: {},
     };
 
     const lifiExtendedData: LifiDataExtended = {
-      volumeBridgeChainRoutes: {},
       volumeBridges: {},
       volumeIntegrators: {},
       feeRecipients: {},
@@ -87,8 +88,8 @@ export default class LifiAdapter extends ProtocolAdapter {
       if (!protocolData.breakdown[diamondConfig.chain]) {
         protocolData.breakdown[diamondConfig.chain] = {};
       }
-      if (!lifiExtendedData.volumeBridgeChainRoutes[diamondConfig.chain]) {
-        lifiExtendedData.volumeBridgeChainRoutes[diamondConfig.chain] = {};
+      if (!(protocolData.volumeBridgePaths as any)[diamondConfig.chain]) {
+        (protocolData.volumeBridgePaths as any)[diamondConfig.chain] = {};
       }
 
       const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
@@ -140,23 +141,22 @@ export default class LifiAdapter extends ProtocolAdapter {
               }
             }
 
-            (protocolData.volumes.bridgeOut as number) += amountUsd;
+            (protocolData.volumes.bridge as number) += amountUsd;
 
             if (!protocolData.breakdown[diamondConfig.chain][token.address]) {
               protocolData.breakdown[diamondConfig.chain][token.address] = {
                 ...getInitialProtocolCoreMetrics(),
                 volumes: {
-                  bridgeIn: 0,
-                  bridgeOut: 0,
+                  bridge: 0,
                 },
               };
             }
-            (protocolData.breakdown[diamondConfig.chain][token.address].volumes.bridgeOut as number) += amountUsd;
+            (protocolData.breakdown[diamondConfig.chain][token.address].volumes.bridge as number) += amountUsd;
 
-            if (!lifiExtendedData.volumeBridgeChainRoutes[diamondConfig.chain][toChainName]) {
-              lifiExtendedData.volumeBridgeChainRoutes[diamondConfig.chain][toChainName] = 0;
+            if (!(protocolData.volumeBridgePaths as any)[diamondConfig.chain][toChainName]) {
+              (protocolData.volumeBridgePaths as any)[diamondConfig.chain][toChainName] = 0;
             }
-            lifiExtendedData.volumeBridgeChainRoutes[diamondConfig.chain][toChainName] += amountUsd;
+            (protocolData.volumeBridgePaths as any)[diamondConfig.chain][toChainName] += amountUsd;
 
             if (!lifiExtendedData.volumeBridges[bridgeName]) {
               lifiExtendedData.volumeBridges[bridgeName] = 0;
@@ -206,8 +206,7 @@ export default class LifiAdapter extends ProtocolAdapter {
               protocolData.breakdown[diamondConfig.chain][token.address] = {
                 ...getInitialProtocolCoreMetrics(),
                 volumes: {
-                  bridgeIn: 0,
-                  bridgeOut: 0,
+                  bridge: 0,
                 },
               };
             }

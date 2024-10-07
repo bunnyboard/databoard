@@ -85,13 +85,6 @@ export const SushiConfigs: UniswapProtocolConfig = {
       birthblock: 110882087,
     },
     {
-      chain: ChainNames.optimism,
-      version: 2,
-      factory: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
-      birthday: 1614384000,
-      birthblock: 11333219,
-    },
-    {
       chain: ChainNames.scroll,
       version: 2,
       factory: '0xB45e53277a7e0F1D35f2a77160e91e25507f1763',
@@ -141,20 +134,6 @@ export const SushiConfigs: UniswapProtocolConfig = {
       factory: '0x126555dd55a39328F69400d6aE4F782Bd4C34ABb',
       birthday: 1680393600,
       birthblock: 26976539,
-    },
-    {
-      chain: ChainNames.bnbchain,
-      version: 3,
-      factory: '0x7770978eED668a3ba661d51a773d3a992Fc9DDCB',
-      birthday: 1680393600,
-      birthblock: 58860671,
-    },
-    {
-      chain: ChainNames.bnbchain,
-      version: 3,
-      factory: '0xf78031CBCA409F2FB6876BDFDBc1b2df24cF9bEf',
-      birthday: 1680393600,
-      birthblock: 27232872,
     },
     {
       chain: ChainNames.linea,

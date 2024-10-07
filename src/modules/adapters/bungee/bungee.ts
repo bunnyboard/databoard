@@ -64,8 +64,7 @@ export default class BungeeAdapter extends ProtocolAdapter {
       breakdown: {},
       ...getInitialProtocolCoreMetrics(),
       volumes: {
-        bridgeIn: 0,
-        bridgeOut: 0,
+        bridge: 0,
       },
       volumeBridgePaths: {},
     };
@@ -146,19 +145,17 @@ export default class BungeeAdapter extends ProtocolAdapter {
               });
               const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPriceUsd;
 
-              (protocolData.volumes.bridgeIn as number) += amountUsd;
-              (protocolData.volumes.bridgeOut as number) += amountUsd;
+              (protocolData.volumes.bridge as number) += amountUsd;
 
-              if (!protocolData.breakdown[gatewayConfig.chain][token.address]) {
-                protocolData.breakdown[gatewayConfig.chain][token.address] = {
+              if (!protocolData.breakdown[token.chain][token.address]) {
+                protocolData.breakdown[token.chain][token.address] = {
                   ...getInitialProtocolCoreMetrics(),
                   volumes: {
-                    bridgeIn: 0,
-                    bridgeOut: 0,
+                    bridge: 0,
                   },
                 };
               }
-              (protocolData.breakdown[gatewayConfig.chain][token.address].volumes.bridgeOut as number) += amountUsd;
+              (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += amountUsd;
 
               if (!bungeeExtendedData.volumeBridges[bridgeName]) {
                 bungeeExtendedData.volumeBridges[bridgeName] = 0;
@@ -186,17 +183,16 @@ export default class BungeeAdapter extends ProtocolAdapter {
               protocolData.totalFees += amountUsd;
               protocolData.protocolRevenue += amountUsd;
 
-              if (!protocolData.breakdown[gatewayConfig.chain][token.address]) {
-                protocolData.breakdown[gatewayConfig.chain][token.address] = {
+              if (!protocolData.breakdown[token.chain][token.address]) {
+                protocolData.breakdown[token.chain][token.address] = {
                   ...getInitialProtocolCoreMetrics(),
                   volumes: {
-                    bridgeIn: 0,
-                    bridgeOut: 0,
+                    bridge: 0,
                   },
                 };
               }
-              protocolData.breakdown[gatewayConfig.chain][token.address].totalFees += amountUsd;
-              protocolData.breakdown[gatewayConfig.chain][token.address].protocolRevenue += amountUsd;
+              protocolData.breakdown[token.chain][token.address].totalFees += amountUsd;
+              protocolData.breakdown[token.chain][token.address].protocolRevenue += amountUsd;
 
               const feeTaker = normalizeAddress(event.args.feesTaker);
               if (!bungeeExtendedData.feeRecipients[feeTaker]) {

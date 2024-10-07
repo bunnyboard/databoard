@@ -457,7 +457,7 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     type: 'univ2',
     chain: 'arbitrum',
     address: '0xb7e50106a5bd3cf21af210a755f9c8740890a8c9',
-    baseToken: TokensBook.arbitrum['0xb0c7a3ba49c7a6eaba6cd4a96c55a1391070ac9a'],
+    baseToken: TokensBook.arbitrum['0x539bde0d7dbd336b79148aa742883198bbf60342'],
     quotaToken: TokensBook.arbitrum['0x82af49447d8a07e3bd95bd0d56f35241523fbab1'],
   },
   tBTC_WETH: {
@@ -868,6 +868,13 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     address: '0x0f725b113979e025c69da0ffce3fbf5b6063cc5c',
     baseToken: TokensBook.arbitrum['0x59062301fb510f4ea2417b67404cb16d31e604ba'],
     quotaToken: TokensBook.arbitrum['0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9'],
+  },
+  TIA_WETH: {
+    type: 'univ2',
+    chain: 'arbitrum',
+    address: '0x371ddfc191daaa45336f19cd4c5edf2c659074c4',
+    baseToken: TokensBook.arbitrum['0xd56734d7f9979dd94fae3d67c7e928234e71cd4c'],
+    quotaToken: TokensBook.arbitrum['0x82af49447d8a07e3bd95bd0d56f35241523fbab1'],
   },
   stCORE_WCORE: {
     type: 'univ2',

@@ -107,6 +107,12 @@
     "decimals": 18,
     "address": "0x374ad0f47f4ca39c78e5cc54f1c9e426ff8f231a"
   },
+  "0x38f9bf9dce51833ec7f03c9dc218197999999999": {
+    "chain": "optimism",
+    "symbol": "NYA",
+    "decimals": 18,
+    "address": "0x38f9bf9dce51833ec7f03c9dc218197999999999"
+  },
   "0x395ae52bb17aef68c2888d941736a71dc6d4e125": {
     "chain": "optimism",
     "symbol": "POOL",

@@ -317,6 +317,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x25d887ce7a35172c62febfd67a1856f20faebb00': OracleSourceConfigs.PEPE,
     '0x8b0e6f19ee57089f7649a455d89d7bc6314d04e8': OracleSourceConfigs.DMT,
     '0x4cb9a7ae498cedcbb5eae9f25736ae7d428c9d66': OracleSourceConfigs.XAI,
+    '0xd56734d7f9979dd94fae3d67c7e928234e71cd4c': OracleSourceConfigs.TIA,
+    '0xc87b37a581ec3257b734886d9d3a581f5a9d056c': OracleSourceConfigs.ATH,
   },
 
   // tokens on Optimism
@@ -377,6 +379,9 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xfe8b128ba8c78aabc59d4c64cee7ff28e9379921': OracleSourceConfigs.BAL,
     '0xd693ec944a85eeca4247ec1c3b130dca9b0c3b22': OracleSourceConfigs.UMA,
     '0x040d1edc9569d4bab2d15287dc5a4f10f56a56b8': OracleSourceConfigs.BAL,
+    '0x38f9bf9dce51833ec7f03c9dc218197999999999': OracleSourceConfigs.NYA,
+    '0x2416092f143378750bb29b79ed961ab195cceea5': OracleSourceConfigs.ezETH,
+    '0xdecc0c09c3b5f6e92ef4184125d5648a66e35298': OracleSourceConfigs.USDC,
   },
 
   // tokens on Base

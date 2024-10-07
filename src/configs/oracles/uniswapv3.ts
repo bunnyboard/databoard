@@ -548,12 +548,26 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.arbitrum['0x4cb9a7ae498cedcbb5eae9f25736ae7d428c9d66'],
     quotaToken: TokensBook.arbitrum['0x82af49447d8a07e3bd95bd0d56f35241523fbab1'],
   },
+  ATH_WETH: {
+    type: 'univ3',
+    chain: 'arbitrum',
+    address: '0x93b4da79158da2efd00acc26f16e49ca1a704978',
+    baseToken: TokensBook.arbitrum['0xc87b37a581ec3257b734886d9d3a581f5a9d056c'],
+    quotaToken: TokensBook.arbitrum['0x82af49447d8a07e3bd95bd0d56f35241523fbab1'],
+  },
   LOUDER_WETH: {
     type: 'univ3',
     chain: 'base',
     address: '0xd33d771cceb6690b79e1c461ff6cb7b60c25f99e',
     baseToken: TokensBook.base['0x120edc8e391ba4c94cb98bb65d8856ae6ec1525f'],
     quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
+  },
+  NYA_WETH: {
+    type: 'univ3',
+    chain: 'optimism',
+    address: '0x9c92ed19a86986124447a73b27625230dd52f805',
+    baseToken: TokensBook.optimism['0x38f9bf9dce51833ec7f03c9dc218197999999999'],
+    quotaToken: TokensBook.optimism['0x4200000000000000000000000000000000000006'],
   },
   WCORE_USDT: {
     type: 'univ3',
