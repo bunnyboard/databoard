@@ -160,4 +160,5 @@ export const ProtocolNames = {
   ethx: 'ethx',
   stakewise: 'stakewise',
   dinero: 'dinero',
+  savax: 'savax', // benqi liquid staking AVAX
 };

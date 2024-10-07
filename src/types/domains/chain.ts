@@ -11,7 +11,7 @@ export interface ChainCoreMetrics {
   nativeCoinPrice: number;
 
   // block space or gas utilization
-  blockUtilization: number;
+  blockUsage: number;
 
   // we calculate throughput by how many gases/block resources were consume per second
   throughput: number;

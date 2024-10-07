@@ -11,7 +11,7 @@ import { GetUniswapPoolDataOptions, GetUniswapPoolDataResult, Pool2 } from './ty
 import { UniswapTestingData } from './testing';
 import AdapterDataHelper from '../helpers';
 import UniswapIndexer from './indexer';
-import { TokenDexBase } from '../../../configs';
+import { TokenDexBase, TokenList } from '../../../configs';
 import UniswapLibs from '../../libs/uniswap';
 import Erc20Abi from '../../../configs/abi/ERC20.json';
 import UniswapV3PoolAbi from '../../../configs/abi/uniswap/UniswapV3Pool.json';
@@ -411,24 +411,32 @@ export default class UniswapAdapter extends UniswapIndexer {
       }
 
       let poolData: GetUniswapPoolDataResult | null = null;
-      if (options.dexConfig.version === 2) {
-        poolData = await this.getPoolDataV2({
-          dexConfig: options.dexConfig,
-          pool: pool,
-          timestamp: options.timestamp,
-          blockNumber: blockNumber,
-          beginBlock: beginBlockk,
-          endBlock: endBlock,
-        });
-      } else if (options.dexConfig.version === 3) {
-        poolData = await this.getPoolDataV3({
-          dexConfig: options.dexConfig,
-          pool: pool,
-          timestamp: options.timestamp,
-          blockNumber: blockNumber,
-          beginBlock: beginBlockk,
-          endBlock: endBlock,
-        });
+
+      // both token0 and token1 in whitelist
+      if (
+        TokenList[pool.chain] &&
+        TokenList[pool.chain][pool.token0.address] &&
+        TokenList[pool.chain][pool.token1.address]
+      ) {
+        if (options.dexConfig.version === 2) {
+          poolData = await this.getPoolDataV2({
+            dexConfig: options.dexConfig,
+            pool: pool,
+            timestamp: options.timestamp,
+            blockNumber: blockNumber,
+            beginBlock: beginBlockk,
+            endBlock: endBlock,
+          });
+        } else if (options.dexConfig.version === 3) {
+          poolData = await this.getPoolDataV3({
+            dexConfig: options.dexConfig,
+            pool: pool,
+            timestamp: options.timestamp,
+            blockNumber: blockNumber,
+            beginBlock: beginBlockk,
+            endBlock: endBlock,
+          });
+        }
       }
 
       if (poolData) {

@@ -1,4 +1,4 @@
-import { ProtocolCategories } from '../../types/base';
+import { ProtocolCategories, ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { CompoundProtocolConfig } from './compound';
 
@@ -30,4 +30,20 @@ export const BenqiConfigs: CompoundProtocolConfig = {
       oracleSource: 'oracleUsd',
     },
   ],
+};
+
+export interface BenqiStakingAvaxProtocolConfig extends ProtocolConfig {
+  chain: string;
+  savax: string;
+  birthday: number;
+  protocolFeeRate: number;
+}
+
+export const BenqiStakingAvaxConfigs: BenqiStakingAvaxProtocolConfig = {
+  protocol: ProtocolNames.savax,
+  category: ProtocolCategories.liquidStaking,
+  birthday: 1643241600, // Thu Jan 27 2022 00:00:00 GMT+0000
+  chain: ChainNames.avalanche,
+  savax: '0x2b2c81e08f1af8835a78bb2a90ae924ace0ea4be',
+  protocolFeeRate: 0.1, // 10%
 };

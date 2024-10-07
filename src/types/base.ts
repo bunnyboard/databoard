@@ -38,13 +38,3 @@ export interface ProtocolConfig {
   // timestamp when protocol was deployed
   birthday: number;
 }
-
-// chain configs used for chainboard
-export interface ChainConfig {
-  chain: string;
-  family: ChainFamily;
-  nativeToken: string;
-
-  // should use public nodes
-  nodeRpcs: Array<string>;
-}

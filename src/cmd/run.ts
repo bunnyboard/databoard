@@ -1,13 +1,14 @@
-import { ChainConfigs, ProtocolConfigs } from '../configs';
+import { ProtocolConfigs } from '../configs';
 import envConfig from '../configs/envConfig';
 import logger, { logBreakLine } from '../lib/logger';
 import { sleep } from '../lib/utils';
 import { getProtocolAdapters } from '../modules/adapters';
-import { getChainAdapters } from '../modules/chains';
+import EvmChainAdapter from '../modules/chains/evm';
+import { ChainFamilies } from '../types/base';
 import { ContextServices, ContextStorages } from '../types/namespaces';
 import { BasicCommand } from './basic';
 
-const DefaultServiceSleepSeconds = 300; // 5 minutes
+const DefaultServiceSleepSeconds = 30 * 60; // 30 minutes
 
 export class RunCommand extends BasicCommand {
   public readonly name: string = 'run';
@@ -74,14 +75,14 @@ export class RunCommand extends BasicCommand {
     const storages: ContextStorages = await super.getStorages();
 
     // get adapters
-    const chainAdapters = getChainAdapters(services.oracle, storages);
     const protocolAdapters = getProtocolAdapters(services, storages);
 
     if (argv.chain !== '') {
       do {
         for (const chain of chains) {
-          if (ChainConfigs[chain] && chainAdapters[chain]) {
-            await chainAdapters[chain].run({
+          if (envConfig.blockchains[chain] && envConfig.blockchains[chain].family === ChainFamilies.evm) {
+            const chainAdapter = new EvmChainAdapter(services, storages, envConfig.blockchains[chain]);
+            await chainAdapter.run({
               service: argv.service === 'state' || argv.service === 'snapshot' ? argv.service : undefined,
               fromTime: argv.fromTime ? argv.fromTime : undefined,
               force: argv.force ? argv.force : false,

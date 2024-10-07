@@ -2,7 +2,8 @@ import { IBlockchainService } from '../services/blockchains/domains';
 import { IMemcacheService } from '../services/caching/domains';
 import { IDatabaseService } from '../services/database/domains';
 import { IOracleService } from '../services/oracle/domains';
-import { ChainConfig, ProtocolConfig } from './base';
+import { ProtocolConfig } from './base';
+import { Blockchain } from './configs';
 import { ProtocolData } from './domains/protocol';
 import { GetProtocolDataOptions, RunAdapterOptions, TestAdapterOptions } from './options';
 
@@ -42,13 +43,10 @@ export interface IProtocolAdapter {
 export interface IChainAdapter {
   name: string;
 
-  // help to query tokjen prices
-  priceOracle: IOracleService;
-
-  // database
+  services: ContextServices;
   storages: ContextStorages;
 
-  chainConfig: ChainConfig;
+  chainConfig: Blockchain;
 
   run: (options: RunAdapterOptions) => Promise<void>;
 }

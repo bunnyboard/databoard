@@ -1,32 +1,12 @@
 import { TimeUnits } from '../../configs/constants';
 import envConfig from '../../configs/envConfig';
 import logger from '../../lib/logger';
-import { formatTime, getDateString, getStartDayTimestamp, getTimestamp, getTodayUTCTimestamp } from '../../lib/utils';
+import { getDateString, getStartDayTimestamp, getTimestamp, getTodayUTCTimestamp } from '../../lib/utils';
 import ExecuteSession from '../../services/executeSession';
-import { IOracleService } from '../../services/oracle/domains';
-import { ChainConfig } from '../../types/base';
+import { Blockchain } from '../../types/configs';
 import { ChainData } from '../../types/domains/chain';
-import { ContextStorages, IChainAdapter } from '../../types/namespaces';
+import { ContextServices, ContextStorages, IChainAdapter } from '../../types/namespaces';
 import { RunAdapterOptions } from '../../types/options';
-
-export interface ChainBlockData {
-  chain: string;
-  number: number;
-  timestamp: number;
-
-  // gas limit
-  resourceLimit: string;
-  // gas used
-  resourceUsed: string;
-
-  // total transaction in block
-  // execlude system transactions (on layer 2)
-  totalTransactions: number;
-
-  // list of transaction sender addresses
-  // address => sent transaction count
-  senderAddresses: { [key: string]: number };
-}
 
 export interface GetChainDataOptions {
   timestamp: number;
@@ -36,13 +16,13 @@ export interface GetChainDataOptions {
 
 export default class ChainAdapter implements IChainAdapter {
   public readonly name: string = 'chain';
-  public readonly priceOracle: IOracleService;
+  public readonly services: ContextServices;
   public readonly storages: ContextStorages;
-  public readonly chainConfig: ChainConfig;
+  public readonly chainConfig: Blockchain;
   public executeSession: ExecuteSession;
 
-  constructor(priceOracle: IOracleService, storages: ContextStorages, chainConfig: ChainConfig) {
-    this.priceOracle = priceOracle;
+  constructor(services: ContextServices, storages: ContextStorages, chainConfig: Blockchain) {
+    this.services = services;
     this.storages = storages;
     this.chainConfig = chainConfig;
     this.executeSession = new ExecuteSession();
@@ -52,199 +32,103 @@ export default class ChainAdapter implements IChainAdapter {
     return 0;
   }
 
-  public async getBlockData(blockNumber: number): Promise<ChainBlockData | null> {
-    return null;
-  }
-
   public async getChainData(options: GetChainDataOptions): Promise<ChainData | null> {
     return null;
   }
 
-  // query block data and save them into database caching
-  public async indexBlocks() {
-    let startBlock = 0;
-
-    const latestBlock: any = (
-      await this.storages.database.query({
-        collection: envConfig.mongodb.collections.chainBlocks.name,
-        query: {
-          chain: this.chainConfig.chain,
-        },
-        options: {
-          limit: 1,
-          skip: 0,
-          order: { number: -1 },
-        },
-      })
-    )[0];
-    if (latestBlock) {
-      startBlock = latestBlock.number;
-    }
-
-    const latestBlockNumber = await this.getLatestBlockNumber();
-
-    // start index the last 1000 blocks
-    if (startBlock === 0) {
-      startBlock = latestBlockNumber - 1000;
-    }
-
-    logger.info('start indexing chain blocks data', {
-      service: this.name,
-      chain: this.chainConfig.chain,
-      fromBlock: startBlock,
-      toBlock: latestBlockNumber,
-    });
-
-    let stateBlock = startBlock;
-    let _startExeTime = new Date().getTime();
-    while (stateBlock <= latestBlockNumber) {
-      const blockData: ChainBlockData | null = await this.getBlockData(stateBlock);
-
-      if (blockData) {
-        await this.storages.database.update({
-          collection: envConfig.mongodb.collections.chainBlocks.name,
-          keys: {
-            chain: blockData.chain,
-            number: blockData.number,
-          },
-          updates: {
-            ...blockData,
-          },
-          upsert: true,
-        });
-      }
-
-      const blockCounts = 100;
-      if (stateBlock - startBlock > 0 && (stateBlock - startBlock) % blockCounts === 0) {
-        const _endExeTime = new Date().getTime();
-        const elapsed = _endExeTime - _startExeTime;
-        const elapsedSecs = elapsed / 1000;
-        logger.info('indexing chain blocks data', {
-          service: this.name,
-          chain: this.chainConfig.chain,
-          currentBlock: stateBlock,
-          age: blockData ? formatTime(blockData.timestamp) : 'unknown',
-          progress: `${stateBlock - startBlock}/${latestBlockNumber - startBlock}`,
-          took: `${elapsed}ms`,
-          speed: `${(blockCounts / elapsedSecs).toFixed(2)} blocks/s`,
-        });
-        _startExeTime = new Date().getTime();
-      }
-
-      stateBlock += 1;
-    }
-  }
-
-  public async calculateDayData(): Promise<void> {
-    //
-    // collect current state data
-    //
-    this.executeSession.startSession('start to update chain current data', {
-      service: this.name,
-      chain: this.chainConfig.chain,
-      family: this.chainConfig.family,
-    });
-
-    const currentTimestamp = getTimestamp();
-    const last24HoursTimestamp = currentTimestamp - TimeUnits.SecondsPerDay;
-    const last48HoursTimestamp = last24HoursTimestamp - TimeUnits.SecondsPerDay;
-
-    const last24HoursData = await this.getChainData({
-      timestamp: currentTimestamp,
-      beginTime: last24HoursTimestamp,
-      endTime: currentTimestamp,
-    });
-    const last48HoursData = await this.getChainData({
-      timestamp: last24HoursTimestamp,
-      beginTime: last48HoursTimestamp,
-      endTime: last24HoursTimestamp,
-    });
-
-    if (last24HoursData) {
-      if (last48HoursData) {
-        await this.storages.database.update({
-          collection: envConfig.mongodb.collections.blockchainDataStates.name,
-          keys: {
-            chain: last24HoursData.chain,
-          },
-          updates: {
-            ...last24HoursData,
-            last24HoursData: last48HoursData,
-          },
-          upsert: true,
-        });
-      } else {
-        await this.storages.database.update({
-          collection: envConfig.mongodb.collections.blockchainDataStates.name,
-          keys: {
-            chain: last24HoursData.chain,
-          },
-          updates: {
-            ...last24HoursData,
-          },
-          upsert: true,
-        });
-      }
-
-      this.executeSession.endSession('updated chain current data', {
+  public async run(options: RunAdapterOptions): Promise<void> {
+    if (options.service === undefined || options.service === 'state') {
+      //
+      // collect current state data
+      //
+      this.executeSession.startSession('start to update chain current data', {
         service: this.name,
-        chain: this.chainConfig.chain,
+        chain: this.chainConfig.name,
         family: this.chainConfig.family,
-        txnCount: last24HoursData.totalTransactions,
-        addressCount: last24HoursData.activeAddresses,
       });
-    }
 
-    //
-    // collect snapshots
-    //
-    let startTime = 0;
+      const currentTimestamp = getTimestamp();
+      const last24HoursTimestamp = currentTimestamp - TimeUnits.SecondsPerDay;
+      const last48HoursTimestamp = last24HoursTimestamp - TimeUnits.SecondsPerDay;
 
-    // we find the latest snapshot timestamp
-    const latestSnapshot = (
-      await this.storages.database.query({
-        collection: envConfig.mongodb.collections.blockchainDataSnapshots.name,
-        query: {
-          chain: this.chainConfig.chain,
-        },
-        options: {
-          limit: 1,
-          skip: 0,
-          order: { timestamp: -1 },
-        },
-      })
-    )[0];
-    if (latestSnapshot) {
-      startTime = latestSnapshot.timestamp;
-    }
+      const last24HoursData = await this.getChainData({
+        timestamp: currentTimestamp,
+        beginTime: last24HoursTimestamp,
+        endTime: currentTimestamp,
+      });
+      const last48HoursData = await this.getChainData({
+        timestamp: last24HoursTimestamp,
+        beginTime: last48HoursTimestamp,
+        endTime: last24HoursTimestamp,
+      });
 
-    if (startTime === 0) {
-      // we find the day of latest caching blocks were indexed
-      const oldestBlock = (
-        await this.storages.database.query({
-          collection: envConfig.mongodb.collections.chainBlocks.name,
-          query: {
-            chain: this.chainConfig.chain,
-          },
-          options: {
-            limit: 1,
-            skip: 0,
-            order: { timestamp: 1 },
-          },
-        })
-      )[0];
-      if (oldestBlock) {
-        startTime = oldestBlock.timestamp;
+      if (last24HoursData) {
+        if (last48HoursData) {
+          await this.storages.database.update({
+            collection: envConfig.mongodb.collections.blockchainDataStates.name,
+            keys: {
+              chain: last24HoursData.chain,
+            },
+            updates: {
+              ...last24HoursData,
+              last24HoursData: last48HoursData,
+            },
+            upsert: true,
+          });
+        } else {
+          await this.storages.database.update({
+            collection: envConfig.mongodb.collections.blockchainDataStates.name,
+            keys: {
+              chain: last24HoursData.chain,
+            },
+            updates: {
+              ...last24HoursData,
+            },
+            upsert: true,
+          });
+        }
+
+        this.executeSession.endSession('updated chain current data', {
+          service: this.name,
+          chain: this.chainConfig.name,
+          family: this.chainConfig.family,
+          txnCount: last24HoursData.totalTransactions,
+          addressCount: last24HoursData.activeAddresses,
+        });
       }
     }
 
-    if (startTime > 0) {
+    if (options.service === undefined || options.service === 'snapshot') {
+      //
+      // collect snapshots
+      //
+      let startTime = options.fromTime ? options.fromTime : getTodayUTCTimestamp();
+      if (!options.force) {
+        // we find the latest snapshot timestamp
+        const latestSnapshot = (
+          await this.storages.database.query({
+            collection: envConfig.mongodb.collections.blockchainDataSnapshots.name,
+            query: {
+              chain: this.chainConfig.name,
+            },
+            options: {
+              limit: 1,
+              skip: 0,
+              order: { timestamp: -1 },
+            },
+          })
+        )[0];
+        if (latestSnapshot) {
+          startTime = latestSnapshot.timestamp;
+        }
+      }
+
       startTime = getStartDayTimestamp(startTime);
       const todayTimestamp = getTodayUTCTimestamp();
 
       logger.info('start to update chain data snapshots', {
         service: this.name,
-        chain: this.chainConfig.chain,
+        chain: this.chainConfig.name,
         family: this.chainConfig.family,
         fromDate: getDateString(startTime),
         toDate: getDateString(todayTimestamp),
@@ -274,7 +158,7 @@ export default class ChainAdapter implements IChainAdapter {
 
         this.executeSession.endSession('updated chain data snapshot', {
           service: this.name,
-          chain: this.chainConfig.chain,
+          chain: this.chainConfig.name,
           family: this.chainConfig.family,
           date: getDateString(startTime),
         });
@@ -282,13 +166,5 @@ export default class ChainAdapter implements IChainAdapter {
         startTime += TimeUnits.SecondsPerDay;
       }
     }
-  }
-
-  public async run(options: RunAdapterOptions): Promise<void> {
-    // index blocks to latest block number
-    await this.indexBlocks();
-
-    // calculate day data for chain
-    await this.calculateDayData();
   }
 }

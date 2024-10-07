@@ -55,6 +55,7 @@ export default class BlockchainService extends CachingService implements IBlockc
       blockNumber: BigInt(number),
       includeTransactions: true,
     });
+
     await this.setCachingData(cachingKey, block);
 
     return block;

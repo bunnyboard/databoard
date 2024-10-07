@@ -1,10 +1,9 @@
 import { Token } from '../types/base';
-import { ChainBoardConfigs } from './chainboards';
 import { TokenBookDexBase, TokensBook } from './data';
 import { AaveConfigs } from './protocols/aave';
 import { AjnaConfigs } from './protocols/ajna';
 import { AvalonConfigs } from './protocols/avalon';
-import { BenqiConfigs } from './protocols/benqi';
+import { BenqiConfigs, BenqiStakingAvaxConfigs } from './protocols/benqi';
 import { WbethConfigs } from './protocols/wbeth';
 import { BungeeConfigs } from './protocols/bungee';
 import { ColendConfigs } from './protocols/colend';
@@ -127,6 +126,5 @@ export const ProtocolConfigs = {
   across: AcrossConfigs,
   layerbank: LayerbankConfigs,
   pancake: PancakeConfigs,
+  savax: BenqiStakingAvaxConfigs,
 };
-
-export const ChainConfigs = ChainBoardConfigs;

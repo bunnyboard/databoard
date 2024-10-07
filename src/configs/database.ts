@@ -26,16 +26,6 @@ export const DatabaseCollectionConfigs: DatabaseCollectionConfig = {
       },
     ],
   },
-  chainBlocks: {
-    name: `${CollectionPrefix}.caching.chainBlocks`,
-    indies: [
-      {
-        chain: 1,
-        number: 1,
-        timestamp: 1,
-      },
-    ],
-  },
   liquidityPool2: {
     name: `${CollectionPrefix}.caching.liquidityPool2`,
     indies: [

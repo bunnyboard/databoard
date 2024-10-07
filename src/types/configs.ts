@@ -26,9 +26,6 @@ export interface DatabaseCollectionConfig {
   // save contract logs
   contractLogs: MongoCollectionConfig;
 
-  // save caching chain blocks
-  chainBlocks: MongoCollectionConfig;
-
   // save liquidity pool2
   liquidityPool2: MongoCollectionConfig;
 

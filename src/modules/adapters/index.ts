@@ -20,14 +20,11 @@ import MakerAdapter from './maker/maker';
 import MethAdapter from './meth/meth';
 import MoonwellAdapter from './moonwell/moonwell';
 import MorphoAdapter from './morpho/morpho';
-import PancakeAdapter from './pancake/pancake';
 import RocketpoolAdapter from './rocketpool/rocketpool';
 import SpookyAdapter from './spooky/spooky';
 import EthxAdapter from './stader/ethx';
 import StakewiseAdapter from './stakewise/stakewise';
-import SushiAdapter from './sushi/sushi';
 import SwethAdapter from './swellnetwork/sweth';
-import UniswapAdapter from './uniswap/uniswap';
 import VenusAdapter from './venus/venus';
 import WbethAdapter from './wbeth/wbeth';
 
@@ -62,9 +59,9 @@ export function getProtocolAdapters(
     seamless: new AaveAdapter(services, storages, ProtocolConfigs.seamless),
     sonne: new CompoundAdapter(services, storages, ProtocolConfigs.sonne),
     spark: new AaveAdapter(services, storages, ProtocolConfigs.spark),
-    sushi: new SushiAdapter(services, storages, ProtocolConfigs.sushi),
+    // sushi: new SushiAdapter(services, storages, ProtocolConfigs.sushi),
     tectonic: new CompoundAdapter(services, storages, ProtocolConfigs.tectonic),
-    uniswap: new UniswapAdapter(services, storages, ProtocolConfigs.uniswap),
+    // uniswap: new UniswapAdapter(services, storages, ProtocolConfigs.uniswap),
     // uwulend: new AaveAdapter(services, storages, ProtocolConfigs.uwulend),
     venus: new VenusAdapter(services, storages, ProtocolConfigs.venus),
     // yeifinance: new AaveAdapter(services, storages, ProtocolConfigs.yeifinance),
@@ -90,6 +87,7 @@ export function getProtocolAdapters(
     // stakestone: new StakeStoneAdapter(services, storages, ProtocolConfigs.stakestone),
     // across: new AcrossAdapter(services, storages, ProtocolConfigs.across),
     layerbank: new LayerbankAdapter(services, storages, ProtocolConfigs.layerbank),
-    pancake: new PancakeAdapter(services, storages, ProtocolConfigs.pancake),
+    // pancake: new PancakeAdapter(services, storages, ProtocolConfigs.pancake),
+    // savax: new BenqiStakingAvaxAdapter(services, storages, ProtocolConfigs.savax),
   };
 }
