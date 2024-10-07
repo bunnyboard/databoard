@@ -14,12 +14,12 @@ export const SpookyConfigs: UniswapProtocolConfig = {
       birthday: 1618704000, // Sun Apr 18 2021 00:00:00 GMT+0000
       birthblock: 3795377,
     },
-    {
-      chain: ChainNames.fantom,
-      version: 3,
-      factory: '0x7928a2c48754501f3a8064765ECaE541daE5c3E6',
-      birthday: 1700697600, // Thu Nov 23 2023 00:00:00 GMT+0000
-      birthblock: 70992837,
-    },
+    // {
+    //   chain: ChainNames.fantom,
+    //   version: 3,
+    //   factory: '0x7928a2c48754501f3a8064765ECaE541daE5c3E6',
+    //   birthday: 1700697600, // Thu Nov 23 2023 00:00:00 GMT+0000
+    //   birthblock: 70992837,
+    // },
   ],
 };
