@@ -2,7 +2,6 @@ import { ProtocolConfigs } from '../../configs';
 import { ContextServices, ContextStorages, IProtocolAdapter } from '../../types/namespaces';
 import AaveAdapter from './aave/aave';
 import BenqiAdapter from './benqi/benqi';
-import BungeeAdapter from './bungee/bungee';
 import CompoundAdapter from './compound/compound';
 import CurvelendAdapter from './curve/curvelend';
 import CurveusdAdapter from './curve/curveusd';
@@ -10,10 +9,8 @@ import DineroAdapter from './dinero/dinero';
 import EulerAdapter from './euler/euler';
 import FluidAdapter from './fluid/fluid';
 import FraxEtherAdapter from './frax/fraxether';
-import FraxlendAdapter from './frax/fraxlend';
 import LayerbankAdapter from './layerbank/layerbank';
 import LidoAdapter from './lido/lido';
-import LifiAdapter from './lifi/lifi';
 import LiquidCollectiveAdapter from './liquidcollective/lseth';
 import LiquityAdapter from './liquity/liquity';
 import MakerAdapter from './maker/maker';
@@ -21,7 +18,6 @@ import MethAdapter from './meth/meth';
 import MoonwellAdapter from './moonwell/moonwell';
 import MorphoAdapter from './morpho/morpho';
 import RocketpoolAdapter from './rocketpool/rocketpool';
-import SpookyAdapter from './spooky/spooky';
 import EthxAdapter from './stader/ethx';
 import StakewiseAdapter from './stakewise/stakewise';
 import SwethAdapter from './swellnetwork/sweth';
@@ -42,7 +38,7 @@ export function getProtocolAdapters(
     // cowswap: new CowswapAdapter(services, storages, ProtocolConfigs.cowswap),
     hana: new AaveAdapter(services, storages, ProtocolConfigs.hana),
     ionic: new CompoundAdapter(services, storages, ProtocolConfigs.ionic),
-    ironbank: new CompoundAdapter(services, storages, ProtocolConfigs.ironbank),
+    // ironbank: new CompoundAdapter(services, storages, ProtocolConfigs.ironbank),
     ironclad: new AaveAdapter(services, storages, ProtocolConfigs.ironclad),
     kinza: new AaveAdapter(services, storages, ProtocolConfigs.kinza),
     lendle: new AaveAdapter(services, storages, ProtocolConfigs.lendle),
@@ -69,13 +65,13 @@ export function getProtocolAdapters(
     euler: new EulerAdapter(services, storages, ProtocolConfigs.euler),
     liquity: new LiquityAdapter(services, storages, ProtocolConfigs.liquity),
     fluid: new FluidAdapter(services, storages, ProtocolConfigs.fluid),
-    fraxlend: new FraxlendAdapter(services, storages, ProtocolConfigs.fraxlend),
+    // fraxlend: new FraxlendAdapter(services, storages, ProtocolConfigs.fraxlend),
     fraxether: new FraxEtherAdapter(services, storages, ProtocolConfigs.fraxether),
     curveusd: new CurveusdAdapter(services, storages, ProtocolConfigs.curveusd),
     curvelend: new CurvelendAdapter(services, storages, ProtocolConfigs.curvelend),
-    spooky: new SpookyAdapter(services, storages, ProtocolConfigs.spooky),
-    bungee: new BungeeAdapter(services, storages, ProtocolConfigs.bungee),
-    lifi: new LifiAdapter(services, storages, ProtocolConfigs.lifi),
+    // spooky: new SpookyAdapter(services, storages, ProtocolConfigs.spooky),
+    // bungee: new BungeeAdapter(services, storages, ProtocolConfigs.bungee),
+    // lifi: new LifiAdapter(services, storages, ProtocolConfigs.lifi),
     rocketpool: new RocketpoolAdapter(services, storages, ProtocolConfigs.rocketpool),
     wbeth: new WbethAdapter(services, storages, ProtocolConfigs.wbeth),
     meth: new MethAdapter(services, storages, ProtocolConfigs.meth),

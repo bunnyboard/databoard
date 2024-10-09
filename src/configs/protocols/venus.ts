@@ -15,6 +15,34 @@ export const VenusConfigs: CompoundProtocolConfig = {
       oracleSource: 'oracleUsd',
       blacklists: ['0xebd0070237a0713e8d94fef1b728d3d993d290ef', '0x20bff4bbeda07536ff00e073bd8359e5d80d733d'],
     },
+    {
+      chain: ChainNames.arbitrum,
+      marketName: 'Core Market',
+      birthday: 1717027200, // Thu May 30 2024 00:00:00 GMT+0000
+      comptroller: '0x317c1A5739F39046E20b08ac9BeEa3f10fD43326',
+      oracleSource: 'oracleUsd',
+    },
+    {
+      chain: ChainNames.opbnb,
+      marketName: 'Core Market',
+      birthday: 1708041600, // Fri Feb 16 2024 00:00:00 GMT+0000
+      comptroller: '0xD6e3E2A1d8d95caE355D15b3b9f8E5c2511874dd',
+      oracleSource: 'oracleUsd',
+    },
+    {
+      chain: ChainNames.zksync,
+      marketName: 'Core Market',
+      birthday: 1725667200, // Sat Sep 07 2024 00:00:00 GMT+0000
+      comptroller: '0xdde4d098d9995b659724ae6d5e3fb9681ac941b1',
+      oracleSource: 'oracleUsd',
+    },
+    {
+      chain: ChainNames.ethereum,
+      marketName: 'Core Market',
+      birthday: 1704844800, // Wed Jan 10 2024 00:00:00 GMT+0000
+      comptroller: '0x687a01ecF6d3907658f7A7c714749fAC32336D1B',
+      oracleSource: 'oracleUsd',
+    },
     // {
     //   chain: ChainNames.bnbchain,
     //   marketName: 'Stablecoins Market',
@@ -57,13 +85,6 @@ export const VenusConfigs: CompoundProtocolConfig = {
     //   comptroller: '0x33B6fa34cd23e5aeeD1B112d5988B026b8A5567d',
     //   oracleSource: 'oracleUsd',
     // },
-    {
-      chain: ChainNames.ethereum,
-      marketName: 'Core Market',
-      birthday: 1704844800, // Wed Jan 10 2024 00:00:00 GMT+0000
-      comptroller: '0x687a01ecF6d3907658f7A7c714749fAC32336D1B',
-      oracleSource: 'oracleUsd',
-    },
     // {
     //   chain: ChainNames.ethereum,
     //   marketName: 'Curve Market',
@@ -78,12 +99,5 @@ export const VenusConfigs: CompoundProtocolConfig = {
     //   comptroller: '0xF522cd0360EF8c2FF48B648d53EA1717Ec0F3Ac3',
     //   oracleSource: 'oracleUsd',
     // },
-    {
-      chain: ChainNames.arbitrum,
-      marketName: 'Core Market',
-      birthday: 1717027200, // Thu May 30 2024 00:00:00 GMT+0000
-      comptroller: '0x317c1A5739F39046E20b08ac9BeEa3f10fD43326',
-      oracleSource: 'oracleUsd',
-    },
   ],
 };

@@ -7,6 +7,7 @@ import AaveOracleV2Abi from '../../../configs/abi/aave/OracleV2.json';
 import AaveDataProviderV1Abi from '../../../configs/abi/aave/DataProviderV1.json';
 import AaveDataProviderV2Abi from '../../../configs/abi/aave/DataProviderV2.json';
 import AaveDataProviderV3Abi from '../../../configs/abi/aave/DataProviderV3.json';
+import AaveDataProviderV32Abi from '../../../configs/abi/aave/DataProviderV3.2.json';
 import { AddressE, AddressZero } from '../../../configs/constants';
 import BigNumber from 'bignumber.js';
 import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
@@ -203,7 +204,7 @@ export default class AaveCore extends ProtocolAdapter {
         ],
       });
     } else if (config.version === 3) {
-      return await this.services.blockchain.evm.multicall({
+      const data = await this.services.blockchain.evm.multicall({
         chain: config.chain,
         blockNumber: blockNumber,
         calls: [
@@ -221,6 +222,28 @@ export default class AaveCore extends ProtocolAdapter {
           },
         ],
       });
+      if ((data[0] === null || data[0] === undefined) && config.dataProvider2) {
+        // new DataProvider contract
+        return await this.services.blockchain.evm.multicall({
+          chain: config.chain,
+          blockNumber: blockNumber,
+          calls: [
+            {
+              abi: AaveDataProviderV32Abi,
+              target: config.dataProvider2,
+              method: 'getReserveData',
+              params: [reserveAddress],
+            },
+            {
+              abi: AaveDataProviderV32Abi,
+              target: config.dataProvider2,
+              method: 'getReserveConfigurationData',
+              params: [reserveAddress],
+            },
+          ],
+        });
+      }
+      return data;
     }
   }
 }

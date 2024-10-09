@@ -83,17 +83,18 @@ export default class AaveAdapter extends AaveCore {
         marketConfig.chain,
         options.endTime,
       );
-      const contractLogs: Array<any> = await this.services.blockchain.evm.getContractLogs({
-        chain: marketConfig.chain,
-        address: marketConfig.lendingPool,
-        fromBlock: beginBlock,
-        toBlock: endBlock,
-      });
 
       const reserves = await this.getAllReserveData({
         config: marketConfig,
         blockNumber: blockNumber,
         timestamp: options.timestamp,
+      });
+
+      const contractLogs: Array<any> = await this.services.blockchain.evm.getContractLogs({
+        chain: marketConfig.chain,
+        address: marketConfig.lendingPool,
+        fromBlock: beginBlock,
+        toBlock: endBlock,
       });
 
       for (const reserve of reserves) {
