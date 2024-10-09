@@ -94,6 +94,11 @@ export const CompoundConfigs: CompoundProtocolConfig = {
       comet: '0x3afdc9bca9213a35503b077a6072f3d0d5ab0840',
     },
     {
+      chain: ChainNames.ethereum,
+      birthday: 1725580800, // Fri Sep 06 2024 00:00:00 GMT+0000
+      comet: '0x3D0bb1ccaB520A66e607822fC55BC921738fAFE3',
+    },
+    {
       chain: ChainNames.polygon,
       birthday: 1676764800, // Sun Feb 19 2023 00:00:00 GMT+0000
       comet: '0xF25212E676D1F7F89Cd72fFEe66158f541246445',
