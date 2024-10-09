@@ -204,7 +204,7 @@ export default class AaveCore extends ProtocolAdapter {
         ],
       });
     } else if (config.version === 3) {
-      const data = await this.services.blockchain.evm.multicall({
+      let data = await this.services.blockchain.evm.multicall({
         chain: config.chain,
         blockNumber: blockNumber,
         calls: [
@@ -224,7 +224,7 @@ export default class AaveCore extends ProtocolAdapter {
       });
       if ((data[0] === null || data[0] === undefined) && config.dataProvider2) {
         // new DataProvider contract
-        return await this.services.blockchain.evm.multicall({
+        data = await this.services.blockchain.evm.multicall({
           chain: config.chain,
           blockNumber: blockNumber,
           calls: [

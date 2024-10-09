@@ -11,7 +11,6 @@ import { AcrossProtocolConfig } from '../../../configs/protocols/across';
 import { BlockchainConfigs } from '../../../configs/blockchains';
 
 const V3FundsDeposited = '0xa123dc29aebf7d0c3322c8eeb5b999e859f39937950ed31056532713d0de396f';
-const FilledV3Relay = '0x571749edf1d5c9599318cdbc4e28a6475d65e87fd3b2ddbe1e9a8d5e7a0f0ff7';
 
 export default class AcrossAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.across ❎';
@@ -116,7 +115,7 @@ export default class AcrossAdapter extends ProtocolAdapter {
       });
 
       for (const log of logs) {
-        if (log.topics[0] === V3FundsDeposited || log.topics[0] === FilledV3Relay) {
+        if (log.topics[0] === V3FundsDeposited) {
           const event: any = decodeEventLog({
             abi: SpokePoolAbi,
             topics: log.topics,

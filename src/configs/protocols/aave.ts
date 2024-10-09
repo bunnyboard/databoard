@@ -196,7 +196,7 @@ export const AaveConfigs: AaveProtocolConfig = {
       birthday: 1647043200, // Sat Mar 12 2022 00:00:00 GMT+0000
       lendingPool: '0x794a61358d6845594f94dc1db02a252b5b4814ad',
       dataProvider: '0x69fa688f1dc47d4b5d8029d5a35fb7a548310654',
-      dataProvider2: '0x374a2592f0265b3bb802d75809e61b1b5BbD85B7',
+      dataProvider2: '0x7F23D86Ee20D869112572136221e173428DD740B',
       oracle: {
         currency: 'usd',
         address: '0xebd36016b3ed09d4693ed4251c67bd858c3c7c9c',
