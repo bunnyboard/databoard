@@ -1193,4 +1193,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.SOFI_USDC],
   },
+  APEX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.APEX_WETH],
+  },
 };

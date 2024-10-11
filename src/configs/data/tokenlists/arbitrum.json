@@ -443,6 +443,12 @@
     "decimals": 6,
     "address": "0x4cfa50b7ce747e2d61724fcac57f24b748ff2b2a"
   },
+  "0x4d22e37eb4d71d1acc5f4889a65936d2a44a2f15": {
+    "chain": "arbitrum",
+    "symbol": "HAT",
+    "decimals": 18,
+    "address": "0x4d22e37eb4d71d1acc5f4889a65936d2a44a2f15"
+  },
   "0x4e352cf164e64adcbad318c3a1e222e9eba4ce42": {
     "chain": "arbitrum",
     "symbol": "MCB",
@@ -544,6 +550,12 @@
     "symbol": "USDe",
     "decimals": 18,
     "address": "0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34"
+  },
+  "0x61a1ff55c5216b636a294a07d77c6f4df10d3b56": {
+    "chain": "arbitrum",
+    "symbol": "APEX",
+    "decimals": 18,
+    "address": "0x61a1ff55c5216b636a294a07d77c6f4df10d3b56"
   },
   "0x64081252c497fcfec247a664e9d10ca8ed71b276": {
     "chain": "arbitrum",

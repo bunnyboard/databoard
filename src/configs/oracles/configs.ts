@@ -198,6 +198,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xbaac2b4491727d78d2b78815144570b9f2fe8899': OracleSourceConfigs.DOG,
     '0x8947da500eb47f82df21143d0c01a29862a8c3c5': OracleSourceConfigs.THALES,
     '0xb49fa25978abf9a248b8212ab4b87277682301c0': OracleSourceConfigs.SOFI,
+    '0x52a8845df664d76c69d2eea607cd793565af42b8': OracleSourceConfigs.APEX,
 
     // todo need to find better oracle source
     '0x9d39a5de30e57443bff2a8307a4256c8797a3497': OracleSourceConfigs.USDT,
@@ -330,6 +331,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xc87b37a581ec3257b734886d9d3a581f5a9d056c': OracleSourceConfigs.ATH,
     '0x2913e812cf0dcca30fb28e6cac3d2dcff4497688': OracleSourceConfigs.USDT,
     '0x3ea9b0ab55f34fb188824ee288ceaefc63cf908e': OracleSourceConfigs.ETH,
+    '0x61a1ff55c5216b636a294a07d77c6f4df10d3b56': OracleSourceConfigs.APEX,
   },
 
   // tokens on Optimism

@@ -2,6 +2,7 @@ import { ProtocolConfigs } from '../../configs';
 import { ContextServices, ContextStorages, IProtocolAdapter } from '../../types/namespaces';
 import AaveAdapter from './aave/aave';
 import AcrossAdapter from './across/across';
+import ArbitrumNativeBridgeAdapter from './arbitrum/nativeBridge';
 import BenqiAdapter from './benqi/benqi';
 import BungeeAdapter from './bungee/bungee';
 import CircleCctpAdapter from './circle/circlecctp';
@@ -95,6 +96,7 @@ export function getProtocolAdapters(
     circlecctp: new CircleCctpAdapter(services, storages, ProtocolConfigs.circlecctp),
     synapse: new SynapseAdapter(services, storages, ProtocolConfigs.synapse),
     stargate: new StargateAdapter(services, storages, ProtocolConfigs.stargate),
+    arbitrumNativeBridge: new ArbitrumNativeBridgeAdapter(services, storages, ProtocolConfigs.arbitrumNativeBridge),
     optimismNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.optimismNativeBridge),
     baseNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.baseNativeBridge),
     modeNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.modeNativeBridge),

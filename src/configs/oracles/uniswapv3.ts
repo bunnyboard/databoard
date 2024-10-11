@@ -562,6 +562,13 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.arbitrum['0xc87b37a581ec3257b734886d9d3a581f5a9d056c'],
     quotaToken: TokensBook.arbitrum['0x82af49447d8a07e3bd95bd0d56f35241523fbab1'],
   },
+  APEX_WETH: {
+    type: 'univ3',
+    chain: 'arbitrum',
+    address: '0xefd07239232e19d78e603122119637506aeb21a1',
+    baseToken: TokensBook.arbitrum['0x61a1ff55c5216b636a294a07d77c6f4df10d3b56'],
+    quotaToken: TokensBook.arbitrum['0x82af49447d8a07e3bd95bd0d56f35241523fbab1'],
+  },
   gOHM_WETH: {
     type: 'univ3',
     chain: 'ethereum',
