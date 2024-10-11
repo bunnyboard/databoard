@@ -389,6 +389,12 @@
     "decimals": 18,
     "address": "0x6985884c4392d348587b19cb9eaaf157f13271cd"
   },
+  "0x703d57164ca270b0b330a87fd159cfef1490c0a5": {
+    "chain": "base",
+    "symbol": "SOFI",
+    "decimals": 18,
+    "address": "0x703d57164ca270b0b330a87fd159cfef1490c0a5"
+  },
   "0x72b8992073db1dccad4ab42a48723c5571ffc589": {
     "chain": "base",
     "symbol": "test",

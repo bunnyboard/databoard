@@ -1173,4 +1173,24 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.BOBA_WETH],
   },
+  NEWO: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.NEWO_USDC],
+  },
+  gOHM: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.gOHM_WETH],
+  },
+  HIGH: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.HIGH_WETH],
+  },
+  DOG: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.DOG_WETH],
+  },
+  SOFI: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.SOFI_USDC],
+  },
 };

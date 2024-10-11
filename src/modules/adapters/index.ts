@@ -20,6 +20,7 @@ import MakerAdapter from './maker/maker';
 import MethAdapter from './meth/meth';
 import MoonwellAdapter from './moonwell/moonwell';
 import MorphoAdapter from './morpho/morpho';
+import OptimismNativeBridgeAdapter from './optimism/nativeBridge';
 import RocketpoolAdapter from './rocketpool/rocketpool';
 import EthxAdapter from './stader/ethx';
 import StakewiseAdapter from './stakewise/stakewise';
@@ -94,5 +95,7 @@ export function getProtocolAdapters(
     circlecctp: new CircleCctpAdapter(services, storages, ProtocolConfigs.circlecctp),
     synapse: new SynapseAdapter(services, storages, ProtocolConfigs.synapse),
     stargate: new StargateAdapter(services, storages, ProtocolConfigs.stargate),
+    optimismNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.optimismNativeBridge),
+    baseNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.baseNativeBridge),
   };
 }

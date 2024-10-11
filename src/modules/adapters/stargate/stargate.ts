@@ -94,7 +94,7 @@ export default class StargateAdapter extends ProtocolAdapter {
               address: config.version === 1 ? (poolConfig.nativeVault as Address) : (poolConfig.address as Address),
               blockNumber: BigInt(blockNumber),
             });
-            tokenBalance = formatBigNumberToNumber(nativebalance.toString(), 18);
+            tokenBalance = formatBigNumberToNumber(nativebalance ? nativebalance.toString() : '0', 18);
           } else {
             const balance = await this.services.blockchain.evm.readContract({
               chain: config.chain,
@@ -104,7 +104,7 @@ export default class StargateAdapter extends ProtocolAdapter {
               params: [poolConfig.address],
               blockNumber: blockNumber,
             });
-            tokenBalance = formatBigNumberToNumber(balance.toString(), token.decimals);
+            tokenBalance = formatBigNumberToNumber(balance ? balance.toString() : '0', token.decimals);
           }
 
           const totalDepositedUsd = tokenBalance * tokenPriceUsd;

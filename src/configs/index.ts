@@ -58,6 +58,8 @@ import { PancakeConfigs } from './protocols/pancake';
 import { CircleCctpConfigs } from './protocols/circle';
 import { SynapseConfigs } from './protocols/synapse';
 import { StargateConfigs } from './protocols/stargate';
+import { OptimismNativeBridgeConfigs } from './protocols/optimism';
+import { BaseNativeBridgeConfigs } from './protocols/base';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -133,4 +135,6 @@ export const ProtocolConfigs = {
   circlecctp: CircleCctpConfigs,
   synapse: SynapseConfigs,
   stargate: StargateConfigs,
+  optimismNativeBridge: OptimismNativeBridgeConfigs,
+  baseNativeBridge: BaseNativeBridgeConfigs,
 };
