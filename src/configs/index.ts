@@ -55,6 +55,9 @@ import { DineroConfigs } from './protocols/dinero';
 import { AcrossConfigs } from './protocols/across';
 import { LayerbankConfigs } from './protocols/layerbank';
 import { PancakeConfigs } from './protocols/pancake';
+import { CircleCctpConfigs } from './protocols/circle';
+import { SynapseConfigs } from './protocols/synapse';
+import { StargateConfigs } from './protocols/stargate';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -127,4 +130,7 @@ export const ProtocolConfigs = {
   layerbank: LayerbankConfigs,
   pancake: PancakeConfigs,
   savax: BenqiStakingAvaxConfigs,
+  circlecctp: CircleCctpConfigs,
+  synapse: SynapseConfigs,
+  stargate: StargateConfigs,
 };

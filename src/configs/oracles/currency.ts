@@ -41,4 +41,8 @@ export const OracleCurrencyBaseConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv3List.WCORE_USDT],
   },
+  klay: {
+    currency: 'usd',
+    sources: [OracleSourceChainlinkList.KLAY_USD],
+  },
 };

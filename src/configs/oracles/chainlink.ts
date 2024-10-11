@@ -117,12 +117,6 @@ export const OracleSourceChainlinkList: { [key: string]: OracleSourceChainlink }
     address: '0xf4c5e535756d11994fcbb12ba8add0192d9b88be',
     decimals: 8,
   },
-  USDD_USD: {
-    type: 'chainlink',
-    chain: 'bnbchain',
-    address: '0x51c78c299c42b058bf11d47fbb74ac437c6a0c8c',
-    decimals: 8,
-  },
   BCH_USD: {
     type: 'chainlink',
     chain: 'bnbchain',

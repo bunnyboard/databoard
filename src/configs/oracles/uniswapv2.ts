@@ -910,21 +910,21 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
       address: '0x919c1c267bc06a7039e03fcc2ef738525769109c',
     },
   },
-  WKLAY_DAI: {
+  JEWEL_WKLAY: {
     type: 'univ2',
     chain: 'kaia',
-    address: '0xa3987cf6c14f1992e8b4a9e23192eb79dc2969b8',
+    address: '0x0d9d200720021f9de5c8413244f81087ecb4adcc',
     baseToken: {
-      chain: 'kava',
-      symbol: 'WKAVA',
+      chain: 'kaia',
+      symbol: 'JEWEL',
       decimals: 18,
-      address: '0xc86c7c0efbd6a49b35e8714c5f59d99de09a225b',
+      address: '0x30c103f8f5a3a732dfe2dce1cc9446f545527b43',
     },
     quotaToken: {
-      chain: 'kava',
-      symbol: 'USDT',
-      decimals: 6,
-      address: '0x919c1c267bc06a7039e03fcc2ef738525769109c',
+      chain: 'kaia',
+      symbol: 'WKLAY',
+      decimals: 18,
+      address: '0x19aac5f612f524b754ca7e7c41cbfa2e981a4432',
     },
   },
 };

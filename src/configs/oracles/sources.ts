@@ -369,7 +369,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   },
   USDD: {
     currency: 'usd',
-    sources: [OracleSourceChainlinkList.USDD_USD],
+    sources: [OracleSourceUniswapv3List.USDD_USDT],
   },
   XRP: {
     currency: 'usd',
@@ -1164,5 +1164,13 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   NYA: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.NYA_WETH],
+  },
+  JEWEL: {
+    currency: 'klay',
+    sources: [OracleSourceUniswapv2List.JEWEL_WKLAY],
+  },
+  BOBA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.BOBA_WETH],
   },
 };

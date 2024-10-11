@@ -3,6 +3,8 @@ import { ContextServices, ContextStorages, IProtocolAdapter } from '../../types/
 import AaveAdapter from './aave/aave';
 import AcrossAdapter from './across/across';
 import BenqiAdapter from './benqi/benqi';
+import BungeeAdapter from './bungee/bungee';
+import CircleCctpAdapter from './circle/circlecctp';
 import CompoundAdapter from './compound/compound';
 import CurvelendAdapter from './curve/curvelend';
 import CurveusdAdapter from './curve/curveusd';
@@ -21,7 +23,9 @@ import MorphoAdapter from './morpho/morpho';
 import RocketpoolAdapter from './rocketpool/rocketpool';
 import EthxAdapter from './stader/ethx';
 import StakewiseAdapter from './stakewise/stakewise';
+import StargateAdapter from './stargate/stargate';
 import SwethAdapter from './swellnetwork/sweth';
+import SynapseAdapter from './synapse/synapse';
 import UniswapAdapter from './uniswap/uniswap';
 import VenusAdapter from './venus/venus';
 import WbethAdapter from './wbeth/wbeth';
@@ -72,7 +76,7 @@ export function getProtocolAdapters(
     curveusd: new CurveusdAdapter(services, storages, ProtocolConfigs.curveusd),
     curvelend: new CurvelendAdapter(services, storages, ProtocolConfigs.curvelend),
     // spooky: new SpookyAdapter(services, storages, ProtocolConfigs.spooky),
-    // bungee: new BungeeAdapter(services, storages, ProtocolConfigs.bungee),
+    bungee: new BungeeAdapter(services, storages, ProtocolConfigs.bungee),
     // lifi: new LifiAdapter(services, storages, ProtocolConfigs.lifi),
     rocketpool: new RocketpoolAdapter(services, storages, ProtocolConfigs.rocketpool),
     wbeth: new WbethAdapter(services, storages, ProtocolConfigs.wbeth),
@@ -87,5 +91,8 @@ export function getProtocolAdapters(
     layerbank: new LayerbankAdapter(services, storages, ProtocolConfigs.layerbank),
     // pancake: new PancakeAdapter(services, storages, ProtocolConfigs.pancake),
     // savax: new BenqiStakingAvaxAdapter(services, storages, ProtocolConfigs.savax),
+    circlecctp: new CircleCctpAdapter(services, storages, ProtocolConfigs.circlecctp),
+    synapse: new SynapseAdapter(services, storages, ProtocolConfigs.synapse),
+    stargate: new StargateAdapter(services, storages, ProtocolConfigs.stargate),
   };
 }

@@ -57,6 +57,10 @@ export const ChainNames = {
   evmos: 'evmos',
   velas: 'velas',
   opbnb: 'opbnb',
+  canto: 'canto',
+  dfk: 'dfk',
+  dogechain: 'dogechain',
+  worldchain: 'worldchain',
 };
 
 export const ProtocolNames = {

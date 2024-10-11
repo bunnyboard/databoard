@@ -62,7 +62,7 @@ export class RunCommand extends BasicCommand {
     for (const blockchainConfig of Object.values(envConfig.blockchains)) {
       chainConfigs[`node rpc ${blockchainConfig.name}`] = blockchainConfig.nodeRpc;
     }
-    logger.info('loaded blockchain rpc configs', {
+    logger.info(`loaded blockchain rpc configs (${Object.keys(chainConfigs).length})`, {
       service: 'configs',
       configs: chainConfigs,
     });
