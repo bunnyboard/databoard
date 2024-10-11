@@ -60,6 +60,11 @@ import { SynapseConfigs } from './protocols/synapse';
 import { StargateConfigs } from './protocols/stargate';
 import { OptimismNativeBridgeConfigs } from './protocols/optimism';
 import { BaseNativeBridgeConfigs } from './protocols/base';
+import { ModeNativeBridgeConfigs } from './protocols/mode';
+import { FraxtalNativeBridgeConfigs } from './protocols/fraxtal';
+import { LiskNativeBridgeConfigs } from './protocols/lisk';
+import { BobNativeBridgeConfigs } from './protocols/bob';
+import { RedstoneNativeBridgeConfigs } from './protocols/redstone';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -137,4 +142,9 @@ export const ProtocolConfigs = {
   stargate: StargateConfigs,
   optimismNativeBridge: OptimismNativeBridgeConfigs,
   baseNativeBridge: BaseNativeBridgeConfigs,
+  modeNativeBridge: ModeNativeBridgeConfigs,
+  fraxtalNativeBridge: FraxtalNativeBridgeConfigs,
+  liskNativeBridge: LiskNativeBridgeConfigs,
+  bobNativeBridge: BobNativeBridgeConfigs,
+  redstoneNativeBridge: RedstoneNativeBridgeConfigs,
 };
