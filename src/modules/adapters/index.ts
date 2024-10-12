@@ -23,6 +23,7 @@ import MoonwellAdapter from './moonwell/moonwell';
 import MorphoAdapter from './morpho/morpho';
 import OptimismNativeBridgeAdapter from './optimism/nativeBridge';
 import RocketpoolAdapter from './rocketpool/rocketpool';
+import ScrollNativeBridgeAdapter from './scroll/nativeBridge';
 import EthxAdapter from './stader/ethx';
 import StakewiseAdapter from './stakewise/stakewise';
 import StargateAdapter from './stargate/stargate';
@@ -104,5 +105,6 @@ export function getProtocolAdapters(
     liskNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.liskNativeBridge),
     bobNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.bobNativeBridge),
     redstoneNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.redstoneNativeBridge),
+    scrollNativeBridge: new ScrollNativeBridgeAdapter(services, storages, ProtocolConfigs.scrollNativeBridge),
   };
 }
