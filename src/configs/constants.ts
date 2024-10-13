@@ -41,6 +41,7 @@ export const ChainBlockPeriods: { [key: string]: number } = {
   cronos: 5.6, // 5.6 seconds
   scroll: 3, // 3 seconds
   bob: 2, // 2 seconds
+  zksync: 1, // 1 seconds
 };
 
 // we track dex volume only on pools have more than $50k liquidity (on all tokens)
