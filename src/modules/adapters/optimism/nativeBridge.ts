@@ -13,8 +13,8 @@ import { ContractCall } from '../../../services/blockchains/domains';
 import L1StandardBridgeAbi from '../../../configs/abi/optimism/L1StandardBridge.json';
 
 const Events = {
-  ETHBridgeInitiated: '0x2849b43074093a05396b6f2a937dee8565b15a48a7b3d4bffb732a5017380af5',
-  ERC20BridgeInitiated: '0x7ff126db8024424bbfd9826e8ab82ff59136289ea440b04b39a0df1b03b9cabf',
+  ETHDepositInitiated: '0x35d79ab81f2b2017e19afb5c5571778877782d7a8786f5907f93b0f4702f4f23',
+  ERC20DepositInitiated: '0x718594027abd4eaed59f95162563e0cc6d0e8d5b86b1c7be8b1b0ac3343d0396',
 };
 
 export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
@@ -94,7 +94,7 @@ export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
       totalAssetDeposited: nativeBalanceLockedUsd,
       totalValueLocked: nativeBalanceLockedUsd,
     };
-    for (const log of logs.filter((item) => item.topics[0] === Events.ETHBridgeInitiated)) {
+    for (const log of logs.filter((item) => item.topics[0] === Events.ETHDepositInitiated)) {
       const event: any = decodeEventLog({
         abi: L1StandardBridgeAbi,
         topics: log.topics,
@@ -144,13 +144,13 @@ export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
           totalValueLocked: nativeBalanceLockedUsd,
         };
 
-        for (const log of logs.filter((item) => item.topics[0] === Events.ERC20BridgeInitiated)) {
+        for (const log of logs.filter((item) => item.topics[0] === Events.ERC20DepositInitiated)) {
           const event: any = decodeEventLog({
             abi: L1StandardBridgeAbi,
             topics: log.topics,
             data: log.data,
           });
-          if (compareAddress(token.address, event.args.localToken)) {
+          if (compareAddress(token.address, event.args.l1Token)) {
             const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPriceUsd;
 
             (protocolData.volumes.bridge as number) += amountUsd;
