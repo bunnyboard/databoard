@@ -1,21 +1,33 @@
 {
   "0x028227c4dd1e5419d11bb6fa6e661920c519d4f5": {
     "chain": "mode",
-    "address": "0x028227c4dd1e5419d11bb6fa6e661920c519d4f5",
     "symbol": "weETH",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0x028227c4dd1e5419d11bb6fa6e661920c519d4f5"
   },
   "0x04c0599ae5a44757c0af6f9ec3b93da8976c150a": {
     "chain": "mode",
-    "address": "0x04c0599ae5a44757c0af6f9ec3b93da8976c150a",
     "symbol": "weETH.mode",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0x04c0599ae5a44757c0af6f9ec3b93da8976c150a"
   },
   "0x2416092f143378750bb29b79ed961ab195cceea5": {
     "chain": "mode",
-    "address": "0x2416092f143378750bb29b79ed961ab195cceea5",
     "symbol": "ezETH",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0x2416092f143378750bb29b79ed961ab195cceea5"
+  },
+  "0x3390108e913824b8ead638444cc52b9abdf63798": {
+    "chain": "mode",
+    "symbol": "sDAI",
+    "decimals": 18,
+    "address": "0x3390108e913824b8ead638444cc52b9abdf63798"
+  },
+  "0x3e7ef8f50246f725885102e8238cbba33f276747": {
+    "chain": "mode",
+    "symbol": "UNI",
+    "decimals": 18,
+    "address": "0x3e7ef8f50246f725885102e8238cbba33f276747"
   },
   "0x4200000000000000000000000000000000000006": {
     "chain": "mode",
@@ -23,23 +35,47 @@
     "decimals": 18,
     "address": "0x4200000000000000000000000000000000000006"
   },
+  "0x50c5725949a6f0c72e6c4a641f24049a917db0cb": {
+    "chain": "mode",
+    "symbol": "LINK",
+    "decimals": 18,
+    "address": "0x50c5725949a6f0c72e6c4a641f24049a917db0cb"
+  },
   "0x59889b7021243db5b1e065385f918316cd90d46c": {
     "chain": "mode",
-    "address": "0x59889b7021243db5b1e065385f918316cd90d46c",
     "symbol": "M-BTC",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0x59889b7021243db5b1e065385f918316cd90d46c"
+  },
+  "0x7c6b91d9be155a6db01f749217d76ff02a7227f2": {
+    "chain": "mode",
+    "symbol": "AAVE",
+    "decimals": 18,
+    "address": "0x7c6b91d9be155a6db01f749217d76ff02a7227f2"
   },
   "0x80137510979822322193fc997d400d5a6c747bf7": {
     "chain": "mode",
-    "address": "0x80137510979822322193fc997d400d5a6c747bf7",
     "symbol": "STONE",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0x80137510979822322193fc997d400d5a6c747bf7"
+  },
+  "0x9e5aac1ba1a2e6aed6b32689dfcf62a509ca96f3": {
+    "chain": "mode",
+    "symbol": "SNX",
+    "decimals": 18,
+    "address": "0x9e5aac1ba1a2e6aed6b32689dfcf62a509ca96f3"
   },
   "0xcdd475325d6f564d27247d1dddbb0dac6fa0a5cf": {
     "chain": "mode",
-    "address": "0xcdd475325d6f564d27247d1dddbb0dac6fa0a5cf",
     "symbol": "WBTC",
-    "decimals": 8
+    "decimals": 8,
+    "address": "0xcdd475325d6f564d27247d1dddbb0dac6fa0a5cf"
+  },
+  "0xd08a2917653d4e460893203471f0000826fb4034": {
+    "chain": "mode",
+    "symbol": "BAL",
+    "decimals": 18,
+    "address": "0xd08a2917653d4e460893203471f0000826fb4034"
   },
   "0xd988097fb8612cc24eec14542bc03424c656005f": {
     "chain": "mode",
@@ -55,9 +91,9 @@
   },
   "0xe7903b1f75c534dd8159b313d92cdcfbc62cb3cd": {
     "chain": "mode",
-    "address": "0xe7903b1f75c534dd8159b313d92cdcfbc62cb3cd",
     "symbol": "wrsETH",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0xe7903b1f75c534dd8159b313d92cdcfbc62cb3cd"
   },
   "0xf0f161fda2712db8b566946122a5af183995e2ed": {
     "chain": "mode",

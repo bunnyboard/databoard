@@ -88,6 +88,16 @@ const tokenlists = [
   'https://raw.githubusercontent.com/pancakeswap/token-list/main/lists/pancakeswap-top-100.json',
   'https://raw.githubusercontent.com/pancakeswap/token-list/main/lists/pancakeswap-top-15.json',
   'https://raw.githubusercontent.com/pancakeswap/token-list/main/lists/pancakeswap-zksync-default.json',
+  'https://tokens.pancakeswap.finance/pancakeswap-arb-mm.json',
+  'https://tokens.pancakeswap.finance/pancakeswap-arbitrum-default.json',
+  'https://tokens.pancakeswap.finance/pancakeswap-eth-default.json',
+  'https://tokens.pancakeswap.finance/pancakeswap-eth-mm.json',
+  'https://tokens.pancakeswap.finance/pancakeswap-extended.json',
+  'https://tokens.pancakeswap.finance/coingecko.json',
+  'https://tokens.pancakeswap.finance/pancakeswap-bnb-mm.json',
+  'https://tokens.pancakeswap.finance/pancakeswap-zksync-default.json',
+  'https://tokens.pancakeswap.finance/pancakeswap-linea-default.json',
+  'https://tokens.pancakeswap.finance/pancakeswap-base-default.json',
 
   // coingecko
   'https://tokens.coingecko.com/avalanche/all.json',
@@ -96,9 +106,13 @@ const tokenlists = [
   'https://tokens.coingecko.com/zora-network/all.json',
   'https://tokens.coingecko.com/fantom/all.json',
   'https://tokens.coingecko.com/base/all.json',
+  'https://tokens.coingecko.com/uniswap/all.json',
+  'https://tokens.coingecko.com/linea/all.json',
 
   // others
   'https://wispy-bird-88a7.uniswap.workers.dev/?url=http://tokenlist.zerion.eth.link',
+  'https://raw.githubusercontent.com/ethereum-optimism/ethereum-optimism.github.io/master/optimism.tokenlist.json',
+  'https://api.camelot.exchange/v2/tokens?chainId=42161',
 ];
 
 function getChainName(chainId) {
@@ -127,6 +141,9 @@ async function getTokens() {
     let responseTokens = [];
     if (response.data && response.data.tokens) {
       responseTokens = response.data.tokens;
+    } else if (response.data && response.data.data && response.data.data.tokens) {
+      // https://api.camelot.exchange/v2/tokens?chainId=42161
+      responseTokens = Object.values(response.data.data.tokens);
     } else {
       responseTokens = response.data;
     }

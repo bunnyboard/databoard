@@ -135,107 +135,107 @@ export const SushiConfigs: UniswapProtocolConfig = {
     },
 
     // v3
-    // {
-    //   chain: ChainNames.ethereum,
-    //   version: Pool2Types.univ3,
-    //   factory: '0xbACEB8eC6b9355Dfc0269C18bac9d6E2Bdc29C4F',
-    //   birthday: 1680393600,
-    //   feeRateForProtocol: 0.25, // 25% swap fees
-    //   wrappedNative: PublicAddresses.ethereum.weth,
-    //   whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.ethereum).filter((pool) =>
-    //     compareAddress(pool.factory, '0xbACEB8eC6b9355Dfc0269C18bac9d6E2Bdc29C4F'),
-    //   ),
-    //   blacklistedPools: ['0xa090a1657dbf752fca8638624f26e9284e33da3a'],
-    // },
-    // {
-    //   chain: ChainNames.arbitrum,
-    //   version: Pool2Types.univ3,
-    //   factory: '0x1af415a1EbA07a4986a52B6f2e7dE7003D82231e',
-    //   birthday: 1680393600,
-    //   wrappedNative: PublicAddresses.arbitrum.weth,
-    //   whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.arbitrum).filter((pool) =>
-    //     compareAddress(pool.factory, '0x1af415a1EbA07a4986a52B6f2e7dE7003D82231e'),
-    //   ),
-    // },
-    // {
-    //   chain: ChainNames.avalanche,
-    //   version: Pool2Types.univ3,
-    //   factory: '0x3e603C14aF37EBdaD31709C4f848Fc6aD5BEc715',
-    //   birthday: 1680393600,
-    //   wrappedNative: PublicAddresses.avalanche.wavax,
-    //   whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.avalanche).filter((pool) =>
-    //     compareAddress(pool.factory, '0x3e603C14aF37EBdaD31709C4f848Fc6aD5BEc715'),
-    //   ),
-    // },
-    // {
-    //   chain: ChainNames.base,
-    //   version: Pool2Types.univ3,
-    //   factory: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
-    //   birthday: 1690329600,
-    //   wrappedNative: PublicAddresses.base.weth,
-    //   whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.base).filter((pool) =>
-    //     compareAddress(pool.factory, '0xc35DADB65012eC5796536bD9864eD8773aBc74C4'),
-    //   ),
-    // },
-    // {
-    //   chain: ChainNames.blast,
-    //   version: Pool2Types.univ3,
-    //   factory: '0x7680D4B43f3d1d54d6cfEeB2169463bFa7a6cf0d',
-    //   birthday: 1709424000,
-    //   wrappedNative: PublicAddresses.blast.weth,
-    //   whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.blast).filter((pool) =>
-    //     compareAddress(pool.factory, '0x7680D4B43f3d1d54d6cfEeB2169463bFa7a6cf0d'),
-    //   ),
-    // },
-    // {
-    //   chain: ChainNames.bnbchain,
-    //   version: Pool2Types.univ3,
-    //   factory: '0x126555dd55a39328F69400d6aE4F782Bd4C34ABb',
-    //   birthday: 1680393600,
-    //   wrappedNative: PublicAddresses.bnbchain.wbnb,
-    //   whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.bnbchain).filter((pool) =>
-    //     compareAddress(pool.factory, '0x126555dd55a39328F69400d6aE4F782Bd4C34ABb'),
-    //   ),
-    // },
-    // {
-    //   chain: ChainNames.linea,
-    //   version: Pool2Types.univ3,
-    //   factory: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
-    //   birthday: 1690329600,
-    //   wrappedNative: PublicAddresses.linea.weth,
-    //   whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.linea).filter((pool) =>
-    //     compareAddress(pool.factory, '0xc35DADB65012eC5796536bD9864eD8773aBc74C4'),
-    //   ),
-    // },
-    // {
-    //   chain: ChainNames.optimism,
-    //   version: Pool2Types.univ3,
-    //   factory: '0x9c6522117e2ed1fE5bdb72bb0eD5E3f2bdE7DBe0',
-    //   birthday: 1680393600,
-    //   wrappedNative: PublicAddresses.optimism.weth,
-    //   whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.optimism).filter((pool) =>
-    //     compareAddress(pool.factory, '0x9c6522117e2ed1fE5bdb72bb0eD5E3f2bdE7DBe0'),
-    //   ),
-    // },
-    // {
-    //   chain: ChainNames.polygon,
-    //   version: Pool2Types.univ3,
-    //   factory: '0x917933899c6a5F8E37F31E19f92CdBFF7e8FF0e2',
-    //   birthday: 1680393600,
-    //   wrappedNative: PublicAddresses.polygon.wmatic,
-    //   whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.polygon).filter((pool) =>
-    //     compareAddress(pool.factory, '0x917933899c6a5F8E37F31E19f92CdBFF7e8FF0e2'),
-    //   ),
-    // },
-    // {
-    //   chain: ChainNames.scroll,
-    //   version: Pool2Types.univ3,
-    //   factory: '0x46B3fDF7b5CDe91Ac049936bF0bDb12c5d22202e',
-    //   birthday: 1697587200,
-    //   wrappedNative: PublicAddresses.scroll.weth,
-    //   whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.scroll).filter((pool) =>
-    //     compareAddress(pool.factory, '0x46B3fDF7b5CDe91Ac049936bF0bDb12c5d22202e'),
-    //   ),
-    // },
+    {
+      chain: ChainNames.ethereum,
+      version: Pool2Types.univ3,
+      factory: '0xbACEB8eC6b9355Dfc0269C18bac9d6E2Bdc29C4F',
+      birthday: 1680393600,
+      feeRateForProtocol: 0.25, // 25% swap fees
+      wrappedNative: PublicAddresses.ethereum.weth,
+      whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.ethereum).filter((pool) =>
+        compareAddress(pool.factory, '0xbACEB8eC6b9355Dfc0269C18bac9d6E2Bdc29C4F'),
+      ),
+      blacklistedPools: ['0xa090a1657dbf752fca8638624f26e9284e33da3a'],
+    },
+    {
+      chain: ChainNames.arbitrum,
+      version: Pool2Types.univ3,
+      factory: '0x1af415a1EbA07a4986a52B6f2e7dE7003D82231e',
+      birthday: 1680393600,
+      wrappedNative: PublicAddresses.arbitrum.weth,
+      whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.arbitrum).filter((pool) =>
+        compareAddress(pool.factory, '0x1af415a1EbA07a4986a52B6f2e7dE7003D82231e'),
+      ),
+    },
+    {
+      chain: ChainNames.avalanche,
+      version: Pool2Types.univ3,
+      factory: '0x3e603C14aF37EBdaD31709C4f848Fc6aD5BEc715',
+      birthday: 1680393600,
+      wrappedNative: PublicAddresses.avalanche.wavax,
+      whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.avalanche).filter((pool) =>
+        compareAddress(pool.factory, '0x3e603C14aF37EBdaD31709C4f848Fc6aD5BEc715'),
+      ),
+    },
+    {
+      chain: ChainNames.base,
+      version: Pool2Types.univ3,
+      factory: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
+      birthday: 1690329600,
+      wrappedNative: PublicAddresses.base.weth,
+      whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.base).filter((pool) =>
+        compareAddress(pool.factory, '0xc35DADB65012eC5796536bD9864eD8773aBc74C4'),
+      ),
+    },
+    {
+      chain: ChainNames.blast,
+      version: Pool2Types.univ3,
+      factory: '0x7680D4B43f3d1d54d6cfEeB2169463bFa7a6cf0d',
+      birthday: 1709424000,
+      wrappedNative: PublicAddresses.blast.weth,
+      whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.blast).filter((pool) =>
+        compareAddress(pool.factory, '0x7680D4B43f3d1d54d6cfEeB2169463bFa7a6cf0d'),
+      ),
+    },
+    {
+      chain: ChainNames.bnbchain,
+      version: Pool2Types.univ3,
+      factory: '0x126555dd55a39328F69400d6aE4F782Bd4C34ABb',
+      birthday: 1680393600,
+      wrappedNative: PublicAddresses.bnbchain.wbnb,
+      whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.bnbchain).filter((pool) =>
+        compareAddress(pool.factory, '0x126555dd55a39328F69400d6aE4F782Bd4C34ABb'),
+      ),
+    },
+    {
+      chain: ChainNames.linea,
+      version: Pool2Types.univ3,
+      factory: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
+      birthday: 1690329600,
+      wrappedNative: PublicAddresses.linea.weth,
+      whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.linea).filter((pool) =>
+        compareAddress(pool.factory, '0xc35DADB65012eC5796536bD9864eD8773aBc74C4'),
+      ),
+    },
+    {
+      chain: ChainNames.optimism,
+      version: Pool2Types.univ3,
+      factory: '0x9c6522117e2ed1fE5bdb72bb0eD5E3f2bdE7DBe0',
+      birthday: 1680393600,
+      wrappedNative: PublicAddresses.optimism.weth,
+      whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.optimism).filter((pool) =>
+        compareAddress(pool.factory, '0x9c6522117e2ed1fE5bdb72bb0eD5E3f2bdE7DBe0'),
+      ),
+    },
+    {
+      chain: ChainNames.polygon,
+      version: Pool2Types.univ3,
+      factory: '0x917933899c6a5F8E37F31E19f92CdBFF7e8FF0e2',
+      birthday: 1680393600,
+      wrappedNative: PublicAddresses.polygon.wmatic,
+      whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.polygon).filter((pool) =>
+        compareAddress(pool.factory, '0x917933899c6a5F8E37F31E19f92CdBFF7e8FF0e2'),
+      ),
+    },
+    {
+      chain: ChainNames.scroll,
+      version: Pool2Types.univ3,
+      factory: '0x46B3fDF7b5CDe91Ac049936bF0bDb12c5d22202e',
+      birthday: 1697587200,
+      wrappedNative: PublicAddresses.scroll.weth,
+      whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.scroll).filter((pool) =>
+        compareAddress(pool.factory, '0x46B3fDF7b5CDe91Ac049936bF0bDb12c5d22202e'),
+      ),
+    },
   ],
 };

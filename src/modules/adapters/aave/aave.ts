@@ -75,14 +75,14 @@ export default class AaveAdapter extends AaveCore {
         options.timestamp,
       );
 
-      const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-        marketConfig.chain,
-        options.beginTime,
-      );
-      const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-        marketConfig.chain,
-        options.endTime,
-      );
+      // const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+      //   marketConfig.chain,
+      //   options.beginTime,
+      // );
+      // const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+      //   marketConfig.chain,
+      //   options.endTime,
+      // );
 
       const reserves = await this.getAllReserveData({
         config: marketConfig,
@@ -90,12 +90,13 @@ export default class AaveAdapter extends AaveCore {
         timestamp: options.timestamp,
       });
 
-      const contractLogs: Array<any> = await this.services.blockchain.evm.getContractLogs({
-        chain: marketConfig.chain,
-        address: marketConfig.lendingPool,
-        fromBlock: beginBlock,
-        toBlock: endBlock,
-      });
+      // const contractLogs: Array<any> = await this.services.blockchain.evm.getContractLogs({
+      //   chain: marketConfig.chain,
+      //   address: marketConfig.lendingPool,
+      //   fromBlock: beginBlock,
+      //   toBlock: endBlock,
+      // });
+      const contractLogs: Array<any> = [];
 
       for (const reserve of reserves) {
         if (!protocolData.breakdown[marketConfig.chain][reserve.token.address]) {
