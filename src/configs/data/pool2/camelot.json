@@ -1,0 +1,2362 @@
+[
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x412c470351231c93025a441dedb6a0f65c92b781",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "BORPA",
+      "decimals": 18,
+      "address": "0x0002bcdaf53f4889bf2f43a3252d7c03fe1b80bc"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xf49ee926898c98c3e7ae7fb7000ae586eab46769",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "PEAS",
+      "decimals": 18,
+      "address": "0x02f92800f57bcd74066f5709f1daa1a4302df875"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x5180dce8f532f40d84363737858e2c5fd0c8ab39",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "RDO",
+      "decimals": 18,
+      "address": "0x033f193b3fceb22a440e89a2867e8fee181594d9"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xe01e0b5c707edee3ffc10b464115cc20073817a2",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "Silo",
+      "decimals": 18,
+      "address": "0x0341c0c0ec423328621788d4854119b97f44e391"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x68a0859de50b4dfc6efebe981ca906d38cdb0d1f",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "MIM",
+      "decimals": 18,
+      "address": "0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x14f3cfe5f42dedb3a13ba823981269240bd2d2d4",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "BAL",
+      "decimals": 18,
+      "address": "0x040d1edc9569d4bab2d15287dc5a4f10f56a56b8"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x7157175d8826440b305c8db19e2a852843e4c7b0",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "UWU",
+      "decimals": 18,
+      "address": "0x05d35769a222affd6185e20f3f3676abde56c25f"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x5fa594dd5e198de5e7ef539f1b8fb154aefd3891",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "LYRA",
+      "decimals": 18,
+      "address": "0x079504b86d38119f859c4194765029f692b7b7aa"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x4c0a68dd92449fc06c1a651e9eb1dffb61d64e18",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "VELA",
+      "decimals": 18,
+      "address": "0x088cd8f5ef3652623c22d48b1605dcfe860cd704"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x6a78e84fa0edad4d99eb90edc041cdbf85925961",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "AIDOGE",
+      "decimals": 6,
+      "address": "0x09e18590e8f76b6cf471b3cd75fe1a1a9d2b2c2b"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x29fc01f04032c76ca40f353c7df685f4444c15ed",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "unshETH",
+      "decimals": 18,
+      "address": "0x0ae38f7e10a43b5b2fb064b42a2f4514cba909ef"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x256ba319c286720dc74b53868821ba7eaf628900",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "SECT",
+      "decimals": 18,
+      "address": "0x0b63c61bba4a876a6eb8b5e596800f7649a9b71e"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xbfca4230115de8341f3a3d5e8845ffb3337b2be3",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "PENDLE",
+      "decimals": 18,
+      "address": "0x0c880f6761f1af8d9aa9c466984b80dab9a8c9e8"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x460c2c075340ebc19cf4af68e5d83c194e7d21d0",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "JONES",
+      "decimals": 18,
+      "address": "0x10393c20975cf177a3513071bc110f7962cd67da"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x184fb097196a4e2be8dfd44b341cb7d13b41ea7e",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "BOOP",
+      "decimals": 18,
+      "address": "0x13a7dedb7169a17be92b0e3c7c2315b46f4772b3"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xaf7c05011bd7b780d804a5c735fdeea7f352dc64",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "LDO",
+      "decimals": 18,
+      "address": "0x13ad51ed4f1b7e9dc168d8a00cb3f4ddd85efa60"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xbbcf0b7f070b170909c9ff430878e92cead990f3",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "RELAY",
+      "decimals": 18,
+      "address": "0x1426cf37caa89628c4da2864e40cf75e6d66ac6b"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xf398afc30fec41271087866a447e839c230cdc9e",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "SEN",
+      "decimals": 18,
+      "address": "0x154388a4650d63acc823e06ef9e47c1eddd3cbb2"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x682bd6921b8b9634eb4635a269ea8ae857d6bb4e",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "MVD",
+      "decimals": 9,
+      "address": "0x15a808ed3846d25e88ae868de79f1bcb1ac382b5"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xa1e48225215d9e656f4f9d779fc32817c50de0e5",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "UMAMI",
+      "decimals": 9,
+      "address": "0x1622bf67e6e5747b81866fe0b85178a93c7f86e3"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x2517cd42ee966862e8ecaac9abd1ccd272d897b6",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "ZOO",
+      "decimals": 18,
+      "address": "0x1689a6e1f09658ff37d0bb131514e701045876da"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xda2ec346153e948fb06140ca60dd6708d8ceaee7",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "PRY",
+      "decimals": 18,
+      "address": "0x1824a51c106efc27d35a74efb56d9bf54ddb22d4"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x08893e991c262aa01262e64c1f38df816bd6f6b1",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "CMUMAMI",
+      "decimals": 9,
+      "address": "0x1922c36f3bc762ca300b4a46bb2102f84b1684ab"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x47ecf602a62baf7d4e6b30fe3e8dd45bb8cffadc",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "BFR",
+      "decimals": 18,
+      "address": "0x1a5b0aaf478bf1fda7b934c76e7692d722982a6d"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x4237fd25a3bc078f5ec86ce169f8082cf65b4af4",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "MOZ",
+      "decimals": 18,
+      "address": "0x20547341e58fb558637fa15379c92e11f7b7f710"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x81b562d0e7f2ca61243cb2eadf84fbdc936bf7d5",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "ezETH",
+      "decimals": 18,
+      "address": "0x2416092f143378750bb29b79ed961ab195cceea5"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x33d180c8703c5886f918710fcd09639ac6a33533",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "MOD",
+      "decimals": 18,
+      "address": "0x244ae62439c1ef3187f244d8604ac2c391ef2b53"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xdf55348e114ffcfd5f185306bd2d386c818ea18e",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "PEPE",
+      "decimals": 18,
+      "address": "0x25d887ce7a35172c62febfd67a1856f20faebb00"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xf95f1512cbecdc658336d26c7db51eca784789ed",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "PNP",
+      "decimals": 18,
+      "address": "0x2ac2b254bc18cd4999f64773a966e4f4869c34ee"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xa3c9d20cb101c7776fc7d0edf137c2dde267aa1f",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "iGRAIL",
+      "decimals": 18,
+      "address": "0x2ef354c71caab6dc7469bb3c99642878ccd1143f"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x96059759c6492fb4e8a9777b65f307f2c811a34f",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WBTC",
+      "decimals": 8,
+      "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x2b07a6c54d3a40513ebc3650b05f953162af0d7b",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "RDNT",
+      "decimals": 18,
+      "address": "0x3082cc23568ea640225c2467653db90e9250aaa0"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x65b5ede8b7fd1fcb2aec422b249ab20439e13518",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "USDV",
+      "decimals": 6,
+      "address": "0x323665443cef804a3b5206103304bd4872ea4253"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xb8e9718f4c9be237595cd9575c173fda10bfa209",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "FFM",
+      "decimals": 18,
+      "address": "0x3269a3c00ab86c753856fd135d97b87facb0d848"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xf5e4ee1bff3825d8a93ef8a20d1113bc3c7970e0",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "RDPX",
+      "decimals": 18,
+      "address": "0x32eb7902d4134bf98a28b963d26de779af92a212"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xcf28c002affa276e1ec1b95902761074bf7402aa",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "weETH",
+      "decimals": 18,
+      "address": "0x35751007a407ca6feffe80b3cb397736d2cf4dbe"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x85ee4ce1bab902044d55940c515729b5b4321f5a",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "KUJI",
+      "decimals": 6,
+      "address": "0x3a18dcc9745edcd1ef33ecb93b0b6eba5671e7ca"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x3dc07af2687e8af9643d42491a452ea2637fa50f",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "TIG",
+      "decimals": 18,
+      "address": "0x3a33473d7990a605a88ac72a78ad4efc40a54adb"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xf82105aa473560cfbf8cbc6fd83db14eb4028117",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "GRAIL",
+      "decimals": 18,
+      "address": "0x3d9907f9a368ad0a51be60f7da3b97cf940982d8"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xe28881d63f4f0577d4f75ea04f3a3e75feffc491",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "SPELL",
+      "decimals": 18,
+      "address": "0x3e6648c5a70a150a88bce65f4ad4d506fe15d2af"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x63bc11ed89a89f793f5931816061cfdd0e8e3090",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "VOLTA",
+      "decimals": 18,
+      "address": "0x417a1afd44250314bffb11ff68e989775e990ab6"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x6993df286102206db13d92ed5cc7ca60a627c735",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "rsETH",
+      "decimals": 18,
+      "address": "0x4186bfc76e2e237523cbc30fd220fe055156b41f"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x1870e49b45e64fdb435e9c6204800076aba952b5",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "GLEND",
+      "decimals": 18,
+      "address": "0x43df266501dff4773f8f33179e3b96ab94dbc28d"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xb7cd1f29afcf04637cb7d328e4e806d3ca73e6eb",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "GM",
+      "decimals": 18,
+      "address": "0x47c031236e19d024b42f8ae6780e44a573170703"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x4f64cbdec91a55611d5d33cd1c1fb4f824c238c9",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "milkTIA",
+      "decimals": 6,
+      "address": "0x4aa81d7ab59c775fe6f9f45e6941a0fb8cd692a6"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xaf7b99fe3be13a2f027e3807e012f629f43ac3ea",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "XAI",
+      "decimals": 18,
+      "address": "0x4cb9a7ae498cedcbb5eae9f25736ae7d428c9d66"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x85df70e1636d28ab29bb81df93b68834f4308750",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "fUSDC",
+      "decimals": 6,
+      "address": "0x4cfa50b7ce747e2d61724fcac57f24b748ff2b2a"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xbfd465e270f8d6ba62b5000cd27d155fb5ae70f0",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "PLS",
+      "decimals": 18,
+      "address": "0x51318b7d00db7acc4026c88c3952b66278b6a67f"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x855f1b323fdd73af1e2c075c1f422593624ed0dd",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "USH",
+      "decimals": 18,
+      "address": "0x51a80238b5738725128d3a3e06ab41c1d4c05c74"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xbeb88b74a06d2d99da43366436770d068df47efc",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "NFTE",
+      "decimals": 18,
+      "address": "0x51b902f19a56f0c8e409a34a215ad2673edf3284"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x95bff4c322e0d39cb34551b122ce4c779e0547bd",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "PREMIA",
+      "decimals": 18,
+      "address": "0x51fc0f6660482ea73330e414efd7808811a57fa2"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xe8b2c9cbfd52cf9a157724e6416440566fa03150",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "MAGIC",
+      "decimals": 18,
+      "address": "0x539bde0d7dbd336b79148aa742883198bbf60342"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xa13382a15098bbb210392e17888ff022333c5c64",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "SPA",
+      "decimals": 18,
+      "address": "0x5575552988a3a80504bbaeb1311674fcfd40ad4b"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x006a9eeed8160b470f2e10b12e7c9a4efe1f3157",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "SFUND",
+      "decimals": 18,
+      "address": "0x560363bda52bc6a44ca6c8c9b4a5fadbda32fa60"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x5201f6482eea49c90fe609ed9d8f69328bac8dda",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WSTETH",
+      "decimals": 18,
+      "address": "0x5979d7b546e38e414f7e9822514be443a4800529"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xa0c79678bcfbea0a358d5fea563100893c37a848",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "OLD-GENE",
+      "decimals": 18,
+      "address": "0x59a729658e9245b0cf1f8cb9fb37945d2b06ea27"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x1447acbaf764f4a1abf0f661fb7fa0dae7ac50bd",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "APEX",
+      "decimals": 18,
+      "address": "0x61a1ff55c5216b636a294a07d77c6f4df10d3b56"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xc8f1a451e777d55465ca8757aefb47bebb339fac",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "Y2K",
+      "decimals": 18,
+      "address": "0x65c936f008bc34fe819bce9fa5afd9dc2d49977f"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x2ea3ca79413c2ec4c1893d5f8c34c16acb2288a4",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "NEU",
+      "decimals": 18,
+      "address": "0x6609be1547166d1c4605f3a243fdcff467e600c3"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x2f145c649edf692ce3ed4e758edac4c3b2ecc728",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "MOLTEN",
+      "decimals": 18,
+      "address": "0x66e535e8d2ebf13f49f3d49e5c50395a97c137b1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xdfb7fb92c1e050bd9f9940aa3537f70837aeed2e",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "ZRO",
+      "decimals": 18,
+      "address": "0x6985884c4392d348587b19cb9eaaf157f13271cd"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xd5270aedeb6f9197cd8d881db74dbd0d994c325c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "LEX",
+      "decimals": 18,
+      "address": "0x6bb7a17acc227fd1f6781d1eedeae01b42047ee0"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x54c01260ffbb4c7ae6a319ad5641659e56c1385f",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "ePendle",
+      "decimals": 18,
+      "address": "0x3eabe18eae267d1b57f917aba085bb5906114600"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "ARB",
+      "decimals": 18,
+      "address": "0x912ce59144191c1204e64559fe8253a0e49e6548"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x928916c247df3c3dbb09a4cd0af4d6fb9e1752ad",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "DPX",
+      "decimals": 18,
+      "address": "0x6c2c06790b3e3e3c38e12ee22f8183b37a13ee55"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xa4af7738f21ca3381e5d23c1797324ac2affed3a",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "FCTR",
+      "decimals": 18,
+      "address": "0x6dd963c510c2d2f09d5eddb48ede45fed063eb36"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x2bf6ca05a8ba13178ddadc4a7e32698abe97be57",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "CHOKE",
+      "decimals": 18,
+      "address": "0x6fc2680d8ad8e8312191441b4eca9eff8d06b45a"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x93f0990ad4f666f09225aff1cec18a5b5f6c56b4",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "GM",
+      "decimals": 18,
+      "address": "0x70d95587d40a2caf56bd97485ab3eec10bee6336"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x498ecea12baa3312ea4d4386dffaf2f826015b34",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "jGLP",
+      "decimals": 18,
+      "address": "0x7241bc8035b65865156ddb5edef3eb32874a3af6"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x60f7116d7c451ac5a5159f60fc5fc36336b742c4",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "OLD-GNOME",
+      "decimals": 18,
+      "address": "0x7698ac5d15bb3ba7185adcbff32a80ebd9d0709b"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xe4c994f55cac42830cc6016d18f07744ced0aa5d",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "Bonsai",
+      "decimals": 18,
+      "address": "0x79ead7a012d97ed8deece279f9bc39e264d7eef9"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x6ecc7f2001a2330745d36b36bd666298c25f4563",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "AICODE",
+      "decimals": 18,
+      "address": "0x7c8a1a80fdd00c9cccd6ebd573e9ecb49bfa2a59"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xad1a75625b479440e9180a7820a59f73da03589b",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "YAK",
+      "decimals": 18,
+      "address": "0x7f4db37d7beb31f445307782bc3da0f18df13696"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x20c2251b44b7e553cd69b758e1e0bae402358622",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "lEXC",
+      "decimals": 18,
+      "address": "0x83bbc9c4c436bd7a4b4a1c5d42b00caae113c3b5"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x5748a6dda0d17d9a16f7d411d0cf334a3179eba6",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "CTX",
+      "decimals": 18,
+      "address": "0x84f5c2cfba754e76dd5ae4fb369cfc920425e12b"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xda181136e923590040a81946c921c8cd6a70c0e9",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "ALTD",
+      "decimals": 18,
+      "address": "0x8929e9dbd2785e3ba16175e596cdd61520fee0d1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xcb1d846468c31248609bf867f4015d14818f5b77",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "PGS",
+      "decimals": 18,
+      "address": "0x8933fedd98cbb482e27c41e1bd7216a4e42ebd39"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x75e1a0dda0f7d3ca5d8960875e306533e7259609",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "CU",
+      "decimals": 18,
+      "address": "0x89c49a3fa372920ac23ce757a029e6936c0b8e02"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x5394b2b1cb0e0e7cc56c1eb33c5f27ba84d65d16",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "DMT",
+      "decimals": 18,
+      "address": "0x8b0e6f19ee57089f7649a455d89d7bc6314d04e8"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xa6c5c7d189fa4eb5af8ba34e63dcdd3a635d433f",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "ARB",
+      "decimals": 18,
+      "address": "0x912ce59144191c1204e64559fe8253a0e49e6548"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x19d51dc52e52407656b40b197b1bbe14294b955b",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "SIZE",
+      "decimals": 18,
+      "address": "0x939727d85d99d0ac339bf1b76dfe30ca27c19067"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x5b58a7168d57652a841b92215e2f4a254a1bb147",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "HUOYD",
+      "decimals": 18,
+      "address": "0x232c15af9ffec8b2a0f665ce972c0ab59ee233f7"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "USDT",
+      "decimals": 6,
+      "address": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x3fee6e8fbde48b727f82c55639ed2dd0cd9ba642",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "LUSD",
+      "decimals": 18,
+      "address": "0x93b346b6bc2548da6a1e7d98e9a421b42541425b"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x5c7de5619f82ff0c513f2ed6794de402f2386872",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "GRT",
+      "decimals": 18,
+      "address": "0x9623063377ad1b27544c965ccd7342f7ea7e88c7"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x9164424a33a89202040f02170431073c59efa1a9",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "TROVE",
+      "decimals": 18,
+      "address": "0x982239d38af50b0168da33346d85fb12929c4c07"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xd3ac0c63fef0506699d68d833a10477137254aff",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "pxGMX",
+      "decimals": 18,
+      "address": "0x9a592b4539e22eeb8b2a3df679d572c7712ef999"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xd2a7084369cc93672b2ca868757a9f327e3677a4",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "iFARM",
+      "decimals": 18,
+      "address": "0x9dca587dc65ac0a043828b0acd946d71eb8d46c1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x13bce500f21c92aed597aab2247cf27ca1116e30",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "SMOL",
+      "decimals": 18,
+      "address": "0x9e64d3b9e8ec387a9a58ced80b71ed815f8d82b5"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x7ffaf4698635a7679ce508160f2156b8739f37fe",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "OATH",
+      "decimals": 18,
+      "address": "0xa1150db5105987cec5fd092273d1e3cbb22b378b"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xcc946207889fd9398e2c32333aa586ff56dee698",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "PEPE",
+      "decimals": 18,
+      "address": "0xa54b8e178a49f8e5405a4d44bb31f496e5564a05"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xe83b6714f7b8d94187d8457592ce6fcf82453cf4",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "SYK",
+      "decimals": 18,
+      "address": "0xacc51ffdef63fb0c014c882267c3a17261a5ed50"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x54b26faf3671677c19f70c4b879a6f7b898f732c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xc014796dff9b99b4fb178673fbdf6280d4a6f480",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "mPENDLE",
+      "decimals": 18,
+      "address": "0xb688ba096b7bb75d7841e47163cd12d18b36a5bf"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xd925c8962bd63dd0a0ee69ce85c2d0789c2785f6",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "MZR",
+      "decimals": 18,
+      "address": "0xbbea044f9e7c0520195e49ad1e561572e7e1b948"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x69b545997bd6abc81cae39fe9bdc94d2242a0f92",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "EQB",
+      "decimals": 18,
+      "address": "0xbfbcfe8873fe28dfa25f1099282b088d52bbad9c"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xb6f8e925df16db713c4c235abbeba8b24e59b81c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "HOP",
+      "decimals": 18,
+      "address": "0xc5102fe9359fd9a28f877a67e36b0f050d81a3cc"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xc82c54fc25a878c40165bc167896eb538945d3ad",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "AARK",
+      "decimals": 18,
+      "address": "0xca4e51f6ad4afd9d1068e5899de9dd7d73f3463d"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x7ca686b3795784f12643127c5c3f56aa107a04c3",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "EDE",
+      "decimals": 18,
+      "address": "0xccd3891c1452b7cb0e4632774b9365dc4ee24f20"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x3a724dc0f6d6d9f9990c1c975d8edb1237eb3ba7",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "TIA.n",
+      "decimals": 6,
+      "address": "0xd56734d7f9979dd94fae3d67c7e928234e71cd4c"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x9f9089927258c3e0b7caec226d11e902a7b6081d",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "WINR",
+      "decimals": 18,
+      "address": "0xd77b108d4f6cefaa0cae9506a934e825becca46e"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xb1a9c2b9b9223fa605c5a866a6d2af1c73e98ee5",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "IDIA",
+      "decimals": 18,
+      "address": "0xd91903d548f19c0fc0a6b9ed09d2f72b4dfe7144"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x9fa7314525d5c706213468220c7c9820cfe629cb",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "DAI",
+      "decimals": 18,
+      "address": "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xa1cb647629aa2dec7a7971d749b4154d4c69bec6",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "EMC",
+      "decimals": 18,
+      "address": "0xdfb8be6f8c87f74295a87de951974362cedcfa30"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x2da4ae6fa1383dbae0d2c2a214248d1610d0df2d",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "SDL",
+      "decimals": 18,
+      "address": "0xdfea35757264f5b6c0ff21104151d9f991d0eec0"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x40fc7e69be6f5129e74782d1702e5c44d1caea90",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "LOCUS",
+      "decimals": 18,
+      "address": "0xe1d3495717f9534db67a6a8d4940dd17435b6a9e"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x2bcd0aac7d98697d8760fb291625829113e354e7",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "jUSDC",
+      "decimals": 18,
+      "address": "0xe66998533a1992ece9ea99cdf47686f4fc8458e0"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x20d80ef4e6d8f9d40137849ee3b5f08ddd32680a",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "plsJONES",
+      "decimals": 18,
+      "address": "0xe7f6c3c1f0018e4c08acc52965e5cbff99e34a44"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x8971dfb268b961a9270632f28b24f2f637c94244",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "THALES",
+      "decimals": 18,
+      "address": "0xe85b662fe97e8562f4099d8a1d5a92d4b453bf30"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x835785c823e3c19c37cb6e2c616c278738947978",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "SPOOL",
+      "decimals": 18,
+      "address": "0xeca14f81085e5b8d1c9d32dcb596681574723561"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x8acd42e4b5a5750b44a28c5fb50906ebff145359",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "OHM",
+      "decimals": 9,
+      "address": "0xf0cb2dc0db5e6c66b9a70ac27b06b878da017028"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x49bb23dfae944059c2403bcc255c5a9c0f851a8d",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "LODE",
+      "decimals": 18,
+      "address": "0xf19547f9ed24aa66b03c3a552d181ae334fbb8db"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x5216065f14f08f26a4f447efcda0b32ef628b0fe",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "agETH",
+      "decimals": 18,
+      "address": "0xf1a88250532a4a66a2420a8cbb434da82e1e2ca1"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xc6f2c43f7f9634e968782097d9dd9096dceda3fb",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "TST",
+      "decimals": 18,
+      "address": "0xf5a27e55c748bcddbfea5477cb9ae924f0f7fd2e"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x65cfd8fb82213971076457756dfedb6143391983",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "LINK",
+      "decimals": 18,
+      "address": "0xf97f4df75117a78c1a5a0dbb814af92458539fb4"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x8868e3138e9a7b74af6d7ddce71de35cc60c6073",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "LQTY",
+      "decimals": 18,
+      "address": "0xfb9e5d956d889d91a82737b9bfcdac1dce3e1449"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xdc2167f4a5dec5401eceff1cb55c3573a13f24bd",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "GMX",
+      "decimals": 18,
+      "address": "0xfc5a1a6eb076a2c7ad06ed22c90d7e710e35ad0a"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x97b192198d164c2a1834295e302b713bc32c8f1d",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "USDT",
+      "decimals": 6,
+      "address": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0xedd75e216f4ff54229d4820528975d7b93854acb",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "MIM",
+      "decimals": 18,
+      "address": "0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a"
+    }
+  },
+  {
+    "chain": "arbitrum",
+    "protocol": "camelot",
+    "type": "univ2",
+    "factory": "0x6eccab422d763ac031210895c81787e87b43a652",
+    "address": "0x84652bb2539513baf36e225c930fdd8eaa63ce27",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "arbitrum",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+    },
+    "token1": {
+      "chain": "arbitrum",
+      "symbol": "USDC.E",
+      "decimals": 6,
+      "address": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+    }
+  }
+]

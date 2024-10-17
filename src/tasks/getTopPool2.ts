@@ -17,10 +17,12 @@ import { AddressZero } from '../configs/constants';
 const dataPath = './src/configs/data/pool2';
 
 const protocolConfigs: Array<UniswapProtocolConfig> = [
-  ProtocolConfigs.uniswap,
+  // ProtocolConfigs.uniswap,
   // ProtocolConfigs.sushi,
-  ProtocolConfigs.spooky,
-  // ProtocolConfigs.pancake,
+  // ProtocolConfigs.spooky,
+  ProtocolConfigs.pancake,
+  // ProtocolConfigs.katana,
+  // ProtocolConfigs.camelot,
 ];
 
 async function getV2Pools(
@@ -32,13 +34,17 @@ async function getV2Pools(
   // address => Pool2
   const pools: { [key: string]: Pool2 } = {};
 
-  if (dexConfig.wrappedNative) {
+  const baseTokens: Array<string> = TokenDexBase[dexConfig.chain]
+    ? TokenDexBase[dexConfig.chain]
+    : [dexConfig.wrappedNative];
+
+  for (const baseTokenAddress of baseTokens) {
     const getPairCalls: Array<ContractCall> = tokens.map((token) => {
       return {
         abi: UniswapV2FactoryAbi,
         target: dexConfig.factory,
         method: 'getPair',
-        params: [dexConfig.wrappedNative, token.address],
+        params: [baseTokenAddress, token.address],
       };
     });
     const getPairResults: Array<any> = await blockchain.multicall({
@@ -108,8 +114,8 @@ async function getV3Pools(
   // address => Pool2
   const pools: { [key: string]: Pool2 } = {};
 
-  // 0.01%, 0.05%, 0.3%, 1%
-  const fees = [100, 500, 3000, 10000];
+  // 0.01%, 0.05%, 0.25%, 0.3%, 1%
+  const fees = [100, 500, 2500, 3000, 10000];
 
   for (const baseTokenAddress of TokenDexBase[dexConfig.chain]) {
     for (const feeRate of fees) {
@@ -187,7 +193,7 @@ async function getV3Pools(
     protocolPools[protocolConfig.protocol] = {};
 
     for (const dexConfig of protocolConfig.dexes) {
-      if (dexConfig.wrappedNative && TokenList[dexConfig.chain]) {
+      if (TokenList[dexConfig.chain]) {
         console.log(
           '... getting pools',
           protocolConfig.protocol,

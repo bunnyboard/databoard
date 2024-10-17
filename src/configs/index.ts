@@ -67,6 +67,8 @@ import { BobNativeBridgeConfigs } from './protocols/bob';
 import { RedstoneNativeBridgeConfigs } from './protocols/redstone';
 import { ArbitrumNativeBridgeConfigs } from './protocols/arbitrum';
 import { ScrollNativeBridgeConfigs } from './protocols/scroll';
+import { KatanaConfigs } from './protocols/katana';
+import { CamelotConfigs } from './protocols/camelot';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -151,4 +153,6 @@ export const ProtocolConfigs = {
   bobNativeBridge: BobNativeBridgeConfigs,
   redstoneNativeBridge: RedstoneNativeBridgeConfigs,
   scrollNativeBridge: ScrollNativeBridgeConfigs,
+  katana: KatanaConfigs,
+  camelot: CamelotConfigs,
 };

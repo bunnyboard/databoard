@@ -109,10 +109,13 @@ const tokenlists = [
   'https://tokens.coingecko.com/uniswap/all.json',
   'https://tokens.coingecko.com/linea/all.json',
 
+  // camelot
+  'https://token-list.camelot.exchange/tokens.json',
+  'https://api.camelot.exchange/v2/tokens?chainId=42161',
+
   // others
   'https://wispy-bird-88a7.uniswap.workers.dev/?url=http://tokenlist.zerion.eth.link',
   'https://raw.githubusercontent.com/ethereum-optimism/ethereum-optimism.github.io/master/optimism.tokenlist.json',
-  'https://api.camelot.exchange/v2/tokens?chainId=42161',
 ];
 
 function getChainName(chainId) {

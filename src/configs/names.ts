@@ -170,4 +170,7 @@ export const ProtocolNames = {
   stakewise: 'stakewise',
   dinero: 'dinero',
   savax: 'savax', // benqi liquid staking AVAX
+  camelot: 'camelot',
+  joelend: 'joelend', // https://v1.lfj.gg/lend#/
+  joe: 'joe', // https://lfj.gg/
 };

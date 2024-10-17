@@ -5015,6 +5015,12 @@
     "decimals": 18,
     "address": "0x12e34cdf6a031a10fe241864c32fb03a4fdad739"
   },
+  "0x12e3a20f62f8df9133130e5a6513d0d29fe78496": {
+    "chain": "bnbchain",
+    "symbol": "DNGR",
+    "decimals": 18,
+    "address": "0x12e3a20f62f8df9133130e5a6513d0d29fe78496"
+  },
   "0x12ef97ebe8a51bb7cff3e1799c8f7936db9d13d3": {
     "chain": "bnbchain",
     "symbol": "OKY",
@@ -60826,6 +60832,12 @@
     "symbol": "DK",
     "decimals": 18,
     "address": "0xeaf0acd7fe39f2ea5ac52b0a8c20d3878082cc36"
+  },
+  "0xeafa30694c1ffc801b8f484e4912d161ffdcf840": {
+    "chain": "bnbchain",
+    "symbol": "DA",
+    "decimals": 18,
+    "address": "0xeafa30694c1ffc801b8f484e4912d161ffdcf840"
   },
   "0xeb05ac86959725f9e7284cf67b052ba82aeb446e": {
     "chain": "bnbchain",

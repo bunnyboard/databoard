@@ -22,6 +22,7 @@ import MethAdapter from './meth/meth';
 import MoonwellAdapter from './moonwell/moonwell';
 import MorphoAdapter from './morpho/morpho';
 import OptimismNativeBridgeAdapter from './optimism/nativeBridge';
+import PancakeAdapter from './pancake/pancake';
 import RocketpoolAdapter from './rocketpool/rocketpool';
 import ScrollNativeBridgeAdapter from './scroll/nativeBridge';
 import SpookyAdapter from './spooky/spooky';
@@ -94,7 +95,7 @@ export function getProtocolAdapters(
     // stakestone: new StakeStoneAdapter(services, storages, ProtocolConfigs.stakestone),
     across: new AcrossAdapter(services, storages, ProtocolConfigs.across),
     layerbank: new LayerbankAdapter(services, storages, ProtocolConfigs.layerbank),
-    // pancake: new PancakeAdapter(services, storages, ProtocolConfigs.pancake),
+    pancake: new PancakeAdapter(services, storages, ProtocolConfigs.pancake),
     // savax: new BenqiStakingAvaxAdapter(services, storages, ProtocolConfigs.savax),
     circlecctp: new CircleCctpAdapter(services, storages, ProtocolConfigs.circlecctp),
     synapse: new SynapseAdapter(services, storages, ProtocolConfigs.synapse),
@@ -108,5 +109,7 @@ export function getProtocolAdapters(
     bobNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.bobNativeBridge),
     redstoneNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.redstoneNativeBridge),
     scrollNativeBridge: new ScrollNativeBridgeAdapter(services, storages, ProtocolConfigs.scrollNativeBridge),
+    katana: new UniswapAdapter(services, storages, ProtocolConfigs.katana),
+    camelot: new UniswapAdapter(services, storages, ProtocolConfigs.camelot),
   };
 }

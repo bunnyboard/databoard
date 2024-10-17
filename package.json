@@ -1,5 +1,5 @@
 {
-  "name": "@bunnyboard/application-board",
+  "name": "@bunnyboard/databoard",
   "version": "1.0.0",
   "description": "DeFi data collecting services",
   "license": "MIT",

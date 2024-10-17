@@ -643,9 +643,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bunnyboard/application-board@workspace:.":
+"@bunnyboard/databoard@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@bunnyboard/application-board@workspace:."
+  resolution: "@bunnyboard/databoard@workspace:."
   dependencies:
     "@biomejs/biome": "npm:^1.8.3"
     "@types/node": "npm:^20.11.8"

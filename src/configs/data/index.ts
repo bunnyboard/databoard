@@ -53,6 +53,9 @@ export const TokenBookDexBase = {
   ],
   optimism: [
     '0x4200000000000000000000000000000000000006', // WETH
+    '0x912ce59144191c1204e64559fe8253a0e49e6548', // ARB
+    '0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9', // USDT
+    '0xff970a61a04b1ca14834a43f5de4533ebddb5cc8', // USDC
   ],
   avalanche: [
     '0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7', // WAVAX
@@ -65,12 +68,17 @@ export const TokenBookDexBase = {
   ],
   bnbchain: [
     '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c', // WBNB
+    '0x55d398326f99059ff775485246999027b3197955', // USDT
+    '0xe9e7cea3dedca5984780bafc599bd69add087d56', // BUSD
+    // '0x2170ed0880ac9a755fd29b2688956bd959f933f8', // ETH
   ],
   cronos: [
     '0x5c7f8a570d578ed84e63fdfa7b1ee72deae1ae23', // WCRO
   ],
   ronin: [
     '0xe514d9deb7966c8be0ca922de8a064264ea6bcd4', // WRON
+    '0xc99a6a985ed2cac1ef41640596c5a5f9f4e19ef5', // WETH
+    '0x0b7007c13325c48911f73a2dad5fa5dcbf808adc', // USDC
   ],
   gnosis: [
     '0xe91d153e0b41518a2ce8dd3d7944fa863463a97d', // WXDAI

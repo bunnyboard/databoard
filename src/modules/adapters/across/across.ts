@@ -160,7 +160,7 @@ export default class AcrossAdapter extends ProtocolAdapter {
               }
             }
 
-            const amountRaw = event.args.inputAmount ? event.args.inputAmount : event.args.amount;
+            const amountRaw = event.args.inputAmount !== undefined ? event.args.inputAmount : event.args.amount;
             const amountUsd = formatBigNumberToNumber(amountRaw.toString(), inputToken.decimals) * inputTokenPrice;
 
             let totalFees = 0;

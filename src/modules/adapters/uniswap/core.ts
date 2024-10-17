@@ -22,7 +22,7 @@ interface Pool2WithPrices extends Pool2 {
 const callSize = 100;
 
 const queryBlockRanges: any = {
-  arbitrum: 1000,
+  arbitrum: 2000,
 };
 
 export default class UniswapCore extends ProtocolAdapter {
@@ -142,6 +142,8 @@ export default class UniswapCore extends ProtocolAdapter {
         pools: `${startIndex + callSize > options.pools.length ? options.pools.length : startIndex + callSize}/${options.pools.length}`,
       });
     }
+
+    console.log(result);
 
     // we get contract logs and process swap events
     const client = this.services.blockchain.evm.getPublicClient(options.dexConfig.chain);

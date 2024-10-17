@@ -1,0 +1,302 @@
+[
+  {
+    "chain": "ronin",
+    "protocol": "katana",
+    "type": "univ2",
+    "factory": "0xb255d6a720bb7c39fee173ce22113397119cb930",
+    "address": "0x4f7687affc10857fccd0938ecda0947de7ad3812",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "ronin",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0x0b7007c13325c48911f73a2dad5fa5dcbf808adc"
+    },
+    "token1": {
+      "chain": "ronin",
+      "symbol": "WRON",
+      "decimals": 18,
+      "address": "0xe514d9deb7966c8be0ca922de8a064264ea6bcd4"
+    }
+  },
+  {
+    "chain": "ronin",
+    "protocol": "katana",
+    "type": "univ2",
+    "factory": "0xb255d6a720bb7c39fee173ce22113397119cb930",
+    "address": "0xc022f50b5bc794aa2466889c042d4c51a853c13a",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "ronin",
+      "symbol": "BANANA",
+      "decimals": 18,
+      "address": "0x1a89ecd466a23e98f07111b0510a2d6c1cd5e400"
+    },
+    "token1": {
+      "chain": "ronin",
+      "symbol": "WRON",
+      "decimals": 18,
+      "address": "0xe514d9deb7966c8be0ca922de8a064264ea6bcd4"
+    }
+  },
+  {
+    "chain": "ronin",
+    "protocol": "katana",
+    "type": "univ2",
+    "factory": "0xb255d6a720bb7c39fee173ce22113397119cb930",
+    "address": "0x363475ce45aef7ce55850d51872639464f993dd4",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "ronin",
+      "symbol": "BERRY",
+      "decimals": 18,
+      "address": "0x1b918543b518e34902e1e8dd76052bee43c762ff"
+    },
+    "token1": {
+      "chain": "ronin",
+      "symbol": "WRON",
+      "decimals": 18,
+      "address": "0xe514d9deb7966c8be0ca922de8a064264ea6bcd4"
+    }
+  },
+  {
+    "chain": "ronin",
+    "protocol": "katana",
+    "type": "univ2",
+    "factory": "0xb255d6a720bb7c39fee173ce22113397119cb930",
+    "address": "0x6ead2a36fdc4a538c0c51a4380fa4d19de790a72",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "ronin",
+      "symbol": "YGG",
+      "decimals": 18,
+      "address": "0x1c306872bc82525d72bf3562e8f0aa3f8f26e857"
+    },
+    "token1": {
+      "chain": "ronin",
+      "symbol": "WRON",
+      "decimals": 18,
+      "address": "0xe514d9deb7966c8be0ca922de8a064264ea6bcd4"
+    }
+  },
+  {
+    "chain": "ronin",
+    "protocol": "katana",
+    "type": "univ2",
+    "factory": "0xb255d6a720bb7c39fee173ce22113397119cb930",
+    "address": "0x2adedce2a7e03abf24a7e7eedddd0c0ea52d23f5",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "ronin",
+      "symbol": "PHPC",
+      "decimals": 6,
+      "address": "0x63c6e9f027947be84d390cfa7b2332d13b529353"
+    },
+    "token1": {
+      "chain": "ronin",
+      "symbol": "WRON",
+      "decimals": 18,
+      "address": "0xe514d9deb7966c8be0ca922de8a064264ea6bcd4"
+    }
+  },
+  {
+    "chain": "ronin",
+    "protocol": "katana",
+    "type": "univ2",
+    "factory": "0xb255d6a720bb7c39fee173ce22113397119cb930",
+    "address": "0xa42f1fe5efb609137c89126f9e46cad30c469e01",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "ronin",
+      "symbol": "APRS",
+      "decimals": 18,
+      "address": "0x7894b3088d069e70895effa4e8f7d2c243fd04c1"
+    },
+    "token1": {
+      "chain": "ronin",
+      "symbol": "WRON",
+      "decimals": 18,
+      "address": "0xe514d9deb7966c8be0ca922de8a064264ea6bcd4"
+    }
+  },
+  {
+    "chain": "ronin",
+    "protocol": "katana",
+    "type": "univ2",
+    "factory": "0xb255d6a720bb7c39fee173ce22113397119cb930",
+    "address": "0xb30b54b9a36188d33eeb34b29eaa38d12511e997",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "ronin",
+      "symbol": "PIXEL",
+      "decimals": 18,
+      "address": "0x7eae20d11ef8c779433eb24503def900b9d28ad7"
+    },
+    "token1": {
+      "chain": "ronin",
+      "symbol": "WRON",
+      "decimals": 18,
+      "address": "0xe514d9deb7966c8be0ca922de8a064264ea6bcd4"
+    }
+  },
+  {
+    "chain": "ronin",
+    "protocol": "katana",
+    "type": "univ2",
+    "factory": "0xb255d6a720bb7c39fee173ce22113397119cb930",
+    "address": "0x32d1dbb6a4275133cc49f1c61653be3998ada4ff",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "ronin",
+      "symbol": "AXS",
+      "decimals": 18,
+      "address": "0x97a9107c1793bc407d6f527b77e7fff4d812bece"
+    },
+    "token1": {
+      "chain": "ronin",
+      "symbol": "WRON",
+      "decimals": 18,
+      "address": "0xe514d9deb7966c8be0ca922de8a064264ea6bcd4"
+    }
+  },
+  {
+    "chain": "ronin",
+    "protocol": "katana",
+    "type": "univ2",
+    "factory": "0xb255d6a720bb7c39fee173ce22113397119cb930",
+    "address": "0x8f1c5eda143fa3d1bea8b4e92f33562014d30e0d",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "ronin",
+      "symbol": "SLP",
+      "decimals": 0,
+      "address": "0xa8754b9fa15fc18bb59458815510e40a12cd2014"
+    },
+    "token1": {
+      "chain": "ronin",
+      "symbol": "WRON",
+      "decimals": 18,
+      "address": "0xe514d9deb7966c8be0ca922de8a064264ea6bcd4"
+    }
+  },
+  {
+    "chain": "ronin",
+    "protocol": "katana",
+    "type": "univ2",
+    "factory": "0xb255d6a720bb7c39fee173ce22113397119cb930",
+    "address": "0x306a28279d04a47468ed83d55088d0dcd1369294",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "ronin",
+      "symbol": "SLP",
+      "decimals": 0,
+      "address": "0xa8754b9fa15fc18bb59458815510e40a12cd2014"
+    },
+    "token1": {
+      "chain": "ronin",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0xc99a6a985ed2cac1ef41640596c5a5f9f4e19ef5"
+    }
+  },
+  {
+    "chain": "ronin",
+    "protocol": "katana",
+    "type": "univ2",
+    "factory": "0xb255d6a720bb7c39fee173ce22113397119cb930",
+    "address": "0xa7964991f339668107e2b6a6f6b8e8b74aa9d017",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "ronin",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0x0b7007c13325c48911f73a2dad5fa5dcbf808adc"
+    },
+    "token1": {
+      "chain": "ronin",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0xc99a6a985ed2cac1ef41640596c5a5f9f4e19ef5"
+    }
+  },
+  {
+    "chain": "ronin",
+    "protocol": "katana",
+    "type": "univ2",
+    "factory": "0xb255d6a720bb7c39fee173ce22113397119cb930",
+    "address": "0x572bca391432053cded92926d429e02a079c914e",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "ronin",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0x0b7007c13325c48911f73a2dad5fa5dcbf808adc"
+    },
+    "token1": {
+      "chain": "ronin",
+      "symbol": "AXS",
+      "decimals": 18,
+      "address": "0x97a9107c1793bc407d6f527b77e7fff4d812bece"
+    }
+  },
+  {
+    "chain": "ronin",
+    "protocol": "katana",
+    "type": "univ2",
+    "factory": "0xb255d6a720bb7c39fee173ce22113397119cb930",
+    "address": "0xc717ae6924a822f50eb9780fa279fdc7ced07771",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "ronin",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0x0b7007c13325c48911f73a2dad5fa5dcbf808adc"
+    },
+    "token1": {
+      "chain": "ronin",
+      "symbol": "PIXEL",
+      "decimals": 18,
+      "address": "0x7eae20d11ef8c779433eb24503def900b9d28ad7"
+    }
+  },
+  {
+    "chain": "ronin",
+    "protocol": "katana",
+    "type": "univ2",
+    "factory": "0xb255d6a720bb7c39fee173ce22113397119cb930",
+    "address": "0x2ecb08f87f075b5769fe543d0e52e40140575ea7",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "ronin",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0xc99a6a985ed2cac1ef41640596c5a5f9f4e19ef5"
+    },
+    "token1": {
+      "chain": "ronin",
+      "symbol": "WRON",
+      "decimals": 18,
+      "address": "0xe514d9deb7966c8be0ca922de8a064264ea6bcd4"
+    }
+  },
+  {
+    "chain": "ronin",
+    "protocol": "katana",
+    "type": "univ2",
+    "factory": "0xb255d6a720bb7c39fee173ce22113397119cb930",
+    "address": "0x7674009e2f65c69fe8aef38a37672be7c2e61580",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "ronin",
+      "symbol": "WRON",
+      "decimals": 18,
+      "address": "0xe514d9deb7966c8be0ca922de8a064264ea6bcd4"
+    },
+    "token1": {
+      "chain": "ronin",
+      "symbol": "ANIMA",
+      "decimals": 18,
+      "address": "0xf80132fc0a86add011bffce3aedd60a86e3d704d"
+    }
+  }
+]
