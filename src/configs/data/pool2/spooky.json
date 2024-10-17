@@ -1,0 +1,6502 @@
+[
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xcb10ef295021a7af61ac78375026a8e5af588db9",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "IB",
+      "decimals": 18,
+      "address": "0x00a35fd824c717879bf370e70ac6868b95870dfb"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x36519ac82d3006e993e98d97cc90f2b8f9691f84",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "SFI",
+      "decimals": 18,
+      "address": "0x01c3d9cbcf40482ba0d5206f63e3f04ef9e134d9"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x855b2eeda3fffeabf03b6dbf2609904da2247cc8",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "MMY",
+      "decimals": 18,
+      "address": "0x01e77288b38b416f972428d562454fb329350bac"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xcbefb328b4ba3826a15e3801a22fa5a6fda4bb23",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "GRAIN",
+      "decimals": 18,
+      "address": "0x02838746d9e1413e07ee064fcbada57055417f21"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x2b4c76d0dc16be1c31d4c1dc53bf9b45987fc75c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0x04068da6c83afcfa0e13ba15a6696662335d5b75"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x5965e53aa80a0bcf1cd6dbdd72e6a9b2aa047410",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "FUSDT",
+      "decimals": 6,
+      "address": "0x049d68029688eabf473097a2fc38ef61633a3c7a"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x849cad6ec0c7511b609fb21c4a955b1512f774ac",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "fSONIC",
+      "decimals": 18,
+      "address": "0x05e31a691405d06708a355c029599c12d5da8b28"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xef0ca9e9eee60b067afbbd37cfdb7efec327747c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "fBAND",
+      "decimals": 18,
+      "address": "0x078eef5a2fb533e1a4d487ef64b27df113d12c32"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x626a658735455387484561b0b078dac260dbc3a2",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "GDAI",
+      "decimals": 18,
+      "address": "0x07e6332dd090d287d3489245038daf987955dcfb"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x3cceb477fcb6cde90180983642486e68148d7b27",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "ZOO",
+      "decimals": 0,
+      "address": "0x09e145a1d53c0045f41aeef25d8ff982ae74dd56"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x1cd5bfb2585fc1b88d413026cefc1bbb71eaafaa",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "SPEEDY",
+      "decimals": 9,
+      "address": "0x0ce12ae7c899ebf2bcda7aa570c5af98b6688c95"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x16b6deee778bbcf427e40ffa3c14c4840be10e6a",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "HND",
+      "decimals": 18,
+      "address": "0x10010078a54396f62c96df8532dc2b4847d47ed3"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x9ce8e9b090e8af873e793e0b78c484076f8ceece",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "PFTM",
+      "decimals": 18,
+      "address": "0x112df7e3b4b7ab424f07319d4e92f41e6608c48b"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x8c24602e232b13703afcda2fb661228c9005ce8c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "REAPER",
+      "decimals": 18,
+      "address": "0x117db78176c8ede4f12fcd29d85cd96b91a4cbbb"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xd12e3eb20a33b61759ce1f53f0bc10c8edcecfcd",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "PAR",
+      "decimals": 18,
+      "address": "0x13082681e8ce9bd0af505912d306403592490fc7"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x1a88e447c7468b28de490b25a076a4ffc0c68b16",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "MST",
+      "decimals": 18,
+      "address": "0x152888854378201e173490956085c711f1ded565"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x1b952e817af5982948fe732094de3fbb9411161c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "DEVIL",
+      "decimals": 18,
+      "address": "0x174c7106aeecdc11389f7dd21342f05f46ccb40f"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xa196c7754f4ec79de55bb5db82187bbe82275f7f",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "axlUSDC",
+      "decimals": 6,
+      "address": "0x1b6382dbdea11d97f24495c9a90b7c88469134a4"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xf63327ad0c5147580a73c2350d491a74ad17076c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "MIMO",
+      "decimals": 18,
+      "address": "0x1d1764f04de29da6b90ffbef372d1a45596c4855"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xeddb9fcef6f803d0591fa55e487c52ad309b408a",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "RIP",
+      "decimals": 9,
+      "address": "0x1d43697d67cb5d0436cc38d583ca473a1bfebc7a"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xb471ac6ef617e952b84c6a9ff5de65a9da96c93b",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "CRV",
+      "decimals": 18,
+      "address": "0x1e4f97b9f9f913c46f1632781732927b9019c68b"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x94e03b50aee41350239ab70fbf68e5ee4bfefa4f",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "BBADGER",
+      "decimals": 18,
+      "address": "0x1f7216fdb338247512ec99715587bb97bbf96eae"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x084f5041f5d8d202ad958230a7e56bb32dfd38bb",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "OATH",
+      "decimals": 18,
+      "address": "0x21ada0d2ac28c3a5fa3cd2ee30882da8812279b6"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x6d36ef9659597cac5daa2d207bcfb798c82e77ea",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "fGOLD",
+      "decimals": 18,
+      "address": "0x2202c52c9076a49400aaccf159e1956269eaa673"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x69b482b777dbdbcbaccc76d6656bb07157542380",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "CHARM",
+      "decimals": 18,
+      "address": "0x248cb87dda803028dfead98101c9465a2fbda0d4"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x751a7a1abb7a8538ffcd17e6451453ed550a87f0",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "DSLA",
+      "decimals": 18,
+      "address": "0x25a528af62e56512a19ce8c3cab427807c28cc19"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x27011d13e1c31281276bd5bd1f3be377a54444fc",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "GETH",
+      "decimals": 18,
+      "address": "0x25c130b2624cf12a4ea30143ef50c5d68cefa22f"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x5d5f53c7de392a3f1e46c7b6fa3fbfb4f36d5a12",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "ONX",
+      "decimals": 18,
+      "address": "0x27749e79ad796c4251e0a0564aef45235493a0b6"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x53af76263364c33f7e0d4771a91cf11bd9fc60c4",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "fBNB",
+      "decimals": 18,
+      "address": "0x27f26f00e1605903645bbabc0a73e35027dccd45"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x90469acbc4b6d877873cd4f1cca54fde8075a998",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0x28a92dde19d9989f39a49905d7c9c2fac7799bdf"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xbf4d61d4cec3a9dff7452d8987e1cc2943e2eb4c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "YFI",
+      "decimals": 18,
+      "address": "0x29b0da86e484e1c0029b56e817912d778ac0ec69"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x5343ec0f3aed4882d437544f4a75f21311ac5b92",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "KP3R",
+      "decimals": 18,
+      "address": "0x2a5062d22adcfaafbd5c541d4da82e4b450d4212"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x9ee4c7cd690127914673466ff2778630d7a78236",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "ITP",
+      "decimals": 18,
+      "address": "0x2b1d36f5b61addaf7da7ebbd11b35fd8cfb0de31"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xbd570109f8c42bdb273a9fef55fe3063f0cf1ca4",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "fKRW",
+      "decimals": 18,
+      "address": "0x2b9c073ec670b70f417bbaf3bbb052aa563a0a23"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x86c10186a0c345b8fd4656c837ff68ef6377733b",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "CEL",
+      "decimals": 4,
+      "address": "0x2c78f1b70ccf63cdee49f9233e9faa99d43aa07e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xe3176dbdd50d840d5446261bfa70bd7728d362ae",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "STG",
+      "decimals": 18,
+      "address": "0x2f6f07cdcf3588944bf4c42ac74ff24bf56e7590"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x87ead1150e108a2d2417ba866f803c05af859d90",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0x2f733095b80a04b38b0d10cc884524a3d09b836a"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x1908f9d8fc6eca37ec82992224bb4c9f6b5e45fd",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "PREMIA",
+      "decimals": 18,
+      "address": "0x3028b4395f98777123c7da327010c40f3c7cc4ef"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x49ec56cc2adaf19c1688d3131304dbc3df5e1ccd",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "DOLA",
+      "decimals": 18,
+      "address": "0x3129662808bec728a27ab6a6b9afd3cbaca8a43c"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x5d898d918ce4d7c05f9b4e8190e8e889fbee4aa7",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "POOCH",
+      "decimals": 18,
+      "address": "0x31a47b49b4dbdc54d403b8c4880ac9bb1a9ebae8"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xfdb9ab8b9513ad9e419cf19530fee49d412c3ee3",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WBTC",
+      "decimals": 8,
+      "address": "0x321162cd933e2be498cd2267a90534a804051b11"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x6ab8f048e193a1649430d6dd7d9a3ceb935e7f3c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "LIQR",
+      "decimals": 18,
+      "address": "0x33333ee26a7d02e41c33828b42fb1e0889143477"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x68c8b96815ca665cc46feffccff88d79c9813bf2",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "GFTM",
+      "decimals": 18,
+      "address": "0x39b3bd37208cbade74d0fcbdbb12d606295b430a"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xc5a18c888d7d5e8c3442b5da2e4d68e2ac7fca9f",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "CEKKE",
+      "decimals": 18,
+      "address": "0x3bc34d8ace32d768a3f76e17aaef2b1d8f261e1d"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x6bb685358bc3991d9279562710f3a44b7e5f2d9b",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "YOSHI",
+      "decimals": 18,
+      "address": "0x3dc57b391262e3aae37a08d91241f9ba9d58b570"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xe5b3f9fc135fdaf97903e6b2f05af8fa5c092b59",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "EQUAL",
+      "decimals": 18,
+      "address": "0x3fd3a0c85b70754efc07ac9ac0cbbdce664865a6"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x7051c6f0c1f1437498505521a3bd949654923fe1",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WPOL",
+      "decimals": 18,
+      "address": "0x40df1ae6074c35047bff66675488aa2f9f6384f3"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xd8474978deb2490453950460631020d1a160d3b7",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SD",
+      "decimals": 18,
+      "address": "0x412a13c109ac30f0db80ad3bd1defd5d0a6c0ac6"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x50d13bfeb3ef0dd7d20a84ba45ef3dde3c057a4e",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "ORBS",
+      "decimals": 18,
+      "address": "0x43a8cab15d06d3a5fe5854d714c37e7e9246f170"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x7e7bb80cb41e925f754e9e8bbba4dd47627b71d6",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SGOAT",
+      "decimals": 18,
+      "address": "0x43f9a13675e352154f745d6402e853fecc388aa5"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x615239b6a0986096c0e9cc265db3e182d58158d9",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "XY",
+      "decimals": 18,
+      "address": "0x444444443b0fcb2733b93f23c910580fba52fffa"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x1bb901fcf1c989853eb643ddb71021f31db9a212",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "axlWBTC",
+      "decimals": 8,
+      "address": "0x448d59b4302ab5d2dadf9611bed9457491926c8e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x137a449569b75bdd42375a8dbfc0965e02244a9e",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SOL",
+      "decimals": 18,
+      "address": "0x44f7237df00e386af8e79b817d05ed9f6fe0f296"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x78f82c16992932efdd18d93f889141ccf326dbc2",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SPELL",
+      "decimals": 18,
+      "address": "0x468003b688943977e6130f4f68f23aad939a1040"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x91b39d5584e2a7dc829f696235742cc293f2e8cf",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BAND",
+      "decimals": 18,
+      "address": "0x46e7628e8b4350b2716ab470ee0ba1fa9e76c6c5"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x7af19103e0ecf20acd414d365b1d966c58fe3799",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "TRAVA",
+      "decimals": 18,
+      "address": "0x477a9d5df9beda06f6b021136a2efe7be242fcc9"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x8a8fdfc324884cf4a3f7dd25c26c8fdfa72bd576",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "THC",
+      "decimals": 18,
+      "address": "0x479673391b3818f5e3ed2fa69a58e13d685becf6"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x19dce7bde30cd966ff123d272e5f688e0b4b8b78",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "FANG",
+      "decimals": 18,
+      "address": "0x49894fcc07233957c35462cfc3418ef0cc26129f"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xfb53a7ca9d93040240479379dc7b4b74eb819179",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BELUGA",
+      "decimals": 18,
+      "address": "0x4a13a2cf881f5378def61e430139ed26d843df9a"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x94b770b464f7aecf5c145b431d3a49fbde144099",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "LQDR",
+      "decimals": 18,
+      "address": "0x4b6b3d425f82248996d77ecc3f3df1e500aac1db"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x4733bc45ef91cf7ccecaeedb794727075fb209f2",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "TSHARE",
+      "decimals": 18,
+      "address": "0x4cdf39285d7ca8eb3f090fda0c069ba5f4145b37"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x1c328d18d873909d401bf2015b052945cdafa059",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "PYRO",
+      "decimals": 18,
+      "address": "0x4edc4337518b964d52e18af5381db2b018d3ba4e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x0a96b04234481961a5a02dd57059b323e0d4e45d",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "KALM",
+      "decimals": 18,
+      "address": "0x4f851750a3e6f80f1e1f89c67b56960bfc29a934"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x5b58329dacce2af7779b01fd4ea6d0522706fa94",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "JEFE",
+      "decimals": 9,
+      "address": "0x5079cce47d275e85c9f13afb656d51e3f9d41181"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x5df809e410d9cc577f0d01b4e623c567c7ad56c1",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WAVAX",
+      "decimals": 18,
+      "address": "0x511d35c52a3c244e7b8bd92c0c297755fbd89212"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x9282020ce3163f075b55900e4f103c9cebb404ba",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "VEMP",
+      "decimals": 18,
+      "address": "0x526f1dc408cfe7fc5330ab9f1e78474ceff2a5dd"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x1fecc69800fd1c8cfffc66777c71a77d59a2587b",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SPA",
+      "decimals": 9,
+      "address": "0x5602df4a94eb6c680190accfa2a475621e0ddbdc"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x06d173628be105fe81f1c82c9979ba79ebcafcb7",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SNX",
+      "decimals": 18,
+      "address": "0x56ee926bd8c72b2d5fa1af4d9e4cbb515a1e3adc"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x6132ce6aa7c4f25963bfb98bbd1c3d3f9c90a054",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "RING",
+      "decimals": 18,
+      "address": "0x582423c10c9e83387a96d00a69ba3d11ee47b7b5"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xd971a7f1d28c281edd797fdc69d65b19eb458d8c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "anyBSGG",
+      "decimals": 18,
+      "address": "0x5a33869045db8a6a16c9f351293501cfd92cf7ed"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x47fc3628a80a96f0b061eed5bd8dd25236141141",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "HEC",
+      "decimals": 9,
+      "address": "0x5c4fdfc5233f935f20d2adba572f770c2e377ab0"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x67deb4877b129fe324285e47c0c419e34649e250",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SPIRIT",
+      "decimals": 18,
+      "address": "0x5cc61a78f164885776aa610fb0fe1257df78e59b"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xe9ece32363575e67aed463d2fb4e77a8294b004c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "FTAILS",
+      "decimals": 18,
+      "address": "0x5cf90b977c86415a53ce3b7be13b26f6abddfee2"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xf20835616b8ff27ecfd7f245db43cbbc0d84a95c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "FEED",
+      "decimals": 18,
+      "address": "0x5d5530eb3147152fe78d5c4bfeede054c8d1442a"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xfac555103bd89b338f3e68f5c8cb54ca8b256cd7",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SPACE",
+      "decimals": 18,
+      "address": "0x5f7f94a1dd7b15594d17543beb8b30b111dd464c"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x30e00995cfb4d595bd6cc8538a593384fc9da03b",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BCAT",
+      "decimals": 18,
+      "address": "0x606ba50fa9fbad28d714d49a43b9028a84ad36ac"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xf59338eb50eb7ea21dc0229bf7d55a3ad636f260",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "MODA",
+      "decimals": 18,
+      "address": "0x6496994241804d7fe2b032901931e03bcd82301f"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xb77b223490e1f5951ec79a8d09db9eab2adcb934",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "CREAM",
+      "decimals": 18,
+      "address": "0x657a1861c15a3ded9af0b6799a195a249ebdcbc6"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xde1a99d2471470c33d9130c5dd485b0c99f3d0df",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "fETH",
+      "decimals": 18,
+      "address": "0x658b0c7613e890ee50b8c4bc6a3f41ef411208ad"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x86bdd99096d9f33dff776a6be7ecf48439421b87",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "TETU",
+      "decimals": 18,
+      "address": "0x65c9d9d080714cda7b5d58989dc27f897f165179"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xa7010b3ba9efb1af9fa8a30efe74c16a93891775",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WOO",
+      "decimals": 18,
+      "address": "0x6626c47c00f1d87902fc13eecfac3ed06d5e8d8a"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x82b7301c038b2e941f1ff1e1bfad8f0b70a858ba",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "GOGLZ",
+      "decimals": 18,
+      "address": "0x662b3d319e693aa578edd4bd8a5c9395bc49e9f4"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x710872dc9b11399d9d3c7a66785dbfb68a3d0620",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "ONI",
+      "decimals": 18,
+      "address": "0x667c856f1a624baefe89fc4909c8701296c86c98"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x206fbf163d501a71106642c5a424225fc30bae52",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "MPX",
+      "decimals": 18,
+      "address": "0x66eed5ff1701e6ed8470dc391f05e27b1d0657eb"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x09613618bdb19a8d9f4651ee6d3ad649ba70240c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x695921034f0387eac4e11620ee91b1b15a6a09fe"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xebf374bb21d83cf010cc7363918776adf6ff2bf6",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "AAVE",
+      "decimals": 18,
+      "address": "0x6a07a792ab2965c72a5b8088d3a069a7ac3a993b"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xfb7826c31dae2465fec6e5bf30d5a4a17a887bc4",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "CFI",
+      "decimals": 18,
+      "address": "0x6a545f9c64d8f7b957d8d2e6410b52095a9e6c29"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x2a651563c9d3af67ae0388a5c8f89b867038089e",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "TOMB",
+      "decimals": 18,
+      "address": "0x6c021ae822bea943b2e66552bde1d2696a53fbb7"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xc17f86591f100dd0f072c9c78b393e2da988575b",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "DKNIGHT",
+      "decimals": 18,
+      "address": "0x6cc0e0aedbbd3c35283e38668d959f6eb3034856"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xa5d62be79fa597ee4118e5a2b2fcac3891c2b679",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "EXC",
+      "decimals": 18,
+      "address": "0x6e99e0676a90b2a5a722c44109db22220382cc9f"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xb5512e3fa8304d33cdae4a40c21f1d3f70eba45a",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BEFTM",
+      "decimals": 18,
+      "address": "0x7381ed41f6de418dde5e84b55590422a57917886"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xf0702249f4d3a25cd3ded7859a165693685ab577",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x74b23882a30290451a17c44f4f05243b6b58c76d"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xcac3f89589871aa907ebade72190bb8117182e47",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BOMB",
+      "decimals": 18,
+      "address": "0x74ccbe53f77b08632ce0cb91d3a545bf6b8e0979"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xd0c08b48cc7a179e8220d9637e824c06715cab10",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "XTAROT",
+      "decimals": 18,
+      "address": "0x74d1d2a851e339b8cb953716445be7e8abdf92f4"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x41d88635029c4402bf9914782ae55c412f8f2142",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "TOR",
+      "decimals": 18,
+      "address": "0x74e23df9110aa9ea0b6ff2faee01e740ca1c642e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x1c94665fd3ecfa969feda7ed01e35522e6982022",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BADGER",
+      "decimals": 18,
+      "address": "0x753fbc5800a8c8e3fb6dc6415810d627a387dfc9"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xae88cd4835dcce220ebbb79471b3853207480883",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SOLID",
+      "decimals": 18,
+      "address": "0x777cf5ba9c291a1a8f57ff14836f6f9dc5c0f9dd"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xbdc7dfb7b88183e87f003ca6b5a2f81202343478",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "2OMB",
+      "decimals": 18,
+      "address": "0x7a6e4e3cc2ac9924605dca4ba31d1831c84b44ae"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x7f9c7d5a19cdd690701c9ca86cdb4e24465c51fc",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "nICE",
+      "decimals": 18,
+      "address": "0x7f620d7d0b3479b1655cefb1b0bc67fb0ef4e443"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x9a9dad12753cd8883ea827a6d8fd1f255829690e",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "fCHF",
+      "decimals": 18,
+      "address": "0x81740d647493a61329e1c574a11ee7577659fb14"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xad6071d7f4eeeb4a824b221a2b156b00b8912a35",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "ATRI",
+      "decimals": 0,
+      "address": "0x818ec0a7fe18ff94269904fced6ae3dae6d6dc0b"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x6f86e65b255c9111109d2d2325ca2dfc82456efc",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "MIM",
+      "decimals": 18,
+      "address": "0x82f0b8b456c1a451378467398982d4834b6829c1"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xec7178f4c41f346b2721907f5cf7628e388a7a58",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BOO",
+      "decimals": 18,
+      "address": "0x841fad6eae12c286d1fd18d1d525dffa75c7effe"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x656b3264695690322acbad95f994b51c5a8c8edf",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "UST",
+      "decimals": 6,
+      "address": "0x846e4d51d7e2043c1a87e0ab7490b93fb940357b"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x4ee115137ac73a3e5f99598564905465c101b11f",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BRUSH",
+      "decimals": 18,
+      "address": "0x85dec8c4b2680793661bca91a8f129607571863d"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x2bc44e80a8007066e59c93de3045548ba9412d12",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "MAGIK",
+      "decimals": 18,
+      "address": "0x87a5c9b60a3aaf1064006fe64285018e50e0d020"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x1ce91db29effae74158a2fe98eeed500542031b7",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "STA",
+      "decimals": 18,
+      "address": "0x89d5e71e275b4be094df9551627bcf4e3b24ce22"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x05bca2b3f3b2e16e704406d287e071fae7c4f115",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "FGHST",
+      "decimals": 18,
+      "address": "0x8b7007e1d02d8387b7b4bc8c6172598780ae59b2"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xe120ffbda0d14f3bb6d6053e90e63c572a66a428",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "DAI",
+      "decimals": 18,
+      "address": "0x8d11ec38a3eb5e956b052f67da8bdc9bef8abf3e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x1edb5acf57abcf95ce537812190aa2f8d26b053f",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BASED",
+      "decimals": 18,
+      "address": "0x8d7d3409881b51466b483b11ea1b8a03cded89ae"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xf10f0eeb144eb223dd8ae7d5dd7f3327e63a3c94",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "DMD",
+      "decimals": 18,
+      "address": "0x90e892fed501ae00596448aecf998c88816e5c0f"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x73a2aecc6dbf4ed74d56cce0fa4211547f1c5fe5",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WEVE",
+      "decimals": 18,
+      "address": "0x911da02c1232a3c3e1418b834a311921143b04d7"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x1461e0ec1036cf6b30defb07102480e7b9542675",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "GOHM",
+      "decimals": 18,
+      "address": "0x91fa20244fb509e8289ca630e5db3e9166233fdc"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x304adaa75de4fa1cac5cdb514164449f17cc0366",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BRIDGE",
+      "decimals": 18,
+      "address": "0x92868a5255c628da08f550a858a802f5351c5223"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x4d516bb51b2403b050a5f86a3ac03337cb490db5",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "GFUSDT",
+      "decimals": 6,
+      "address": "0x940f41f0ec9ba1a34cf001cc03347ac092f5f6b5"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x0bfe6f893a6bc443b575ddf361a30f39aa03e59c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WSHEC",
+      "decimals": 18,
+      "address": "0x94ccf60f700146bea8ef7832820800e2dfa92eda"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xe670c49e215506ad0fc7e758770a159fee911941",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "USDV",
+      "decimals": 18,
+      "address": "0x953e94caf91a1e32337d0548b9274f337920edfa"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x3684706b32648757bbf9c234b18689d1a225b857",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "KIRBY",
+      "decimals": 18,
+      "address": "0x97bdafe3830734acf12da25359674277fcc33729"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x7250ee43718be514bb45a9b631e963e7b4a23d7e",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "TUSD",
+      "decimals": 18,
+      "address": "0x9879abdea01a879644185341f7af7d8343556b7a"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x1289fa247904aa64341a804c519da03461e53de8",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "FTMO",
+      "decimals": 18,
+      "address": "0x9bd0611610a0f5133e4dd1bfdd71c5479ee77f37"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x297c8990134bf1ee08ae5d8805042fbac8781201",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "MULTI",
+      "decimals": 18,
+      "address": "0x9fb9a33956351cf4fa040f65a13b835a3c8764e3"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x5d5c6ee704ed633d9c971a2c29ff83b492eca17b",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "PROTO",
+      "decimals": 18,
+      "address": "0xa23c4e69e5eaf4500f2f9301717f12b578b948fb"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x7b4665ae5512751c8ad75f2fbd6d039f4e49099f",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "xBOO",
+      "decimals": 18,
+      "address": "0xa48d959ae2e88f1daa7d5f611e01908106de7598"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x77e06372eed9761f0f5b364eb17a675ba1dc97f1",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "MUTTSKI",
+      "decimals": 9,
+      "address": "0xa80058bdf71f4044942107e33a802752b3bfb4d0"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xa341d77315e5e130ad386e034b4c9714cb149f4a",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "PANIC",
+      "decimals": 18,
+      "address": "0xa882ceac81b22fc2bef8e1a82e823e3e9603310b"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xf1d412010eda1bbf09a2bcc938bc8d9ebbdc5889",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "OLIVE",
+      "decimals": 18,
+      "address": "0xa9937092c4e2b0277c16802cc8778d252854688a"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x67b766fb1a71c02a898024eb4e1a037b757d5365",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "0XMR",
+      "decimals": 18,
+      "address": "0xab41861399eb56896b24fbaabaa8bce45e4a626b"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x8ec0417a4c795074f076519afd4410484c9830ef",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "fUSD",
+      "decimals": 18,
+      "address": "0xad84341756bf337f5a0164515b1f6f993d194e1f"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xf66d2bf736c05723b62e833a5dd747e24855ff99",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "ALPACA",
+      "decimals": 18,
+      "address": "0xad996a45fd2373ed0b10efa4a8ecb9de445a4302"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xf84e313b36e86315af7a06ff26c8b20e9eb443c3",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SUSHI",
+      "decimals": 18,
+      "address": "0xae75a438b2e0cb8bb01ec1e1e376de11d44477cc"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x5dc7848bf215f1d99f2af3d2bf78fcdf238ee34b",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "COVER",
+      "decimals": 18,
+      "address": "0xb01e8419d842beebf1b70a7b5f7142abbaf7159d"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x89d9bc2f2d091cfbfc31e333d6dc555ddbc2fd29",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "LINK",
+      "decimals": 18,
+      "address": "0xb3654dc3d10ea7645f8319668e8f54d2574fbdc8"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xe0c204195f088e7d5e48d9a05d8444024471a4d0",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BLACKY",
+      "decimals": 18,
+      "address": "0xb5fd949436772e07cbbf35fb6524e79924c54cb3"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xfdad7fa904cc51e64027c97d8a5f013037c5a341",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "PILLS",
+      "decimals": 18,
+      "address": "0xb66b5d38e183de42f21e92abcaf3c712dd5d6286"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x449fedbacc22cd3d835d966c0fa00552fb6bd3f4",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "CONK",
+      "decimals": 18,
+      "address": "0xb715f8dce2f0e9b894c753711bd55ee3c04dca4e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xcc5c1d7a8f79790a2f68653cceb61838e54c7e29",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "ECO",
+      "decimals": 18,
+      "address": "0xb8a32897016c1b2ee0797090162eafe58f032795"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xaffa895bdf384e20a2c475d7681dfda4bad7959c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "sSPELL",
+      "decimals": 18,
+      "address": "0xbb29d2a58d880af8aa5859e30470134deaf84f2b"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x287915f4ad2dcecef9fe46f9f86ccbf89f81c676",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "LIF3",
+      "decimals": 18,
+      "address": "0xbf60e7414ef09026733c1e7de72e7393888c64da"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x8046161272400459ca70529c3c2b5332fdc1a0dc",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "OXD",
+      "decimals": 18,
+      "address": "0xc165d941481e68696f43ee6e99bfb2b23e0e3114"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xde62a6cdd8d5a3988495317cffac9f3fed299383",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "RISE",
+      "decimals": 18,
+      "address": "0xc17c30e98541188614df99239cabd40280810ca3"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x34447567f9cd9e524feddab8ee3989f27c42c0bd",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "LCD",
+      "decimals": 18,
+      "address": "0xc2a45fe7d40bcac8369371b08419ddafd3131b4a"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x8a3422fee10ee4bc35bb4dedd8533feacfbcdf27",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "FLIBERO",
+      "decimals": 18,
+      "address": "0xc3f069d7439baf6d4d6e9478d9cc77778e62d147"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x6398acbbab2561553a9e458ab67dcfbd58944e52",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "2SHARES",
+      "decimals": 18,
+      "address": "0xc54a1684fd1bef1f077a336e6be4bd9a3096a6ca"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x11d90ea9d16e1ee5879b299a819f6d618816d70f",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "TAROT",
+      "decimals": 18,
+      "address": "0xc5e2b037d30a390e62180970b3aa4e91868764cd"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xe8b72a866b8d59f5c13d2adef96e40a3ef5b3152",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "TREEB",
+      "decimals": 18,
+      "address": "0xc60d7067dfbc6f2caf30523a064f416a5af52963"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xd12c3578fb6a224d5fe2666841f601b50e3b42b8",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "FS",
+      "decimals": 18,
+      "address": "0xc758295cd1a564cdb020a78a681a838cf8e0627d"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xf779d683612390aa5e6fa74d94300007efd271df",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "LSHARE",
+      "decimals": 18,
+      "address": "0xcbe0ca46399af916784cadf5bcc3aed2052d6c45"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x6c85f5ad57863f0b87590c7405ed1de45d39f829",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "USDT",
+      "decimals": 6,
+      "address": "0xcc1b99ddac1a33c201a742a1851662e87bc7f22c"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x40f655ab941d9aa675e2f566ad70a55160214b04",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "fGBP",
+      "decimals": 18,
+      "address": "0xcde58e4b6c7b78b04da664edb0a9752cc5fedbd5"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x057f0d85e22b399d65732a318cff53a21cf6f45b",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WSTA",
+      "decimals": 18,
+      "address": "0xceebde49ec95e21f7ee63c5c6f98cab3519570de"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xa6ee3c630328d8d219d9b9f57491efd8e53dbc63",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "ANKRFTM",
+      "decimals": 18,
+      "address": "0xcfc785741dc0e98ad4c9f6394bb9d43cd1ef5179"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x7f2b4d61d5ce89c329e11897ca50a06cc66a84e8",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "axlUSDT",
+      "decimals": 6,
+      "address": "0xd226392c23fb3476274ed6759d4a478db3197d82"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x7036a7bd47c60fefe663f620900e68c252d83c6a",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SEX",
+      "decimals": 18,
+      "address": "0xd31fcd1f7ba190dbc75354046f6024a9b86014d7"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xc23d53f42e65b68d81d0cfcfc1e2368673fc8763",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BAY",
+      "decimals": 18,
+      "address": "0xd361474bb19c8b98870bb67f5759cdf277dee7f9"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x509abb64d7d60c4612352c32b96dbd2ef1cf5c6b",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "OK",
+      "decimals": 18,
+      "address": "0xd3ac016b1b8c80eeadde4d186a9138c9324e4189"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x671225b59761abe97df77f62b8dc89ee896ca8df",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "1ART",
+      "decimals": 18,
+      "address": "0xd3c325848d7c6e29b574cb0789998b2ff901f17e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x956de13ea0fa5b577e4097be837bf4ac80005820",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WBNB",
+      "decimals": 18,
+      "address": "0xd67de0e0a0fd7b15dc8348bb9be742f3c5850454"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xe67980fc955fecfda8a92bbbfbcc9f0c4be60a9a",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SFTMX",
+      "decimals": 18,
+      "address": "0xd7028092c830b5c8fce061af2e593413ebbc1fc1"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xc91a23047b4edeeb6b275ffb8ef3133bda00ddeb",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "FRAX",
+      "decimals": 18,
+      "address": "0xdc301622e621166bd8e82f2ca0a26c13ad0be355"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x345a11bbafa7dcc3f6c0d49fca802e29153a4fed",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WMEMO",
+      "decimals": 18,
+      "address": "0xddc0385169797937066bbd8ef409b5b3c0dfeb52"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x5c021d9cfad40aafc57786b409a9ce571de375b4",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "ANY",
+      "decimals": 18,
+      "address": "0xddcb3ffd12750b45d32e084887fdf1aabab34239"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x7f9e9dfdb0385a9b9e1f718968b05d6e73be7671",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "CERBY",
+      "decimals": 18,
+      "address": "0xdef1fac7bf08f173d286bbbdcbeeade695129840"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x30872e4fc4edbfd7a352bfc2463eb4fae9c09086",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SCREAM",
+      "decimals": 18,
+      "address": "0xe0654c8e6fd4d733349ac7e09f6f23da256bf475"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x80ffd1a8a2ee164714f41ffcf118a2ddc19708f9",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "fBTC",
+      "decimals": 18,
+      "address": "0xe1146b9ac456fcbb60644c36fd3f868a9072fc6e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xd7749b03088ca87ed30e94b6c5f951632b88d997",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "XRUNE",
+      "decimals": 18,
+      "address": "0xe1e6b01ae86ad82b1f1b4eb413b219ac32e17bf6"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x1406e49b5b0da255307fe25cc21c675d4ffc73e0",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WBAN",
+      "decimals": 18,
+      "address": "0xe20b9e246db5a0d21bf9209e4858bc9a3ff7a034"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x3c5c4377f4c47fa53fcf46aa751b2e661c19a6f1",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SOUL",
+      "decimals": 18,
+      "address": "0xe2fb177009ff39f52c0134e8007fa0e4baacbd07"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x21eeef1a11ffd06b12010a70d694529caeb6a27c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "CHILL",
+      "decimals": 18,
+      "address": "0xe47d957f83f8887063150aaf7187411351643392"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x8f1cd064cea3c5cb45d236b78ffb7b32e031ceb0",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "TOMB+",
+      "decimals": 18,
+      "address": "0xe53afa646d48e9ef68fcd559f2a598880a3f1370"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xed403a94075317deacb2f57705581ff937be27d8",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SYN",
+      "decimals": 18,
+      "address": "0xe55e19fb4f2d85af758950957714292dac1e25b2"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x2a16165297a053c07c59a8af9934bcfdf0c89410",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "GUSDC",
+      "decimals": 6,
+      "address": "0xe578c856933d8e1082740bf7661e379aa2a30b26"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xe27df57c3f518acfbd9001a02ec3e77e3ef33419",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "MOD",
+      "decimals": 18,
+      "address": "0xe64b9fd040d1f9d4715c645e0d567ef69958d3d9"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x004d108e4dd54ed629b493ed889c80549fbfa8f3",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "RAINI",
+      "decimals": 18,
+      "address": "0xe83dfaaafd3310474d917583ae9633b4f68fb036"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x8c5e1faf4030b1d142addec14c5cfc54670ecefe",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WIGO",
+      "decimals": 18,
+      "address": "0xe992beab6659bff447893641a378fbbf031c5bd6"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x8c5d2853f5a7e19a8ba23fe51288ee62a697361c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "PAPER",
+      "decimals": 18,
+      "address": "0xea97c7c1c89d4084e0bfb88284fa90243779da9f"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xae368f02b66d58827db39ef3248afefe370ca9a4",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "DEATH",
+      "decimals": 9,
+      "address": "0xeaf45b62d9d0bdc1d763baf306af5edd7c0d7e55"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x6fafad224ac59206624eac35ca8471dc0fbec2c3",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "TANGO",
+      "decimals": 18,
+      "address": "0xee9ff3efd508741492b5bd45269aa45a43be59c8"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xab3738d7671a50e5c49d8c17b0e1f5051cbc4aad",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "FMXEN",
+      "decimals": 18,
+      "address": "0xef4b763385838fffc708000f884026b8c0434275"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x623ee4a7f290d11c11315994db70fb148b13021d",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "ICE",
+      "decimals": 18,
+      "address": "0xf16e81dce15b08f326220742020379b855b87df9"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x648a7452da25b4fb4bdb79badf374a8f8a5ea2b5",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BEETS",
+      "decimals": 18,
+      "address": "0xf24bcf4d1e507740041c9cfd2dddb29585adce1e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xea035a13b64cb49d85e2f0a2736c9604cb21599c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "ELITE",
+      "decimals": 18,
+      "address": "0xf43cc235e686d7bc513f53fbffb61f760c3a1882"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x494dc6738b18ca23a9dfe0316648af9fbb78b673",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "ORK",
+      "decimals": 9,
+      "address": "0xfb66e49e303a186a4c57414ceeed651a7a78161a"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x827177de913b759d5e9342726d4f758d188365df",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "MIMATIC",
+      "decimals": 18,
+      "address": "0xfb98b335551a418cd0737375a2ea0ded62ea213b"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xecde1fda83e8ae4ac836823f5622503f099a7e91",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "TCS",
+      "decimals": 18,
+      "address": "0xfbfae0dd49882e503982f8eb4b8b1e464eca0b91"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xae3440e32f5db4b0551e8e140930a6bbe88899c4",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "axlETH",
+      "decimals": 18,
+      "address": "0xfe7eda5f2c56160d406869a8aa4b2f365d544c7b"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xb2ca33fae46d1c355d090522038c7850a0ce4501",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "PRAGMA",
+      "decimals": 18,
+      "address": "0xfec3a505f67136033b27618add93329256101b4b"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x049139212a92de4c8e2c0c4f2f5276590d7a21b9",
+    "feeRate": 0.0001,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0x04068da6c83afcfa0e13ba15a6696662335d5b75"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xa719803581fa1eb59c16fb46f2bba93d8ef41576",
+    "feeRate": 0.0001,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "axlUSDC",
+      "decimals": 6,
+      "address": "0x1b6382dbdea11d97f24495c9a90b7c88469134a4"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xacfa06784b4495b15200a69209ebb97c3bde08e5",
+    "feeRate": 0.0001,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0x28a92dde19d9989f39a49905d7c9c2fac7799bdf"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x864a038a50e4cfb0563d81043dd6a0603485d73c",
+    "feeRate": 0.0001,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WPOL",
+      "decimals": 18,
+      "address": "0x40df1ae6074c35047bff66675488aa2f9f6384f3"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x257fc8c23257b8f02564f9821c1791ac1087eb75",
+    "feeRate": 0.0001,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WAVAX",
+      "decimals": 18,
+      "address": "0x511d35c52a3c244e7b8bd92c0c297755fbd89212"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x945b5a020fa6dbdd5eb228207322aa40f02b9023",
+    "feeRate": 0.0001,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "HEC",
+      "decimals": 9,
+      "address": "0x5c4fdfc5233f935f20d2adba572f770c2e377ab0"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x27beedb592a013ddf9493a9e3d8b5e33cd24124f",
+    "feeRate": 0.0005,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0x04068da6c83afcfa0e13ba15a6696662335d5b75"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x417795dc0bc0c038f15bd6ec47f749007d5814df",
+    "feeRate": 0.0005,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "axlUSDC",
+      "decimals": 6,
+      "address": "0x1b6382dbdea11d97f24495c9a90b7c88469134a4"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x406c1d0b777d6f98b908fc9e20afae32f3c30bd9",
+    "feeRate": 0.0005,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0x28a92dde19d9989f39a49905d7c9c2fac7799bdf"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xd1971f783f59756781fdcbd58638606958f85cd2",
+    "feeRate": 0.0005,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0x2f733095b80a04b38b0d10cc884524a3d09b836a"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x958bb19597ada0471dd8dde450c2ba73dfc8fefd",
+    "feeRate": 0.0005,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "EQUAL",
+      "decimals": 18,
+      "address": "0x3fd3a0c85b70754efc07ac9ac0cbbdce664865a6"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x96a707b11e48643c7c8c107bae8d310e5771173e",
+    "feeRate": 0.0005,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WPOL",
+      "decimals": 18,
+      "address": "0x40df1ae6074c35047bff66675488aa2f9f6384f3"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x3daca50b1b62439d61c1a4234a4e3dda0597573e",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "MMY",
+      "decimals": 18,
+      "address": "0x01e77288b38b416f972428d562454fb329350bac"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x006ae487f86c5b656bad2cc48ef89a111960c9c3",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0x04068da6c83afcfa0e13ba15a6696662335d5b75"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xa60aae75cd7f2442b94562364201d32191534cf7",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "FUSDT",
+      "decimals": 6,
+      "address": "0x049d68029688eabf473097a2fc38ef61633a3c7a"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x2967b656b56bad1b112614df93fa3f4f36f9b144",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "ZOO",
+      "decimals": 0,
+      "address": "0x09e145a1d53c0045f41aeef25d8ff982ae74dd56"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x8ac19b6206e40f03f08f61e7cadc07f11fba3af3",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "SPEEDY",
+      "decimals": 9,
+      "address": "0x0ce12ae7c899ebf2bcda7aa570c5af98b6688c95"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x5d8a7e4faca4721c229f67c04e2369178f5979d4",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "PFTM",
+      "decimals": 18,
+      "address": "0x112df7e3b4b7ab424f07319d4e92f41e6608c48b"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x88542b443c28fabbcb77dd37d2353532af800b50",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "MST",
+      "decimals": 18,
+      "address": "0x152888854378201e173490956085c711f1ded565"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x3336cbe855625480cf351135f4e27e50ab4af74e",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "axlUSDC",
+      "decimals": 6,
+      "address": "0x1b6382dbdea11d97f24495c9a90b7c88469134a4"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x9b57244317e3730c00eeaf0c55181da4b56b4fb9",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "CRV",
+      "decimals": 18,
+      "address": "0x1e4f97b9f9f913c46f1632781732927b9019c68b"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x2673fb42be106b97b4164c014abad3796b7b97ad",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "CHARM",
+      "decimals": 18,
+      "address": "0x248cb87dda803028dfead98101c9465a2fbda0d4"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xf6021f2f63ab3bcdddbaf32939cd66a8b9e4c21c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0x28a92dde19d9989f39a49905d7c9c2fac7799bdf"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xd27bbff60e7e928d120ea62fd40b0970cd413508",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "YFI",
+      "decimals": 18,
+      "address": "0x29b0da86e484e1c0029b56e817912d778ac0ec69"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x77a0486957dd94d174e52d2ef8af980abcfa9d4f",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "STG",
+      "decimals": 18,
+      "address": "0x2f6f07cdcf3588944bf4c42ac74ff24bf56e7590"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x68fd6f4dbee83c0a2259cb291d1409d140033e6f",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0x2f733095b80a04b38b0d10cc884524a3d09b836a"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xf7b4bc3e18a749230c4893fe73072f1acbedb590",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WBTC",
+      "decimals": 8,
+      "address": "0x321162cd933e2be498cd2267a90534a804051b11"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xaa62903dc9cf9048303b86cabfcf364ee9e5c26f",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "EQUAL",
+      "decimals": 18,
+      "address": "0x3fd3a0c85b70754efc07ac9ac0cbbdce664865a6"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x2b155105e8f7c79453261755ead84eb5150cfc2c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WPOL",
+      "decimals": 18,
+      "address": "0x40df1ae6074c35047bff66675488aa2f9f6384f3"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x397da0bb48d8507b252d3fa2383c50fa437634e4",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SGOAT",
+      "decimals": 18,
+      "address": "0x43f9a13675e352154f745d6402e853fecc388aa5"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xf8ec034444b4b6f1809d821b8041b0738e92c06e",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "axlWBTC",
+      "decimals": 8,
+      "address": "0x448d59b4302ab5d2dadf9611bed9457491926c8e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xa063a88b4ffd284f19d1abbff12b43791464604d",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SPELL",
+      "decimals": 18,
+      "address": "0x468003b688943977e6130f4f68f23aad939a1040"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x4ef01eac9cde8186663ad8d4999f70d72707f3f4",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "THC",
+      "decimals": 18,
+      "address": "0x479673391b3818f5e3ed2fa69a58e13d685becf6"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x7a1a93c4a91561a0b3bb526553d8de9a9a0993c6",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "TSHARE",
+      "decimals": 18,
+      "address": "0x4cdf39285d7ca8eb3f090fda0c069ba5f4145b37"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x2d70305f4beb2b30cb53bac294eb530cd798906e",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "JEFE",
+      "decimals": 9,
+      "address": "0x5079cce47d275e85c9f13afb656d51e3f9d41181"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xab36c08f0b082e351f3b390f144eedb604ccd86b",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WAVAX",
+      "decimals": 18,
+      "address": "0x511d35c52a3c244e7b8bd92c0c297755fbd89212"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x8587aaeacf3a01d1dbfd4d1f8b31aca20e91d2e5",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "VEMP",
+      "decimals": 18,
+      "address": "0x526f1dc408cfe7fc5330ab9f1e78474ceff2a5dd"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x08dbba02d3fd167bb2346c0742230911671aa6ea",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "MMY",
+      "decimals": 18,
+      "address": "0x01e77288b38b416f972428d562454fb329350bac"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x35b5d11cb7009bfffbbe5ae061f4e023d0c0c09a",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0x04068da6c83afcfa0e13ba15a6696662335d5b75"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x5e8e720e5522307170b03b60266ea793567e55c3",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "fSONIC",
+      "decimals": 18,
+      "address": "0x05e31a691405d06708a355c029599c12d5da8b28"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x43003cd019f7c12b1fc4998b06b26dcbca87e818",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "SPEEDY",
+      "decimals": 9,
+      "address": "0x0ce12ae7c899ebf2bcda7aa570c5af98b6688c95"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x14ed6e37fd4bf50d457ff0164aee8ee0f4446f7e",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "DEVIL",
+      "decimals": 18,
+      "address": "0x174c7106aeecdc11389f7dd21342f05f46ccb40f"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x47105d4fc743358d64dd9a30ea164689d5f217c6",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "axlUSDC",
+      "decimals": 6,
+      "address": "0x1b6382dbdea11d97f24495c9a90b7c88469134a4"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xc4765e4119af82602b3884b22849a2b5e57788fe",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "CRV",
+      "decimals": 18,
+      "address": "0x1e4f97b9f9f913c46f1632781732927b9019c68b"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x397367865a0e198950efac2964aabe6f02bf3270",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0x28a92dde19d9989f39a49905d7c9c2fac7799bdf"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x51f243827b73c998db13a6e65d1ef3f29bfd7828",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "USDC",
+      "decimals": 6,
+      "address": "0x2f733095b80a04b38b0d10cc884524a3d09b836a"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x7672e11056a23376abba14a3a1b774949fc32628",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WBTC",
+      "decimals": 8,
+      "address": "0x321162cd933e2be498cd2267a90534a804051b11"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xb8527fd2feb113e13e5d626844d073f52084281d",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "GFTM",
+      "decimals": 18,
+      "address": "0x39b3bd37208cbade74d0fcbdbb12d606295b430a"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x414fd60b858b0e83cc53e19dfa7dce1d0990acb6",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "CEKKE",
+      "decimals": 18,
+      "address": "0x3bc34d8ace32d768a3f76e17aaef2b1d8f261e1d"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x1803673b206a8a50ac4c3b910718820cfe69c613",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WPOL",
+      "decimals": 18,
+      "address": "0x40df1ae6074c35047bff66675488aa2f9f6384f3"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x636f5babb3b07548cf69e88f64642d13398453b4",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "HOOPS",
+      "decimals": 18,
+      "address": "0x431516e478d73cfab034229c4d7a94a2cbf5787f"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x8a1dae135921fa3342ac785ca3d54982cf9cae86",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SGOAT",
+      "decimals": 18,
+      "address": "0x43f9a13675e352154f745d6402e853fecc388aa5"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xaf2bc0d869415779f1f88f1c05250c1471748bbb",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "axlWBTC",
+      "decimals": 8,
+      "address": "0x448d59b4302ab5d2dadf9611bed9457491926c8e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x94504dbf875a7467b0ef6fbab8ebf54f7fb64088",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SPELL",
+      "decimals": 18,
+      "address": "0x468003b688943977e6130f4f68f23aad939a1040"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x7c12df8afe01390a55fd9241719057a3c7ce64f4",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "THC",
+      "decimals": 18,
+      "address": "0x479673391b3818f5e3ed2fa69a58e13d685becf6"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x60e3260ead7cc1a030795d6efcd16ecebb6f55e9",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "TSHARE",
+      "decimals": 18,
+      "address": "0x4cdf39285d7ca8eb3f090fda0c069ba5f4145b37"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x428e618047389cccbea902f159a6c738aa92c779",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "PYRO",
+      "decimals": 18,
+      "address": "0x4edc4337518b964d52e18af5381db2b018d3ba4e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x80b40d5ea2900e350d35ace4030f877ea10521df",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "RING",
+      "decimals": 18,
+      "address": "0x582423c10c9e83387a96d00a69ba3d11ee47b7b5"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x0789f3a94551a9b5d1c47c091f33440b06851c8f",
+    "feeRate": 0.0001,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "TOMB",
+      "decimals": 18,
+      "address": "0x6c021ae822bea943b2e66552bde1d2696a53fbb7"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x2e7c3b2e2094344faea2df10b382778c9c1fe0ee",
+    "feeRate": 0.0001,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BOO",
+      "decimals": 18,
+      "address": "0x841fad6eae12c286d1fd18d1d525dffa75c7effe"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xe2c3d3ae0d65b6a22401789a4edfe49b9c8eeacc",
+    "feeRate": 0.0001,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "KIRBY",
+      "decimals": 18,
+      "address": "0x97bdafe3830734acf12da25359674277fcc33729"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x7a0a31e9007d1eed090742075efe73774eb31d83",
+    "feeRate": 0.0001,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "LINK",
+      "decimals": 18,
+      "address": "0xb3654dc3d10ea7645f8319668e8f54d2574fbdc8"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xefce533193459549d66a34a0b9054c0824f430f7",
+    "feeRate": 0.0005,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "MIM",
+      "decimals": 18,
+      "address": "0x82f0b8b456c1a451378467398982d4834b6829c1"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x345e09cfa53dd09266d6606868df579d66548191",
+    "feeRate": 0.0005,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BOO",
+      "decimals": 18,
+      "address": "0x841fad6eae12c286d1fd18d1d525dffa75c7effe"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xb48787029848720518923f66f00ae0a5d2d96f78",
+    "feeRate": 0.0005,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BRUSH",
+      "decimals": 18,
+      "address": "0x85dec8c4b2680793661bca91a8f129607571863d"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x1ebafd4df925b3b46341a7b075abfa85e94496ea",
+    "feeRate": 0.0005,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "DAI",
+      "decimals": 18,
+      "address": "0x8d11ec38a3eb5e956b052f67da8bdc9bef8abf3e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x9977e54e1d089cad73ff08ca3aeb68bb83ff710f",
+    "feeRate": 0.0005,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "LINK",
+      "decimals": 18,
+      "address": "0xb3654dc3d10ea7645f8319668e8f54d2574fbdc8"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x7fdd9c4a44db25d6ffc1abc8dcee2c139aeb81e9",
+    "feeRate": 0.0005,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BLACKY",
+      "decimals": 18,
+      "address": "0xb5fd949436772e07cbbf35fb6524e79924c54cb3"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x7fc8039f6ad27b9af40ff9f205cce97676c8a1fe",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SPACE",
+      "decimals": 18,
+      "address": "0x5f7f94a1dd7b15594d17543beb8b30b111dd464c"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x8cfb6da75cb832743ba05b1320f3c2ff047b09d2",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "MFTM",
+      "decimals": 18,
+      "address": "0x62227c75908b7d358a9d70ea4670f57f8b012ccc"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xf583df88fdb227e378d149ed07ed629014a5c11d",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WOO",
+      "decimals": 18,
+      "address": "0x6626c47c00f1d87902fc13eecfac3ed06d5e8d8a"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x02d15de4c6a3fec03b6818fe8b8df90a2d0a052c",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "GOGLZ",
+      "decimals": 18,
+      "address": "0x662b3d319e693aa578edd4bd8a5c9395bc49e9f4"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x8643e9cfa9aa65949060c0575d627f977003b9ec",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x695921034f0387eac4e11620ee91b1b15a6a09fe"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x044590840fb9a7850324ff24993099da4a5122a5",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "TOMB",
+      "decimals": 18,
+      "address": "0x6c021ae822bea943b2e66552bde1d2696a53fbb7"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x36731e81432abda2b714162ce7c86f09c782c5ae",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BEFTM",
+      "decimals": 18,
+      "address": "0x7381ed41f6de418dde5e84b55590422a57917886"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xe0ea3ea12e7f48c1917626b44b2c374252e9452f",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x74b23882a30290451a17c44f4f05243b6b58c76d"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x9522f925ed97bf5ea3e5d450eae9ce57e0b56f96",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "2OMB",
+      "decimals": 18,
+      "address": "0x7a6e4e3cc2ac9924605dca4ba31d1831c84b44ae"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xbd5ff8b4ba33b92d76e415d94c1aaa6089bd86ec",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "MIM",
+      "decimals": 18,
+      "address": "0x82f0b8b456c1a451378467398982d4834b6829c1"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xed23be0cc3912808ec9863141b96a9748bc4bd89",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BOO",
+      "decimals": 18,
+      "address": "0x841fad6eae12c286d1fd18d1d525dffa75c7effe"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xa58151a1eb45d98ddbadc4a3af42f2db1447c22f",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BRUSH",
+      "decimals": 18,
+      "address": "0x85dec8c4b2680793661bca91a8f129607571863d"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xe0548ca94dd3d33c912f75831d51df65159570b0",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "DAI",
+      "decimals": 18,
+      "address": "0x8d11ec38a3eb5e956b052f67da8bdc9bef8abf3e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x20977decf4e4e87a296620e4df64858dabce3e10",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BASED",
+      "decimals": 18,
+      "address": "0x8d7d3409881b51466b483b11ea1b8a03cded89ae"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x0473e4d109421ef35d8f4b46ebd074736cecc786",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WSHEC",
+      "decimals": 18,
+      "address": "0x94ccf60f700146bea8ef7832820800e2dfa92eda"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x3bf0439620a1fd3ec91b1cc974bb7fa138e7aaa8",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "KIRBY",
+      "decimals": 18,
+      "address": "0x97bdafe3830734acf12da25359674277fcc33729"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x4358888a3085b6fe5863e2faae23d70d35cc4033",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "MULTI",
+      "decimals": 18,
+      "address": "0x9fb9a33956351cf4fa040f65a13b835a3c8764e3"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xd97567230b91e951da891aa2502088fe16f51875",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SUSHI",
+      "decimals": 18,
+      "address": "0xae75a438b2e0cb8bb01ec1e1e376de11d44477cc"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xaa19a1989f5a9475e19e72870d4eb426f74af288",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "LINK",
+      "decimals": 18,
+      "address": "0xb3654dc3d10ea7645f8319668e8f54d2574fbdc8"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x5d7ebaad125c855be2515bc7df9896cee8cef1b6",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BLACKY",
+      "decimals": 18,
+      "address": "0xb5fd949436772e07cbbf35fb6524e79924c54cb3"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x4e7d70c8be591b24c66aefcd50360d20d60aa01a",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "MCLB",
+      "decimals": 18,
+      "address": "0x5deb27e51dbeef691ba1175a2e563870499c2acb"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x7c48b9d04e34c3a4a909fc6dea096f392b6bc1e6",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SPACE",
+      "decimals": 18,
+      "address": "0x5f7f94a1dd7b15594d17543beb8b30b111dd464c"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x27e13628c48782ef181ad89e339cb6c28369da0b",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "MFTM",
+      "decimals": 18,
+      "address": "0x62227c75908b7d358a9d70ea4670f57f8b012ccc"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x4c1afb9662f3c6e24e2c694d37301af8abe2101e",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BSKT",
+      "decimals": 5,
+      "address": "0x646481dbd76264f817d6588e289bf08da38a571e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xc8bb5978fe00c291bef387dc791319625204bf43",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "GOGLZ",
+      "decimals": 18,
+      "address": "0x662b3d319e693aa578edd4bd8a5c9395bc49e9f4"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xc42743e77ada93078c42017d623ee6f3ac533b04",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x695921034f0387eac4e11620ee91b1b15a6a09fe"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xa25f4306bc3e1e33842f3e853574053212f6a499",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "TOMB",
+      "decimals": 18,
+      "address": "0x6c021ae822bea943b2e66552bde1d2696a53fbb7"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x8a703e2936569a566036cc4c77c10b6014c373e0",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BEFTM",
+      "decimals": 18,
+      "address": "0x7381ed41f6de418dde5e84b55590422a57917886"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x31e7f9772714db68f78410cf4aee4e120b14d8f9",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0x74b23882a30290451a17c44f4f05243b6b58c76d"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xec8a89ec13329a687e62edd93f38a177dd909243",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "XTAROT",
+      "decimals": 18,
+      "address": "0x74d1d2a851e339b8cb953716445be7e8abdf92f4"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x335b71b4c21f92382bb4bbde506c4087209022f2",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BADGER",
+      "decimals": 18,
+      "address": "0x753fbc5800a8c8e3fb6dc6415810d627a387dfc9"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xd62a75c6db96f81e44443b9cb230de5ec5739a36",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "MIM",
+      "decimals": 18,
+      "address": "0x82f0b8b456c1a451378467398982d4834b6829c1"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x144a1a384537a8530108c0107e42afd56e63f2ae",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BOO",
+      "decimals": 18,
+      "address": "0x841fad6eae12c286d1fd18d1d525dffa75c7effe"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xb36f0ab36f1a0a10b00e43644a2c03b012698e83",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BRUSH",
+      "decimals": 18,
+      "address": "0x85dec8c4b2680793661bca91a8f129607571863d"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xbdbef75a6394c0d85738dad642439d2c45393969",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BASED",
+      "decimals": 18,
+      "address": "0x8d7d3409881b51466b483b11ea1b8a03cded89ae"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x0c14693f83b6b428730db8b66ded98b37b19b6bd",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "YEL",
+      "decimals": 18,
+      "address": "0x949185d3be66775ea648f4a306740ea9eff9c567"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xbe96ffa11e2a8704b88b8194c45c4d0cf13c5bc0",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "KIRBY",
+      "decimals": 18,
+      "address": "0x97bdafe3830734acf12da25359674277fcc33729"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xdda390c4791d7b9bb9fcde9207845908e582ae5f",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "MUTTSKI",
+      "decimals": 9,
+      "address": "0xa80058bdf71f4044942107e33a802752b3bfb4d0"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x866d6438e252fcf35fd9e30bc5c60712c30289d7",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BLACKY",
+      "decimals": 18,
+      "address": "0xb5fd949436772e07cbbf35fb6524e79924c54cb3"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x55af85262a972b9ebef106463881485cebb826f1",
+    "feeRate": 0.0001,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WBNB",
+      "decimals": 18,
+      "address": "0xd67de0e0a0fd7b15dc8348bb9be742f3c5850454"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x8386a415d04f13b040ab0fb3edeacbe13d68b4aa",
+    "feeRate": 0.0001,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SFTMX",
+      "decimals": 18,
+      "address": "0xd7028092c830b5c8fce061af2e593413ebbc1fc1"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x4237f74e79761654fa35bc2244d26a9069c454fe",
+    "feeRate": 0.0005,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WBNB",
+      "decimals": 18,
+      "address": "0xd67de0e0a0fd7b15dc8348bb9be742f3c5850454"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x1e938ec490202a50586996b324240b831f7afbea",
+    "feeRate": 0.0005,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SFTMX",
+      "decimals": 18,
+      "address": "0xd7028092c830b5c8fce061af2e593413ebbc1fc1"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x3a775d68cfa9402cb786c038ecc51c7b0eea6f90",
+    "feeRate": 0.0005,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "FRAX",
+      "decimals": 18,
+      "address": "0xdc301622e621166bd8e82f2ca0a26c13ad0be355"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x1cc619350feedfddfafbddef38fbb1a4d0c23c42",
+    "feeRate": 0.0005,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "CHILL",
+      "decimals": 18,
+      "address": "0xe47d957f83f8887063150aaf7187411351643392"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x3017fb90403aee134fbbf7463a8ed7b459f203eb",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "CONK",
+      "decimals": 18,
+      "address": "0xb715f8dce2f0e9b894c753711bd55ee3c04dca4e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xb65641b3a10a91e65f805ee8ab43e0c0d4a1b7e3",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "2SHARES",
+      "decimals": 18,
+      "address": "0xc54a1684fd1bef1f077a336e6be4bd9a3096a6ca"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x7277d3b52e926bddadee974fa332cf6b0ad300be",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "TAROT",
+      "decimals": 18,
+      "address": "0xc5e2b037d30a390e62180970b3aa4e91868764cd"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x9c9733059673c8601e0baff94f40c9e23e8e24fe",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "TREEB",
+      "decimals": 18,
+      "address": "0xc60d7067dfbc6f2caf30523a064f416a5af52963"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x12a0418ecc83c8ba8ab6f62060dec7a4c3e75556",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WBNB",
+      "decimals": 18,
+      "address": "0xd67de0e0a0fd7b15dc8348bb9be742f3c5850454"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x5dd31352ad63b15fb4227e625eb06b51babd5272",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SFTMX",
+      "decimals": 18,
+      "address": "0xd7028092c830b5c8fce061af2e593413ebbc1fc1"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x98ccd2e0bb78118a0024fff847a5d3879daeecc5",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SCREAM",
+      "decimals": 18,
+      "address": "0xe0654c8e6fd4d733349ac7e09f6f23da256bf475"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xe9d42959141f1e27fcfad587f86ea68a5326a882",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WBAN",
+      "decimals": 18,
+      "address": "0xe20b9e246db5a0d21bf9209e4858bc9a3ff7a034"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xaf2921b6fdf3ae49ffbfb78cd843e8638c0476d8",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "FMXEN",
+      "decimals": 18,
+      "address": "0xef4b763385838fffc708000f884026b8c0434275"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x0c910fc6c335b4b66dd76d21096cdd39f76c46ff",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WBTC",
+      "decimals": 8,
+      "address": "0xf1648c50d2863f780c57849d812b4b7686031a3d"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x52e5007d76418a0df78972d14421a7471c78e8ac",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "ICE",
+      "decimals": 18,
+      "address": "0xf16e81dce15b08f326220742020379b855b87df9"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x70464b91f4b36754def93ada639f40244bf4c586",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BEETS",
+      "decimals": 18,
+      "address": "0xf24bcf4d1e507740041c9cfd2dddb29585adce1e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x0498cce32e1df40939a17d70df620d79e4b2fab0",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "CONK",
+      "decimals": 18,
+      "address": "0xb715f8dce2f0e9b894c753711bd55ee3c04dca4e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x5e08e6f4e2c0bd433e427422d733a6fc8b022e9b",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "ECO",
+      "decimals": 18,
+      "address": "0xb8a32897016c1b2ee0797090162eafe58f032795"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xa815085f4791db20f592ef54499c48a407e655fb",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "TREEB",
+      "decimals": 18,
+      "address": "0xc60d7067dfbc6f2caf30523a064f416a5af52963"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x497fad03fbde94da57f529ebc71f4d351cdc30dc",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "OK",
+      "decimals": 18,
+      "address": "0xd3ac016b1b8c80eeadde4d186a9138c9324e4189"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x1e5a30588f049ee8e2edb83da5f638f2263dd78b",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WBNB",
+      "decimals": 18,
+      "address": "0xd67de0e0a0fd7b15dc8348bb9be742f3c5850454"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x0b9341ecb75c3182a56698831e967334527acdc3",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SFTMX",
+      "decimals": 18,
+      "address": "0xd7028092c830b5c8fce061af2e593413ebbc1fc1"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xeb8c761a76b7916aba01db7d3e69c1f8b0c12ce9",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SOUL",
+      "decimals": 18,
+      "address": "0xe2fb177009ff39f52c0134e8007fa0e4baacbd07"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x760a95f30cb063886a6801a0f9eec9abf44ec781",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "CHILL",
+      "decimals": 18,
+      "address": "0xe47d957f83f8887063150aaf7187411351643392"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x488f39a2816d84db1151a770845f3dc34c3c1153",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SYN",
+      "decimals": 18,
+      "address": "0xe55e19fb4f2d85af758950957714292dac1e25b2"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x5bd78e0c3fdb64d4574b2f6eef7cf0a089af015a",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "FMXEN",
+      "decimals": 18,
+      "address": "0xef4b763385838fffc708000f884026b8c0434275"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xb58eefa1a43c40426df559c265bdf4dedae39069",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WBTC",
+      "decimals": 8,
+      "address": "0xf1648c50d2863f780c57849d812b4b7686031a3d"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x0f06aa6e9dd0437c50bf6d65d0390c04b8c750b2",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BEETS",
+      "decimals": 18,
+      "address": "0xf24bcf4d1e507740041c9cfd2dddb29585adce1e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xebf2dfcbacc37aa9f4eea3267a2c16250c068d58",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "NSFW",
+      "decimals": 18,
+      "address": "0xf32554c06d030035cd6ca1902b3874fdb7230c14"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xaa3078c5d86d753ae85d7cf462abb16afdfecbe7",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "axlETH",
+      "decimals": 18,
+      "address": "0xfe7eda5f2c56160d406869a8aa4b2f365d544c7b"
+    }
+  }
+]

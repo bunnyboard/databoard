@@ -593,6 +593,12 @@
     "decimals": 18,
     "address": "0x38076962036d65a40dc6d0c9256d19bb020f8ddc"
   },
+  "0x38f9bf9dce51833ec7f03c9dc218197999999999": {
+    "chain": "avalanche",
+    "symbol": "NYA",
+    "decimals": 18,
+    "address": "0x38f9bf9dce51833ec7f03c9dc218197999999999"
+  },
   "0x397bbd6a0e41bdf4c3f971731e180db8ad06ebc1": {
     "chain": "avalanche",
     "symbol": "AVXT",
@@ -791,6 +797,12 @@
     "decimals": 18,
     "address": "0x49f519002eeced6902f24c0be72b6d898e4d27fc"
   },
+  "0x4a5bb433132b7e7f75d6a9a3e4136bb85ce6e4d5": {
+    "chain": "avalanche",
+    "symbol": "BOOTY",
+    "decimals": 18,
+    "address": "0x4a5bb433132b7e7f75d6a9a3e4136bb85ce6e4d5"
+  },
   "0x4a6b1f8872f08daf38d3b675937c7a59751ddbe1": {
     "chain": "avalanche",
     "symbol": "QE",
@@ -820,6 +832,12 @@
     "symbol": "JGN",
     "decimals": 18,
     "address": "0x4e3642603a75528489c2d94f86e9507260d3c5a1"
+  },
+  "0x4f3c5c53279536ffcfe8bcafb78e612e933d53c6": {
+    "chain": "avalanche",
+    "symbol": "PNIC",
+    "decimals": 18,
+    "address": "0x4f3c5c53279536ffcfe8bcafb78e612e933d53c6"
   },
   "0x4f94b8aef08c92fefe416af073f1df1e284438ec": {
     "chain": "avalanche",
@@ -1078,6 +1096,12 @@
     "symbol": "KALM",
     "decimals": 18,
     "address": "0x62aceea3e666c5706ce1c61055fac1a669d31d93"
+  },
+  "0x62d0a8458ed7719fdaf978fe5929c6d342b0bfce": {
+    "chain": "avalanche",
+    "symbol": "BEAM",
+    "decimals": 18,
+    "address": "0x62d0a8458ed7719fdaf978fe5929c6d342b0bfce"
   },
   "0x62edc0692bd897d2295872a9ffcac5425011c661": {
     "chain": "avalanche",
@@ -2165,6 +2189,12 @@
     "decimals": 18,
     "address": "0xbbcb0356bb9e6b3faa5cbf9e5f36185d53403ac9"
   },
+  "0xbc78d84ba0c46dfe32cf2895a19939c86b81a777": {
+    "chain": "avalanche",
+    "symbol": "SOLVBTC",
+    "decimals": 18,
+    "address": "0xbc78d84ba0c46dfe32cf2895a19939c86b81a777"
+  },
   "0xbd100d061e120b2c67a24453cf6368e63f1be056": {
     "chain": "avalanche",
     "symbol": "IDYP",
@@ -2351,6 +2381,18 @@
     "decimals": 18,
     "address": "0xcbb424fd93cdec0ef330d8a8c985e8b147f62339"
   },
+  "0xcc0966d8418d412c599a6421b760a847eb169a8c": {
+    "chain": "avalanche",
+    "symbol": "SOLVBTCBBN",
+    "decimals": 18,
+    "address": "0xcc0966d8418d412c599a6421b760a847eb169a8c"
+  },
+  "0xcc5c80b4ecef7e6561bb4721d8ac3e80b4503a96": {
+    "chain": "avalanche",
+    "symbol": "KIDEN",
+    "decimals": 18,
+    "address": "0xcc5c80b4ecef7e6561bb4721d8ac3e80b4503a96"
+  },
   "0xccf580e697b8bba73748ba881c1872dd4fb01cda": {
     "chain": "avalanche",
     "symbol": "LUEYGI",
@@ -2530,6 +2572,12 @@
     "symbol": "AKITAX",
     "decimals": 18,
     "address": "0xe06fba763c2104db5027f57f6a5be0a0d86308af"
+  },
+  "0xe08b4c1005603427420e64252a8b120cace4d122": {
+    "chain": "avalanche",
+    "symbol": "BENJI",
+    "decimals": 18,
+    "address": "0xe08b4c1005603427420e64252a8b120cace4d122"
   },
   "0xe0bb6fed446a2dbb27f84d3c27c4ed8ea7603366": {
     "chain": "avalanche",

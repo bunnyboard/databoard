@@ -24,9 +24,11 @@ import MorphoAdapter from './morpho/morpho';
 import OptimismNativeBridgeAdapter from './optimism/nativeBridge';
 import RocketpoolAdapter from './rocketpool/rocketpool';
 import ScrollNativeBridgeAdapter from './scroll/nativeBridge';
+import SpookyAdapter from './spooky/spooky';
 import EthxAdapter from './stader/ethx';
 import StakewiseAdapter from './stakewise/stakewise';
 import StargateAdapter from './stargate/stargate';
+import SushiAdapter from './sushi/sushi';
 import SwethAdapter from './swellnetwork/sweth';
 import SynapseAdapter from './synapse/synapse';
 import UniswapAdapter from './uniswap/uniswap';
@@ -64,7 +66,7 @@ export function getProtocolAdapters(
     seamless: new AaveAdapter(services, storages, ProtocolConfigs.seamless),
     sonne: new CompoundAdapter(services, storages, ProtocolConfigs.sonne),
     spark: new AaveAdapter(services, storages, ProtocolConfigs.spark),
-    // sushi: new SushiAdapter(services, storages, ProtocolConfigs.sushi),
+    sushi: new SushiAdapter(services, storages, ProtocolConfigs.sushi),
     tectonic: new CompoundAdapter(services, storages, ProtocolConfigs.tectonic),
     uniswap: new UniswapAdapter(services, storages, ProtocolConfigs.uniswap),
     // uwulend: new AaveAdapter(services, storages, ProtocolConfigs.uwulend),
@@ -78,7 +80,7 @@ export function getProtocolAdapters(
     fraxether: new FraxEtherAdapter(services, storages, ProtocolConfigs.fraxether),
     curveusd: new CurveusdAdapter(services, storages, ProtocolConfigs.curveusd),
     curvelend: new CurvelendAdapter(services, storages, ProtocolConfigs.curvelend),
-    // spooky: new SpookyAdapter(services, storages, ProtocolConfigs.spooky),
+    spooky: new SpookyAdapter(services, storages, ProtocolConfigs.spooky),
     bungee: new BungeeAdapter(services, storages, ProtocolConfigs.bungee),
     // lifi: new LifiAdapter(services, storages, ProtocolConfigs.lifi),
     rocketpool: new RocketpoolAdapter(services, storages, ProtocolConfigs.rocketpool),

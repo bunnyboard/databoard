@@ -94,6 +94,11 @@ const tokenlists = [
   'https://tokens.coingecko.com/ethereum/all.json',
   'https://tokens.coingecko.com/zksync/all.json',
   'https://tokens.coingecko.com/zora-network/all.json',
+  'https://tokens.coingecko.com/fantom/all.json',
+  'https://tokens.coingecko.com/base/all.json',
+
+  // others
+  'https://wispy-bird-88a7.uniswap.workers.dev/?url=http://tokenlist.zerion.eth.link',
 ];
 
 function getChainName(chainId) {

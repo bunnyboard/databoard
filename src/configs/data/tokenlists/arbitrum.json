@@ -203,6 +203,12 @@
     "decimals": 9,
     "address": "0x1fae2a29940015632f2a6ce006dfa7e3225515a7"
   },
+  "0x2172fad929e857ddfd7ddc31e24904438434cb0b": {
+    "chain": "arbitrum",
+    "symbol": "mBTC",
+    "decimals": 8,
+    "address": "0x2172fad929e857ddfd7ddc31e24904438434cb0b"
+  },
   "0x2338a5d62e9a766289934e8d2e83a443e8065b83": {
     "chain": "arbitrum",
     "symbol": "FLUX",
@@ -676,6 +682,12 @@
     "symbol": "GHO",
     "decimals": 18,
     "address": "0x7dff72693f6a4149b17e7c6314655f6a9f7c8b33"
+  },
+  "0x7e7a7c916c19a45769f6bdaf91087f93c6c12f78": {
+    "chain": "arbitrum",
+    "symbol": "EGP",
+    "decimals": 18,
+    "address": "0x7e7a7c916c19a45769f6bdaf91087f93c6c12f78"
   },
   "0x7f1fa204bb700853d36994da19f830b6ad18455c": {
     "chain": "arbitrum",
@@ -1169,6 +1181,12 @@
     "decimals": 2,
     "address": "0xd22a58f79e9481d1a88e00c343885a588b34b68b"
   },
+  "0xd3443ee1e91af28e5fb858fbd0d72a63ba8046e0": {
+    "chain": "arbitrum",
+    "symbol": "gUSDC",
+    "decimals": 6,
+    "address": "0xd3443ee1e91af28e5fb858fbd0d72a63ba8046e0"
+  },
   "0xd4939d69b31fbe981ed6904a3af43ee1dc777aab": {
     "chain": "arbitrum",
     "symbol": "ETH+",
@@ -1216,6 +1234,12 @@
     "symbol": "PEPE",
     "decimals": 18,
     "address": "0xdee46be9d0b207e5d88d2efd84a045e725a242f7"
+  },
+  "0xdfb8be6f8c87f74295a87de951974362cedcfa30": {
+    "chain": "arbitrum",
+    "symbol": "EMC",
+    "decimals": 18,
+    "address": "0xdfb8be6f8c87f74295a87de951974362cedcfa30"
   },
   "0xe367d4b1b9bb40e34adce448e1edb0141fc6a8ac": {
     "chain": "arbitrum",

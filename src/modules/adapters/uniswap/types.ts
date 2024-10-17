@@ -1,5 +1,5 @@
 import { UniswapDexConfig } from '../../../configs/protocols/uniswap';
-import { Token } from '../../../types/base';
+import { Pool2 } from '../../../types/domains/pool2';
 
 export const Uniswapv2Events = {
   PairCreated: '0x0d3648bd0f6ba80134a33ba9275ac585d9d315f0ad8355cddefde31afa28d0e9',
@@ -15,37 +15,24 @@ export const Uniswapv3Events = {
   Burn: '0x0c396cd989a39f4459b5fa1aed6a9a8dcdbc45908acfd67e028cd568da98982c',
 };
 
-export interface GetPool2DataOptions {
+export interface GetDexDataDataOptions {
   dexConfig: UniswapDexConfig;
-  poolAddress: string;
+  pools: Array<Pool2>;
   timestamp: number;
   blockNumber: number;
   beginBlock: number;
   endBlock: number;
 }
 
-export interface GetPool2DataResult {
-  total: {
-    totalLiquidityUsd: number;
-    totalSwapFeeUsd: number;
-    volumeSwapUsd: number;
-    volumeAddLiquidityUsd: number;
-    volumeRemoveLiquidityUsd: number;
-  };
-  token0: {
-    token: Token;
-    totalLiquidityUsd: number;
-    totalSwapFeeUsd: number;
-    volumeSwapUsd: number;
-    volumeAddLiquidityUsd: number;
-    volumeRemoveLiquidityUsd: number;
-  };
-  token1: {
-    token: Token;
-    totalLiquidityUsd: number;
-    totalSwapFeeUsd: number;
-    volumeSwapUsd: number;
-    volumeAddLiquidityUsd: number;
-    volumeRemoveLiquidityUsd: number;
-  };
+export interface GetDexDataResultBasics {
+  totalLiquidityUsd: number;
+  totalSwapFeeUsdForLps: number;
+  totalSwapFeeUsdForProtocol: number;
+  volumeSwapUsd: number;
+  volumeAddLiquidityUsd: number;
+  volumeRemoveLiquidityUsd: number;
+}
+
+export interface GetDexDataResult {
+  total: GetDexDataResultBasics;
 }
