@@ -137,6 +137,19 @@ export default class AcrossAdapter extends ProtocolAdapter {
             data: log.data,
           });
 
+          const destinationChainId = Number(event.args.destinationChainId);
+          let destChainName: string | null = null;
+          for (const chainConfig of Object.values(BlockchainConfigs)) {
+            if (chainConfig.chainId === destinationChainId) {
+              destChainName = chainConfig.name;
+              break;
+            }
+          }
+
+          if (!destChainName) {
+            continue;
+          }
+
           const tokenAddress = event.args.inputToken ? event.args.inputToken : event.args.originToken;
           const inputToken = await this.services.blockchain.evm.getTokenInfo({
             chain: spokePoolConfig.chain,
@@ -149,15 +162,6 @@ export default class AcrossAdapter extends ProtocolAdapter {
               address: inputToken.address,
               timestamp: options.timestamp,
             });
-
-            const destinationChainId = Number(event.args.destinationChainId);
-            let destChainName = `unknown:${destinationChainId}`;
-            for (const chainConfig of Object.values(BlockchainConfigs)) {
-              if (chainConfig.chainId === destinationChainId) {
-                destChainName = chainConfig.name;
-                break;
-              }
-            }
 
             const amountRaw = event.args.inputAmount !== undefined ? event.args.inputAmount : event.args.amount;
             const amountUsd = formatBigNumberToNumber(amountRaw.toString(), inputToken.decimals) * inputTokenPrice;

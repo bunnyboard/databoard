@@ -923,4 +923,11 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   zklinknova: {
     '0xda4aaed3a53962c83b35697cd138cc6df43af71f': OracleSourceConfigs.WBTC,
   },
+
+  worldchain: {
+    '0x4200000000000000000000000000000000000006': OracleSourceConfigs.ETH,
+    '0x79a02482a880bce3f13e09da970dc34db4cd24d1': OracleSourceConfigs.USDC,
+    '0x03c7054bcb39f7b2e5b2c7acb37583e32d70cfa3': OracleSourceConfigs.WBTC,
+    '0x2cfc85d8e48f8eab294be644d9e25c3030863003': OracleSourceConfigs.WLD,
+  },
 };

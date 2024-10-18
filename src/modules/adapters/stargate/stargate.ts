@@ -147,11 +147,15 @@ export default class StargateAdapter extends ProtocolAdapter {
                 switch (signature) {
                   case EventSwap: {
                     const chainId = Number(event.args.chainId);
-                    let destChainName = `unknown${chainId}`;
+                    let destChainName: string | null = null;
                     for (const [stargateChainId, chainName] of Object.entries(StargateChainIds)) {
                       if (chainId.toString() === stargateChainId) {
                         destChainName = chainName;
                       }
+                    }
+
+                    if (!destChainName) {
+                      continue;
                     }
 
                     const volumeAmountUsd =
@@ -217,11 +221,15 @@ export default class StargateAdapter extends ProtocolAdapter {
                 switch (signature) {
                   case EventOFTSent: {
                     const chainId = Number(event.args.dstEid);
-                    let destChainName = `unknown${chainId}`;
+                    let destChainName: string | null = null;
                     for (const [stargateChainId, chainName] of Object.entries(StargateChainIds)) {
                       if (chainId.toString() === stargateChainId) {
                         destChainName = chainName;
                       }
+                    }
+
+                    if (!destChainName) {
+                      continue;
                     }
 
                     const amountSentLD = formatBigNumberToNumber(event.args.amountSentLD.toString(), token.decimals);

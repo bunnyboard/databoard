@@ -111,7 +111,7 @@ export default class SynapseAdapter extends ProtocolAdapter {
               });
 
               const chainId = Number(event.args.chainId);
-              let destChainName = `unknown:${chainId}`;
+              let destChainName: string | null = null;
               for (const chain of Object.values(envConfig.blockchains)) {
                 if (chain.chainId === chainId) {
                   destChainName = chain.name;
@@ -121,6 +121,9 @@ export default class SynapseAdapter extends ProtocolAdapter {
                 if (Number(supportedChainId) === chainId) {
                   destChainName = chainName;
                 }
+              }
+              if (!destChainName) {
+                continue;
               }
 
               const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPirceUsd;
@@ -226,7 +229,7 @@ export default class SynapseAdapter extends ProtocolAdapter {
 
             if (token) {
               const destChainId = Number(event.args.destChainId);
-              let destChainName = `unknown:${destChainId}`;
+              let destChainName: string | null = null;
               for (const chain of Object.values(envConfig.blockchains)) {
                 if (chain.chainId === destChainId) {
                   destChainName = chain.name;
@@ -236,6 +239,9 @@ export default class SynapseAdapter extends ProtocolAdapter {
                 if (Number(supportedChainId) === destChainId) {
                   destChainName = chainName;
                 }
+              }
+              if (!destChainName) {
+                continue;
               }
 
               const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
