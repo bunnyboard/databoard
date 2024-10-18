@@ -10,7 +10,6 @@ import { formatBigNumberToNumber } from '../../../lib/utils';
 import { AcrossProtocolConfig } from '../../../configs/protocols/across';
 import { BlockchainConfigs } from '../../../configs/blockchains';
 import AdapterDataHelper from '../helpers';
-import { ChainNames } from '../../../configs/names';
 
 // v2
 const FundsDeposited = '0xafc4df6845a4ab948b492800d3d8a25d538a102a2bc07cd01f1cfa097fddcff6';
@@ -152,7 +151,7 @@ export default class AcrossAdapter extends ProtocolAdapter {
             });
 
             const destinationChainId = Number(event.args.destinationChainId);
-            let destChainName = destinationChainId === 480 ? ChainNames.worldchain : `unknown:${destinationChainId}`;
+            let destChainName = `unknown:${destinationChainId}`;
             for (const chainConfig of Object.values(BlockchainConfigs)) {
               if (chainConfig.chainId === destinationChainId) {
                 destChainName = chainConfig.name;

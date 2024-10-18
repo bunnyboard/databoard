@@ -97,5 +97,10 @@ export const AcrossConfigs: AcrossProtocolConfig = {
       birthday: 1723507200, // Tue Aug 13 2024 00:00:00 GMT+0000
       address: '0x13fDac9F9b4777705db45291bbFF3c972c6d1d97',
     },
+    {
+      chain: ChainNames.worldchain,
+      birthday: 1728432000, // Wed Oct 09 2024 00:00:00 GMT+0000
+      address: '0x09aea4b2242abC8bb4BB78D537A67a245A7bEC64',
+    },
   ],
 };
