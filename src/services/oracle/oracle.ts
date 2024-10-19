@@ -263,7 +263,7 @@ export default class OracleService extends CachingService implements IOracleServ
     return returnPrice;
   }
 
-  private async tryGetTokenPriceUsdFromDexes(options: GetTokenPriceOptions): Promise<string | null> {
+  protected async tryGetTokenPriceUsdFromDexes(options: GetTokenPriceOptions): Promise<string | null> {
     const blockchain = this.getBlockchainService();
 
     if (AutoOracleConfigs[options.chain]) {

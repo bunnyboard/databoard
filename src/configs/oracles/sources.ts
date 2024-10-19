@@ -1166,8 +1166,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv3List.NYA_WETH],
   },
   JEWEL: {
-    currency: 'klay',
-    sources: [OracleSourceUniswapv2List.JEWEL_WKLAY],
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.JEWEL_USDC],
   },
   BOBA: {
     currency: 'eth',
@@ -1196,5 +1196,37 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   APEX: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.APEX_WETH],
+  },
+  H2O: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.H2O_USDC],
+  },
+  SFI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SFI_WETH],
+  },
+  NFD: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.NFD_WETH],
+  },
+  SDT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SDT_WETH],
+  },
+  VSTA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.VSTA_WETH],
+  },
+  PLS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.PLS_WETH],
+  },
+  UNIDX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.UNIDX_WETH],
+  },
+  SPEC: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SPEC_WETH],
   },
 };

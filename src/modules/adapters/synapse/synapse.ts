@@ -10,7 +10,6 @@ import { SynapseProtocolConfig } from '../../../configs/protocols/synapse';
 import SynapseBridgeAbi from '../../../configs/abi/synapse/SynapseBridge.json';
 import FastBridgeRfqAbi from '../../../configs/abi/synapse/FastBridge.json';
 import Erc20Abi from '../../../configs/abi/ERC20.json';
-import { ChainNames } from '../../../configs/names';
 import envConfig from '../../../configs/envConfig';
 import { ContractCall } from '../../../services/blockchains/domains';
 
@@ -18,16 +17,6 @@ const TokenDeposit = '0xda5273705dbef4bf1b902a131c2eac086b7e1476a8ab0cb4da08af1f
 const TokenDepositAndSwap = '0x79c15604b92ef54d3f61f0c40caab8857927ca3d5092367163b4562c1699eb5f';
 const TokenRedeemAndSwap = '0x91f25e9be0134ec851830e0e76dc71e06f9dade75a9b84e9524071dbbc319425';
 const BridgeRequested = '0x120ea0364f36cdac7983bcfdd55270ca09d7f9b314a2ebc425a3b01ab1d6403a';
-
-const SynapseSupportedChains: { [key: number]: string } = {
-  288: ChainNames.boba,
-  480: ChainNames.worldchain,
-  7700: ChainNames.canto,
-  53935: ChainNames.dfk,
-  2000: ChainNames.dogechain,
-  1666600000: ChainNames.harmony,
-  1666600001: ChainNames.harmony,
-};
 
 export default class SynapseAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.synapse';
@@ -98,35 +87,30 @@ export default class SynapseAdapter extends ProtocolAdapter {
               data: log.data,
             });
 
+            const chainId = Number(event.args.chainId);
+            let destChainName: string | null = null;
+            for (const chain of Object.values(envConfig.blockchains)) {
+              if (chain.chainId === chainId) {
+                destChainName = chain.name;
+              }
+            }
+            if (!destChainName) {
+              continue;
+            }
+
             const token = await this.services.blockchain.evm.getTokenInfo({
               chain: bridgeConfig.chain,
               address: event.args.token,
             });
 
             if (token) {
-              const tokenPirceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+              const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
                 chain: token.chain,
                 address: token.address,
                 timestamp: options.timestamp,
               });
 
-              const chainId = Number(event.args.chainId);
-              let destChainName: string | null = null;
-              for (const chain of Object.values(envConfig.blockchains)) {
-                if (chain.chainId === chainId) {
-                  destChainName = chain.name;
-                }
-              }
-              for (const [supportedChainId, chainName] of Object.entries(SynapseSupportedChains)) {
-                if (Number(supportedChainId) === chainId) {
-                  destChainName = chainName;
-                }
-              }
-              if (!destChainName) {
-                continue;
-              }
-
-              const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPirceUsd;
+              const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPriceUsd;
               const feeAmountUsd = amountUsd * 0.001; // 0.1%
 
               if (!protocolData.breakdown[token.chain][token.address]) {
@@ -222,28 +206,23 @@ export default class SynapseAdapter extends ProtocolAdapter {
               data: log.data,
             });
 
+            const destChainId = Number(event.args.destChainId);
+            let destChainName: string | null = null;
+            for (const chain of Object.values(envConfig.blockchains)) {
+              if (chain.chainId === destChainId) {
+                destChainName = chain.name;
+              }
+            }
+            if (!destChainName) {
+              continue;
+            }
+
             const token = await this.services.blockchain.evm.getTokenInfo({
               chain: bridgeConfig.chain,
               address: event.args.originToken,
             });
 
             if (token) {
-              const destChainId = Number(event.args.destChainId);
-              let destChainName: string | null = null;
-              for (const chain of Object.values(envConfig.blockchains)) {
-                if (chain.chainId === destChainId) {
-                  destChainName = chain.name;
-                }
-              }
-              for (const [supportedChainId, chainName] of Object.entries(SynapseSupportedChains)) {
-                if (Number(supportedChainId) === destChainId) {
-                  destChainName = chainName;
-                }
-              }
-              if (!destChainName) {
-                continue;
-              }
-
               const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
                 chain: token.chain,
                 address: token.address,

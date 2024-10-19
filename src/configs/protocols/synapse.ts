@@ -9,9 +9,17 @@ export interface SynapseLiquidityPool {
 export interface SynapseBridgeConfig {
   chain: string;
   birthday: number;
+
+  // the synapse bridge contract
   bridge?: string;
+
+  // count total assets locked in bridge contracts
   bridgeTokens?: Array<string>;
+
+  // the synapse rfq bridge
   fastBridgeRfq?: string;
+
+  // list of liquidity pools if any
   liquidityPools?: Array<SynapseLiquidityPool>;
 }
 
@@ -44,6 +52,20 @@ export const SynapseConfigs: SynapseProtocolConfig = {
         '0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8',
         '0x0642026E7f0B6cCaC5925b4E7Fa61384250e1701',
       ],
+      // bridgeSupportedTokens: [
+      //   AddressZero, // native token
+      //   '0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8',
+      //   '0x6b175474e89094c44da98b954eedeac495271d0f',
+      //   '0xBAac2B4491727D78D2b78815144570b9f2Fe8899',
+      //   '0x853d955acef822db058eb8505911ed77f175b99e',
+      //   '0x0ab87046fBb341D058F17CBC4c1133F25a20a52f',
+      //   '0x0642026e7f0b6ccac5925b4e7fa61384250e1701',
+      //   '0x12f79f8c1A6e47a9b5F0796FDb008Bdc182fa19e',
+      //   '0x514910771af9ca656af840dff83e8264ecf986ca',
+      //   '0x98585dFc8d9e7D48F0b1aE47ce33332CF4237D96',
+      //   '0x1B84765dE8B7566e4cEAF4D0fD3c5aF52D3DdE4F',
+      //   '0x6982508145454ce325ddbe47a25d4ec3d2311933',
+      // ],
       fastBridgeRfq: '0x5523d3c98809dddb82c686e152f5c58b1b0fb59e',
       liquidityPools: [
         {
