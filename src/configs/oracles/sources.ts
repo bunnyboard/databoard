@@ -1223,11 +1223,11 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   },
   UNIDX: {
     currency: 'eth',
-    sources: [OracleSourceUniswapv2List.UNIDX_WETH],
+    sources: [OracleSourceUniswapv3List.UNIDX_WETH],
   },
   SPEC: {
     currency: 'eth',
-    sources: [OracleSourceUniswapv2List.SPEC_WETH],
+    sources: [OracleSourceUniswapv3List.SPEC_WETH],
   },
   ynETH: {
     currency: 'wstETH',
