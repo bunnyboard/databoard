@@ -14,7 +14,7 @@ export default class CurveLibs {
   public static async getCurvePoolPrice(options: GetMetaPoolPriceOptions): Promise<string | null> {
     const blockchain = new BlockchainService();
 
-    const price = await blockchain.readContract({
+    let price = await blockchain.readContract({
       chain: options.config.chain,
       abi: options.config.type === 'curveMetaPool' ? CurveMetaPoolAbi : CurveStablePoolAbi,
       target: options.config.address,
@@ -26,6 +26,47 @@ export default class CurveLibs {
       ],
       blockNumber: options.blockNumber,
     });
+
+    if (!price) {
+      price = await blockchain.readContract({
+        chain: options.config.chain,
+        abi: [
+          {
+            stateMutability: 'view',
+            type: 'function',
+            name: 'get_dy',
+            inputs: [
+              {
+                name: 'i',
+                type: 'uint256',
+              },
+              {
+                name: 'j',
+                type: 'uint256',
+              },
+              {
+                name: 'dx',
+                type: 'uint256',
+              },
+            ],
+            outputs: [
+              {
+                name: '',
+                type: 'uint256',
+              },
+            ],
+          },
+        ],
+        target: options.config.address,
+        method: 'get_dy',
+        params: [
+          options.config.baseTokenIndex,
+          options.config.quotaTokenIndex,
+          new BigNumber(1).multipliedBy(new BigNumber(10).pow(options.config.baseToken.decimals)).toString(10),
+        ],
+        blockNumber: options.blockNumber,
+      });
+    }
 
     if (price) {
       return formatBigNumberToString(price.toString(), options.config.quotaToken.decimals);

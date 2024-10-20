@@ -1,4 +1,4 @@
-import { FluidProtocolConfig } from '../../../configs/protocols/fluid';
+import { FluidMarketConfig, FluidProtocolConfig } from '../../../configs/protocols/fluid';
 import { ProtocolConfig } from '../../../types/base';
 import { ProtocolData, getInitialProtocolCoreMetrics } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
@@ -12,6 +12,7 @@ import { compareAddress, formatBigNumberToNumber, normalizeAddress } from '../..
 import { AddressE, AddressZero, TimeUnits } from '../../../configs/constants';
 import { decodeEventLog } from 'viem';
 import AdapterDataHelper from '../helpers';
+import { ContractCall } from '../../../services/blockchains/domains';
 
 export const FluidVaultEvents = {
   // event on Liquidity contract
@@ -26,6 +27,47 @@ export default class FluidAdapter extends ProtocolAdapter {
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {
     super(services, storages, protocolConfig);
+  }
+
+  private async getAllVaults(marketConfig: FluidMarketConfig, blockNumber: number): Promise<Array<any>> {
+    let vaults: Array<any> = [];
+
+    const allVaultAddresses = await this.services.blockchain.evm.readContract({
+      chain: marketConfig.chain,
+      target: marketConfig.vaultResolverV2,
+      abi: VaultResolverAbi,
+      method: 'getAllVaultsAddresses',
+      params: [],
+      blockNumber: blockNumber,
+    });
+
+    if (allVaultAddresses) {
+      const calls: Array<ContractCall> = allVaultAddresses.map((vaultAddress: string) => {
+        return {
+          target: marketConfig.vaultResolverV2,
+          abi: VaultResolverAbi,
+          method: 'getVaultEntireData',
+          params: [vaultAddress],
+        };
+      });
+
+      vaults = await this.services.blockchain.evm.multicall({
+        chain: marketConfig.chain,
+        blockNumber: blockNumber,
+        calls: calls,
+      });
+    } else if (marketConfig.vaultResolverV1) {
+      return await this.services.blockchain.evm.readContract({
+        chain: marketConfig.chain,
+        target: marketConfig.vaultResolverV1,
+        abi: VaultResolverAbi,
+        method: 'getVaultsEntireData',
+        params: [],
+        blockNumber: blockNumber,
+      });
+    }
+
+    return vaults;
   }
 
   public async getProtocolData(options: GetProtocolDataOptions): Promise<ProtocolData | null> {
@@ -71,34 +113,28 @@ export default class FluidAdapter extends ProtocolAdapter {
         options.endTime,
       );
 
-      const [listedTokens, getAllOverallTokensData, getVaultsEntireData] = await this.services.blockchain.evm.multicall(
-        {
-          chain: marketConfig.chain,
-          blockNumber: blockNumber,
-          calls: [
-            {
-              target: marketConfig.liquidityResolver,
-              abi: LiquidityResolverAbi,
-              method: 'listedTokens',
-              params: [],
-            },
-            {
-              target: marketConfig.liquidityResolver,
-              abi: LiquidityResolverAbi,
-              method: 'getAllOverallTokensData',
-              params: [],
-            },
-            {
-              target: marketConfig.vaultResolver,
-              abi: VaultResolverAbi,
-              method: 'getVaultsEntireData',
-              params: [],
-            },
-          ],
-        },
-      );
+      let [listedTokens, getAllOverallTokensData] = await this.services.blockchain.evm.multicall({
+        chain: marketConfig.chain,
+        blockNumber: blockNumber,
+        calls: [
+          {
+            target: marketConfig.liquidityResolver,
+            abi: LiquidityResolverAbi,
+            method: 'listedTokens',
+            params: [],
+          },
+          {
+            target: marketConfig.liquidityResolver,
+            abi: LiquidityResolverAbi,
+            method: 'getAllOverallTokensData',
+            params: [],
+          },
+        ],
+      });
 
-      if (listedTokens && getAllOverallTokensData && getVaultsEntireData) {
+      const getVaultsEntireData: Array<any> = await this.getAllVaults(marketConfig, blockNumber);
+
+      if (listedTokens && getAllOverallTokensData) {
         const liquidityLogs = await this.services.blockchain.evm.getContractLogs({
           chain: marketConfig.chain,
           address: marketConfig.liquidity, // liquidity contract
@@ -108,15 +144,17 @@ export default class FluidAdapter extends ProtocolAdapter {
 
         let liquidationLogs: Array<any> = [];
         for (const vault of getVaultsEntireData) {
-          const rawlogs = await this.services.blockchain.evm.getContractLogs({
-            chain: marketConfig.chain,
-            address: vault.vault,
-            fromBlock: beginBlock,
-            toBlock: endBlock,
-          });
-          liquidationLogs = liquidationLogs.concat(
-            rawlogs.filter((item) => item.topics[0] === FluidVaultEvents.LogLiquidate),
-          );
+          if (vault) {
+            const rawlogs = await this.services.blockchain.evm.getContractLogs({
+              chain: marketConfig.chain,
+              address: vault.vault,
+              fromBlock: beginBlock,
+              toBlock: endBlock,
+            });
+            liquidationLogs = liquidationLogs.concat(
+              rawlogs.filter((item) => item.topics[0] === FluidVaultEvents.LogLiquidate),
+            );
+          }
         }
 
         for (let i = 0; i < listedTokens.length; i++) {
@@ -221,7 +259,9 @@ export default class FluidAdapter extends ProtocolAdapter {
                 data: log.data,
               });
 
-              const vaultData = getVaultsEntireData.filter((item: any) => compareAddress(item.vault, log.address))[0];
+              const vaultData = getVaultsEntireData.filter(
+                (item: any) => item && compareAddress(item.vault, log.address),
+              )[0];
 
               if (vaultData) {
                 let supplyToken = normalizeAddress(vaultData.constantVariables.supplyToken);

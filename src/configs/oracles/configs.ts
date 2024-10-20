@@ -206,7 +206,11 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x0642026e7f0b6ccac5925b4e7fa61384250e1701': OracleSourceConfigs.H2O,
     '0xf0655dcee37e5c0b70fffd70d85f88f8edf0aff6': OracleSourceConfigs.UNIDX,
     '0x0f2d719407fdbeff09d87557abb7232601fd9f29': OracleSourceConfigs.SYN,
-    '0xAdF7C35560035944e805D98fF17d58CDe2449389': OracleSourceConfigs.SPEC,
+    '0xadf7c35560035944e805d98ff17d58cde2449389': OracleSourceConfigs.SPEC,
+    '0x09db87a538bd693e9d08544577d5ccfaa6373a48': OracleSourceConfigs.ynETH,
+    '0x437cc33344a0b27a429f795ff6b469c72698b291': OracleSourceConfigs.wM,
+    '0x2c537e5624e4af88a7ae4060c022609376c8d0eb': OracleSourceConfigs.TRYb,
+    '0x0022228a2cc5e7ef0274a7baa600d44da5ab5776': OracleSourceConfigs.USDT,
 
     // todo need to find better oracle source
     '0x9d39a5de30e57443bff2a8307a4256c8797a3497': OracleSourceConfigs.USDT,

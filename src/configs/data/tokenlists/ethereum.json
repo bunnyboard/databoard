@@ -11183,6 +11183,12 @@
     "decimals": 18,
     "address": "0x436da116249044e8b4464f0cf21dd93311d88190"
   },
+  "0x437cc33344a0b27a429f795ff6b469c72698b291": {
+    "chain": "ethereum",
+    "symbol": "wM",
+    "decimals": 6,
+    "address": "0x437cc33344a0b27a429f795ff6b469c72698b291"
+  },
   "0x4385328cc4d643ca98dfea734360c0f596c83449": {
     "chain": "ethereum",
     "symbol": "TOMI",
