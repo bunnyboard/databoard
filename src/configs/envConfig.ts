@@ -17,6 +17,9 @@ const envConfig: EnvConfig = {
   env: {
     debug: String(process.env.ENV_DEBUG) === 'true',
   },
+  sentry: {
+    dsn: process.env.SENTRY_DSN && process.env.SENTRY_DSN !== '' ? String(process.env.SENTRY_DSN) : null,
+  },
 };
 
 export default envConfig;

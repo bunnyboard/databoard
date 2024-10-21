@@ -57,4 +57,9 @@ export interface EnvConfig {
   blockchains: {
     [key: string]: Blockchain;
   };
+
+  // config sentry for errors tracing
+  sentry: {
+    dsn: string | null;
+  };
 }
