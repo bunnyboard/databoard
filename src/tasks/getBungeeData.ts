@@ -1,5 +1,6 @@
 // get Bungee supported tokens
 import axios from 'axios';
+import fs from 'fs';
 
 import { compareAddress, normalizeAddress } from '../lib/utils';
 import updateTokenInfo from './helpers/updateTokenInfo';
@@ -10,8 +11,7 @@ import { AddressE, AddressZero } from '../configs/constants';
 
 // help to get supported tokens on Bungee.Exchange
 (async function () {
-  // address => Token
-  const tokens: { [key: string]: Token } = {};
+  const tokens: Array<Token> = [];
 
   try {
     const response = await axios.get(`https://api.socket.tech/v2/token-lists/all?isShortList=true`, {
@@ -36,7 +36,12 @@ import { AddressE, AddressZero } from '../configs/constants';
               address: tokenAddress,
             };
 
-            tokens[normalizeAddress(supportedToken.address)] = token;
+            if (!OracleConfigs[token.chain][token.address]) {
+              console.log('oracle not found for token', token.address, token.chain, token.symbol);
+              continue;
+            }
+
+            tokens.push(token);
 
             if (!OracleConfigs[token.chain][token.address]) {
               console.log('oracle not found for token', token);
@@ -51,5 +56,7 @@ import { AddressE, AddressZero } from '../configs/constants';
     console.log(e);
   }
 
-  updateTokenInfo(Object.values(tokens));
+  updateTokenInfo(tokens);
+
+  fs.writeFileSync('./src/configs/data/constants/BungeeTokens.json', JSON.stringify(tokens));
 })();

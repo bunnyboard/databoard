@@ -1241,4 +1241,56 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv3List.TRYb_USDC],
   },
+  RGT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.RGT_WETH],
+  },
+  BOND: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BOND_WETH],
+  },
+  MM: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.MM_WBNB],
+  },
+  WOW: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.WOW_WBNB],
+  },
+  FUEL: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.FUEL_WBNB],
+  },
+  NULS: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.NULS_WBNB],
+  },
+  NVT: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.NVT_WBNB],
+  },
+  FRONT: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.FRONT_WBNB],
+  },
+  UNFI: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.UNFI_WBNB],
+  },
+  ONT: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.ONT_WBNB],
+  },
+  O3: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.O3_BUSD],
+  },
+  TOSHI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.TOSHI_WETH],
+  },
+  '0xBTC': {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List['0xBTC_WETH']],
+  },
 };

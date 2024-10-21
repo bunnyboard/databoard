@@ -1,4 +1,16 @@
 {
+  "0x0000000000000000000000000000000000000000": {
+    "chain": "gnosis",
+    "symbol": "XDAI",
+    "decimals": 18,
+    "address": "0x0000000000000000000000000000000000000000"
+  },
+  "0x004626a008b1acdc4c74ab51644093b155e59a23": {
+    "chain": "gnosis",
+    "symbol": "stEUR",
+    "decimals": 18,
+    "address": "0x004626a008b1acdc4c74ab51644093b155e59a23"
+  },
   "0x177127622c4a00f3d409b75571e12cb3c8973d3c": {
     "chain": "gnosis",
     "symbol": "COW",

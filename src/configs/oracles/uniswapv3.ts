@@ -625,6 +625,13 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.base['0x120edc8e391ba4c94cb98bb65d8856ae6ec1525f'],
     quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
   },
+  TOSHI_WETH: {
+    type: 'univ3',
+    chain: 'base',
+    address: '0x4b0aaf3ebb163dd45f663b38b6d93f6093ebc2d3',
+    baseToken: TokensBook.base['0xac1bd2486aaf3b5c0fc3fd868558b082a531b2b4'],
+    quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
+  },
   NYA_WETH: {
     type: 'univ3',
     chain: 'optimism',

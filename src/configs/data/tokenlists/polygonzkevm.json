@@ -1,4 +1,10 @@
 {
+  "0x0000000000000000000000000000000000000000": {
+    "chain": "polygonzkevm",
+    "symbol": "ETH",
+    "decimals": 18,
+    "address": "0x0000000000000000000000000000000000000000"
+  },
   "0x0d1e753a25ebda689453309112904807625befbe": {
     "chain": "polygonzkevm",
     "symbol": "CAKE",

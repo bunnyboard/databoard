@@ -9,7 +9,7 @@ import { ProtocolNames } from '../../../configs/names';
 import { BungeeProtocolConfig } from '../../../configs/protocols/bungee';
 import BungeeSocketGatewayAbi from '../../../configs/abi/bungee/SocketGateway.json';
 import envConfig from '../../../configs/envConfig';
-import { formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
+import { compareAddress, formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
 import { StargateChainIds } from '../../../configs/protocols/stargate';
 import { BungeeDataExtended, BungeeProtocolData } from '../../../types/domains/ecosystems/bungee';
 
@@ -112,6 +112,11 @@ export default class BungeeAdapter extends ProtocolAdapter {
           });
 
           if (log.topics[0] === BungeeSocketEvents.SocketBridge) {
+            if (!gatewayConfig.tokens.filter((item) => compareAddress(item.address, event.args.token))[0]) {
+              // get data for supported tokens only
+              continue;
+            }
+
             // bungee identity bridge name by unique bytes32 hash
             // to know which bytes32 mapped to which bridge
             // check the Bungee bridge implementation contract
@@ -168,6 +173,11 @@ export default class BungeeAdapter extends ProtocolAdapter {
               (protocolData.volumeBridgePaths as any)[gatewayConfig.chain][toChainName] += amountUsd;
             }
           } else if (log.topics[0] === BungeeSocketEvents.SocketFeesDeducted) {
+            if (!gatewayConfig.tokens.filter((item) => compareAddress(item.address, event.args.feesToken))[0]) {
+              // get data for supported tokens only
+              continue;
+            }
+
             const token = await this.services.blockchain.evm.getTokenInfo({
               chain: gatewayConfig.chain,
               address: event.args.feesToken,

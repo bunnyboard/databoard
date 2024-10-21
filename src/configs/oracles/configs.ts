@@ -211,6 +211,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x437cc33344a0b27a429f795ff6b469c72698b291': OracleSourceConfigs.wM,
     '0x2c537e5624e4af88a7ae4060c022609376c8d0eb': OracleSourceConfigs.TRYb,
     '0x0022228a2cc5e7ef0274a7baa600d44da5ab5776': OracleSourceConfigs.USDT,
+    '0xd291e7a03283640fdc51b121ac401383a46cc623': OracleSourceConfigs.RGT,
+    '0xb6ed7644c69416d67b522e20bc294a9a9b405b31': OracleSourceConfigs['0xBTC'],
 
     // todo need to find better oracle source
     '0x9d39a5de30e57443bff2a8307a4256c8797a3497': OracleSourceConfigs.USDT,
@@ -354,6 +356,9 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x16bfc5fe024980124bef51d1d792dc539d1b5bf0': OracleSourceConfigs.agEUR,
     '0x5429706887FCb58a595677B73E9B0441C25d993D': OracleSourceConfigs.UNIDX,
     '0x080f6aed32fc474dd5717105dba5ea57268f46eb': OracleSourceConfigs.SYN,
+    '0xee9801669c6138e84bd50deb500827b776777d28': OracleSourceConfigs.O3,
+    '0x4425742f1ec8d98779690b5a3a6276db85ddc01a': OracleSourceConfigs.DOG,
+    '0x7ba4a00d54a07461d9db2aef539e91409943adc9': OracleSourceConfigs.SDT,
   },
 
   // tokens on Optimism
@@ -425,6 +430,10 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xa0554607e477cdc9d0ee2a6b087f4b2dc2815c22': OracleSourceConfigs.agEUR,
     '0x28b42698caf46b4b012cf38b6c75867e0762186d': OracleSourceConfigs.UNIDX,
     '0x5a5fff6f753d7c11a56a52fe47a177a87e431655': OracleSourceConfigs.SYN,
+    '0xb548f63d4405466b36c0c0ac3318a22fdcec711a': OracleSourceConfigs.RGT,
+    '0xe0bb0d3de8c10976511e5030ca403dbf4c25165b': OracleSourceConfigs['0xBTC'],
+    '0x3e7ef8f50246f725885102e8238cbba33f276747': OracleSourceConfigs.BOND,
+    '0xfeaa9194f9f8c1b65429e31341a103071464907e': OracleSourceConfigs.LRC,
   },
 
   // tokens on Base
@@ -472,6 +481,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x6b4712ae9797c199edd44f897ca09bc57628a1cf': OracleSourceConfigs.UNIDX,
     '0x417ac0e078398c154edfadd9ef675d30be60af93': OracleSourceConfigs.crvUSD,
     '0x96419929d7949d6a801a6909c145c8eef6a40431': OracleSourceConfigs.SPEC,
+    '0xac1bd2486aaf3b5c0fc3fd868558b082a531b2b4': OracleSourceConfigs.TOSHI,
   },
 
   // tokens on Polygon
@@ -627,6 +637,21 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x0fe9778c005a5a6115cbe12b0568a2d50b765a51': OracleSourceConfigs.NFD,
     '0x03efca7ceb108734d3777684f3c0a0d8ad652f79': OracleSourceConfigs.H2O,
     '0xa4080f1778e69467e905b8d6f72f6e441f9e9484': OracleSourceConfigs.SYN,
+    '0xbf05279f9bf1ce69bbfed670813b7e431142afa4': OracleSourceConfigs.MM,
+    '0x4da996c5fe84755c80e108cf96fe705174c5e36a': OracleSourceConfigs.WOW,
+    '0xee9801669c6138e84bd50deb500827b776777d28': OracleSourceConfigs.O3,
+    '0x9fe28d11ce29e340b7124c493f59607cbab9ce48': OracleSourceConfigs.SPELL,
+    '0xae9269f27437f0fcbc232d39ec814844a51d6b8f': OracleSourceConfigs.BURGER,
+    '0x2090c8295769791ab7a3cf1cc6e0aa19f35e441a': OracleSourceConfigs.FUEL,
+    '0x8cd6e29d3686d24d3c2018cee54621ea0f89313b': OracleSourceConfigs.NULS,
+    '0xf0e406c49c63abf358030a299c0e00118c4c6ba5': OracleSourceConfigs.NVT,
+    '0x928e55dab735aa8260af3cedada18b5f70c72f1b': OracleSourceConfigs.FRONT,
+    '0x20f663cea80face82acdfa3aae6862d246ce0333': OracleSourceConfigs.DRIP,
+    '0x728c5bac3c3e370e372fc4671f9ef6916b814d8b': OracleSourceConfigs.UNFI,
+    '0xfd7b3a77848f1c2d67e05e54d78d174a0c850335': OracleSourceConfigs.ONT,
+    '0x5f88ab06e8dfe89df127b2430bba4af600866035': OracleSourceConfigs.KAVA,
+    '0xd4cb328a82bdf5f03eb737f37fa6b370aef3e888': OracleSourceConfigs.CREAM,
+    '0x947950bcc74888a40ffa2593c5798f11fc9124c4': OracleSourceConfigs.SUSHI,
   },
 
   // tokens on Avalanche C-Chain
@@ -668,8 +693,6 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x8729438eb15e2c8b576fcc6aecda6a148776c0f5': OracleSourceConfigs.QI,
     '0x264c1383ea520f73dd837f915ef3a732e204a493': OracleSourceConfigs.BNB,
     '0x22d4002028f537599be9f666d1c4fa138522f9c8': OracleSourceConfigs.PTP,
-    '0xae9269f27437f0fcbc232d39ec814844a51d6b8f': OracleSourceConfigs.BURGER,
-    '0x20f663cea80face82acdfa3aae6862d246ce0333': OracleSourceConfigs.DRIP,
     '0x6985884c4392d348587b19cb9eaaf157f13271cd': OracleSourceConfigs.ZRO,
     '0x947950bcc74888a40ffa2593c5798f11fc9124c4': OracleSourceConfigs.SUSHI,
     '0xa56f9a54880afbc30cf29bb66d2d9adcdcaeadd6': OracleSourceConfigs.miMATIC,
@@ -683,6 +706,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xccbf7c451f81752f7d2237f2c18c371e6e089e69': OracleSourceConfigs.SDT,
     '0x4bfc90322dd638f81f034517359bd447f8e0235a': OracleSourceConfigs.NEWO,
     '0xc6b11a4fd833d1117e9d312c02865647cd961107': OracleSourceConfigs.H2O,
+    '0xd6070ae98b8069de6b494332d1a1a81b6179d960': OracleSourceConfigs.BIFI,
+    '0x0802d66f029c46e042b74d543fc43b6705ccb4ba': OracleSourceConfigs.APE,
   },
 
   // tokens on Fantom
@@ -764,6 +789,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x2995d1317dcd4f0ab89f4ae60f3f020a4f17c7ce': OracleSourceConfigs.SUSHI,
     '0xedbc7449a9b594ca4e053d9737ec5dc4cbccbfb2': OracleSourceConfigs.EUR,
     '0x5cb9073902f2035222b9749f8fb0c9bfe5527108': OracleSourceConfigs.GBP,
+    '0x004626a008b1acdc4c74ab51644093b155e59a23': OracleSourceConfigs.EUR,
   },
 
   // tokens on scroll

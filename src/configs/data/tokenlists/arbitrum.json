@@ -517,7 +517,7 @@
   },
   "0x2bcc6d6cdbbdc0a4071e48bb3b969b06b3330c07": {
     "chain": "arbitrum",
-    "symbol": "WSOL",
+    "symbol": "SOL",
     "decimals": 9,
     "address": "0x2bcc6d6cdbbdc0a4071e48bb3b969b06b3330c07"
   },
