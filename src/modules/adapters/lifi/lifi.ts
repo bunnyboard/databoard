@@ -9,9 +9,9 @@ import { LifiDataExtended, LifiProtocolData } from '../../../types/domains/ecosy
 import LifiInterfaceAbi from '../../../configs/abi/lifi/ILifi.json';
 import FeesCollectedAbi from '../../../configs/abi/lifi/FeeCollector.json';
 import { decodeEventLog } from 'viem';
-import { ChainNames, ProtocolNames } from '../../../configs/names';
-import { formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
-import envConfig from '../../../configs/envConfig';
+import { ProtocolNames } from '../../../configs/names';
+import { compareAddress, formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
+import { getChainNameById } from '../../../lib/helpers';
 
 export const LifiDiamondEvents = {
   LiFiTransferStarted: '0xcba69f43792f9f399347222505213b55af8e0b0b54b893085c2e27ecbe1644f1',
@@ -37,18 +37,6 @@ export const LifiBridgeKeys: any = {
   omni: ProtocolNames.omni,
   gnosis: ProtocolNames.gnosisNativeBridge,
   hyphen: ProtocolNames.hyphen,
-};
-
-export const LifiChainIds: any = {
-  '20000000000001': ChainNames.bitcoin,
-  '1151111081099710': ChainNames.solana,
-  '30': ChainNames.rootstock,
-  '1625': ChainNames.gravity,
-  '13371': ChainNames.immutablezkevm,
-  '122': ChainNames.fuse,
-  '288': ChainNames.boba,
-  '9001': ChainNames.evmos,
-  '106': ChainNames.velas,
 };
 
 export default class LifiAdapter extends ProtocolAdapter {
@@ -78,8 +66,8 @@ export default class LifiAdapter extends ProtocolAdapter {
       feeRecipients: {},
     };
 
-    const bungeeConfig = this.protocolConfig as LifiProtocolConfig;
-    for (const diamondConfig of bungeeConfig.diamonds) {
+    const lifiConfig = this.protocolConfig as LifiProtocolConfig;
+    for (const diamondConfig of lifiConfig.diamonds) {
       if (diamondConfig.birthday > options.timestamp) {
         // diamond was not deployed yet
         continue;
@@ -116,6 +104,15 @@ export default class LifiAdapter extends ProtocolAdapter {
             data: log.data,
           });
 
+          if (
+            !diamondConfig.tokens.filter((item) =>
+              compareAddress(item.address, event.args.bridgeData.sendingAssetId),
+            )[0]
+          ) {
+            // query data of whitelisted tokens only
+            continue;
+          }
+
           const bridgeName = LifiBridgeKeys[event.args.bridgeData.bridge]
             ? LifiBridgeKeys[event.args.bridgeData.bridge]
             : event.args.bridgeData.bridge;
@@ -133,12 +130,10 @@ export default class LifiAdapter extends ProtocolAdapter {
             const amountUsd =
               formatBigNumberToNumber(event.args.bridgeData.minAmount.toString(), token.decimals) * tokenPriceUsd;
 
-            const chainId = Number(event.args.bridgeData.destinationChainId);
-            let toChainName = LifiChainIds[chainId] ? LifiChainIds[chainId] : `unknown:${chainId}`;
-            for (const blockchain of Object.values(envConfig.blockchains)) {
-              if (blockchain.chainId === chainId) {
-                toChainName = blockchain.name;
-              }
+            const destChainName = getChainNameById(Number(event.args.bridgeData.destinationChainId));
+            if (!destChainName) {
+              // ignore transactions on unknown chains
+              continue;
             }
 
             (protocolData.volumes.bridge as number) += amountUsd;
@@ -153,10 +148,10 @@ export default class LifiAdapter extends ProtocolAdapter {
             }
             (protocolData.breakdown[diamondConfig.chain][token.address].volumes.bridge as number) += amountUsd;
 
-            if (!(protocolData.volumeBridgePaths as any)[diamondConfig.chain][toChainName]) {
-              (protocolData.volumeBridgePaths as any)[diamondConfig.chain][toChainName] = 0;
+            if (!(protocolData.volumeBridgePaths as any)[diamondConfig.chain][destChainName]) {
+              (protocolData.volumeBridgePaths as any)[diamondConfig.chain][destChainName] = 0;
             }
-            (protocolData.volumeBridgePaths as any)[diamondConfig.chain][toChainName] += amountUsd;
+            (protocolData.volumeBridgePaths as any)[diamondConfig.chain][destChainName] += amountUsd;
 
             if (!lifiExtendedData.volumeBridges[bridgeName]) {
               lifiExtendedData.volumeBridges[bridgeName] = 0;

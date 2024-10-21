@@ -15,6 +15,7 @@ import FluidAdapter from './fluid/fluid';
 import FraxEtherAdapter from './frax/fraxether';
 import LayerbankAdapter from './layerbank/layerbank';
 import LidoAdapter from './lido/lido';
+import LifiAdapter from './lifi/lifi';
 import LiquidCollectiveAdapter from './liquidcollective/lseth';
 import LiquityAdapter from './liquity/liquity';
 import MakerAdapter from './maker/maker';
@@ -83,7 +84,7 @@ export function getProtocolAdapters(
     curvelend: new CurvelendAdapter(services, storages, ProtocolConfigs.curvelend),
     spooky: new SpookyAdapter(services, storages, ProtocolConfigs.spooky),
     bungee: new BungeeAdapter(services, storages, ProtocolConfigs.bungee),
-    // lifi: new LifiAdapter(services, storages, ProtocolConfigs.lifi),
+    lifi: new LifiAdapter(services, storages, ProtocolConfigs.lifi),
     rocketpool: new RocketpoolAdapter(services, storages, ProtocolConfigs.rocketpool),
     wbeth: new WbethAdapter(services, storages, ProtocolConfigs.wbeth),
     meth: new MethAdapter(services, storages, ProtocolConfigs.meth),

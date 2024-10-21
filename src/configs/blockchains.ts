@@ -536,4 +536,28 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
       decimals: 18,
     },
   },
+  [ChainNames.fuse]: {
+    name: ChainNames.fuse,
+    family: 'evm',
+    chainId: 122,
+    nodeRpc: String(process.env.BLOCKCHAIN_FUSE_NODE),
+    nativeToken: {
+      chain: ChainNames.fuse,
+      address: AddressZero,
+      symbol: 'FUSE',
+      decimals: 18,
+    },
+  },
+  [ChainNames.boba]: {
+    name: ChainNames.fuse,
+    family: 'evm',
+    chainId: 288,
+    nodeRpc: String(process.env.BLOCKCHAIN_BOBA_NODE),
+    nativeToken: {
+      chain: ChainNames.boba,
+      address: AddressZero,
+      symbol: 'ETH',
+      decimals: 18,
+    },
+  },
 };
