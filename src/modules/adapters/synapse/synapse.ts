@@ -4,14 +4,12 @@ import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
 import ProtocolAdapter from '../protocol';
 import { decodeEventLog } from 'viem';
-import { formatBigNumberToNumber } from '../../../lib/utils';
+import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
 import AdapterDataHelper from '../helpers';
 import { SynapseProtocolConfig } from '../../../configs/protocols/synapse';
 import SynapseBridgeAbi from '../../../configs/abi/synapse/SynapseBridge.json';
 import FastBridgeRfqAbi from '../../../configs/abi/synapse/FastBridge.json';
-import Erc20Abi from '../../../configs/abi/ERC20.json';
-import envConfig from '../../../configs/envConfig';
-import { ContractCall } from '../../../services/blockchains/domains';
+import { getChainNameById } from '../../../lib/helpers';
 
 const TokenDeposit = '0xda5273705dbef4bf1b902a131c2eac086b7e1476a8ab0cb4da08af1fe1bd8e3b';
 const TokenDepositAndSwap = '0x79c15604b92ef54d3f61f0c40caab8857927ca3d5092367163b4562c1699eb5f';
@@ -67,6 +65,45 @@ export default class SynapseAdapter extends ProtocolAdapter {
         options.endTime,
       );
 
+      const countBalanceAddresses: Array<string> = [];
+      if (bridgeConfig.bridge) {
+        countBalanceAddresses.push(bridgeConfig.bridge);
+      }
+      if (bridgeConfig.liquidityPools) {
+        for (const liquidityPool of bridgeConfig.liquidityPools) {
+          countBalanceAddresses.push(liquidityPool);
+        }
+      }
+      for (const addressToCount of countBalanceAddresses) {
+        const getBalanceUsdResult = await this.getAddressBalanceUsd({
+          chain: bridgeConfig.chain,
+          ownerAddress: addressToCount,
+          tokens: bridgeConfig.tokens,
+          timestamp: options.timestamp,
+          blockNumber: blockNumber,
+        });
+
+        protocolData.totalAssetDeposited += getBalanceUsdResult.totalBalanceUsd;
+        protocolData.totalValueLocked += getBalanceUsdResult.totalBalanceUsd;
+        (protocolData.totalSupplied as number) += getBalanceUsdResult.totalBalanceUsd;
+
+        for (const [tokenAddress, balanceUsd] of Object.entries(getBalanceUsdResult.tokenBalanceUsds)) {
+          if (!protocolData.breakdown[bridgeConfig.chain][tokenAddress]) {
+            protocolData.breakdown[bridgeConfig.chain][tokenAddress] = {
+              ...getInitialProtocolCoreMetrics(),
+              totalSupplied: 0,
+              volumes: {
+                bridge: 0,
+              },
+            };
+          }
+          protocolData.breakdown[bridgeConfig.chain][tokenAddress].totalAssetDeposited += balanceUsd.balanceUsd;
+          protocolData.breakdown[bridgeConfig.chain][tokenAddress].totalValueLocked += balanceUsd.balanceUsd;
+          (protocolData.breakdown[bridgeConfig.chain][tokenAddress].totalSupplied as number) += balanceUsd.balanceUsd;
+        }
+      }
+
+      // count volumes
       if (bridgeConfig.bridge) {
         const logs = await this.services.blockchain.evm.getContractLogs({
           chain: bridgeConfig.chain,
@@ -87,13 +124,12 @@ export default class SynapseAdapter extends ProtocolAdapter {
               data: log.data,
             });
 
-            const chainId = Number(event.args.chainId);
-            let destChainName: string | null = null;
-            for (const chain of Object.values(envConfig.blockchains)) {
-              if (chain.chainId === chainId) {
-                destChainName = chain.name;
-              }
+            if (!bridgeConfig.tokens.filter((item) => compareAddress(item.address, event.args.token))[0]) {
+              // count supported token only
+              continue;
             }
+
+            const destChainName = getChainNameById(Number(event.args.chainId));
             if (!destChainName) {
               continue;
             }
@@ -139,56 +175,6 @@ export default class SynapseAdapter extends ProtocolAdapter {
             }
           }
         }
-
-        if (bridgeConfig.bridgeTokens) {
-          const calls: Array<ContractCall> = bridgeConfig.bridgeTokens.map((tokenAddress) => {
-            return {
-              abi: Erc20Abi,
-              target: tokenAddress,
-              method: 'balanceOf',
-              params: [bridgeConfig.bridge],
-            };
-          });
-          const results: any = await this.services.blockchain.evm.multicall({
-            chain: bridgeConfig.chain,
-            blockNumber: blockNumber,
-            calls: calls,
-          });
-          if (results) {
-            for (let i = 0; i < bridgeConfig.bridgeTokens.length; i++) {
-              const token = await this.services.blockchain.evm.getTokenInfo({
-                chain: bridgeConfig.chain,
-                address: bridgeConfig.bridgeTokens[i],
-              });
-              if (token) {
-                const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-                  chain: token.chain,
-                  address: token.address,
-                  timestamp: options.timestamp,
-                });
-                const balanceUsd =
-                  formatBigNumberToNumber(results[i] ? results[i].toString() : '0', token.decimals) * tokenPriceUsd;
-
-                protocolData.totalAssetDeposited += balanceUsd;
-                protocolData.totalValueLocked += balanceUsd;
-                (protocolData.totalSupplied as number) += balanceUsd;
-
-                if (!protocolData.breakdown[token.chain][token.address]) {
-                  protocolData.breakdown[token.chain][token.address] = {
-                    ...getInitialProtocolCoreMetrics(),
-                    totalSupplied: 0,
-                    volumes: {
-                      bridge: 0,
-                    },
-                  };
-                }
-                protocolData.breakdown[token.chain][token.address].totalAssetDeposited += balanceUsd;
-                protocolData.breakdown[token.chain][token.address].totalValueLocked += balanceUsd;
-                (protocolData.breakdown[token.chain][token.address].totalSupplied as number) += balanceUsd;
-              }
-            }
-          }
-        }
       }
 
       if (bridgeConfig.fastBridgeRfq) {
@@ -206,13 +192,12 @@ export default class SynapseAdapter extends ProtocolAdapter {
               data: log.data,
             });
 
-            const destChainId = Number(event.args.destChainId);
-            let destChainName: string | null = null;
-            for (const chain of Object.values(envConfig.blockchains)) {
-              if (chain.chainId === destChainId) {
-                destChainName = chain.name;
-              }
+            if (!bridgeConfig.tokens.filter((item) => compareAddress(item.address, event.args.originToken))[0]) {
+              // count supported token only
+              continue;
             }
+
+            const destChainName = getChainNameById(Number(event.args.chainId));
             if (!destChainName) {
               continue;
             }
@@ -255,58 +240,6 @@ export default class SynapseAdapter extends ProtocolAdapter {
               (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += amountUsd;
 
               (protocolData.volumeBridgePaths as any)[bridgeConfig.chain][destChainName] += amountUsd;
-            }
-          }
-        }
-      }
-
-      if (bridgeConfig.liquidityPools) {
-        for (const liquidityPool of bridgeConfig.liquidityPools) {
-          const calls: Array<ContractCall> = liquidityPool.tokens.map((tokenAddress) => {
-            return {
-              abi: Erc20Abi,
-              target: tokenAddress,
-              method: 'balanceOf',
-              params: [bridgeConfig.bridge],
-            };
-          });
-          const results: any = await this.services.blockchain.evm.multicall({
-            chain: bridgeConfig.chain,
-            blockNumber: blockNumber,
-            calls: calls,
-          });
-          if (results) {
-            for (let i = 0; i < liquidityPool.tokens.length; i++) {
-              const token = await this.services.blockchain.evm.getTokenInfo({
-                chain: bridgeConfig.chain,
-                address: liquidityPool.tokens[i],
-              });
-              if (token) {
-                const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-                  chain: token.chain,
-                  address: token.address,
-                  timestamp: options.timestamp,
-                });
-                const balanceUsd =
-                  formatBigNumberToNumber(results[i] ? results[i].toString() : '0', token.decimals) * tokenPriceUsd;
-
-                protocolData.totalAssetDeposited += balanceUsd;
-                protocolData.totalValueLocked += balanceUsd;
-                (protocolData.totalSupplied as number) += balanceUsd;
-
-                if (!protocolData.breakdown[token.chain][token.address]) {
-                  protocolData.breakdown[token.chain][token.address] = {
-                    ...getInitialProtocolCoreMetrics(),
-                    totalSupplied: 0,
-                    volumes: {
-                      bridge: 0,
-                    },
-                  };
-                }
-                protocolData.breakdown[token.chain][token.address].totalAssetDeposited += balanceUsd;
-                protocolData.breakdown[token.chain][token.address].totalValueLocked += balanceUsd;
-                (protocolData.breakdown[token.chain][token.address].totalSupplied as number) += balanceUsd;
-              }
             }
           }
         }

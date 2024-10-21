@@ -69,6 +69,8 @@ import { ArbitrumNativeBridgeConfigs } from './protocols/arbitrum';
 import { ScrollNativeBridgeConfigs } from './protocols/scroll';
 import { KatanaConfigs } from './protocols/katana';
 import { CamelotConfigs } from './protocols/camelot';
+import { HyphenConfigs } from './protocols/hyphen';
+import { CbridgeConfigs } from './protocols/celer';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -155,4 +157,6 @@ export const ProtocolConfigs = {
   scrollNativeBridge: ScrollNativeBridgeConfigs,
   katana: KatanaConfigs,
   camelot: CamelotConfigs,
+  hyphen: HyphenConfigs,
+  cbridge: CbridgeConfigs,
 };

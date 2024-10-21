@@ -1,0 +1,14 @@
+{
+  "0x4200000000000000000000000000000000000006": {
+    "chain": "opbnb",
+    "address": "0x4200000000000000000000000000000000000006",
+    "symbol": "WBNB",
+    "decimals": 18
+  },
+  "0x50c5725949a6f0c72e6c4a641f24049a917db0cb": {
+    "chain": "opbnb",
+    "address": "0x50c5725949a6f0c72e6c4a641f24049a917db0cb",
+    "symbol": "FDUSD",
+    "decimals": 18
+  }
+}

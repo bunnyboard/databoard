@@ -1,9 +1,9 @@
 {
   "0x0000000000000000000000000000000000000000": {
     "chain": "ethereum",
+    "address": "0x0000000000000000000000000000000000000000",
     "symbol": "ETH",
-    "decimals": 18,
-    "address": "0x0000000000000000000000000000000000000000"
+    "decimals": 18
   },
   "0x0000000000004946c0e9f43f4dee607b0ef1fa1c": {
     "chain": "ethereum",
@@ -3173,6 +3173,12 @@
     "decimals": 18,
     "address": "0x12f649a9e821f90bb143089a6e56846945892ffb"
   },
+  "0x12f79f8c1a6e47a9b5f0796fdb008bdc182fa19e": {
+    "chain": "ethereum",
+    "address": "0x12f79f8c1a6e47a9b5f0796fdb008bdc182fa19e",
+    "symbol": "JEWEL",
+    "decimals": 18
+  },
   "0x12f9a180198d91f854f3ca23caf8be1c83ef3b76": {
     "chain": "ethereum",
     "symbol": "AQUA",
@@ -4552,6 +4558,12 @@
     "symbol": "CNAI",
     "decimals": 18,
     "address": "0x1b78ffbc66139466c4a432f763afce8d4c991060"
+  },
+  "0x1b84765de8b7566e4ceaf4d0fd3c5af52d3dde4f": {
+    "chain": "ethereum",
+    "address": "0x1b84765de8b7566e4ceaf4d0fd3c5af52d3dde4f",
+    "symbol": "nUSD",
+    "decimals": 18
   },
   "0x1b8568fbb47708e9e9d31ff303254f748805bf21": {
     "chain": "ethereum",
@@ -27694,6 +27706,12 @@
     "symbol": "NOIA",
     "decimals": 18,
     "address": "0xa8c8cfb141a3bb59fea1e2ea6b79b5ecbcd7b6ca"
+  },
+  "0xa8d7f5e7c78ed0fa097cc5ec66c1dc3104c9bbeb": {
+    "chain": "ethereum",
+    "address": "0xa8d7f5e7c78ed0fa097cc5ec66c1dc3104c9bbeb",
+    "symbol": "VSTA",
+    "decimals": 18
   },
   "0xa8e7ad77c60ee6f30bac54e2e7c0617bd7b5a03e": {
     "chain": "ethereum",

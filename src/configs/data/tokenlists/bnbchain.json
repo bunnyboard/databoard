@@ -1097,6 +1097,12 @@
     "decimals": 9,
     "address": "0x03e93598ea83dfd1a3c02e34576f75da1b8e1407"
   },
+  "0x03efca7ceb108734d3777684f3c0a0d8ad652f79": {
+    "chain": "bnbchain",
+    "address": "0x03efca7ceb108734d3777684f3c0a0d8ad652f79",
+    "symbol": "H2O",
+    "decimals": 18
+  },
   "0x03f8fdc10d5bcf7508375585b04e93d656d36954": {
     "chain": "bnbchain",
     "symbol": "METAX",
@@ -1714,6 +1720,12 @@
     "symbol": "BNBKING",
     "decimals": 9,
     "address": "0x061e64f1293bc49402a867cc6411987148bcdb1b"
+  },
+  "0x06250a4962558f0f3e69fc07f4c67bb9c9eac739": {
+    "chain": "bnbchain",
+    "address": "0x06250a4962558f0f3e69fc07f4c67bb9c9eac739",
+    "symbol": "BICO",
+    "decimals": 18
   },
   "0x0627e7ee0d14fcdd2ff30d1563aebdbccec678be": {
     "chain": "bnbchain",
@@ -3641,6 +3653,12 @@
     "decimals": 18,
     "address": "0x0dfcb45eae071b3b846e220560bbcdd958414d78"
   },
+  "0x0e0469a84f57f0b3eb997a18484c75dfeff2fc92": {
+    "chain": "bnbchain",
+    "address": "0x0e0469a84f57f0b3eb997a18484c75dfeff2fc92",
+    "symbol": "cgUSDT",
+    "decimals": 18
+  },
   "0x0e08093f9f4d695ad12837db11277baf5feb34f2": {
     "chain": "bnbchain",
     "symbol": "GLXY",
@@ -4162,6 +4180,12 @@
     "symbol": "DEFLY",
     "decimals": 18,
     "address": "0x0fe6a599c280853621a11c12e1a68e6949cbd08a"
+  },
+  "0x0fe9778c005a5a6115cbe12b0568a2d50b765a51": {
+    "chain": "bnbchain",
+    "address": "0x0fe9778c005a5a6115cbe12b0568a2d50b765a51",
+    "symbol": "NFD",
+    "decimals": 18
   },
   "0x0feadcc3824e7f3c12f40e324a60c23ca51627fc": {
     "chain": "bnbchain",
@@ -5867,6 +5891,12 @@
     "decimals": 18,
     "address": "0x16350ac2153a1d6322c90197129076b747d3222a"
   },
+  "0x16365b45eb269b5b5dacb34b4a15399ec79b95eb": {
+    "chain": "bnbchain",
+    "address": "0x16365b45eb269b5b5dacb34b4a15399ec79b95eb",
+    "symbol": "cUSD",
+    "decimals": 18
+  },
   "0x163f182c32d24a09d91eb75820cde9fd5832b329": {
     "chain": "bnbchain",
     "symbol": "EDOGE",
@@ -6382,6 +6412,12 @@
     "symbol": "DOJO",
     "decimals": 18,
     "address": "0x180dae91d6d56235453a892d2e56a3e40ba81df8"
+  },
+  "0x181002d60d504d30a39601ae13af3191cb102580": {
+    "chain": "bnbchain",
+    "address": "0x181002d60d504d30a39601ae13af3191cb102580",
+    "symbol": "LUSD",
+    "decimals": 18
   },
   "0x181c0f81d56102f64ec805ca444638b18a191db3": {
     "chain": "bnbchain",
@@ -7348,6 +7384,12 @@
     "symbol": "DOGEZILLA",
     "decimals": 9,
     "address": "0x1b8a125c286408e71d2af5a731ee05c6b93547f4"
+  },
+  "0x1b8b972c1c37406bb74165e681f2d754d7b17ebe": {
+    "chain": "bnbchain",
+    "address": "0x1b8b972c1c37406bb74165e681f2d754d7b17ebe",
+    "symbol": "cgWETH",
+    "decimals": 18
   },
   "0x1b9a8c4f2df5dc7b8744b1a170d8d727360c67ee": {
     "chain": "bnbchain",
@@ -9514,6 +9556,12 @@
     "symbol": "jEUR",
     "decimals": 18,
     "address": "0x23b8683ff98f9e4781552dfe6f12aa32814924e8"
+  },
+  "0x23b891e5c62e0955ae2bd185990103928ab817b3": {
+    "chain": "bnbchain",
+    "address": "0x23b891e5c62e0955ae2bd185990103928ab817b3",
+    "symbol": "nUSD",
+    "decimals": 18
   },
   "0x23bd85120f192aad5f5d7590e271f1d03993aac8": {
     "chain": "bnbchain",
@@ -17518,6 +17566,12 @@
     "symbol": "CARAT",
     "decimals": 18,
     "address": "0x426c1c971fb00caaf1883bd801323a8becb0c919"
+  },
+  "0x426c58f0a9733d874d9962ed59f529478771751c": {
+    "chain": "bnbchain",
+    "address": "0x426c58f0a9733d874d9962ed59f529478771751c",
+    "symbol": "AKRO",
+    "decimals": 18
   },
   "0x426c72701833fddbdfc06c944737c6031645c708": {
     "chain": "bnbchain",
@@ -32117,6 +32171,12 @@
     "decimals": 18,
     "address": "0x79e6ba65d9d1c0d3a171c16ae5092df8534a534c"
   },
+  "0x79eb6ce49199b79197ab2b5384793b7289f4f8d4": {
+    "chain": "bnbchain",
+    "address": "0x79eb6ce49199b79197ab2b5384793b7289f4f8d4",
+    "symbol": "PEPE",
+    "decimals": 18
+  },
   "0x79ebc9a2ce02277a4b5b3a768b1c0a4ed75bd936": {
     "chain": "bnbchain",
     "symbol": "CATGIRL",
@@ -35836,6 +35896,12 @@
     "symbol": "ARCS",
     "decimals": 18,
     "address": "0x888ed27c3ab248868c29dabe3d1b3d7cc5c89c5b"
+  },
+  "0x88918495892baf4536611e38e75d771dc6ec0863": {
+    "chain": "bnbchain",
+    "address": "0x88918495892baf4536611e38e75d771dc6ec0863",
+    "symbol": "gOHM",
+    "decimals": 18
   },
   "0x8891de345808e77228677f0efb56125db1e93a49": {
     "chain": "bnbchain",
@@ -47297,6 +47363,12 @@
     "decimals": 9,
     "address": "0xb5cf82d151b9b02382779ba1ab569ad4dc0ed221"
   },
+  "0xb5df797468e6e8f2cb293cd6e32939366e0f8733": {
+    "chain": "bnbchain",
+    "address": "0xb5df797468e6e8f2cb293cd6e32939366e0f8733",
+    "symbol": "celrFRAX",
+    "decimals": 18
+  },
   "0xb60501346240fcde1615de56ea9fff1ac1da5673": {
     "chain": "bnbchain",
     "symbol": "BSL",
@@ -49126,6 +49198,12 @@
     "symbol": "MLT",
     "decimals": 18,
     "address": "0xbcd82b459063ab80518b391a7e2a054f022dca67"
+  },
+  "0xbcd9c0c24375f109b216b3486a30f886fffa759f": {
+    "chain": "bnbchain",
+    "address": "0xbcd9c0c24375f109b216b3486a30f886fffa759f",
+    "symbol": "FLOKI",
+    "decimals": 9
   },
   "0xbcde162a6f7a45fbb6913b296e325fe1267a1e9f": {
     "chain": "bnbchain",
@@ -52936,6 +53014,12 @@
     "symbol": "APD",
     "decimals": 9,
     "address": "0xcb8b997bc685a5bdc3651a1ac30e65dc07fb7b8a"
+  },
+  "0xcb949dd56eb78208547ba5b32dfbe59d7a350c6e": {
+    "chain": "bnbchain",
+    "address": "0xcb949dd56eb78208547ba5b32dfbe59d7a350c6e",
+    "symbol": "GNO",
+    "decimals": 18
   },
   "0xcb9f1a1da761ae4f14ed6e2a7ea07835ad8fb350": {
     "chain": "bnbchain",
@@ -65200,6 +65284,12 @@
     "symbol": "REVO",
     "decimals": 18,
     "address": "0xfc279e6ff1fb1c7f5848d31561cab27d34a2856b"
+  },
+  "0xfc27e5d3fbdfce33fe3226d368b75e59e9cdca7e": {
+    "chain": "bnbchain",
+    "address": "0xfc27e5d3fbdfce33fe3226d368b75e59e9cdca7e",
+    "symbol": "celrFXS",
+    "decimals": 18
   },
   "0xfc3514474306e2d4aa8350fd8fa9c46c165fe8cd": {
     "chain": "bnbchain",

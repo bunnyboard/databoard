@@ -269,6 +269,12 @@
     "decimals": 18,
     "address": "0x61b41e0244133b9c9c47a57e51a5ef70be2c5dd4"
   },
+  "0x68a8b2dbce73a9221a8cd981ad6a70d2bae40668": {
+    "chain": "zksync",
+    "address": "0x68a8b2dbce73a9221a8cd981ad6a70d2bae40668",
+    "symbol": "PEPE",
+    "decimals": 18
+  },
   "0x6a5279e99ca7786fb13f827fc1fb4f61684933d6": {
     "chain": "zksync",
     "symbol": "AVAX",
@@ -473,6 +479,12 @@
     "decimals": 8,
     "address": "0xbbeb516fb02a01611cbbe0453fe3c580d7281011"
   },
+  "0xbcadddad3f224115fc7efa8f0c5d3778a41d24dc": {
+    "chain": "zksync",
+    "address": "0xbcadddad3f224115fc7efa8f0c5d3778a41d24dc",
+    "symbol": "FLOKI",
+    "decimals": 9
+  },
   "0xbd4372e44c5ee654dd838304006e1f0f69983154": {
     "chain": "zksync",
     "symbol": "NODL",
@@ -586,6 +598,12 @@
     "symbol": "XVS",
     "decimals": 18,
     "address": "0xd78abd81a3d57712a3af080dc4185b698fe9ac5a"
+  },
+  "0xdb89d7b0dccd0c0e5ac3571133a9aa1a037945cb": {
+    "chain": "zksync",
+    "address": "0xdb89d7b0dccd0c0e5ac3571133a9aa1a037945cb",
+    "symbol": "USX",
+    "decimals": 18
   },
   "0xdd9f72afed3631a6c85b5369d84875e6c42f1827": {
     "chain": "zksync",

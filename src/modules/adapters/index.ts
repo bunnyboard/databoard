@@ -13,6 +13,7 @@ import DineroAdapter from './dinero/dinero';
 import EulerAdapter from './euler/euler';
 import FluidAdapter from './fluid/fluid';
 import FraxEtherAdapter from './frax/fraxether';
+import HyphenAdapter from './hyphen/hyphen';
 import LayerbankAdapter from './layerbank/layerbank';
 import LidoAdapter from './lido/lido';
 import LifiAdapter from './lifi/lifi';
@@ -112,5 +113,6 @@ export function getProtocolAdapters(
     scrollNativeBridge: new ScrollNativeBridgeAdapter(services, storages, ProtocolConfigs.scrollNativeBridge),
     katana: new UniswapAdapter(services, storages, ProtocolConfigs.katana),
     camelot: new UniswapAdapter(services, storages, ProtocolConfigs.camelot),
+    hyphen: new HyphenAdapter(services, storages, ProtocolConfigs.hyphen),
   };
 }

@@ -22,6 +22,11 @@ export interface GetTokenOptions {
   onchain?: boolean;
 }
 
+export interface GetTokenBalanceOptions extends GetTokenOptions {
+  owner: string;
+  blockNumber?: number;
+}
+
 export interface GetContractLogsOptions {
   chain: string;
   address: string;
@@ -58,6 +63,9 @@ export interface IBlockchainService {
 
   // get token info
   getTokenInfo: (options: GetTokenOptions) => Promise<Token | null>;
+
+  // get token balance: ERC20-balanceOf or Native balance
+  getTokenBalance: (options: GetTokenBalanceOptions) => Promise<string>;
 
   // get contract raw logs
   getContractLogs: (options: GetContractLogsOptions) => Promise<Array<any>>;

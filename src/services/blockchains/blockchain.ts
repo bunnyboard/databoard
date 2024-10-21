@@ -10,6 +10,7 @@ import { compareAddress, normalizeAddress, sleep } from '../../lib/utils';
 import { CachingService } from '../caching/caching';
 import {
   GetContractLogsOptions,
+  GetTokenBalanceOptions,
   GetTokenOptions,
   IBlockchainService,
   MulticallOptions,
@@ -128,6 +129,41 @@ export default class BlockchainService extends CachingService implements IBlockc
     } catch (e: any) {}
 
     return null;
+  }
+
+  public async getTokenBalance(options: GetTokenBalanceOptions): Promise<string> {
+    if (
+      compareAddress(options.address, AddressZero) ||
+      compareAddress(options.address, AddressE) ||
+      compareAddress(options.address, AddressF)
+    ) {
+      const client = this.getPublicClient(options.chain);
+      if (options.blockNumber) {
+        return (
+          await client.getBalance({
+            address: options.owner as Address,
+            blockNumber: BigInt(options.blockNumber),
+          })
+        ).toString();
+      } else {
+        return (
+          await client.getBalance({
+            address: options.owner as Address,
+          })
+        ).toString();
+      }
+    } else {
+      const balance = await this.readContract({
+        chain: options.chain,
+        abi: ERC20Abi,
+        target: options.address,
+        method: 'balanceOf',
+        params: [options.owner],
+        blockNumber: options.blockNumber,
+      });
+
+      return balance ? balance.toString() : '0';
+    }
   }
 
   public async getContractLogs(options: GetContractLogsOptions): Promise<Array<any>> {

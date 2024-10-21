@@ -1,4 +1,10 @@
 {
+  "0x396c9c192dd323995346632581bef92a31ac623b": {
+    "chain": "cronos",
+    "address": "0x396c9c192dd323995346632581bef92a31ac623b",
+    "symbol": "nUSD",
+    "decimals": 18
+  },
   "0x5c7f8a570d578ed84e63fdfa7b1ee72deae1ae23": {
     "chain": "cronos",
     "address": "0x5c7f8a570d578ed84e63fdfa7b1ee72deae1ae23",
@@ -9,6 +15,12 @@
     "chain": "cronos",
     "address": "0x7a7c9db510ab29a2fc362a4c34260becb5ce3446",
     "symbol": "CDCETH",
+    "decimals": 18
+  },
+  "0xbb0a63a6ca2071c6c4bcac11a1a317b20e3e999c": {
+    "chain": "cronos",
+    "address": "0xbb0a63a6ca2071c6c4bcac11a1a317b20e3e999c",
+    "symbol": "gOHM",
     "decimals": 18
   },
   "0xc21223249ca28397b4b6541dffaecc539bff0c59": {
@@ -27,6 +39,12 @@
     "chain": "cronos",
     "address": "0xe44fd7fcb2b1581822d0c862b68222998a0c299a",
     "symbol": "WETH",
+    "decimals": 18
+  },
+  "0xfd0f80899983b8d46152aa1717d76cba71a31616": {
+    "chain": "cronos",
+    "address": "0xfd0f80899983b8d46152aa1717d76cba71a31616",
+    "symbol": "SYN",
     "decimals": 18
   }
 }

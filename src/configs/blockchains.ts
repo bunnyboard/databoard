@@ -549,7 +549,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     },
   },
   [ChainNames.boba]: {
-    name: ChainNames.fuse,
+    name: ChainNames.boba,
     family: 'evm',
     chainId: 288,
     nodeRpc: String(process.env.BLOCKCHAIN_BOBA_NODE),

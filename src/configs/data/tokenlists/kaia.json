@@ -1,0 +1,98 @@
+{
+  "0x0000000000000000000000000000000000000000": {
+    "chain": "kaia",
+    "address": "0x0000000000000000000000000000000000000000",
+    "symbol": "KLAY",
+    "decimals": 18
+  },
+  "0x078db7827a5531359f6cb63f62cfa20183c4f10c": {
+    "chain": "kaia",
+    "address": "0x078db7827a5531359f6cb63f62cfa20183c4f10c",
+    "symbol": "DAI",
+    "decimals": 18
+  },
+  "0x1c428a6539a40ec5bb481631266a51cd19b233b1": {
+    "chain": "kaia",
+    "address": "0x1c428a6539a40ec5bb481631266a51cd19b233b1",
+    "symbol": "ceWBTC",
+    "decimals": 8
+  },
+  "0x30c103f8f5a3a732dfe2dce1cc9446f545527b43": {
+    "chain": "kaia",
+    "address": "0x30c103f8f5a3a732dfe2dce1cc9446f545527b43",
+    "symbol": "JEWEL",
+    "decimals": 18
+  },
+  "0x317f8d18fb16e49a958becd0ea72f8e153d25654": {
+    "chain": "kaia",
+    "address": "0x317f8d18fb16e49a958becd0ea72f8e153d25654",
+    "symbol": "ceDAI",
+    "decimals": 18
+  },
+  "0x3c790b38f466514ffcb4230e7b2334e52b64c942": {
+    "chain": "kaia",
+    "address": "0x3c790b38f466514ffcb4230e7b2334e52b64c942",
+    "symbol": "ceUSDT",
+    "decimals": 6
+  },
+  "0x53bb26dc8c5efc6c95c37155aca487d1d043436a": {
+    "chain": "kaia",
+    "address": "0x53bb26dc8c5efc6c95c37155aca487d1d043436a",
+    "symbol": "ceUSDC",
+    "decimals": 6
+  },
+  "0x5819b6af194a78511c79c85ea68d2377a7e9335f": {
+    "chain": "kaia",
+    "address": "0x5819b6af194a78511c79c85ea68d2377a7e9335f",
+    "symbol": "WKLAY",
+    "decimals": 18
+  },
+  "0x6270b58be569a7c0b8f47594f191631ae5b2c86c": {
+    "chain": "kaia",
+    "address": "0x6270b58be569a7c0b8f47594f191631ae5b2c86c",
+    "symbol": "USDC",
+    "decimals": 6
+  },
+  "0xb66954619363145a05ef835547449eb9050d82f6": {
+    "chain": "kaia",
+    "address": "0xb66954619363145a05ef835547449eb9050d82f6",
+    "symbol": "ceWETH",
+    "decimals": 18
+  },
+  "0xcd6f29dc9ca217d0973d3d21bf58edd3ca871a86": {
+    "chain": "kaia",
+    "address": "0xcd6f29dc9ca217d0973d3d21bf58edd3ca871a86",
+    "symbol": "WETH",
+    "decimals": 18
+  },
+  "0xcd8fe44a29db9159db36f96570d7a4d91986f528": {
+    "chain": "kaia",
+    "address": "0xcd8fe44a29db9159db36f96570d7a4d91986f528",
+    "symbol": "AVAX",
+    "decimals": 18
+  },
+  "0xd6dab4cff47df175349e6e7ee2bf7c40bb8c05a3": {
+    "chain": "kaia",
+    "address": "0xd6dab4cff47df175349e6e7ee2bf7c40bb8c05a3",
+    "symbol": "USDT",
+    "decimals": 6
+  },
+  "0xdcbacf3f7a069922e677912998c8d57423c37dfa": {
+    "chain": "kaia",
+    "address": "0xdcbacf3f7a069922e677912998c8d57423c37dfa",
+    "symbol": "WBTC",
+    "decimals": 8
+  },
+  "0xe82f87ba4e97b2796aa0fa4efb06e8f0d2eb4fe1": {
+    "chain": "kaia",
+    "address": "0xe82f87ba4e97b2796aa0fa4efb06e8f0d2eb4fe1",
+    "symbol": "BTC.b",
+    "decimals": 8
+  },
+  "0xfbed1abb3ad0f8c467068de9fde905887e8c9118": {
+    "chain": "kaia",
+    "address": "0xfbed1abb3ad0f8c467068de9fde905887e8c9118",
+    "symbol": "LINK",
+    "decimals": 18
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "0x0000000000000000000000000000000000000000": {
+    "chain": "boba",
+    "address": "0x0000000000000000000000000000000000000000",
+    "symbol": "ETH",
+    "decimals": 18
+  },
+  "0x5803457e3074e727fa7f9aed60454bf2f127853b": {
+    "chain": "boba",
+    "address": "0x5803457e3074e727fa7f9aed60454bf2f127853b",
+    "symbol": "celrFXS",
+    "decimals": 18
+  },
+  "0x5de1677344d3cb0d7d465c10b72a8f60699c062d": {
+    "chain": "boba",
+    "address": "0x5de1677344d3cb0d7d465c10b72a8f60699c062d",
+    "symbol": "USDT",
+    "decimals": 6
+  },
+  "0x66a2a913e447d6b4bf33efbec43aaef87890fbbc": {
+    "chain": "boba",
+    "address": "0x66a2a913e447d6b4bf33efbec43aaef87890fbbc",
+    "symbol": "USDC",
+    "decimals": 6
+  },
+  "0x6b4712ae9797c199edd44f897ca09bc57628a1cf": {
+    "chain": "boba",
+    "address": "0x6b4712ae9797c199edd44f897ca09bc57628a1cf",
+    "symbol": "nUSD",
+    "decimals": 18
+  },
+  "0x96419929d7949d6a801a6909c145c8eef6a40431": {
+    "chain": "boba",
+    "address": "0x96419929d7949d6a801a6909c145c8eef6a40431",
+    "symbol": "nETH",
+    "decimals": 18
+  },
+  "0xa18bf3994c0cc6e3b63ac420308e5383f53120d7": {
+    "chain": "boba",
+    "address": "0xa18bf3994c0cc6e3b63ac420308e5383f53120d7",
+    "symbol": "BOBA",
+    "decimals": 18
+  },
+  "0xb0d8cf9560ef31b8fe6d9727708d19b31f7c90dc": {
+    "chain": "boba",
+    "address": "0xb0d8cf9560ef31b8fe6d9727708d19b31f7c90dc",
+    "symbol": "celrFRAX",
+    "decimals": 18
+  },
+  "0xb554a55358ff0382fb21f0a478c3546d1106be8c": {
+    "chain": "boba",
+    "address": "0xb554a55358ff0382fb21f0a478c3546d1106be8c",
+    "symbol": "SYN",
+    "decimals": 18
+  },
+  "0xd203de32170130082896b4111edf825a4774c18e": {
+    "chain": "boba",
+    "address": "0xd203de32170130082896b4111edf825a4774c18e",
+    "symbol": "WETH",
+    "decimals": 18
+  },
+  "0xd22c0a4af486c7fa08e282e9eb5f30f9aaa62c95": {
+    "chain": "boba",
+    "address": "0xd22c0a4af486c7fa08e282e9eb5f30f9aaa62c95",
+    "symbol": "gOHM",
+    "decimals": 18
+  },
+  "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000": {
+    "chain": "boba",
+    "address": "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000",
+    "symbol": "WETH",
+    "decimals": 18
+  },
+  "0xf74195bb8a5cf652411867c5c2c5b8c2a402be35": {
+    "chain": "boba",
+    "address": "0xf74195bb8a5cf652411867c5c2c5b8c2a402be35",
+    "symbol": "DAI",
+    "decimals": 18
+  }
+}

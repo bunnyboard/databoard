@@ -1,1 +1,68 @@
-{}
+{
+  "0x0000000000000000000000000000000000000000": {
+    "chain": "moonriver",
+    "address": "0x0000000000000000000000000000000000000000",
+    "symbol": "MOVR",
+    "decimals": 18
+  },
+  "0x3bf21ce864e58731b6f28d68d5928bcbeb0ad172": {
+    "chain": "moonriver",
+    "address": "0x3bf21ce864e58731b6f28d68d5928bcbeb0ad172",
+    "symbol": "gOHM",
+    "decimals": 18
+  },
+  "0x48421ff1c6b93988138130865c4b7cce10358271": {
+    "chain": "moonriver",
+    "address": "0x48421ff1c6b93988138130865c4b7cce10358271",
+    "symbol": "celrMAI",
+    "decimals": 18
+  },
+  "0x76906411d07815491a5e577022757ad941fb5066": {
+    "chain": "moonriver",
+    "address": "0x76906411d07815491a5e577022757ad941fb5066",
+    "symbol": "veSOLAR",
+    "decimals": 18
+  },
+  "0x8c75adb1d9f38f6c2af54be8120f598b9dba446c": {
+    "chain": "moonriver",
+    "address": "0x8c75adb1d9f38f6c2af54be8120f598b9dba446c",
+    "symbol": "celrFRAX",
+    "decimals": 18
+  },
+  "0x98878b06940ae243284ca214f92bb71a2b032b8a": {
+    "chain": "moonriver",
+    "address": "0x98878b06940ae243284ca214f92bb71a2b032b8a",
+    "symbol": "WMOVR",
+    "decimals": 18
+  },
+  "0x9c0a820bb01e2807accd1c682d359e92ddd41403": {
+    "chain": "moonriver",
+    "address": "0x9c0a820bb01e2807accd1c682d359e92ddd41403",
+    "symbol": "H2O",
+    "decimals": 18
+  },
+  "0xc1d6e421a062fdbb26c31db4a2113df0f678cd04": {
+    "chain": "moonriver",
+    "address": "0xc1d6e421a062fdbb26c31db4a2113df0f678cd04",
+    "symbol": "celrFXS",
+    "decimals": 18
+  },
+  "0xd80d8688b02b3fd3afb81cdb124f188bb5ad0445": {
+    "chain": "moonriver",
+    "address": "0xd80d8688b02b3fd3afb81cdb124f188bb5ad0445",
+    "symbol": "SYN",
+    "decimals": 18
+  },
+  "0xe9460bd2ffb12b668fa32919c785c239f974d37c": {
+    "chain": "moonriver",
+    "address": "0xe9460bd2ffb12b668fa32919c785c239f974d37c",
+    "symbol": "DODO",
+    "decimals": 18
+  },
+  "0xe96ac70907fff3efee79f502c985a7a21bce407d": {
+    "chain": "moonriver",
+    "address": "0xe96ac70907fff3efee79f502c985a7a21bce407d",
+    "symbol": "synFRAX",
+    "decimals": 18
+  }
+}

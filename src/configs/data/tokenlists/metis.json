@@ -1,4 +1,10 @@
 {
+  "0x17c09cfc96c865cf546d73365cedb6dc66986963": {
+    "chain": "metis",
+    "address": "0x17c09cfc96c865cf546d73365cedb6dc66986963",
+    "symbol": "JEWEL",
+    "decimals": 18
+  },
   "0x17ee7e4da37b01fc1bcc908fa63df343f23b4b7c": {
     "chain": "metis",
     "symbol": "m.SUSHI",
@@ -23,6 +29,18 @@
     "decimals": 18,
     "address": "0x4c078361fc9bbb78df910800a991c7c3dd2f6ce0"
   },
+  "0x516e6d96896aea92ce5e78b0348fd997f13802ad": {
+    "chain": "metis",
+    "address": "0x516e6d96896aea92ce5e78b0348fd997f13802ad",
+    "symbol": "CELR",
+    "decimals": 18
+  },
+  "0x67c10c397dd0ba417329543c1a40eb48aaa7cd00": {
+    "chain": "metis",
+    "address": "0x67c10c397dd0ba417329543c1a40eb48aaa7cd00",
+    "symbol": "SYN",
+    "decimals": 18
+  },
   "0x75cb093e4d61d2a2e65d8e0bbb01de8d89b53481": {
     "chain": "metis",
     "symbol": "WMETIS",
@@ -34,6 +52,18 @@
     "symbol": "WMONKEX",
     "decimals": 18,
     "address": "0x8c5f5fac50a0a952b2fc084780fc04abc8201f0b"
+  },
+  "0x931b8f17764362a3325d30681009f0edd6211231": {
+    "chain": "metis",
+    "address": "0x931b8f17764362a3325d30681009f0edd6211231",
+    "symbol": "nETH",
+    "decimals": 18
+  },
+  "0x961318fc85475e125b99cc9215f62679ae5200ab": {
+    "chain": "metis",
+    "address": "0x961318fc85475e125b99cc9215f62679ae5200ab",
+    "symbol": "nUSD",
+    "decimals": 18
   },
   "0xa5b55ab1daf0f8e1efc0eb1931a957fd89b918f4": {
     "chain": "metis",
@@ -59,10 +89,22 @@
     "decimals": 18,
     "address": "0xdfa46478f9e5ea86d57387849598dbfb2e964b02"
   },
+  "0xe3c82a836ec85311a433fbd9486efaf4b1afbf48": {
+    "chain": "metis",
+    "address": "0xe3c82a836ec85311a433fbd9486efaf4b1afbf48",
+    "symbol": "JUMP",
+    "decimals": 18
+  },
   "0xea32a96608495e54156ae48931a7c20f0dcc1a21": {
     "chain": "metis",
     "symbol": "m.USDC",
     "decimals": 6,
     "address": "0xea32a96608495e54156ae48931a7c20f0dcc1a21"
+  },
+  "0xfb21b70922b9f6e3c6274bcd6cb1aa8a0fe20b80": {
+    "chain": "metis",
+    "address": "0xfb21b70922b9f6e3c6274bcd6cb1aa8a0fe20b80",
+    "symbol": "gOHM",
+    "decimals": 18
   }
 }

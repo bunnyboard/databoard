@@ -403,10 +403,6 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'bnb',
     sources: [OracleSourceUniswapv2List.TWT_WBNB],
   },
-  FLOKI: {
-    currency: 'bnb',
-    sources: [OracleSourceUniswapv2List.FLOKI_WBNB],
-  },
   crvUSD: {
     currency: 'usd',
     stablecoin: true,
@@ -793,10 +789,6 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.L2DAO_WETH],
   },
-  CELR: {
-    currency: 'eth',
-    sources: [OracleSourceUniswapv3List.CELR_WETH],
-  },
   MATH: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.MATH_WETH],
@@ -825,6 +817,18 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.DODO_WETH],
   },
+  FLOKI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.FLOKI_WETH],
+  },
+  OCEAN: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.OCEAN_WETH],
+  },
+  ICHI: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.ICHI_USDC],
+  },
   THALES: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.THALES_WETH],
@@ -832,6 +836,14 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   WOO: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.WOO_WETH],
+  },
+  AKRO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.AKRO_WETH],
+  },
+  CELR: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.CELR_WETH, OracleSourceUniswapv3List.CELR_WETH],
   },
   KROM: {
     currency: 'eth',
@@ -846,7 +858,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv2List.DHT_WETH],
   },
   USX: {
-    currency: 'eth',
+    currency: 'usd',
     sources: [OracleSourceUniswapv2List.USX_USDC],
   },
   STAKE: {
@@ -1165,13 +1177,17 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.NYA_WETH],
   },
-  JEWEL: {
-    currency: 'usd',
-    sources: [OracleSourceUniswapv2List.JEWEL_USDC],
-  },
   BOBA: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.BOBA_WETH],
+  },
+  G: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.G_USDC],
+  },
+  cUSD: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.cUSD_USDT],
   },
   NEWO: {
     currency: 'usd',
@@ -1222,8 +1238,16 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv2List.PLS_WETH],
   },
   UNIDX: {
-    currency: 'eth',
-    sources: [OracleSourceUniswapv3List.UNIDX_WETH],
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.UNIDX_DAI],
+  },
+  wsOHM: {
+    currency: 'avax',
+    sources: [OracleSourceUniswapv2List.wsOHM_WAVAX],
+  },
+  JUMP: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.JUMP_WFTM],
   },
   SPEC: {
     currency: 'eth',
@@ -1288,6 +1312,22 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   TOSHI: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.TOSHI_WETH],
+  },
+  veSOLAR: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.veSOLAR_USDT],
+  },
+  BICO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BICO_WETH, OracleSourceUniswapv3List.BICO_WETH],
+  },
+  MOVR: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.MOVR_FRAX],
+  },
+  MANTA: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.MANTA_USDC],
   },
   '0xBTC': {
     currency: 'eth',

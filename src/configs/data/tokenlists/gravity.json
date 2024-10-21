@@ -1,0 +1,20 @@
+{
+  "0xbb859e225ac8fb6be1c7e38d87b767e95fef0ebd": {
+    "chain": "gravity",
+    "address": "0xbb859e225ac8fb6be1c7e38d87b767e95fef0ebd",
+    "symbol": "wG",
+    "decimals": 18
+  },
+  "0xd03ee9632901d1e355d39158a474fa42b248bc05": {
+    "chain": "gravity",
+    "address": "0xd03ee9632901d1e355d39158a474fa42b248bc05",
+    "symbol": "USDT",
+    "decimals": 6
+  },
+  "0xe2913e5d24e42303e7d4b2a5bf3f9d2ccd399424": {
+    "chain": "gravity",
+    "address": "0xe2913e5d24e42303e7d4b2a5bf3f9d2ccd399424",
+    "symbol": "WETH",
+    "decimals": 18
+  }
+}

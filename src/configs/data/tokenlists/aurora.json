@@ -11,6 +11,12 @@
     "decimals": 18,
     "address": "0x026dda7f0f0a2e42163c9c80d2a5b6958e35fc49"
   },
+  "0x07379565cd8b0cae7c60dc78e7f601b34af2a21c": {
+    "chain": "aurora",
+    "address": "0x07379565cd8b0cae7c60dc78e7f601b34af2a21c",
+    "symbol": "nUSD",
+    "decimals": 18
+  },
   "0x07b2055fbd17b601c780aeb3abf4c2b3a30c7aae": {
     "chain": "aurora",
     "symbol": "OIN",
@@ -77,11 +83,23 @@
     "decimals": 18,
     "address": "0x1d1f82d8b8fc72f29a8c268285347563cb6cd8b3"
   },
+  "0x1fe622e91e54d6ad00b01917351ea6081426764a": {
+    "chain": "aurora",
+    "address": "0x1fe622e91e54d6ad00b01917351ea6081426764a",
+    "symbol": "FTM",
+    "decimals": 18
+  },
   "0x221292443758f63563a1ed04b547278b05845fcb": {
     "chain": "aurora",
     "symbol": "REF",
     "decimals": 18,
     "address": "0x221292443758f63563a1ed04b547278b05845fcb"
+  },
+  "0x22953af8b73f4f876fc09e836a14a1f64b209fef": {
+    "chain": "aurora",
+    "address": "0x22953af8b73f4f876fc09e836a14a1f64b209fef",
+    "symbol": "celrFRAX",
+    "decimals": 18
   },
   "0x25e801eb75859ba4052c4ac4233cec0264eadf8c": {
     "chain": "aurora",
@@ -113,6 +131,12 @@
     "decimals": 18,
     "address": "0x2bae00c8bc1868a5f7a216e881bae9e662630111"
   },
+  "0x3b40d173b5802733108e047cf538be178646b2e4": {
+    "chain": "aurora",
+    "address": "0x3b40d173b5802733108e047cf538be178646b2e4",
+    "symbol": "BUSD",
+    "decimals": 18
+  },
   "0x4148d2ce7816f0ae378d98b40eb3a7211e1fcf0d": {
     "chain": "aurora",
     "symbol": "BBT",
@@ -127,9 +151,9 @@
   },
   "0x4988a896b1227218e4a686fde5eabdcabd91571f": {
     "chain": "aurora",
-    "symbol": "USDT",
-    "decimals": 6,
-    "address": "0x4988a896b1227218e4a686fde5eabdcabd91571f"
+    "address": "0x4988a896b1227218e4a686fde5eabdcabd91571f",
+    "symbol": "USDT.e",
+    "decimals": 6
   },
   "0x4e834cdcc911605227eedddb89fad336ab9dc00a": {
     "chain": "aurora",
@@ -287,6 +311,12 @@
     "decimals": 18,
     "address": "0xa64514a8af3ff7366ad3d5daa5a548eefcef85e0"
   },
+  "0xab0c1da69e383edb087d09b1efd333321e5d6493": {
+    "chain": "aurora",
+    "address": "0xab0c1da69e383edb087d09b1efd333321e5d6493",
+    "symbol": "celrFXS",
+    "decimals": 18
+  },
   "0xabe9818c5fb5e751c4310be6f0f18c8d85f9bd7f": {
     "chain": "aurora",
     "symbol": "CREAM",
@@ -295,9 +325,9 @@
   },
   "0xb12bfca5a55806aaf64e99521918a4bf0fc40802": {
     "chain": "aurora",
-    "symbol": "USDC",
-    "decimals": 6,
-    "address": "0xb12bfca5a55806aaf64e99521918a4bf0fc40802"
+    "address": "0xb12bfca5a55806aaf64e99521918a4bf0fc40802",
+    "symbol": "USDC.e",
+    "decimals": 6
   },
   "0xb4530aa877d25e51c18677753acd80ffa54009b2": {
     "chain": "aurora",
@@ -347,6 +377,12 @@
     "decimals": 18,
     "address": "0xc4bdd27c33ec7daa6fcfd8532ddb524bf4038096"
   },
+  "0xc6bc09a723f2314ad22642b6e33ad2ed6bba3c9c": {
+    "chain": "aurora",
+    "address": "0xc6bc09a723f2314ad22642b6e33ad2ed6bba3c9c",
+    "symbol": "BNB",
+    "decimals": 18
+  },
   "0xc86ca2bb9c9c9c9f140d832de00bfa9e153fa1e3": {
     "chain": "aurora",
     "symbol": "NDOL",
@@ -370,6 +406,12 @@
     "symbol": "FAME",
     "decimals": 18,
     "address": "0xd5c997724e4b5756d08e6464c01afbc5f6397236"
+  },
+  "0xd80d8688b02b3fd3afb81cdb124f188bb5ad0445": {
+    "chain": "aurora",
+    "address": "0xd80d8688b02b3fd3afb81cdb124f188bb5ad0445",
+    "symbol": "SYN",
+    "decimals": 18
   },
   "0xd9a4c034e69e5162ac02bec627475470a53c9a14": {
     "chain": "aurora",
@@ -448,6 +490,12 @@
     "symbol": "ETH",
     "decimals": 18,
     "address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+  },
+  "0xef3c714c9425a8f3697a9c969dc1af30ba82e5d4": {
+    "chain": "aurora",
+    "address": "0xef3c714c9425a8f3697a9c969dc1af30ba82e5d4",
+    "symbol": "AVAX",
+    "decimals": 18
   },
   "0xf0f3b9eee32b1f490a4b8720cf6f005d4ae9ea86": {
     "chain": "aurora",

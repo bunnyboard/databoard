@@ -590,12 +590,33 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.ethereum['0xadf7c35560035944e805d98ff17d58cde2449389'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
+  BICO_WETH: {
+    type: 'univ3',
+    chain: 'ethereum',
+    address: '0xad6b651df72b443f57b76ff79165ee771272e18e',
+    baseToken: TokensBook.ethereum['0xf17e65822b568b3903685a7c9f496cf7656cc6c2'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
   H2O_USDC: {
     type: 'univ3',
     chain: 'ethereum',
     address: '0x96b596d871d4cee20d9668e4aca51f6205fa39ea',
     baseToken: TokensBook.ethereum['0x0642026e7f0b6ccac5925b4e7fa61384250e1701'],
     quotaToken: TokensBook.ethereum['0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'],
+  },
+  G_USDC: {
+    type: 'univ3',
+    chain: 'ethereum',
+    address: '0xc4dbe30fecc148a8755c970f3b8b0c9af0db81f5',
+    baseToken: TokensBook.ethereum['0x9c7beba8f6ef6643abd725e45a4e8387ef260649'],
+    quotaToken: TokensBook.ethereum['0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'],
+  },
+  ICHI_USDC: {
+    type: 'univ3',
+    chain: 'polygon',
+    address: '0x7e02ae3f794ebade542c92973eb1c46d7e2e935d',
+    baseToken: TokensBook.polygon['0x111111517e4929d3dcbdfa7cce55d30d4b6bc4d6'],
+    quotaToken: TokensBook.polygon['0x2791bca1f2de4661ed88a30c99a7a9449aa84174'],
   },
   wM_USDC: {
     type: 'univ3',
@@ -654,6 +675,23 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
       symbol: 'USDT',
       decimals: 6,
       address: '0x900101d06a7426441ae63e9ab3b9b0f63be145f1',
+    },
+  },
+  cUSD_USDT: {
+    type: 'univ3',
+    chain: 'celo',
+    address: '0x5dc631ad6c26bea1a59fbf2c2680cf3df43d249f',
+    baseToken: {
+      chain: 'celo',
+      symbol: 'cUSD',
+      decimals: 18,
+      address: '0x765de816845861e75a25fca122bb6898b8b1282a',
+    },
+    quotaToken: {
+      chain: 'celo',
+      symbol: 'USDT',
+      decimals: 6,
+      address: '0x48065fbbe25f71c9282ddf5e1cd6d6a887483d5e',
     },
   },
 };

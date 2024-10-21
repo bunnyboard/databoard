@@ -1,0 +1,38 @@
+{
+  "0x23367bea9b6931690960d8c59f6e708630f24e58": {
+    "chain": "kava",
+    "address": "0x23367bea9b6931690960d8c59f6e708630f24e58",
+    "symbol": "USDC",
+    "decimals": 6
+  },
+  "0x49f2c0add1a345f4c76831c1aa3884fc523ca5fe": {
+    "chain": "kava",
+    "address": "0x49f2c0add1a345f4c76831c1aa3884fc523ca5fe",
+    "symbol": "DAI",
+    "decimals": 18
+  },
+  "0x9591865d9d4bbd3b5fa8a8e2400fd530d1a16191": {
+    "chain": "kava",
+    "address": "0x9591865d9d4bbd3b5fa8a8e2400fd530d1a16191",
+    "symbol": "WETH",
+    "decimals": 18
+  },
+  "0xaea7d9bc694a92ad0effff0f30b700f7c4b23ba6": {
+    "chain": "kava",
+    "address": "0xaea7d9bc694a92ad0effff0f30b700f7c4b23ba6",
+    "symbol": "WBTC",
+    "decimals": 8
+  },
+  "0xdb0e1e86b01c4ad25241b1843e407efc4d615248": {
+    "chain": "kava",
+    "address": "0xdb0e1e86b01c4ad25241b1843e407efc4d615248",
+    "symbol": "USX",
+    "decimals": 18
+  },
+  "0xfb1af1bafe108906c0f1f3b36d15919b95ee95bd": {
+    "chain": "kava",
+    "address": "0xfb1af1bafe108906c0f1f3b36d15919b95ee95bd",
+    "symbol": "USDT",
+    "decimals": 6
+  }
+}

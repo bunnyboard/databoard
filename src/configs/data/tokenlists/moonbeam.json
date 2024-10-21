@@ -1,1 +1,98 @@
-{}
+{
+  "0x0db6729c03c85b0708166ca92801bcb5cac781fc": {
+    "chain": "moonbeam",
+    "address": "0x0db6729c03c85b0708166ca92801bcb5cac781fc",
+    "symbol": "veSOLAR",
+    "decimals": 18
+  },
+  "0x1d4c2a246311bb9f827f4c768e277ff5787b7d7e": {
+    "chain": "moonbeam",
+    "address": "0x1d4c2a246311bb9f827f4c768e277ff5787b7d7e",
+    "symbol": "MOVR",
+    "decimals": 18
+  },
+  "0x3192ae73315c3634ffa217f71cf6cbc30fee349a": {
+    "chain": "moonbeam",
+    "address": "0x3192ae73315c3634ffa217f71cf6cbc30fee349a",
+    "symbol": "WETH",
+    "decimals": 18
+  },
+  "0x3795c36e7d12a8c252a20c5a7b455f7c57b60283": {
+    "chain": "moonbeam",
+    "address": "0x3795c36e7d12a8c252a20c5a7b455f7c57b60283",
+    "symbol": "CELR",
+    "decimals": 18
+  },
+  "0x54f2980a851376ccbc561ab4631df2556ad03386": {
+    "chain": "moonbeam",
+    "address": "0x54f2980a851376ccbc561ab4631df2556ad03386",
+    "symbol": "celrFXS",
+    "decimals": 18
+  },
+  "0x6959027f7850adf4916ff5fdc898d958819e5375": {
+    "chain": "moonbeam",
+    "address": "0x6959027f7850adf4916ff5fdc898d958819e5375",
+    "symbol": "WETH",
+    "decimals": 18
+  },
+  "0x6a2d262d56735dba19dd70682b39f6be9a931d98": {
+    "chain": "moonbeam",
+    "address": "0x6a2d262d56735dba19dd70682b39f6be9a931d98",
+    "symbol": "USDC",
+    "decimals": 6
+  },
+  "0x81ecac0d6be0550a00ff064a4f9dd2400585fe9c": {
+    "chain": "moonbeam",
+    "address": "0x81ecac0d6be0550a00ff064a4f9dd2400585fe9c",
+    "symbol": "USDT",
+    "decimals": 6
+  },
+  "0x8a4b4c2acadeaa7206df96f00052e41d74a015ce": {
+    "chain": "moonbeam",
+    "address": "0x8a4b4c2acadeaa7206df96f00052e41d74a015ce",
+    "symbol": "WBTC",
+    "decimals": 8
+  },
+  "0xa1f8890e39b4d8e33efe296d698fe42fb5e59cc3": {
+    "chain": "moonbeam",
+    "address": "0xa1f8890e39b4d8e33efe296d698fe42fb5e59cc3",
+    "symbol": "AVAX",
+    "decimals": 18
+  },
+  "0xa46adf6d5881ca0b8596edadf8f058f8c16d8b68": {
+    "chain": "moonbeam",
+    "address": "0xa46adf6d5881ca0b8596edadf8f058f8c16d8b68",
+    "symbol": "H2O",
+    "decimals": 18
+  },
+  "0xc5ef662b833de914b9ba7a3532c6bb008a9b23a6": {
+    "chain": "moonbeam",
+    "address": "0xc5ef662b833de914b9ba7a3532c6bb008a9b23a6",
+    "symbol": "celrFRAX",
+    "decimals": 18
+  },
+  "0xcb4a7569a61300c50cf80a2be16329ad9f5f8f9e": {
+    "chain": "moonbeam",
+    "address": "0xcb4a7569a61300c50cf80a2be16329ad9f5f8f9e",
+    "symbol": "BUSD",
+    "decimals": 18
+  },
+  "0xd2666441443daa61492ffe0f37717578714a4521": {
+    "chain": "moonbeam",
+    "address": "0xd2666441443daa61492ffe0f37717578714a4521",
+    "symbol": "gOHM",
+    "decimals": 18
+  },
+  "0xdd47a348ab60c61ad6b60ca8c31ea5e00ebfab4f": {
+    "chain": "moonbeam",
+    "address": "0xdd47a348ab60c61ad6b60ca8c31ea5e00ebfab4f",
+    "symbol": "synFRAX",
+    "decimals": 18
+  },
+  "0xf44938b0125a6662f9536281ad2cd6c499f22004": {
+    "chain": "moonbeam",
+    "address": "0xf44938b0125a6662f9536281ad2cd6c499f22004",
+    "symbol": "SYN",
+    "decimals": 18
+  }
+}

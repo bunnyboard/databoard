@@ -17,11 +17,23 @@
     "symbol": "WBTC",
     "decimals": 8
   },
+  "0x5471ea8f739dd37e9b81be9c5c77754d8aa953e4": {
+    "chain": "manta",
+    "address": "0x5471ea8f739dd37e9b81be9c5c77754d8aa953e4",
+    "symbol": "MATIC",
+    "decimals": 18
+  },
   "0x6fae4d9935e2fcb11fc79a64e917fb2bf14dafaa": {
     "chain": "manta",
     "address": "0x6fae4d9935e2fcb11fc79a64e917fb2bf14dafaa",
     "symbol": "TIA",
     "decimals": 6
+  },
+  "0x7d43aabc515c356145049227cee54b608342c0ad": {
+    "chain": "manta",
+    "address": "0x7d43aabc515c356145049227cee54b608342c0ad",
+    "symbol": "AVAX",
+    "decimals": 18
   },
   "0x95cef13441be50d20ca4558cc0a27b601ac544e5": {
     "chain": "manta",
@@ -52,5 +64,11 @@
     "address": "0xf417f5a458ec102b90352f697d6e2ac3a3d2851f",
     "symbol": "USDT",
     "decimals": 6
+  },
+  "0xf5c6825015280cdfd0b56903f9f8b5a2233476f5": {
+    "chain": "manta",
+    "address": "0xf5c6825015280cdfd0b56903f9f8b5a2233476f5",
+    "symbol": "BNB",
+    "decimals": 18
   }
 }

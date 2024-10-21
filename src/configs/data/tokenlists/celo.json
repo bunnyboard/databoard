@@ -121,9 +121,9 @@
   },
   "0x765de816845861e75a25fca122bb6898b8b1282a": {
     "chain": "celo",
+    "address": "0x765de816845861e75a25fca122bb6898b8b1282a",
     "symbol": "cUSD",
-    "decimals": 18,
-    "address": "0x765de816845861e75a25fca122bb6898b8b1282a"
+    "decimals": 18
   },
   "0x832f03bcee999a577cb592948983e35c048b5aa4": {
     "chain": "celo",
