@@ -653,6 +653,12 @@
     "decimals": 18,
     "address": "0x433ce9a15a740cd9fa65fe40daf95cba34e32910"
   },
+  "0x44acd96620b708162af4a90524f29a6839675533": {
+    "chain": "polygon",
+    "address": "0x44acd96620b708162af4a90524f29a6839675533",
+    "symbol": "TCGC",
+    "decimals": 18
+  },
   "0x45c32fa6df82ead1e2ef74d17b76547eddfaff89": {
     "chain": "polygon",
     "symbol": "FRAX",
@@ -1564,6 +1570,12 @@
     "symbol": "SAND",
     "decimals": 18,
     "address": "0xbbba073c31bf03b8acf7c28ef0738decf3695683"
+  },
+  "0xbbca42c60b5290f2c48871a596492f93ff0ddc82": {
+    "chain": "polygon",
+    "address": "0xbbca42c60b5290f2c48871a596492f93ff0ddc82",
+    "symbol": "WXT",
+    "decimals": 18
   },
   "0xbc2b48bc930ddc4e5cfb2e87a45c379aab3aac5c": {
     "chain": "polygon",

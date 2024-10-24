@@ -11,6 +11,7 @@ export type OracleCurrencyBase =
   | 'ftm'
   | 'wstETH'
   | 'core'
+  | 'oas'
   | 'klay';
 
 export const OracleTypes = {

@@ -1,0 +1,56 @@
+{
+  "0x5200000000000000000000000000000000000001": {
+    "chain": "oasys",
+    "address": "0x5200000000000000000000000000000000000001",
+    "symbol": "WOAS",
+    "decimals": 18
+  },
+  "0x5801e5a61164024be2554248e33127c6ebc8c113": {
+    "chain": "oasys",
+    "address": "0x5801e5a61164024be2554248e33127c6ebc8c113",
+    "symbol": "WETH",
+    "decimals": 18
+  },
+  "0x92cd9aa44dad9fe20b9e3205a896a15bccb221fe": {
+    "chain": "oasys",
+    "address": "0x92cd9aa44dad9fe20b9e3205a896a15bccb221fe",
+    "symbol": "USDC.e-intermediary",
+    "decimals": 6
+  },
+  "0x96de4b1f5345e0d812c574193d75278ffb48b438": {
+    "chain": "oasys",
+    "address": "0x96de4b1f5345e0d812c574193d75278ffb48b438",
+    "symbol": "MATIC",
+    "decimals": 18
+  },
+  "0xb88d147de8951ee637758138f2d6d2312b2c4141": {
+    "chain": "oasys",
+    "address": "0xb88d147de8951ee637758138f2d6d2312b2c4141",
+    "symbol": "AVAX",
+    "decimals": 18
+  },
+  "0xdc3af65ecbd339309ec55f109cb214e0325c5ed4": {
+    "chain": "oasys",
+    "address": "0xdc3af65ecbd339309ec55f109cb214e0325c5ed4",
+    "symbol": "USDT",
+    "decimals": 18
+  },
+  "0xdd30c42d57a0f14dd44c809f59836d57392fdbc9": {
+    "chain": "oasys",
+    "address": "0xdd30c42d57a0f14dd44c809f59836d57392fdbc9",
+    "symbol": "WBTC",
+    "decimals": 18
+  },
+  "0xddb07cc0f2f9fb7899dba5a21964f3c6d2740e44": {
+    "chain": "oasys",
+    "address": "0xddb07cc0f2f9fb7899dba5a21964f3c6d2740e44",
+    "symbol": "TCGC",
+    "decimals": 18
+  },
+  "0xe1ab220e37ac55a4e2dd5ba148298a9c09fbd716": {
+    "chain": "oasys",
+    "address": "0xe1ab220e37ac55a4e2dd5ba148298a9c09fbd716",
+    "symbol": "USDC",
+    "decimals": 18
+  }
+}

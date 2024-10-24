@@ -5,6 +5,7 @@ import AcrossAdapter from './across/across';
 import ArbitrumNativeBridgeAdapter from './arbitrum/nativeBridge';
 import BenqiAdapter from './benqi/benqi';
 import BungeeAdapter from './bungee/bungee';
+import CbridgeAdapter from './celer/cbridge';
 import CircleCctpAdapter from './circle/circlecctp';
 import CompoundAdapter from './compound/compound';
 import CurvelendAdapter from './curve/curvelend';
@@ -114,5 +115,6 @@ export function getProtocolAdapters(
     katana: new UniswapAdapter(services, storages, ProtocolConfigs.katana),
     camelot: new UniswapAdapter(services, storages, ProtocolConfigs.camelot),
     hyphen: new HyphenAdapter(services, storages, ProtocolConfigs.hyphen),
+    cbridge: new CbridgeAdapter(services, storages, ProtocolConfigs.cbridge),
   };
 }

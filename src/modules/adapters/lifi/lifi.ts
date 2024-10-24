@@ -180,6 +180,11 @@ export default class LifiAdapter extends ProtocolAdapter {
             data: log.data,
           });
 
+          if (!diamondConfig.tokens.filter((item) => compareAddress(item.address, event.args._token))[0]) {
+            // query data of whitelisted tokens only
+            continue;
+          }
+
           const token = await this.services.blockchain.evm.getTokenInfo({
             chain: diamondConfig.chain,
             address: event.args._token,

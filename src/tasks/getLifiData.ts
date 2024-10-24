@@ -18,9 +18,7 @@ import { AddressE, AddressZero } from '../configs/constants';
 
     if (response.data.tokens) {
       for (const [chainId, supportedTokens] of Object.entries(response.data.tokens)) {
-        const blockchainConfig = Object.values(BlockchainConfigs).filter(
-          (item) => Number(item.chainId) === Number(chainId),
-        )[0];
+        const blockchainConfig = Object.values(BlockchainConfigs).filter((item) => item.chainId === Number(chainId))[0];
         if (blockchainConfig) {
           for (const supportedToken of supportedTokens as Array<any>) {
             const tokenAddress = compareAddress(supportedToken.address, AddressE)
@@ -34,16 +32,12 @@ import { AddressE, AddressZero } from '../configs/constants';
               address: tokenAddress,
             };
 
-            if (!OracleConfigs[token.chain][token.address]) {
+            if (!OracleConfigs[token.chain] || !OracleConfigs[token.chain][token.address]) {
               console.log('oracle not found for token', token.address, token.chain, token.symbol);
               continue;
             }
 
             tokens.push(token);
-
-            if (!OracleConfigs[token.chain][token.address]) {
-              console.log('oracle not found for token', token);
-            }
           }
         } else {
           console.log(`blockchain not found with chainId: ${chainId}`);

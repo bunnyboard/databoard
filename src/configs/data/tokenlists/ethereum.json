@@ -7715,6 +7715,12 @@
     "decimals": 18,
     "address": "0x2fe39f22eac6d3c1c86dd9d143640ebb94609fce"
   },
+  "0x2ffde077455f81e28baa675a46b9c085740216d4": {
+    "chain": "ethereum",
+    "address": "0x2ffde077455f81e28baa675a46b9c085740216d4",
+    "symbol": "TCGC",
+    "decimals": 18
+  },
   "0x3001f57f8308b189eb412a64322aad5ef9951290": {
     "chain": "ethereum",
     "symbol": "GEC",

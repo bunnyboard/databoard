@@ -17,6 +17,12 @@
     "decimals": 6,
     "address": "0x06efdbff2a14a7c8e15944d1f4a48f9f95f663a4"
   },
+  "0x15eefe5b297136b8712291b632404b66a8ef4d25": {
+    "chain": "scroll",
+    "address": "0x15eefe5b297136b8712291b632404b66a8ef4d25",
+    "symbol": "uniETH",
+    "decimals": 18
+  },
   "0x3ba89d490ab1c0c9cc2313385b30710e838370a4": {
     "chain": "scroll",
     "symbol": "SolvBTC.b",

@@ -1,159 +1,151 @@
-// import { ProtocolConfig } from '../../../types/base';
-// import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
-// import { ContextServices, ContextStorages } from '../../../types/namespaces';
-// import { GetProtocolDataOptions } from '../../../types/options';
-// import ProtocolAdapter from '../protocol';
-// import { formatBigNumberToNumber } from '../../../lib/utils';
-// import AdapterDataHelper from '../helpers';
-// import { CbridgeProtocolConfig } from '../../../configs/protocols/celer';
-// import { ContractCall } from '../../../services/blockchains/domains';
-// import Erc20Abi from '../../../configs/abi/ERC20.json';
+import { ProtocolConfig } from '../../../types/base';
+import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
+import { ContextServices, ContextStorages } from '../../../types/namespaces';
+import { GetProtocolDataOptions } from '../../../types/options';
+import ProtocolAdapter from '../protocol';
+import AdapterDataHelper from '../helpers';
+import { CbridgeProtocolConfig } from '../../../configs/protocols/celer';
+import { decodeEventLog } from 'viem';
+import BridgeAbi from '../.././../configs/abi/celer/Bridge.json';
+import { getChainNameById } from '../../../lib/helpers';
+import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
 
-// export default class CbridgeAdapter extends ProtocolAdapter {
-//   public readonly name: string = 'adapter.cbridge 🌈';
+const SendEvent = '0x89d8051e597ab4178a863a5190407b98abfeff406aa8db90c59af76612e58f01';
 
-//   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {
-//     super(services, storages, protocolConfig);
-//   }
+export default class CbridgeAdapter extends ProtocolAdapter {
+  public readonly name: string = 'adapter.cbridge 🌈';
 
-//   public async getProtocolData(options: GetProtocolDataOptions): Promise<ProtocolData | null> {
-//     const protocolData: ProtocolData = {
-//       protocol: this.protocolConfig.protocol,
-//       category: this.protocolConfig.category,
-//       birthday: this.protocolConfig.birthday,
-//       timestamp: options.timestamp,
-//       breakdown: {},
-//       ...getInitialProtocolCoreMetrics(),
-//       totalSupplied: 0,
-//       volumes: {
-//         bridge: 0,
-//         deposit: 0,
-//         withdraw: 0,
-//       },
-//       volumeBridgePaths: {},
-//     };
+  constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {
+    super(services, storages, protocolConfig);
+  }
 
-//     const cbridgeConfig = this.protocolConfig as CbridgeProtocolConfig;
-//     for (const bridgeConfig of cbridgeConfig.bridges) {
-//       if (bridgeConfig.birthday > options.timestamp) {
-//         continue;
-//       }
+  public async getProtocolData(options: GetProtocolDataOptions): Promise<ProtocolData | null> {
+    const protocolData: ProtocolData = {
+      protocol: this.protocolConfig.protocol,
+      category: this.protocolConfig.category,
+      birthday: this.protocolConfig.birthday,
+      timestamp: options.timestamp,
+      breakdown: {},
+      ...getInitialProtocolCoreMetrics(),
+      volumes: {
+        bridge: 0,
+        deposit: 0,
+        withdraw: 0,
+      },
+      volumeBridgePaths: {},
+    };
 
-//       if (!protocolData.breakdown[bridgeConfig.chain]) {
-//         protocolData.breakdown[bridgeConfig.chain] = {};
-//       }
+    const cbridgeConfig = this.protocolConfig as CbridgeProtocolConfig;
+    for (const bridgeConfig of cbridgeConfig.bridges) {
+      if (bridgeConfig.birthday > options.timestamp) {
+        continue;
+      }
 
-//       if (!(protocolData.volumeBridgePaths as any)[bridgeConfig.chain]) {
-//         (protocolData.volumeBridgePaths as any)[bridgeConfig.chain] = {};
-//       }
+      if (!protocolData.breakdown[bridgeConfig.chain]) {
+        protocolData.breakdown[bridgeConfig.chain] = {};
+      }
 
-//       const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-//         bridgeConfig.chain,
-//         options.timestamp,
-//       );
-//       // const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-//       //   bridgeConfig.chain,
-//       //   options.beginTime,
-//       // );
-//       // const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-//       //   bridgeConfig.chain,
-//       //   options.endTime,
-//       // );
+      if (!(protocolData.volumeBridgePaths as any)[bridgeConfig.chain]) {
+        (protocolData.volumeBridgePaths as any)[bridgeConfig.chain] = {};
+      }
 
-//       // count total value locked
-//       const addresses: Array<string> = [bridgeConfig.bridge];
-//       if (bridgeConfig.originTokenVaultV1) {
-//         addresses.push(bridgeConfig.originTokenVaultV1);
-//       }
-//       if (bridgeConfig.originTokenVaultV2) {
-//         addresses.push(bridgeConfig.originTokenVaultV2);
-//       }
+      const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        bridgeConfig.chain,
+        options.timestamp,
+      );
+      const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        bridgeConfig.chain,
+        options.beginTime,
+      );
+      const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        bridgeConfig.chain,
+        options.endTime,
+      );
 
-//       for (const addressToCount of addresses) {
-//         const calls: Array<ContractCall> = bridgeConfig.tokens.map((token) => {
-//           return {
-//             abi: Erc20Abi,
-//             target: token.address,
-//             method: 'balanceOf',
-//             params: [addressToCount],
-//           };
-//         });
-//         const results: any = await this.services.blockchain.evm.multicall({
-//           chain: bridgeConfig.chain,
-//           blockNumber: blockNumber,
-//           calls: calls,
-//         });
-//         if (results) {
-//           for (let i = 0; i < bridgeConfig.tokens.length; i++) {
-//             const token = bridgeConfig.tokens[i];
-//             if (token) {
-//               const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-//                 chain: token.chain,
-//                 address: token.address,
-//                 timestamp: options.timestamp,
-//               });
-//               const balanceUsd =
-//                 formatBigNumberToNumber(results[i] ? results[i].toString() : '0', token.decimals) * tokenPriceUsd;
+      // count total value locked
+      const addresses: Array<string> = [bridgeConfig.bridge];
+      if (bridgeConfig.originTokenVaultV1) {
+        addresses.push(bridgeConfig.originTokenVaultV1);
+      }
+      if (bridgeConfig.originTokenVaultV2) {
+        addresses.push(bridgeConfig.originTokenVaultV2);
+      }
 
-//               protocolData.totalAssetDeposited += balanceUsd;
-//               protocolData.totalValueLocked += balanceUsd;
-//               (protocolData.totalSupplied as number) += balanceUsd;
+      // caching token prices
+      const tokenPriceUsd: { [key: string]: number } = {};
 
-//               if (!protocolData.breakdown[token.chain][token.address]) {
-//                 protocolData.breakdown[token.chain][token.address] = {
-//                   ...getInitialProtocolCoreMetrics(),
-//                   totalSupplied: 0,
-//                   volumes: {
-//                     bridge: 0,
-//                   },
-//                 };
-//               }
-//               protocolData.breakdown[token.chain][token.address].totalAssetDeposited += balanceUsd;
-//               protocolData.breakdown[token.chain][token.address].totalValueLocked += balanceUsd;
-//               (protocolData.breakdown[token.chain][token.address].totalSupplied as number) += balanceUsd;
-//             }
-//           }
-//         }
+      for (const addressToCount of addresses) {
+        const getBalanceResult = await this.getAddressBalanceUsd({
+          chain: bridgeConfig.chain,
+          ownerAddress: addressToCount,
+          tokens: bridgeConfig.tokens,
+          timestamp: options.timestamp,
+          blockNumber: blockNumber,
+        });
 
-//         for (const token of bridgeConfig.tokens) {
-//           if (!protocolData.breakdown[token.chain][token.address]) {
-//             protocolData.breakdown[token.chain][token.address] = {
-//               ...getInitialProtocolCoreMetrics(),
-//               totalSupplied: 0,
-//               volumes: {
-//                 bridge: 0,
-//                 deposit: 0,
-//                 withdraw: 0,
-//               },
-//             };
-//           }
+        protocolData.totalAssetDeposited += getBalanceResult.totalBalanceUsd;
+        protocolData.totalValueLocked += getBalanceResult.totalBalanceUsd;
 
-//           const tokenBalance = await this.services.blockchain.evm.getTokenBalance({
-//             chain: token.chain,
-//             address: token.address,
-//             owner: addressToCount,
-//             blockNumber: blockNumber,
-//           });
+        for (const [tokenAddress, tokenData] of Object.entries(getBalanceResult.tokenBalanceUsds)) {
+          if (!protocolData.breakdown[bridgeConfig.chain][tokenAddress]) {
+            protocolData.breakdown[bridgeConfig.chain][tokenAddress] = {
+              ...getInitialProtocolCoreMetrics(),
+              volumes: {
+                bridge: 0,
+                deposit: 0,
+                withdraw: 0,
+              },
+            };
+          }
+          protocolData.breakdown[bridgeConfig.chain][tokenAddress].totalAssetDeposited += tokenData.balanceUsd;
+          protocolData.breakdown[bridgeConfig.chain][tokenAddress].totalValueLocked += tokenData.balanceUsd;
 
-//           const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-//             chain: token.chain,
-//             address: token.address,
-//             timestamp: options.timestamp,
-//           });
+          tokenPriceUsd[tokenAddress] = tokenData.priceUsd;
+        }
+      }
 
-//           const totalLiquidityUsd = formatBigNumberToNumber(tokenBalance, token.decimals) * tokenPriceUsd;
+      const logs = await this.services.blockchain.evm.getContractLogs({
+        chain: bridgeConfig.chain,
+        address: bridgeConfig.bridge,
+        fromBlock: beginBlock,
+        toBlock: endBlock,
+      });
+      for (const log of logs) {
+        if (log.topics[0] === SendEvent) {
+          const event: any = decodeEventLog({
+            abi: BridgeAbi,
+            topics: log.topics,
+            data: log.data,
+          });
 
-//           protocolData.totalAssetDeposited += totalLiquidityUsd;
-//           protocolData.totalValueLocked += totalLiquidityUsd;
-//           (protocolData.totalSupplied as number) += totalLiquidityUsd;
+          const token = bridgeConfig.tokens.filter((item) => compareAddress(item.address, event.args.token))[0];
+          if (token) {
+            const destChainName = getChainNameById(Number(event.args.dstChainId));
+            if (destChainName) {
+              const token = await this.services.blockchain.evm.getTokenInfo({
+                chain: bridgeConfig.chain,
+                address: event.args.token,
+              });
+              if (token) {
+                const priceUsd = tokenPriceUsd[token.address] ? tokenPriceUsd[token.address] : 0;
+                const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * priceUsd;
 
-//           protocolData.breakdown[token.chain][token.address].totalAssetDeposited += totalLiquidityUsd;
-//           protocolData.breakdown[token.chain][token.address].totalValueLocked += totalLiquidityUsd;
-//           (protocolData.breakdown[token.chain][token.address].totalSupplied as number) += totalLiquidityUsd;
-//         }
-//       }
-//     }
+                (protocolData.volumes.bridge as number) += amountUsd;
+                (protocolData.breakdown[bridgeConfig.chain][token.address].volumes.bridge as number) += amountUsd;
 
-//     return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
-//   }
-// }
+                // fees range from 0-0.5%, we assume avg 0.25%
+                const feeUsd = (amountUsd * 0.25) / 100;
+                protocolData.totalFees += feeUsd;
+                protocolData.protocolRevenue += feeUsd;
+                protocolData.breakdown[bridgeConfig.chain][token.address].totalFees += feeUsd;
+                protocolData.breakdown[bridgeConfig.chain][token.address].protocolRevenue += feeUsd;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
+  }
+}

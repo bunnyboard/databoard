@@ -560,4 +560,16 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
       decimals: 18,
     },
   },
+  [ChainNames.oasys]: {
+    name: ChainNames.oasys,
+    family: 'evm',
+    chainId: 248,
+    nodeRpc: String(process.env.BLOCKCHAIN_OASYS_NODE),
+    nativeToken: {
+      chain: ChainNames.oasys,
+      address: AddressZero,
+      symbol: 'OAS',
+      decimals: 18,
+    },
+  },
 };

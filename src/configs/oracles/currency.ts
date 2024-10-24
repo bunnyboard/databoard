@@ -1,6 +1,7 @@
 import { OracleConfig } from '../../types/oracles';
 import { OffchainOracleSourcesFromBinance } from './binance';
 import { OracleSourceChainlinkList } from './chainlink';
+import { OracleSourceUniswapv2List } from './uniswapv2';
 import { OracleSourceUniswapv3List } from './uniswapv3';
 
 export const OracleCurrencyBaseConfigs: { [key: string]: OracleConfig } = {
@@ -44,5 +45,9 @@ export const OracleCurrencyBaseConfigs: { [key: string]: OracleConfig } = {
   klay: {
     currency: 'usd',
     sources: [OracleSourceChainlinkList.KLAY_USD],
+  },
+  oas: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.WOAS_USDT],
   },
 };

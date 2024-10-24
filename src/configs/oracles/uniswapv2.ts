@@ -621,6 +621,13 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.ethereum['0x8ab7404063ec4dbcfd4598215992dc3f8ec853d7'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
+  TORN_WETH: {
+    type: 'univ2',
+    chain: 'ethereum',
+    address: '0x0c722a487876989af8a05fffb6e32e45cc23fb3a',
+    baseToken: TokensBook.ethereum['0x77777feddddffc19ff86db637967013e6c6a116c'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
   CELR_WETH: {
     type: 'univ2',
     chain: 'ethereum',
@@ -946,6 +953,20 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.ethereum['0xf17e65822b568b3903685a7c9f496cf7656cc6c2'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
+  GHX_WETH: {
+    type: 'univ2',
+    chain: 'ethereum',
+    address: '0xc6b9c3fa037303d10d50d71ae3cedb0eea7a1c78',
+    baseToken: TokensBook.ethereum['0x728f30fa2f100742c7949d1961804fa8e0b1387d'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
+  DOMI_WETH: {
+    type: 'univ2',
+    chain: 'ethereum',
+    address: '0x75d308a90ef8c0de983bd6eddc4aae7d8fe226df',
+    baseToken: TokensBook.ethereum['0x45c2f8c9b4c0bdc76200448cc26c48ab6ffef83f'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
   DOG_WETH: {
     type: 'univ2',
     chain: 'ethereum',
@@ -1162,6 +1183,40 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
       symbol: 'USDC',
       decimals: 6,
       address: '0xb73603c5d87fa094b7314c74ace2e64d165016fb',
+    },
+  },
+  TCGC_WOAS: {
+    type: 'univ2',
+    chain: 'oasys',
+    address: '0xcdf0be8affb6c0ae57154250adc88d6cc38f97be',
+    baseToken: {
+      chain: 'oasys',
+      symbol: 'TCGC',
+      decimals: 18,
+      address: '0xddb07cc0f2f9fb7899dba5a21964f3c6d2740e44',
+    },
+    quotaToken: {
+      chain: 'oasys',
+      symbol: 'TCGC',
+      decimals: 18,
+      address: '0x5200000000000000000000000000000000000001',
+    },
+  },
+  WOAS_USDT: {
+    type: 'univ2',
+    chain: 'oasys',
+    address: '0x09a0e3aa15aa464620d50a5e09bf11369088571c',
+    baseToken: {
+      chain: 'oasys',
+      symbol: 'WOAS',
+      decimals: 18,
+      address: '0x5200000000000000000000000000000000000001',
+    },
+    quotaToken: {
+      chain: 'oasys',
+      symbol: 'USDT',
+      decimals: 18,
+      address: '0xdc3af65ecbd339309ec55f109cb214e0325c5ed4',
     },
   },
 };

@@ -221,49 +221,48 @@ export default class ProtocolAdapter implements IProtocolAdapter {
   }
 
   // helper functions
-
   // get usd value of given tokens (ERC20 or native) holding by an address
   protected async getAddressBalanceUsd(options: GetAddressBalanceUsdOptions): Promise<GetAddressBalanceUsdResult> {
-    const calls: Array<ContractCall> = options.tokens.map((token) => {
-      return {
-        abi: Erc20Abi,
-        target: token.address,
-        method: 'balanceOf',
-        params: [options.ownerAddress],
-      };
-    });
-    const results: any = await this.services.blockchain.evm.multicall({
-      chain: options.chain,
-      blockNumber: options.blockNumber,
-      calls: calls,
-    });
-
     const getResult: GetAddressBalanceUsdResult = {
       totalBalanceUsd: 0,
       tokenBalanceUsds: {},
     };
 
-    if (results) {
-      for (let i = 0; i < options.tokens.length; i++) {
-        const token = options.tokens[i];
-        if (token) {
-          const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-            chain: token.chain,
-            address: token.address,
-            timestamp: options.timestamp,
-          });
-          const balanceUsd =
-            formatBigNumberToNumber(results[i] ? results[i].toString() : '0', token.decimals) * tokenPriceUsd;
+    const callSize = 100;
+    for (let startIndex = 0; startIndex < options.tokens.length; startIndex += callSize) {
+      const queryTokens = options.tokens.slice(startIndex, startIndex + callSize);
+      const calls: Array<ContractCall> = queryTokens.map((token) => {
+        return {
+          abi: Erc20Abi,
+          target: token.address,
+          method: 'balanceOf',
+          params: [options.ownerAddress],
+        };
+      });
+      const results: any = await this.services.blockchain.evm.multicall({
+        chain: options.chain,
+        blockNumber: options.blockNumber,
+        calls: calls,
+      });
 
-          getResult.totalBalanceUsd += balanceUsd;
-          if (!getResult.tokenBalanceUsds[token.address]) {
-            getResult.tokenBalanceUsds[token.address] = {
-              priceUsd: tokenPriceUsd,
-              balanceUsd: 0,
-            };
-          }
-          getResult.tokenBalanceUsds[token.address].balanceUsd += balanceUsd;
+      for (let i = 0; i < queryTokens.length; i++) {
+        const token = queryTokens[i];
+        const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+          chain: token.chain,
+          address: token.address,
+          timestamp: options.timestamp,
+        });
+        const balanceUsd =
+          formatBigNumberToNumber(results[i] ? results[i].toString() : '0', token.decimals) * tokenPriceUsd;
+
+        getResult.totalBalanceUsd += balanceUsd;
+        if (!getResult.tokenBalanceUsds[token.address]) {
+          getResult.tokenBalanceUsds[token.address] = {
+            priceUsd: tokenPriceUsd,
+            balanceUsd: 0,
+          };
         }
+        getResult.tokenBalanceUsds[token.address].balanceUsd += balanceUsd;
       }
     }
 

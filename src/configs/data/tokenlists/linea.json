@@ -53,6 +53,12 @@
     "decimals": 18,
     "address": "0x13a7f090d46c74acba98c51786a5c46ed9a474f0"
   },
+  "0x15eefe5b297136b8712291b632404b66a8ef4d25": {
+    "chain": "linea",
+    "address": "0x15eefe5b297136b8712291b632404b66a8ef4d25",
+    "symbol": "uniETH",
+    "decimals": 18
+  },
   "0x176211869ca2b568f2a7d4ee941e073a821ee1ff": {
     "chain": "linea",
     "symbol": "USDC.E",

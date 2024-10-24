@@ -61,6 +61,7 @@ export const ChainNames = {
   dfk: 'dfk',
   dogechain: 'dogechain',
   worldchain: 'worldchain',
+  oasys: 'oasys',
 };
 
 export const ProtocolNames = {

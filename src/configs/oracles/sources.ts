@@ -849,6 +849,10 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.KROM_WETH],
   },
+  TORN: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.TORN_WETH],
+  },
   LYRA: {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.LYRA_USDC],
@@ -1312,6 +1316,30 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   TOSHI: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.TOSHI_WETH],
+  },
+  WXT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.WXT_WETH],
+  },
+  uniETH: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.uniETH_WETH],
+  },
+  TCGC: {
+    currency: 'oas',
+    sources: [OracleSourceUniswapv2List.TCGC_WOAS],
+  },
+  OAS: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.WOAS_USDT],
+  },
+  GHX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.GHX_WETH],
+  },
+  DOMI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.DOMI_WETH],
   },
   veSOLAR: {
     currency: 'usd',
