@@ -674,6 +674,13 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.optimism['0x38f9bf9dce51833ec7f03c9dc218197999999999'],
     quotaToken: TokensBook.optimism['0x4200000000000000000000000000000000000006'],
   },
+  THALES_WETH: {
+    type: 'univ3',
+    chain: 'optimism',
+    address: '0xff7fbdf7832ae524deda39ca402e03d92adff7a5',
+    baseToken: TokensBook.optimism['0x217d47011b23bb961eb6d93ca9945b7501a5bb11'],
+    quotaToken: TokensBook.optimism['0x4200000000000000000000000000000000000006'],
+  },
   WCORE_USDT: {
     type: 'univ3',
     chain: 'core',

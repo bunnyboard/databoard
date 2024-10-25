@@ -247,22 +247,25 @@ export default class ProtocolAdapter implements IProtocolAdapter {
 
       for (let i = 0; i < queryTokens.length; i++) {
         const token = queryTokens[i];
-        const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-          chain: token.chain,
-          address: token.address,
-          timestamp: options.timestamp,
-        });
-        const balanceUsd =
-          formatBigNumberToNumber(results[i] ? results[i].toString() : '0', token.decimals) * tokenPriceUsd;
 
-        getResult.totalBalanceUsd += balanceUsd;
-        if (!getResult.tokenBalanceUsds[token.address]) {
-          getResult.tokenBalanceUsds[token.address] = {
-            priceUsd: tokenPriceUsd,
-            balanceUsd: 0,
-          };
+        if (token && results[i] && results[i].toString() !== '0') {
+          const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+            chain: token.chain,
+            address: token.address,
+            timestamp: options.timestamp,
+          });
+          const balanceUsd =
+            formatBigNumberToNumber(results[i] ? results[i].toString() : '0', token.decimals) * tokenPriceUsd;
+
+          getResult.totalBalanceUsd += balanceUsd;
+          if (!getResult.tokenBalanceUsds[token.address]) {
+            getResult.tokenBalanceUsds[token.address] = {
+              priceUsd: tokenPriceUsd,
+              balanceUsd: 0,
+            };
+          }
+          getResult.tokenBalanceUsds[token.address].balanceUsd += balanceUsd;
         }
-        getResult.tokenBalanceUsds[token.address].balanceUsd += balanceUsd;
       }
     }
 

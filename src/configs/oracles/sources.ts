@@ -831,7 +831,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   },
   THALES: {
     currency: 'eth',
-    sources: [OracleSourceUniswapv2List.THALES_WETH],
+    sources: [OracleSourceUniswapv3List.THALES_WETH, OracleSourceUniswapv2List.THALES_WETH],
   },
   WOO: {
     currency: 'eth',

@@ -152,7 +152,7 @@ export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
         chain: optimismConfig.chain,
         address: optimismConfig.supportedTokens[i],
       });
-      if (token && results[i]) {
+      if (token && results[i] && results[i].toString() !== '0') {
         const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
           chain: token.chain,
           address: token.address,
