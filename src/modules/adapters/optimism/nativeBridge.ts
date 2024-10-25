@@ -13,8 +13,13 @@ import { ContractCall } from '../../../services/blockchains/domains';
 import L1StandardBridgeAbi from '../../../configs/abi/optimism/L1StandardBridge.json';
 
 const Events = {
+  // for ETH
   ETHDepositInitiated: '0x35d79ab81f2b2017e19afb5c5571778877782d7a8786f5907f93b0f4702f4f23',
+  ETHWithdrawalFinalized: '0x2ac69ee804d9a7a0984249f508dfab7cb2534b465b6ce1580f99a38ba9c5e631',
+
+  // for ERC20
   ERC20DepositInitiated: '0x718594027abd4eaed59f95162563e0cc6d0e8d5b86b1c7be8b1b0ac3343d0396',
+  ERC20WithdrawalFinalized: '0x3ceee06c1e37648fcbb6ed52e17b3e1f275a1f8c7b22a84b2b84732431e046b3',
 };
 
 export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
@@ -33,7 +38,22 @@ export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
       birthday: this.protocolConfig.birthday,
       timestamp: options.timestamp,
       breakdown: {
-        [optimismConfig.chain]: {},
+        [optimismConfig.chain]: {
+          [AddressZero]: {
+            ...getInitialProtocolCoreMetrics(),
+            volumes: {
+              bridge: 0,
+            },
+          },
+        },
+        [optimismConfig.layer2Chain]: {
+          [AddressZero]: {
+            ...getInitialProtocolCoreMetrics(),
+            volumes: {
+              bridge: 0,
+            },
+          },
+        },
       },
       ...getInitialProtocolCoreMetrics(),
       volumes: {
@@ -42,6 +62,9 @@ export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
       volumeBridgePaths: {
         [optimismConfig.chain]: {
           [optimismConfig.layer2Chain]: 0,
+        },
+        [optimismConfig.layer2Chain]: {
+          [optimismConfig.chain]: 0,
         },
       },
     };
@@ -70,6 +93,7 @@ export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
       toBlock: endBlock,
     });
 
+    // count ETH lock in layer 1
     const client = this.services.blockchain.evm.getPublicClient(optimismConfig.chain);
     const nativeBalance = await client.getBalance({
       address: optimismConfig.optimismPortal as Address,
@@ -80,21 +104,17 @@ export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
       address: AddressZero,
       timestamp: options.timestamp,
     });
-
     const nativeBalanceLockedUsd =
       formatBigNumberToNumber(nativeBalance ? nativeBalance.toString() : '0', 18) * nativeTokenPriceUsd;
-
     protocolData.totalAssetDeposited += nativeBalanceLockedUsd;
     protocolData.totalValueLocked += nativeBalanceLockedUsd;
-    protocolData.breakdown[optimismConfig.chain][AddressZero] = {
-      ...getInitialProtocolCoreMetrics(),
-      volumes: {
-        bridge: 0,
-      },
-      totalAssetDeposited: nativeBalanceLockedUsd,
-      totalValueLocked: nativeBalanceLockedUsd,
-    };
-    for (const log of logs.filter((item) => item.topics[0] === Events.ETHDepositInitiated)) {
+    protocolData.breakdown[optimismConfig.chain][AddressZero].totalAssetDeposited += nativeBalanceLockedUsd;
+    protocolData.breakdown[optimismConfig.chain][AddressZero].totalValueLocked += nativeBalanceLockedUsd;
+
+    // count ETH deposit/withdraw
+    for (const log of logs.filter(
+      (item) => item.topics[0] === Events.ETHDepositInitiated || item.topics[0] === Events.ETHWithdrawalFinalized,
+    )) {
       const event: any = decodeEventLog({
         abi: L1StandardBridgeAbi,
         topics: log.topics,
@@ -102,11 +122,18 @@ export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
       });
       const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), 18) * nativeTokenPriceUsd;
 
-      (protocolData.volumes.bridge as number) += amountUsd;
-      (protocolData.volumeBridgePaths as any)[optimismConfig.chain][optimismConfig.layer2Chain] += amountUsd;
-      (protocolData.breakdown[optimismConfig.chain][AddressZero].volumes.bridge as number) += amountUsd;
+      if (log.topics[0] === Events.ETHDepositInitiated) {
+        (protocolData.volumes.bridge as number) += amountUsd;
+        (protocolData.volumeBridgePaths as any)[optimismConfig.chain][optimismConfig.layer2Chain] += amountUsd;
+        (protocolData.breakdown[optimismConfig.chain][AddressZero].volumes.bridge as number) += amountUsd;
+      } else {
+        (protocolData.volumes.bridge as number) += amountUsd;
+        (protocolData.volumeBridgePaths as any)[optimismConfig.layer2Chain][optimismConfig.chain] += amountUsd;
+        (protocolData.breakdown[optimismConfig.layer2Chain][AddressZero].volumes.bridge as number) += amountUsd;
+      }
     }
 
+    // count ERC20 tokens locked in layer 1 gateway contract
     const calls: Array<ContractCall> = optimismConfig.supportedTokens.map((tokenAddress) => {
       return {
         abi: Erc20Abi,
@@ -143,20 +170,79 @@ export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
           totalAssetDeposited: nativeBalanceLockedUsd,
           totalValueLocked: nativeBalanceLockedUsd,
         };
+      }
+    }
 
-        for (const log of logs.filter((item) => item.topics[0] === Events.ERC20DepositInitiated)) {
-          const event: any = decodeEventLog({
-            abi: L1StandardBridgeAbi,
-            topics: log.topics,
-            data: log.data,
+    // count bridge deposit/withdraw volumes
+    for (const log of logs.filter(
+      (item) => item.topics[0] === Events.ERC20DepositInitiated || item.topics[0] === Events.ERC20WithdrawalFinalized,
+    )) {
+      const event: any = decodeEventLog({
+        abi: L1StandardBridgeAbi,
+        topics: log.topics,
+        data: log.data,
+      });
+      if (log.topics[0] === Events.ERC20DepositInitiated) {
+        if (!optimismConfig.supportedTokens.filter((item) => compareAddress(item, event.args.l1Token))[0]) {
+          continue;
+        }
+
+        const token = await this.services.blockchain.evm.getTokenInfo({
+          chain: optimismConfig.chain,
+          address: event.args.l1Token,
+        });
+        if (token) {
+          const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+            chain: token.chain,
+            address: token.address,
+            timestamp: options.timestamp,
           });
-          if (compareAddress(token.address, event.args.l1Token)) {
-            const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPriceUsd;
 
-            (protocolData.volumes.bridge as number) += amountUsd;
-            (protocolData.volumeBridgePaths as any)[optimismConfig.chain][optimismConfig.layer2Chain] += amountUsd;
-            (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += amountUsd;
+          const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPriceUsd;
+
+          (protocolData.volumes.bridge as number) += amountUsd;
+          (protocolData.volumeBridgePaths as any)[optimismConfig.chain][optimismConfig.layer2Chain] += amountUsd;
+
+          if (!protocolData.breakdown[token.chain][token.address]) {
+            protocolData.breakdown[token.chain][token.address] = {
+              ...getInitialProtocolCoreMetrics(),
+              volumes: {
+                bridge: 0,
+              },
+            };
           }
+          (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += amountUsd;
+        }
+      } else if (log.topics[0] === Events.ERC20WithdrawalFinalized) {
+        if (!optimismConfig.supportedTokens.filter((item) => compareAddress(item, event.args.l1Token))[0]) {
+          continue;
+        }
+
+        const token = await this.services.blockchain.evm.getTokenInfo({
+          chain: optimismConfig.layer2Chain,
+          address: event.args.l2Token,
+        });
+        if (token) {
+          const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+            chain: token.chain,
+            address: token.address,
+            timestamp: options.timestamp,
+          });
+
+          const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPriceUsd;
+
+          (protocolData.volumes.bridge as number) += amountUsd;
+          (protocolData.volumeBridgePaths as any)[optimismConfig.layer2Chain][optimismConfig.chain] += amountUsd;
+
+          if (!protocolData.breakdown[token.chain][token.address]) {
+            protocolData.breakdown[token.chain][token.address] = {
+              ...getInitialProtocolCoreMetrics(),
+              volumes: {
+                bridge: 0,
+              },
+            };
+          }
+          (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += amountUsd;
         }
       }
     }

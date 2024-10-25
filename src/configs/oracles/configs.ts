@@ -465,6 +465,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x871f2f2ff935fd1ed867842ff2a7bfd051a5e527': OracleSourceConfigs.WOO,
     '0xea129ae043c4cb73dcb241aaa074f9e667641ba0': OracleSourceConfigs.FRAX,
     '0x1619de6b6b20ed217a58d00f37b9d47c7663feca': OracleSourceConfigs.FXS,
+    '0xc52d7f23a2e460248db6ee192cb23dd12bddcbf6': OracleSourceConfigs.crvUSD,
   },
 
   // tokens on Base

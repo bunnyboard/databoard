@@ -46,6 +46,7 @@ export const BungeeKnownBridgeNames: { [key: string]: string } = {
   '0xcc231b7032e768dd0a97e8b21d355ca609fe31ebcb2a827b8759fc5dd1d9c95f': ProtocolNames.scrollNativeBridge,
   '0xddc44bae4cec4168e76c8f60940ee0abbae677cacb55590a890235614317ef6b': ProtocolNames.zoraNativeBridge,
   '0xc3bc0f52caacc5a87db3ce955e12a8538950098a0012cbacd0e6ff87c0606d33': ProtocolNames.mantleNativeBridge,
+  '0x52d0275a020a4c7ae62ec6f7d7fa9498ef80508501ba5033139ff2cf4d0f631a': ProtocolNames.modeNativeBridge,
 };
 
 export default class BungeeAdapter extends ProtocolAdapter {

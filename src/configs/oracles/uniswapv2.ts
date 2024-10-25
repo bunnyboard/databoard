@@ -687,9 +687,9 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
   USX_USDC: {
     type: 'univ2',
     chain: 'optimism',
-    address: '0x2f748ee75538ccee11ec5f523084e810023d8c21',
+    address: '0xed47e3ce6d9c05f562c469ab1bf1244cc697aa73',
     baseToken: TokensBook.optimism['0xbfd291da8a403daaf7e5e9dc1ec0aceacd4848b9'],
-    quotaToken: TokensBook.optimism['0x0b2c639c533813f4aa9d7837caf62653d097ff85'],
+    quotaToken: TokensBook.optimism['0x7f5c764cbc14f9669b88837ca1490cca17c31607'],
   },
   UNIDX_DAI: {
     type: 'univ2',
