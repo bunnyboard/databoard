@@ -38,6 +38,7 @@ import SynapseAdapter from './synapse/synapse';
 import UniswapAdapter from './uniswap/uniswap';
 import VenusAdapter from './venus/venus';
 import WbethAdapter from './wbeth/wbeth';
+import ZksyncNativeBridgeAdapter from './zksync/nativeBridge';
 
 export function getProtocolAdapters(
   services: ContextServices,
@@ -112,6 +113,7 @@ export function getProtocolAdapters(
     bobNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.bobNativeBridge),
     redstoneNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.redstoneNativeBridge),
     scrollNativeBridge: new ScrollNativeBridgeAdapter(services, storages, ProtocolConfigs.scrollNativeBridge),
+    zksyncNativeBridge: new ZksyncNativeBridgeAdapter(services, storages, ProtocolConfigs.zksyncNativeBridge),
     katana: new UniswapAdapter(services, storages, ProtocolConfigs.katana),
     camelot: new UniswapAdapter(services, storages, ProtocolConfigs.camelot),
     hyphen: new HyphenAdapter(services, storages, ProtocolConfigs.hyphen),

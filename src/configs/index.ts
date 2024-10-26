@@ -71,6 +71,7 @@ import { KatanaConfigs } from './protocols/katana';
 import { CamelotConfigs } from './protocols/camelot';
 import { HyphenConfigs } from './protocols/hyphen';
 import { CbridgeConfigs } from './protocols/celer';
+import { ZksyncNativeBridgeConfigs } from './protocols/zksync';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -160,4 +161,5 @@ export const ProtocolConfigs = {
   camelot: CamelotConfigs,
   hyphen: HyphenConfigs,
   cbridge: CbridgeConfigs,
+  zksyncNativeBridge: ZksyncNativeBridgeConfigs,
 };

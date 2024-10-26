@@ -3,7 +3,7 @@ import { Address, PublicClient, createPublicClient, http } from 'viem';
 
 import { CustomQueryContractLogsBlockRange, DefaultQueryContractLogsBlockRange, TokenList } from '../../configs';
 import ERC20Abi from '../../configs/abi/ERC20.json';
-import { AddressE, AddressF, AddressMulticall3, AddressZero } from '../../configs/constants';
+import { AddressE, AddressF, AddressMulticall3, AddressZero, AddressOne } from '../../configs/constants';
 import EnvConfig from '../../configs/envConfig';
 import logger from '../../lib/logger';
 import { compareAddress, normalizeAddress, sleep } from '../../lib/utils';
@@ -76,6 +76,7 @@ export default class BlockchainService extends CachingService implements IBlockc
       // get from hard codes
       if (
         compareAddress(address, AddressZero) ||
+        compareAddress(address, AddressOne) ||
         compareAddress(address, AddressE) ||
         compareAddress(address, AddressF)
       ) {

@@ -246,6 +246,15 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x57b946008913b82e4df85f501cbaed910e58d26c': OracleSourceConfigs.POND,
     '0x0ff5a8451a839f5f0bb3562689d9a44089738d11': OracleSourceConfigs.rDPX,
     '0x431ad2ff6a9c365805ebad47ee021148d6f7dbe0': OracleSourceConfigs.DF,
+    '0x9d14bce1daddf408d77295bb1be9b343814f44de': OracleSourceConfigs.KOI,
+    '0xa0b73e1ff0b80914ab6fe0444e65848c4c34450b': OracleSourceConfigs.CRO,
+    '0xf9c53268e9de692ae1b2ea5216e24e1c3ad7cb1e': OracleSourceConfigs.IDO,
+    '0xa49d7499271ae71cd8ab9ac515e6694c755d400c': OracleSourceConfigs.MUTE,
+    '0xd38bb40815d2b0c2d2c866e0c72c5728ffc76dd9': OracleSourceConfigs.SIS,
+    '0xd31a59c85ae9d8edefec411d448f90841571b89c': OracleSourceConfigs.SOL,
+    '0x582d872a1b094fc48f5de31d3b73f2d9be47def1': OracleSourceConfigs.TON,
+    '0x7448c7456a97769f6cd04f1e83a4a23ccdc46abd': OracleSourceConfigs.MAV,
+    '0x4e15361fd6b4bb609fa63c81a2be19d873717870': OracleSourceConfigs.FTM,
 
     // todo need to find better oracle source
     '0x9d39a5de30e57443bff2a8307a4256c8797a3497': OracleSourceConfigs.USDT,
@@ -1006,6 +1015,9 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xbcadddad3f224115fc7efa8f0c5d3778a41d24dc': OracleSourceConfigs.FLOKI,
     '0x68a8b2dbce73a9221a8cd981ad6a70d2bae40668': OracleSourceConfigs.PEPE,
     '0xdb89d7b0dccd0c0e5ac3571133a9aa1a037945cb': OracleSourceConfigs.USX,
+    '0xa995ad25ce5eb76972ab356168f5e1d9257e4d05': OracleSourceConfigs.KOI,
+    '0xdea6d5161978d36b5c0fa6a491faa754f4bc809c': OracleSourceConfigs.IDO,
+    '0x0e97c7a0f8b2c9885c8ac9fc6136e829cbc21d42': OracleSourceConfigs.MUTE,
   },
 
   mode: {

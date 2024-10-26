@@ -1401,6 +1401,26 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv3List.GEAR_USDT],
   },
+  KOI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.KOI_WETH],
+  },
+  IDO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.IDO_WETH],
+  },
+  MUTE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.MUTE_WETH],
+  },
+  MAV: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.MAV_WETH],
+  },
+  TON: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.TON_WETH],
+  },
   GTC: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.GTC_WETH],

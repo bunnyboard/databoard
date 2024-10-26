@@ -473,6 +473,12 @@
     "decimals": 6,
     "address": "0xbb8d60008a08b1828e02120f1a952d295036ef3d"
   },
+  "0xbbd1ba24d589c319c86519646817f2f153c9b716": {
+    "chain": "zksync",
+    "symbol": "DVF",
+    "decimals": 18,
+    "address": "0xbbd1ba24d589c319c86519646817f2f153c9b716"
+  },
   "0xbbeb516fb02a01611cbbe0453fe3c580d7281011": {
     "chain": "zksync",
     "symbol": "WBTC",
