@@ -5,6 +5,7 @@ export interface ArbitrumBridgeProtocolConfig extends ProtocolConfig {
   chain: string;
   layer2Chain: string;
   bridge: string;
+  deployedInbox: string;
   erc20Gateways: Array<string>;
   supportedTokens: Array<string>;
 }
@@ -16,6 +17,7 @@ export const ArbitrumNativeBridgeConfigs: ArbitrumBridgeProtocolConfig = {
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.arbitrum,
   bridge: '0x8315177ab297ba92a06054ce80a67ed4dbd7ed3a',
+  deployedInbox: '0x4dbd4fc535ac27206064b68ffcf827b0a60bab3f',
   erc20Gateways: ['0xa3a7b6f88361f48403514059f1f16c8e78d60eec', '0xcee284f754e854890e311e3280b767f80797180d'],
   supportedTokens: [
     '0x52a8845df664d76c69d2eea607cd793565af42b8',
@@ -43,7 +45,6 @@ export const ArbitrumNativeBridgeConfigs: ArbitrumBridgeProtocolConfig = {
     '0x3472A5A71965499acd81997a54BBA8D852C6E53d',
     '0xba3335588d9403515223f109edc4eb7269a9ab5d',
     '0xc944e90c64b2c07662a292be6244bdf05cda44a7',
-    '0x43044f861ec040db59a7e324c40507addb673142',
     '0x0391D2021f89DC339F60Fff84546EA23E337750f',
     '0x4f9254c83eb525f9fcf346490bbb3ed28a81c667',
     '0x853d955acef822db058eb8505911ed77f175b99e',
@@ -52,7 +53,6 @@ export const ArbitrumNativeBridgeConfigs: ArbitrumBridgeProtocolConfig = {
     '0x57b946008913b82e4df85f501cbaed910e58d26c',
     '0x4e352cF164E64ADCBad318C3a1e222E9EBa4Ce42',
     '0x0ff5a8451a839f5f0bb3562689d9a44089738d11',
-    '0xeabb8996ea1662cad2f7fb715127852cd3262ae9',
     '0x431ad2ff6a9c365805ebad47ee021148d6f7dbe0',
     '0x6b175474e89094c44da98b954eedeac495271d0f',
   ],

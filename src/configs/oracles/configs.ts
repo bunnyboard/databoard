@@ -230,6 +230,22 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x4691937a7508860f876c9c0a2a617e7d9e945d4b': OracleSourceConfigs.WOO,
     '0x0a5e677a6a24b2f1a2bf4f3bffc443231d2fdec8': OracleSourceConfigs.USX,
     '0x77777feddddffc19ff86db637967013e6c6a116c': OracleSourceConfigs.TORN,
+    '0x584bc13c7d411c00c01a62e8019472de68768430': OracleSourceConfigs.HEGIC,
+    '0xe72b141df173b999ae7c1adcbf60cc9833ce56a8': OracleSourceConfigs['ETH+'],
+    '0xeec2be5c91ae7f8a338e1e5f3b5de49d07afdc81': OracleSourceConfigs.DPX,
+    '0xc770eefad204b5180df6a14ee197d99d808ee52d': OracleSourceConfigs.FOX,
+    '0xeeaa40b28a2d1b0b08f6f97bb1dd4b75316c6107': OracleSourceConfigs.GOVI,
+    '0x6c6ee5e31d828de241282b9606c8e98ea48526e2': OracleSourceConfigs.HOT,
+    '0xa487bf43cf3b10dffc97a9a744cbb7036965d3b9': OracleSourceConfigs.DERI,
+    '0x9469d013805bffb7d3debe5e7839237e535ec483': OracleSourceConfigs.RING,
+    '0xc0f9bd5fa5698b6505f643900ffa515ea5df54a9': OracleSourceConfigs.DONUT,
+    '0xde30da39c46104798bb5aa3fe8b9e0e1f348163f': OracleSourceConfigs.GTC,
+    '0x785c34312dfa6b74f6f1829f79ade39042222168': OracleSourceConfigs.BUMP,
+    '0xba3335588d9403515223f109edc4eb7269a9ab5d': OracleSourceConfigs.GEAR,
+    '0x0391d2021f89dc339f60fff84546ea23e337750f': OracleSourceConfigs.BOND,
+    '0x57b946008913b82e4df85f501cbaed910e58d26c': OracleSourceConfigs.POND,
+    '0x0ff5a8451a839f5f0bb3562689d9a44089738d11': OracleSourceConfigs.rDPX,
+    '0x431ad2ff6a9c365805ebad47ee021148d6f7dbe0': OracleSourceConfigs.DF,
 
     // todo need to find better oracle source
     '0x9d39a5de30e57443bff2a8307a4256c8797a3497': OracleSourceConfigs.USDT,
@@ -466,6 +482,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xea129ae043c4cb73dcb241aaa074f9e667641ba0': OracleSourceConfigs.FRAX,
     '0x1619de6b6b20ed217a58d00f37b9d47c7663feca': OracleSourceConfigs.FXS,
     '0xc52d7f23a2e460248db6ee192cb23dd12bddcbf6': OracleSourceConfigs.crvUSD,
+    '0xcb59a0a753fdb7491d5f3d794316f1ade197b21e': OracleSourceConfigs.TUSD,
+    '0xa00e3a3511aac35ca78530c85007afcd31753819': OracleSourceConfigs.KNC,
   },
 
   // tokens on Base

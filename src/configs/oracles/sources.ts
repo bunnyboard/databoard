@@ -1021,10 +1021,6 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.PRO_WETH],
   },
-  DF: {
-    currency: 'usd',
-    sources: [OracleSourceUniswapv2List.DF_USX],
-  },
   KWENTA: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.KWENTA_WETH],
@@ -1274,8 +1270,20 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv2List.RGT_WETH],
   },
   BOND: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.BOND_USDC],
+  },
+  POND: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.POND_USDC],
+  },
+  rDPX: {
     currency: 'eth',
-    sources: [OracleSourceUniswapv2List.BOND_WETH],
+    sources: [OracleSourceUniswapv2List.rDPX_WETH],
+  },
+  DF: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.DF_WETH],
   },
   MM: {
     currency: 'bnb',
@@ -1357,8 +1365,52 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.MANTA_USDC],
   },
+  HEGIC: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.HEGIC_WETH],
+  },
+  FOX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.FOX_WETH],
+  },
+  GOVI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.GOVI_WETH],
+  },
+  HOT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.HOT_WETH],
+  },
+  DERI: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.DERI_USDT],
+  },
+  RING: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.RING_WETH],
+  },
+  DONUT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.DONUT_WETH],
+  },
+  BUMP: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.BUMP_WETH],
+  },
+  GEAR: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.GEAR_USDT],
+  },
+  GTC: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.GTC_WETH],
+  },
   '0xBTC': {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List['0xBTC_WETH']],
+  },
+  'ETH+': {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List['ETH+_WETH']],
   },
 };
