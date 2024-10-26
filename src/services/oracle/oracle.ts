@@ -369,7 +369,7 @@ export default class OracleService extends CachingService implements IOracleServ
       return Number(rawPrice);
     }
 
-    rawPrice = await this.tryGetTokenPriceUsdFromDexes(options);
+    // rawPrice = await this.tryGetTokenPriceUsdFromDexes(options);
 
     await this.setCachingData(cachingKey, rawPrice ? Number(rawPrice) : 0);
 

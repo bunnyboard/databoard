@@ -8,9 +8,10 @@ import StargatePoolV1Abi from '../../../configs/abi/stargate/PoolV1.json';
 import StargatePoolV2Abi from '../../../configs/abi/stargate/PoolV2.json';
 import Erc20Abi from '../../../configs/abi/ERC20.json';
 import { StargateChainIds, StargateProtocolConfig } from '../../../configs/protocols/stargate';
-import { formatBigNumberToNumber } from '../../../lib/utils';
+import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
 import { Address, decodeEventLog } from 'viem';
 import { AddressZero } from '../../../configs/constants';
+import { ContractCall } from '../../../services/blockchains/domains';
 
 // v1
 const EventMint = '0xb4c03061fb5b7fed76389d5af8f2e0ddb09f8c70d1333abbb62582835e10accb';
@@ -70,6 +71,94 @@ export default class StargateAdapter extends ProtocolAdapter {
       );
       const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(config.chain, options.endTime);
 
+      const erc20Pools = config.pools.filter((poolConfig) => !compareAddress(poolConfig.token, AddressZero));
+      const calls: Array<ContractCall> = erc20Pools.map((poolConfig) => {
+        return {
+          abi: Erc20Abi,
+          target: poolConfig.token,
+          method: 'balanceOf',
+          params: [poolConfig.address],
+        };
+      });
+      const results = await this.services.blockchain.evm.multicall({
+        chain: config.chain,
+        blockNumber: blockNumber,
+        calls: calls,
+      });
+
+      if (results) {
+        for (let i = 0; i < erc20Pools.length; i++) {
+          const token = await this.services.blockchain.evm.getTokenInfo({
+            chain: config.chain,
+            address: erc20Pools[i].token,
+          });
+          if (token && results[i] && results[i].toString() !== '0') {
+            const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+              chain: token.chain,
+              address: token.address,
+              timestamp: options.timestamp,
+            });
+            const balanceUsd = formatBigNumberToNumber(results[i].toString(), token.decimals) * tokenPriceUsd;
+
+            protocolData.totalAssetDeposited += balanceUsd;
+            protocolData.totalValueLocked += balanceUsd;
+            (protocolData.totalSupplied as number) += balanceUsd;
+
+            if (!protocolData.breakdown[token.chain][token.address]) {
+              protocolData.breakdown[token.chain][token.address] = {
+                ...getInitialProtocolCoreMetrics(),
+                totalSupplied: 0,
+                volumes: {
+                  deposit: 0,
+                  withdraw: 0,
+                  bridge: 0,
+                },
+              };
+            }
+            protocolData.breakdown[token.chain][token.address].totalAssetDeposited += balanceUsd;
+            protocolData.breakdown[token.chain][token.address].totalValueLocked += balanceUsd;
+            (protocolData.breakdown[token.chain][token.address].totalSupplied as number) += balanceUsd;
+          }
+        }
+      }
+
+      const client = this.services.blockchain.evm.getPublicClient(config.chain);
+      const nativePools = config.pools.filter((poolConfig) => compareAddress(poolConfig.token, AddressZero));
+      for (const nativePool of nativePools) {
+        const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+          chain: config.chain,
+          address: nativePool.token,
+          timestamp: options.timestamp,
+        });
+
+        // on v1, count native balance of native vault contract
+        // on v2, count native balance of pool contract
+        const nativebalance = await client.getBalance({
+          address: config.version === 1 ? (nativePool.nativeVault as Address) : (nativePool.address as Address),
+          blockNumber: BigInt(blockNumber),
+        });
+        const balanceUsd = formatBigNumberToNumber(nativebalance ? nativebalance.toString() : '0', 18) * tokenPriceUsd;
+
+        protocolData.totalAssetDeposited += balanceUsd;
+        protocolData.totalValueLocked += balanceUsd;
+        (protocolData.totalSupplied as number) += balanceUsd;
+
+        if (!protocolData.breakdown[config.chain][nativePool.token]) {
+          protocolData.breakdown[config.chain][nativePool.token] = {
+            ...getInitialProtocolCoreMetrics(),
+            totalSupplied: 0,
+            volumes: {
+              deposit: 0,
+              withdraw: 0,
+              bridge: 0,
+            },
+          };
+        }
+        protocolData.breakdown[config.chain][nativePool.token].totalAssetDeposited += balanceUsd;
+        protocolData.breakdown[config.chain][nativePool.token].totalValueLocked += balanceUsd;
+        (protocolData.breakdown[config.chain][nativePool.token].totalSupplied as number) += balanceUsd;
+      }
+
       for (const poolConfig of config.pools) {
         const token = await this.services.blockchain.evm.getTokenInfo({
           chain: config.chain,
@@ -81,52 +170,6 @@ export default class StargateAdapter extends ProtocolAdapter {
             address: poolConfig.token,
             timestamp: options.timestamp,
           });
-
-          let tokenBalance = 0;
-          if (poolConfig.token === AddressZero) {
-            // native pool
-
-            const client = this.services.blockchain.evm.getPublicClient(config.chain);
-
-            // on v1, count native balance of native vault contract
-            // on v2, count native balance of pool contract
-            const nativebalance = await client.getBalance({
-              address: config.version === 1 ? (poolConfig.nativeVault as Address) : (poolConfig.address as Address),
-              blockNumber: BigInt(blockNumber),
-            });
-            tokenBalance = formatBigNumberToNumber(nativebalance ? nativebalance.toString() : '0', 18);
-          } else {
-            const balance = await this.services.blockchain.evm.readContract({
-              chain: config.chain,
-              abi: Erc20Abi,
-              target: poolConfig.token,
-              method: 'balanceOf',
-              params: [poolConfig.address],
-              blockNumber: blockNumber,
-            });
-            tokenBalance = formatBigNumberToNumber(balance ? balance.toString() : '0', token.decimals);
-          }
-
-          const totalDepositedUsd = tokenBalance * tokenPriceUsd;
-
-          protocolData.totalAssetDeposited += totalDepositedUsd;
-          protocolData.totalValueLocked += totalDepositedUsd;
-          (protocolData.totalSupplied as number) += totalDepositedUsd;
-
-          if (!protocolData.breakdown[token.chain][token.address]) {
-            protocolData.breakdown[token.chain][token.address] = {
-              ...getInitialProtocolCoreMetrics(),
-              totalSupplied: 0,
-              volumes: {
-                deposit: 0,
-                withdraw: 0,
-                bridge: 0,
-              },
-            };
-          }
-          protocolData.breakdown[token.chain][token.address].totalAssetDeposited += totalDepositedUsd;
-          protocolData.breakdown[token.chain][token.address].totalValueLocked += totalDepositedUsd;
-          (protocolData.breakdown[token.chain][token.address].totalSupplied as number) += totalDepositedUsd;
 
           const logs = await this.services.blockchain.evm.getContractLogs({
             chain: config.chain,

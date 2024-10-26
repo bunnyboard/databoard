@@ -51,10 +51,10 @@ export const LayerbankConfigs: LayerBankProtocolConfig = {
       birthday: 1715990400, // Sat May 18 2024 00:00:00 GMT+0000
       core: '0xf1e25704e75da0496b46bf4e3856c5480a3c247f',
     },
-    {
-      chain: ChainNames.manta,
-      birthday: 1698624000, // Mon Oct 30 2023 00:00:00 GMT+0000
-      core: '0xb7a23fc0b066051de58b922dc1a08f33df748bbf',
-    },
+    // {
+    //   chain: ChainNames.manta,
+    //   birthday: 1698624000, // Mon Oct 30 2023 00:00:00 GMT+0000
+    //   core: '0xb7a23fc0b066051de58b922dc1a08f33df748bbf',
+    // },
   ],
 };

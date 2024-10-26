@@ -27,6 +27,8 @@ export const LifiBridgeKeys: any = {
   thorswap: ProtocolNames.thorswap,
   symbiosis: ProtocolNames.symbiosis,
   mayan: ProtocolNames.mayan,
+  mayanWH: ProtocolNames.mayan,
+  mayanMCTP: ProtocolNames.mayan,
   allbridge: ProtocolNames.allbridge,
   hop: ProtocolNames.hop,
   amarok: ProtocolNames.amarok,
@@ -37,6 +39,8 @@ export const LifiBridgeKeys: any = {
   omni: ProtocolNames.omni,
   gnosis: ProtocolNames.gnosisNativeBridge,
   hyphen: ProtocolNames.hyphen,
+  celercircle: ProtocolNames.circlecctp,
+  celerim: ProtocolNames.cbridge,
 };
 
 export default class LifiAdapter extends ProtocolAdapter {
