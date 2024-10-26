@@ -105,11 +105,16 @@ export class RunCommand extends BasicCommand {
         for (const chain of chains) {
           if (envConfig.blockchains[chain] && envConfig.blockchains[chain].family === ChainFamilies.evm) {
             const chainAdapter = new EvmChainAdapter(services, storages, envConfig.blockchains[chain]);
-            await chainAdapter.run({
-              service: argv.service === 'state' || argv.service === 'snapshot' ? argv.service : undefined,
-              fromTime: argv.fromTime ? argv.fromTime : undefined,
-              force: argv.force ? argv.force : false,
-            });
+
+            try {
+              await chainAdapter.run({
+                service: argv.service === 'state' || argv.service === 'snapshot' ? argv.service : undefined,
+                fromTime: argv.fromTime ? argv.fromTime : undefined,
+                force: argv.force ? argv.force : false,
+              });
+            } catch (e: any) {
+              Sentry.captureException(e);
+            }
           }
         }
 
@@ -121,11 +126,15 @@ export class RunCommand extends BasicCommand {
       do {
         for (const protocol of protocols) {
           if ((ProtocolConfigs as any)[protocol] && protocolAdapters[protocol]) {
-            await protocolAdapters[protocol].run({
-              service: argv.service === 'state' || argv.service === 'snapshot' ? argv.service : undefined,
-              fromTime: argv.fromTime ? argv.fromTime : undefined,
-              force: argv.force ? argv.force : false,
-            });
+            try {
+              await protocolAdapters[protocol].run({
+                service: argv.service === 'state' || argv.service === 'snapshot' ? argv.service : undefined,
+                fromTime: argv.fromTime ? argv.fromTime : undefined,
+                force: argv.force ? argv.force : false,
+              });
+            } catch (e: any) {
+              Sentry.captureException(e);
+            }
           }
         }
 
