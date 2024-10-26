@@ -40,6 +40,7 @@ const tokenlists = [
   'https://raw.githubusercontent.com/Uniswap/default-token-list/main/src/tokens/mainnet.json',
   'https://raw.githubusercontent.com/Uniswap/default-token-list/main/src/tokens/optimism.json',
   'https://raw.githubusercontent.com/Uniswap/default-token-list/main/src/tokens/polygon.json',
+  'https://raw.githubusercontent.com/Uniswap/default-token-list/main/src/tokens/worldchain.json',
 
   // uniswap extended
   'https://raw.githubusercontent.com/Uniswap/extended-token-list/main/src/tokens/arbitrum.json',

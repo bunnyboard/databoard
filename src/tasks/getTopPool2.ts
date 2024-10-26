@@ -17,10 +17,10 @@ import { AddressZero } from '../configs/constants';
 const dataPath = './src/configs/data/pool2';
 
 const protocolConfigs: Array<UniswapProtocolConfig> = [
-  // ProtocolConfigs.uniswap,
+  ProtocolConfigs.uniswap,
   // ProtocolConfigs.sushi,
   // ProtocolConfigs.spooky,
-  ProtocolConfigs.pancake,
+  // ProtocolConfigs.pancake,
   // ProtocolConfigs.katana,
   // ProtocolConfigs.camelot,
 ];
