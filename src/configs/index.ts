@@ -72,6 +72,7 @@ import { CamelotConfigs } from './protocols/camelot';
 import { HyphenConfigs } from './protocols/hyphen';
 import { CbridgeConfigs } from './protocols/celer';
 import { ZksyncNativeBridgeConfigs } from './protocols/zksync';
+import { PolygonNativeBridgeConfigs } from './protocols/polygon';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -162,4 +163,5 @@ export const ProtocolConfigs = {
   hyphen: HyphenConfigs,
   cbridge: CbridgeConfigs,
   zksyncNativeBridge: ZksyncNativeBridgeConfigs,
+  polygonNativeBridge: PolygonNativeBridgeConfigs,
 };

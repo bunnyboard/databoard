@@ -26,6 +26,7 @@ import MoonwellAdapter from './moonwell/moonwell';
 import MorphoAdapter from './morpho/morpho';
 import OptimismNativeBridgeAdapter from './optimism/nativeBridge';
 import PancakeAdapter from './pancake/pancake';
+import PolygonNativeBridgeAdapter from './polygon/nativeBridge';
 import RocketpoolAdapter from './rocketpool/rocketpool';
 import ScrollNativeBridgeAdapter from './scroll/nativeBridge';
 import SpookyAdapter from './spooky/spooky';
@@ -114,6 +115,7 @@ export function getProtocolAdapters(
     redstoneNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.redstoneNativeBridge),
     scrollNativeBridge: new ScrollNativeBridgeAdapter(services, storages, ProtocolConfigs.scrollNativeBridge),
     zksyncNativeBridge: new ZksyncNativeBridgeAdapter(services, storages, ProtocolConfigs.zksyncNativeBridge),
+    polygonNativeBridge: new PolygonNativeBridgeAdapter(services, storages, ProtocolConfigs.polygonNativeBridge),
     katana: new UniswapAdapter(services, storages, ProtocolConfigs.katana),
     camelot: new UniswapAdapter(services, storages, ProtocolConfigs.camelot),
     hyphen: new HyphenAdapter(services, storages, ProtocolConfigs.hyphen),

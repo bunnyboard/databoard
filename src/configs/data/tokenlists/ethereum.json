@@ -9305,6 +9305,12 @@
     "decimals": 9,
     "address": "0x38a94e92a19e970c144ded0b2dd47278ca11cc1f"
   },
+  "0x38b0e3a59183814957d83df2a97492aed1f003e2": {
+    "chain": "ethereum",
+    "symbol": "ANML",
+    "decimals": 18,
+    "address": "0x38b0e3a59183814957d83df2a97492aed1f003e2"
+  },
   "0x38c2a4a7330b22788374b8ff70bba513c8d848ca": {
     "chain": "ethereum",
     "symbol": "TRUF",
@@ -19222,6 +19228,12 @@
     "symbol": "IXS",
     "decimals": 18,
     "address": "0x73d7c860998ca3c01ce8c808f5577d94d545d1b4"
+  },
+  "0x73ee6d7e6b203125add89320e9f343d65ec7c39a": {
+    "chain": "ethereum",
+    "symbol": "AXI",
+    "decimals": 18,
+    "address": "0x73ee6d7e6b203125add89320e9f343d65ec7c39a"
   },
   "0x73fbd93bfda83b111ddc092aa3a4ca77fd30d380": {
     "chain": "ethereum",
@@ -38524,6 +38536,12 @@
     "symbol": "HHGTTG",
     "decimals": 9,
     "address": "0xee3c722d177559f73288cec91fa3e4bbfd8c27fc"
+  },
+  "0xee4458e052b533b1aabd493b5f8c4d85d7b263dc": {
+    "chain": "ethereum",
+    "symbol": "PASS",
+    "decimals": 18,
+    "address": "0xee4458e052b533b1aabd493b5f8c4d85d7b263dc"
   },
   "0xee573a945b01b788b9287ce062a0cfc15be9fd86": {
     "chain": "ethereum",

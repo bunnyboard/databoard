@@ -857,10 +857,6 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.LYRA_USDC],
   },
-  DHT: {
-    currency: 'eth',
-    sources: [OracleSourceUniswapv2List.DHT_WETH],
-  },
   USX: {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.USX_USDC],
@@ -1424,6 +1420,94 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   GTC: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.GTC_WETH],
+  },
+  CXO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.CXO_WETH],
+  },
+  BTU: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BTU_WETH],
+  },
+  FACTR: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.FACTR_WETH],
+  },
+  CHAIN: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.CHAIN_WETH],
+  },
+  ALI: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.ALI_USDC],
+  },
+  DOLZ: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.DOLZ_USDT],
+  },
+  BANANA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.BANANA_WETH],
+  },
+  ELON: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ELON_WETH],
+  },
+  DOP: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.DOP_WETH],
+  },
+  VEE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.VEE_WETH],
+  },
+  BAG: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BAG_WETH],
+  },
+  BOSON: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.BOSON_WETH],
+  },
+  ANGLE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ANGLE_WETH],
+  },
+  ANML: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ANML_WETH],
+  },
+  DHT: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.DHT_USDC],
+  },
+  DFX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.DFX_WETH],
+  },
+  AXI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.AXI_WETH],
+  },
+  PASS: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.PASS_USDT],
+  },
+  DWEB: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.DWEB_WETH],
+  },
+  API3: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.API3_WETH],
+  },
+  DEXT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.DEXT_WETH],
+  },
+  AXS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.AXS_WETH],
   },
   '0xBTC': {
     currency: 'eth',

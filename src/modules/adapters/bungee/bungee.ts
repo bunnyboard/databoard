@@ -126,7 +126,7 @@ export default class BungeeAdapter extends ProtocolAdapter {
               : event.args.bridgeName;
 
             const toChainId = Number(event.args.toChainId);
-            let toChainName = `unknown:${toChainId}`;
+            let toChainName: string | null = null;
             if (bridgeName === 'stargate' && StargateChainIds[toChainId]) {
               // https://stargateprotocol.gitbook.io/stargate/developers/chain-ids
               toChainName = StargateChainIds[toChainId];
@@ -136,6 +136,10 @@ export default class BungeeAdapter extends ProtocolAdapter {
                   toChainName = blockchain.name;
                 }
               }
+            }
+
+            if (toChainName === null) {
+              continue;
             }
 
             const token = await this.services.blockchain.evm.getTokenInfo({

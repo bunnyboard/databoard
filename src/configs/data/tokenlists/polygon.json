@@ -2093,6 +2093,12 @@
     "decimals": 18,
     "address": "0xfbdd194376de19a88118e84e279b977f165d01b8"
   },
+  "0xfdc26cda2d2440d0e83cd1dee8e8be48405806dc": {
+    "chain": "polygon",
+    "symbol": "BTU",
+    "decimals": 18,
+    "address": "0xfdc26cda2d2440d0e83cd1dee8e8be48405806dc"
+  },
   "0xfe712251173a2cd5f5be2b46bb528328ea3565e1": {
     "chain": "polygon",
     "symbol": "MVI",

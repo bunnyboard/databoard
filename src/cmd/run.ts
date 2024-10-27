@@ -114,7 +114,7 @@ export class RunCommand extends BasicCommand {
               });
             } catch (e: any) {
               Sentry.captureException(e);
-              throw e;
+              throw new Error(e);
             }
           }
         }
@@ -135,7 +135,7 @@ export class RunCommand extends BasicCommand {
               });
             } catch (e: any) {
               Sentry.captureException(e);
-              throw e;
+              throw new Error(e);
             }
           }
         }
