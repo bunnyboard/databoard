@@ -230,6 +230,10 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceCustomList.SAVING_DAI],
   },
+  sUSDS: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.SAVING_USDS],
+  },
   STG: {
     currency: 'usd',
     sources: [OracleSourceUniswapv3List.STG_USDC],

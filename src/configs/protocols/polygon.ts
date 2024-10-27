@@ -5,7 +5,9 @@ export interface PolygonBridgeProtocolConfig extends ProtocolConfig {
   chain: string;
   layer2Chain: string;
   bridgeERC20: string;
-  bridgePlasma: string;
+  bridgeEther: string;
+  bridgePlasmaDeposit: string;
+  bridgePlasmaWithdraw: string;
   supportedTokens: Array<string>;
 }
 
@@ -16,7 +18,9 @@ export const PolygonNativeBridgeConfigs: PolygonBridgeProtocolConfig = {
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.polygon,
   bridgeERC20: '0x40ec5b33f54e0e8a33a975908c5ba1c14e5bbbdf',
-  bridgePlasma: '0x401F6c983eA34274ec46f84D70b31C151321188b',
+  bridgeEther: '0x8484ef722627bf18ca5ae6bcf031c23e6e922b30',
+  bridgePlasmaDeposit: '0x401F6c983eA34274ec46f84D70b31C151321188b',
+  bridgePlasmaWithdraw: '0x2a88696e0ffa76baa1338f2c74497cc013495922',
   supportedTokens: [
     '0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9',
     '0x3F382DbD960E3a9bbCeaE22651E88158d2791550',

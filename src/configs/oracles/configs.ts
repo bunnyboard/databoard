@@ -278,6 +278,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x0b38210ea11411557c13457d4da7dc6ea731b88a': OracleSourceConfigs.API3,
     '0xfb7b4564402e5500db5bb6d63ae671302777c75a': OracleSourceConfigs.DEXT,
     '0xbb0e17ef65f82ab018d8edd776e8dd940327b28b': OracleSourceConfigs.AXS,
+    '0xa3931d71877c0e7a3148cb7eb4463524fec27fbd': OracleSourceConfigs.sUSDS,
 
     // todo need to find better oracle source
     '0x9d39a5de30e57443bff2a8307a4256c8797a3497': OracleSourceConfigs.USDT,

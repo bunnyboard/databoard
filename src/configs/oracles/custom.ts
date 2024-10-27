@@ -10,6 +10,12 @@ export const OracleSourceCustomList: {
     address: '0x83F20F44975D03b1b09e64809B757c47f942BEeA',
     token: TokensBook.ethereum['0x6b175474e89094c44da98b954eedeac495271d0f'],
   },
+  SAVING_USDS: {
+    type: 'savingDai',
+    chain: 'ethereum',
+    address: '0xa3931d71877c0e7a3148cb7eb4463524fec27fbd',
+    token: TokensBook.ethereum['0xdc035d45d973e3ec169d2276ddab16f1e407384f'],
+  },
   SAVING_xDAI: {
     type: 'savingDai',
     chain: 'gnosis',
