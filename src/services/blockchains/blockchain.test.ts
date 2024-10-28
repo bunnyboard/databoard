@@ -93,8 +93,8 @@ const testcases = [
   },
   {
     ...EnvConfig.blockchains.mantle,
-    timestamp: 1704067200, // Mon Jan 01 2024 00:00:00 GMT+0000
-    expectedBlockNumber: 36794907,
+    timestamp: 1707350399, // Mon Jan 01 2024 00:00:00 GMT+0000
+    expectedBlockNumber: 53473734,
   },
   {
     ...EnvConfig.blockchains.aurora,
@@ -154,7 +154,7 @@ const testcases = [
   {
     ...EnvConfig.blockchains.seievm,
     timestamp: 1717200000, // Sat Jun 01 2024 00:00:00 GMT+0000
-    expectedBlockNumber: 80041939,
+    expectedBlockNumber: 80041938,
   },
   {
     ...EnvConfig.blockchains.bob,

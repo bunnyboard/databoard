@@ -7,7 +7,7 @@ import envConfig from '../../configs/envConfig';
 import { ChainNames } from '../../configs/names';
 import axios, { RawAxiosRequestHeaders } from 'axios';
 import { logAxiosError } from '../../lib/logger';
-import { getTimestamp } from '../../lib/utils';
+import { getTimestamp, sleep } from '../../lib/utils';
 
 export default class BlockDater {
   private chain: string;
@@ -52,12 +52,11 @@ export default class BlockDater {
       return await this.getFromExplorerApi('https://seitrace.com/pacific-1/api/v1', timestamp);
     }
 
-    if (
-      typeof this.firstBlock == 'undefined' ||
-      typeof this.latestBlock == 'undefined' ||
-      typeof this.blockTime == 'undefined' ||
-      refresh
-    ) {
+    if (this.chain === ChainNames.mantle) {
+      return await this.getFromExplorerApi('https://api.mantlescan.xyz/api', timestamp);
+    }
+
+    if (this.firstBlock === undefined || this.latestBlock === undefined || this.blockTime === undefined || refresh) {
       await this.getBoundaries();
     }
 
@@ -88,18 +87,20 @@ export default class BlockDater {
 
     const difference = timestamp - Number(predictedBlock.timestamp);
 
-    let skip = Math.ceil(difference / (blockTime == 0 ? 1 : blockTime));
-    if (skip == 0) {
+    let skip = Math.ceil(difference / (blockTime === 0 ? 1 : blockTime));
+    if (skip === 0) {
       skip = difference < 0 ? -1 : 1;
     }
 
     const nextPredictedBlock = await this.getBlockWrapper(
       await this.getNextBlock(timestamp, predictedBlock.number, skip),
     );
+
     blockTime = Math.abs(
-      (parseInt(predictedBlock.timestamp, 10) - parseInt(nextPredictedBlock.timestamp, 10)) /
-        (parseInt(predictedBlock.number, 10) - parseInt(nextPredictedBlock.number, 10)),
+      (Number(predictedBlock.timestamp) - Number(nextPredictedBlock.timestamp)) /
+        (Number(predictedBlock.number) - Number(nextPredictedBlock.number)),
     );
+
     return this.findBetter(timestamp, nextPredictedBlock, after, blockTime);
   }
 
@@ -168,6 +169,7 @@ export default class BlockDater {
   private async getFromExplorerApi(endpoint: string, timestamp: number): Promise<number> {
     let url = `${endpoint}?module=block&action=getblocknobytime&timestamp=${timestamp}&closest=after`;
     try {
+      await sleep(5);
       const response = await axios.get(url, {
         headers: {
           'Content-Type': 'application/json',

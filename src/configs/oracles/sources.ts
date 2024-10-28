@@ -1265,6 +1265,10 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv3List.TRYb_USDC],
   },
+  HOP: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.HOP_WETH],
+  },
   RGT: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.RGT_WETH],

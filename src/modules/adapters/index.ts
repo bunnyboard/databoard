@@ -14,6 +14,7 @@ import DineroAdapter from './dinero/dinero';
 import EulerAdapter from './euler/euler';
 import FluidAdapter from './fluid/fluid';
 import FraxEtherAdapter from './frax/fraxether';
+import HopAdapter from './hop/hop';
 import HyphenAdapter from './hyphen/hyphen';
 import LayerbankAdapter from './layerbank/layerbank';
 import LidoAdapter from './lido/lido';
@@ -120,5 +121,6 @@ export function getProtocolAdapters(
     camelot: new UniswapAdapter(services, storages, ProtocolConfigs.camelot),
     hyphen: new HyphenAdapter(services, storages, ProtocolConfigs.hyphen),
     cbridge: new CbridgeAdapter(services, storages, ProtocolConfigs.cbridge),
+    hop: new HopAdapter(services, storages, ProtocolConfigs.hop),
   };
 }
