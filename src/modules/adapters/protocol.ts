@@ -198,23 +198,26 @@ export default class ProtocolAdapter implements IProtocolAdapter {
   }
 
   public async runTest(options: TestAdapterOptions): Promise<void> {
-    const timestamp = options.timestamp ? options.timestamp : getTimestamp();
+    const current = getTimestamp();
+    const fromTime = options.timestamp ? options.timestamp : current - TimeUnits.SecondsPerDay;
+    const toTime = options.timestamp ? options.timestamp + TimeUnits.SecondsPerDay : current;
+
     if (options.output === 'json') {
       console.log(
         JSON.stringify(
           await this.getProtocolData({
-            timestamp: timestamp,
-            beginTime: timestamp - TimeUnits.SecondsPerDay,
-            endTime: timestamp,
+            timestamp: fromTime,
+            beginTime: fromTime,
+            endTime: toTime,
           }),
         ),
       );
     } else {
       console.log(
         await this.getProtocolData({
-          timestamp: timestamp,
-          beginTime: timestamp - TimeUnits.SecondsPerDay,
-          endTime: timestamp,
+          timestamp: fromTime,
+          beginTime: fromTime,
+          endTime: toTime,
         }),
       );
     }

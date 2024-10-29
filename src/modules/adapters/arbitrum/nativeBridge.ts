@@ -19,6 +19,8 @@ const Events = {
   DepositInitiated: '0xb8910b9960c443aac3240b98585384e3a6f109fbf6969e264c3f183d69aba7e1',
 
   // native ETH deposit from Ethereum -> Arbitrum
+  // emitted by Bridge contract
+  MessageDelivered: '0x5e3c1311ea442664e8b1611bfabef659120ea7a0a2cfc0667700bebc69cbffe1',
   // emitted by deployedInbox contract
   InboxMessageDelivered: '0xff64905f73a67fb594e0f940a8075a860db489ad991e032f48c81123eb52d60b',
 
@@ -128,48 +130,73 @@ export default class ArbitrumNativeBridgeAdapter extends ProtocolAdapter {
       toBlock: endBlock,
     });
 
-    for (const log of inboxLogs.concat(bridgeLogs)) {
-      if (log.topics[0] === Events.InboxMessageDelivered) {
-        const event: any = decodeEventLog({
+    // to get ETH deposit from bridge contract and deployed inbox logs
+    // we get the MessageDelivered event from bridge contract with kind === 12
+    // and the event from deployed inbox with:
+    // messageNum (from InboxMessageDelivered event) === messageIndex (from MessageDelivered event)
+    const inboxEvents: Array<any> = inboxLogs
+      .filter((log) => log.topics[0] === Events.InboxMessageDelivered)
+      .map((log) => {
+        return decodeEventLog({
           abi: ArbitrumDeployedInboxAbi,
           topics: log.topics,
           data: log.data,
         });
-
-        try {
-          const params: any = decodeAbiParameters(
-            [
-              {
-                name: 'sender',
-                type: 'address',
-              },
-              {
-                name: 'value',
-                type: 'uint256',
-              },
-            ],
-            event.args.data,
-          );
-
-          const amountUsd = formatBigNumberToNumber(params[1].toString(), 18) * nativeTokenPriceUsd;
-          (protocolData.volumes.bridge as number) += amountUsd;
-          (protocolData.volumeBridgePaths as any)[arbitrumConfig.chain][arbitrumConfig.layer2Chain] += amountUsd;
-          (protocolData.breakdown[arbitrumConfig.chain][AddressZero].volumes.bridge as number) += amountUsd;
-        } catch (e: any) {}
-      } else if (log.topics[0] === Events.BridgeCallTriggered) {
+      });
+    for (const log of bridgeLogs) {
+      if (log.topics[0] === Events.MessageDelivered || log.topics[0] === Events.BridgeCallTriggered) {
         const event: any = decodeEventLog({
           abi: ArbitrumBridgeAbi,
           topics: log.topics,
           data: log.data,
         });
 
-        const amountUsd = formatBigNumberToNumber(event.args.value.toString(), 18) * nativeTokenPriceUsd;
+        if (log.topics[0] === Events.MessageDelivered) {
+          const kind = Number(event.args.kind.toString());
+          if (kind === 12) {
+            const messageIndex = Number(event.args.messageIndex.toString());
+            const inboxEvent = inboxEvents.filter(
+              (event) => Number(event.args.messageNum.toString()) === messageIndex,
+            )[0];
+            if (inboxEvent) {
+              try {
+                const params: any = decodeAbiParameters(
+                  [
+                    {
+                      name: 'sender',
+                      type: 'address',
+                    },
+                    {
+                      name: 'value',
+                      type: 'uint256',
+                    },
+                  ],
+                  inboxEvent.args.data,
+                );
 
-        (protocolData.volumes.bridge as number) += amountUsd;
+                const amountUsd = formatBigNumberToNumber(params[1].toString(), 18) * nativeTokenPriceUsd;
 
-        // withdraw from layer 2 -> ethereum
-        (protocolData.volumeBridgePaths as any)[arbitrumConfig.layer2Chain][arbitrumConfig.chain] += amountUsd;
-        (protocolData.breakdown[arbitrumConfig.layer2Chain][AddressZero].volumes.bridge as number) += amountUsd;
+                (protocolData.volumes.bridge as number) += amountUsd;
+                (protocolData.volumeBridgePaths as any)[arbitrumConfig.chain][arbitrumConfig.layer2Chain] += amountUsd;
+                (protocolData.breakdown[arbitrumConfig.chain][AddressZero].volumes.bridge as number) += amountUsd;
+              } catch (e: any) {}
+            }
+          }
+        } else {
+          const event: any = decodeEventLog({
+            abi: ArbitrumBridgeAbi,
+            topics: log.topics,
+            data: log.data,
+          });
+
+          const amountUsd = formatBigNumberToNumber(event.args.value.toString(), 18) * nativeTokenPriceUsd;
+
+          (protocolData.volumes.bridge as number) += amountUsd;
+
+          // withdraw from layer 2 -> ethereum
+          (protocolData.volumeBridgePaths as any)[arbitrumConfig.layer2Chain][arbitrumConfig.chain] += amountUsd;
+          (protocolData.breakdown[arbitrumConfig.layer2Chain][AddressZero].volumes.bridge as number) += amountUsd;
+        }
       }
     }
 
