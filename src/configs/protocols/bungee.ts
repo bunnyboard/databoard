@@ -68,12 +68,12 @@ export const BungeeConfigs: BungeeProtocolConfig = {
       gateway: '0x3a23f943181408eac424116af7b7790c94cb97a5',
       tokens: BungeeSupportedTokens.filter((token) => token.chain === ChainNames.linea),
     },
-    // {
-    //   chain: ChainNames.mantle,
-    //   birthday: 1707523200, // Sat Feb 10 2024 00:00:00 GMT+0000
-    //   gateway: '0x3a23f943181408eac424116af7b7790c94cb97a5',
-    //   tokens: BungeeSupportedTokens.filter((token) => token.chain === ChainNames.mantle),
-    // },
+    {
+      chain: ChainNames.mantle,
+      birthday: 1707523200, // Sat Feb 10 2024 00:00:00 GMT+0000
+      gateway: '0x3a23f943181408eac424116af7b7790c94cb97a5',
+      tokens: BungeeSupportedTokens.filter((token) => token.chain === ChainNames.mantle),
+    },
     {
       chain: ChainNames.optimism,
       birthday: 1679097600, // Sat Mar 18 2023 00:00:00 GMT+0000
