@@ -10,7 +10,7 @@ import LifiInterfaceAbi from '../../../configs/abi/lifi/ILifi.json';
 import FeesCollectedAbi from '../../../configs/abi/lifi/FeeCollector.json';
 import { decodeEventLog } from 'viem';
 import { ProtocolNames } from '../../../configs/names';
-import { compareAddress, formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
+import { compareAddress, formatBigNumberToNumber, normalizeAddress, removeNullBytes } from '../../../lib/utils';
 import { getChainNameById } from '../../../lib/helpers';
 
 export const LifiDiamondEvents = {
@@ -120,7 +120,7 @@ export default class LifiAdapter extends ProtocolAdapter {
           const bridgeName = LifiBridgeKeys[event.args.bridgeData.bridge]
             ? LifiBridgeKeys[event.args.bridgeData.bridge]
             : event.args.bridgeData.bridge;
-          const integrator = event.args.bridgeData.integrator;
+          const integrator = removeNullBytes(event.args.bridgeData.integrator);
           const token = await this.services.blockchain.evm.getTokenInfo({
             chain: diamondConfig.chain,
             address: event.args.bridgeData.sendingAssetId,
@@ -206,21 +206,21 @@ export default class LifiAdapter extends ProtocolAdapter {
 
             protocolData.totalFees += integratorFee + lifiFee;
             protocolData.protocolRevenue += integratorFee + lifiFee;
-            if (!protocolData.breakdown[diamondConfig.chain][token.address]) {
-              protocolData.breakdown[diamondConfig.chain][token.address] = {
+            if (!protocolData.breakdown[token.chain][token.address]) {
+              protocolData.breakdown[token.chain][token.address] = {
                 ...getInitialProtocolCoreMetrics(),
                 volumes: {
                   bridge: 0,
                 },
               };
             }
-            protocolData.breakdown[diamondConfig.chain][token.address].totalFees += integratorFee + lifiFee;
+            protocolData.breakdown[token.chain][token.address].totalFees += integratorFee + lifiFee;
 
-            const integrator = normalizeAddress(event.args._integrator);
-            if (!lifiExtendedData.feeRecipients[integrator]) {
-              lifiExtendedData.feeRecipients[integrator] = 0;
+            const recipient = normalizeAddress(event.args._integrator);
+            if (!lifiExtendedData.feeRecipients[recipient]) {
+              lifiExtendedData.feeRecipients[recipient] = 0;
             }
-            lifiExtendedData.feeRecipients[integrator] += integratorFee;
+            lifiExtendedData.feeRecipients[recipient] += integratorFee;
           }
         }
       }

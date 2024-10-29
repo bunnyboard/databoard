@@ -195,7 +195,7 @@ export const OracleSourceChainlinkList: { [key: string]: OracleSourceChainlink }
   },
   LTC_USD: {
     type: 'chainlink',
-    chain: 'ethereum',
+    chain: 'bnbchain',
     currency: 'usd',
     address: '0x74e72f37a8c415c8f1a98ed42e78ff997435791d',
     decimals: 8,

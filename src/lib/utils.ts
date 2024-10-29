@@ -91,3 +91,11 @@ export function findLongestStringLength(items: Array<string>): number {
   }
   return maximum;
 }
+
+// remove character \u0000 from given string
+export function removeNullBytes(str: string): string {
+  return str
+    .split('')
+    .filter((char) => char.codePointAt(0))
+    .join('');
+}

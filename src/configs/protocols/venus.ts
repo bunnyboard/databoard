@@ -44,6 +44,20 @@ export const VenusConfigs: CompoundProtocolConfig = {
       oracleSource: 'oracleUsd',
     },
     // {
+    //   chain: ChainNames.opbnb,
+    //   marketName: 'Core Market',
+    //   birthday: 1708041600, // Fri Feb 16 2024 00:00:00 GMT+0000
+    //   comptroller: '0xD6e3E2A1d8d95caE355D15b3b9f8E5c2511874dd',
+    //   oracleSource: 'oracleUsd',
+    // },
+    // {
+    //   chain: ChainNames.optimism,
+    //   marketName: 'Core Market',
+    //   birthday: 1727740800, // Tue Oct 01 2024 00:00:00 GMT+0000
+    //   comptroller: '0x5593FF68bE84C966821eEf5F0a988C285D5B7CeC',
+    //   oracleSource: 'oracleUsd',
+    // },
+    // {
     //   chain: ChainNames.bnbchain,
     //   marketName: 'Stablecoins Market',
     //   birthday: 1687564800, // Sat Jun 24 2023 00:00:00 GMT+0000
