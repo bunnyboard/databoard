@@ -313,6 +313,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xba50933c268f567bdc86e1ac131be072c6b0b71a': OracleSourceConfigs.ARPA,
     '0x7a56e1c57c7475ccf742a1832b028f0456652f97': OracleSourceConfigs.SolvBTC,
     '0xc96de26018a54d51c097160568752c4e3bd6c364': OracleSourceConfigs.FBTC,
+    '0x57e114b691db790c35207b2e685d4a43181e6061': OracleSourceConfigs.ENA,
+    '0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb': OracleSourceConfigs.ETHFI,
 
     // todo need to find better oracle source
     '0x9d39a5de30e57443bff2a8307a4256c8797a3497': OracleSourceConfigs.USDT,

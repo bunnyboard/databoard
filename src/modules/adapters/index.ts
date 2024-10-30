@@ -39,6 +39,7 @@ import StakewiseAdapter from './stakewise/stakewise';
 import StargateAdapter from './stargate/stargate';
 import SushiAdapter from './sushi/sushi';
 import SwethAdapter from './swellnetwork/sweth';
+import SymbioticAdapter from './symbiotic/symbiotic';
 import SynapseAdapter from './synapse/synapse';
 import UniswapAdapter from './uniswap/uniswap';
 import VenusAdapter from './venus/venus';
@@ -128,5 +129,6 @@ export function getProtocolAdapters(
     gnosisNativeBridge: new GnosisNativeBridgeAdapter(services, storages, ProtocolConfigs.gnosisNativeBridge),
     lfjlend: new LfjlendAdapter(services, storages, ProtocolConfigs.lfjlend),
     eigenlayer: new EigenLayerAdapter(services, storages, ProtocolConfigs.eigenlayer),
+    symbiotic: new SymbioticAdapter(services, storages, ProtocolConfigs.symbiotic),
   };
 }

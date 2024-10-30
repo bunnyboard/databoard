@@ -1105,6 +1105,14 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv3List.AUSD_USDT],
   },
+  ENA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ENA_WETH],
+  },
+  ETHFI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ETHFI_WETH],
+  },
   PSTAKE: {
     currency: 'usd',
     sources: [OracleSourceUniswapv3List.PSTAKE_USDC],

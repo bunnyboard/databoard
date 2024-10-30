@@ -77,6 +77,7 @@ import { HopConfigs } from './protocols/hop';
 import { GnosisNativeBridgeConfigs } from './protocols/gnosis';
 import { LfjlendConfigs } from './protocols/lfj';
 import { EigenLayerConfigs } from './protocols/eigenlayer';
+import { SymbioticConfigs } from './protocols/symbiotic';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -172,4 +173,5 @@ export const ProtocolConfigs = {
   gnosisNativeBridge: GnosisNativeBridgeConfigs,
   lfjlend: LfjlendConfigs,
   eigenlayer: EigenLayerConfigs,
+  symbiotic: SymbioticConfigs,
 };

@@ -176,4 +176,5 @@ export const ProtocolNames = {
   lfj: 'lfj', // https://lfj.gg/
   opensea: 'opensea',
   eigenlayer: 'eigenlayer',
+  symbiotic: 'symbiotic',
 };
