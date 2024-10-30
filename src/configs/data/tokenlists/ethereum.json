@@ -18737,6 +18737,12 @@
     "decimals": 18,
     "address": "0x7118057ff0f4fd0994fb9d2d94de8231d5cca79e"
   },
+  "0x7122985656e38bdc0302db86685bb972b145bd3c": {
+    "chain": "ethereum",
+    "symbol": "STONE",
+    "decimals": 18,
+    "address": "0x7122985656e38bdc0302db86685bb972b145bd3c"
+  },
   "0x71297312753ea7a2570a5a3278ed70d9a75f4f44": {
     "chain": "ethereum",
     "symbol": "EBULL",

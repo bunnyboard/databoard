@@ -301,6 +301,9 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x0ae055097c6d159879521c384f1d2123d1f195e6': OracleSourceConfigs.STAKE,
     '0x48c3399719b582dd63eb5aadf12a40b4c3f52fa2': OracleSourceConfigs.SWISE,
     '0x00c83aecc790e8a4453e5dd3b0b4b3680501a7a7': OracleSourceConfigs.SKL,
+    '0x7122985656e38bdc0302db86685bb972b145bd3c': OracleSourceConfigs.STONE,
+    '0xf655c8567e0f213e6c634cd2a68d992152161dc6': OracleSourceConfigs.IBEX,
+    '0xd9a442856c234a39a81a089c06451ebaa4306a72': OracleSourceConfigs.pufETH,
 
     // todo need to find better oracle source
     '0x9d39a5de30e57443bff2a8307a4256c8797a3497': OracleSourceConfigs.USDT,
@@ -694,6 +697,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xbbca42c60b5290f2c48871a596492f93ff0ddc82': OracleSourceConfigs.WXT,
     '0x44acd96620b708162af4a90524f29a6839675533': OracleSourceConfigs.TCGC,
     '0xc5102fe9359fd9a28f877a67e36b0f050d81a3cc': OracleSourceConfigs.HOP,
+    '0xf972daced7c6b03223710c11413036d17eb298f6': OracleSourceConfigs.IBEX,
 
     // todo need to find better oracle source
     '0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0': OracleSourceConfigs.USDC,

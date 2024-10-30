@@ -1,14 +1,12 @@
-import { ProtocolConfig } from '../../../types/base';
+import { ProtocolConfig, Token } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
 import ProtocolAdapter from '../protocol';
 import AdapterDataHelper from '../helpers';
-import Erc20Abi from '../../../configs/abi/ERC20.json';
 import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
 import { Address, decodeEventLog } from 'viem';
 import { AddressZero } from '../../../configs/constants';
-import { ContractCall } from '../../../services/blockchains/domains';
 import EthGatewayAbi from '../../../configs/abi/scroll/L1ETHGateway.json';
 import Erc20GatewayAbi from '../../../configs/abi/scroll/L1StandardERC20Gateway.json';
 import { ScrollBridgeProtocolConfig } from '../../../configs/protocols/scroll';
@@ -16,9 +14,11 @@ import { ScrollBridgeProtocolConfig } from '../../../configs/protocols/scroll';
 const Events = {
   // ERC20 deposit
   DepositERC20: '0x31cd3b976e4d654022bf95c68a2ce53f1d5d94afabe0454d2832208eeb40af25',
+  FinalizeWithdrawERC20: '0xc6f985873b37805705f6bce756dce3d1ff4b603e298d506288cce499926846a7',
 
   // native ETH deposit
   DepositETH: '0x6670de856ec8bf5cb2b7e957c5dc24759716056f79d97ea5e7c939ca0ba5a675',
+  FinalizeWithdrawETH: '0x96db5d1cee1dd2760826bb56fabd9c9f6e978083e0a8b88559c741a29e9746e7',
 };
 
 export default class ScrollNativeBridgeAdapter extends ProtocolAdapter {
@@ -37,7 +37,22 @@ export default class ScrollNativeBridgeAdapter extends ProtocolAdapter {
       birthday: this.protocolConfig.birthday,
       timestamp: options.timestamp,
       breakdown: {
-        [scrollConfig.chain]: {},
+        [scrollConfig.chain]: {
+          [AddressZero]: {
+            ...getInitialProtocolCoreMetrics(),
+            volumes: {
+              bridge: 0,
+            },
+          },
+        },
+        [scrollConfig.layer2Chain]: {
+          [AddressZero]: {
+            ...getInitialProtocolCoreMetrics(),
+            volumes: {
+              bridge: 0,
+            },
+          },
+        },
       },
       ...getInitialProtocolCoreMetrics(),
       volumes: {
@@ -46,6 +61,9 @@ export default class ScrollNativeBridgeAdapter extends ProtocolAdapter {
       volumeBridgePaths: {
         [scrollConfig.chain]: {
           [scrollConfig.layer2Chain]: 0,
+        },
+        [scrollConfig.layer2Chain]: {
+          [scrollConfig.chain]: 0,
         },
       },
     };
@@ -66,13 +84,6 @@ export default class ScrollNativeBridgeAdapter extends ProtocolAdapter {
       scrollConfig.chain,
       options.endTime,
     );
-
-    const bridgeLogs = await this.services.blockchain.evm.getContractLogs({
-      chain: scrollConfig.chain,
-      address: scrollConfig.ethGateway,
-      fromBlock: beginBlock,
-      toBlock: endBlock,
-    });
 
     // native ETH
     const client = this.services.blockchain.evm.getPublicClient(scrollConfig.chain);
@@ -99,75 +110,99 @@ export default class ScrollNativeBridgeAdapter extends ProtocolAdapter {
       totalAssetDeposited: nativeBalanceLockedUsd,
       totalValueLocked: nativeBalanceLockedUsd,
     };
-    for (const log of bridgeLogs.filter((item) => item.topics[0] === Events.DepositETH)) {
+
+    const ethGatewayLogs = await this.services.blockchain.evm.getContractLogs({
+      chain: scrollConfig.chain,
+      address: scrollConfig.ethGateway,
+      fromBlock: beginBlock,
+      toBlock: endBlock,
+    });
+    for (const log of ethGatewayLogs.filter(
+      (item) => item.topics[0] === Events.DepositETH || item.topics[0] === Events.FinalizeWithdrawETH,
+    )) {
       const event: any = decodeEventLog({
         abi: EthGatewayAbi,
         topics: log.topics,
         data: log.data,
       });
+
       const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), 18) * nativeTokenPriceUsd;
+
       (protocolData.volumes.bridge as number) += amountUsd;
-      (protocolData.volumeBridgePaths as any)[scrollConfig.chain][scrollConfig.layer2Chain] += amountUsd;
       (protocolData.breakdown[scrollConfig.chain][AddressZero].volumes.bridge as number) += amountUsd;
+
+      if (log.topics[0] === Events.DepositETH) {
+        (protocolData.volumeBridgePaths as any)[scrollConfig.chain][scrollConfig.layer2Chain] += amountUsd;
+      } else {
+        (protocolData.volumeBridgePaths as any)[scrollConfig.layer2Chain][scrollConfig.chain] += amountUsd;
+      }
     }
 
     // ERC20 tokens activities
-    const calls: Array<ContractCall> = scrollConfig.supportedTokens.map((tokenAddress) => {
-      return {
-        abi: Erc20Abi,
-        target: tokenAddress,
-        method: 'balanceOf',
-        params: [scrollConfig.erc20Gateway],
-      };
-    });
-
-    const results = await this.services.blockchain.evm.multicall({
-      chain: scrollConfig.chain,
-      blockNumber: blockNumber,
-      calls: calls,
-    });
-    const logs = await this.services.blockchain.evm.getContractLogs({
-      chain: scrollConfig.chain,
-      address: scrollConfig.erc20Gateway,
-      fromBlock: beginBlock,
-      toBlock: endBlock,
-    });
-    for (let i = 0; i < scrollConfig.supportedTokens.length; i++) {
-      const token = await this.services.blockchain.evm.getTokenInfo({
-        chain: scrollConfig.chain,
-        address: scrollConfig.supportedTokens[i],
-      });
-      if (token && results[i]) {
-        const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-          chain: token.chain,
-          address: token.address,
-          timestamp: options.timestamp,
+    for (const erc20Gateway of scrollConfig.erc20Gateways) {
+      const tokens: Array<Token> = [];
+      for (const address of erc20Gateway.supportedTokens) {
+        const token = await this.services.blockchain.evm.getTokenInfo({
+          chain: scrollConfig.chain,
+          address: address,
         });
-        const balanceUsd = formatBigNumberToNumber(results[i].toString(), token.decimals) * tokenPriceUsd;
+        if (token) {
+          tokens.push(token);
+        }
+      }
 
-        protocolData.totalAssetDeposited += balanceUsd;
-        protocolData.totalValueLocked += balanceUsd;
-        protocolData.breakdown[scrollConfig.chain][token.address] = {
-          ...getInitialProtocolCoreMetrics(),
-          volumes: {
-            bridge: 0,
-          },
-          totalAssetDeposited: nativeBalanceLockedUsd,
-          totalValueLocked: nativeBalanceLockedUsd,
-        };
+      const getBalanceResult = await this.getAddressBalanceUsd({
+        chain: scrollConfig.chain,
+        ownerAddress: erc20Gateway.gateway,
+        tokens: tokens,
+        timestamp: options.timestamp,
+        blockNumber: blockNumber,
+      });
 
-        for (const log of logs.filter((item) => item.topics[0] === Events.DepositERC20)) {
+      protocolData.totalAssetDeposited += getBalanceResult.totalBalanceUsd;
+      protocolData.totalValueLocked += getBalanceResult.totalBalanceUsd;
+
+      for (const [address, tokenBalance] of Object.entries(getBalanceResult.tokenBalanceUsds)) {
+        if (!protocolData.breakdown[scrollConfig.chain][address]) {
+          protocolData.breakdown[scrollConfig.chain][address] = {
+            ...getInitialProtocolCoreMetrics(),
+            volumes: {
+              bridge: 0,
+            },
+          };
+        }
+        protocolData.breakdown[scrollConfig.chain][address].totalAssetDeposited += tokenBalance.balanceUsd;
+        protocolData.breakdown[scrollConfig.chain][address].totalValueLocked += tokenBalance.balanceUsd;
+      }
+
+      const logs = await this.services.blockchain.evm.getContractLogs({
+        chain: scrollConfig.chain,
+        address: erc20Gateway.gateway,
+        fromBlock: beginBlock,
+        toBlock: endBlock,
+      });
+      for (const log of logs) {
+        if (log.topics[0] === Events.DepositERC20 || log.topics[0] === Events.FinalizeWithdrawERC20) {
           const event: any = decodeEventLog({
             abi: Erc20GatewayAbi,
             topics: log.topics,
             data: log.data,
           });
-          if (compareAddress(token.address, event.args.l1Token)) {
+          const token = tokens.filter((item) => compareAddress(item.address, event.args.l1Token))[0];
+          if (token) {
+            const tokenPriceUsd = getBalanceResult.tokenBalanceUsds[token.address]
+              ? getBalanceResult.tokenBalanceUsds[token.address].priceUsd
+              : 0;
             const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPriceUsd;
 
             (protocolData.volumes.bridge as number) += amountUsd;
-            (protocolData.volumeBridgePaths as any)[scrollConfig.chain][scrollConfig.layer2Chain] += amountUsd;
             (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += amountUsd;
+
+            if (log.topics[0] === Events.DepositERC20) {
+              (protocolData.volumeBridgePaths as any)[scrollConfig.chain][scrollConfig.layer2Chain] += amountUsd;
+            } else {
+              (protocolData.volumeBridgePaths as any)[scrollConfig.layer2Chain][scrollConfig.chain] += amountUsd;
+            }
           }
         }
       }

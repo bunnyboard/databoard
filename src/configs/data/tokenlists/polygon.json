@@ -2069,6 +2069,12 @@
     "symbol": "SYN",
     "decimals": 18
   },
+  "0xf972daced7c6b03223710c11413036d17eb298f6": {
+    "chain": "polygon",
+    "symbol": "IBEX",
+    "decimals": 18,
+    "address": "0xf972daced7c6b03223710c11413036d17eb298f6"
+  },
   "0xfa2bd259fe9af3edd69432361d4bd98a6cbdeb19": {
     "chain": "polygon",
     "symbol": "bTEST",
