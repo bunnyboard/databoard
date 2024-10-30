@@ -75,6 +75,7 @@ import { ZksyncNativeBridgeConfigs } from './protocols/zksync';
 import { PolygonNativeBridgeConfigs } from './protocols/polygon';
 import { HopConfigs } from './protocols/hop';
 import { GnosisNativeBridgeConfigs } from './protocols/gnosis';
+import { LfjlendConfigs } from './protocols/lfj';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -168,4 +169,5 @@ export const ProtocolConfigs = {
   polygonNativeBridge: PolygonNativeBridgeConfigs,
   hop: HopConfigs,
   gnosisNativeBridge: GnosisNativeBridgeConfigs,
+  lfjlend: LfjlendConfigs,
 };

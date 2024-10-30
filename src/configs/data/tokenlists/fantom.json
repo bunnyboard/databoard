@@ -1031,6 +1031,12 @@
     "decimals": 18,
     "address": "0x90e892fed501ae00596448aecf998c88816e5c0f"
   },
+  "0x911d1feae99e112b5014cfa60038325d863352f1": {
+    "chain": "fantom",
+    "symbol": "WV",
+    "decimals": 18,
+    "address": "0x911d1feae99e112b5014cfa60038325d863352f1"
+  },
   "0x911da02c1232a3c3e1418b834a311921143b04d7": {
     "chain": "fantom",
     "symbol": "WEVE",
@@ -1498,6 +1504,12 @@
     "symbol": "DEUS",
     "decimals": 18,
     "address": "0xde55b113a27cc0c5893caa6ee1c020b6b46650c0"
+  },
+  "0xde5ed76e7c05ec5e4572cfc88d1acea165109e44": {
+    "chain": "fantom",
+    "symbol": "DEUS",
+    "decimals": 18,
+    "address": "0xde5ed76e7c05ec5e4572cfc88d1acea165109e44"
   },
   "0xdef1fac7bf08f173d286bbbdcbeeade695129840": {
     "chain": "fantom",

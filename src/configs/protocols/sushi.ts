@@ -155,6 +155,30 @@ export const SushiConfigs: UniswapProtocolConfig = {
         compareAddress(pool.factory, '0xB45e53277a7e0F1D35f2a77160e91e25507f1763'),
       ),
     },
+    {
+      chain: ChainNames.polygon,
+      version: Pool2Types.univ2,
+      factory: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
+      birthday: 1614384000,
+      feeRateForLiquidityProviders: 0.0025,
+      feeRateForProtocol: 0.0005,
+      wrappedNative: PublicAddresses.scroll.weth,
+      whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.polygon).filter((pool) =>
+        compareAddress(pool.factory, '0xc35DADB65012eC5796536bD9864eD8773aBc74C4'),
+      ),
+    },
+    {
+      chain: ChainNames.polygonzkevm,
+      version: Pool2Types.univ2,
+      factory: '0xB45e53277a7e0F1D35f2a77160e91e25507f1763',
+      birthday: 1697500800,
+      feeRateForLiquidityProviders: 0.0025,
+      feeRateForProtocol: 0.0005,
+      wrappedNative: PublicAddresses.scroll.weth,
+      whitelistedPools: SushiPools.filter((pool) => pool.chain === ChainNames.polygonzkevm).filter((pool) =>
+        compareAddress(pool.factory, '0xB45e53277a7e0F1D35f2a77160e91e25507f1763'),
+      ),
+    },
 
     // v3
     {

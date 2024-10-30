@@ -18,6 +18,7 @@ import GnosisNativeBridgeAdapter from './gnosis/nativeBridge';
 import HopAdapter from './hop/hop';
 import HyphenAdapter from './hyphen/hyphen';
 import LayerbankAdapter from './layerbank/layerbank';
+import LfjlendAdapter from './lfj/lfj';
 import LidoAdapter from './lido/lido';
 import LifiAdapter from './lifi/lifi';
 import LiquidCollectiveAdapter from './liquidcollective/lseth';
@@ -124,5 +125,6 @@ export function getProtocolAdapters(
     cbridge: new CbridgeAdapter(services, storages, ProtocolConfigs.cbridge),
     hop: new HopAdapter(services, storages, ProtocolConfigs.hop),
     gnosisNativeBridge: new GnosisNativeBridgeAdapter(services, storages, ProtocolConfigs.gnosisNativeBridge),
+    lfjlend: new LfjlendAdapter(services, storages, ProtocolConfigs.lfjlend),
   };
 }

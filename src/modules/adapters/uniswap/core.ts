@@ -1,7 +1,7 @@
 import { ProtocolConfig } from '../../../types/base';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import ProtocolAdapter from '../protocol';
-import { GetDexDataDataOptions, GetDexDataResult, Uniswapv2Events } from './types';
+import { GetDexDataDataOptions, GetDexDataResult, Uniswapv2Events, Uniswapv3Events } from './types';
 import Erc20Abi from '../../../configs/abi/ERC20.json';
 import UniswapV2PairAbi from '../../../configs/abi/uniswap/UniswapV2Pair.json';
 import UniswapV3PoolAbi from '../../../configs/abi/uniswap/UniswapV3Pool.json';
@@ -142,8 +142,6 @@ export default class UniswapCore extends ProtocolAdapter {
         pools: `${startIndex + callSize > options.pools.length ? options.pools.length : startIndex + callSize}/${options.pools.length}`,
       });
     }
-
-    console.log(result);
 
     // we get contract logs and process swap events
     const client = this.services.blockchain.evm.getPublicClient(options.dexConfig.chain);
@@ -374,97 +372,95 @@ export default class UniswapCore extends ProtocolAdapter {
       });
     }
 
-    console.log(result);
-
     // we get contract logs and process swap events
-    // const client = this.services.blockchain.evm.getPublicClient(options.dexConfig.chain);
+    const client = this.services.blockchain.evm.getPublicClient(options.dexConfig.chain);
 
-    // const blockRange = queryBlockRanges[options.dexConfig.chain] ? queryBlockRanges[options.dexConfig.chain] : 100;
+    const blockRange = queryBlockRanges[options.dexConfig.chain] ? queryBlockRanges[options.dexConfig.chain] : 100;
 
-    // // caching for logging
-    // let lastProgressPercentage = 0;
-    // let totalLogsCount = 0;
-    // let startBlock = options.beginBlock;
-    // while (startBlock <= options.endBlock) {
-    //   const logs = await client.getLogs({
-    //     fromBlock: BigInt(startBlock),
-    //     toBlock: BigInt(startBlock + blockRange),
-    //   });
+    // caching for logging
+    let lastProgressPercentage = 0;
+    let totalLogsCount = 0;
+    let startBlock = options.beginBlock;
+    while (startBlock <= options.endBlock) {
+      const logs = await client.getLogs({
+        fromBlock: BigInt(startBlock),
+        toBlock: BigInt(startBlock + blockRange),
+      });
 
-    //   totalLogsCount += logs.length;
-    //   const processBlocks = startBlock - options.beginBlock;
-    //   const progress = (processBlocks / (options.endBlock - options.beginBlock)) * 100;
+      totalLogsCount += logs.length;
+      const processBlocks = startBlock - options.beginBlock;
+      const progress = (processBlocks / (options.endBlock - options.beginBlock)) * 100;
 
-    //   // less logs
-    //   if (progress - lastProgressPercentage >= 5) {
-    //     logger.debug('processing uniswap v3 events', {
-    //       service: this.name,
-    //       chain: options.dexConfig.chain,
-    //       protocol: this.protocolConfig.protocol,
-    //       version: options.dexConfig.version,
-    //       factory: options.dexConfig.factory,
-    //       blocks: `${startBlock}->${options.endBlock}`,
-    //       progress: `${progress.toFixed(2)}%`,
-    //       logs: totalLogsCount,
-    //     });
-    //     lastProgressPercentage = progress;
-    //   }
+      // less logs
+      if (progress - lastProgressPercentage >= 5) {
+        logger.debug('processing uniswap v3 events', {
+          service: this.name,
+          chain: options.dexConfig.chain,
+          protocol: this.protocolConfig.protocol,
+          version: options.dexConfig.version,
+          factory: options.dexConfig.factory,
+          blocks: `${startBlock}->${options.endBlock}`,
+          progress: `${progress.toFixed(2)}%`,
+          logs: totalLogsCount,
+        });
+        lastProgressPercentage = progress;
+      }
 
-    //   for (const log of logs) {
-    //     const signature = log.topics[0];
-    //     if (
-    //       signature === Uniswapv3Events.Swap ||
-    //       signature === Uniswapv3Events.Mint ||
-    //       signature === Uniswapv3Events.Burn
-    //     ) {
-    //       const eventPool2 = processedPools[normalizeAddress(log.address)];
-    //       if (eventPool2) {
-    //         const event: any = decodeEventLog({
-    //           abi: UniswapV3PoolAbi,
-    //           topics: log.topics,
-    //           data: log.data,
-    //         });
+      for (const log of logs) {
+        const signature = log.topics[0];
+        if (
+          signature === Uniswapv3Events.Swap ||
+          signature === Uniswapv3Events.Mint ||
+          signature === Uniswapv3Events.Burn
+        ) {
+          const eventPool2 = processedPools[normalizeAddress(log.address)];
+          if (eventPool2) {
+            const event: any = decodeEventLog({
+              abi: UniswapV3PoolAbi,
+              topics: log.topics,
+              data: log.data,
+            });
 
-    //         if (signature === Uniswapv3Events.Swap) {
-    //           const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), eventPool2.token0.decimals);
-    //           const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), eventPool2.token1.decimals);
+            if (signature === Uniswapv3Events.Swap) {
+              const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), eventPool2.token0.decimals);
+              const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), eventPool2.token1.decimals);
 
-    //           let volumeUsd = 0;
-    //           if (amount0 > 0) {
-    //             // swap from token0 -> token1
-    //             volumeUsd = amount0 * eventPool2.token0PriceUsd;
-    //           } else if (amount1 > 0) {
-    //             volumeUsd = amount1 * eventPool2.token1PriceUsd;
-    //           }
+              let volumeUsd = 0;
+              if (amount0 > 0) {
+                // swap from token0 -> token1
+                volumeUsd = amount0 * eventPool2.token0PriceUsd;
+              } else if (amount1 > 0) {
+                volumeUsd = amount1 * eventPool2.token1PriceUsd;
+              }
 
-    //           const swapFeeUsd = volumeUsd * eventPool2.feeRate;
+              const swapFeeUsd = volumeUsd * eventPool2.feeRate;
 
-    //           const feeRateProtocol = options.dexConfig.feeRateForProtocol ? options.dexConfig.feeRateForProtocol : 0;
-    //           const feeUsdForProtocol = swapFeeUsd * feeRateProtocol;
+              const feeRateProtocol = options.dexConfig.feeRateForProtocol ? options.dexConfig.feeRateForProtocol : 0;
+              const feeUsdForProtocol = swapFeeUsd * feeRateProtocol;
 
-    //           result.total.volumeSwapUsd += volumeUsd;
-    //           result.total.totalSwapFeeUsdForLps += swapFeeUsd - feeUsdForProtocol;
-    //           result.total.totalSwapFeeUsdForProtocol += feeUsdForProtocol;
-    //         } else {
-    //           const amount0Usd =
-    //             formatBigNumberToNumber(event.args.amount0.toString(), eventPool2.token0.decimals) *
-    //             eventPool2.token0PriceUsd;
-    //           const amount1Usd =
-    //             formatBigNumberToNumber(event.args.amount1.toString(), eventPool2.token1.decimals) *
-    //             eventPool2.token1PriceUsd;
+              result.total.volumeSwapUsd += volumeUsd;
+              result.total.totalSwapFeeUsdForLps += swapFeeUsd - feeUsdForProtocol;
+              result.total.totalSwapFeeUsdForProtocol += feeUsdForProtocol;
+            } else {
+              const amount0Usd =
+                formatBigNumberToNumber(event.args.amount0.toString(), eventPool2.token0.decimals) *
+                eventPool2.token0PriceUsd;
+              const amount1Usd =
+                formatBigNumberToNumber(event.args.amount1.toString(), eventPool2.token1.decimals) *
+                eventPool2.token1PriceUsd;
 
-    //           if (signature === Uniswapv3Events.Mint) {
-    //             result.total.volumeAddLiquidityUsd += Math.abs(amount0Usd) + Math.abs(amount1Usd);
-    //           } else {
-    //             result.total.volumeRemoveLiquidityUsd += Math.abs(amount0Usd) + Math.abs(amount1Usd);
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
+              if (signature === Uniswapv3Events.Mint) {
+                result.total.volumeAddLiquidityUsd += Math.abs(amount0Usd) + Math.abs(amount1Usd);
+              } else {
+                result.total.volumeRemoveLiquidityUsd += Math.abs(amount0Usd) + Math.abs(amount1Usd);
+              }
+            }
+          }
+        }
+      }
 
-    //   startBlock += blockRange + 1;
-    // }
+      startBlock += blockRange + 1;
+    }
 
     return result;
   }
