@@ -190,6 +190,15 @@ export default class ScrollNativeBridgeAdapter extends ProtocolAdapter {
           });
           const token = tokens.filter((item) => compareAddress(item.address, event.args.l1Token))[0];
           if (token) {
+            if (!protocolData.breakdown[token.chain][token.address]) {
+              protocolData.breakdown[token.chain][token.address] = {
+                ...getInitialProtocolCoreMetrics(),
+                volumes: {
+                  bridge: 0,
+                },
+              };
+            }
+
             const tokenPriceUsd = getBalanceResult.tokenBalanceUsds[token.address]
               ? getBalanceResult.tokenBalanceUsds[token.address].priceUsd
               : 0;
