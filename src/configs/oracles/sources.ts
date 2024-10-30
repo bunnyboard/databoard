@@ -961,6 +961,10 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.SKL_WETH],
   },
+  SEAM: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.SEAM_USDC],
+  },
   SYN: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.SYN_WETH],
