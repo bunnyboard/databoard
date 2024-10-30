@@ -465,7 +465,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv2List.METIS_WETH],
   },
   GNO: {
-    currency: 'usd',
+    currency: 'eth',
     sources: [OracleSourceUniswapv2List.GNO_WETH],
   },
   sXDAI: {
@@ -817,6 +817,10 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.SIS_WETH],
   },
+  renBTC: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.renBTC_WETH],
+  },
   DODO: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.DODO_WETH],
@@ -865,9 +869,41 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.USX_USDC],
   },
-  STAKE: {
+  HOPR: {
     currency: 'usd',
-    sources: [OracleSourceUniswapv2List.STAKE_XDAI],
+    sources: [OracleSourceUniswapv2List.HOPR_DAI],
+  },
+  SHU: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.SHU_USDC],
+  },
+  PNK: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.PNK_WETH],
+  },
+  OKB: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.OKB_WETH],
+  },
+  ETHIX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ETHIX_WETH],
+  },
+  BZZ: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.BZZ_WETH],
+  },
+  BRIGHT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.BRIGHT_WETH],
+  },
+  HAKKA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.HAKKA_WETH],
+  },
+  STAKE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.STAKE_WETH],
   },
   MVX: {
     currency: 'eth',
@@ -876,6 +912,14 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   CTK: {
     currency: 'bnb',
     sources: [OracleSourceUniswapv2List.CTK_WBNB],
+  },
+  SWISE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.SWISE_WETH],
+  },
+  SKL: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.SKL_WETH],
   },
   SYN: {
     currency: 'eth',
@@ -948,6 +992,10 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   rswETH: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.rswETH_WETH],
+  },
+  RSR: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.RSR_WETH],
   },
   USD0: {
     currency: 'usd',
@@ -1369,13 +1417,41 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.MANTA_USDC],
   },
+  MASK: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.MASK_USDC],
+  },
   HEGIC: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.HEGIC_WETH],
   },
+  ALBT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ALBT_WETH],
+  },
+  TRAC: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.TRAC_WETH],
+  },
+  SAFE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.SAFE_WETH],
+  },
+  GIV: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.GIV_WETH],
+  },
   FOX: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.FOX_WETH],
+  },
+  UNCX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.UNCX_WETH],
+  },
+  CLNY: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.CLNY_USDC],
   },
   GOVI: {
     currency: 'eth',

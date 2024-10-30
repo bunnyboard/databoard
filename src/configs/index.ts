@@ -74,13 +74,14 @@ import { CbridgeConfigs } from './protocols/celer';
 import { ZksyncNativeBridgeConfigs } from './protocols/zksync';
 import { PolygonNativeBridgeConfigs } from './protocols/polygon';
 import { HopConfigs } from './protocols/hop';
+import { GnosisNativeBridgeConfigs } from './protocols/gnosis';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
   polygon: 200,
   merlin: 200,
-  zklinknova: 50,
   ronin: 400,
+  zklinknova: 5000,
   fantom: 5000,
   arbitrum: 5000,
 };
@@ -166,4 +167,5 @@ export const ProtocolConfigs = {
   zksyncNativeBridge: ZksyncNativeBridgeConfigs,
   polygonNativeBridge: PolygonNativeBridgeConfigs,
   hop: HopConfigs,
+  gnosisNativeBridge: GnosisNativeBridgeConfigs,
 };

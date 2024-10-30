@@ -14,6 +14,7 @@ import DineroAdapter from './dinero/dinero';
 import EulerAdapter from './euler/euler';
 import FluidAdapter from './fluid/fluid';
 import FraxEtherAdapter from './frax/fraxether';
+import GnosisNativeBridgeAdapter from './gnosis/nativeBridge';
 import HopAdapter from './hop/hop';
 import HyphenAdapter from './hyphen/hyphen';
 import LayerbankAdapter from './layerbank/layerbank';
@@ -122,5 +123,6 @@ export function getProtocolAdapters(
     hyphen: new HyphenAdapter(services, storages, ProtocolConfigs.hyphen),
     cbridge: new CbridgeAdapter(services, storages, ProtocolConfigs.cbridge),
     hop: new HopAdapter(services, storages, ProtocolConfigs.hop),
+    gnosisNativeBridge: new GnosisNativeBridgeAdapter(services, storages, ProtocolConfigs.gnosisNativeBridge),
   };
 }
