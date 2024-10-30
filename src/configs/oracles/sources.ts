@@ -343,6 +343,34 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.wBETH_ETH],
   },
+  lsETH: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.lsETH_ETH],
+  },
+  ankrETH: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ankrETH_WETH],
+  },
+  REZ: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.REZ_WETH],
+  },
+  uniBTC: {
+    currency: 'btc',
+    sources: [OracleSourceUniswapv3List.uniBTC_WBTC],
+  },
+  SolvBTC: {
+    currency: 'btc',
+    sources: [OracleSourceUniswapv3List.SolvBTC_WBTC],
+  },
+  FBTC: {
+    currency: 'btc',
+    sources: [OracleSourceUniswapv3List.FBTC_WBTC],
+  },
+  ARPA: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.ARPA_WBNB],
+  },
   WIN: {
     currency: 'bnb',
     sources: [OracleSourceUniswapv2List.WIN_WBNB],
@@ -611,7 +639,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   },
   ETHx: {
     currency: 'eth',
-    sources: [OracleSourceUniswapv3List.ETHx_WETH],
+    sources: [OracleSourceCurveList.ETHx_WETH],
   },
   mevETH: {
     currency: 'eth',

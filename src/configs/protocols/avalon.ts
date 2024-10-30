@@ -60,18 +60,18 @@ export const AvalonConfigs: AaveProtocolConfig = {
         address: '0x191a6ac7cbC29De2359de10505E05935a1Ed5478',
       },
     },
-    {
-      chain: ChainNames.bitlayer,
-      marketName: 'Lorenzo Market',
-      version: 3,
-      birthday: 1720742400, // Fri Jul 12 2024 00:00:00 GMT+0000
-      lendingPool: '0xeD6d6d18F20f8b419B5442C43D3e48EE568dEc14',
-      dataProvider: '0x4c25c261Fe47bC216113D140BaF72B05E151bcE4',
-      oracle: {
-        currency: 'usd',
-        address: '0xa8FF2907E9853b7aa48b392A1f685d3597a7de92',
-      },
-    },
+    // {
+    //   chain: ChainNames.bitlayer,
+    //   marketName: 'Lorenzo Market',
+    //   version: 3,
+    //   birthday: 1720742400, // Fri Jul 12 2024 00:00:00 GMT+0000
+    //   lendingPool: '0xeD6d6d18F20f8b419B5442C43D3e48EE568dEc14',
+    //   dataProvider: '0x4c25c261Fe47bC216113D140BaF72B05E151bcE4',
+    //   oracle: {
+    //     currency: 'usd',
+    //     address: '0xa8FF2907E9853b7aa48b392A1f685d3597a7de92',
+    //   },
+    // },
 
     // core
     {

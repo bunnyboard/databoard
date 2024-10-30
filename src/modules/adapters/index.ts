@@ -11,6 +11,7 @@ import CompoundAdapter from './compound/compound';
 import CurvelendAdapter from './curve/curvelend';
 import CurveusdAdapter from './curve/curveusd';
 import DineroAdapter from './dinero/dinero';
+import EigenLayerAdapter from './eigenlayer/eigenlayer';
 import EulerAdapter from './euler/euler';
 import FluidAdapter from './fluid/fluid';
 import FraxEtherAdapter from './frax/fraxether';
@@ -126,5 +127,6 @@ export function getProtocolAdapters(
     hop: new HopAdapter(services, storages, ProtocolConfigs.hop),
     gnosisNativeBridge: new GnosisNativeBridgeAdapter(services, storages, ProtocolConfigs.gnosisNativeBridge),
     lfjlend: new LfjlendAdapter(services, storages, ProtocolConfigs.lfjlend),
+    eigenlayer: new EigenLayerAdapter(services, storages, ProtocolConfigs.eigenlayer),
   };
 }

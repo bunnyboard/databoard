@@ -4,6 +4,7 @@ import CurveStablePoolAbi from '../../configs/abi/curve/CurveStableSwapNG.json';
 import { formatBigNumberToString } from '../../lib/utils';
 import BlockchainService from '../../services/blockchains/blockchain';
 import { OracleSourceCurvePool } from '../../types/oracles';
+// import CurvePoolNativeAbi from '../../configs/abi/curve/CurvePoolNative.json';
 
 interface GetMetaPoolPriceOptions {
   config: OracleSourceCurvePool;
@@ -74,4 +75,27 @@ export default class CurveLibs {
       return null;
     }
   }
+
+  // private async getPoolNativePrice(options: GetMetaPoolPriceOptions): Promise<string | null> {
+  //   const blockchain = new BlockchainService();
+
+  //   let price = await blockchain.readContract({
+  //     chain: options.config.chain,
+  //     abi: CurvePoolNativeAbi,
+  //     target: options.config.address,
+  //     method: 'get_dy',
+  //     params: [
+  //       options.config.baseTokenIndex,
+  //       options.config.quotaTokenIndex,
+  //       new BigNumber(1).multipliedBy(new BigNumber(10).pow(options.config.baseToken.decimals)).toString(10),
+  //     ],
+  //     blockNumber: options.blockNumber,
+  //   });
+
+  //   if (price) {
+  //     return formatBigNumberToString(price.toString(), options.config.quotaToken.decimals);
+  //   } else {
+  //     return null;
+  //   }
+  // }
 }

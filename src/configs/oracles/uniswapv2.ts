@@ -789,6 +789,20 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.avalanche['0x8cd309e14575203535ef120b5b0ab4dded0c2073'],
     quotaToken: TokensBook.avalanche['0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7'],
   },
+  ankrETH_WETH: {
+    type: 'univ2',
+    chain: 'blast',
+    address: '0xac2b49de08bdbb9a222c2c35dea1ecc55aeddde2',
+    baseToken: TokensBook.blast['0x049e6a52e2c9b7814c8178908f3630726c134c92'],
+    quotaToken: TokensBook.blast['0x4300000000000000000000000000000000000004'],
+  },
+  ARPA_WBNB: {
+    type: 'univ2',
+    chain: 'bnbchain',
+    address: '0x9730c791743300e9f984c9264395ce705a55da7c',
+    baseToken: TokensBook.bnbchain['0x6f769e65c14ebd1f68817f5f1dcdb61cfa2d6f7e'],
+    quotaToken: TokensBook.bnbchain['0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c'],
+  },
   IBEX_WETH: {
     type: 'univ2',
     chain: 'polygon',

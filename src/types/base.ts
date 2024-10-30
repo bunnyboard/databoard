@@ -3,6 +3,8 @@ export const ProtocolCategories = {
   dex: 'dex',
   liquidStaking: 'liquidStaking',
   bridge: 'bridge',
+  marketplace: 'marketplace',
+  restaking: 'restaking',
 };
 
 const AllProtocolCategories = Object.values(ProtocolCategories);

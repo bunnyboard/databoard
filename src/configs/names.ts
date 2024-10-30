@@ -174,4 +174,6 @@ export const ProtocolNames = {
   camelot: 'camelot',
   lfjlend: 'lfjlend', // https://v1.lfj.gg/lend#/
   lfj: 'lfj', // https://lfj.gg/
+  opensea: 'opensea',
+  eigenlayer: 'eigenlayer',
 };
