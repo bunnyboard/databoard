@@ -1146,6 +1146,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xfc00000000000000000000000000000000000003': OracleSourceConfigs.FPI,
     '0xdcc0f2d8f90fde85b10ac1c8ab57dc0ae946a543': OracleSourceConfigs.USDC,
     '0x2416092f143378750bb29b79ed961ab195cceea5': OracleSourceConfigs.ezETH,
+    '0x331b9182088e2a7d6d3fe4742aba1fb231aecc56': OracleSourceConfigs.CRV,
 
     // fraxlend
     '0x8e9c334afc76106f08e0383907f4fca9bb10ba3e': OracleSourceConfigs.FPI,

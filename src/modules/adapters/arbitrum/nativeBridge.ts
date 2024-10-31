@@ -242,8 +242,8 @@ export default class ArbitrumNativeBridgeAdapter extends ProtocolAdapter {
             volumes: {
               bridge: 0,
             },
-            totalAssetDeposited: nativeBalanceLockedUsd,
-            totalValueLocked: nativeBalanceLockedUsd,
+            totalAssetDeposited: balanceUsd,
+            totalValueLocked: balanceUsd,
           };
 
           for (const log of logs) {
