@@ -210,6 +210,15 @@ export default class GnosisNativeBridgeAdapter extends ProtocolAdapter {
           const amountUsd = formatBigNumberToNumber(event.args.value.toString(), token.decimals) * tokenPriceUsd;
 
           (protocolData.volumes.bridge as number) += amountUsd;
+
+          if (!protocolData.breakdown[token.chain][token.address]) {
+            protocolData.breakdown[token.chain][token.address] = {
+              ...getInitialProtocolCoreMetrics(),
+              volumes: {
+                bridge: 0,
+              },
+            };
+          }
           (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += amountUsd;
 
           if (log.topics[0] === Events.TokensBridgingInitiated) {

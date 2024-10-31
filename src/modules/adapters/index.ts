@@ -18,6 +18,7 @@ import FraxEtherAdapter from './frax/fraxether';
 import GnosisNativeBridgeAdapter from './gnosis/nativeBridge';
 import HopAdapter from './hop/hop';
 import HyphenAdapter from './hyphen/hyphen';
+import KarakAdapter from './karak/karak';
 import LayerbankAdapter from './layerbank/layerbank';
 import LfjlendAdapter from './lfj/lfj';
 import LidoAdapter from './lido/lido';
@@ -130,5 +131,6 @@ export function getProtocolAdapters(
     lfjlend: new LfjlendAdapter(services, storages, ProtocolConfigs.lfjlend),
     eigenlayer: new EigenLayerAdapter(services, storages, ProtocolConfigs.eigenlayer),
     symbiotic: new SymbioticAdapter(services, storages, ProtocolConfigs.symbiotic),
+    karak: new KarakAdapter(services, storages, ProtocolConfigs.karak),
   };
 }

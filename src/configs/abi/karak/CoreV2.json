@@ -1,0 +1,1960 @@
+[
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [],
+    "name": "AlreadyInitialized",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AssetNotAllowlisted",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AttemptedPauseWhileUnpausing",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AttemptedUnpauseWhilePausing",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "DSSAlreadyRegistered",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "revertReason",
+        "type": "bytes32"
+      }
+    ],
+    "name": "DSSHookCallReverted",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "DSSNotRegistered",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "DuplicateSlashingVaults",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "EmptyArray",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "EnforcedPause",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint8",
+        "name": "functionIndex",
+        "type": "uint8"
+      }
+    ],
+    "name": "EnforcedPauseFunction",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidInitialization",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidSlashingCount",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidSlashingParams",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "LengthsDontMatch",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MathOverflowedMulDiv",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MaxSlashPercentageWadBreached",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MaxSlashableVaultsPerRequestBreached",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MaxVaultCapacityReached",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MinSlashingDelayNotPassed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NewOwnerIsZeroAddress",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NoHandoverRequest",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NotEnoughGas",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NotInitializing",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NotSmartContract",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "OperatorNotValidatingForDSS",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "Reentrancy",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ReservedAddress",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "SlashingCooldownNotPassed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "Unauthorized",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "UnauthorizedCallContext",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "UpgradeFailed",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "expected",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "actual",
+        "type": "address"
+      }
+    ],
+    "name": "VaultCreationFailedAddrMismatch",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "VaultImplNotAllowlisted",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "VaultNotAChildVault",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "VaultNotStakedToDSS",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ZeroAddress",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ZeroSlashPercentageWad",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address[]",
+        "name": "assets",
+        "type": "address[]"
+      },
+      {
+        "indexed": false,
+        "internalType": "address[]",
+        "name": "slashingHandlers",
+        "type": "address[]"
+      }
+    ],
+    "name": "AllowlistedAssets",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "vaultImpl",
+        "type": "address"
+      }
+    ],
+    "name": "AllowlistedVaultImpl",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "canceller",
+        "type": "address"
+      },
+      {
+        "components": [
+          {
+            "internalType": "contract IDSS",
+            "name": "dss",
+            "type": "address"
+          },
+          {
+            "internalType": "uint96",
+            "name": "timestamp",
+            "type": "uint96"
+          },
+          {
+            "internalType": "address",
+            "name": "operator",
+            "type": "address"
+          },
+          {
+            "internalType": "address[]",
+            "name": "vaults",
+            "type": "address[]"
+          },
+          {
+            "internalType": "uint96[]",
+            "name": "slashPercentagesWad",
+            "type": "uint96[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "nonce",
+            "type": "uint256"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct SlasherLib.QueuedSlashing",
+        "name": "queuedSlashing",
+        "type": "tuple"
+      }
+    ],
+    "name": "CancelledSlashing",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "dss",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "maxSlashablePercentageWad",
+        "type": "uint256"
+      }
+    ],
+    "name": "DSSRegistered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "operator",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "vault",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "asset",
+        "type": "address"
+      }
+    ],
+    "name": "DeployedVault",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "finisher",
+        "type": "address"
+      },
+      {
+        "components": [
+          {
+            "internalType": "contract IDSS",
+            "name": "dss",
+            "type": "address"
+          },
+          {
+            "internalType": "uint96",
+            "name": "timestamp",
+            "type": "uint96"
+          },
+          {
+            "internalType": "address",
+            "name": "operator",
+            "type": "address"
+          },
+          {
+            "internalType": "address[]",
+            "name": "vaults",
+            "type": "address[]"
+          },
+          {
+            "internalType": "uint96[]",
+            "name": "slashPercentagesWad",
+            "type": "uint96[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "nonce",
+            "type": "uint256"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct SlasherLib.QueuedSlashing",
+        "name": "queuedSlashing",
+        "type": "tuple"
+      }
+    ],
+    "name": "FinalizedSlashing",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint48",
+            "name": "nonce",
+            "type": "uint48"
+          },
+          {
+            "internalType": "uint48",
+            "name": "startTimestamp",
+            "type": "uint48"
+          },
+          {
+            "internalType": "address",
+            "name": "operator",
+            "type": "address"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "vault",
+                "type": "address"
+              },
+              {
+                "internalType": "contract IDSS",
+                "name": "dss",
+                "type": "address"
+              },
+              {
+                "internalType": "bool",
+                "name": "toStake",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct Operator.StakeUpdateRequest",
+            "name": "updateRequest",
+            "type": "tuple"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct Operator.QueuedStakeUpdate",
+        "name": "updateRequest",
+        "type": "tuple"
+      }
+    ],
+    "name": "FinishedStakeUpdate",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "hookCallGasLimit",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "supportsInterfaceGasLimit",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "hookGasBuffer",
+        "type": "uint32"
+      }
+    ],
+    "name": "GasValuesUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "returnData",
+        "type": "bytes32"
+      }
+    ],
+    "name": "HookCallFailed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "returnData",
+        "type": "bytes32"
+      }
+    ],
+    "name": "HookCallSucceeded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "vaultImpl",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "manager",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "vetoCommittee",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "hookCallGasLimit",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "supportsInterfaceGasLimit",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "hookGasBuffer",
+        "type": "uint32"
+      }
+    ],
+    "name": "InitializeCore",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "version",
+        "type": "uint64"
+      }
+    ],
+    "name": "Initialized",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [],
+    "name": "InterfaceNotSupported",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "vault",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "implementation",
+        "type": "address"
+      }
+    ],
+    "name": "NewVault",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "pendingOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipHandoverCanceled",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "pendingOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipHandoverRequested",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "oldOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "map",
+        "type": "uint256"
+      }
+    ],
+    "name": "Paused",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "operator",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "dss",
+        "type": "address"
+      }
+    ],
+    "name": "RegisteredOperatorToDSS",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "dss",
+        "type": "address"
+      },
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "operator",
+            "type": "address"
+          },
+          {
+            "internalType": "uint96[]",
+            "name": "slashPercentagesWad",
+            "type": "uint96[]"
+          },
+          {
+            "internalType": "address[]",
+            "name": "vaults",
+            "type": "address[]"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct SlasherLib.SlashRequest",
+        "name": "requestSlashing",
+        "type": "tuple"
+      }
+    ],
+    "name": "RequestedSlashing",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint48",
+            "name": "nonce",
+            "type": "uint48"
+          },
+          {
+            "internalType": "uint48",
+            "name": "startTimestamp",
+            "type": "uint48"
+          },
+          {
+            "internalType": "address",
+            "name": "operator",
+            "type": "address"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "vault",
+                "type": "address"
+              },
+              {
+                "internalType": "contract IDSS",
+                "name": "dss",
+                "type": "address"
+              },
+              {
+                "internalType": "bool",
+                "name": "toStake",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct Operator.StakeUpdateRequest",
+            "name": "updateRequest",
+            "type": "tuple"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct Operator.QueuedStakeUpdate",
+        "name": "updateRequest",
+        "type": "tuple"
+      }
+    ],
+    "name": "RequestedStakeUpdate",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "roles",
+        "type": "uint256"
+      }
+    ],
+    "name": "RolesUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "vault",
+        "type": "address"
+      }
+    ],
+    "name": "SkippedSlashing",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "map",
+        "type": "uint256"
+      }
+    ],
+    "name": "Unpaused",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "operator",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "dss",
+        "type": "address"
+      }
+    ],
+    "name": "UnregisteredOperatorToDSS",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "implementation",
+        "type": "address"
+      }
+    ],
+    "name": "Upgraded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "implementation",
+        "type": "address"
+      }
+    ],
+    "name": "UpgradedAllVaults",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "implementation",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "vault",
+        "type": "address"
+      }
+    ],
+    "name": "UpgradedVault",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "VERSION",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address[]",
+        "name": "assets",
+        "type": "address[]"
+      },
+      {
+        "internalType": "address[]",
+        "name": "slashingHandlers",
+        "type": "address[]"
+      }
+    ],
+    "name": "allowlistAssets",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "vaultImpl",
+        "type": "address"
+      }
+    ],
+    "name": "allowlistVaultImpl",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "cancelOwnershipHandover",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "contract IDSS",
+            "name": "dss",
+            "type": "address"
+          },
+          {
+            "internalType": "uint96",
+            "name": "timestamp",
+            "type": "uint96"
+          },
+          {
+            "internalType": "address",
+            "name": "operator",
+            "type": "address"
+          },
+          {
+            "internalType": "address[]",
+            "name": "vaults",
+            "type": "address[]"
+          },
+          {
+            "internalType": "uint96[]",
+            "name": "slashPercentagesWad",
+            "type": "uint96[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "nonce",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct SlasherLib.QueuedSlashing",
+        "name": "queuedSlashing",
+        "type": "tuple"
+      }
+    ],
+    "name": "cancelSlashing",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "vault",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "newVaultImpl",
+        "type": "address"
+      }
+    ],
+    "name": "changeImplementationForVault",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newVaultImpl",
+        "type": "address"
+      }
+    ],
+    "name": "changeStandardImplementation",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "pendingOwner",
+        "type": "address"
+      }
+    ],
+    "name": "completeOwnershipHandover",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "asset",
+            "type": "address"
+          },
+          {
+            "internalType": "uint8",
+            "name": "decimals",
+            "type": "uint8"
+          },
+          {
+            "internalType": "address",
+            "name": "operator",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "symbol",
+            "type": "string"
+          },
+          {
+            "internalType": "bytes",
+            "name": "extraData",
+            "type": "bytes"
+          }
+        ],
+        "internalType": "struct VaultLib.Config[]",
+        "name": "vaultConfigs",
+        "type": "tuple[]"
+      },
+      {
+        "internalType": "address",
+        "name": "vaultImpl",
+        "type": "address"
+      }
+    ],
+    "name": "deployVaults",
+    "outputs": [
+      {
+        "internalType": "contract IKarakBaseVault[]",
+        "name": "vaults",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32[]",
+        "name": "slots",
+        "type": "bytes32[]"
+      }
+    ],
+    "name": "extSloads",
+    "outputs": [
+      {
+        "internalType": "bytes32[]",
+        "name": "res",
+        "type": "bytes32[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "operator",
+        "type": "address"
+      },
+      {
+        "internalType": "contract IDSS",
+        "name": "dss",
+        "type": "address"
+      }
+    ],
+    "name": "fetchVaultsStakedInDSS",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "vaults",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "contract IDSS",
+            "name": "dss",
+            "type": "address"
+          },
+          {
+            "internalType": "uint96",
+            "name": "timestamp",
+            "type": "uint96"
+          },
+          {
+            "internalType": "address",
+            "name": "operator",
+            "type": "address"
+          },
+          {
+            "internalType": "address[]",
+            "name": "vaults",
+            "type": "address[]"
+          },
+          {
+            "internalType": "uint96[]",
+            "name": "slashPercentagesWad",
+            "type": "uint96[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "nonce",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct SlasherLib.QueuedSlashing",
+        "name": "queuedSlashing",
+        "type": "tuple"
+      }
+    ],
+    "name": "finalizeSlashing",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint48",
+            "name": "nonce",
+            "type": "uint48"
+          },
+          {
+            "internalType": "uint48",
+            "name": "startTimestamp",
+            "type": "uint48"
+          },
+          {
+            "internalType": "address",
+            "name": "operator",
+            "type": "address"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "vault",
+                "type": "address"
+              },
+              {
+                "internalType": "contract IDSS",
+                "name": "dss",
+                "type": "address"
+              },
+              {
+                "internalType": "bool",
+                "name": "toStake",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct Operator.StakeUpdateRequest",
+            "name": "updateRequest",
+            "type": "tuple"
+          }
+        ],
+        "internalType": "struct Operator.QueuedStakeUpdate",
+        "name": "queuedStake",
+        "type": "tuple"
+      }
+    ],
+    "name": "finalizeUpdateVaultStakeInDSS",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract IDSS",
+        "name": "dss",
+        "type": "address"
+      }
+    ],
+    "name": "getDssMaxSlashablePercentageWad",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "slashablePercentageWad",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "vault",
+        "type": "address"
+      }
+    ],
+    "name": "getLeverage",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "leverage",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "operator",
+        "type": "address"
+      }
+    ],
+    "name": "getOperatorVaults",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "vaults",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "roles",
+        "type": "uint256"
+      }
+    ],
+    "name": "grantRoles",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "roles",
+        "type": "uint256"
+      }
+    ],
+    "name": "hasAllRoles",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "roles",
+        "type": "uint256"
+      }
+    ],
+    "name": "hasAnyRole",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "implementation",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "vault",
+        "type": "address"
+      }
+    ],
+    "name": "implementation",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_vaultImpl",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_manager",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_vetoCommittee",
+        "type": "address"
+      },
+      {
+        "internalType": "uint32",
+        "name": "_hookCallGasLimit",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint32",
+        "name": "_supportsInterfaceGasLimit",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint32",
+        "name": "_hookGasBuffer",
+        "type": "uint32"
+      }
+    ],
+    "name": "initialize",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "asset",
+        "type": "address"
+      }
+    ],
+    "name": "isAssetAllowlisted",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract IDSS",
+        "name": "dss",
+        "type": "address"
+      }
+    ],
+    "name": "isDSSRegistered",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "operator",
+        "type": "address"
+      },
+      {
+        "internalType": "contract IDSS",
+        "name": "dss",
+        "type": "address"
+      }
+    ],
+    "name": "isOperatorRegisteredToDSS",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "vaultImpl",
+        "type": "address"
+      }
+    ],
+    "name": "isVaultImplAllowListed",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "vault",
+        "type": "address"
+      }
+    ],
+    "name": "isVaultQueuedForSlashing",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "result",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "pendingOwner",
+        "type": "address"
+      }
+    ],
+    "name": "ownershipHandoverExpiresAt",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "result",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "map",
+        "type": "uint256"
+      }
+    ],
+    "name": "pause",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract IKarakBaseVault",
+        "name": "vault",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "map",
+        "type": "uint256"
+      }
+    ],
+    "name": "pauseVault",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint8",
+        "name": "index",
+        "type": "uint8"
+      }
+    ],
+    "name": "paused",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "paused",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "pausedMap",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "proxiableUUID",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "maxSlashablePercentageWad",
+        "type": "uint256"
+      }
+    ],
+    "name": "registerDSS",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract IDSS",
+        "name": "dss",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "registrationHookData",
+        "type": "bytes"
+      }
+    ],
+    "name": "registerOperatorToDSS",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "roles",
+        "type": "uint256"
+      }
+    ],
+    "name": "renounceRoles",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "requestOwnershipHandover",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "operator",
+            "type": "address"
+          },
+          {
+            "internalType": "uint96[]",
+            "name": "slashPercentagesWad",
+            "type": "uint96[]"
+          },
+          {
+            "internalType": "address[]",
+            "name": "vaults",
+            "type": "address[]"
+          }
+        ],
+        "internalType": "struct SlasherLib.SlashRequest",
+        "name": "slashingRequest",
+        "type": "tuple"
+      }
+    ],
+    "name": "requestSlashing",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "contract IDSS",
+            "name": "dss",
+            "type": "address"
+          },
+          {
+            "internalType": "uint96",
+            "name": "timestamp",
+            "type": "uint96"
+          },
+          {
+            "internalType": "address",
+            "name": "operator",
+            "type": "address"
+          },
+          {
+            "internalType": "address[]",
+            "name": "vaults",
+            "type": "address[]"
+          },
+          {
+            "internalType": "uint96[]",
+            "name": "slashPercentagesWad",
+            "type": "uint96[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "nonce",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct SlasherLib.QueuedSlashing",
+        "name": "queuedSlashing",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "vault",
+            "type": "address"
+          },
+          {
+            "internalType": "contract IDSS",
+            "name": "dss",
+            "type": "address"
+          },
+          {
+            "internalType": "bool",
+            "name": "toStake",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct Operator.StakeUpdateRequest",
+        "name": "vaultStakeUpdateRequest",
+        "type": "tuple"
+      }
+    ],
+    "name": "requestUpdateVaultStakeInDSS",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint48",
+            "name": "nonce",
+            "type": "uint48"
+          },
+          {
+            "internalType": "uint48",
+            "name": "startTimestamp",
+            "type": "uint48"
+          },
+          {
+            "internalType": "address",
+            "name": "operator",
+            "type": "address"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "vault",
+                "type": "address"
+              },
+              {
+                "internalType": "contract IDSS",
+                "name": "dss",
+                "type": "address"
+              },
+              {
+                "internalType": "bool",
+                "name": "toStake",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct Operator.StakeUpdateRequest",
+            "name": "updateRequest",
+            "type": "tuple"
+          }
+        ],
+        "internalType": "struct Operator.QueuedStakeUpdate",
+        "name": "updatedStake",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "roles",
+        "type": "uint256"
+      }
+    ],
+    "name": "revokeRoles",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "rolesOf",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "roles",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint32",
+        "name": "_hookCallGasLimit",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint32",
+        "name": "_hookGasBuffer",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint32",
+        "name": "_supportsInterfaceGasLimit",
+        "type": "uint32"
+      }
+    ],
+    "name": "setGasValues",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "map",
+        "type": "uint256"
+      }
+    ],
+    "name": "unpause",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract IKarakBaseVault",
+        "name": "vault",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "map",
+        "type": "uint256"
+      }
+    ],
+    "name": "unpauseVault",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract IDSS",
+        "name": "dss",
+        "type": "address"
+      }
+    ],
+    "name": "unregisterOperatorFromDSS",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newImplementation",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "data",
+        "type": "bytes"
+      }
+    ],
+    "name": "upgradeToAndCall",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  }
+]

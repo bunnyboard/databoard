@@ -572,4 +572,16 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
       decimals: 18,
     },
   },
+  [ChainNames.karakk2]: {
+    name: ChainNames.karakk2,
+    family: 'evm',
+    chainId: 2410,
+    nodeRpc: String(process.env.BLOCKCHAIN_KARAKK2_NODE),
+    nativeToken: {
+      chain: ChainNames.karakk2,
+      address: AddressZero,
+      symbol: 'ETH',
+      decimals: 18,
+    },
+  },
 };

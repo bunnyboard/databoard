@@ -62,6 +62,7 @@ export const ChainNames = {
   dogechain: 'dogechain',
   worldchain: 'worldchain',
   oasys: 'oasys',
+  karakk2: 'karakk2',
 };
 
 export const ProtocolNames = {
@@ -177,4 +178,5 @@ export const ProtocolNames = {
   opensea: 'opensea',
   eigenlayer: 'eigenlayer',
   symbiotic: 'symbiotic',
+  karak: 'karak',
 };

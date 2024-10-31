@@ -315,6 +315,9 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xc96de26018a54d51c097160568752c4e3bd6c364': OracleSourceConfigs.FBTC,
     '0x57e114b691db790c35207b2e685d4a43181e6061': OracleSourceConfigs.ENA,
     '0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb': OracleSourceConfigs.ETHFI,
+    '0x49446a0874197839d15395b908328a74ccc96bc0': OracleSourceConfigs.mstETH,
+    '0x32bd822d615a3658a68b6fdd30c2fcb2c996d678': OracleSourceConfigs.swETH,
+    '0xe46a5e19b19711332e33f33c2db3ea143e86bc10': OracleSourceConfigs.wBETH,
 
     // todo need to find better oracle source
     '0x9d39a5de30e57443bff2a8307a4256c8797a3497': OracleSourceConfigs.USDT,
@@ -325,6 +328,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x2027d3b2b58f522178ce4cc4e86e99b7c4de3876': OracleSourceConfigs.USDT,
     '0xc975342a95ccb75378ddc646b8620fa3cd5bc051': OracleSourceConfigs.wstETH,
     '0xc272b96bccdaf1bf98f2197d355066da3c15982a': OracleSourceConfigs.wstETH,
+    '0x5c5b196abe0d54485975d1ec29617d42d9198326': OracleSourceConfigs.USDT,
+    '0x35d8949372d46b7a3d5a56006ae77b215fc69bc0': OracleSourceConfigs.USDT,
 
     // ironbank fixed forex
     '0x69681f8fde45345c3870bcd5eaf4a05a60e7d227': OracleSourceConfigs.GBP,
@@ -471,6 +476,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xc474cd2aeb2161a0dc1e03bedc2187c3cf788f8b': OracleSourceConfigs.ETH,
     '0x3d15fd46ce9e551498328b1c83071d9509e2c3a0': OracleSourceConfigs.uniETH,
     '0xc5102fe9359fd9a28f877a67e36b0f050d81a3cc': OracleSourceConfigs.HOP,
+    '0x7189fb5b6504bbff6a852b13b7b82a3c118fdc27': OracleSourceConfigs.ETHFI,
+    '0x4186bfc76e2e237523cbc30fd220fe055156b41f': OracleSourceConfigs.rsETH,
   },
 
   // tokens on Optimism
@@ -819,6 +826,9 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x0e0469a84f57f0b3eb997a18484c75dfeff2fc92': OracleSourceConfigs.USDT,
     '0x1b8b972c1c37406bb74165e681f2d754d7b17ebe': OracleSourceConfigs.ETH,
     '0x1ba8d3c4c219b124d351f603060663bd1bcd9bbf': OracleSourceConfigs.TORN,
+    '0x0782b6d8c4551b9760e74c0545a9bcd90bdc41e5': OracleSourceConfigs.lisUSD,
+    '0xb0b84d294e0c75a6abe60171b70edeb2efd14a1b': OracleSourceConfigs.snBNB,
+    '0x4aae823a6a0b376de6a78e74ecc5b079d38cbcf7': OracleSourceConfigs.SolvBTC,
   },
 
   // tokens on Avalanche C-Chain
@@ -1003,6 +1013,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x3194b0a295d87fdaa54df852c248f7a6baf6c6e0': OracleSourceConfigs.USDT,
     '0xce971282faac9fabcf121944956da7142cccc855': OracleSourceConfigs.ETH,
     '0x9592f08387134e218327e6e8423400eb845ede0e': OracleSourceConfigs.SYN,
+    '0xb1a5700fa2358173fe465e6ea4ff52e36e88e2ad': OracleSourceConfigs.BLAST,
   },
 
   // token on aurora
@@ -1312,5 +1323,11 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xdd30c42d57a0f14dd44c809f59836d57392fdbc9': OracleSourceConfigs.WBTC,
     '0x5801e5a61164024be2554248e33127c6ebc8c113': OracleSourceConfigs.ETH,
     '0x5200000000000000000000000000000000000001': OracleSourceConfigs.OAS,
+  },
+
+  karakk2: {
+    '0x4200000000000000000000000000000000000006': OracleSourceConfigs.ETH,
+    '0xa415021bc5c4c3b5b989116dc35ae95d9c962c8d': OracleSourceConfigs.USDC,
+    '0xf948aacec00289fc33d8226391f7e04bb457ad49': OracleSourceConfigs.rswETH,
   },
 };

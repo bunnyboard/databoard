@@ -1113,6 +1113,10 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.ETHFI_WETH],
   },
+  mstETH: {
+    currency: 'wstETH',
+    sources: [OracleSourceUniswapv3List.mstETH_wstETH],
+  },
   PSTAKE: {
     currency: 'usd',
     sources: [OracleSourceUniswapv3List.PSTAKE_USDC],
@@ -1644,6 +1648,18 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   AXS: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.AXS_WETH],
+  },
+  lisUSD: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.lisUSD_USDT],
+  },
+  snBNB: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv3List.snBNB_WBNB],
+  },
+  BLAST: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.BLAST_WETH],
   },
   '0xBTC': {
     currency: 'eth',

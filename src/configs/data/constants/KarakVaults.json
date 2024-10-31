@@ -1,0 +1,648 @@
+{
+  "arbitrum": {
+    "0x1499c94a4ffe5b7e426c5347fa3542843ea9f069": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x1499c94A4FFe5b7e426c5347FA3542843ea9f069",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0xd65a6dc1f91b3c579d36c97d6d7856c629e64d4e": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xd65A6DC1F91B3C579D36c97D6d7856C629e64d4e",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0x555b98c198281b957ba8b4af0b56782bd815992f": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x555B98C198281B957bA8b4AF0b56782Bd815992f",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0x32535df1c079dbddc9ba17ef4337dd67530a41f5": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x32535df1c079DbDDC9ba17EF4337Dd67530a41f5",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0xc60ace38b9ddbd150545c753aa8d98f5dc855f4c": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xC60aCE38b9Ddbd150545C753aa8D98F5DC855f4C",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0xeb2e4aa269dc5ba5a98da22d424947b3612205d0": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xEb2E4aA269Dc5Ba5a98dA22D424947b3612205d0",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0x0a35ae5ab8fd3f7ba96f37a9476fdee8ab5e1268": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x0A35Ae5aB8fD3f7bA96F37A9476FDee8aB5E1268",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0x0d1147f9877de3567eea4f6859e0158720ab8a10": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x0d1147f9877de3567Eea4f6859E0158720AB8a10",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0xff70d8c4f397e43e64814266229d8cc55168654e": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xFF70d8c4f397e43e64814266229d8cc55168654e",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0x1ef973ed271609741f38edf00432b800c311261e": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x1ef973ed271609741f38EDf00432B800C311261e",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0x2b490a737263e99172a35ef85b2b533c3dccf4e4": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x2B490A737263e99172A35EF85b2B533c3dCCF4E4",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0xfec2aca2131daba4caa775c105c2177de4466e0f": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xfEC2ACa2131dABa4cAA775c105c2177de4466E0f",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0x6238c7f16938f3fb2f14b5d7083d9a0478d8f0a9": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x6238C7f16938F3Fb2f14b5D7083d9A0478D8f0a9",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0x7604b76076fc6db82bf14ab969aaa1345d8b1283": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x7604B76076fc6db82BF14aB969Aaa1345d8B1283",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0x89ee1328fe055736a656581eb2a7413a33c7cbbe": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x89eE1328FE055736A656581EB2A7413a33c7cBbe",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0x938f036b5685742aa35f220447eabf13bcfd5629": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x938F036b5685742Aa35f220447eaBf13bcFD5629",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0x891e280e9eaa7c2570ca88d1862b256f259f4629": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x891e280e9eaa7C2570cA88d1862B256F259f4629",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0x6a0b9fd975b16418f6046bb79af6292a33885542": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x6A0b9fD975B16418F6046BB79aF6292a33885542",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0xc474937a719cde8c6da563850be42d551b48adbf": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xC474937a719CdE8c6DA563850be42d551B48ADBf",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0x72b2e19197c05cfea3afec062c88daeaaa56c7ef": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x72B2E19197C05CFea3Afec062C88DAEAAA56c7eF",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0xc6b37f61d195d9a6afcf057331b9d6211a082453": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xC6B37F61d195D9A6AFcF057331b9d6211a082453",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0xf2e9bf325f945081fec5f71a4c765480a75a4cc3": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xf2E9bf325f945081fec5f71a4c765480A75A4CC3",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0xe0bdbfd833a64c764a9911c20c4dbb1c0a503790": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xE0bdBFD833a64c764a9911C20C4DBB1C0A503790",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0x2713031d1507f4af7055308bc68e8b83e7b57cb4": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x2713031d1507f4aF7055308bc68E8b83E7b57Cb4",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0x5619280de7c5464745e02c4de086173465567bb5": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x5619280de7C5464745E02C4dE086173465567BB5",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0x1163d7b2eee84241de699af1d0832ee89be39013": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x1163D7b2eEE84241de699AF1d0832Ee89BE39013",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0xab6e0dc474b9934a40b0d3036ab60068de49f3c5": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xAb6e0DC474b9934A40b0d3036Ab60068De49F3c5",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0x447a9266d9038af580f8414259a78735da65929d": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x447A9266d9038Af580F8414259A78735DA65929D",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0xa7bf109f63d9e84afb705ea20f7bbf17a6505c13": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xa7bf109F63d9e84aFb705Ea20F7BbF17a6505C13",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0x9273f71b859267c3a6aa996abe7a598f5c07505f": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x9273F71b859267C3A6AA996aBE7A598f5c07505F",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0xed36e479f2315a71cc8c4c17db30866d658542ac": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xEd36E479f2315A71cc8c4c17Db30866d658542Ac",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0xe29c67d520f36123497421f2e1f567cab6725413": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xe29c67d520f36123497421f2E1f567CAb6725413",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0xf2a94c6c41683f4523ec8796410c0f560c1ee43b": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xf2A94C6c41683f4523ec8796410c0F560C1EE43B",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0x4c14a8d716cc4a66c72fec5ebf03c35fb688a860": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x4C14A8d716cc4a66c72FEC5EBF03c35Fb688a860",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0xceac5f49889ae5c2c74f33a443317441fd48dcf7": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xcEaC5f49889ae5c2C74f33a443317441fd48DCF7",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0x771592dc99b2011941a7226a930d0f361f336c12": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x771592Dc99B2011941A7226a930D0F361F336C12",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0x2b11badde8265f09d3680b3ef8d450ad9850f409": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x2b11badDE8265F09d3680b3ef8D450aD9850F409",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0x2b1a2af7b0f180119e190e5d74f1ee501f639c56": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x2B1A2AF7B0f180119E190E5D74F1eE501f639C56",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0x4de42c1a5bfb3e9bd689daedb6626bd7441724e0": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x4DE42c1A5bfB3E9bd689daedB6626bd7441724e0",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0x4fc415a2a2eeb2fb431fc8bf5347ec24d8980766": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x4fc415A2A2eeB2fB431fc8bF5347Ec24D8980766",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0x261ca5221c2887b5e0d3ae6f6be683e0bb95824b": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x261ca5221c2887B5E0d3aE6F6BE683E0bb95824B",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0xfbf862bec6ae2385ec0caf19bdb917554e92fb5b": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xFbF862Bec6aE2385Ec0cAf19bDb917554e92Fb5B",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0xd5bcbc6ac2ffcdad17437782e4a55bfef8d4f4d9": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xD5bCBC6aC2FFCdAd17437782e4A55bfEf8D4F4d9",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0x135400c212f92af96414a2058372df20b2f8d031": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x135400C212F92Af96414a2058372Df20b2f8D031",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0x75dbe891a6d9a3d98aec317a7abc5ea3480d8e1b": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x75dbe891a6D9A3d98AeC317a7abC5ea3480D8E1b",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0x9cc35c014a62976106fa870f5ef48e6a68552025": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x9Cc35c014A62976106fA870F5Ef48e6A68552025",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0x3362812d475c9cce1aa619e2170592e0037bb93f": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x3362812D475C9CcE1aa619e2170592E0037Bb93F",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0xee3ab6d78ca5a90e517f5e7f09bc442feec55da9": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xee3ab6D78Ca5A90E517f5E7F09bC442FeeC55da9",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0x22377e005254dca025bc18b9209b182b412bb7e6": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x22377E005254DcA025Bc18B9209B182b412bb7E6",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0xb130b6f3952fc9a90e6b5d047e25314615da1d6b": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xB130B6f3952fC9A90e6b5D047e25314615da1D6b",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0xdc8896407be0a8de782d3d8aefd94b0f7e8ba0de": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xDC8896407bE0a8dE782d3D8AeFD94b0F7e8bA0DE",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0x346fc90e457cc1449dc965ef15e4f08251ddaebc": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x346Fc90E457cc1449dC965EF15E4F08251DdaEbC",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0xb86842ee581339f5b8ac5061b5d5f6881cec6df9": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xb86842EE581339f5B8aC5061b5D5F6881cEC6df9",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0x0f1734c79b2feb1ae21572c2c47ceb3329dcc7ee": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x0F1734C79B2feb1Ae21572C2C47cEb3329dcc7eE",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0x8ccf9392048548d1553ab3ae15f67b67e5c07f4e": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x8Ccf9392048548d1553ab3ae15F67B67e5c07F4E",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0x226e91d09d08ff82ff95c3ba66fd8dfefc20a779": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x226e91D09d08Ff82Ff95C3bA66FD8dfefc20a779",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0xffc83522178e99f757ef79bf40a95f81308253ae": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xffc83522178E99F757ef79bF40A95F81308253Ae",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0x0dc2e694b09a83c5c212dfa1641714d82d34d72b": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x0DC2e694B09a83c5C212dFa1641714D82d34d72b",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0xa55e97ac90f1d7bf1c340ae06044cad4fe99bd52": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xa55E97Ac90f1D7Bf1C340ae06044Cad4Fe99Bd52",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0x71b7aa618d39fdad29fe7cf65ace2a2899f91f5d": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x71B7aA618D39FdAd29FE7cF65aCE2a2899F91f5d",
+      "token": "0x912CE59144191C1204E64559FE8253a0e49E6548"
+    },
+    "0x98f79b07da6358d14a0226c1c5f58273b2bdbc9c": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x98f79b07DA6358D14a0226c1C5f58273b2BdbC9c",
+      "token": "0x7189fb5B6504bbfF6a852B13B7B82a3c118fDc27"
+    },
+    "0x8df4d1ff6a58139f66ba19abd5679ababe658fa5": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x8DF4d1Ff6a58139F66ba19ABd5679AbAbe658fa5",
+      "token": "0x5979D7b546E38E414F7E9822514be443A4800529"
+    },
+    "0x8d3be554c20af629bc9c8152673ba277e4328f0e": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x8D3BE554c20AF629bc9C8152673Ba277E4328f0E",
+      "token": "0x2416092f143378750bb29b79eD961ab195CcEea5"
+    },
+    "0x3dd1e46703084fe7d338d6e54154c0bbf19bcf1d": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x3Dd1e46703084fE7D338d6E54154C0Bbf19BCf1D",
+      "token": "0x4186BFC76E2E237523CBC30FD220FE055156b41F"
+    },
+    "0x9ca8e87dfe64468dd4c03716691eb0eb0056a5c6": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x9Ca8E87DFE64468DD4C03716691Eb0eb0056A5c6",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0x690d05c07ef66fde29c681c52e29d3fd03759bc9": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x690d05C07ef66fdE29c681c52e29d3FD03759bC9",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0x7bf7aa6e8e29aa8ec61356a6a5e3c721c70890a8": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x7Bf7aa6E8e29Aa8ec61356A6A5e3C721C70890a8",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0x09322a4b10b43384c9147c212cb4545ada7407a2": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x09322a4b10b43384c9147C212cb4545ADA7407a2",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0x322164b4d1263d573f6c377b2bc0392a1d45977d": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x322164b4D1263d573F6C377B2bc0392a1D45977D",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0x86d12a10a70dd7eb85e4ab6cd3a0b02d2151db39": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x86d12a10a70DD7eb85e4AB6cD3a0b02d2151db39",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0x1133e9ec3bb63e8c03d3a882851a7630534ba5aa": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x1133E9ec3bB63E8c03D3a882851a7630534BA5aa",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0x413a1eef39e546840c358570f2bf369fdb7bdb5a": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x413A1eeF39e546840c358570F2bf369Fdb7BDB5A",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0x9fa4b0858a593fafc7b39899955add74325d0fe1": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x9fa4b0858a593fAFC7b39899955ADD74325d0Fe1",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0x4a46892bc15a001cdd7a203855cc4bd2b077dbd4": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x4a46892bC15a001cDd7A203855CC4bD2b077DBD4",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0x05f199b0da2c2220b204dd0e8577757bdb3fe442": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x05F199B0da2c2220b204Dd0E8577757BDb3FE442",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0x54091daa4e14511258d5407857dfb50fde762fe6": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x54091DAA4e14511258d5407857DfB50fDe762fE6",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0x5fb9c57c37be152efc5f05d40b718f5dd14eaaed": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x5fB9C57c37be152Efc5F05d40b718F5DD14Eaaed",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0x73569601e6edea989299db22b69da937e0f2aa43": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x73569601E6eDea989299Db22b69Da937E0F2AA43",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0x8fee129013aa039c499161d1fd62e9391478a7be": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x8feE129013aa039C499161d1fD62e9391478A7be",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0x947c6b3f2d69f0efdfe3e0811752e8451b4ac54c": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x947c6B3f2D69F0efDfe3E0811752e8451b4AC54c",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0xc4813b0769c7464a57af161e3afa6aaa14b9c842": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xc4813b0769C7464A57af161E3afa6aAA14b9C842",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0x5aeff0a3fa41d86f20dc6dd4777e8315a290d994": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x5aEFF0a3Fa41d86f20dC6DD4777e8315a290D994",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0xa28ca145572e0d969e2bb9c328b589939f15ea90": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xA28Ca145572E0d969e2Bb9c328B589939f15Ea90",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0xdc3e8a3f2c7ef867da1482fe1b83a17f74958b3e": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xDC3e8a3F2c7ef867Da1482fE1B83A17F74958B3E",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0x916aafca5af0e6e850d6d592d65916279bf81576": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x916aaFCa5AF0e6e850D6D592D65916279bF81576",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0xe53d7083871dafd46dc5cdb0704b1e78bd27ec64": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xE53D7083871dAFD46Dc5CDB0704b1e78BD27eC64",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0xa8385dc0e5d2a66fa32b892f150cd63b6ad90abe": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0xa8385dc0e5d2A66Fa32b892F150CD63B6AD90aBe",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0x8a502d2cc8ad8766fb3a373d795382c90aef5d86": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x8A502d2cc8Ad8766Fb3A373D795382c90aEf5D86",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    },
+    "0x620e250c6111f81156c777c9b79e44af3d0cec6d": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x620e250C6111f81156C777c9b79E44af3d0CEc6d",
+      "token": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
+    },
+    "0x658c9c2c056d6a3f42291e59f04c1445a56707f9": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x658C9c2c056D6A3f42291E59f04c1445A56707f9",
+      "token": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+    },
+    "0x9882b421b548862e2ca265e487d987cc49416655": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x9882b421B548862E2ca265e487D987CC49416655",
+      "token": "0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe"
+    },
+    "0x7fa592b6c74377882b0fbf9065b2a8d7e28b7bd2": {
+      "chain": "arbitrum",
+      "version": 2,
+      "factory": "0xc4b3d494c166ebbff9c716da4cec39b579795a0d",
+      "address": "0x7FA592b6c74377882B0FBF9065B2A8D7e28B7BD2",
+      "token": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9"
+    }
+  }
+}

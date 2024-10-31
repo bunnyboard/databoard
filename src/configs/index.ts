@@ -78,6 +78,7 @@ import { GnosisNativeBridgeConfigs } from './protocols/gnosis';
 import { LfjlendConfigs } from './protocols/lfj';
 import { EigenLayerConfigs } from './protocols/eigenlayer';
 import { SymbioticConfigs } from './protocols/symbiotic';
+import { KarakConfigs } from './protocols/karak';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -86,7 +87,7 @@ export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
   ronin: 400,
   zklinknova: 5000,
   fantom: 5000,
-  arbitrum: 5000,
+  arbitrum: 10000,
 };
 
 export const DefaultMemcacheTime = 300; // 5 minutes
@@ -174,4 +175,5 @@ export const ProtocolConfigs = {
   lfjlend: LfjlendConfigs,
   eigenlayer: EigenLayerConfigs,
   symbiotic: SymbioticConfigs,
+  karak: KarakConfigs,
 };

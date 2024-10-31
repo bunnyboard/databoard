@@ -167,8 +167,8 @@ export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
           volumes: {
             bridge: 0,
           },
-          totalAssetDeposited: nativeBalanceLockedUsd,
-          totalValueLocked: nativeBalanceLockedUsd,
+          totalAssetDeposited: balanceUsd,
+          totalValueLocked: balanceUsd,
         };
       }
     }
