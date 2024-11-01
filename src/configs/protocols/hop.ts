@@ -3,6 +3,7 @@ import { ChainNames, ProtocolNames } from '../names';
 
 export interface HopPoolConfig {
   bridge: string;
+  pool?: string;
   token: string;
 }
 
@@ -73,18 +74,22 @@ export const HopConfigs: HopProtocolConfig = {
       pools: [
         {
           bridge: '0x0e0E3d2C5c292161999474247956EF542caBF8dd',
+          pool: '0x10541b07d8Ad2647Dc6cD67abd4c03575dade261',
           token: '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8', // USDC
         },
         {
           bridge: '0x72209Fe68386b37A40d6bCA04f78356fd342491f',
+          pool: '0x18f7402B673Ba6Fb5EA4B95768aABb8aaD7ef18a',
           token: '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9', // USDT
         },
         {
           bridge: '0x7aC115536FE3A185100B2c4DE4cb328bf3A58Ba6',
+          pool: '0xa5A33aB9063395A90CCbEa2D86a62EcCf27B5742',
           token: '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1', // DAI
         },
         {
           bridge: '0x3749C4f034022c39ecafFaBA182555d4508caCCC',
+          pool: '0x652d27c0F72771Ce5C76fd400edD61B406Ac6D97',
           token: '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', // ETH
         },
         {
@@ -93,10 +98,12 @@ export const HopConfigs: HopProtocolConfig = {
         },
         {
           bridge: '0xc315239cFb05F1E130E7E28E603CEa4C014c57f0',
+          pool: '0x0Ded0d521AC7B0d312871D18EA4FDE79f03Ee7CA',
           token: '0xEC70Dcb4A1EFa46b8F2D97C310C9c4790ba5ffA8', // rETH
         },
         {
           bridge: '0xEa5abf2C909169823d939de377Ef2Bf897A6CE98',
+          pool: '0xFFe42d3Ba79Ee5Ee74a999CAd0c60EF1153F0b82',
           token: '0x539bdE0d7Dbd336b79148AA742883198BBF60342', // MAGIC
         },
       ],
@@ -107,18 +114,22 @@ export const HopConfigs: HopProtocolConfig = {
       pools: [
         {
           bridge: '0xa81D244A1814468C734E5b4101F7b9c0c577a8fC',
+          pool: '0x3c0FFAca566fCcfD9Cc95139FEF6CBA143795963',
           token: '0x7F5c764cBc14f9669B88837ca1490cCa17c31607', // USDC
         },
         {
           bridge: '0x46ae9BaB8CEA96610807a275EBD36f8e916b5C61',
+          pool: '0xeC4B41Af04cF917b54AEb6Df58c0f8D78895b5Ef',
           token: '0x94b008aA00579c1307B0EF2c499aD98a8ce58e58', // USDT
         },
         {
           bridge: '0x7191061D5d4C60f598214cC6913502184BAddf18',
+          pool: '0xF181eD90D6CfaC84B8073FdEA6D34Aa744B41810',
           token: '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1', // DAI
         },
         {
           bridge: '0x83f6244Bd87662118d96D9a6D44f09dffF14b30E',
+          pool: '0xaa30D6bba6285d0585722e2440Ff89E23EF68864',
           token: '0x4200000000000000000000000000000000000006', // ETH
         },
         {
@@ -127,14 +138,17 @@ export const HopConfigs: HopProtocolConfig = {
         },
         {
           bridge: '0x16284c7323c35F4960540583998C98B1CfC581a7',
+          pool: '0x1990BC6dfe2ef605Bfc08f5A23564dB75642Ad73',
           token: '0x8700dAec35aF8Ff88c16BdF0418774CB3D7599B4', // SNX
         },
         {
           bridge: '0x33Fe5bB8DA466dA55a8A32D6ADE2BB104E2C5201',
+          pool: '0x8d4063E82A4Db8CdAed46932E1c71e03CA69Bede',
           token: '0x8c6f28f2F1A3C87F0f938b96d27520d9751ec8d9', // sUSD
         },
         {
           bridge: '0xA0075E8cE43dcB9970cB7709b9526c1232cc39c2',
+          pool: '0x9Dd8685463285aD5a94D2c128bda3c5e8a6173c8',
           token: '0x9Bcef72be871e61ED4fBbc7630889beE758eb81D', // rETH
         },
       ],
@@ -145,10 +159,12 @@ export const HopConfigs: HopProtocolConfig = {
       pools: [
         {
           bridge: '0x46ae9BaB8CEA96610807a275EBD36f8e916b5C61',
+          pool: '0x022C5cE6F1Add7423268D41e08Df521D5527C2A0',
           token: '0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA', // USDC
         },
         {
           bridge: '0x3666f603Cc164936C1b87e207F36BEBa4AC5f18a',
+          pool: '0x0ce6c85cF43553DE10FC56cecA0aef6Ff0DD444d',
           token: '0x4200000000000000000000000000000000000006', // ETH
         },
         {
@@ -163,22 +179,27 @@ export const HopConfigs: HopProtocolConfig = {
       pools: [
         {
           bridge: '0x25D8039bB044dC227f741a9e381CA4cEAE2E6aE8',
+          pool: '0x5C32143C8B198F392d01f8446b754c181224ac26',
           token: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174', // USDC
         },
         {
           bridge: '0x6c9a1ACF73bd85463A46B0AFc076FBdf602b690B',
+          pool: '0xB2f7d27B21a69a033f85C42d5EB079043BAadC81',
           token: '0xc2132D05D31c914a87C6611C10748AEb04B58e8F', // USDT
         },
         {
           bridge: '0x553bC791D746767166fA3888432038193cEED5E2',
+          pool: '0x3d4Cc8A61c7528Fd86C55cfe061a78dCBA48EDd1',
           token: '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270', // MATIC
         },
         {
           bridge: '0xEcf268Be00308980B5b3fcd0975D47C4C8e1382a',
+          pool: '0x25FB92E505F752F730cAD0Bd4fa17ecE4A384266',
           token: '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063', // DAI
         },
         {
           bridge: '0xb98454270065A31D71Bf635F6F7Ee6A518dFb849',
+          pool: '0x266e2dc3C4c59E42AA07afeE5B09E964cFFe6778',
           token: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619', // ETH
         },
         {
@@ -193,22 +214,27 @@ export const HopConfigs: HopProtocolConfig = {
       pools: [
         {
           bridge: '0x25D8039bB044dC227f741a9e381CA4cEAE2E6aE8',
+          pool: '0x5C32143C8B198F392d01f8446b754c181224ac26',
           token: '0xDDAfbb505ad214D7b80b1f830fcCc89B60fb7A83', // USDC
         },
         {
           bridge: '0xFD5a186A7e8453Eb867A360526c5d987A00ACaC2',
+          pool: '0x3Aa637D6853f1d9A9354FE4301Ab852A88b237e7',
           token: '0x4ecaba5870353805a9f068101a40e0f32ed605c6', // USDT
         },
         {
           bridge: '0x7ac71c29fEdF94BAc5A5C9aB76E1Dd12Ea885CCC',
+          pool: '0xaa30D6bba6285d0585722e2440Ff89E23EF68864',
           token: '0x7122d7661c4564b7C6Cd4878B06766489a6028A2', // MATIC
         },
         {
           bridge: '0x0460352b91D7CF42B0E1C1c30f06B602D9ef2238',
+          pool: '0x24afDcA4653042C6D08fb1A754b2535dAcF6Eb24',
           token: '0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d', // DAI
         },
         {
           bridge: '0xD8926c12C0B2E5Cd40cFdA49eCaFf40252Af491B',
+          pool: '0x4014DC015641c08788F15bD6eB20dA4c47D936d8',
           token: '0x6A023CCd1ff6F2045C3309768eAd9E68F978f6e1', // ETH
         },
         {
@@ -223,6 +249,7 @@ export const HopConfigs: HopProtocolConfig = {
       pools: [
         {
           bridge: '0xcbb852a6274e03fa00fb4895de0463f66df27a11',
+          pool: '0x2935173357c010F8B56c8719a44f9FbdDa90f67c',
           token: '0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f', // ETH
         },
         {
@@ -237,6 +264,7 @@ export const HopConfigs: HopProtocolConfig = {
       pools: [
         {
           bridge: '0x0ce6c85cF43553DE10FC56cecA0aef6Ff0DD444d',
+          pool: '0x0a6b1904369fE59E002ad0713ae89d4E3dF5A7Cf',
           token: '0x4F9A0e7FD2Bf6067db6994CF12E4495Df938E6e9', // ETH
         },
         {

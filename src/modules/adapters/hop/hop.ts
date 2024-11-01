@@ -10,11 +10,16 @@ import Erc20Abi from '../../../configs/abi/ERC20.json';
 import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
 import { AddressZero } from '../../../configs/constants';
 import L1Erc20BridgeAbi from '../../../configs/abi/hop/L1_ERC20_Bridge.json';
+import SwapPoolAbi from '../../../configs/abi/hop/SwapPool.json';
 import { decodeEventLog } from 'viem';
 import { getChainNameById } from '../../../lib/helpers';
 
 const Events = {
   TransferSentToL2: '0x0a0607688c86ec1775abcdbab7b33a3a35a6c9cde677c9be880150c231cc6b0b',
+  AddLiquidity: '0x189c623b666b1b45b83d7178f39b8c087cb09774317ca2f53c2d3c3726f222a2',
+  RemoveLiquidity: '0x88d38ed598fdd809c2bf01ee49cd24b7fdabf379a83d29567952b60324d58cef',
+  RemoveLiquidityOne: '0x43fb02998f4e03da2e0e6fff53fdbf0c40a9f45f145dc377fc30615d7d7a8a64',
+  RemoveLiquidityImbalance: '0x3631c28b1f9dd213e0319fb167b554d76b6c283a41143eb400a0d1adb1af1755',
 };
 
 export default class HopAdapter extends ProtocolAdapter {
@@ -35,8 +40,11 @@ export default class HopAdapter extends ProtocolAdapter {
       breakdown: {},
       ...getInitialProtocolCoreMetrics(),
       volumes: {
+        deposit: 0,
+        withdraw: 0,
         bridge: 0,
       },
+      totalSupplied: 0,
       volumeBridgePaths: {},
     };
 
@@ -103,11 +111,16 @@ export default class HopAdapter extends ProtocolAdapter {
           if (!protocolData.breakdown[token.chain][token.address]) {
             protocolData.breakdown[token.chain][token.address] = {
               ...getInitialProtocolCoreMetrics(),
+              totalSupplied: 0,
               volumes: {
+                deposit: 0,
+                withdraw: 0,
                 bridge: 0,
               },
             };
           }
+          protocolData.breakdown[token.chain][token.address].totalAssetDeposited += balanceUsd;
+          protocolData.breakdown[token.chain][token.address].totalValueLocked += balanceUsd;
 
           const logs = await this.services.blockchain.evm.getContractLogs({
             chain: bridgeConfig.chain,
@@ -140,6 +153,87 @@ export default class HopAdapter extends ProtocolAdapter {
                   (protocolData.volumeBridgePaths as any)[bridgeConfig.chain][destChainName] = 0;
                 }
                 (protocolData.volumeBridgePaths as any)[bridgeConfig.chain][destChainName] += amountUsd;
+              }
+            }
+          }
+
+          if (bridgeConfig.pools[i].pool) {
+            const tokenBalance = await this.services.blockchain.evm.getTokenBalance({
+              chain: bridgeConfig.chain,
+              address: token.address,
+              owner: bridgeConfig.pools[i].pool as string,
+              blockNumber: blockNumber,
+            });
+            if (tokenBalance) {
+              const balanceUsd = formatBigNumberToNumber(tokenBalance, token.decimals) * tokenPriceUsd;
+
+              protocolData.totalAssetDeposited += balanceUsd;
+              protocolData.totalValueLocked += balanceUsd;
+              (protocolData.totalSupplied as number) += balanceUsd;
+
+              if (!protocolData.breakdown[token.chain][token.address]) {
+                protocolData.breakdown[token.chain][token.address] = {
+                  ...getInitialProtocolCoreMetrics(),
+                  totalSupplied: 0,
+                  volumes: {
+                    deposit: 0,
+                    withdraw: 0,
+                    bridge: 0,
+                  },
+                };
+              }
+              protocolData.breakdown[token.chain][token.address].totalAssetDeposited += balanceUsd;
+              protocolData.breakdown[token.chain][token.address].totalValueLocked += balanceUsd;
+              (protocolData.breakdown[token.chain][token.address].totalSupplied as number) += balanceUsd;
+
+              const poolLogs = await this.services.blockchain.evm.getContractLogs({
+                chain: bridgeConfig.chain,
+                address: bridgeConfig.pools[i].pool as string,
+                fromBlock: beginBlock,
+                toBlock: endBlock,
+              });
+              for (const log of poolLogs) {
+                const signature = log.topics[0];
+                if (
+                  signature === Events.AddLiquidity ||
+                  signature === Events.RemoveLiquidity ||
+                  signature === Events.RemoveLiquidityOne ||
+                  signature === Events.RemoveLiquidityImbalance
+                ) {
+                  const event: any = decodeEventLog({
+                    abi: SwapPoolAbi,
+                    topics: log.topics,
+                    data: log.data,
+                  });
+
+                  switch (signature) {
+                    case Events.AddLiquidity: {
+                      const amountUsd =
+                        formatBigNumberToNumber(event.args.tokenAmounts[0].toString(), token.decimals) * tokenPriceUsd;
+                      (protocolData.volumes.deposit as number) += amountUsd;
+                      (protocolData.breakdown[token.chain][token.address].volumes.deposit as number) += amountUsd;
+                      break;
+                    }
+                    case Events.RemoveLiquidity:
+                    case Events.RemoveLiquidityImbalance: {
+                      const amountUsd =
+                        formatBigNumberToNumber(event.args.tokenAmounts[0].toString(), token.decimals) * tokenPriceUsd;
+                      (protocolData.volumes.withdraw as number) += amountUsd;
+                      (protocolData.breakdown[token.chain][token.address].volumes.withdraw as number) += amountUsd;
+                      break;
+                    }
+                    case Events.RemoveLiquidityOne: {
+                      const boughtId = Number(event.args.boughtId);
+                      if (boughtId === 0) {
+                        const amountUsd =
+                          formatBigNumberToNumber(event.args.tokensBought.toString(), token.decimals) * tokenPriceUsd;
+                        (protocolData.volumes.withdraw as number) += amountUsd;
+                        (protocolData.breakdown[token.chain][token.address].volumes.withdraw as number) += amountUsd;
+                      }
+                      break;
+                    }
+                  }
+                }
               }
             }
           }
