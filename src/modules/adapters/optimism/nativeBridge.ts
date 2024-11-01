@@ -182,67 +182,40 @@ export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
         topics: log.topics,
         data: log.data,
       });
-      if (log.topics[0] === Events.ERC20DepositInitiated) {
-        if (!optimismConfig.supportedTokens.filter((item) => compareAddress(item, event.args.l1Token))[0]) {
-          continue;
-        }
 
-        const token = await this.services.blockchain.evm.getTokenInfo({
-          chain: optimismConfig.chain,
-          address: event.args.l1Token,
+      if (!optimismConfig.supportedTokens.filter((item) => compareAddress(item, event.args.l1Token))[0]) {
+        continue;
+      }
+
+      const token = await this.services.blockchain.evm.getTokenInfo({
+        chain: optimismConfig.chain,
+        address: event.args.l1Token,
+      });
+      if (token) {
+        const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+          chain: token.chain,
+          address: token.address,
+          timestamp: options.timestamp,
         });
-        if (token) {
-          const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-            chain: token.chain,
-            address: token.address,
-            timestamp: options.timestamp,
-          });
 
-          const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPriceUsd;
+        const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPriceUsd;
 
-          (protocolData.volumes.bridge as number) += amountUsd;
+        (protocolData.volumes.bridge as number) += amountUsd;
+
+        if (!protocolData.breakdown[token.chain][token.address]) {
+          protocolData.breakdown[token.chain][token.address] = {
+            ...getInitialProtocolCoreMetrics(),
+            volumes: {
+              bridge: 0,
+            },
+          };
+        }
+        (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += amountUsd;
+
+        if (log.topics[0] === Events.ERC20DepositInitiated) {
           (protocolData.volumeBridgePaths as any)[optimismConfig.chain][optimismConfig.layer2Chain] += amountUsd;
-
-          if (!protocolData.breakdown[token.chain][token.address]) {
-            protocolData.breakdown[token.chain][token.address] = {
-              ...getInitialProtocolCoreMetrics(),
-              volumes: {
-                bridge: 0,
-              },
-            };
-          }
-          (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += amountUsd;
-        }
-      } else if (log.topics[0] === Events.ERC20WithdrawalFinalized) {
-        if (!optimismConfig.supportedTokens.filter((item) => compareAddress(item, event.args.l1Token))[0]) {
-          continue;
-        }
-
-        const token = await this.services.blockchain.evm.getTokenInfo({
-          chain: optimismConfig.layer2Chain,
-          address: event.args.l2Token,
-        });
-        if (token) {
-          const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-            chain: token.chain,
-            address: token.address,
-            timestamp: options.timestamp,
-          });
-
-          const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPriceUsd;
-
-          (protocolData.volumes.bridge as number) += amountUsd;
+        } else {
           (protocolData.volumeBridgePaths as any)[optimismConfig.layer2Chain][optimismConfig.chain] += amountUsd;
-
-          if (!protocolData.breakdown[token.chain][token.address]) {
-            protocolData.breakdown[token.chain][token.address] = {
-              ...getInitialProtocolCoreMetrics(),
-              volumes: {
-                bridge: 0,
-              },
-            };
-          }
-          (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += amountUsd;
         }
       }
     }
