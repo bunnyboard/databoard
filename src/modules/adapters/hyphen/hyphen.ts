@@ -38,13 +38,11 @@ export default class HyphenAdapter extends ProtocolAdapter {
       timestamp: options.timestamp,
       breakdown: {},
       ...getInitialProtocolCoreMetrics(),
-      totalSupplied: 0,
       volumes: {
         bridge: 0,
-        deposit: 0,
-        withdraw: 0,
       },
       volumeBridgePaths: {},
+      totalSupplied: 0,
     };
 
     const hyphenConfig = this.protocolConfig as HyphenProtocolConfig;
@@ -93,9 +91,9 @@ export default class HyphenAdapter extends ProtocolAdapter {
             ...getInitialProtocolCoreMetrics(),
             totalSupplied: 0,
             volumes: {
-              bridge: 0,
               deposit: 0,
               withdraw: 0,
+              bridge: 0,
             },
           };
         }
@@ -136,7 +134,9 @@ export default class HyphenAdapter extends ProtocolAdapter {
               compareAddress(item.address, event.args.asset),
             )[0];
             if (token) {
-              const tokenPriceUsd = getBalanceUsdResult.tokenBalanceUsds[token.address].priceUsd;
+              const tokenPriceUsd = getBalanceUsdResult.tokenBalanceUsds[token.address]
+                ? getBalanceUsdResult.tokenBalanceUsds[token.address].priceUsd
+                : 0;
 
               const lpFeeUsd = formatBigNumberToNumber(event.args.lpFee.toString(), token.decimals) * tokenPriceUsd;
               const transferFeeUsd =
@@ -146,6 +146,17 @@ export default class HyphenAdapter extends ProtocolAdapter {
               protocolData.supplySideRevenue += lpFeeUsd;
               protocolData.protocolRevenue += transferFeeUsd;
 
+              if (!protocolData.breakdown[token.chain][token.address]) {
+                protocolData.breakdown[token.chain][token.address] = {
+                  ...getInitialProtocolCoreMetrics(),
+                  totalSupplied: 0,
+                  volumes: {
+                    deposit: 0,
+                    withdraw: 0,
+                    bridge: 0,
+                  },
+                };
+              }
               protocolData.breakdown[token.chain][token.address].totalFees += lpFeeUsd + transferFeeUsd;
               protocolData.breakdown[token.chain][token.address].supplySideRevenue += lpFeeUsd;
               protocolData.breakdown[token.chain][token.address].protocolRevenue += transferFeeUsd;
@@ -158,12 +169,27 @@ export default class HyphenAdapter extends ProtocolAdapter {
             if (token) {
               const destChainName = getChainNameById(Number(event.args.toChainId));
               if (destChainName) {
-                const tokenPriceUsd = getBalanceUsdResult.tokenBalanceUsds[token.address].priceUsd;
+                const tokenPriceUsd = getBalanceUsdResult.tokenBalanceUsds[token.address]
+                  ? getBalanceUsdResult.tokenBalanceUsds[token.address].priceUsd
+                  : 0;
 
                 const bridgeAmountUsd =
                   formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPriceUsd;
 
                 (protocolData.volumes.bridge as number) += bridgeAmountUsd;
+
+                if (!protocolData.breakdown[token.chain][token.address]) {
+                  protocolData.breakdown[token.chain][token.address] = {
+                    ...getInitialProtocolCoreMetrics(),
+                    totalSupplied: 0,
+                    volumes: {
+                      deposit: 0,
+                      withdraw: 0,
+                      bridge: 0,
+                    },
+                  };
+                }
+                (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += bridgeAmountUsd;
 
                 if (!(protocolData.volumeBridgePaths as any)[liquidityPoolConfig.chain][destChainName]) {
                   (protocolData.volumeBridgePaths as any)[liquidityPoolConfig.chain][destChainName] = 0;
@@ -185,8 +211,22 @@ export default class HyphenAdapter extends ProtocolAdapter {
             compareAddress(item.address, event.args.tokenAddress),
           )[0];
           if (token) {
-            const tokenPriceUsd = getBalanceUsdResult.tokenBalanceUsds[token.address].priceUsd;
+            const tokenPriceUsd = getBalanceUsdResult.tokenBalanceUsds[token.address]
+              ? getBalanceUsdResult.tokenBalanceUsds[token.address].priceUsd
+              : 0;
             const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPriceUsd;
+
+            if (!protocolData.breakdown[token.chain][token.address]) {
+              protocolData.breakdown[token.chain][token.address] = {
+                ...getInitialProtocolCoreMetrics(),
+                totalSupplied: 0,
+                volumes: {
+                  deposit: 0,
+                  withdraw: 0,
+                  bridge: 0,
+                },
+              };
+            }
 
             if (signature === LiquidityPoolEvents.LiquidityAdded) {
               (protocolData.volumes.deposit as number) += amountUsd;

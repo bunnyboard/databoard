@@ -88,6 +88,8 @@ export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
   zklinknova: 5000,
   fantom: 5000,
   arbitrum: 10000,
+  optimism: 5000,
+  base: 5000,
 };
 
 export const DefaultMemcacheTime = 300; // 5 minutes

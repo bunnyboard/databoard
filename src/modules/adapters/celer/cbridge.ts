@@ -7,10 +7,19 @@ import AdapterDataHelper from '../helpers';
 import { CbridgeProtocolConfig } from '../../../configs/protocols/celer';
 import { decodeEventLog } from 'viem';
 import BridgeAbi from '../.././../configs/abi/celer/Bridge.json';
+import OriginVaultV1Abi from '../.././../configs/abi/celer/OriginalTokenVault.json';
+import OriginVaultV2Abi from '../.././../configs/abi/celer/OriginalTokenVaultV2.json';
 import { getChainNameById } from '../../../lib/helpers';
 import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
 
+// on bridge contract
 const SendEvent = '0x89d8051e597ab4178a863a5190407b98abfeff406aa8db90c59af76612e58f01';
+
+// on vault contract
+const DepositedV1 = '0x89d8051e597ab4178a863a5190407b98abfeff406aa8db90c59af76612e58f01';
+
+// on vault v2 contract
+const DepositedV2 = '0x28d226819e371600e26624ebc4a9a3947117ee2760209f816c789d3a99bf481b';
 
 export default class CbridgeAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.cbridge 🌈';
@@ -29,8 +38,6 @@ export default class CbridgeAdapter extends ProtocolAdapter {
       ...getInitialProtocolCoreMetrics(),
       volumes: {
         bridge: 0,
-        deposit: 0,
-        withdraw: 0,
       },
       volumeBridgePaths: {},
     };
@@ -92,8 +99,6 @@ export default class CbridgeAdapter extends ProtocolAdapter {
               ...getInitialProtocolCoreMetrics(),
               volumes: {
                 bridge: 0,
-                deposit: 0,
-                withdraw: 0,
               },
             };
           }
@@ -104,13 +109,13 @@ export default class CbridgeAdapter extends ProtocolAdapter {
         }
       }
 
-      const logs = await this.services.blockchain.evm.getContractLogs({
+      const bridgeLogs = await this.services.blockchain.evm.getContractLogs({
         chain: bridgeConfig.chain,
         address: bridgeConfig.bridge,
         fromBlock: beginBlock,
         toBlock: endBlock,
       });
-      for (const log of logs) {
+      for (const log of bridgeLogs) {
         if (log.topics[0] === SendEvent) {
           const event: any = decodeEventLog({
             abi: BridgeAbi,
@@ -130,15 +135,93 @@ export default class CbridgeAdapter extends ProtocolAdapter {
                 const priceUsd = tokenPriceUsd[token.address] ? tokenPriceUsd[token.address] : 0;
                 const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * priceUsd;
 
-                (protocolData.volumes.bridge as number) += amountUsd;
-                (protocolData.breakdown[bridgeConfig.chain][token.address].volumes.bridge as number) += amountUsd;
-
                 // fees range from 0-0.5%, we assume avg 0.25%
                 const feeUsd = (amountUsd * 0.25) / 100;
+
                 protocolData.totalFees += feeUsd;
                 protocolData.protocolRevenue += feeUsd;
-                protocolData.breakdown[bridgeConfig.chain][token.address].totalFees += feeUsd;
-                protocolData.breakdown[bridgeConfig.chain][token.address].protocolRevenue += feeUsd;
+                (protocolData.volumes.bridge as number) += amountUsd;
+
+                if (!protocolData.breakdown[token.chain][token.address]) {
+                  protocolData.breakdown[token.chain][token.address] = {
+                    ...getInitialProtocolCoreMetrics(),
+                    volumes: {
+                      bridge: 0,
+                    },
+                  };
+                }
+                protocolData.breakdown[token.chain][token.address].totalFees += feeUsd;
+                protocolData.breakdown[token.chain][token.address].protocolRevenue += feeUsd;
+                (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += amountUsd;
+
+                if (!(protocolData.volumeBridgePaths as any)[bridgeConfig.chain][destChainName]) {
+                  (protocolData.volumeBridgePaths as any)[bridgeConfig.chain][destChainName] = 0;
+                }
+                (protocolData.volumeBridgePaths as any)[bridgeConfig.chain][destChainName] += amountUsd;
+              }
+            }
+          }
+        }
+      }
+
+      let vaultLogs: Array<any> = [];
+
+      if (bridgeConfig.originTokenVaultV1) {
+        const vaultV1Logs = await this.services.blockchain.evm.getContractLogs({
+          chain: bridgeConfig.chain,
+          address: bridgeConfig.originTokenVaultV1,
+          fromBlock: beginBlock,
+          toBlock: endBlock,
+        });
+        vaultLogs = vaultLogs.concat(vaultV1Logs);
+      }
+
+      if (bridgeConfig.originTokenVaultV2) {
+        const vaultV2Logs = await this.services.blockchain.evm.getContractLogs({
+          chain: bridgeConfig.chain,
+          address: bridgeConfig.originTokenVaultV2,
+          fromBlock: beginBlock,
+          toBlock: endBlock,
+        });
+        vaultLogs = vaultLogs.concat(vaultV2Logs);
+      }
+
+      for (const log of vaultLogs) {
+        if (log.topics[0] === DepositedV1 || log.topics[0] === DepositedV2) {
+          const event: any = decodeEventLog({
+            abi: log.topics[0] === DepositedV1 ? OriginVaultV1Abi : OriginVaultV2Abi,
+            topics: log.topics,
+            data: log.data,
+          });
+
+          const token = bridgeConfig.tokens.filter((item) => compareAddress(item.address, event.args.token))[0];
+          if (token) {
+            const destChainName = getChainNameById(Number(event.args.mintChainId));
+            if (destChainName) {
+              const token = await this.services.blockchain.evm.getTokenInfo({
+                chain: bridgeConfig.chain,
+                address: event.args.token,
+              });
+              if (token) {
+                const priceUsd = tokenPriceUsd[token.address] ? tokenPriceUsd[token.address] : 0;
+                const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * priceUsd;
+
+                (protocolData.volumes.bridge as number) += amountUsd;
+
+                if (!protocolData.breakdown[token.chain][token.address]) {
+                  protocolData.breakdown[token.chain][token.address] = {
+                    ...getInitialProtocolCoreMetrics(),
+                    volumes: {
+                      bridge: 0,
+                    },
+                  };
+                }
+                (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += amountUsd;
+
+                if (!(protocolData.volumeBridgePaths as any)[bridgeConfig.chain][destChainName]) {
+                  (protocolData.volumeBridgePaths as any)[bridgeConfig.chain][destChainName] = 0;
+                }
+                (protocolData.volumeBridgePaths as any)[bridgeConfig.chain][destChainName] += amountUsd;
               }
             }
           }

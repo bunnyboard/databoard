@@ -441,10 +441,10 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
   },
   POOL_WETH: {
     type: 'univ2',
-    chain: 'optimism',
-    address: '0xdb1fe6da83698885104da02a6e0b3b65c0b0de80',
-    baseToken: TokensBook.optimism['0x395ae52bb17aef68c2888d941736a71dc6d4e125'],
-    quotaToken: TokensBook.optimism['0x4200000000000000000000000000000000000006'],
+    chain: 'ethereum',
+    address: '0x85cb0bab616fe88a89a35080516a8928f38b518b',
+    baseToken: TokensBook.ethereum['0x0cec1a9154ff802e7934fc916ed7ca50bde6844e'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
   ANKR_WBNB: {
     type: 'univ2',
@@ -610,7 +610,7 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
   AKRO_WETH: {
     type: 'univ2',
     chain: 'ethereum',
-    address: '0x98f90bfc702ec548d21b5a566a4df6853e2890d4',
+    address: '0x8cb77ea869def8f7fdeab9e4da6cf02897bbf076',
     baseToken: TokensBook.ethereum['0x8ab7404063ec4dbcfd4598215992dc3f8ec853d7'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
@@ -754,12 +754,12 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.arbitrum['0xe85b662fe97e8562f4099d8a1d5a92d4b453bf30'],
     quotaToken: TokensBook.arbitrum['0x82af49447d8a07e3bd95bd0d56f35241523fbab1'],
   },
-  LYRA_USDC: {
+  LYRA_WETH: {
     type: 'univ2',
-    chain: 'optimism',
-    address: '0xdb61f9b480f0a8b817811cfaa89a1c219c355224',
-    baseToken: TokensBook.optimism['0x50c5725949a6f0c72e6c4a641f24049a917db0cb'],
-    quotaToken: TokensBook.optimism['0x7f5c764cbc14f9669b88837ca1490cca17c31607'],
+    chain: 'ethereum',
+    address: '0x52dac05fc0000e9f01ce9a1e91592bfbfce87350',
+    baseToken: TokensBook.ethereum['0x01ba67aac7f75f647d94220cc98fb30fcc5105bf'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
   DHT_WETH: {
     type: 'univ2',

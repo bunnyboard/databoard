@@ -902,8 +902,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv2List.TORN_WETH],
   },
   LYRA: {
-    currency: 'usd',
-    sources: [OracleSourceUniswapv2List.LYRA_USDC],
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.LYRA_WETH],
   },
   USX: {
     currency: 'usd',
