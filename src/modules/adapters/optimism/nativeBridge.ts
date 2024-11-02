@@ -12,21 +12,26 @@ import { OptimismBridgeProtocolConfig } from '../../../configs/protocols/optimis
 import { ContractCall } from '../../../services/blockchains/domains';
 import L1StandardBridgeAbi from '../../../configs/abi/optimism/L1StandardBridge.json';
 
-const Events = {
-  // for ETH
-  ETHDepositInitiated: '0x35d79ab81f2b2017e19afb5c5571778877782d7a8786f5907f93b0f4702f4f23',
-  ETHWithdrawalFinalized: '0x2ac69ee804d9a7a0984249f508dfab7cb2534b465b6ce1580f99a38ba9c5e631',
-
-  // for ERC20
-  ERC20DepositInitiated: '0x718594027abd4eaed59f95162563e0cc6d0e8d5b86b1c7be8b1b0ac3343d0396',
-  ERC20WithdrawalFinalized: '0x3ceee06c1e37648fcbb6ed52e17b3e1f275a1f8c7b22a84b2b84732431e046b3',
-};
-
 export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.optimism';
 
+  protected readonly abiConfigs: any;
+
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {
     super(services, storages, protocolConfig);
+
+    this.abiConfigs = {
+      events: {
+        // for ETH
+        ETHDepositInitiated: '0x35d79ab81f2b2017e19afb5c5571778877782d7a8786f5907f93b0f4702f4f23',
+        ETHWithdrawalFinalized: '0x2ac69ee804d9a7a0984249f508dfab7cb2534b465b6ce1580f99a38ba9c5e631',
+
+        // for ERC20
+        ERC20DepositInitiated: '0x718594027abd4eaed59f95162563e0cc6d0e8d5b86b1c7be8b1b0ac3343d0396',
+        ERC20WithdrawalFinalized: '0x3ceee06c1e37648fcbb6ed52e17b3e1f275a1f8c7b22a84b2b84732431e046b3',
+      },
+      abi: L1StandardBridgeAbi,
+    };
   }
 
   public async getProtocolData(options: GetProtocolDataOptions): Promise<ProtocolData | null> {
@@ -113,7 +118,9 @@ export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
 
     // count ETH deposit/withdraw
     for (const log of logs.filter(
-      (item) => item.topics[0] === Events.ETHDepositInitiated || item.topics[0] === Events.ETHWithdrawalFinalized,
+      (item) =>
+        item.topics[0] === this.abiConfigs.events.ETHDepositInitiated ||
+        item.topics[0] === this.abiConfigs.events.ETHWithdrawalFinalized,
     )) {
       const event: any = decodeEventLog({
         abi: L1StandardBridgeAbi,
@@ -122,7 +129,7 @@ export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
       });
       const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), 18) * nativeTokenPriceUsd;
 
-      if (log.topics[0] === Events.ETHDepositInitiated) {
+      if (log.topics[0] === this.abiConfigs.events.ETHDepositInitiated) {
         (protocolData.volumes.bridge as number) += amountUsd;
         (protocolData.volumeBridgePaths as any)[optimismConfig.chain][optimismConfig.layer2Chain] += amountUsd;
         (protocolData.breakdown[optimismConfig.chain][AddressZero].volumes.bridge as number) += amountUsd;
@@ -175,7 +182,9 @@ export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
 
     // count bridge deposit/withdraw volumes
     for (const log of logs.filter(
-      (item) => item.topics[0] === Events.ERC20DepositInitiated || item.topics[0] === Events.ERC20WithdrawalFinalized,
+      (item) =>
+        item.topics[0] === this.abiConfigs.events.ERC20DepositInitiated ||
+        item.topics[0] === this.abiConfigs.events.ERC20WithdrawalFinalized,
     )) {
       const event: any = decodeEventLog({
         abi: L1StandardBridgeAbi,
@@ -212,7 +221,7 @@ export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
         }
         (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += amountUsd;
 
-        if (log.topics[0] === Events.ERC20DepositInitiated) {
+        if (log.topics[0] === this.abiConfigs.events.ERC20DepositInitiated) {
           (protocolData.volumeBridgePaths as any)[optimismConfig.chain][optimismConfig.layer2Chain] += amountUsd;
         } else {
           (protocolData.volumeBridgePaths as any)[optimismConfig.layer2Chain][optimismConfig.chain] += amountUsd;

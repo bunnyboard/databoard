@@ -79,6 +79,11 @@ import { LfjlendConfigs } from './protocols/lfj';
 import { EigenLayerConfigs } from './protocols/eigenlayer';
 import { SymbioticConfigs } from './protocols/symbiotic';
 import { KarakConfigs } from './protocols/karak';
+import { LineaNativeBridgeConfigs } from './protocols/linea';
+import { ZoraNativeBridgeConfigs } from './protocols/zora';
+import { WorldchainativeBridgeConfigs } from './protocols/worldchain';
+import { KromaNativeBridgeConfigs } from './protocols/kroma';
+import { MintNativeBridgeConfigs } from './protocols/mint';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -178,4 +183,9 @@ export const ProtocolConfigs = {
   eigenlayer: EigenLayerConfigs,
   symbiotic: SymbioticConfigs,
   karak: KarakConfigs,
+  lineaNativeBridge: LineaNativeBridgeConfigs,
+  zoraNativeBridge: ZoraNativeBridgeConfigs,
+  worldchainNativeBridge: WorldchainativeBridgeConfigs,
+  kromaNativeBridge: KromaNativeBridgeConfigs,
+  mintNativeBridge: MintNativeBridgeConfigs,
 };

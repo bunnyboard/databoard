@@ -1661,6 +1661,18 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.BLAST_WETH],
   },
+  SHIB: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SHIB_WETH],
+  },
+  XFIT: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.XFIT_USDT],
+  },
+  XMT: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.XMT_USDC],
+  },
   '0xBTC': {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List['0xBTC_WETH']],

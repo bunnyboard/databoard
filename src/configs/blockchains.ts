@@ -584,4 +584,28 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
       decimals: 18,
     },
   },
+  [ChainNames.kroma]: {
+    name: ChainNames.kroma,
+    family: 'evm',
+    chainId: 255,
+    nodeRpc: String(process.env.BLOCKCHAIN_KROMA_NODE),
+    nativeToken: {
+      chain: ChainNames.kroma,
+      address: AddressZero,
+      symbol: 'ETH',
+      decimals: 18,
+    },
+  },
+  [ChainNames.mint]: {
+    name: ChainNames.mint,
+    family: 'evm',
+    chainId: 185,
+    nodeRpc: String(process.env.BLOCKCHAIN_MINT_NODE),
+    nativeToken: {
+      chain: ChainNames.mint,
+      address: AddressZero,
+      symbol: 'ETH',
+      decimals: 18,
+    },
+  },
 };

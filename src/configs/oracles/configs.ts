@@ -318,6 +318,9 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x49446a0874197839d15395b908328a74ccc96bc0': OracleSourceConfigs.mstETH,
     '0x32bd822d615a3658a68b6fdd30c2fcb2c996d678': OracleSourceConfigs.swETH,
     '0xe46a5e19b19711332e33f33c2db3ea143e86bc10': OracleSourceConfigs.wBETH,
+    '0x4aa41bc1649c9c3177ed16caaa11482295fc7441': OracleSourceConfigs.XFIT,
+    '0x3e5d9d8a63cc8a88748f229999cf59487e90721e': OracleSourceConfigs.XMT,
+    '0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce': OracleSourceConfigs.SHIB,
 
     // todo need to find better oracle source
     '0x9d39a5de30e57443bff2a8307a4256c8797a3497': OracleSourceConfigs.USDT,
@@ -562,6 +565,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xcb59a0a753fdb7491d5f3d794316f1ade197b21e': OracleSourceConfigs.TUSD,
     '0xa00e3a3511aac35ca78530c85007afcd31753819': OracleSourceConfigs.KNC,
     '0xc5102fe9359fd9a28f877a67e36b0f050d81a3cc': OracleSourceConfigs.HOP,
+    '0x3e5d9d8a63cc8a88748f229999cf59487e90721e': OracleSourceConfigs.XMT,
   },
 
   // tokens on Base

@@ -6,9 +6,11 @@ export interface OptimismBridgeProtocolConfig extends ProtocolConfig {
 
   layer2Chain: string;
 
+  // OptimismPortalProxy
   // portal hold native ETH
   optimismPortal: string;
 
+  // L1StandardBridge
   // gateway hold ERC20 tokens
   // and execute bridge activities
   optimismGateway: string;

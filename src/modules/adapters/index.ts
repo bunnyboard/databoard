@@ -23,6 +23,7 @@ import LayerbankAdapter from './layerbank/layerbank';
 import LfjlendAdapter from './lfj/lfj';
 import LidoAdapter from './lido/lido';
 import LifiAdapter from './lifi/lifi';
+import LineaNativeBridgeAdapter from './linea/nativeBridge';
 import LiquidCollectiveAdapter from './liquidcollective/lseth';
 import LiquityAdapter from './liquity/liquity';
 import MakerAdapter from './maker/maker';
@@ -30,6 +31,7 @@ import MethAdapter from './meth/meth';
 import MoonwellAdapter from './moonwell/moonwell';
 import MorphoAdapter from './morpho/morpho';
 import OptimismNativeBridgeAdapter from './optimism/nativeBridge';
+import OptimismNativeBridgeAdapterV2 from './optimism/nativeBridgeV2';
 import PancakeAdapter from './pancake/pancake';
 import PolygonNativeBridgeAdapter from './polygon/nativeBridge';
 import RocketpoolAdapter from './rocketpool/rocketpool';
@@ -132,5 +134,10 @@ export function getProtocolAdapters(
     eigenlayer: new EigenLayerAdapter(services, storages, ProtocolConfigs.eigenlayer),
     symbiotic: new SymbioticAdapter(services, storages, ProtocolConfigs.symbiotic),
     karak: new KarakAdapter(services, storages, ProtocolConfigs.karak),
+    lineaNativeBridge: new LineaNativeBridgeAdapter(services, storages, ProtocolConfigs.lineaNativeBridge),
+    zoraNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.zoraNativeBridge),
+    worldchainNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.worldchainNativeBridge),
+    kromaNativeBridge: new OptimismNativeBridgeAdapterV2(services, storages, ProtocolConfigs.kromaNativeBridge),
+    mintNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.mintNativeBridge),
   };
 }
