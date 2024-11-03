@@ -16,6 +16,8 @@ export const SpookyConfigs: UniswapProtocolConfig = {
       version: Pool2Types.univ2,
       factory: '0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3',
       birthday: 1618704000, // Sun Apr 18 2021 00:00:00 GMT+0000
+      feeRateForLiquidityProviders: 0.0017, // 0.17% -> LP
+      feeRateForProtocol: 0.0003, // 0.03% -> protocol, xBOO
       wrappedNative: PublicAddresses.fantom.wftm,
       whitelistedPools: SpookyPools.filter((pool) => pool.chain === ChainNames.fantom).filter((pool) =>
         compareAddress(pool.factory, '0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3'),

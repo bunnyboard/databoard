@@ -97,6 +97,13 @@ export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
   base: 5000,
 };
 
+export const DefaultQueryChainLogsBlockRange = 100;
+export const CustomQueryChainLogsBlockRange: { [key: string]: number } = {
+  arbitrum: 1000,
+  optimism: 1000,
+  base: 1000,
+};
+
 export const DefaultMemcacheTime = 300; // 5 minutes
 
 export const TokenList: { [key: string]: { [key: string]: Token } } = TokensBook;

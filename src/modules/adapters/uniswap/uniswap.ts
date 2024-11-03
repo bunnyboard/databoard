@@ -31,12 +31,13 @@ export default class UniswapAdapter extends UniswapCore {
       birthday: this.protocolConfig.birthday,
       timestamp: options.timestamp,
       breakdown: {},
+      breakdownChains: {},
       ...getInitialProtocolCoreMetrics(),
       totalSupplied: 0,
       volumes: {
         deposit: 0,
         withdraw: 0,
-        trade: 0,
+        swap: 0,
       },
     };
 
@@ -45,6 +46,18 @@ export default class UniswapAdapter extends UniswapCore {
       if (dexConfig.birthday > options.timestamp) {
         // dex was not deployed yet
         continue;
+      }
+
+      if (!(protocolData.breakdownChains as any)[dexConfig.chain]) {
+        (protocolData.breakdownChains as any)[dexConfig.chain] = {
+          ...getInitialProtocolCoreMetrics(),
+          totalSupplied: 0,
+          volumes: {
+            deposit: 0,
+            withdraw: 0,
+            swap: 0,
+          },
+        };
       }
 
       const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
@@ -76,9 +89,22 @@ export default class UniswapAdapter extends UniswapCore {
         protocolData.totalFees += dexData.total.totalSwapFeeUsdForLps + dexData.total.totalSwapFeeUsdForProtocol;
         protocolData.supplySideRevenue += dexData.total.totalSwapFeeUsdForLps;
         protocolData.protocolRevenue += dexData.total.totalSwapFeeUsdForProtocol;
-        (protocolData.volumes.trade as number) += dexData.total.volumeSwapUsd;
+        (protocolData.volumes.swap as number) += dexData.total.volumeSwapUsd;
         (protocolData.volumes.deposit as number) += dexData.total.volumeAddLiquidityUsd;
         (protocolData.volumes.withdraw as number) += dexData.total.volumeRemoveLiquidityUsd;
+
+        (protocolData.breakdownChains as any)[dexConfig.chain].totalAssetDeposited += dexData.total.totalLiquidityUsd;
+        (protocolData.breakdownChains as any)[dexConfig.chain].totalValueLocked += dexData.total.totalLiquidityUsd;
+        (protocolData.breakdownChains as any)[dexConfig.chain].totalSupplied += dexData.total.totalLiquidityUsd;
+        (protocolData.breakdownChains as any)[dexConfig.chain].totalFees +=
+          dexData.total.totalSwapFeeUsdForLps + dexData.total.totalSwapFeeUsdForProtocol;
+        (protocolData.breakdownChains as any)[dexConfig.chain].supplySideRevenue += dexData.total.totalSwapFeeUsdForLps;
+        (protocolData.breakdownChains as any)[dexConfig.chain].protocolRevenue +=
+          dexData.total.totalSwapFeeUsdForProtocol;
+        (protocolData.breakdownChains as any)[dexConfig.chain].volumes.swap += dexData.total.volumeSwapUsd;
+        (protocolData.breakdownChains as any)[dexConfig.chain].volumes.deposit += dexData.total.volumeAddLiquidityUsd;
+        (protocolData.breakdownChains as any)[dexConfig.chain].volumes.withdraw +=
+          dexData.total.volumeRemoveLiquidityUsd;
       }
     }
 

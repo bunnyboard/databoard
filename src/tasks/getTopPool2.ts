@@ -18,8 +18,8 @@ const dataPath = './src/configs/data/pool2';
 
 const protocolConfigs: Array<UniswapProtocolConfig> = [
   // ProtocolConfigs.uniswap,
-  ProtocolConfigs.sushi,
-  // ProtocolConfigs.spooky,
+  // ProtocolConfigs.sushi,
+  ProtocolConfigs.spooky,
   // ProtocolConfigs.pancake,
   // ProtocolConfigs.katana,
   // ProtocolConfigs.camelot,

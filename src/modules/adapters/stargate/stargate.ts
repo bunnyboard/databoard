@@ -165,6 +165,18 @@ export default class StargateAdapter extends ProtocolAdapter {
           address: poolConfig.token,
         });
         if (token) {
+          if (!protocolData.breakdown[token.chain][token.address]) {
+            protocolData.breakdown[token.chain][token.address] = {
+              ...getInitialProtocolCoreMetrics(),
+              totalSupplied: 0,
+              volumes: {
+                deposit: 0,
+                withdraw: 0,
+                bridge: 0,
+              },
+            };
+          }
+
           const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
             chain: config.chain,
             address: poolConfig.token,

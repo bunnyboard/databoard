@@ -5,6 +5,7 @@ export const ProtocolCategories = {
   bridge: 'bridge',
   marketplace: 'marketplace',
   restaking: 'restaking',
+  blockchain: 'blockchain',
 };
 
 const AllProtocolCategories = Object.values(ProtocolCategories);

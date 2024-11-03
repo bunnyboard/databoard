@@ -144,10 +144,10 @@ export default class EigenLayerAdapter extends EigenLayerIndexer {
       timestamp: options.timestamp,
     });
 
-    // to query total ETH staked in Beacon chain
-    // we need get all Pod Deployed contracts
-    // by indexing PodDeployed events from PodManager contract
     if (await this.storages.database.isConnected()) {
+      // to query total ETH staked in Beacon chain
+      // we need get all Pod Deployed contracts
+      // by indexing PodDeployed events from PodManager contract
       await this.indexHistoricalLogs(eigenConfig);
 
       // now we count ETH staked by number of active validator * 32

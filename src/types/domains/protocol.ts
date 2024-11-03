@@ -44,7 +44,15 @@ export interface ProtocolCoreMetrics {
     flashloan?: number;
     redeemtion?: number;
 
-    // volume of swap/exchange on this token
+    // swap token volumes
+    // count every single token swap
+    swap?: number;
+
+    // the trade volume happend on protocol
+    // this is diff from swap
+    // for example, on dex aggregators platform
+    // a token trade can produce multiple token swap
+    // and we count trade volume only from input and output swap
     trade?: number;
 
     // volume of token was bridged from to other chains
@@ -78,6 +86,11 @@ export interface ProtocolData extends ProtocolCoreMetrics {
     [key: string]: {
       [key: string]: ProtocolCoreMetrics;
     };
+  };
+
+  // chain => ProtocolCoreMetrics
+  breakdownChains?: {
+    [key: string]: ProtocolCoreMetrics;
   };
 }
 

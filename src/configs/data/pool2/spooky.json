@@ -1944,6 +1944,26 @@
     "protocol": "spooky",
     "type": "univ2",
     "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0x8d4dff36ce759eedf6f8e6bfdd8dce0804472cfe",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "address": "0x78de9326792ce1d6eca0c978753c6953cdeedd73",
+      "symbol": "JUMP",
+      "decimals": 18
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
     "address": "0xbdc7dfb7b88183e87f003ca6b5a2f81202343478",
     "feeRate": 0.003,
     "token0": {
@@ -2217,6 +2237,26 @@
       "symbol": "DMD",
       "decimals": 18,
       "address": "0x90e892fed501ae00596448aecf998c88816e5c0f"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xddd72adf303e09db3bab5f429aea56a3f2f4b0d4",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "WV",
+      "decimals": 18,
+      "address": "0x911d1feae99e112b5014cfa60038325d863352f1"
     }
   },
   {
@@ -3224,6 +3264,26 @@
     "protocol": "spooky",
     "type": "univ2",
     "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xaf918ef5b9f33231764a5557881e6d3e5277d456",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "DEUS",
+      "decimals": 18,
+      "address": "0xde5ed76e7c05ec5e4572cfc88d1acea165109e44"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
     "address": "0x7f9e9dfdb0385a9b9e1f718968b05d6e73be7671",
     "feeRate": 0.003,
     "token0": {
@@ -3524,6 +3584,26 @@
     "protocol": "spooky",
     "type": "univ2",
     "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
+    "address": "0xe9e0b8c7047b83978fb66f4d418e7c46dea899b1",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "address": "0xed2a7edd7413021d440b09d654f3b87712abab66",
+      "symbol": "nUSD",
+      "decimals": 18
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ2",
+    "factory": "0x152ee697f2e276fa89e96742e9bb9ab1f2e61be3",
     "address": "0x6fafad224ac59206624eac35ca8471dc0fbec2c3",
     "feeRate": 0.003,
     "token0": {
@@ -3817,26 +3897,6 @@
       "symbol": "WAVAX",
       "decimals": 18,
       "address": "0x511d35c52a3c244e7b8bd92c0c297755fbd89212"
-    }
-  },
-  {
-    "chain": "fantom",
-    "protocol": "spooky",
-    "type": "univ3",
-    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
-    "address": "0x945b5a020fa6dbdd5eb228207322aa40f02b9023",
-    "feeRate": 0.0001,
-    "token0": {
-      "chain": "fantom",
-      "symbol": "WFTM",
-      "decimals": 18,
-      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
-    },
-    "token1": {
-      "chain": "fantom",
-      "symbol": "HEC",
-      "decimals": 9,
-      "address": "0x5c4fdfc5233f935f20d2adba572f770c2e377ab0"
     }
   },
   {
@@ -4864,8 +4924,8 @@
     "protocol": "spooky",
     "type": "univ3",
     "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
-    "address": "0x80b40d5ea2900e350d35ace4030f877ea10521df",
-    "feeRate": 0.01,
+    "address": "0x945b5a020fa6dbdd5eb228207322aa40f02b9023",
+    "feeRate": 0.0001,
     "token0": {
       "chain": "fantom",
       "symbol": "WFTM",
@@ -4874,9 +4934,9 @@
     },
     "token1": {
       "chain": "fantom",
-      "symbol": "RING",
-      "decimals": 18,
-      "address": "0x582423c10c9e83387a96d00a69ba3d11ee47b7b5"
+      "symbol": "HEC",
+      "decimals": 9,
+      "address": "0x5c4fdfc5233f935f20d2adba572f770c2e377ab0"
     }
   },
   {
@@ -4937,26 +4997,6 @@
       "symbol": "KIRBY",
       "decimals": 18,
       "address": "0x97bdafe3830734acf12da25359674277fcc33729"
-    }
-  },
-  {
-    "chain": "fantom",
-    "protocol": "spooky",
-    "type": "univ3",
-    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
-    "address": "0x7a0a31e9007d1eed090742075efe73774eb31d83",
-    "feeRate": 0.0001,
-    "token0": {
-      "chain": "fantom",
-      "symbol": "WFTM",
-      "decimals": 18,
-      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
-    },
-    "token1": {
-      "chain": "fantom",
-      "symbol": "LINK",
-      "decimals": 18,
-      "address": "0xb3654dc3d10ea7645f8319668e8f54d2574fbdc8"
     }
   },
   {
@@ -5037,46 +5077,6 @@
       "symbol": "DAI",
       "decimals": 18,
       "address": "0x8d11ec38a3eb5e956b052f67da8bdc9bef8abf3e"
-    }
-  },
-  {
-    "chain": "fantom",
-    "protocol": "spooky",
-    "type": "univ3",
-    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
-    "address": "0x9977e54e1d089cad73ff08ca3aeb68bb83ff710f",
-    "feeRate": 0.0005,
-    "token0": {
-      "chain": "fantom",
-      "symbol": "WFTM",
-      "decimals": 18,
-      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
-    },
-    "token1": {
-      "chain": "fantom",
-      "symbol": "LINK",
-      "decimals": 18,
-      "address": "0xb3654dc3d10ea7645f8319668e8f54d2574fbdc8"
-    }
-  },
-  {
-    "chain": "fantom",
-    "protocol": "spooky",
-    "type": "univ3",
-    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
-    "address": "0x7fdd9c4a44db25d6ffc1abc8dcee2c139aeb81e9",
-    "feeRate": 0.0005,
-    "token0": {
-      "chain": "fantom",
-      "symbol": "WFTM",
-      "decimals": 18,
-      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
-    },
-    "token1": {
-      "chain": "fantom",
-      "symbol": "BLACKY",
-      "decimals": 18,
-      "address": "0xb5fd949436772e07cbbf35fb6524e79924c54cb3"
     }
   },
   {
@@ -5424,8 +5424,8 @@
     "protocol": "spooky",
     "type": "univ3",
     "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
-    "address": "0xd97567230b91e951da891aa2502088fe16f51875",
-    "feeRate": 0.003,
+    "address": "0x80b40d5ea2900e350d35ace4030f877ea10521df",
+    "feeRate": 0.01,
     "token0": {
       "chain": "fantom",
       "symbol": "WFTM",
@@ -5434,49 +5434,9 @@
     },
     "token1": {
       "chain": "fantom",
-      "symbol": "SUSHI",
+      "symbol": "RING",
       "decimals": 18,
-      "address": "0xae75a438b2e0cb8bb01ec1e1e376de11d44477cc"
-    }
-  },
-  {
-    "chain": "fantom",
-    "protocol": "spooky",
-    "type": "univ3",
-    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
-    "address": "0xaa19a1989f5a9475e19e72870d4eb426f74af288",
-    "feeRate": 0.003,
-    "token0": {
-      "chain": "fantom",
-      "symbol": "WFTM",
-      "decimals": 18,
-      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
-    },
-    "token1": {
-      "chain": "fantom",
-      "symbol": "LINK",
-      "decimals": 18,
-      "address": "0xb3654dc3d10ea7645f8319668e8f54d2574fbdc8"
-    }
-  },
-  {
-    "chain": "fantom",
-    "protocol": "spooky",
-    "type": "univ3",
-    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
-    "address": "0x5d7ebaad125c855be2515bc7df9896cee8cef1b6",
-    "feeRate": 0.003,
-    "token0": {
-      "chain": "fantom",
-      "symbol": "WFTM",
-      "decimals": 18,
-      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
-    },
-    "token1": {
-      "chain": "fantom",
-      "symbol": "BLACKY",
-      "decimals": 18,
-      "address": "0xb5fd949436772e07cbbf35fb6524e79924c54cb3"
+      "address": "0x582423c10c9e83387a96d00a69ba3d11ee47b7b5"
     }
   },
   {
@@ -5844,8 +5804,8 @@
     "protocol": "spooky",
     "type": "univ3",
     "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
-    "address": "0x866d6438e252fcf35fd9e30bc5c60712c30289d7",
-    "feeRate": 0.01,
+    "address": "0x7a0a31e9007d1eed090742075efe73774eb31d83",
+    "feeRate": 0.0001,
     "token0": {
       "chain": "fantom",
       "symbol": "WFTM",
@@ -5854,9 +5814,29 @@
     },
     "token1": {
       "chain": "fantom",
-      "symbol": "BLACKY",
+      "symbol": "LINK",
       "decimals": 18,
-      "address": "0xb5fd949436772e07cbbf35fb6524e79924c54cb3"
+      "address": "0xb3654dc3d10ea7645f8319668e8f54d2574fbdc8"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xceef536551cfd96e98e57032c8e0fb065bc353b6",
+    "feeRate": 0.0001,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "USDT",
+      "decimals": 6,
+      "address": "0xcc1b99ddac1a33c201a742a1851662e87bc7f22c"
     }
   },
   {
@@ -5897,6 +5877,46 @@
       "symbol": "SFTMX",
       "decimals": 18,
       "address": "0xd7028092c830b5c8fce061af2e593413ebbc1fc1"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x9977e54e1d089cad73ff08ca3aeb68bb83ff710f",
+    "feeRate": 0.0005,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "LINK",
+      "decimals": 18,
+      "address": "0xb3654dc3d10ea7645f8319668e8f54d2574fbdc8"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x7fdd9c4a44db25d6ffc1abc8dcee2c139aeb81e9",
+    "feeRate": 0.0005,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BLACKY",
+      "decimals": 18,
+      "address": "0xb5fd949436772e07cbbf35fb6524e79924c54cb3"
     }
   },
   {
@@ -5977,6 +5997,66 @@
       "symbol": "CHILL",
       "decimals": 18,
       "address": "0xe47d957f83f8887063150aaf7187411351643392"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xd97567230b91e951da891aa2502088fe16f51875",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "SUSHI",
+      "decimals": 18,
+      "address": "0xae75a438b2e0cb8bb01ec1e1e376de11d44477cc"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xaa19a1989f5a9475e19e72870d4eb426f74af288",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "LINK",
+      "decimals": 18,
+      "address": "0xb3654dc3d10ea7645f8319668e8f54d2574fbdc8"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x5d7ebaad125c855be2515bc7df9896cee8cef1b6",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BLACKY",
+      "decimals": 18,
+      "address": "0xb5fd949436772e07cbbf35fb6524e79924c54cb3"
     }
   },
   {
@@ -6104,6 +6184,26 @@
     "protocol": "spooky",
     "type": "univ3",
     "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0xc14d06b125e10008021786eee717973de64d9dcf",
+    "feeRate": 0.003,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "DEUS",
+      "decimals": 18,
+      "address": "0xde5ed76e7c05ec5e4572cfc88d1acea165109e44"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
     "address": "0x98ccd2e0bb78118a0024fff847a5d3879daeecc5",
     "feeRate": 0.003,
     "token0": {
@@ -6217,6 +6317,26 @@
       "symbol": "BEETS",
       "decimals": 18,
       "address": "0xf24bcf4d1e507740041c9cfd2dddb29585adce1e"
+    }
+  },
+  {
+    "chain": "fantom",
+    "protocol": "spooky",
+    "type": "univ3",
+    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
+    "address": "0x866d6438e252fcf35fd9e30bc5c60712c30289d7",
+    "feeRate": 0.01,
+    "token0": {
+      "chain": "fantom",
+      "symbol": "WFTM",
+      "decimals": 18,
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+    },
+    "token1": {
+      "chain": "fantom",
+      "symbol": "BLACKY",
+      "decimals": 18,
+      "address": "0xb5fd949436772e07cbbf35fb6524e79924c54cb3"
     }
   },
   {

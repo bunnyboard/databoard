@@ -20,6 +20,9 @@ const envConfig: EnvConfig = {
   sentry: {
     dsn: process.env.SENTRY_DSN && process.env.SENTRY_DSN !== '' ? String(process.env.SENTRY_DSN) : null,
   },
+  etherscan: {
+    etherscanApiKey: String(process.env.ETHERSCAN_API_KEY),
+  },
 };
 
 export default envConfig;

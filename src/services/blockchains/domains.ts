@@ -36,6 +36,16 @@ export interface GetContractLogsOptions {
   blockRange?: number;
 }
 
+export interface GetAndFilterLogsOptions {
+  chain: string;
+  contracts: Array<string>;
+  fromBlock: number;
+  toBlock: number;
+
+  // log.topics[0]
+  signatures: Array<string>;
+}
+
 export interface ContractCall {
   target: string; // target/contract address
   abi: any; // target ABI
@@ -69,6 +79,9 @@ export interface IBlockchainService {
 
   // get contract raw logs
   getContractLogs: (options: GetContractLogsOptions) => Promise<Array<any>>;
+
+  // get and filter raw logs by address and topics[0]
+  getAndFilterLogs: (options: GetAndFilterLogsOptions) => Promise<Array<any>>;
 
   // read contract public method
   readContract: (call: ReadContractOptions) => Promise<any>;

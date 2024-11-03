@@ -60,4 +60,21 @@ export const DatabaseCollectionConfigs: DatabaseCollectionConfig = {
       },
     ],
   },
+  ecosystemDataStates: {
+    name: `${CollectionPrefix}.ecosystemDataStates`,
+    indies: [
+      {
+        protocol: 1,
+      },
+    ],
+  },
+  ecosystemDataSnapshots: {
+    name: `${CollectionPrefix}.ecosystemDataSnapshots`,
+    indies: [
+      {
+        protocol: 1,
+        timestamp: 1,
+      },
+    ],
+  },
 };

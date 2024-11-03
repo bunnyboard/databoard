@@ -37,6 +37,10 @@ export interface DatabaseCollectionConfig {
 
   // save blockchains data historical/snapshots
   blockchainDataSnapshots: MongoCollectionConfig;
+
+  // save special/ecosystem data/snapshots
+  ecosystemDataStates: MongoCollectionConfig;
+  ecosystemDataSnapshots: MongoCollectionConfig;
 }
 
 export interface EnvConfig {
@@ -58,5 +62,10 @@ export interface EnvConfig {
   // config sentry for errors tracing
   sentry: {
     dsn: string | null;
+  };
+
+  // etherscan api keys
+  etherscan: {
+    etherscanApiKey: string;
   };
 }

@@ -1,7 +1,13 @@
 import BigNumber from 'bignumber.js';
 import { Address, PublicClient, createPublicClient, http } from 'viem';
 
-import { CustomQueryContractLogsBlockRange, DefaultQueryContractLogsBlockRange, TokenList } from '../../configs';
+import {
+  CustomQueryContractLogsBlockRange,
+  DefaultQueryContractLogsBlockRange,
+  CustomQueryChainLogsBlockRange,
+  DefaultQueryChainLogsBlockRange,
+  TokenList,
+} from '../../configs';
 import ERC20Abi from '../../configs/abi/ERC20.json';
 import { AddressE, AddressF, AddressMulticall3, AddressZero, AddressOne } from '../../configs/constants';
 import EnvConfig from '../../configs/envConfig';
@@ -9,6 +15,7 @@ import logger from '../../lib/logger';
 import { compareAddress, normalizeAddress, sleep } from '../../lib/utils';
 import { CachingService } from '../caching/caching';
 import {
+  GetAndFilterLogsOptions,
   GetContractLogsOptions,
   GetTokenBalanceOptions,
   GetTokenOptions,
@@ -202,6 +209,69 @@ export default class BlockchainService extends CachingService implements IBlockc
     }
 
     return logs;
+  }
+
+  // get logs from multiple contracts
+  // it help reduce time by scan all logs from blocks
+  // and filter them by contract addresses and signatures
+  public async getAndFilterLogs(options: GetAndFilterLogsOptions): Promise<Array<any>> {
+    let filteredLogs: Array<any> = [];
+
+    const client = this.getPublicClient(options.chain);
+
+    const blockRange = CustomQueryChainLogsBlockRange[options.chain]
+      ? CustomQueryChainLogsBlockRange[options.chain]
+      : DefaultQueryChainLogsBlockRange;
+
+    // caching for logging
+    let lastProgressPercentage = 0;
+    let totalLogsCount = 0;
+
+    let startBlock = options.fromBlock;
+
+    while (startBlock <= options.toBlock) {
+      const logs = await client.getLogs({
+        fromBlock: BigInt(startBlock),
+        toBlock: BigInt(startBlock + blockRange),
+      });
+
+      filteredLogs = filteredLogs.concat(
+        logs
+          .filter(
+            (log) =>
+              options.contracts.length === 0 ||
+              options.contracts.filter((contract) => compareAddress(contract, log.address))[0] !== undefined,
+          )
+          .filter(
+            (log) =>
+              options.signatures.length === 0 ||
+              options.signatures.filter((signature) => signature === log.topics[0])[0] !== undefined,
+          ),
+      );
+
+      totalLogsCount += logs.length;
+      const processBlocks = startBlock - options.fromBlock;
+      const progress = (processBlocks / (options.toBlock - options.fromBlock)) * 100;
+
+      // less logs
+      if (progress - lastProgressPercentage >= 5) {
+        logger.debug('getting and filtering chain logs', {
+          service: this.name,
+          chain: options.chain,
+          contracts: options.contracts.length,
+          signatures: options.signatures.length,
+          blocks: `${startBlock}->${options.toBlock}`,
+          progress: `${progress.toFixed(2)}%`,
+          chainLogs: totalLogsCount,
+          filteredLogs: filteredLogs.length,
+        });
+        lastProgressPercentage = progress;
+      }
+
+      startBlock += blockRange + 1;
+    }
+
+    return filteredLogs;
   }
 
   public async readContract(options: ReadContractOptions): Promise<any> {

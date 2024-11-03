@@ -4,5 +4,6 @@ export const OracleTokenBlacklists: { [key: string]: Array<string> } = {
     '0xc982b228c7b1c49a7187216ce885f396904024f0',
     '0x59aaf835d34b1e3df2170e4872b785f11e2a964b',
     '0xbc77067f829979812d795d516e523c4033b66409',
+    '0x9660af3b1955648a72f5c958e80449032d645755',
   ],
 };

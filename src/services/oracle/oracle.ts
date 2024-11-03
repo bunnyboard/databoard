@@ -197,10 +197,6 @@ export default class OracleService extends CachingService implements IOracleServ
   }
 
   private async getTokenPriceUsd(options: GetTokenPriceOptions): Promise<string | null> {
-    if (OracleTokenBlacklists[options.chain] && OracleTokenBlacklists[options.chain].includes(options.address)) {
-      return null;
-    }
-
     let returnPrice = null;
     options.address = normalizeAddress(options.address);
 
@@ -358,6 +354,10 @@ export default class OracleService extends CachingService implements IOracleServ
   }
 
   public async getTokenPriceUsdRounded(options: GetTokenPriceOptions): Promise<number> {
+    if (OracleTokenBlacklists[options.chain] && OracleTokenBlacklists[options.chain].includes(options.address)) {
+      return 0;
+    }
+
     const cachingKey = `${options.chain}:${options.address}:${options.timestamp}`;
     const cachingPriceUsd = await this.getCachingData(cachingKey);
     if (cachingPriceUsd !== undefined && cachingPriceUsd !== null) {
