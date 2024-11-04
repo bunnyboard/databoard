@@ -132,7 +132,8 @@ export default class EthereumEcosystemAdapter extends ProtocolAdapter {
     let totalBaseFee = new BigNumber(0);
     const senderAddress: { [key: string]: boolean } = {};
     while (indexBlock <= endBlock) {
-      const blockData = await this.getBlockData(envConfig.blockchains[ethereumConfig.chain].nodeRpc, indexBlock);
+      const randomEndpoint = ethereumConfig.publicRpcs[Math.floor(Math.random() * ethereumConfig.publicRpcs.length)];
+      const blockData = await this.getBlockData(randomEndpoint, indexBlock);
 
       if (blockData.block) {
         ethereumProtocolData.blockCount += 1;
