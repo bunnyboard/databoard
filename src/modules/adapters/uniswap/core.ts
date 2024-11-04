@@ -87,7 +87,7 @@ export default class UniswapCore extends ProtocolAdapter {
       }
 
       // query balances
-      const balanceResults: Array<any> = await this.services.blockchain.evm.multicall3({
+      const balanceResults: Array<any> = await this.services.blockchain.evm.multicall({
         chain: options.dexConfig.chain,
         blockNumber: options.blockNumber,
         calls: balanceCalls,
@@ -96,8 +96,14 @@ export default class UniswapCore extends ProtocolAdapter {
       for (let i = 0; i < queryPools.length; i++) {
         const pool2 = queryPools[i];
 
-        const balance0 = formatBigNumberToNumber(balanceResults[i * 2].toString(), pool2.token0.decimals);
-        const balance1 = formatBigNumberToNumber(balanceResults[i * 2 + 1].toString(), pool2.token1.decimals);
+        const balance0 = formatBigNumberToNumber(
+          balanceResults[i * 2] ? balanceResults[i * 2].toString() : '0',
+          pool2.token0.decimals,
+        );
+        const balance1 = formatBigNumberToNumber(
+          balanceResults[i * 2 + 1] ? balanceResults[i * 2 + 1].toString() : '0',
+          pool2.token1.decimals,
+        );
 
         const baseTokenAddress = this.helperGetBaseTokenAddress(pool2);
         if (baseTokenAddress) {
