@@ -12,6 +12,7 @@ import CurvelendAdapter from './curve/curvelend';
 import CurveusdAdapter from './curve/curveusd';
 import DineroAdapter from './dinero/dinero';
 import EigenLayerAdapter from './eigenlayer/eigenlayer';
+import EthereumEcosystemAdapter from './ethereum/ecosystem';
 import EulerAdapter from './euler/euler';
 import FluidAdapter from './fluid/fluid';
 import FraxEtherAdapter from './frax/fraxether';
@@ -54,6 +55,7 @@ export function getProtocolAdapters(
   storages: ContextStorages,
 ): { [key: string]: IProtocolAdapter } {
   return {
+    ethereum: new EthereumEcosystemAdapter(services, storages, ProtocolConfigs.ethereum),
     aave: new AaveAdapter(services, storages, ProtocolConfigs.aave),
     // ajna: new AjnaAdapter(services, storages, ProtocolConfigs.ajna),
     // avalon: new AaveAdapter(services, storages, ProtocolConfigs.avalon),

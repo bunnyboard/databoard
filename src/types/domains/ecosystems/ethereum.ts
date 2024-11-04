@@ -2,11 +2,6 @@
 
 import { ProtocolCategory } from '../../base';
 
-export interface AddressAndValue {
-  address: string;
-  value: number;
-}
-
 export interface EthereumChainMetrics {
   // number of blocks were processed
   // in the period of time
@@ -19,9 +14,6 @@ export interface EthereumChainMetrics {
   // number of active addresses
   // count by transactions sender address
   senderAddressCount: number;
-
-  // number of contracts were interacted in transactions
-  calledContractCount: number;
 
   // number of new contracts were depoloyed
   deployedContractCount: number;
@@ -36,20 +28,34 @@ export interface EthereumChainMetrics {
   // total eth fees paid by transactions senders
   ethFeePaid: number;
 
-  // total eth rewards to validators
-  ethRewards: number;
-
   // total new eth were deposited into beacon chain
-  ethDepositedToBeaconchain: number;
+  ethDepositToBeaconchain: number;
 
   // total eth were withdrawn from beacon chain
-  ethWithdrawnFromBeaconchain: number;
+  ethWithdrawFromBeaconchain: number;
 
   // total gas limited
   totalGasLimited: string;
 
   // total gas used
-  totalGasUsed: number;
+  totalGasUsed: string;
+
+  // avg. base fee per gas, value in gwei
+  avgBaseFeePerGas: number;
+}
+
+export interface EthSupplyMetrics {
+  // total ETH were ever minted and existed
+  ethTotalSupply: number;
+
+  // total ETH were burnt
+  ethTotalBurnt: number;
+
+  // total ETH were rewards from staking
+  ethTotalRerwards: number;
+
+  // ethTotalSupply + ethTotalRerwards - ethTotalBurnt
+  ethCirculatingSupply: number;
 }
 
 export interface EthereumProtocolData extends EthereumChainMetrics {
@@ -61,4 +67,22 @@ export interface EthereumProtocolData extends EthereumChainMetrics {
 
   // timestamp
   timestamp: number;
+
+  // price of ETH token
+  ethPriceUsd: number;
+
+  // eth supply metrics
+  ethSupply: EthSupplyMetrics | null;
+
+  // depositor (txn sender)
+  beaconDepositors: {
+    // address => ETH amount
+    [key: string]: number;
+  };
+
+  // validator - block fee recipient and rewards
+  feeRecipients: {
+    // address => ETH amount
+    [key: string]: number;
+  };
 }

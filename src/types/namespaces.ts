@@ -4,7 +4,6 @@ import { IDatabaseService } from '../services/database/domains';
 import { IOracleService } from '../services/oracle/domains';
 import { ProtocolConfig } from './base';
 import { Blockchain } from './configs';
-import { ProtocolData } from './domains/protocol';
 import { GetProtocolDataOptions, RunAdapterOptions, TestAdapterOptions } from './options';
 
 export interface ContextStorages {
@@ -30,7 +29,7 @@ export interface IProtocolAdapter {
   protocolConfig: ProtocolConfig;
 
   // query protocol data
-  getProtocolData: (options: GetProtocolDataOptions) => Promise<ProtocolData | null>;
+  getProtocolData: (options: GetProtocolDataOptions) => Promise<any | null>;
 
   run: (options: RunAdapterOptions) => Promise<void>;
 

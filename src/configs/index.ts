@@ -84,6 +84,7 @@ import { ZoraNativeBridgeConfigs } from './protocols/zora';
 import { WorldchainativeBridgeConfigs } from './protocols/worldchain';
 import { KromaNativeBridgeConfigs } from './protocols/kroma';
 import { MintNativeBridgeConfigs } from './protocols/mint';
+import { EthereumConfigs } from './protocols/ethereum';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -101,7 +102,7 @@ export const DefaultQueryChainLogsBlockRange = 100;
 export const CustomQueryChainLogsBlockRange: { [key: string]: number } = {
   arbitrum: 1000,
   optimism: 1000,
-  base: 1000,
+  base: 500,
 };
 
 export const DefaultMemcacheTime = 300; // 5 minutes
@@ -110,6 +111,7 @@ export const TokenList: { [key: string]: { [key: string]: Token } } = TokensBook
 export const TokenDexBase: { [key: string]: Array<string> } = TokenBookDexBase;
 
 export const ProtocolConfigs = {
+  ethereum: EthereumConfigs,
   aave: AaveConfigs,
   ajna: AjnaConfigs,
   avalon: AvalonConfigs,
