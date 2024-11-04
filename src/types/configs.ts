@@ -37,10 +37,6 @@ export interface DatabaseCollectionConfig {
 
   // save blockchains data historical/snapshots
   blockchainDataSnapshots: MongoCollectionConfig;
-
-  // save special/ecosystem data/snapshots
-  ecosystemDataStates: MongoCollectionConfig;
-  ecosystemDataSnapshots: MongoCollectionConfig;
 }
 
 export interface EnvConfig {

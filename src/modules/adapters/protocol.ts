@@ -12,7 +12,6 @@ import {
 import { ContractCall } from '../../services/blockchains/domains';
 import ExecuteSession from '../../services/executeSession';
 import { ProtocolConfig, Token } from '../../types/base';
-import { ProtocolData } from '../../types/domains/protocol';
 import { ContextServices, ContextStorages, IProtocolAdapter } from '../../types/namespaces';
 import { GetProtocolDataOptions, RunAdapterOptions, TestAdapterOptions } from '../../types/options';
 import Erc20Abi from '../../configs/abi/ERC20.json';
@@ -51,7 +50,7 @@ export default class ProtocolAdapter implements IProtocolAdapter {
     this.executeSession = new ExecuteSession();
   }
 
-  public async getProtocolData(options: GetProtocolDataOptions): Promise<ProtocolData | null> {
+  public async getProtocolData(options: GetProtocolDataOptions): Promise<any | null> {
     return null;
   }
 
