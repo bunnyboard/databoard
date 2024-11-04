@@ -9,6 +9,9 @@ export interface GetTokenPriceOptions {
 
   // it will be converted to block number to query on-chain data
   timestamp: number;
+
+  // disable warning logs
+  disableWarning?: boolean;
 }
 
 export interface IOracleService {

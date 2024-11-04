@@ -8,6 +8,7 @@ import BungeeAdapter from './bungee/bungee';
 import CbridgeAdapter from './celer/cbridge';
 import CircleCctpAdapter from './circle/circlecctp';
 import CompoundAdapter from './compound/compound';
+import CowswapAdapter from './cowswap/cowswap';
 import CurvelendAdapter from './curve/curvelend';
 import CurveusdAdapter from './curve/curveusd';
 import DineroAdapter from './dinero/dinero';
@@ -16,6 +17,7 @@ import EthereumEcosystemAdapter from './ethereum/ecosystem';
 import EulerAdapter from './euler/euler';
 import FluidAdapter from './fluid/fluid';
 import FraxEtherAdapter from './frax/fraxether';
+import FraxlendAdapter from './frax/fraxlend';
 import GnosisNativeBridgeAdapter from './gnosis/nativeBridge';
 import HopAdapter from './hop/hop';
 import HyphenAdapter from './hyphen/hyphen';
@@ -62,7 +64,7 @@ export function getProtocolAdapters(
     benqi: new BenqiAdapter(services, storages, ProtocolConfigs.benqi),
     colend: new AaveAdapter(services, storages, ProtocolConfigs.colend),
     compound: new CompoundAdapter(services, storages, ProtocolConfigs.compound),
-    // cowswap: new CowswapAdapter(services, storages, ProtocolConfigs.cowswap),
+    cowswap: new CowswapAdapter(services, storages, ProtocolConfigs.cowswap),
     hana: new AaveAdapter(services, storages, ProtocolConfigs.hana),
     ionic: new CompoundAdapter(services, storages, ProtocolConfigs.ionic),
     // ironbank: new CompoundAdapter(services, storages, ProtocolConfigs.ironbank),
@@ -87,12 +89,12 @@ export function getProtocolAdapters(
     uniswap: new UniswapAdapter(services, storages, ProtocolConfigs.uniswap),
     // uwulend: new AaveAdapter(services, storages, ProtocolConfigs.uwulend),
     venus: new VenusAdapter(services, storages, ProtocolConfigs.venus),
-    // yeifinance: new AaveAdapter(services, storages, ProtocolConfigs.yeifinance),
+    yeifinance: new AaveAdapter(services, storages, ProtocolConfigs.yeifinance),
     zerolend: new AaveAdapter(services, storages, ProtocolConfigs.zerolend),
     euler: new EulerAdapter(services, storages, ProtocolConfigs.euler),
     liquity: new LiquityAdapter(services, storages, ProtocolConfigs.liquity),
     fluid: new FluidAdapter(services, storages, ProtocolConfigs.fluid),
-    // fraxlend: new FraxlendAdapter(services, storages, ProtocolConfigs.fraxlend),
+    fraxlend: new FraxlendAdapter(services, storages, ProtocolConfigs.fraxlend),
     fraxether: new FraxEtherAdapter(services, storages, ProtocolConfigs.fraxether),
     curveusd: new CurveusdAdapter(services, storages, ProtocolConfigs.curveusd),
     curvelend: new CurvelendAdapter(services, storages, ProtocolConfigs.curvelend),

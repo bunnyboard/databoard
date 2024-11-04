@@ -373,7 +373,7 @@ export default class OracleService extends CachingService implements IOracleServ
 
     await this.setCachingData(cachingKey, rawPrice ? Number(rawPrice) : 0);
 
-    if (!rawPrice) {
+    if (!rawPrice && !options.disableWarning) {
       logger.warn('failed to get token price', {
         service: this.name,
         chain: options.chain,

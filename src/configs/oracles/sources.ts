@@ -1033,6 +1033,18 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.LIT_WETH],
   },
+  SKY: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.SKY_WETH],
+  },
+  DRAGONX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.DRAGONX_WETH],
+  },
+  TOKE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.TOKE_WETH],
+  },
   rswETH: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.rswETH_WETH],
@@ -1086,8 +1098,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv2List.WRON_USDC],
   },
   RLB: {
-    currency: 'eth',
-    sources: [OracleSourceUniswapv3List.RLB_WETH],
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.RLB_USDT],
   },
   pzETH: {
     currency: 'wstETH',
@@ -1661,6 +1673,18 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.BLAST_WETH],
   },
+  TITANX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.TITANX_WETH],
+  },
+  DUSK: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.DUSK_USDT],
+  },
+  BOOE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BOOE_WETH],
+  },
   SHIB: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.SHIB_WETH],
@@ -1672,6 +1696,30 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   XMT: {
     currency: 'usd',
     sources: [OracleSourceUniswapv3List.XMT_USDC],
+  },
+  PIRATE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.PIRATE_WETH],
+  },
+  AIUS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.AIUS_WETH],
+  },
+  AZUR: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.AZUR_WETH],
+  },
+  FXN: {
+    currency: 'eth',
+    sources: [OracleSourceCurveList.FXN_ETH],
+  },
+  IXS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.IXS_WETH],
+  },
+  UwU: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.UwU_WETH],
   },
   '0xBTC': {
     currency: 'eth',
