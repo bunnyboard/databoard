@@ -36,6 +36,7 @@ import MorphoAdapter from './morpho/morpho';
 import OptimismNativeBridgeAdapter from './optimism/nativeBridge';
 import OptimismNativeBridgeAdapterV2 from './optimism/nativeBridgeV2';
 import PancakeAdapter from './pancake/pancake';
+import ParaswapAdapter from './paraswap/paraswap';
 import PolygonNativeBridgeAdapter from './polygon/nativeBridge';
 import RocketpoolAdapter from './rocketpool/rocketpool';
 import ScrollNativeBridgeAdapter from './scroll/nativeBridge';
@@ -143,5 +144,6 @@ export function getProtocolAdapters(
     worldchainNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.worldchainNativeBridge),
     kromaNativeBridge: new OptimismNativeBridgeAdapterV2(services, storages, ProtocolConfigs.kromaNativeBridge),
     mintNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.mintNativeBridge),
+    paraswap: new ParaswapAdapter(services, storages, ProtocolConfigs.paraswap),
   };
 }

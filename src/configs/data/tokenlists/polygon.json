@@ -1163,6 +1163,12 @@
     "decimals": 18,
     "address": "0x82e64f49ed5ec1bc6e43dad4fc8af9bb3a2312ee"
   },
+  "0x831753dd7087cac61ab5644b308642cc1c33dc13": {
+    "chain": "polygon",
+    "symbol": "QUICK",
+    "decimals": 18,
+    "address": "0x831753dd7087cac61ab5644b308642cc1c33dc13"
+  },
   "0x832ed1461ae5661739ba74999936ee72e3bbcda7": {
     "chain": "polygon",
     "symbol": "MTEST3",
@@ -1912,6 +1918,12 @@
     "symbol": "wBAN",
     "decimals": 18,
     "address": "0xe20b9e246db5a0d21bf9209e4858bc9a3ff7a034"
+  },
+  "0xe261d618a959afffd53168cd07d12e37b26761db": {
+    "chain": "polygon",
+    "symbol": "DIMO",
+    "decimals": 18,
+    "address": "0xe261d618a959afffd53168cd07d12e37b26761db"
   },
   "0xe3c16828ce661699413002f320909a49f20b982a": {
     "chain": "polygon",

@@ -611,6 +611,12 @@
     "decimals": 18,
     "address": "0x5a33869045db8a6a16c9f351293501cfd92cf7ed"
   },
+  "0x5b2af7fd27e2ea14945c82dd254c79d3ed34685e": {
+    "chain": "fantom",
+    "symbol": "JEFE",
+    "decimals": 9,
+    "address": "0x5b2af7fd27e2ea14945c82dd254c79d3ed34685e"
+  },
   "0x5b3c1f260e09e653290f24f75abc5e466fd42310": {
     "chain": "fantom",
     "symbol": "ASNT",
@@ -622,6 +628,12 @@
     "symbol": "HEC",
     "decimals": 9,
     "address": "0x5c4fdfc5233f935f20d2adba572f770c2e377ab0"
+  },
+  "0x5c725631fd299703d0a74c23f89a55c6b9a0c52f": {
+    "chain": "fantom",
+    "symbol": "POLTER",
+    "decimals": 18,
+    "address": "0x5c725631fd299703d0a74c23f89a55c6b9a0c52f"
   },
   "0x5cc61a78f164885776aa610fb0fe1257df78e59b": {
     "chain": "fantom",

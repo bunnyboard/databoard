@@ -85,6 +85,7 @@ import { WorldchainativeBridgeConfigs } from './protocols/worldchain';
 import { KromaNativeBridgeConfigs } from './protocols/kroma';
 import { MintNativeBridgeConfigs } from './protocols/mint';
 import { EthereumConfigs } from './protocols/ethereum';
+import { ParaswapConfigs } from './protocols/paraswap';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -197,4 +198,5 @@ export const ProtocolConfigs = {
   worldchainNativeBridge: WorldchainativeBridgeConfigs,
   kromaNativeBridge: KromaNativeBridgeConfigs,
   mintNativeBridge: MintNativeBridgeConfigs,
+  paraswap: ParaswapConfigs,
 };

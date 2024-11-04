@@ -1,6 +1,7 @@
 export const ProtocolCategories = {
   lending: 'lending',
   dex: 'dex',
+  dexAggregator: 'dexAggregator',
   liquidStaking: 'liquidStaking',
   bridge: 'bridge',
   marketplace: 'marketplace',

@@ -1037,6 +1037,102 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.SKY_WETH],
   },
+  SPX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SPX_WETH],
+  },
+  ARKM: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ARKM_WETH],
+  },
+  AGIX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.AGIX_WETH],
+  },
+  MSTR: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.MSTR_WETH],
+  },
+  NOCHILL: {
+    currency: 'avax',
+    sources: [OracleSourceUniswapv2List.NOCHILL_WAVAX],
+  },
+  ARENA: {
+    currency: 'avax',
+    sources: [OracleSourceUniswapv2List.ARENA_WAVAX],
+  },
+  WELL: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.WELL_WETH],
+  },
+  MAVIA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.MAVIA_WETH],
+  },
+  ILV: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ILV_WETH],
+  },
+  Mog: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.Mog_WETH],
+  },
+  MPL: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.MPL_WETH],
+  },
+  eETH: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.eETH_WETH],
+  },
+  PROS: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.PROS_WBNB],
+  },
+  BOO: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.BOO_WFTM],
+  },
+  POLTER: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.POLTER_WFTM],
+  },
+  JEFE: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.JEFE_WFTM],
+  },
+  sFTMx: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.sFTMx_WFTM],
+  },
+  ICE: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.ICE_WFTM],
+  },
+  RAM: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.RAM_WETH],
+  },
+  KEYCAT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.KEYCAT_WETH],
+  },
+  DIMO: {
+    currency: 'matic',
+    sources: [OracleSourceUniswapv3List.DIMO_WMPOL],
+  },
+  GOON: {
+    currency: 'matic',
+    sources: [OracleSourceUniswapv2List.GOON_WPOL],
+  },
+  TEL: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.TEL_USDC],
+  },
+  QUICK: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.QUICK_USDC],
+  },
   DRAGONX: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.DRAGONX_WETH],

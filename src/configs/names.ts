@@ -183,4 +183,5 @@ export const ProtocolNames = {
   eigenlayer: 'eigenlayer',
   symbiotic: 'symbiotic',
   karak: 'karak',
+  paraswap: 'paraswap',
 };

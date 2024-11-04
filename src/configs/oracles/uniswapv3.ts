@@ -492,6 +492,27 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.ethereum['0xfd0205066521550d7d7ab19da8f72bb004b4c341'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
+  MPL_WETH: {
+    type: 'univ3',
+    chain: 'ethereum',
+    address: '0x9f41a3ac0c16a9feb5400751a34c609211839cfa',
+    baseToken: TokensBook.ethereum['0x33349b282065b0284d756f0577fb39c158f935e6'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
+  ARKM_WETH: {
+    type: 'univ3',
+    chain: 'ethereum',
+    address: '0x9cb91e5451d29c84b51ffd40df0b724b639bf841',
+    baseToken: TokensBook.ethereum['0x6e2a43be0b1d33b726f0ca3b8de60b3482b8b050'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
+  MAVIA_WETH: {
+    type: 'univ3',
+    chain: 'ethereum',
+    address: '0x6a888fb73f13104473a4bdfb1beb220ac1eafda3',
+    baseToken: TokensBook.ethereum['0x24fcfc492c1393274b6bcd568ac9e225bec93584'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
   SKY_WETH: {
     type: 'univ3',
     chain: 'ethereum',
@@ -932,6 +953,13 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     address: '0x12e79eb21dcc5852f9c6ac1736d977312925da33',
     baseToken: TokensBook.bnbchain['0x0782b6d8c4551b9760e74c0545a9bcd90bdc41e5'],
     quotaToken: TokensBook.bnbchain['0x55d398326f99059ff775485246999027b3197955'],
+  },
+  DIMO_WMPOL: {
+    type: 'univ3',
+    chain: 'polygon',
+    address: '0x41e64a5bc929fa8e6a9c8d7e3b81a13b21ff3045',
+    baseToken: TokensBook.polygon['0xe261d618a959afffd53168cd07d12e37b26761db'],
+    quotaToken: TokensBook.polygon['0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270'],
   },
   snBNB_WBNB: {
     type: 'univ3',

@@ -1763,6 +1763,12 @@
     "decimals": 18,
     "address": "0xa970af1a584579b618be4d69ad6f73459d112f95"
   },
+  "0xaaa6c1e32c55a7bfa8066a6fae9b42650f262418": {
+    "chain": "arbitrum",
+    "symbol": "RAM",
+    "decimals": 18,
+    "address": "0xaaa6c1e32c55a7bfa8066a6fae9b42650f262418"
+  },
   "0xacc51ffdef63fb0c014c882267c3a17261a5ed50": {
     "chain": "arbitrum",
     "symbol": "SYK",

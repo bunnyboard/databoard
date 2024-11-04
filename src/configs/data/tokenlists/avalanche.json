@@ -2207,6 +2207,12 @@
     "decimals": 18,
     "address": "0xb84527d59b6ecb96f433029ecc890d4492c5dce1"
   },
+  "0xb8d7710f7d8349a506b75dd184f05777c82dad0c": {
+    "chain": "avalanche",
+    "symbol": "ARENA",
+    "decimals": 18,
+    "address": "0xb8d7710f7d8349a506b75dd184f05777c82dad0c"
+  },
   "0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e": {
     "chain": "avalanche",
     "symbol": "USDC",
