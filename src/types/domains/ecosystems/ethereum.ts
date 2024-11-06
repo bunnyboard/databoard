@@ -85,4 +85,16 @@ export interface EthereumProtocolData extends EthereumChainMetrics {
     // address => ETH amount
     [key: string]: number;
   };
+
+  // sender address - fee paid
+  gasSpenders: {
+    // address => ETH amount
+    [key: string]: number;
+  };
+
+  // to address - fee paid
+  gasConsumers: {
+    // address => ETH amount
+    [key: string]: number;
+  };
 }

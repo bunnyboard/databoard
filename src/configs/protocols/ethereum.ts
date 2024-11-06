@@ -6,6 +6,8 @@ export interface EthereumProtocolConfig extends ProtocolConfig {
   chain: string;
   beaconDepositContract: string;
   beaconDepositContractBirthhday: number;
+
+  // these rpcs must support eth_blockReceipts method
   publicRpcs: Array<string>;
 }
 
@@ -20,8 +22,9 @@ export const EthereumConfigs: EthereumProtocolConfig = {
     'https://eth.llamarpc.com',
     'https://rpc.ankr.com/eth',
     'https://eth-pokt.nodies.app',
-    'https://1rpc.io/eth',
     'https://eth.meowrpc.com',
+    'https://rpc.mevblocker.io',
     'https://rpc.mevblocker.io/fast',
+    'https://rpc.flashbots.net',
   ],
 };

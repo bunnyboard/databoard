@@ -32,15 +32,35 @@ export default class EthereumEcosystemAdapter extends ProtocolAdapter {
   }
 
   private async getBlockData(rpc: string, blockNumber: number): Promise<GetBlockDataResult> {
+    const databaseConnected = await this.storages.database.isConnected();
+
+    if (databaseConnected) {
+      const caching = await this.storages.database.find({
+        collection: envConfig.mongodb.collections.caching.name,
+        query: {
+          name: `ethereum-block-${blockNumber}`,
+        },
+      });
+      if (caching) {
+        return {
+          block: caching.block,
+          receipts: caching.receipts,
+        };
+      }
+    }
+
     const result: GetBlockDataResult = {
       block: null,
       receipts: [],
     };
 
     let response = await axios.post(rpc, {
+      id: 'any',
+      jsonrpc: '2.0',
       method: 'eth_getBlockByNumber',
       params: [`0x${blockNumber.toString(16)}`, true],
     });
+
     if (response.data && response.data.result) {
       result.block = response.data.result;
     }
@@ -48,11 +68,30 @@ export default class EthereumEcosystemAdapter extends ProtocolAdapter {
     await sleep(0.5);
 
     response = await axios.post(rpc, {
+      id: 'any',
+      jsonrpc: '2.0',
       method: 'eth_getBlockReceipts',
       params: [`0x${blockNumber.toString(16)}`],
     });
     if (response.data && response.data.result) {
       result.receipts = response.data.result;
+    }
+
+    if (databaseConnected) {
+      await this.storages.database.update({
+        collection: envConfig.mongodb.collections.caching.name,
+        keys: {
+          name: `ethereum-block-${blockNumber}`,
+          blockNumber: blockNumber,
+        },
+        updates: {
+          name: `ethereum-block-${blockNumber}`,
+          blockNumber: blockNumber,
+          block: result.block,
+          receipts: result.receipts,
+        },
+        upsert: true,
+      });
     }
 
     return result;
@@ -81,6 +120,8 @@ export default class EthereumEcosystemAdapter extends ProtocolAdapter {
       ethSupply: null,
       beaconDepositors: {},
       feeRecipients: {},
+      gasSpenders: {},
+      gasConsumers: {},
     };
 
     // get eth supply if etherescan api key config found
@@ -201,6 +242,20 @@ export default class EthereumEcosystemAdapter extends ProtocolAdapter {
               ethereumProtocolData.beaconDepositors[depositor] += amount;
             }
           }
+
+          const senderAddress = normalizeAddress(receipt.from);
+          if (!ethereumProtocolData.gasSpenders[senderAddress]) {
+            ethereumProtocolData.gasSpenders[senderAddress] = 0;
+          }
+          ethereumProtocolData.gasSpenders[senderAddress] += fee;
+
+          const toAddress = receipt.to ? normalizeAddress(receipt.to) : null;
+          if (toAddress) {
+            if (!ethereumProtocolData.gasConsumers[toAddress]) {
+              ethereumProtocolData.gasConsumers[toAddress] = 0;
+            }
+            ethereumProtocolData.gasConsumers[toAddress] += fee;
+          }
         }
 
         const feeRecipient = normalizeAddress(blockData.block.miner);
@@ -210,6 +265,13 @@ export default class EthereumEcosystemAdapter extends ProtocolAdapter {
         }
         ethereumProtocolData.feeRecipients[feeRecipient] += blockReward;
         ethereumProtocolData.ethFeePaid += totalFeePaid;
+      } else {
+        logger.warn('failed to get ethereum block data', {
+          service: this.name,
+          chain: this.protocolConfig.protocol,
+          number: indexBlock,
+          rpc: randomEndpoint,
+        });
       }
 
       const processBlocks = indexBlock - beginBlock + 1;
