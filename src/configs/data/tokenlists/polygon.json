@@ -1517,6 +1517,12 @@
     "decimals": 18,
     "address": "0xb33eaad8d922b1083446dc23f610c2567fb5180f"
   },
+  "0xb5c064f955d8e7f38fe0460c556a72987494ee17": {
+    "chain": "polygon",
+    "symbol": "QUICK",
+    "decimals": 18,
+    "address": "0xb5c064f955d8e7f38fe0460c556a72987494ee17"
+  },
   "0xb5eac04d431d762f4c6d7f62fbdac0776b61d564": {
     "chain": "polygon",
     "symbol": "LDVWETH",

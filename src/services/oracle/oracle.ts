@@ -29,7 +29,7 @@ import Erc4626Abi from '../../configs/abi/ERC4626.json';
 import { OracleTokenBlacklists } from '../../configs/oracles/blacklists';
 import UniswapFactoryV2 from '../../configs/abi/uniswap/UniswapV2Factory.json';
 import UniswapFactoryV3 from '../../configs/abi/uniswap/UniswapV3Factory.json';
-import { AutoOracleConfigs } from '../../configs/oracles';
+import { AutoOracleConfigs } from '../../configs/oracles/auto';
 import { AddressZero } from '../../configs/constants';
 import { Token } from '../../types/base';
 

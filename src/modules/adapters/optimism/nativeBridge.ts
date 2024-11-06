@@ -123,7 +123,7 @@ export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
         item.topics[0] === this.abiConfigs.events.ETHWithdrawalFinalized,
     )) {
       const event: any = decodeEventLog({
-        abi: L1StandardBridgeAbi,
+        abi: this.abiConfigs.abi,
         topics: log.topics,
         data: log.data,
       });
@@ -187,7 +187,7 @@ export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
         item.topics[0] === this.abiConfigs.events.ERC20WithdrawalFinalized,
     )) {
       const event: any = decodeEventLog({
-        abi: L1StandardBridgeAbi,
+        abi: this.abiConfigs.abi,
         topics: log.topics,
         data: log.data,
       });

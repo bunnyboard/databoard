@@ -135,12 +135,12 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.polygon['0xdf7837de1f2fa4631d716cf2502f8b230f1dcc32'],
     quotaToken: TokensBook.polygon['0x2791bca1f2de4661ed88a30c99a7a9449aa84174'],
   },
-  QUICK_USDC: {
+  QUICK_WPOL: {
     type: 'univ2',
     chain: 'polygon',
-    address: '0x1f1e4c845183ef6d50e9609f16f6f9cae43bc9cb',
-    baseToken: TokensBook.polygon['0x831753dd7087cac61ab5644b308642cc1c33dc13'],
-    quotaToken: TokensBook.polygon['0x2791bca1f2de4661ed88a30c99a7a9449aa84174'],
+    address: '0xf3eb2f17eafbf35e92c965a954c6e7693187057d',
+    baseToken: TokensBook.polygon['0xb5c064f955d8e7f38fe0460c556a72987494ee17'],
+    quotaToken: TokensBook.polygon['0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270'],
   },
   KEYCAT_WETH: {
     type: 'univ2',

@@ -72,7 +72,7 @@ import { CamelotConfigs } from './protocols/camelot';
 import { HyphenConfigs } from './protocols/hyphen';
 import { CbridgeConfigs } from './protocols/celer';
 import { ZksyncNativeBridgeConfigs } from './protocols/zksync';
-import { PolygonNativeBridgeConfigs } from './protocols/polygon';
+import { PolygonNativeBridgeConfigs, PolygonZkevmNativeBridgeConfigs } from './protocols/polygon';
 import { HopConfigs } from './protocols/hop';
 import { GnosisNativeBridgeConfigs } from './protocols/gnosis';
 import { LfjlendConfigs } from './protocols/lfj';
@@ -86,6 +86,7 @@ import { KromaNativeBridgeConfigs } from './protocols/kroma';
 import { MintNativeBridgeConfigs } from './protocols/mint';
 import { EthereumConfigs } from './protocols/ethereum';
 import { ParaswapConfigs } from './protocols/paraswap';
+import { MetisNativeBridgeConfigs } from './protocols/metis';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -103,7 +104,6 @@ export const DefaultQueryChainLogsBlockRange = 100;
 export const CustomQueryChainLogsBlockRange: { [key: string]: number } = {
   arbitrum: 1000,
   optimism: 1000,
-  base: 500,
 };
 
 export const DefaultMemcacheTime = 300; // 5 minutes
@@ -187,6 +187,7 @@ export const ProtocolConfigs = {
   cbridge: CbridgeConfigs,
   zksyncNativeBridge: ZksyncNativeBridgeConfigs,
   polygonNativeBridge: PolygonNativeBridgeConfigs,
+  polygonzkevmNativeBridge: PolygonZkevmNativeBridgeConfigs,
   hop: HopConfigs,
   gnosisNativeBridge: GnosisNativeBridgeConfigs,
   lfjlend: LfjlendConfigs,
@@ -198,5 +199,6 @@ export const ProtocolConfigs = {
   worldchainNativeBridge: WorldchainativeBridgeConfigs,
   kromaNativeBridge: KromaNativeBridgeConfigs,
   mintNativeBridge: MintNativeBridgeConfigs,
+  metisNativeBridge: MetisNativeBridgeConfigs,
   paraswap: ParaswapConfigs,
 };

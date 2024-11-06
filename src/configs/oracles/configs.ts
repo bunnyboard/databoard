@@ -343,6 +343,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xaaee1a9723aadb7afa2810263653a34ba2c21c7a': OracleSourceConfigs.Mog,
     '0x33349b282065b0284d756f0577fb39c158f935e6': OracleSourceConfigs.MPL,
     '0x35fa164735182de50811e8e2e824cfb9b6118ac2': OracleSourceConfigs.eETH,
+    '0xd2ba23de8a19316a638dc1e7a9adda1d74233368': OracleSourceConfigs.QUICK,
 
     // todo need to find better oracle source
     '0x9d39a5de30e57443bff2a8307a4256c8797a3497': OracleSourceConfigs.USDT,

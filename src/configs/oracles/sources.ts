@@ -1130,8 +1130,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv2List.TEL_USDC],
   },
   QUICK: {
-    currency: 'usd',
-    sources: [OracleSourceUniswapv2List.QUICK_USDC],
+    currency: 'matic',
+    sources: [OracleSourceUniswapv2List.QUICK_WPOL],
   },
   DRAGONX: {
     currency: 'eth',

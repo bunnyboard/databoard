@@ -31,6 +31,7 @@ import LiquidCollectiveAdapter from './liquidcollective/lseth';
 import LiquityAdapter from './liquity/liquity';
 import MakerAdapter from './maker/maker';
 import MethAdapter from './meth/meth';
+import MetisNativeBridgeAdapter from './metis/nativeBridge';
 import MoonwellAdapter from './moonwell/moonwell';
 import MorphoAdapter from './morpho/morpho';
 import OptimismNativeBridgeAdapter from './optimism/nativeBridge';
@@ -38,6 +39,7 @@ import OptimismNativeBridgeAdapterV2 from './optimism/nativeBridgeV2';
 import PancakeAdapter from './pancake/pancake';
 import ParaswapAdapter from './paraswap/paraswap';
 import PolygonNativeBridgeAdapter from './polygon/nativeBridge';
+import PolygonZzkevmNativeBridgeAdapter from './polygon/zkevmNativeBridge';
 import RocketpoolAdapter from './rocketpool/rocketpool';
 import ScrollNativeBridgeAdapter from './scroll/nativeBridge';
 import SpookyAdapter from './spooky/spooky';
@@ -129,6 +131,11 @@ export function getProtocolAdapters(
     scrollNativeBridge: new ScrollNativeBridgeAdapter(services, storages, ProtocolConfigs.scrollNativeBridge),
     zksyncNativeBridge: new ZksyncNativeBridgeAdapter(services, storages, ProtocolConfigs.zksyncNativeBridge),
     polygonNativeBridge: new PolygonNativeBridgeAdapter(services, storages, ProtocolConfigs.polygonNativeBridge),
+    polygonzkevmNativeBridge: new PolygonZzkevmNativeBridgeAdapter(
+      services,
+      storages,
+      ProtocolConfigs.polygonzkevmNativeBridge,
+    ),
     katana: new UniswapAdapter(services, storages, ProtocolConfigs.katana),
     camelot: new UniswapAdapter(services, storages, ProtocolConfigs.camelot),
     hyphen: new HyphenAdapter(services, storages, ProtocolConfigs.hyphen),
@@ -144,6 +151,7 @@ export function getProtocolAdapters(
     worldchainNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.worldchainNativeBridge),
     kromaNativeBridge: new OptimismNativeBridgeAdapterV2(services, storages, ProtocolConfigs.kromaNativeBridge),
     mintNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.mintNativeBridge),
+    metisNativeBridge: new MetisNativeBridgeAdapter(services, storages, ProtocolConfigs.metisNativeBridge),
     paraswap: new ParaswapAdapter(services, storages, ProtocolConfigs.paraswap),
   };
 }
