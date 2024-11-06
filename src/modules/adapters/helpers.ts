@@ -64,6 +64,38 @@ export default class AdapterDataHelper {
       }
     }
 
+    // process chain breakdown
+    if (protocolData.breakdownChains) {
+      for (const [chain, chainData] of Object.entries(protocolData.breakdownChains)) {
+        if (chainData.volumes.deposit) {
+          protocolData.breakdownChains[chain].moneyFlowIn += chainData.volumes.deposit;
+        }
+        if (chainData.volumes.repay) {
+          protocolData.breakdownChains[chain].moneyFlowIn += chainData.volumes.repay;
+        }
+
+        if (chainData.volumes.borrow) {
+          protocolData.breakdownChains[chain].moneyFlowOut += chainData.volumes.borrow;
+        }
+        if (chainData.volumes.withdraw) {
+          protocolData.breakdownChains[chain].moneyFlowOut += chainData.volumes.withdraw;
+        }
+        if (chainData.volumes.liquidation) {
+          protocolData.breakdownChains[chain].moneyFlowOut += chainData.volumes.liquidation;
+        }
+        if (chainData.volumes.redeemtion) {
+          protocolData.breakdownChains[chain].moneyFlowOut += chainData.volumes.redeemtion;
+        }
+
+        protocolData.breakdownChains[chain].moneyFlowNet =
+          protocolData.breakdownChains[chain].moneyFlowIn - protocolData.breakdownChains[chain].moneyFlowOut;
+
+        for (const value of Object.values(chainData.volumes)) {
+          protocolData.breakdownChains[chain].totalVolume += value;
+        }
+      }
+    }
+
     return protocolData;
   }
 }
