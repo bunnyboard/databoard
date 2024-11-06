@@ -1481,6 +1481,12 @@
     "decimals": 18,
     "address": "0xd7028092c830b5c8fce061af2e593413ebbc1fc1"
   },
+  "0xd702993613686ab0f706ef07883870a97d36fdcf": {
+    "chain": "fantom",
+    "symbol": "SNS",
+    "decimals": 18,
+    "address": "0xd702993613686ab0f706ef07883870a97d36fdcf"
+  },
   "0xda599495d48846e5ce3c82b56842d9a277973688": {
     "chain": "fantom",
     "symbol": "GRIM",

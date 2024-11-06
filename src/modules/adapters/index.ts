@@ -22,6 +22,7 @@ import GnosisNativeBridgeAdapter from './gnosis/nativeBridge';
 import HopAdapter from './hop/hop';
 import HyphenAdapter from './hyphen/hyphen';
 import KarakAdapter from './karak/karak';
+import KyberswapAdapter from './kyberswap/kyberswap';
 import LayerbankAdapter from './layerbank/layerbank';
 import LfjlendAdapter from './lfj/lfj';
 import LidoAdapter from './lido/lido';
@@ -153,5 +154,6 @@ export function getProtocolAdapters(
     mintNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.mintNativeBridge),
     metisNativeBridge: new MetisNativeBridgeAdapter(services, storages, ProtocolConfigs.metisNativeBridge),
     paraswap: new ParaswapAdapter(services, storages, ProtocolConfigs.paraswap),
+    kyberswap: new KyberswapAdapter(services, storages, ProtocolConfigs.kyberswap),
   };
 }

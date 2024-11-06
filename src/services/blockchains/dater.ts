@@ -25,7 +25,7 @@ export default class BlockDater {
 
     let rpcUrl = envConfig.blockchains[chain].nodeRpc;
     if (this.chain === ChainNames.cronos) {
-      rpcUrl = 'https://evm.cronos.org';
+      // rpcUrl = 'https://evm.cronos.org';
     } else if (this.chain === ChainNames.linea) {
       rpcUrl = 'https://rpc.linea.build';
     }

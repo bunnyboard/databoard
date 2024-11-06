@@ -435,6 +435,18 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'bnb',
     sources: [OracleSourceUniswapv2List.TWT_WBNB],
   },
+  LYNX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.LYNX_WETH],
+  },
+  FOXY: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.FOXY_WETH],
+  },
+  ZERO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ZERO_WETH],
+  },
   crvUSD: {
     currency: 'usd',
     stablecoin: true,
@@ -1129,9 +1141,21 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.TEL_USDC],
   },
+  RIO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.RIO_WETH],
+  },
   QUICK: {
     currency: 'matic',
     sources: [OracleSourceUniswapv2List.QUICK_WPOL],
+  },
+  CAT: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.CAT_WBNB],
+  },
+  VIRTUAL: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.VIRTUAL_WETH],
   },
   DRAGONX: {
     currency: 'eth',
@@ -1784,6 +1808,18 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   SHIB: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.SHIB_WETH],
+  },
+  SCR: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SCR_WETH],
+  },
+  WIGO: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.WIGO_WFTM],
+  },
+  SNS: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.SNS_WFTM],
   },
   XFIT: {
     currency: 'usd',

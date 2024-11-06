@@ -87,6 +87,7 @@ import { MintNativeBridgeConfigs } from './protocols/mint';
 import { EthereumConfigs } from './protocols/ethereum';
 import { ParaswapConfigs } from './protocols/paraswap';
 import { MetisNativeBridgeConfigs } from './protocols/metis';
+import { KyberswapConfigs } from './protocols/kyberswap';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -201,4 +202,5 @@ export const ProtocolConfigs = {
   mintNativeBridge: MintNativeBridgeConfigs,
   metisNativeBridge: MetisNativeBridgeConfigs,
   paraswap: ParaswapConfigs,
+  kyberswap: KyberswapConfigs,
 };

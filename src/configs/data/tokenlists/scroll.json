@@ -65,6 +65,12 @@
     "decimals": 18,
     "address": "0xca77eb3fefe3725dc33bccb54edefc3d9f764f97"
   },
+  "0xd29687c813d741e2f938f4ac377128810e217b1b": {
+    "chain": "scroll",
+    "symbol": "SCR",
+    "decimals": 18,
+    "address": "0xd29687c813d741e2f938f4ac377128810e217b1b"
+  },
   "0xeb466342c4d449bc9f53a865d5cb90586f405215": {
     "chain": "scroll",
     "symbol": "axlUSDC",
