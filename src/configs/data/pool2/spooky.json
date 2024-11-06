@@ -4624,26 +4624,6 @@
     "protocol": "spooky",
     "type": "univ3",
     "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
-    "address": "0x47105d4fc743358d64dd9a30ea164689d5f217c6",
-    "feeRate": 0.01,
-    "token0": {
-      "chain": "fantom",
-      "symbol": "axlUSDC",
-      "decimals": 6,
-      "address": "0x1b6382dbdea11d97f24495c9a90b7c88469134a4"
-    },
-    "token1": {
-      "chain": "fantom",
-      "symbol": "WFTM",
-      "decimals": 18,
-      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
-    }
-  },
-  {
-    "chain": "fantom",
-    "protocol": "spooky",
-    "type": "univ3",
-    "factory": "0x7928a2c48754501f3a8064765ecae541dae5c3e6",
     "address": "0xc4765e4119af82602b3884b22849a2b5e57788fe",
     "feeRate": 0.01,
     "token0": {
