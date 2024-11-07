@@ -54,6 +54,7 @@ import SynapseAdapter from './synapse/synapse';
 import UniswapAdapter from './uniswap/uniswap';
 import VenusAdapter from './venus/venus';
 import WbethAdapter from './wbeth/wbeth';
+import ZeroxAdapter from './zerox/zerox';
 import ZksyncNativeBridgeAdapter from './zksync/nativeBridge';
 
 export function getProtocolAdapters(
@@ -155,5 +156,6 @@ export function getProtocolAdapters(
     metisNativeBridge: new MetisNativeBridgeAdapter(services, storages, ProtocolConfigs.metisNativeBridge),
     paraswap: new ParaswapAdapter(services, storages, ProtocolConfigs.paraswap),
     kyberswap: new KyberswapAdapter(services, storages, ProtocolConfigs.kyberswap),
+    zerox: new ZeroxAdapter(services, storages, ProtocolConfigs.zerox),
   };
 }

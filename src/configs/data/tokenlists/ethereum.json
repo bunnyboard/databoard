@@ -32861,6 +32861,12 @@
     "decimals": 9,
     "address": "0xc9bd7011ee97a13dc07087e01499a769ab7e75b4"
   },
+  "0xc9bd9b4f5e96644b9c5c525e99f655ff31ce5ce6": {
+    "chain": "ethereum",
+    "symbol": "WIFI",
+    "decimals": 18,
+    "address": "0xc9bd9b4f5e96644b9c5c525e99f655ff31ce5ce6"
+  },
   "0xc9c4fd7579133701fa2769b6955e7e56bb386db1": {
     "chain": "ethereum",
     "symbol": "BRG",

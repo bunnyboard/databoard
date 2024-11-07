@@ -12,6 +12,9 @@ export interface GetTokenPriceOptions {
 
   // disable warning logs
   disableWarning?: boolean;
+
+  // enable auto searching liquidity pools
+  enableAutoSearching?: boolean;
 }
 
 export interface IOracleService {

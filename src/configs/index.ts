@@ -88,6 +88,7 @@ import { EthereumConfigs } from './protocols/ethereum';
 import { ParaswapConfigs } from './protocols/paraswap';
 import { MetisNativeBridgeConfigs } from './protocols/metis';
 import { KyberswapConfigs } from './protocols/kyberswap';
+import { ZeroxConfigs } from './protocols/zerox';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -95,9 +96,9 @@ export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
   merlin: 200,
   ronin: 400,
   zklinknova: 5000,
-  fantom: 5000,
-  arbitrum: 10000,
-  optimism: 5000,
+  fantom: 1000,
+  arbitrum: 50000,
+  optimism: 1000,
   base: 1000,
 };
 
@@ -203,4 +204,5 @@ export const ProtocolConfigs = {
   metisNativeBridge: MetisNativeBridgeConfigs,
   paraswap: ParaswapConfigs,
   kyberswap: KyberswapConfigs,
+  zerox: ZeroxConfigs,
 };

@@ -9,14 +9,15 @@ import { ProtocolNames } from '../../../configs/names';
 import { BungeeProtocolConfig } from '../../../configs/protocols/bungee';
 import BungeeSocketGatewayAbi from '../../../configs/abi/bungee/SocketGateway.json';
 import envConfig from '../../../configs/envConfig';
-import { compareAddress, formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
+import { formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
 import { StargateChainIds } from '../../../configs/protocols/stargate';
 import { BungeeDataExtended, BungeeProtocolData } from '../../../types/domains/ecosystems/bungee';
+import logger from '../../../lib/logger';
 
 export const BungeeSocketEvents = {
   SocketBridge: '0x74594da9e31ee4068e17809037db37db496702bf7d8d63afe6f97949277d1609',
   SocketFeesDeducted: '0x6ea2964966a13d361befaca87edb26595ca75a30f3b77887d67d5a7d0e4805c0',
-  // SocketSwapTokens: '0xb346a959ba6c0f1c7ba5426b10fd84fe4064e392a0dfcf6609e9640a0dd260d3',
+  SocketSwapTokens: '0xb346a959ba6c0f1c7ba5426b10fd84fe4064e392a0dfcf6609e9640a0dd260d3',
 };
 
 export const BungeeKnownBridgeNames: { [key: string]: string } = {
@@ -66,6 +67,7 @@ export default class BungeeAdapter extends ProtocolAdapter {
       ...getInitialProtocolCoreMetrics(),
       volumes: {
         bridge: 0,
+        trade: 0,
       },
       volumeBridgePaths: {},
     };
@@ -113,41 +115,42 @@ export default class BungeeAdapter extends ProtocolAdapter {
           });
 
           if (log.topics[0] === BungeeSocketEvents.SocketBridge) {
-            if (!gatewayConfig.tokens.filter((item) => compareAddress(item.address, event.args.token))[0]) {
-              // get data for supported tokens only
-              continue;
-            }
-
-            // bungee identity bridge name by unique bytes32 hash
-            // to know which bytes32 mapped to which bridge
-            // check the Bungee bridge implementation contract
-            const bridgeName = BungeeKnownBridgeNames[event.args.bridgeName]
-              ? BungeeKnownBridgeNames[event.args.bridgeName]
-              : event.args.bridgeName;
-
-            const toChainId = Number(event.args.toChainId);
-            let toChainName: string | null = null;
-            if (bridgeName === 'stargate' && StargateChainIds[toChainId]) {
-              // https://stargateprotocol.gitbook.io/stargate/developers/chain-ids
-              toChainName = StargateChainIds[toChainId];
-            } else {
-              for (const blockchain of Object.values(envConfig.blockchains)) {
-                if (blockchain.chainId === toChainId) {
-                  toChainName = blockchain.name;
-                }
-              }
-            }
-
-            if (toChainName === null) {
-              continue;
-            }
-
             const token = await this.services.blockchain.evm.getTokenInfo({
               chain: gatewayConfig.chain,
               address: event.args.token,
             });
-
             if (token) {
+              // bungee identity bridge name by unique bytes32 hash
+              // to know which bytes32 mapped to which bridge
+              // check the Bungee bridge implementation contract
+              const bridgeName = BungeeKnownBridgeNames[event.args.bridgeName]
+                ? BungeeKnownBridgeNames[event.args.bridgeName]
+                : event.args.bridgeName;
+
+              const toChainId = Number(event.args.toChainId);
+              let toChainName: string | null = null;
+              if (bridgeName === 'stargate' && StargateChainIds[toChainId]) {
+                // https://stargateprotocol.gitbook.io/stargate/developers/chain-ids
+                toChainName = StargateChainIds[toChainId];
+              } else {
+                for (const blockchain of Object.values(envConfig.blockchains)) {
+                  if (blockchain.chainId === toChainId) {
+                    toChainName = blockchain.name;
+                  }
+                }
+              }
+
+              if (toChainName === null) {
+                logger.error('failed to get chain name from bridge txn', {
+                  service: this.name,
+                  protocol: this.protocolConfig.protocol,
+                  chain: gatewayConfig.chain,
+                  txn: log.transactionHash,
+                  logIndex: log.logIndex,
+                });
+                continue;
+              }
+
               const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
                 chain: gatewayConfig.chain,
                 address: token.address,
@@ -162,6 +165,7 @@ export default class BungeeAdapter extends ProtocolAdapter {
                   ...getInitialProtocolCoreMetrics(),
                   volumes: {
                     bridge: 0,
+                    trade: 0,
                   },
                 };
               }
@@ -178,11 +182,6 @@ export default class BungeeAdapter extends ProtocolAdapter {
               (protocolData.volumeBridgePaths as any)[gatewayConfig.chain][toChainName] += amountUsd;
             }
           } else if (log.topics[0] === BungeeSocketEvents.SocketFeesDeducted) {
-            if (!gatewayConfig.tokens.filter((item) => compareAddress(item.address, event.args.feesToken))[0]) {
-              // get data for supported tokens only
-              continue;
-            }
-
             const token = await this.services.blockchain.evm.getTokenInfo({
               chain: gatewayConfig.chain,
               address: event.args.feesToken,
@@ -203,6 +202,7 @@ export default class BungeeAdapter extends ProtocolAdapter {
                   ...getInitialProtocolCoreMetrics(),
                   volumes: {
                     bridge: 0,
+                    trade: 0,
                   },
                 };
               }
@@ -214,6 +214,74 @@ export default class BungeeAdapter extends ProtocolAdapter {
                 bungeeExtendedData.feeRecipients[feeTaker] = 0;
               }
               bungeeExtendedData.feeRecipients[feeTaker] += amountUsd;
+            }
+          } else if (log.topics[0] === BungeeSocketEvents.SocketSwapTokens) {
+            const fromToken = await this.services.blockchain.evm.getTokenInfo({
+              chain: gatewayConfig.chain,
+              address: event.args.fromToken,
+            });
+            const toToken = await this.services.blockchain.evm.getTokenInfo({
+              chain: gatewayConfig.chain,
+              address: event.args.toToken,
+            });
+
+            if (fromToken && toToken) {
+              let swapAmountUsd = 0;
+
+              const fromTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+                chain: fromToken.chain,
+                address: fromToken.address,
+                timestamp: options.timestamp,
+                disableWarning: true,
+              });
+              if (fromTokenPriceUsd > 0) {
+                swapAmountUsd =
+                  formatBigNumberToNumber(event.args.sellAmount.toString(), fromToken.decimals) * fromTokenPriceUsd;
+              } else {
+                const toTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+                  chain: toToken.chain,
+                  address: toToken.address,
+                  timestamp: options.timestamp,
+                });
+                swapAmountUsd =
+                  formatBigNumberToNumber(event.args.buyAmount.toString(), toToken.decimals) * toTokenPriceUsd;
+
+                if (toTokenPriceUsd <= 0) {
+                  logger.warn('failed to get token prices for trade', {
+                    service: this.name,
+                    protocol: this.protocolConfig.protocol,
+                    chain: gatewayConfig.chain,
+                    token: `${fromToken.symbol}-${toToken.symbol}`,
+                    txn: log.transactionHash,
+                    logIndex: log.logIndex,
+                  });
+                }
+              }
+
+              if (swapAmountUsd > 0) {
+                (protocolData.volumes.trade as number) += swapAmountUsd;
+
+                if (!protocolData.breakdown[fromToken.chain][fromToken.address]) {
+                  protocolData.breakdown[fromToken.chain][fromToken.address] = {
+                    ...getInitialProtocolCoreMetrics(),
+                    volumes: {
+                      bridge: 0,
+                      trade: 0,
+                    },
+                  };
+                }
+                if (!protocolData.breakdown[toToken.chain][toToken.address]) {
+                  protocolData.breakdown[toToken.chain][toToken.address] = {
+                    ...getInitialProtocolCoreMetrics(),
+                    volumes: {
+                      bridge: 0,
+                      trade: 0,
+                    },
+                  };
+                }
+                (protocolData.breakdown[fromToken.chain][fromToken.address].volumes.trade as number) += swapAmountUsd;
+                (protocolData.breakdown[toToken.chain][toToken.address].volumes.trade as number) += swapAmountUsd;
+              }
             }
           }
         }

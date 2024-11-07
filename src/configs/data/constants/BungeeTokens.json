@@ -276,6 +276,7 @@
   { "chain": "polygonzkevm", "symbol": "USDC", "decimals": 6, "address": "0xa8ce8aee21bc2a48a5ef670afcc9274c7bbbc035" },
   { "chain": "mantle", "symbol": "ETH", "decimals": 18, "address": "0xdeaddeaddeaddeaddeaddeaddeaddeaddead1111" },
   { "chain": "mantle", "symbol": "USD COIN", "decimals": 6, "address": "0x09bc4e0d864854c6afb6eb9a9cdf58ac190d0df9" },
+  { "chain": "mantle", "symbol": "MNT", "decimals": 18, "address": "0x0000000000000000000000000000000000000000" },
   { "chain": "mantle", "symbol": "MNT", "decimals": 18, "address": "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000" },
   { "chain": "mantle", "symbol": "TETHER USD", "decimals": 6, "address": "0x201eba5cc46d216ce6dc03f6a759e8e766e956ae" },
   { "chain": "base", "symbol": "DEGEN", "decimals": 18, "address": "0x4ed4e862860bed51a9570b96d89af5e1b0efefed" },

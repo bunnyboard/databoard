@@ -1145,6 +1145,18 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.RIO_WETH],
   },
+  ZIG: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ZIG_WETH],
+  },
+  BABYDOGE: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.BABYDOGE],
+  },
+  GTAI: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.GTAI_USDT],
+  },
   QUICK: {
     currency: 'matic',
     sources: [OracleSourceUniswapv2List.QUICK_WPOL],
@@ -1852,6 +1864,82 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   UwU: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.UwU_WETH],
+  },
+  MK: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.MK_WETH],
+  },
+  MAGA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.MAGA_WETH],
+  },
+  SUPER: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SUPER_WETH],
+  },
+  MCADE: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.MCADE_USDC],
+  },
+  WIFI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.WIFI_WETH],
+  },
+  TURBO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.TURBO_WETH],
+  },
+  BITCOIN: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BITCOIN_WETH],
+  },
+  GSWIFT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.GSWIFT_WETH],
+  },
+  RSC: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.RSC_WETH],
+  },
+  GRAIL: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.GRAIL_USDC],
+  },
+  OX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.OX_WETH],
+  },
+  AI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.AI_WETH],
+  },
+  XBG: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.XBG_WETH],
+  },
+  FFM: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.FFM_WETH],
+  },
+  CATCH: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.CATCH_WETH],
+  },
+  BAMBOO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BAMBOO_WETH],
+  },
+  BSWAP: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BSWAP_WETH],
+  },
+  BTCB: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BTCB_WETH],
+  },
+  '0xMR': {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List['0xMR_WETH']],
   },
   '0xBTC': {
     currency: 'eth',
