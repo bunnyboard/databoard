@@ -263,4 +263,18 @@ export const OracleSourceChainlinkList: { [key: string]: OracleSourceChainlink }
     address: '0xfD07b211044572898cDbcb1435f0a1369Fd15726',
     decimals: 8,
   },
+  GLMR_USD: {
+    type: 'chainlink',
+    chain: 'moonbeam',
+    currency: 'usd',
+    address: '0x4497B606be93e773bbA5eaCFCb2ac5E2214220Eb',
+    decimals: 8,
+  },
+  NEAR_USD: {
+    type: 'chainlink',
+    chain: 'bnbchain',
+    currency: 'usd',
+    address: '0x0Fe4D87883005fCAFaF56B81d09473D9A29dCDC3',
+    decimals: 8,
+  },
 };

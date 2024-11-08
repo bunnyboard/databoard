@@ -203,6 +203,12 @@
     "decimals": 18,
     "address": "0x29faf5905bff9cfcc7cf56a5ed91e0f091f8664b"
   },
+  "0x2dad3a13ef0c6366220f989157009e501e7938f8": {
+    "chain": "optimism",
+    "symbol": "EXTRA",
+    "decimals": 18,
+    "address": "0x2dad3a13ef0c6366220f989157009e501e7938f8"
+  },
   "0x2e3d870790dc77a83dd1d18184acc7439a53f475": {
     "chain": "optimism",
     "symbol": "FRAX",

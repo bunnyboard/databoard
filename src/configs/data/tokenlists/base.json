@@ -3275,6 +3275,12 @@
     "decimals": 18,
     "address": "0x8c9037d1ef5c6d1f6816278c7aaf5491d24cd527"
   },
+  "0x8d285df5be4570097e84241090fca8034ab18547": {
+    "chain": "base",
+    "symbol": "ETHB",
+    "decimals": 18,
+    "address": "0x8d285df5be4570097e84241090fca8034ab18547"
+  },
   "0x8d3419b9a18651f3926a205ee0b1acea1e7192de": {
     "chain": "base",
     "symbol": "LOA",

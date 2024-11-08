@@ -97,7 +97,7 @@ export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
   ronin: 400,
   zklinknova: 5000,
   fantom: 1000,
-  arbitrum: 50000,
+  arbitrum: 5000,
   optimism: 1000,
   base: 1000,
 };

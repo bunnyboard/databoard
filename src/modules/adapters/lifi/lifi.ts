@@ -9,12 +9,15 @@ import { LifiDataExtended, LifiProtocolData } from '../../../types/domains/ecosy
 import LifiInterfaceAbi from '../../../configs/abi/lifi/ILifi.json';
 import FeesCollectedAbi from '../../../configs/abi/lifi/FeeCollector.json';
 import { decodeEventLog } from 'viem';
-import { ProtocolNames } from '../../../configs/names';
+import { ChainNames, ProtocolNames } from '../../../configs/names';
 import { compareAddress, formatBigNumberToNumber, normalizeAddress, removeNullBytes } from '../../../lib/utils';
 import { getChainNameById } from '../../../lib/helpers';
+import logger from '../../../lib/logger';
 
 export const LifiDiamondEvents = {
   LiFiTransferStarted: '0xcba69f43792f9f399347222505213b55af8e0b0b54b893085c2e27ecbe1644f1',
+  LiFiGenericSwapCompleted: '0x38eee76fd911eabac79da7af16053e809be0e12c8637f156e77e1af309b99537',
+  LiFiSwappedGeneric: '0x93517b7c6f32856737008edf37cf2542b55d27d83fa299aa216f55a982a6ee1d',
   FeesCollected: '0x28a87b6059180e46de5fb9ab35eb043e8fe00ab45afcc7789e3934ecbbcde3ea',
 };
 
@@ -41,6 +44,13 @@ export const LifiBridgeKeys: any = {
   hyphen: ProtocolNames.hyphen,
   celercircle: ProtocolNames.circlecctp,
   celerim: ProtocolNames.cbridge,
+};
+
+const LifiChainIds: any = {
+  '20000000000001': ChainNames.bitcoin,
+  '1151111081099710': ChainNames.solana,
+  '13371': ChainNames.immutablezkevm,
+  '30': ChainNames.rootstock,
 };
 
 export default class LifiAdapter extends ProtocolAdapter {
@@ -101,71 +111,170 @@ export default class LifiAdapter extends ProtocolAdapter {
       });
 
       for (const log of logs) {
-        if (log.topics[0] === LifiDiamondEvents.LiFiTransferStarted) {
+        const signature = log.topics[0];
+
+        if (
+          [
+            LifiDiamondEvents.LiFiTransferStarted,
+            LifiDiamondEvents.LiFiGenericSwapCompleted,
+            LifiDiamondEvents.LiFiSwappedGeneric,
+          ].includes(signature)
+        ) {
           const event: any = decodeEventLog({
             abi: LifiInterfaceAbi,
             topics: log.topics,
             data: log.data,
           });
 
-          if (
-            !diamondConfig.tokens.filter((item) =>
-              compareAddress(item.address, event.args.bridgeData.sendingAssetId),
-            )[0]
-          ) {
-            // query data of whitelisted tokens only
-            continue;
-          }
+          switch (signature) {
+            case LifiDiamondEvents.LiFiTransferStarted: {
+              const bridgeName = LifiBridgeKeys[event.args.bridgeData.bridge]
+                ? LifiBridgeKeys[event.args.bridgeData.bridge]
+                : event.args.bridgeData.bridge;
+              const integrator = removeNullBytes(event.args.bridgeData.integrator);
+              const token = await this.services.blockchain.evm.getTokenInfo({
+                chain: diamondConfig.chain,
+                address: event.args.bridgeData.sendingAssetId,
+              });
+              if (token) {
+                const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+                  chain: token.chain,
+                  address: token.address,
+                  timestamp: options.timestamp,
+                });
+                const amountUsd =
+                  formatBigNumberToNumber(event.args.bridgeData.minAmount.toString(), token.decimals) * tokenPriceUsd;
 
-          const bridgeName = LifiBridgeKeys[event.args.bridgeData.bridge]
-            ? LifiBridgeKeys[event.args.bridgeData.bridge]
-            : event.args.bridgeData.bridge;
-          const integrator = removeNullBytes(event.args.bridgeData.integrator);
-          const token = await this.services.blockchain.evm.getTokenInfo({
-            chain: diamondConfig.chain,
-            address: event.args.bridgeData.sendingAssetId,
-          });
-          if (token) {
-            const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-              chain: token.chain,
-              address: token.address,
-              timestamp: options.timestamp,
-            });
-            const amountUsd =
-              formatBigNumberToNumber(event.args.bridgeData.minAmount.toString(), token.decimals) * tokenPriceUsd;
+                let destChainName = getChainNameById(Number(event.args.bridgeData.destinationChainId));
+                if (!destChainName) {
+                  destChainName = LifiChainIds[event.args.bridgeData.destinationChainId.toString()]
+                    ? LifiChainIds[event.args.bridgeData.destinationChainId.toString()]
+                    : null;
+                }
 
-            const destChainName = getChainNameById(Number(event.args.bridgeData.destinationChainId));
-            if (!destChainName) {
-              // ignore transactions on unknown chains
-              continue;
+                if (!destChainName) {
+                  // ignore transactions on unknown chains
+                  logger.error('failed to get chain name from bridge txn', {
+                    service: this.name,
+                    protocol: this.protocolConfig.protocol,
+                    chain: diamondConfig.chain,
+                    txn: log.transactionHash,
+                    logIndex: log.logIndex,
+                    destinationChainId: event.args.bridgeData.destinationChainId,
+                  });
+
+                  continue;
+                }
+
+                (protocolData.volumes.bridge as number) += amountUsd;
+
+                if (!protocolData.breakdown[diamondConfig.chain][token.address]) {
+                  protocolData.breakdown[diamondConfig.chain][token.address] = {
+                    ...getInitialProtocolCoreMetrics(),
+                    volumes: {
+                      bridge: 0,
+                    },
+                  };
+                }
+                (protocolData.breakdown[diamondConfig.chain][token.address].volumes.bridge as number) += amountUsd;
+
+                if (!(protocolData.volumeBridgePaths as any)[diamondConfig.chain][destChainName]) {
+                  (protocolData.volumeBridgePaths as any)[diamondConfig.chain][destChainName] = 0;
+                }
+                (protocolData.volumeBridgePaths as any)[diamondConfig.chain][destChainName] += amountUsd;
+
+                if (!lifiExtendedData.volumeBridges[bridgeName]) {
+                  lifiExtendedData.volumeBridges[bridgeName] = 0;
+                }
+                lifiExtendedData.volumeBridges[bridgeName] += amountUsd;
+
+                if (!lifiExtendedData.volumeIntegrators[integrator]) {
+                  lifiExtendedData.volumeIntegrators[integrator] = 0;
+                }
+                lifiExtendedData.volumeIntegrators[integrator] += amountUsd;
+              }
+
+              break;
             }
+            case LifiDiamondEvents.LiFiSwappedGeneric:
+            case LifiDiamondEvents.LiFiGenericSwapCompleted: {
+              const fromToken = await this.services.blockchain.evm.getTokenInfo({
+                chain: diamondConfig.chain,
+                address: event.args.fromAssetId,
+              });
+              const toToken = await this.services.blockchain.evm.getTokenInfo({
+                chain: diamondConfig.chain,
+                address: event.args.toAssetId,
+              });
 
-            (protocolData.volumes.bridge as number) += amountUsd;
+              if (fromToken && toToken) {
+                let swapAmountUsd = 0;
 
-            if (!protocolData.breakdown[diamondConfig.chain][token.address]) {
-              protocolData.breakdown[diamondConfig.chain][token.address] = {
-                ...getInitialProtocolCoreMetrics(),
-                volumes: {
-                  bridge: 0,
-                },
-              };
+                const fromTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+                  chain: fromToken.chain,
+                  address: fromToken.address,
+                  timestamp: options.timestamp,
+                  disableWarning: true,
+                });
+                if (fromTokenPriceUsd > 0) {
+                  swapAmountUsd =
+                    formatBigNumberToNumber(event.args.fromAmount.toString(), fromToken.decimals) * fromTokenPriceUsd;
+                } else {
+                  const toTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+                    chain: toToken.chain,
+                    address: toToken.address,
+                    timestamp: options.timestamp,
+                    disableWarning: true,
+                  });
+                  swapAmountUsd =
+                    formatBigNumberToNumber(event.args.toAmount.toString(), toToken.decimals) * toTokenPriceUsd;
+
+                  if (toTokenPriceUsd <= 0) {
+                    logger.warn('failed to get token prices for trade', {
+                      service: this.name,
+                      protocol: this.protocolConfig.protocol,
+                      chain: diamondConfig.chain,
+                      token: `${fromToken.symbol}-${toToken.symbol}`,
+                      txn: log.transactionHash,
+                      logIndex: log.logIndex,
+                    });
+                  }
+                }
+
+                if (swapAmountUsd > 0) {
+                  (protocolData.volumes.trade as number) += swapAmountUsd;
+
+                  if (!protocolData.breakdown[fromToken.chain][fromToken.address]) {
+                    protocolData.breakdown[fromToken.chain][fromToken.address] = {
+                      ...getInitialProtocolCoreMetrics(),
+                      volumes: {
+                        bridge: 0,
+                        trade: 0,
+                      },
+                    };
+                  }
+                  if (!protocolData.breakdown[toToken.chain][toToken.address]) {
+                    protocolData.breakdown[toToken.chain][toToken.address] = {
+                      ...getInitialProtocolCoreMetrics(),
+                      volumes: {
+                        bridge: 0,
+                        trade: 0,
+                      },
+                    };
+                  }
+                  (protocolData.breakdown[fromToken.chain][fromToken.address].volumes.trade as number) += swapAmountUsd;
+                  (protocolData.breakdown[toToken.chain][toToken.address].volumes.trade as number) += swapAmountUsd;
+
+                  const integrator = removeNullBytes(event.args.integrator);
+                  if (!lifiExtendedData.volumeIntegrators[integrator]) {
+                    lifiExtendedData.volumeIntegrators[integrator] = 0;
+                  }
+                  lifiExtendedData.volumeIntegrators[integrator] += swapAmountUsd;
+                }
+              }
+
+              break;
             }
-            (protocolData.breakdown[diamondConfig.chain][token.address].volumes.bridge as number) += amountUsd;
-
-            if (!(protocolData.volumeBridgePaths as any)[diamondConfig.chain][destChainName]) {
-              (protocolData.volumeBridgePaths as any)[diamondConfig.chain][destChainName] = 0;
-            }
-            (protocolData.volumeBridgePaths as any)[diamondConfig.chain][destChainName] += amountUsd;
-
-            if (!lifiExtendedData.volumeBridges[bridgeName]) {
-              lifiExtendedData.volumeBridges[bridgeName] = 0;
-            }
-            lifiExtendedData.volumeBridges[bridgeName] += amountUsd;
-
-            if (!lifiExtendedData.volumeIntegrators[integrator]) {
-              lifiExtendedData.volumeIntegrators[integrator] = 0;
-            }
-            lifiExtendedData.volumeIntegrators[integrator] += amountUsd;
           }
         }
       }

@@ -50,4 +50,8 @@ export const OracleCurrencyBaseConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.WOAS_USDT],
   },
+  glmr: {
+    currency: 'usd',
+    sources: [OracleSourceChainlinkList.GLMR_USD],
+  },
 };

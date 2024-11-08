@@ -14,6 +14,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   MATIC: OracleCurrencyBaseConfigs.matic,
   AVAX: OracleCurrencyBaseConfigs.avax,
   FTM: OracleCurrencyBaseConfigs.ftm,
+  GLMR: OracleCurrencyBaseConfigs.glmr,
   DAI: {
     currency: 'usd',
     sources: [OracleSourceChainlinkList.DAI_USD],
@@ -660,10 +661,6 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   pxETH: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.pxETH_WETH],
-  },
-  VELO: {
-    currency: 'usd',
-    sources: [OracleSourceUniswapv2List.VELO_USDC],
   },
   AJNA: {
     currency: 'eth',
@@ -1936,6 +1933,46 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   BTCB: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.BTCB_WETH],
+  },
+  THE: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.THE_WBNB],
+  },
+  ETHB: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ETHB_WETH],
+  },
+  W: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.W_WETH],
+  },
+  MODE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.MODE_WETH],
+  },
+  EXTRA: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.EXTRA_USDC],
+  },
+  VELO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.VELO_WETH],
+  },
+  NEAR: {
+    currency: 'usd',
+    sources: [OracleSourceChainlinkList.NEAR_USD],
+  },
+  MOE: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.MOE_USDT],
+  },
+  ION: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ION_WETH],
+  },
+  bsdETH: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.bsdETH_WETH],
   },
   '0xMR': {
     currency: 'eth',
