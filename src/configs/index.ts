@@ -89,6 +89,7 @@ import { ParaswapConfigs } from './protocols/paraswap';
 import { MetisNativeBridgeConfigs } from './protocols/metis';
 import { KyberswapConfigs } from './protocols/kyberswap';
 import { ZeroxConfigs } from './protocols/zerox';
+import { MantleNativeBridgeConfigs } from './protocols/mantle';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -202,6 +203,7 @@ export const ProtocolConfigs = {
   kromaNativeBridge: KromaNativeBridgeConfigs,
   mintNativeBridge: MintNativeBridgeConfigs,
   metisNativeBridge: MetisNativeBridgeConfigs,
+  mantleNativeBridge: MantleNativeBridgeConfigs,
   paraswap: ParaswapConfigs,
   kyberswap: KyberswapConfigs,
   zerox: ZeroxConfigs,

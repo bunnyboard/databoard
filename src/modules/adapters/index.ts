@@ -154,6 +154,7 @@ export function getProtocolAdapters(
     kromaNativeBridge: new OptimismNativeBridgeAdapterV2(services, storages, ProtocolConfigs.kromaNativeBridge),
     mintNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.mintNativeBridge),
     metisNativeBridge: new MetisNativeBridgeAdapter(services, storages, ProtocolConfigs.metisNativeBridge),
+    mantleNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.mantleNativeBridge),
     paraswap: new ParaswapAdapter(services, storages, ProtocolConfigs.paraswap),
     kyberswap: new KyberswapAdapter(services, storages, ProtocolConfigs.kyberswap),
     zerox: new ZeroxAdapter(services, storages, ProtocolConfigs.zerox),
