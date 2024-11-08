@@ -147,12 +147,27 @@ export default class AaveCore extends ProtocolAdapter {
             options.blockNumber,
           );
 
-          reserves.push({
-            token: token,
-            priceUsd: tokenPriceUsd,
-            data: reserveData,
-            configData: reserveConfigurationData,
-          });
+          // fix avalon oracle
+          if (
+            options.config.chain === ChainNames.merlin &&
+            options.timestamp === 1719878400 &&
+            (compareAddress(token.address, '0x69181a1f082ea83a152621e4fa527c936abfa501') ||
+              compareAddress(token.address, '0x4dcb91cc19aadfe5a6672781eb09abad00c19e4c'))
+          ) {
+            reserves.push({
+              token: token,
+              priceUsd: 0,
+              data: reserveData,
+              configData: reserveConfigurationData,
+            });
+          } else {
+            reserves.push({
+              token: token,
+              priceUsd: tokenPriceUsd,
+              data: reserveData,
+              configData: reserveConfigurationData,
+            });
+          }
         }
       }
     }

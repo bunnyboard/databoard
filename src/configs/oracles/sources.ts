@@ -1158,6 +1158,10 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'matic',
     sources: [OracleSourceUniswapv2List.QUICK_WPOL],
   },
+  QUICK2: {
+    currency: 'matic',
+    sources: [OracleSourceUniswapv2List.QUICK2_WPOL],
+  },
   CAT: {
     currency: 'bnb',
     sources: [OracleSourceUniswapv2List.CAT_WBNB],
@@ -1985,6 +1989,58 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   BTCBR: {
     currency: 'bnb',
     sources: [OracleSourceUniswapv3List.BTCBR_WBNB],
+  },
+  LINA: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.LINA_BUSD],
+  },
+  BETS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.BETS_WETH],
+  },
+  IZI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.IZI_WETH],
+  },
+  CANTO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.CANTO_WETH],
+  },
+  FTT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.FTT_WETH],
+  },
+  PNP: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.PNP_WETH],
+  },
+  RBC: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.RBC_WETH],
+  },
+  LUNA_VIRTUALS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.LUNA_WETH],
+  },
+  ONCHAIN: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ONCHAIN_WETH],
+  },
+  FUSE: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.FUSE_WBNB],
+  },
+  AIOZ: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.AIOZ_WBNB],
+  },
+  MENDI: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.MENDI_USDC],
+  },
+  OM: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.OM_WETH],
   },
   '0xMR': {
     currency: 'eth',

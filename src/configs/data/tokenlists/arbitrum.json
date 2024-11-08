@@ -1559,6 +1559,12 @@
     "decimals": 18,
     "address": "0x93fa0b88c0c78e45980fa74cdd87469311b7b3e4"
   },
+  "0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5": {
+    "chain": "arbitrum",
+    "symbol": "BETS",
+    "decimals": 18,
+    "address": "0x94025780a1ab58868d9b2dbbb775f44b32e8e6e5"
+  },
   "0x95146881b86b3ee99e63705ec87afe29fcc044d9": {
     "chain": "arbitrum",
     "symbol": "VRTX",

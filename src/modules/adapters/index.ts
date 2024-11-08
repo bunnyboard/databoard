@@ -43,6 +43,7 @@ import PellNetworkAdapter from './pellnetwork/pellnetwork';
 import PolygonNativeBridgeAdapter from './polygon/nativeBridge';
 import PolygonZzkevmNativeBridgeAdapter from './polygon/zkevmNativeBridge';
 import RocketpoolAdapter from './rocketpool/rocketpool';
+import RubicAdapter from './rubic/rubic';
 import ScrollNativeBridgeAdapter from './scroll/nativeBridge';
 import SpookyAdapter from './spooky/spooky';
 import EthxAdapter from './stader/ethx';
@@ -160,5 +161,6 @@ export function getProtocolAdapters(
     kyberswap: new KyberswapAdapter(services, storages, ProtocolConfigs.kyberswap),
     zerox: new ZeroxAdapter(services, storages, ProtocolConfigs.zerox),
     pellnetwork: new PellNetworkAdapter(services, storages, ProtocolConfigs.pellnetwork),
+    rubic: new RubicAdapter(services, storages, ProtocolConfigs.rubic),
   };
 }

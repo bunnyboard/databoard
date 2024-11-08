@@ -187,4 +187,5 @@ export const ProtocolNames = {
   karak: 'karak',
   paraswap: 'paraswap',
   pellnetwork: 'pellnetwork', // https://pell.network
+  rubic: 'rubic', // https://rubic.exchange
 };

@@ -21,7 +21,7 @@ export interface PellNetworkProtocolConfig extends ProtocolConfig {
 export const PellNetworkConfigs: PellNetworkProtocolConfig = {
   protocol: ProtocolNames.pellnetwork,
   category: ProtocolCategories.restaking,
-  birthday: 1715472000, // Sun May 12 2024 00:00:00 GMT+0000
+  birthday: 1722470400, // Thu Aug 01 2024 00:00:00 GMT+0000
   configs: [
     {
       chain: ChainNames.ethereum,

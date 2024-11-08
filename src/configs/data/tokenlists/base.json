@@ -2039,6 +2039,12 @@
     "decimals": 18,
     "address": "0x55a6f6cb50db03259f6ab17979a4891313be2f45"
   },
+  "0x55cd6469f597452b5a7536e2cd98fde4c1247ee4": {
+    "chain": "base",
+    "symbol": "LUNA",
+    "decimals": 18,
+    "address": "0x55cd6469f597452b5a7536e2cd98fde4c1247ee4"
+  },
   "0x5698bba26d8668d781cdcfd2d6d6881226dd0f52": {
     "chain": "base",
     "symbol": "BOOL",

@@ -54,7 +54,7 @@ export default class PellNetworkAdapter extends ProtocolAdapter {
 
     for (const config of pellConfig.configs) {
       if (config.birthday > options.timestamp) {
-        return null;
+        continue;
       }
 
       const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(

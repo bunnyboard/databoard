@@ -70,6 +70,7 @@ export default class LifiAdapter extends ProtocolAdapter {
       ...getInitialProtocolCoreMetrics(),
       volumes: {
         bridge: 0,
+        trade: 0,
       },
       volumeBridgePaths: {},
     };

@@ -91,6 +91,7 @@ import { KyberswapConfigs } from './protocols/kyberswap';
 import { ZeroxConfigs } from './protocols/zerox';
 import { MantleNativeBridgeConfigs } from './protocols/mantle';
 import { PellNetworkConfigs } from './protocols/pellnetwork';
+import { RubicConfigs } from './protocols/rubic';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -209,4 +210,5 @@ export const ProtocolConfigs = {
   kyberswap: KyberswapConfigs,
   zerox: ZeroxConfigs,
   pellnetwork: PellNetworkConfigs,
+  rubic: RubicConfigs,
 };
