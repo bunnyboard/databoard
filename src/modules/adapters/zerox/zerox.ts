@@ -110,6 +110,17 @@ export default class ZeroxAdapter extends ProtocolAdapter {
                     disableWarning: true,
                   });
                   tradeAmountUsd = buyAmount * buyTokenPriceUsd;
+
+                  if (buyTokenPriceUsd <= 0) {
+                    logger.warn('failed to get token prices for trade', {
+                      service: this.name,
+                      protocol: this.protocolConfig.protocol,
+                      chain: exchangeConfig.chain,
+                      token: `${sellToken.symbol}-${buyToken.symbol}`,
+                      logIndex: log.logIndex,
+                      txn: log.transactionHash,
+                    });
+                  }
                 } else {
                   tradeAmountUsd = sellAmount * sellTokenPriceUsd;
                 }
@@ -153,6 +164,17 @@ export default class ZeroxAdapter extends ProtocolAdapter {
                     disableWarning: true,
                   });
                   tradeAmountUsd = buyAmount * buyTokenPriceUsd;
+
+                  if (buyTokenPriceUsd <= 0) {
+                    logger.warn('failed to get token prices for trade', {
+                      service: this.name,
+                      protocol: this.protocolConfig.protocol,
+                      chain: exchangeConfig.chain,
+                      token: `${sellToken.symbol}-${buyToken.symbol}`,
+                      logIndex: log.logIndex,
+                      txn: log.transactionHash,
+                    });
+                  }
                 } else {
                   tradeAmountUsd = sellAmount * sellTokenPriceUsd;
                 }
@@ -162,18 +184,8 @@ export default class ZeroxAdapter extends ProtocolAdapter {
             }
           }
 
-          if (tradeAmountUsd === 0) {
-            logger.warn('failed to get token prices for trade', {
-              service: this.name,
-              protocol: this.protocolConfig.protocol,
-              chain: exchangeConfig.chain,
-              logIndex: log.logIndex,
-              txn: log.transactionHash,
-            });
-          } else {
-            (protocolData.volumes.trade as number) += tradeAmountUsd;
-            ((protocolData.breakdownChains as any)[exchangeConfig.chain].volumes.trade as number) += tradeAmountUsd;
-          }
+          (protocolData.volumes.trade as number) += tradeAmountUsd;
+          ((protocolData.breakdownChains as any)[exchangeConfig.chain].volumes.trade as number) += tradeAmountUsd;
         }
       }
     }

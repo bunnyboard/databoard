@@ -116,6 +116,7 @@ export default class KyberswapAdapter extends ProtocolAdapter {
                 protocol: this.protocolConfig.protocol,
                 chain: routerConfig.chain,
                 logIndex: log.logIndex,
+                token: `${sellToken.symbol}-${buyToken.symbol}`,
                 txn: log.transactionHash,
               });
             } else {

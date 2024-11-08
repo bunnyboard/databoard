@@ -111,6 +111,7 @@ export default class CowswapAdapter extends ProtocolAdapter {
                 service: this.name,
                 protocol: this.protocolConfig.protocol,
                 chain: settlementConfig.chain,
+                token: `${sellToken.symbol}-${buyToken.symbol}`,
                 logIndex: log.logIndex,
                 txn: log.transactionHash,
               });

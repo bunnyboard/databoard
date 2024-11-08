@@ -13,7 +13,7 @@ export interface ParaswapProtocolConfig extends ProtocolConfig {
 
 export const ParaswapConfigs: ParaswapProtocolConfig = {
   protocol: ProtocolNames.paraswap,
-  category: ProtocolCategories.dexAggregator,
+  category: ProtocolCategories.aggregator,
   birthday: 1629331200, // Thu Aug 19 2021 00:00:00 GMT+0000
   swappers: [
     {

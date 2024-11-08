@@ -114,6 +114,7 @@ export default class ParaswapAdapter extends ProtocolAdapter {
                 service: this.name,
                 protocol: this.protocolConfig.protocol,
                 chain: swapperConfig.chain,
+                token: `${sellToken.symbol}-${buyToken.symbol}`,
                 logIndex: log.logIndex,
                 txn: log.transactionHash,
               });

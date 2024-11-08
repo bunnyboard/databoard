@@ -3407,6 +3407,12 @@
     "decimals": 18,
     "address": "0x0cf453dc7ea21ef8fdffc1b14cb848e1e3884be5"
   },
+  "0x0cf8e180350253271f4b917ccfb0accc4862f262": {
+    "chain": "bnbchain",
+    "symbol": "BTCBR",
+    "decimals": 18,
+    "address": "0x0cf8e180350253271f4b917ccfb0accc4862f262"
+  },
   "0x0cffd09f24724a12bdd6c081e3a59251683f4b2b": {
     "chain": "bnbchain",
     "symbol": "bbySTC",

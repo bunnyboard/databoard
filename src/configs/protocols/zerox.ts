@@ -14,7 +14,7 @@ export interface ZeroxProtocolConfig extends ProtocolConfig {
 
 export const ZeroxConfigs: ZeroxProtocolConfig = {
   protocol: ProtocolNames.zerox,
-  category: ProtocolCategories.dexAggregator,
+  category: ProtocolCategories.aggregator,
   birthday: 1591920000, // Fri Jun 12 2020 00:00:00 GMT+0000
   exchanges: [
     {

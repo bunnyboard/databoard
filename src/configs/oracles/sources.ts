@@ -1974,6 +1974,18 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.bsdETH_WETH],
   },
+  AVAIL: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.AVAIL_WETH],
+  },
+  BNBTC: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.BNBTC_WBNB],
+  },
+  BTCBR: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.BTCBR_WBNB],
+  },
   '0xMR': {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List['0xMR_WETH']],

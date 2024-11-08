@@ -36,7 +36,7 @@ import MetisNativeBridgeAdapter from './metis/nativeBridge';
 import MoonwellAdapter from './moonwell/moonwell';
 import MorphoAdapter from './morpho/morpho';
 import OptimismNativeBridgeAdapter from './optimism/nativeBridge';
-import OptimismNativeBridgeAdapterV2 from './optimism/nativeBridgeV2';
+import OptimismNativeBridgeLegacyAdapter from './optimism/nativeBridgeLegacy';
 import PancakeAdapter from './pancake/pancake';
 import ParaswapAdapter from './paraswap/paraswap';
 import PolygonNativeBridgeAdapter from './polygon/nativeBridge';
@@ -65,7 +65,7 @@ export function getProtocolAdapters(
     ethereum: new EthereumEcosystemAdapter(services, storages, ProtocolConfigs.ethereum),
     aave: new AaveAdapter(services, storages, ProtocolConfigs.aave),
     // ajna: new AjnaAdapter(services, storages, ProtocolConfigs.ajna),
-    // avalon: new AaveAdapter(services, storages, ProtocolConfigs.avalon),
+    avalon: new AaveAdapter(services, storages, ProtocolConfigs.avalon),
     benqi: new BenqiAdapter(services, storages, ProtocolConfigs.benqi),
     colend: new AaveAdapter(services, storages, ProtocolConfigs.colend),
     compound: new CompoundAdapter(services, storages, ProtocolConfigs.compound),
@@ -151,7 +151,7 @@ export function getProtocolAdapters(
     lineaNativeBridge: new LineaNativeBridgeAdapter(services, storages, ProtocolConfigs.lineaNativeBridge),
     zoraNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.zoraNativeBridge),
     worldchainNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.worldchainNativeBridge),
-    kromaNativeBridge: new OptimismNativeBridgeAdapterV2(services, storages, ProtocolConfigs.kromaNativeBridge),
+    kromaNativeBridge: new OptimismNativeBridgeLegacyAdapter(services, storages, ProtocolConfigs.kromaNativeBridge),
     mintNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.mintNativeBridge),
     metisNativeBridge: new MetisNativeBridgeAdapter(services, storages, ProtocolConfigs.metisNativeBridge),
     mantleNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.mantleNativeBridge),

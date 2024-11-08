@@ -16,7 +16,7 @@ export interface LifiProtocolConfig extends ProtocolConfig {
 
 export const LifiConfigs: LifiProtocolConfig = {
   protocol: ProtocolNames.lifi,
-  category: ProtocolCategories.bridge,
+  category: ProtocolCategories.aggregator,
   birthday: 1666310400, // Fri Oct 21 2022 00:00:00 GMT+0000
   diamonds: [
     {

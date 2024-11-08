@@ -1807,6 +1807,13 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.base['0xcb327b99ff831bf8223cced12b1338ff3aa322ff'],
     quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
   },
+  BNBTC_WBNB: {
+    type: 'univ2',
+    chain: 'bnbchain',
+    address: '0xfe5efb8d1213fb2f8b9b6864fe7b4ad44bb60f8a',
+    baseToken: TokensBook.bnbchain['0xe7cb24f449973d5b3520e5b93d88b405903c75fb'],
+    quotaToken: TokensBook.bnbchain['0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c'],
+  },
   MOE_USDT: {
     type: 'univ2',
     chain: 'mantle',

@@ -7,14 +7,14 @@ import { AaveProtocolConfig } from './aave';
 export const AvalonConfigs: AaveProtocolConfig = {
   protocol: ProtocolNames.avalon,
   category: ProtocolCategories.lending,
-  birthday: 1710892800, // Wed Mar 20 2024 00:00:00 GMT+0000
+  birthday: 1711497600, // Wed Mar 27 2024 00:00:00 GMT+0000
   lendingMarkets: [
     // merlin chain
     {
       chain: ChainNames.merlin,
       marketName: 'Main Market',
       version: 3,
-      birthday: 1710892800, // Wed Mar 20 2024 00:00:00 GMT+0000
+      birthday: 1711497600, // Wed Mar 27 2024 00:00:00 GMT+0000
       lendingPool: '0xea5c99a3cca5f95ef6870a1b989755f67b6b1939',
       dataProvider: '0x5f314b36412765f3e1016632fd1ad528929536ca',
       oracle: {

@@ -17,7 +17,7 @@ export interface BungeeProtocolConfig extends ProtocolConfig {
 
 export const BungeeConfigs: BungeeProtocolConfig = {
   protocol: ProtocolNames.bungee,
-  category: ProtocolCategories.bridge,
+  category: ProtocolCategories.aggregator,
   birthday: 1679097600, // gateway deployed on ethereum
   socketGateways: [
     {
