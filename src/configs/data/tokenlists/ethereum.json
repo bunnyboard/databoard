@@ -1775,6 +1775,12 @@
     "decimals": 18,
     "address": "0x0a6e18fb2842855c3af925310b0f50a4bfa17909"
   },
+  "0x0a6e7ba5042b38349e437ec6db6214aec7b35676": {
+    "chain": "ethereum",
+    "symbol": "SWELL",
+    "decimals": 18,
+    "address": "0x0a6e7ba5042b38349e437ec6db6214aec7b35676"
+  },
   "0x0a752431fdff84fff76b3c76e3deb0db9170d4de": {
     "chain": "ethereum",
     "symbol": "BPT",
