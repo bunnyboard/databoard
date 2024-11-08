@@ -1984,7 +1984,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   },
   BTCBR: {
     currency: 'bnb',
-    sources: [OracleSourceUniswapv2List.BTCBR_WBNB],
+    sources: [OracleSourceUniswapv3List.BTCBR_WBNB],
   },
   '0xMR': {
     currency: 'eth',

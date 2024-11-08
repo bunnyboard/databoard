@@ -3,8 +3,6 @@ import envConfig from '../configs/envConfig';
 import logger, { logBreakLine } from '../lib/logger';
 import { sleep } from '../lib/utils';
 import { getProtocolAdapters } from '../modules/adapters';
-import EvmChainAdapter from '../modules/chains/evm';
-import { ChainFamilies } from '../types/base';
 import { ContextServices, ContextStorages } from '../types/namespaces';
 import { BasicCommand } from './basic';
 import * as Sentry from '@sentry/node';
@@ -42,22 +40,17 @@ export class RunCommand extends BasicCommand {
       });
     }
 
-    if (argv.chain === '' && argv.protocol === '') {
-      console.log('required at least --chain or --protocol options');
+    if (argv.protocol === '') {
+      console.log('required --protocol options');
       process.exit(0);
     }
 
-    const chains = argv.chain ? argv.chain.split(',') : [];
     const protocols = argv.protocol ? argv.protocol.split(',') : [];
 
-    const cmdConfigs: any = {};
-    if (argv.chain && argv.chain !== '') {
-      cmdConfigs.type = 'chain';
-      cmdConfigs.chain = chains.toString();
-    } else if (protocols.length > 0) {
-      cmdConfigs.type = 'protocol';
-      cmdConfigs.protocol = protocols.toString();
-    }
+    const cmdConfigs: any = {
+      type: 'protocol',
+      protocol: protocols.toString(),
+    };
 
     cmdConfigs.service = argv.service === 'state' || argv.service === 'snapshot' ? argv.service : 'state and snapshot';
     if (argv.fromTime > 0) {
@@ -100,64 +93,32 @@ export class RunCommand extends BasicCommand {
     // get adapters
     const protocolAdapters = getProtocolAdapters(services, storages);
 
-    if (argv.chain !== '') {
-      do {
-        for (const chain of chains) {
-          if (envConfig.blockchains[chain] && envConfig.blockchains[chain].family === ChainFamilies.evm) {
-            const chainAdapter = new EvmChainAdapter(services, storages, envConfig.blockchains[chain]);
-
-            try {
-              await chainAdapter.run({
-                service: argv.service === 'state' || argv.service === 'snapshot' ? argv.service : undefined,
-                fromTime: argv.fromTime ? argv.fromTime : undefined,
-                force: argv.force ? argv.force : false,
-              });
-            } catch (e: any) {
-              Sentry.captureException(e);
-              throw new Error(e);
-            }
+    do {
+      for (const protocol of protocols) {
+        if ((ProtocolConfigs as any)[protocol] && protocolAdapters[protocol]) {
+          try {
+            await protocolAdapters[protocol].run({
+              service: argv.service === 'state' || argv.service === 'snapshot' ? argv.service : undefined,
+              fromTime: argv.fromTime ? argv.fromTime : undefined,
+              force: argv.force ? argv.force : false,
+            });
+          } catch (e: any) {
+            Sentry.captureException(e);
+            throw new Error(e);
           }
         }
+      }
 
-        if (!argv.exit) {
-          await sleep(argv.interval);
-        }
-      } while (!argv.exit);
-    } else if (argv.protocol !== '') {
-      do {
-        for (const protocol of protocols) {
-          if ((ProtocolConfigs as any)[protocol] && protocolAdapters[protocol]) {
-            try {
-              await protocolAdapters[protocol].run({
-                service: argv.service === 'state' || argv.service === 'snapshot' ? argv.service : undefined,
-                fromTime: argv.fromTime ? argv.fromTime : undefined,
-                force: argv.force ? argv.force : false,
-              });
-            } catch (e: any) {
-              Sentry.captureException(e);
-              throw new Error(e);
-            }
-          }
-        }
-
-        if (!argv.exit) {
-          await sleep(argv.interval);
-        }
-      } while (!argv.exit);
-    }
+      if (!argv.exit) {
+        await sleep(argv.interval);
+      }
+    } while (!argv.exit);
 
     process.exit(0);
   }
 
   public setOptions(yargs: any) {
     return yargs.option({
-      chain: {
-        alias: 'c',
-        type: 'string',
-        default: '',
-        describe:
-          'Collect data of given blockchain. You can pass a list of chains seperated by comma, ex: --chain "ethereum,polygon".',
-      },
       protocol: {
         alias: 'p',
         type: 'string',

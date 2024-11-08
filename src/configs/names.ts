@@ -186,4 +186,5 @@ export const ProtocolNames = {
   symbiotic: 'symbiotic',
   karak: 'karak',
   paraswap: 'paraswap',
+  pellnetwork: 'pellnetwork', // https://pell.network
 };

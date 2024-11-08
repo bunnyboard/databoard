@@ -39,6 +39,7 @@ import OptimismNativeBridgeAdapter from './optimism/nativeBridge';
 import OptimismNativeBridgeLegacyAdapter from './optimism/nativeBridgeLegacy';
 import PancakeAdapter from './pancake/pancake';
 import ParaswapAdapter from './paraswap/paraswap';
+import PellNetworkAdapter from './pellnetwork/pellnetwork';
 import PolygonNativeBridgeAdapter from './polygon/nativeBridge';
 import PolygonZzkevmNativeBridgeAdapter from './polygon/zkevmNativeBridge';
 import RocketpoolAdapter from './rocketpool/rocketpool';
@@ -158,5 +159,6 @@ export function getProtocolAdapters(
     paraswap: new ParaswapAdapter(services, storages, ProtocolConfigs.paraswap),
     kyberswap: new KyberswapAdapter(services, storages, ProtocolConfigs.kyberswap),
     zerox: new ZeroxAdapter(services, storages, ProtocolConfigs.zerox),
+    pellnetwork: new PellNetworkAdapter(services, storages, ProtocolConfigs.pellnetwork),
   };
 }

@@ -90,6 +90,7 @@ import { MetisNativeBridgeConfigs } from './protocols/metis';
 import { KyberswapConfigs } from './protocols/kyberswap';
 import { ZeroxConfigs } from './protocols/zerox';
 import { MantleNativeBridgeConfigs } from './protocols/mantle';
+import { PellNetworkConfigs } from './protocols/pellnetwork';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -207,4 +208,5 @@ export const ProtocolConfigs = {
   paraswap: ParaswapConfigs,
   kyberswap: KyberswapConfigs,
   zerox: ZeroxConfigs,
+  pellnetwork: PellNetworkConfigs,
 };

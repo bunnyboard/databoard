@@ -43,21 +43,4 @@ export const DatabaseCollectionConfigs: DatabaseCollectionConfig = {
       },
     ],
   },
-  blockchainDataStates: {
-    name: `${CollectionPrefix}.blockchainDataStates`,
-    indies: [
-      {
-        chain: 1,
-      },
-    ],
-  },
-  blockchainDataSnapshots: {
-    name: `${CollectionPrefix}.blockchainDataSnapshots`,
-    indies: [
-      {
-        chain: 1,
-        timestamp: 1,
-      },
-    ],
-  },
 };

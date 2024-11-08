@@ -31,12 +31,6 @@ export interface DatabaseCollectionConfig {
 
   // save protocol data historical/snapshots
   protocolDataSnapshots: MongoCollectionConfig;
-
-  // save blockchains current data state
-  blockchainDataStates: MongoCollectionConfig;
-
-  // save blockchains data historical/snapshots
-  blockchainDataSnapshots: MongoCollectionConfig;
 }
 
 export interface EnvConfig {
