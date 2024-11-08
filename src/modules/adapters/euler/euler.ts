@@ -18,6 +18,10 @@ const EulerEvents = {
   Liquidate: '0x8246cc71ab01533b5bebc672a636df812f10637ad720797319d5741d5ebb3962',
 };
 
+const FixedRate: { [key: string]: number } = {
+  '0xdd629e5241cbc5919847783e6c96b2de4754e438': 1, // fixed at $1
+};
+
 export default class EulerAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.euler 📐';
 
@@ -123,11 +127,13 @@ export default class EulerAdapter extends ProtocolAdapter {
               };
             }
 
-            const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-              chain: factoryConfig.chain,
-              address: asset,
-              timestamp: options.timestamp,
-            });
+            const tokenPriceUsd = FixedRate[token.address]
+              ? FixedRate[token.address]
+              : await this.services.oracle.getTokenPriceUsdRounded({
+                  chain: factoryConfig.chain,
+                  address: asset,
+                  timestamp: options.timestamp,
+                });
 
             const totalDepositUsd = formatBigNumberToNumber(totalAssets.toString(), token.decimals) * tokenPriceUsd;
             const totalBorrowUsd = formatBigNumberToNumber(totalBorrows.toString(), token.decimals) * tokenPriceUsd;
