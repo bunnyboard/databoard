@@ -87,7 +87,7 @@ export const AvalonConfigs: AaveProtocolConfig = {
       },
     },
 
-    // bnb chain
+    // bnbchain
     {
       chain: ChainNames.bnbchain,
       marketName: 'Main Market',
@@ -112,6 +112,34 @@ export const AvalonConfigs: AaveProtocolConfig = {
       oracle: {
         currency: 'usd',
         address: '0x16d0d4d24305ae29161a42f51d15dc8586bbdc9b',
+      },
+    },
+
+    // taiko
+    {
+      chain: ChainNames.taiko,
+      marketName: 'Main Market',
+      version: 3,
+      birthday: 1730246400, // Wed Oct 30 2024 00:00:00 GMT+0000
+      lendingPool: '0x9dd29AA2BD662E6b569524ba00C55be39e7B00fB',
+      dataProvider: '0xF6Aa54a5b60c324602C9359E8221423793e5205d',
+      oracle: {
+        currency: 'usd',
+        address: '0xde32a52507BA4829fd433BCA44df340d96e1927E',
+      },
+    },
+
+    // bob
+    {
+      chain: ChainNames.bob,
+      marketName: 'Main Market',
+      version: 3,
+      birthday: 1722297600, // Tue Jul 30 2024 00:00:00 GMT+0000
+      lendingPool: '0x35B3F1BFe7cbE1e95A3DC2Ad054eB6f0D4c879b6',
+      dataProvider: '0xfabb0fDca4348d5A40EB1BB74AEa86A1C4eAd7E2',
+      oracle: {
+        currency: 'usd',
+        address: '0x1Ad709515052E51057553187624DEa464bc00dd2',
       },
     },
   ],
