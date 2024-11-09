@@ -1525,6 +1525,11 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x765de816845861e75a25fca122bb6898b8b1282a': OracleSourceConfigs.cUSD,
   },
 
+  bob: {
+    '0x03c7054bcb39f7b2e5b2c7acb37583e32d70cfa3': OracleSourceConfigs.WBTC,
+    '0xbba2ef945d523c4e2608c9e1214c2cc64d4fc2e2': OracleSourceConfigs.tBTC,
+  },
+
   oasys: {
     '0xb88d147de8951ee637758138f2d6d2312b2c4141': OracleSourceConfigs.AVAX,
     '0x96de4b1f5345e0d812c574193d75278ffb48b438': OracleSourceConfigs.MATIC,

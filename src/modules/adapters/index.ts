@@ -3,6 +3,7 @@ import { ContextServices, ContextStorages, IProtocolAdapter } from '../../types/
 import AaveAdapter from './aave/aave';
 import AcrossAdapter from './across/across';
 import ArbitrumNativeBridgeAdapter from './arbitrum/nativeBridge';
+import AvalonAdapter from './avalon/avalon';
 import BenqiAdapter from './benqi/benqi';
 import BungeeAdapter from './bungee/bungee';
 import CbridgeAdapter from './celer/cbridge';
@@ -67,7 +68,7 @@ export function getProtocolAdapters(
     ethereum: new EthereumEcosystemAdapter(services, storages, ProtocolConfigs.ethereum),
     aave: new AaveAdapter(services, storages, ProtocolConfigs.aave),
     // ajna: new AjnaAdapter(services, storages, ProtocolConfigs.ajna),
-    avalon: new AaveAdapter(services, storages, ProtocolConfigs.avalon),
+    avalon: new AvalonAdapter(services, storages, ProtocolConfigs.avalon),
     benqi: new BenqiAdapter(services, storages, ProtocolConfigs.benqi),
     colend: new AaveAdapter(services, storages, ProtocolConfigs.colend),
     compound: new CompoundAdapter(services, storages, ProtocolConfigs.compound),
