@@ -25,7 +25,7 @@ import HyphenAdapter from './hyphen/hyphen';
 import KarakAdapter from './karak/karak';
 import KyberswapAdapter from './kyberswap/kyberswap';
 import LayerbankAdapter from './layerbank/layerbank';
-import LfjlendAdapter from './lfj/lfj';
+import LfjlendAdapter from './lfj/lfjlend';
 import LidoAdapter from './lido/lido';
 import LifiAdapter from './lifi/lifi';
 import LineaNativeBridgeAdapter from './linea/nativeBridge';
