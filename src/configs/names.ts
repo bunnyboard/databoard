@@ -63,6 +63,7 @@ export const ChainNames = {
   worldchain: 'worldchain',
   oasys: 'oasys',
   karakk2: 'karakk2',
+  zircuit: 'zircuit',
 };
 
 export const ProtocolNames = {

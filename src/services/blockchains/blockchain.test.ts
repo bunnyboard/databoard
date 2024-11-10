@@ -226,6 +226,11 @@ const testcases = [
     timestamp: 1722470400, // Thu Aug 01 2024 00:00:00 GMT+0000
     expectedBlockNumber: 30716677,
   },
+  {
+    ...EnvConfig.blockchains.zircuit,
+    timestamp: 1730419200, // Thu Aug 01 2024 00:00:00 GMT+0000
+    expectedBlockNumber: 5241493,
+  },
 ];
 
 describe('getBlockNumberAtTimestamp', function () {

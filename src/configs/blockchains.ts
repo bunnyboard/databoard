@@ -608,4 +608,16 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
       decimals: 18,
     },
   },
+  [ChainNames.zircuit]: {
+    name: ChainNames.zircuit,
+    family: 'evm',
+    chainId: 48900,
+    nodeRpc: String(process.env.BLOCKCHAIN_ZIRCUIT_NODE),
+    nativeToken: {
+      chain: ChainNames.zircuit,
+      address: AddressZero,
+      symbol: 'ETH',
+      decimals: 18,
+    },
+  },
 };
