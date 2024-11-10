@@ -33,7 +33,7 @@ import LineaNativeBridgeAdapter from './linea/nativeBridge';
 import LiquidCollectiveAdapter from './liquidcollective/lseth';
 import LiquityAdapter from './liquity/liquity';
 import MakerAdapter from './maker/maker';
-import MethAdapter from './meth/meth';
+import MethAdapter from './mantle/meth';
 import MetisNativeBridgeAdapter from './metis/nativeBridge';
 import MoonwellAdapter from './moonwell/moonwell';
 import MorphoAdapter from './morpho/morpho';

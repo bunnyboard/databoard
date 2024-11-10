@@ -9,8 +9,13 @@ import AdapterDataHelper from '../helpers';
 import { decodeEventLog } from 'viem';
 import mEthAbi from '../../../configs/abi/mantle/mETH.json';
 import ethStakingAbi from '../../../configs/abi/mantle/EthStaking.json';
-import { MethProtocolConfig } from '../../../configs/protocols/meth';
+import erc20Abi from '../../../configs/abi/ERC20.json';
+import cmEthVaultAbi from '../../../configs/abi/mantle/cmETHVault.json';
+import { MethProtocolConfig } from '../../../configs/protocols/mantle';
 import BigNumber from 'bignumber.js';
+
+const EventEnter = '0xea00f88768a86184a6e515238a549c171769fe7460a011d6fd0bcd48ca078ea4';
+const EventExit = '0xe0c82280a1164680e0cf43be7db4c4c9f985423623ad7a544fb76c772bdc6043';
 
 export default class MethAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.meth';
@@ -29,7 +34,18 @@ export default class MethAdapter extends ProtocolAdapter {
       timestamp: options.timestamp,
       breakdown: {
         ethereum: {
+          // stake ETH -> mETH
           [AddressZero]: {
+            ...getInitialProtocolCoreMetrics(),
+            totalSupplied: 0,
+            volumes: {
+              deposit: 0,
+              withdraw: 0,
+            },
+          },
+
+          // stake mETH -> cmETH
+          [methConfig.mETH]: {
             ...getInitialProtocolCoreMetrics(),
             totalSupplied: 0,
             volumes: {
@@ -53,6 +69,11 @@ export default class MethAdapter extends ProtocolAdapter {
       address: AddressZero,
       timestamp: options.timestamp,
     });
+    const methPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+      chain: 'ethereum',
+      address: methConfig.mETH,
+      timestamp: options.timestamp,
+    });
 
     const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
       methConfig.chain,
@@ -66,7 +87,7 @@ export default class MethAdapter extends ProtocolAdapter {
 
     const stakingContract = await this.services.blockchain.evm.readContract({
       chain: methConfig.chain,
-      target: methConfig.address,
+      target: methConfig.mETH,
       abi: mEthAbi,
       method: 'stakingContract',
       params: [],
@@ -125,9 +146,48 @@ export default class MethAdapter extends ProtocolAdapter {
     const protocolRevenue = (supplySideRevenue / (1 - methFeeRate)) * methFeeRate;
     const totalFees = supplySideRevenue + protocolRevenue;
 
-    protocolData.totalAssetDeposited += totalDepositedUsd;
-    protocolData.totalValueLocked += totalDepositedUsd;
-    (protocolData.totalSupplied as number) += totalDepositedUsd;
+    let totalmETHDepositedUsd = 0;
+    if (methConfig.cmETHBirthday <= options.timestamp) {
+      const mETHBalanceOfcmETH = await this.services.blockchain.evm.readContract({
+        chain: methConfig.chain,
+        target: methConfig.mETH,
+        abi: erc20Abi,
+        method: 'balanceOf',
+        params: [methConfig.cmETHVault],
+        blockNumber: blockNumber,
+      });
+      totalmETHDepositedUsd = formatBigNumberToNumber(mETHBalanceOfcmETH.toString(), 18) * methPriceUsd;
+
+      const vaultLogs = await this.services.blockchain.evm.getContractLogs({
+        chain: methConfig.chain,
+        address: methConfig.cmETHVault,
+        fromBlock: beginBlock,
+        toBlock: endBlock,
+      });
+      for (const log of vaultLogs) {
+        if (log.topics[0] === EventEnter || log.topics[0] === EventExit) {
+          const event: any = decodeEventLog({
+            abi: cmEthVaultAbi,
+            topics: log.topics,
+            data: log.data,
+          });
+
+          const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), 18) * methPriceUsd;
+
+          if (log.topics[0] === EventEnter) {
+            (protocolData.volumes.deposit as number) += amountUsd;
+            (protocolData.breakdown[methConfig.chain][methConfig.mETH].volumes.deposit as number) += amountUsd;
+          } else {
+            (protocolData.volumes.withdraw as number) += amountUsd;
+            (protocolData.breakdown[methConfig.chain][methConfig.mETH].volumes.withdraw as number) += amountUsd;
+          }
+        }
+      }
+    }
+
+    protocolData.totalAssetDeposited += totalDepositedUsd + totalmETHDepositedUsd;
+    protocolData.totalValueLocked += totalDepositedUsd + totalmETHDepositedUsd;
+    (protocolData.totalSupplied as number) += totalDepositedUsd + totalmETHDepositedUsd;
     protocolData.totalFees += totalFees;
     protocolData.protocolRevenue += protocolRevenue;
     protocolData.supplySideRevenue += supplySideRevenue;
@@ -141,9 +201,13 @@ export default class MethAdapter extends ProtocolAdapter {
     protocolData.breakdown[methConfig.chain][AddressZero].supplySideRevenue += supplySideRevenue;
     protocolData.breakdown[methConfig.chain][AddressZero].liquidStakingApr = stakingApr * 100;
 
+    protocolData.breakdown[methConfig.chain][methConfig.mETH].totalAssetDeposited += totalmETHDepositedUsd;
+    protocolData.breakdown[methConfig.chain][methConfig.mETH].totalValueLocked += totalmETHDepositedUsd;
+    (protocolData.breakdown[methConfig.chain][methConfig.mETH].totalSupplied as number) += totalmETHDepositedUsd;
+
     const logs = await this.services.blockchain.evm.getContractLogs({
       chain: methConfig.chain,
-      address: methConfig.address,
+      address: methConfig.mETH,
       fromBlock: beginBlock,
       toBlock: endBlock,
     });

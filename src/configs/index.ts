@@ -44,7 +44,7 @@ import { UwulendConfigs } from './protocols/uwulend';
 import { VenusConfigs } from './protocols/venus';
 import { YeifinanceConfigs } from './protocols/yeifinance';
 import { ZerolendConfigs } from './protocols/zerolend';
-import { MethConfigs } from './protocols/meth';
+import { MethConfigs } from './protocols/mantle';
 import { EthxConfigs } from './protocols/stader';
 import { FraxEtherConfigs } from './protocols/frax';
 import { StakeStoneConfigs } from './protocols/stakestone';

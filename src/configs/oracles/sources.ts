@@ -2050,6 +2050,30 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.COTI_WETH],
   },
+  THOR: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.THOR_WETH],
+  },
+  ONDO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ONDO_WETH],
+  },
+  wTAO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.wTAO_WETH],
+  },
+  stTAO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.stTAO_WETH],
+  },
+  DEAI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.DEAI_WETH],
+  },
+  BANANA_GUN: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BANANA_WETH],
+  },
   '0xMR': {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List['0xMR_WETH']],
