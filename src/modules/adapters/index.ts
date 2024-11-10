@@ -52,7 +52,7 @@ import EthxAdapter from './stader/ethx';
 import StakewiseAdapter from './stakewise/stakewise';
 import StargateAdapter from './stargate/stargate';
 import SushiAdapter from './sushi/sushi';
-import SwethAdapter from './swellnetwork/sweth';
+import SwellAdapter from './swell/swell';
 import SymbioticAdapter from './symbiotic/symbiotic';
 import SynapseAdapter from './synapse/synapse';
 import UniswapAdapter from './uniswap/uniswap';
@@ -113,7 +113,7 @@ export function getProtocolAdapters(
     rocketpool: new RocketpoolAdapter(services, storages, ProtocolConfigs.rocketpool),
     wbeth: new WbethAdapter(services, storages, ProtocolConfigs.wbeth),
     meth: new MethAdapter(services, storages, ProtocolConfigs.meth),
-    sweth: new SwethAdapter(services, storages, ProtocolConfigs.sweth),
+    swell: new SwellAdapter(services, storages, ProtocolConfigs.swell),
     ethx: new EthxAdapter(services, storages, ProtocolConfigs.ethx),
     stakewise: new StakewiseAdapter(services, storages, ProtocolConfigs.stakewise),
     liquidcollective: new LiquidCollectiveAdapter(services, storages, ProtocolConfigs.liquidcollective),
