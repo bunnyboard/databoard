@@ -5,6 +5,7 @@ import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
 import ProtocolAdapter from '../protocol';
 import LidoStETHAbi from '../../../configs/abi/lido/stETH.json';
+import LidoStMATICAbi from '../../../configs/abi/lido/stMATIC.json';
 import LidoLegacyOracleAbi from '../../../configs/abi/lido/LegacyOracle.json';
 import LidoWithdrawalQueueAbi from '../../../configs/abi/lido/WithdrawalQueue.json';
 import { AddressZero, TimeUnits } from '../../../configs/constants';
@@ -12,6 +13,7 @@ import { formatBigNumberToNumber } from '../../../lib/utils';
 import { LidoEvents } from './abis';
 import { decodeEventLog } from 'viem';
 import AdapterDataHelper from '../helpers';
+import BigNumber from 'bignumber.js';
 
 export default class LidoAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.lido 💧';
@@ -31,6 +33,14 @@ export default class LidoAdapter extends ProtocolAdapter {
       breakdown: {
         ethereum: {
           [AddressZero]: {
+            ...getInitialProtocolCoreMetrics(),
+            totalSupplied: 0,
+            volumes: {
+              deposit: 0,
+              withdraw: 0,
+            },
+          },
+          [lidoConfig.maticToken]: {
             ...getInitialProtocolCoreMetrics(),
             totalSupplied: 0,
             volumes: {
@@ -74,14 +84,34 @@ export default class LidoAdapter extends ProtocolAdapter {
       timestamp: options.timestamp,
     });
 
-    const totalEthDeposited = formatBigNumberToNumber(getTotalPooledEther.toString(), 18);
+    const totalEthDepositedUsd = formatBigNumberToNumber(getTotalPooledEther.toString(), 18) * ethPriceUsd;
 
-    protocolData.totalAssetDeposited += totalEthDeposited * ethPriceUsd;
-    protocolData.totalValueLocked += totalEthDeposited * ethPriceUsd;
-    (protocolData.totalSupplied as number) += totalEthDeposited * ethPriceUsd;
-    protocolData.breakdown[lidoConfig.chain][AddressZero].totalAssetDeposited += totalEthDeposited * ethPriceUsd;
-    protocolData.breakdown[lidoConfig.chain][AddressZero].totalValueLocked += totalEthDeposited * ethPriceUsd;
-    (protocolData.breakdown[lidoConfig.chain][AddressZero].totalSupplied as number) += totalEthDeposited * ethPriceUsd;
+    // count total MATIC deposited
+    const getTotalPooledMatic = await this.services.blockchain.evm.readContract({
+      chain: lidoConfig.chain,
+      abi: LidoStMATICAbi,
+      target: lidoConfig.stMATIC,
+      method: 'getTotalPooledMatic',
+      params: [],
+      blockNumber: blockNumber,
+    });
+    const maticPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+      chain: lidoConfig.chain,
+      address: lidoConfig.maticToken,
+      timestamp: options.timestamp,
+    });
+
+    const totalMaticDepositedUsd = formatBigNumberToNumber(getTotalPooledMatic.toString(), 18) * maticPriceUsd;
+
+    protocolData.totalAssetDeposited += totalEthDepositedUsd + totalMaticDepositedUsd;
+    protocolData.totalValueLocked += totalEthDepositedUsd + totalMaticDepositedUsd;
+    (protocolData.totalSupplied as number) += totalEthDepositedUsd + totalMaticDepositedUsd;
+    protocolData.breakdown[lidoConfig.chain][AddressZero].totalAssetDeposited += totalEthDepositedUsd;
+    protocolData.breakdown[lidoConfig.chain][AddressZero].totalValueLocked += totalEthDepositedUsd;
+    (protocolData.breakdown[lidoConfig.chain][AddressZero].totalSupplied as number) += totalEthDepositedUsd;
+    protocolData.breakdown[lidoConfig.chain][lidoConfig.maticToken].totalAssetDeposited += totalMaticDepositedUsd;
+    protocolData.breakdown[lidoConfig.chain][lidoConfig.maticToken].totalValueLocked += totalMaticDepositedUsd;
+    (protocolData.breakdown[lidoConfig.chain][lidoConfig.maticToken].totalSupplied as number) += totalMaticDepositedUsd;
 
     const stEthLogs = await this.services.blockchain.evm.getContractLogs({
       chain: lidoConfig.chain,
@@ -158,7 +188,7 @@ export default class LidoAdapter extends ProtocolAdapter {
     }
 
     // rewards were distribute on-chain to stETH holders
-    const supplySideRevenue = (stakingApr * totalEthDeposited * ethPriceUsd) / TimeUnits.DaysPerYear;
+    const supplySideRevenue = (stakingApr * totalEthDepositedUsd) / TimeUnits.DaysPerYear;
 
     // lido takes 10% staking rewards
     const lidoFeeRate = 0.1; // 10%
@@ -192,6 +222,74 @@ export default class LidoAdapter extends ProtocolAdapter {
         const amountUsd = formatBigNumberToNumber(event.args.amountOfETH.toString(), 18) * ethPriceUsd;
         (protocolData.volumes.withdraw as number) += amountUsd;
         (protocolData.breakdown[lidoConfig.chain][AddressZero].volumes.withdraw as number) += amountUsd;
+      }
+    }
+
+    // estimate MATIC staking APR beased last 7 day rewards
+    const last7DaysTime =
+      options.timestamp - TimeUnits.SecondsPerDay * 7 < lidoConfig.birthdayMaticStaking
+        ? lidoConfig.birthdayMaticStaking
+        : options.timestamp - TimeUnits.SecondsPerDay * 7;
+    const last7DaysBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+      lidoConfig.chain,
+      last7DaysTime,
+    );
+    const [getPreExchangeRate, ,] = await this.services.blockchain.evm.readContract({
+      chain: lidoConfig.chain,
+      target: lidoConfig.stMATIC,
+      abi: LidoStMATICAbi,
+      method: 'convertStMaticToMatic',
+      params: [new BigNumber(1e18).toString(10)],
+      blockNumber: last7DaysBlock,
+    });
+    const [getPostExchangeRate, ,] = await this.services.blockchain.evm.readContract({
+      chain: lidoConfig.chain,
+      target: lidoConfig.stMATIC,
+      abi: LidoStMATICAbi,
+      method: 'convertStMaticToMatic',
+      params: [new BigNumber(1e18).toString(10)],
+      blockNumber: endBlock,
+    });
+
+    const preExchangeRate = formatBigNumberToNumber(getPreExchangeRate.toString(), 18);
+    const postExchangeRate = formatBigNumberToNumber(getPostExchangeRate.toString(), 18);
+
+    const maticStakingApr =
+      (TimeUnits.SecondsPerYear * ((postExchangeRate - preExchangeRate) / preExchangeRate)) /
+      (options.endTime - last7DaysTime);
+
+    protocolData.liquidStakingApr = (Number(protocolData.liquidStakingApr) + maticStakingApr * 100) / 2;
+    (protocolData.breakdown[lidoConfig.chain][lidoConfig.maticToken].liquidStakingApr as number) =
+      maticStakingApr * 100;
+
+    const stMaticLogs = await this.services.blockchain.evm.getContractLogs({
+      chain: lidoConfig.chain,
+      address: lidoConfig.stETH,
+      fromBlock: beginBlock,
+      toBlock: endBlock,
+      blockRange: 100,
+    });
+    for (const log of stMaticLogs) {
+      if (log.topics[0] === LidoEvents.stMaticSubmitEvent || log.topics[0] === LidoEvents.stMaticClaimTokensEvent) {
+        const event: any = decodeEventLog({
+          abi: LidoStMATICAbi,
+          topics: log.topics,
+          data: log.data,
+        });
+
+        const amountUsd =
+          formatBigNumberToNumber(
+            event.args._amount ? event.args._amount.toString() : event.args._amountClaimed.toString(),
+            18,
+          ) * maticPriceUsd;
+
+        if (log.topics[0] === LidoEvents.stMaticSubmitEvent) {
+          (protocolData.volumes.deposit as number) += amountUsd;
+          (protocolData.breakdown[lidoConfig.chain][lidoConfig.maticToken].volumes.deposit as number) += amountUsd;
+        } else {
+          (protocolData.volumes.withdraw as number) += amountUsd;
+          (protocolData.breakdown[lidoConfig.chain][lidoConfig.maticToken].volumes.withdraw as number) += amountUsd;
+        }
       }
     }
 

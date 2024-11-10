@@ -134,7 +134,7 @@ export default class SwellAdapter extends ProtocolAdapter {
             (TimeUnits.SecondsPerYear * ((postExchangeRate - preExchangeRate) / preExchangeRate)) /
             (options.endTime - last7DaysTime);
 
-          totalStakingApr += stakingApr;
+          totalStakingApr += stakingApr * 100;
           if (stakingApr > 0) {
             totalStakingAprCount += 1;
           }
