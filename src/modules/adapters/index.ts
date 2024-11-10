@@ -13,6 +13,7 @@ import CowswapAdapter from './cowswap/cowswap';
 import CurvelendAdapter from './curve/curvelend';
 import CurveusdAdapter from './curve/curveusd';
 import DineroAdapter from './dinero/dinero';
+import DodoexAdapter from './dodoex/dodoex';
 import EigenLayerAdapter from './eigenlayer/eigenlayer';
 import EthereumEcosystemAdapter from './ethereum/ecosystem';
 import EulerAdapter from './euler/euler';
@@ -163,5 +164,7 @@ export function getProtocolAdapters(
     zerox: new ZeroxAdapter(services, storages, ProtocolConfigs.zerox),
     pellnetwork: new PellNetworkAdapter(services, storages, ProtocolConfigs.pellnetwork),
     rubic: new RubicAdapter(services, storages, ProtocolConfigs.rubic),
+    zircuitNativeBridge: new OptimismNativeBridgeLegacyAdapter(services, storages, ProtocolConfigs.zircuitNativeBridge),
+    dodoex: new DodoexAdapter(services, storages, ProtocolConfigs.dodoex),
   };
 }

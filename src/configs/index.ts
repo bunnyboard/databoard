@@ -92,6 +92,8 @@ import { ZeroxConfigs } from './protocols/zerox';
 import { MantleNativeBridgeConfigs } from './protocols/mantle';
 import { PellNetworkConfigs } from './protocols/pellnetwork';
 import { RubicConfigs } from './protocols/rubic';
+import { ZircuitNativeBridgeConfigs } from './protocols/zircuit';
+import { DodoexConfigs } from './protocols/dodoex';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -211,4 +213,6 @@ export const ProtocolConfigs = {
   zerox: ZeroxConfigs,
   pellnetwork: PellNetworkConfigs,
   rubic: RubicConfigs,
+  zircuitNativeBridge: ZircuitNativeBridgeConfigs,
+  dodoex: DodoexConfigs,
 };

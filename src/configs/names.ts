@@ -189,4 +189,6 @@ export const ProtocolNames = {
   paraswap: 'paraswap',
   pellnetwork: 'pellnetwork', // https://pell.network
   rubic: 'rubic', // https://rubic.exchange
+  zircuitNativeBridge: 'zircuitNativeBridge',
+  dodoex: 'dodoex',
 };
