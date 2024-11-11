@@ -325,5 +325,79 @@ export const KarakConfigs: KarakProtocolConfig = {
         },
       ],
     },
+    // {
+    //   chain: ChainNames.bnbchain,
+    //   version: 2,
+    //   birthday: 1731110400, // Sat Nov 09 2024 00:00:00 GMT+0000
+    //   vaults: [
+    //     {
+    //       address: '0x0de272b56f360289c3eece0208921d58d293ce7f',
+    //       token: '0xb0b84d294e0c75a6abe60171b70edeb2efd14a1b',
+    //     },
+    //     {
+    //       address: '0x362f0b792efad36d5d170c9fa8cc3463d9c1adce',
+    //       token: '0x0782b6d8c4551b9760e74c0545a9bcd90bdc41e5',
+    //     },
+    //     {
+    //       address: '0x923fe0a286ba547186ed1e1b1a966c4557b65f96',
+    //       token: '0x4aae823a6a0b376de6a78e74ecc5b079d38cbcf7',
+    //     },
+    //     {
+    //       address: '0x3889b0b4ba464c07e595aa9b98b838817de39f4d',
+    //       token: '0xb0b84d294e0c75a6abe60171b70edeb2efd14a1b',
+    //     },
+    //     {
+    //       address: '0x3fb7cf13b88fd734a4dffd142bd746e734ee8cba',
+    //       token: '0x0782b6d8c4551b9760e74c0545a9bcd90bdc41e5',
+    //     },
+    //     {
+    //       address: '0xafa9dd1b693a2a899d79856b808446d859fb660f',
+    //       token: '0x4aae823a6a0b376de6a78e74ecc5b079d38cbcf7',
+    //     },
+    //   ],
+    // },
+    // {
+    //   chain: ChainNames.fraxtal,
+    //   version: 2,
+    //   birthday: 1731110400, // Sat Nov 09 2024 00:00:00 GMT+0000
+    //   vaults: [
+    //     {
+    //       address: '0x40FbFe0b0A862323F06f5cD1EF6565Abd3F90BFe',
+    //       token: '0xFc00000000000000000000000000000000000002',
+    //     },
+    //     {
+    //       address: '0x665ab558Ef160ACa89b5D1aCDd1ab6b03d853b80',
+    //       token: '0xfc00000000000000000000000000000000000008',
+    //     },
+    //     {
+    //       address: '0x7B5Bac4F8cFd391146742fFBcD61f52fD2D338d6',
+    //       token: '0xFc00000000000000000000000000000000000002',
+    //     },
+    //     {
+    //       address: '0x22005c5C7d6Be8f2132EBA61Bb715bA8183373D9',
+    //       token: '0xFc00000000000000000000000000000000000002',
+    //     },
+    //     {
+    //       address: '0x1d6dE4f8F0e83A26f7653f746cB8653c4b1c5729',
+    //       token: '0xfc00000000000000000000000000000000000008',
+    //     },
+    //     {
+    //       address: '0x694Be44B2DdD90f7a00C242b217Da5499749B778',
+    //       token: '0xFc00000000000000000000000000000000000002',
+    //     },
+    //     {
+    //       address: '0xd4D5bCaAa476eB243116bBa3548168d964C35A08',
+    //       token: '0xfc00000000000000000000000000000000000008',
+    //     },
+    //     {
+    //       address: '0x5D30BbB074bA31fdb9c9e0D6dB665d5FE45c3479',
+    //       token: '0xFc00000000000000000000000000000000000002',
+    //     },
+    //     {
+    //       address: '0x9EE4E3E1e7CB003EF218f8283C33AF783b6dFc6B',
+    //       token: '0xfc00000000000000000000000000000000000008',
+    //     },
+    //   ],
+    // },
   ],
 };

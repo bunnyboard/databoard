@@ -8,6 +8,7 @@ import { decodeEventLog } from 'viem';
 import { formatBigNumberToNumber } from '../../../lib/utils';
 import logger from '../../../lib/logger';
 import { DodoexProtocolConfig } from '../../../configs/protocols/dodoex';
+import AdapterDataHelper from '../helpers';
 
 const OrderHistoryEvent = '0x92ceb067a9883c85aba061e46b9edf505a0d6e81927c4b966ebed543a5221787';
 
@@ -138,6 +139,6 @@ export default class DodoexAdapter extends ProtocolAdapter {
       }
     }
 
-    return protocolData;
+    return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
   }
 }

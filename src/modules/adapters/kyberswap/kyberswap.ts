@@ -9,6 +9,7 @@ import logger from '../../../lib/logger';
 import { KyberswapProtocolConfig } from '../../../configs/protocols/kyberswap';
 import MetaAggregatorAbi from '../../../configs/abi/kyberswap/MetaAggregationRouterV2.json';
 import { SolidityUnits } from '../../../configs/constants';
+import AdapterDataHelper from '../helpers';
 
 const Swapped = '0xd6d4f5681c246c9f42c203e287975af1601f8df8035a9251f79aab5c8f09e2f8';
 const Fee = '0x4c39b7ce5f4f514f45cb6f82b171b8b0b7f2cbf488ad28e4eff451588e2f014b';
@@ -153,6 +154,6 @@ export default class KyberswapAdapter extends ProtocolAdapter {
       }
     }
 
-    return protocolData;
+    return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
   }
 }

@@ -8,6 +8,7 @@ import GPv2SettlementAbi from '../../../configs/abi/cowswap/GPv2Settlement.json'
 import { decodeEventLog } from 'viem';
 import { formatBigNumberToNumber } from '../../../lib/utils';
 import logger from '../../../lib/logger';
+import AdapterDataHelper from '../helpers';
 
 const TradeEvent = '0xa07a543ab8a018198e99ca0184c93fe9050a79400a0a723441f84de1d972cc17';
 
@@ -93,6 +94,7 @@ export default class CowswapAdapter extends ProtocolAdapter {
               address: sellToken.address,
               timestamp: options.timestamp,
               disableWarning: true,
+              enableAutoSearching: true,
             });
             let buyTokenPriceUsd = 0;
 
@@ -102,6 +104,7 @@ export default class CowswapAdapter extends ProtocolAdapter {
                 address: buyToken.address,
                 timestamp: options.timestamp,
                 disableWarning: true,
+                enableAutoSearching: true,
               });
               sellTokenPriceUsd = sellAmount > 0 ? (buyAmount * buyTokenPriceUsd) / sellAmount : 0;
             }
@@ -133,6 +136,6 @@ export default class CowswapAdapter extends ProtocolAdapter {
       }
     }
 
-    return protocolData;
+    return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
   }
 }

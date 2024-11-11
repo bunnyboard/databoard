@@ -2086,6 +2086,18 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.MASQ_WETH],
   },
+  LOOKS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.LOOKS_WETH],
+  },
+  LQTY: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.LQTY_WETH],
+  },
+  DYDX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.DYDX_WETH],
+  },
   '0xMR': {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List['0xMR_WETH']],

@@ -8,6 +8,7 @@ import { formatBigNumberToNumber } from '../../../lib/utils';
 import logger from '../../../lib/logger';
 import ExchangeAbi from '../../../configs/abi/zerox/0xExchange.json';
 import { ZeroxProtocolConfig } from '../../../configs/protocols/zerox';
+import AdapterDataHelper from '../helpers';
 
 const Events = {
   TransformedERC20: '0x0f6672f78a59ba8e5e5b5d38df3ebc67f3c792e2c9259b8d97d7f00dd78ba1b3',
@@ -190,6 +191,6 @@ export default class ZeroxAdapter extends ProtocolAdapter {
       }
     }
 
-    return protocolData;
+    return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
   }
 }

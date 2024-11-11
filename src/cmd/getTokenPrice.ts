@@ -20,6 +20,7 @@ export class GetTokenPriceCommand extends BasicCommand {
       chain: chain,
       address: address,
       timestamp: timestamp,
+      enableAutoSearching: argv.auto,
     });
 
     console.log(chain, address, priceUsd);
@@ -46,6 +47,11 @@ export class GetTokenPriceCommand extends BasicCommand {
         type: 'number',
         default: 0,
         describe: 'Get price at given timestamp, use current time if not given.',
+      },
+      auto: {
+        type: 'boolean',
+        default: false,
+        describe: 'If the hard-config is not set, auto search token on dexes.',
       },
     });
   }

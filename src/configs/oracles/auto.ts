@@ -9,24 +9,24 @@ export const AutoOracleConfigs: { [key: string]: OnchainOracleConfig } = {
       address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
     },
     quotaTokens: [
-      {
-        chain: 'ethereum',
-        symbol: 'USDC',
-        decimals: 6,
-        address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
-      },
-      {
-        chain: 'ethereum',
-        symbol: 'USDT',
-        decimals: 6,
-        address: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      },
-      {
-        chain: 'ethereum',
-        symbol: 'DAI',
-        decimals: 18,
-        address: '0x6b175474e89094c44da98b954eedeac495271d0f',
-      },
+      // {
+      //   chain: 'ethereum',
+      //   symbol: 'USDC',
+      //   decimals: 6,
+      //   address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+      // },
+      // {
+      //   chain: 'ethereum',
+      //   symbol: 'USDT',
+      //   decimals: 6,
+      //   address: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+      // },
+      // {
+      //   chain: 'ethereum',
+      //   symbol: 'DAI',
+      //   decimals: 18,
+      //   address: '0x6b175474e89094c44da98b954eedeac495271d0f',
+      // },
     ],
     dexes: [
       {
@@ -41,21 +41,21 @@ export const AutoOracleConfigs: { [key: string]: OnchainOracleConfig } = {
         type: 'univ2',
         address: '0x1097053Fd2ea711dad45caCcc45EfF7548fCB362', // pancakeswap v2 factory
       },
-      {
-        type: 'univ3',
-        address: '0x1F98431c8aD98523631AE4a59f267346ea31F984', // uniswap v3 factory
-        fees: [500, 3000, 10000],
-      },
-      {
-        type: 'univ3',
-        address: '0xbACEB8eC6b9355Dfc0269C18bac9d6E2Bdc29C4F', // sushi v3 factory
-        fees: [500, 3000, 10000],
-      },
-      {
-        type: 'univ3',
-        address: '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865', // pancakeswap v3 factory
-        fees: [500, 3000, 10000],
-      },
+      // {
+      //   type: 'univ3',
+      //   address: '0x1F98431c8aD98523631AE4a59f267346ea31F984', // uniswap v3 factory
+      //   fees: [500, 3000, 10000],
+      // },
+      // {
+      //   type: 'univ3',
+      //   address: '0xbACEB8eC6b9355Dfc0269C18bac9d6E2Bdc29C4F', // sushi v3 factory
+      //   fees: [500, 3000, 10000],
+      // },
+      // {
+      //   type: 'univ3',
+      //   address: '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865', // pancakeswap v3 factory
+      //   fees: [500, 3000, 10000],
+      // },
     ],
   },
   arbitrum: {
@@ -82,11 +82,11 @@ export const AutoOracleConfigs: { [key: string]: OnchainOracleConfig } = {
         type: 'univ2',
         address: '0x6EcCab422D763aC031210895C81787E87B43A652', // camelot factory
       },
-      {
-        type: 'univ3',
-        address: '0x1F98431c8aD98523631AE4a59f267346ea31F984', // uniswap v3
-        fees: [500, 3000, 10000],
-      },
+      // {
+      //   type: 'univ3',
+      //   address: '0x1F98431c8aD98523631AE4a59f267346ea31F984', // uniswap v3
+      //   fees: [500, 3000, 10000],
+      // },
     ],
   },
   avalanche: {
@@ -119,12 +119,12 @@ export const AutoOracleConfigs: { [key: string]: OnchainOracleConfig } = {
       address: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
     },
     quotaTokens: [
-      {
-        chain: 'bnbchain',
-        symbol: 'USDT',
-        decimals: 18,
-        address: '0x55d398326f99059ff775485246999027b3197955',
-      },
+      // {
+      //   chain: 'bnbchain',
+      //   symbol: 'USDT',
+      //   decimals: 18,
+      //   address: '0x55d398326f99059ff775485246999027b3197955',
+      // },
     ],
     dexes: [
       {
@@ -135,10 +135,10 @@ export const AutoOracleConfigs: { [key: string]: OnchainOracleConfig } = {
         type: 'univ2',
         address: '0x8909Dc15e40173Ff4699343b6eB8132c65e18eC6', // uniswap v2 factory
       },
-      {
-        type: 'univ3',
-        address: '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865', // pancakeswap v3 factory
-      },
+      // {
+      //   type: 'univ3',
+      //   address: '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865', // pancakeswap v3 factory
+      // },
     ],
   },
   base: {
@@ -149,12 +149,12 @@ export const AutoOracleConfigs: { [key: string]: OnchainOracleConfig } = {
       address: '0x4200000000000000000000000000000000000006',
     },
     quotaTokens: [
-      {
-        chain: 'base',
-        symbol: 'USDC',
-        decimals: 6,
-        address: '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913',
-      },
+      // {
+      //   chain: 'base',
+      //   symbol: 'USDC',
+      //   decimals: 6,
+      //   address: '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913',
+      // },
     ],
     dexes: [
       {
@@ -169,11 +169,11 @@ export const AutoOracleConfigs: { [key: string]: OnchainOracleConfig } = {
         type: 'univ2',
         address: '0x02a84c1b3BBD7401a5f7fa98a384EBC70bB5749E', // pancakeswap v2 factory
       },
-      {
-        type: 'univ3',
-        address: '0x33128a8fC17869897dcE68Ed026d694621f6FDfD', // uniswap v3 factory
-        fees: [500, 3000, 10000],
-      },
+      // {
+      //   type: 'univ3',
+      //   address: '0x33128a8fC17869897dcE68Ed026d694621f6FDfD', // uniswap v3 factory
+      //   fees: [500, 3000, 10000],
+      // },
     ],
   },
   optimism: {
@@ -192,11 +192,11 @@ export const AutoOracleConfigs: { [key: string]: OnchainOracleConfig } = {
         type: 'univ2',
         address: '0xFbc12984689e5f15626Bad03Ad60160Fe98B303C', // sushi v2 factory
       },
-      {
-        type: 'univ3',
-        address: '0x1F98431c8aD98523631AE4a59f267346ea31F984', // uniswap v3 factory
-        fees: [500, 3000, 10000],
-      },
+      // {
+      //   type: 'univ3',
+      //   address: '0x1F98431c8aD98523631AE4a59f267346ea31F984', // uniswap v3 factory
+      //   fees: [500, 3000, 10000],
+      // },
     ],
   },
   polygon: {
@@ -216,10 +216,14 @@ export const AutoOracleConfigs: { [key: string]: OnchainOracleConfig } = {
         address: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4', // sushi v2 factory
       },
       {
-        type: 'univ3',
-        address: '0x1F98431c8aD98523631AE4a59f267346ea31F984', // uniswap v3 factory
-        fees: [500, 3000, 10000],
+        type: 'univ2',
+        address: '0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32', // quickswap v2 factory
       },
+      // {
+      //   type: 'univ3',
+      //   address: '0x1F98431c8aD98523631AE4a59f267346ea31F984', // uniswap v3 factory
+      //   fees: [500, 3000, 10000],
+      // },
     ],
   },
   blast: {
@@ -237,6 +241,14 @@ export const AutoOracleConfigs: { [key: string]: OnchainOracleConfig } = {
       {
         type: 'univ2',
         address: '0x42Fa929fc636e657AC568C0b5Cf38E203b67aC2b', // sushi v2 factory
+      },
+      {
+        type: 'univ2',
+        address: '0xb4A7D971D0ADea1c73198C97d7ab3f9CE4aaFA13', // thruster v2 factory - 0.3% fee
+      },
+      {
+        type: 'univ2',
+        address: '0x37836821a2c03c171fB1a595767f4a16e2b93Fc4', // thruster v2 factory - 1% fee
       },
     ],
   },
