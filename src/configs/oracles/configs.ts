@@ -9,6 +9,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0x06f3c323f0238c72bf35011071f2b5b7f43a054c': OracleSourceConfigs.MASQ,
+    '0x626e8036deb333b408be468f951bdb42433cbf18': OracleSourceConfigs.AIOZ,
     '0x38e68a37e401f7271568cecaac63c6b1e19130b4': OracleSourceConfigs.BANANA_GUN,
     '0x1495bc9e44af1f8bcb62278d2bec4540cf0c05ea': OracleSourceConfigs.DEAI,
     '0xb60acd2057067dc9ed8c083f5aa227a244044fd6': OracleSourceConfigs.stTAO,
@@ -424,6 +426,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0xeb466342c4d449bc9f53a865d5cb90586f405215': OracleSourceConfigs.USDC,
     '0x3647c54c4c2c65bc7a2d63c0da2809b399dbbdc0': OracleSourceConfigs.SolvBTC,
     '0x10aaed289a7b1b0155bf4b86c862f297e84465e0': OracleSourceConfigs.RBC,
     '0x2ac2b254bc18cd4999f64773a966e4f4869c34ee': OracleSourceConfigs.PNP,
@@ -869,6 +872,9 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.BNB,
     [AddressE]: OracleSourceConfigs.BNB,
     [AddressF]: OracleSourceConfigs.BNB,
+    '0x2b5d9adea07b590b638ffc165792b2c610eda649': OracleSourceConfigs.CKP,
+    '0xd06716e1ff2e492cc5034c2e81805562dd3b45fa': OracleSourceConfigs.MGP,
+    '0x4db5a66e937a9f4473fa95b1caf1d1e1d62e29ea': OracleSourceConfigs.ETH,
     '0x33d08d8c7a168333a85285a68c0042b39fc3741d': OracleSourceConfigs.AIOZ,
     '0x5857c96dae9cf8511b08cb07f85753c472d36ea3': OracleSourceConfigs.FUSE,
     '0x762539b45a1dcce3d36d080f74d1aed37844b878': OracleSourceConfigs.LINA,
@@ -1146,6 +1152,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
 
   // tokens on gnosis
   gnosis: {
+    '0xd057604a14982fe8d88c5fc25aac3267ea142a08': OracleSourceConfigs.HOPR,
     '0x0000000000000000000000000000000000000000': OracleSourceConfigs.DAI,
     '0x6a023ccd1ff6f2045c3309768ead9e68f978f6e1': OracleSourceConfigs.ETH,
     '0x6c76971f98945ae98dd7d4dfca8711ebea946ea6': OracleSourceConfigs.wstETH,

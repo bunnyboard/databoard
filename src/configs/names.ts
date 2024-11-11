@@ -191,4 +191,5 @@ export const ProtocolNames = {
   rubic: 'rubic', // https://rubic.exchange
   zircuitNativeBridge: 'zircuitNativeBridge',
   dodoex: 'dodoex',
+  odos: 'odos', // odos.xyz
 };

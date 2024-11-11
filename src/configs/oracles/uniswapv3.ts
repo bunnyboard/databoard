@@ -1139,7 +1139,7 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
   DEAI_WETH: {
     type: 'univ3',
     chain: 'ethereum',
-    address: '0xc57cac126676471c547d2d9b1c283e56ef1b28f4',
+    address: '0x1385fc1fe0418ea0b4fcf7adc61fc7535ab7f80d',
     baseToken: TokensBook.ethereum['0x1495bc9e44af1f8bcb62278d2bec4540cf0c05ea'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },

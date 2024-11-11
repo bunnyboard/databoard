@@ -37,6 +37,7 @@ import MethAdapter from './mantle/meth';
 import MetisNativeBridgeAdapter from './metis/nativeBridge';
 import MoonwellAdapter from './moonwell/moonwell';
 import MorphoAdapter from './morpho/morpho';
+import OdosAdapter from './odos/odos';
 import OptimismNativeBridgeAdapter from './optimism/nativeBridge';
 import OptimismNativeBridgeLegacyAdapter from './optimism/nativeBridgeLegacy';
 import PancakeAdapter from './pancake/pancake';
@@ -166,5 +167,6 @@ export function getProtocolAdapters(
     rubic: new RubicAdapter(services, storages, ProtocolConfigs.rubic),
     zircuitNativeBridge: new OptimismNativeBridgeLegacyAdapter(services, storages, ProtocolConfigs.zircuitNativeBridge),
     dodoex: new DodoexAdapter(services, storages, ProtocolConfigs.dodoex),
+    odos: new OdosAdapter(services, storages, ProtocolConfigs.odos),
   };
 }

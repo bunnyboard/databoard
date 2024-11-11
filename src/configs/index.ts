@@ -94,6 +94,7 @@ import { RubicConfigs } from './protocols/rubic';
 import { ZircuitNativeBridgeConfigs } from './protocols/zircuit';
 import { DodoexConfigs } from './protocols/dodoex';
 import { SwellConfigs } from './protocols/swell';
+import { OdosConfigs } from './protocols/odos';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -215,4 +216,5 @@ export const ProtocolConfigs = {
   rubic: RubicConfigs,
   zircuitNativeBridge: ZircuitNativeBridgeConfigs,
   dodoex: DodoexConfigs,
+  odos: OdosConfigs,
 };
