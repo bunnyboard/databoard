@@ -3,14 +3,26 @@ import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/doma
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
 import ProtocolAdapter from '../protocol';
-import { AddressZero, Erc20TransferEventSignature, TimeUnits } from '../../../configs/constants';
+import { AddressZero, TimeUnits } from '../../../configs/constants';
 import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
 import AdapterDataHelper from '../helpers';
 import { decodeEventLog } from 'viem';
 import swETHAbi from '../../../configs/abi/swell/swETH.json';
+import swEXITAbi from '../../../configs/abi/swell/swEXIT.json';
 import Erc4626Abi from '../../../configs/abi/ERC4626.json';
 import Erc20Abi from '../../../configs/abi/ERC20.json';
 import { SwellProtocolConfig } from '../../../configs/protocols/swell';
+
+const SwellEvents: any = {
+  // deposit ETH -> swETH, rswETh
+  ETHDepositReceived: '0xe28a9e1df63912c0c77b586c53595df741cbbc554d6831e40f1b5453199a9630',
+
+  // withdraw ETH <- swETH, rswETH
+  WithdrawalClaimed: '0x2d43eb174787155132b52ddb6b346e2dca99302eac3df4466dbeff953d3c84d1',
+
+  VaultDeposit: '0xdcbc1c05240f31ff3ad067ef1ee35ce4997762752e3a095284754544f4c709d7',
+  VaultWithdraw: '0xfbde797d201c681b91056529119e0b02407c7bb96a4a2c75c01fc9667232c8db',
+};
 
 export default class SwellAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.swell';
@@ -200,56 +212,75 @@ export default class SwellAdapter extends ProtocolAdapter {
         protocolData.breakdown[token.chain][token.address].supplySideRevenue += supplySideRevenue;
         protocolData.breakdown[token.chain][token.address].liquidStakingApr = stakingApr * 100;
 
-        const logs = await this.services.blockchain.evm.getContractLogs({
+        let logs = await this.services.blockchain.evm.getContractLogs({
           chain: liquidStakingConfig.chain,
           address: liquidStakingConfig.address,
           fromBlock: beginBlock,
           toBlock: endBlock,
         });
+
+        if (liquidStakingConfig.exitQueue) {
+          logs = logs.concat(
+            await this.services.blockchain.evm.getContractLogs({
+              chain: liquidStakingConfig.chain,
+              address: liquidStakingConfig.exitQueue,
+              fromBlock: beginBlock,
+              toBlock: endBlock,
+            }),
+          );
+        }
         for (const log of logs) {
-          if (log.topics[0] === Erc20TransferEventSignature) {
-            const event: any = decodeEventLog({
-              abi: Erc20Abi,
-              topics: log.topics,
-              data: log.data,
-            });
+          const signature = log.topics[0];
 
-            if (!compareAddress(event.args.from, AddressZero) && !compareAddress(event.args.to, AddressZero)) {
-              continue;
+          switch (signature) {
+            case SwellEvents.ETHDepositReceived: {
+              if (compareAddress(log.address, liquidStakingConfig.address)) {
+                const event: any = decodeEventLog({
+                  abi: swETHAbi,
+                  topics: log.topics,
+                  data: log.data,
+                });
+                const amountUsd =
+                  formatBigNumberToNumber(event.args.newTotalETHDeposited.toString(), 18) * tokenPriceUsd;
+                (protocolData.volumes.deposit as number) += amountUsd;
+                (protocolData.breakdown[liquidStakingConfig.chain][AddressZero].volumes.deposit as number) += amountUsd;
+              }
+
+              break;
             }
+            case SwellEvents.WithdrawalClaimed: {
+              if (liquidStakingConfig.exitQueue && compareAddress(log.address, liquidStakingConfig.exitQueue)) {
+                const event: any = decodeEventLog({
+                  abi: swEXITAbi,
+                  topics: log.topics,
+                  data: log.data,
+                });
+                const amountUsd = formatBigNumberToNumber(event.args.exitClaimedETH.toString(), 18) * tokenPriceUsd;
+                (protocolData.volumes.withdraw as number) += amountUsd;
+                (protocolData.breakdown[liquidStakingConfig.chain][AddressZero].volumes.withdraw as number) +=
+                  amountUsd;
+              }
 
-            // deposit.withdraw transactions
-            const exchangeRate =
-              liquidStakingConfig.version === 'eth'
-                ? await this.services.blockchain.evm.readContract({
-                    chain: liquidStakingConfig.chain,
-                    abi: swETHAbi,
-                    target: liquidStakingConfig.address,
-                    method: 'getRate',
-                    params: [],
-                    blockNumber: Number(log.blockNumber) - 1,
-                  })
-                : await this.services.blockchain.evm.readContract({
-                    chain: liquidStakingConfig.chain,
-                    abi: Erc4626Abi,
-                    target: liquidStakingConfig.address,
-                    method: 'pricePerShare',
-                    params: [],
-                    blockNumber: Number(log.blockNumber) - 1,
-                  });
-
-            const amountUsd =
-              formatBigNumberToNumber(exchangeRate.toString(), token.decimals) *
-              formatBigNumberToNumber(event.args.value.toString(), token.decimals) *
-              tokenPriceUsd;
-
-            if (compareAddress(event.args.from, AddressZero)) {
-              (protocolData.volumes.deposit as number) += amountUsd;
-              (protocolData.breakdown[liquidStakingConfig.chain][AddressZero].volumes.deposit as number) += amountUsd;
+              break;
             }
-            if (compareAddress(event.args.to, AddressZero)) {
-              (protocolData.volumes.withdraw as number) += amountUsd;
-              (protocolData.breakdown[liquidStakingConfig.chain][AddressZero].volumes.withdraw as number) += amountUsd;
+            case SwellEvents.VaultDeposit:
+            case SwellEvents.VaultWithdraw: {
+              const event: any = decodeEventLog({
+                abi: Erc4626Abi,
+                topics: log.topics,
+                data: log.data,
+              });
+
+              const amountUsd = formatBigNumberToNumber(event.args.assets.toString(), 18) * tokenPriceUsd;
+
+              if (signature === SwellEvents.VaultDeposit) {
+                (protocolData.volumes.deposit as number) += amountUsd;
+                (protocolData.breakdown[liquidStakingConfig.chain][AddressZero].volumes.deposit as number) += amountUsd;
+              } else {
+                (protocolData.volumes.withdraw as number) += amountUsd;
+                (protocolData.breakdown[liquidStakingConfig.chain][AddressZero].volumes.withdraw as number) +=
+                  amountUsd;
+              }
             }
           }
         }

@@ -8,6 +8,7 @@ export interface SwellLiquidStakingConfig {
   version: 'eth' | 'yearnVault';
   token: string;
   address: string;
+  exitQueue?: string;
   protocolFeeRate: number;
 }
 
@@ -28,6 +29,7 @@ export const SwellConfigs: SwellProtocolConfig = {
       version: 'eth',
       token: AddressZero,
       address: '0xf951e335afb289353dc249e82926178eac7ded78',
+      exitQueue: '0x48C11b86807627AF70a34662D4865cF854251663',
 
       // https://docs.swellnetwork.io/swell-staking/sweth-liquid-staking/sweth-v1.0-system-design/rewards-and-distribution/liquid-staking-rewards-and-fees
       protocolFeeRate: 0.1, // 10%
@@ -38,6 +40,7 @@ export const SwellConfigs: SwellProtocolConfig = {
       version: 'eth',
       token: AddressZero,
       address: '0xfae103dc9cf190ed75350761e95403b7b8afa6c0',
+      exitQueue: '0x58749C46Ffe97e4d79508a2C781C440f4756f064',
 
       // https://docs.swellnetwork.io/swell-staking/rsweth-liquid-restaking/liquid-restaking-rewards-and-fees
       protocolFeeRate: 0.1, // 10%
