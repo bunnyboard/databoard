@@ -131,7 +131,7 @@ export default class UniswapIndexer extends ProtocolAdapter {
           };
 
           await this.storages.database.update({
-            collection: envConfig.mongodb.collections.cachingPool2.name,
+            collection: envConfig.mongodb.collections.metadataPool2.name,
             keys: {
               chain: dexConfig.chain,
               factory: pool.factory,
@@ -240,7 +240,7 @@ export default class UniswapIndexer extends ProtocolAdapter {
             };
 
             await this.storages.database.update({
-              collection: envConfig.mongodb.collections.cachingPool2.name,
+              collection: envConfig.mongodb.collections.metadataPool2.name,
               keys: {
                 chain: dexConfig.chain,
                 factory: pool.factory,

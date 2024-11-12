@@ -18,12 +18,12 @@ export const SpookyConfigs: UniswapProtocolConfig = {
       feeRateForProtocol: 0.0003, // 0.03% -> protocol, xBOO
       wrappedNative: PublicAddresses.fantom.wftm,
     },
-    // {
-    //   chain: ChainNames.fantom,
-    //   version: Pool2Types.univ3,
-    //   factory: '0x7928a2c48754501f3a8064765ECaE541daE5c3E6',
-    //   birthday: 1700697600, // Thu Nov 23 2023 00:00:00 GMT+0000
-    //   wrappedNative: PublicAddresses.fantom.wftm,
-    // },
+    {
+      chain: ChainNames.fantom,
+      version: Pool2Types.univ3,
+      factory: '0x7928a2c48754501f3a8064765ECaE541daE5c3E6',
+      birthday: 1700697600, // Thu Nov 23 2023 00:00:00 GMT+0000
+      wrappedNative: PublicAddresses.fantom.wftm,
+    },
   ],
 };

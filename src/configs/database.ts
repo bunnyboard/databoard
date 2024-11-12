@@ -6,22 +6,13 @@ import { DatabaseCollectionConfig } from '../types/configs';
 dotenv.config();
 
 const CollectionPrefix = 'databoard';
+const MetadataPrefix = 'metadata';
 export const DatabaseCollectionConfigs: DatabaseCollectionConfig = {
   caching: {
     name: `${CollectionPrefix}.caching`,
     indies: [
       {
         name: 1,
-      },
-    ],
-  },
-  cachingPool2: {
-    name: `${CollectionPrefix}.caching.pool2`,
-    indies: [
-      {
-        chain: 1,
-        factory: 1,
-        address: 1, // pool address
       },
     ],
   },
@@ -50,6 +41,22 @@ export const DatabaseCollectionConfigs: DatabaseCollectionConfig = {
       {
         protocol: 1,
         timestamp: 1,
+      },
+    ],
+  },
+
+  // helper and metadata for devs
+  metadataPool2: {
+    name: `${MetadataPrefix}.pool2`,
+    indies: [
+      {
+        chain: 1,
+        factory: 1,
+        address: 1, // pool address
+      },
+      {
+        'token0.address': 1,
+        'token1.address': 1,
       },
     ],
   },
