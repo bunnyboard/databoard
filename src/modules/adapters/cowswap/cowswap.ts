@@ -94,7 +94,6 @@ export default class CowswapAdapter extends ProtocolAdapter {
               address: sellToken.address,
               timestamp: options.timestamp,
               disableWarning: true,
-              enableAutoSearching: true,
             });
             let buyTokenPriceUsd = 0;
 
@@ -104,7 +103,6 @@ export default class CowswapAdapter extends ProtocolAdapter {
                 address: buyToken.address,
                 timestamp: options.timestamp,
                 disableWarning: true,
-                enableAutoSearching: true,
               });
               sellTokenPriceUsd = sellAmount > 0 ? (buyAmount * buyTokenPriceUsd) / sellAmount : 0;
             }
@@ -123,6 +121,10 @@ export default class CowswapAdapter extends ProtocolAdapter {
                 formatBigNumberToNumber(event.args.sellAmount.toString(), sellToken.decimals) * sellTokenPriceUsd;
               feesUsd =
                 formatBigNumberToNumber(event.args.feeAmount.toString(), sellToken.decimals) * sellTokenPriceUsd;
+
+              if (amountUsd > 1000000000) {
+                console.log(sellToken, buyToken, sellTokenPriceUsd, buyTokenPriceUsd);
+              }
 
               protocolData.totalFees += feesUsd;
               protocolData.protocolRevenue += feesUsd;

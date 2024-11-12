@@ -9,6 +9,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0xc28eb2250d1ae32c7e74cfb6d6b86afc9beb6509': OracleSourceConfigs.OPN,
+    '0x5283d291dbcf85356a21ba090e6db59121208b44': OracleSourceConfigs.BLUR,
     '0x66b5228cfd34d9f4d9f03188d67816286c7c0b74': OracleSourceConfigs.VOLT,
     '0xcc42b2b6d90e3747c2b8e62581183a88e3ca093a': OracleSourceConfigs.LOTUS,
     '0xc669928185dbce49d2230cc9b0979be6dc797957': OracleSourceConfigs.BTT,
