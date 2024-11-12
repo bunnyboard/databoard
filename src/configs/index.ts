@@ -95,6 +95,8 @@ import { ZircuitNativeBridgeConfigs } from './protocols/zircuit';
 import { DodoexConfigs } from './protocols/dodoex';
 import { SwellConfigs } from './protocols/swell';
 import { OdosConfigs } from './protocols/odos';
+import { RenzoConfigs } from './protocols/renzo';
+import { EigenpieConfigs } from './protocols/eigenpie';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -217,4 +219,6 @@ export const ProtocolConfigs = {
   zircuitNativeBridge: ZircuitNativeBridgeConfigs,
   dodoex: DodoexConfigs,
   odos: OdosConfigs,
+  renzo: RenzoConfigs,
+  eigenpie: EigenpieConfigs,
 };

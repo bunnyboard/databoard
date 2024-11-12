@@ -15,6 +15,7 @@ import CurveusdAdapter from './curve/curveusd';
 import DineroAdapter from './dinero/dinero';
 import DodoexAdapter from './dodoex/dodoex';
 import EigenLayerAdapter from './eigenlayer/eigenlayer';
+import EigenpieAdapter from './eigenpie/eigenpie';
 import EthereumEcosystemAdapter from './ethereum/ecosystem';
 import EulerAdapter from './euler/euler';
 import FluidAdapter from './fluid/fluid';
@@ -45,6 +46,7 @@ import ParaswapAdapter from './paraswap/paraswap';
 import PellNetworkAdapter from './pellnetwork/pellnetwork';
 import PolygonNativeBridgeAdapter from './polygon/nativeBridge';
 import PolygonZzkevmNativeBridgeAdapter from './polygon/zkevmNativeBridge';
+import RenzoAdapter from './renzo/renzo';
 import RocketpoolAdapter from './rocketpool/rocketpool';
 import RubicAdapter from './rubic/rubic';
 import ScrollNativeBridgeAdapter from './scroll/nativeBridge';
@@ -168,5 +170,7 @@ export function getProtocolAdapters(
     zircuitNativeBridge: new OptimismNativeBridgeLegacyAdapter(services, storages, ProtocolConfigs.zircuitNativeBridge),
     dodoex: new DodoexAdapter(services, storages, ProtocolConfigs.dodoex),
     odos: new OdosAdapter(services, storages, ProtocolConfigs.odos),
+    renzo: new RenzoAdapter(services, storages, ProtocolConfigs.renzo),
+    eigenpie: new EigenpieAdapter(services, storages, ProtocolConfigs.eigenpie),
   };
 }

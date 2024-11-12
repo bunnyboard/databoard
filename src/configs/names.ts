@@ -194,4 +194,6 @@ export const ProtocolNames = {
   dodoex: 'dodoex',
   odos: 'odos', // odos.xyz
   morphl2NativeBridge: 'morphl2NativeBridge',
+  renzo: 'renzo',
+  eigenpie: 'eigenpie',
 };
