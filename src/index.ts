@@ -7,6 +7,7 @@ import { RunCommand } from './cmd/run';
 import { TestCommand } from './cmd/test';
 import { ClearProtocolDataCommand } from './cmd/clearProtocolData';
 import { GetTokenPriceCommand } from './cmd/getTokenPrice';
+import { GetDatabaseReportCommand } from './cmd/getDatabaseReport';
 
 (async function () {
   dotenv.config();
@@ -15,6 +16,7 @@ import { GetTokenPriceCommand } from './cmd/getTokenPrice';
   const testCommand = new TestCommand();
   const clearProtocolDataCommand = new ClearProtocolDataCommand();
   const getTokenPriceCommand = new GetTokenPriceCommand();
+  const getDatabaseReportCommand = new GetDatabaseReportCommand();
 
   yargs(process.argv.slice(2))
     .scriptName('bunny')
@@ -31,6 +33,12 @@ import { GetTokenPriceCommand } from './cmd/getTokenPrice';
       getTokenPriceCommand.describe,
       getTokenPriceCommand.setOptions,
       getTokenPriceCommand.execute,
+    )
+    .command(
+      getDatabaseReportCommand.name,
+      getDatabaseReportCommand.describe,
+      getDatabaseReportCommand.setOptions,
+      getDatabaseReportCommand.execute,
     )
     .help().argv;
 })();

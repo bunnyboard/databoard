@@ -82,6 +82,34 @@ export const formatTime = (unix: number): string => {
   }
 };
 
+export function formatMoney(amount: string) {
+  const number = new BigNumber(amount).abs().toNumber();
+
+  if (number === 0) return '0';
+
+  let n;
+  if (number >= 1e-4) {
+    n = number.toPrecision(4);
+  } else if (number > 0 && number < 1e-4) {
+    return '<0.0001';
+  }
+
+  if (number > 1000000000000) {
+    return '>1000b';
+  }
+
+  const returnValue =
+    Math.abs(Number(n)) >= 1.0e9
+      ? Math.abs(Number(n)) / 1.0e9 + 'b'
+      : Math.abs(Number(n)) >= 1.0e6
+        ? Math.abs(Number(n)) / 1.0e6 + 'm'
+        : Math.abs(Number(n)) >= 1.0e3
+          ? Math.abs(Number(n)) / 1.0e3 + 'k'
+          : Math.abs(Number(n));
+
+  return returnValue.toLocaleString();
+}
+
 export function findLongestStringLength(items: Array<string>): number {
   let maximum = 0;
   for (const item of items) {
