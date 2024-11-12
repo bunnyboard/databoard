@@ -15,6 +15,16 @@ export const DatabaseCollectionConfigs: DatabaseCollectionConfig = {
       },
     ],
   },
+  cachingPool2: {
+    name: `${CollectionPrefix}.caching.pool2`,
+    indies: [
+      {
+        chain: 1,
+        factory: 1,
+        address: 1, // pool address
+      },
+    ],
+  },
   contractLogs: {
     name: `${CollectionPrefix}.caching.contractLogs`,
     indies: [

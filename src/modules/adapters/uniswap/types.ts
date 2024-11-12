@@ -1,5 +1,4 @@
 import { UniswapDexConfig } from '../../../configs/protocols/uniswap';
-import { Pool2 } from '../../../types/domains/pool2';
 
 export const Uniswapv2Events = {
   PairCreated: '0x0d3648bd0f6ba80134a33ba9275ac585d9d315f0ad8355cddefde31afa28d0e9',
@@ -17,7 +16,6 @@ export const Uniswapv3Events = {
 
 export interface GetDexDataDataOptions {
   dexConfig: UniswapDexConfig;
-  pools: Array<Pool2>;
   timestamp: number;
   blockNumber: number;
   beginBlock: number;
@@ -34,5 +32,10 @@ export interface GetDexDataResultBasics {
 }
 
 export interface GetDexDataResult {
-  total: GetDexDataResultBasics;
+  totalLiquidityUsd: number;
+  totalSwapFeeUsdForLps: number;
+  totalSwapFeeUsdForProtocol: number;
+  volumeSwapUsd: number;
+  volumeAddLiquidityUsd: number;
+  volumeRemoveLiquidityUsd: number;
 }

@@ -33263,6 +33263,12 @@
     "decimals": 18,
     "address": "0xcc12abe4ff81c9378d670de1b57f8e0dd228d77a"
   },
+  "0xcc42b2b6d90e3747c2b8e62581183a88e3ca093a": {
+    "chain": "ethereum",
+    "symbol": "LOTUS",
+    "decimals": 18,
+    "address": "0xcc42b2b6d90e3747c2b8e62581183a88e3ca093a"
+  },
   "0xcc4304a31d09258b0029ea7fe63d032f52e44efe": {
     "chain": "ethereum",
     "symbol": "SWAP",

@@ -1,27 +1,22 @@
 import { ProtocolConfig } from '../../../types/base';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
-import ProtocolAdapter from '../protocol';
-import { GetDexDataDataOptions, GetDexDataResult, Uniswapv2Events, Uniswapv3Events } from './types';
+import { GetDexDataDataOptions, GetDexDataResult, Uniswapv2Events } from './types';
 import Erc20Abi from '../../../configs/abi/ERC20.json';
-import UniswapV2PairAbi from '../../../configs/abi/uniswap/UniswapV2Pair.json';
-import UniswapV3PoolAbi from '../../../configs/abi/uniswap/UniswapV3Pool.json';
 import { compareAddress, formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
-import { TokenDexBase } from '../../../configs';
+import { CustomQueryChainLogsBlockRange, DefaultQueryChainLogsBlockRange, TokenDexBase } from '../../../configs';
 import { ContractCall } from '../../../services/blockchains/domains';
-import { decodeEventLog } from 'viem';
 import logger from '../../../lib/logger';
 import { Pool2, Pool2Types } from '../../../types/domains/pool2';
-import BigNumber from 'bignumber.js';
+import UniswapIndexer from './indexer';
+import envConfig from '../../../configs/envConfig';
+import UniswapV2PairAbi from '../../../configs/abi/uniswap/UniswapV2Pair.json';
+import { Address, decodeEventLog } from 'viem';
+import { AddressMulticall3 } from '../../../configs/constants';
 
-interface Pool2WithPrices extends Pool2 {
-  token0PriceUsd: number;
-  token1PriceUsd: number;
-}
+// query data of 200 pools per time
+const callSize = 200;
 
-// query data of 100 pools per time
-const callSize = 100;
-
-export default class UniswapCore extends ProtocolAdapter {
+export default class UniswapCore extends UniswapIndexer {
   public readonly name: string = 'adapter.uniswap 🦄';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {
@@ -32,7 +27,7 @@ export default class UniswapCore extends ProtocolAdapter {
     if (options.dexConfig.version === Pool2Types.univ2) {
       return await this.getDexDataV2(options);
     } else if (options.dexConfig.version === Pool2Types.univ3) {
-      return await this.getDexDataV3(options);
+      // return await this.getDexDataV3(options);
     }
 
     return null;
@@ -52,26 +47,42 @@ export default class UniswapCore extends ProtocolAdapter {
   }
 
   protected async getDexDataV2(options: GetDexDataDataOptions): Promise<GetDexDataResult | null> {
+    const client = await this.services.blockchain.evm.getPublicClient(options.dexConfig.chain);
+
     const result: GetDexDataResult = {
-      total: {
-        totalLiquidityUsd: 0,
-        totalSwapFeeUsdForLps: 0,
-        totalSwapFeeUsdForProtocol: 0,
-        volumeAddLiquidityUsd: 0,
-        volumeRemoveLiquidityUsd: 0,
-        volumeSwapUsd: 0,
-      },
+      totalLiquidityUsd: 0,
+      totalSwapFeeUsdForLps: 0,
+      totalSwapFeeUsdForProtocol: 0,
+      volumeAddLiquidityUsd: 0,
+      volumeRemoveLiquidityUsd: 0,
+      volumeSwapUsd: 0,
     };
 
-    // caching pool with token prices
-    const processedPools: { [key: string]: Pool2WithPrices } = {};
+    // caching
+    const cachingTokenPrices: { [key: string]: number } = {};
+    const cachingProcessedPools: { [key: string]: boolean } = {};
 
-    // query pools liquidity
-    for (let startIndex = 0; startIndex < options.pools.length; startIndex += callSize) {
-      const queryPools = options.pools.slice(startIndex, startIndex + callSize);
+    let poolIndex = 0;
+    while (true) {
+      const poolConfigs: Array<Pool2> = await this.storages.database.query({
+        collection: envConfig.mongodb.collections.cachingPool2.name,
+        query: {
+          chain: options.dexConfig.chain,
+          factory: normalizeAddress(options.dexConfig.factory),
+        },
+        options: {
+          limit: callSize,
+          skip: poolIndex * callSize,
+          order: { address: 1 },
+        },
+      });
+
+      if (poolConfigs.length === 0) {
+        break;
+      }
 
       const balanceCalls: Array<ContractCall> = [];
-      for (const pool2 of queryPools) {
+      for (const pool2 of poolConfigs) {
         balanceCalls.push({
           abi: Erc20Abi,
           target: pool2.token0.address,
@@ -87,14 +98,32 @@ export default class UniswapCore extends ProtocolAdapter {
       }
 
       // query balances
-      const balanceResults: Array<any> = await this.services.blockchain.evm.multicall({
-        chain: options.dexConfig.chain,
-        blockNumber: options.blockNumber,
-        calls: balanceCalls,
+      const contracts = balanceCalls.map((call) => {
+        return {
+          address: call.target as Address,
+          abi: call.abi,
+          functionName: call.method,
+          args: call.params,
+        } as const;
       });
+      const callResults: Array<any> = await client.multicall({
+        multicallAddress: AddressMulticall3,
+        contracts: contracts,
+        blockNumber: BigInt(options.blockNumber),
+        allowFailure: true,
+      });
+      // we allow failure on multicall
+      // so if a call failed, we count the balance is zero
+      const balanceResults: Array<any> = callResults.map((item) => (item.result ? item.result : 0n));
 
-      for (let i = 0; i < queryPools.length; i++) {
-        const pool2 = queryPools[i];
+      for (let i = 0; i < poolConfigs.length; i++) {
+        const pool2 = poolConfigs[i];
+
+        if (cachingProcessedPools[pool2.address]) {
+          continue;
+        } else {
+          cachingProcessedPools[pool2.address] = true;
+        }
 
         const balance0 = formatBigNumberToNumber(
           balanceResults[i * 2] ? balanceResults[i * 2].toString() : '0',
@@ -123,284 +152,330 @@ export default class UniswapCore extends ProtocolAdapter {
             token0PriceUsd = balance0 > 0 ? (balance1 / balance0) * baseTokenPriceUsd : 0;
           }
 
-          if (!processedPools[pool2.address]) {
-            result.total.totalLiquidityUsd += balance0 * token0PriceUsd + balance1 * token1PriceUsd;
-          }
+          cachingTokenPrices[pool2.token0.address] = token0PriceUsd;
+          cachingTokenPrices[pool2.token1.address] = token1PriceUsd;
 
-          processedPools[pool2.address] = {
-            ...pool2,
-            token0PriceUsd,
-            token1PriceUsd,
-          };
+          result.totalLiquidityUsd += balance0 * token0PriceUsd + balance1 * token1PriceUsd;
         }
       }
 
       logger.debug('processed pools liquidity data', {
         service: this.name,
-        chain: options.dexConfig.chain,
         protocol: this.protocolConfig.protocol,
+        chain: options.dexConfig.chain,
         version: options.dexConfig.version,
         factory: options.dexConfig.factory,
-        pools: `${startIndex + callSize > options.pools.length ? options.pools.length : startIndex + callSize}/${options.pools.length}`,
+        totalPools: poolIndex * callSize + poolConfigs.length,
       });
+
+      poolIndex += 1;
     }
 
-    const logs = await this.services.blockchain.evm.getAndFilterLogs({
-      chain: options.dexConfig.chain,
-      contracts: options.pools.map((item) => item.address),
-      signatures: [Uniswapv2Events.Swap, Uniswapv2Events.Mint, Uniswapv2Events.Burn],
-      fromBlock: options.beginBlock,
-      toBlock: options.endBlock,
-    });
+    // process logs
+    const blockRange = CustomQueryChainLogsBlockRange[options.dexConfig.chain]
+      ? CustomQueryChainLogsBlockRange[options.dexConfig.chain]
+      : DefaultQueryChainLogsBlockRange;
 
-    for (const log of logs) {
-      const eventPool2 = processedPools[normalizeAddress(log.address)];
-      if (eventPool2) {
+    // caching for logging
+    let lastProgressPercentage = 0;
+    let totalLogsCount = 0;
+
+    let startBlock = options.beginBlock;
+    while (startBlock <= options.endBlock) {
+      const logs = await client.getLogs({
+        fromBlock: BigInt(startBlock),
+        toBlock: BigInt(startBlock + blockRange),
+      });
+
+      for (const log of logs) {
         const signature = log.topics[0];
 
-        const event: any = decodeEventLog({
-          abi: UniswapV2PairAbi,
-          topics: log.topics,
-          data: log.data,
-        });
-
-        if (signature === Uniswapv2Events.Swap) {
-          const amount0In = formatBigNumberToNumber(event.args.amount0In.toString(), eventPool2.token0.decimals);
-          const amount1In = formatBigNumberToNumber(event.args.amount1In.toString(), eventPool2.token1.decimals);
-
-          let volumeUsd = 0;
-          if (amount0In > 0) {
-            volumeUsd = amount0In * eventPool2.token0PriceUsd;
-          } else if (amount1In > 0) {
-            volumeUsd = amount1In * eventPool2.token1PriceUsd;
-          }
-
-          const feeRateLp = options.dexConfig.feeRateForLiquidityProviders
-            ? options.dexConfig.feeRateForLiquidityProviders
-            : eventPool2.feeRate;
-          const feeRateProtocol = options.dexConfig.feeRateForProtocol ? options.dexConfig.feeRateForProtocol : 0;
-          const feeUsdForLp = volumeUsd * feeRateLp;
-          const feeUsdForProtocol = volumeUsd * feeRateProtocol;
-
-          result.total.volumeSwapUsd += volumeUsd;
-          result.total.totalSwapFeeUsdForLps += feeUsdForLp;
-          result.total.totalSwapFeeUsdForProtocol += feeUsdForProtocol;
-        } else {
-          const amount0Usd =
-            formatBigNumberToNumber(event.args.amount0.toString(), eventPool2.token0.decimals) *
-            eventPool2.token0PriceUsd;
-          const amount1Usd =
-            formatBigNumberToNumber(event.args.amount1.toString(), eventPool2.token1.decimals) *
-            eventPool2.token1PriceUsd;
-
-          if (signature === Uniswapv2Events.Mint) {
-            result.total.volumeAddLiquidityUsd += amount0Usd + amount1Usd;
-          } else {
-            result.total.volumeRemoveLiquidityUsd += amount0Usd + amount1Usd;
-          }
-        }
-      }
-    }
-
-    return result;
-  }
-
-  protected async getDexDataV3(options: GetDexDataDataOptions): Promise<GetDexDataResult | null> {
-    const result: GetDexDataResult = {
-      total: {
-        totalLiquidityUsd: 0,
-        totalSwapFeeUsdForLps: 0,
-        totalSwapFeeUsdForProtocol: 0,
-        volumeAddLiquidityUsd: 0,
-        volumeRemoveLiquidityUsd: 0,
-        volumeSwapUsd: 0,
-      },
-    };
-
-    // caching pool and token prices for fast calculate volumes from logs later below
-    const processedPools: { [key: string]: Pool2WithPrices } = {};
-
-    // query pools liquidity
-    for (let startIndex = 0; startIndex < options.pools.length; startIndex += callSize) {
-      // in very loop, make sure queryPools.length == 1/3 of balanceCalls.length == 1/3 of balanceResults
-
-      // query pools if this loop
-      const queryPools = options.pools.slice(startIndex, startIndex + callSize);
-
-      const balanceCalls: Array<ContractCall> = [];
-      for (const pool2 of queryPools) {
-        balanceCalls.push({
-          abi: UniswapV3PoolAbi,
-          target: pool2.address,
-          method: 'slot0',
-          params: [],
-        });
-        balanceCalls.push({
-          abi: Erc20Abi,
-          target: pool2.token0.address,
-          method: 'balanceOf',
-          params: [pool2.address],
-        });
-        balanceCalls.push({
-          abi: Erc20Abi,
-          target: pool2.token1.address,
-          method: 'balanceOf',
-          params: [pool2.address],
-        });
-      }
-
-      // query balances
-      const balanceResults: Array<any> = await this.services.blockchain.evm.multicall({
-        chain: options.dexConfig.chain,
-        blockNumber: options.blockNumber,
-        calls: balanceCalls,
-      });
-
-      if (balanceResults) {
-        for (let i = 0; i < queryPools.length; i++) {
-          const pool2 = queryPools[i];
-
-          const baseTokenAddress = this.helperGetBaseTokenAddress(pool2);
-          if (!baseTokenAddress) {
-            // this pool does not contain baseToken
-            continue;
-          }
-
-          const slot0 = balanceResults[i * 3];
-          const balance0 = formatBigNumberToNumber(
-            balanceResults[i * 3 + 1] ? balanceResults[i * 3 + 1].toString() : '0',
-            pool2.token0.decimals,
-          );
-          const balance1 = formatBigNumberToNumber(
-            balanceResults[i * 3 + 2] ? balanceResults[i * 3 + 2].toString() : '0',
-            pool2.token1.decimals,
-          );
-
-          if (slot0 && slot0[0] && balance0 > 0 && balance1 > 0) {
-            let token0PriceUsd = 0;
-            let token1PriceUsd = 0;
-
-            // https://blog.uniswap.org/uniswap-v3-math-primer
-            // slot0.sqrtPriceX96 -> sqrtPrice
-            const diffDecimals = pool2.token1.decimals - pool2.token0.decimals;
-            const sqrtPrice = new BigNumber(slot0[0].toString())
-              .dividedBy(2 ** 96)
-              .pow(2)
-              .dividedBy(10 ** diffDecimals)
-              .toNumber();
-
-            // sqrtPrice -> price
-            const token0PriceVsToken1 = sqrtPrice;
-            const token1PriceVsToken0 = sqrtPrice > 0 ? 1 / token0PriceVsToken1 : 0;
-
-            if (compareAddress(baseTokenAddress, pool2.token0.address)) {
-              // price token1 vs token0
-              token0PriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-                chain: pool2.chain,
-                address: pool2.token0.address,
-                timestamp: options.timestamp,
-              });
-
-              token1PriceUsd = token1PriceVsToken0 * token0PriceUsd;
-            } else {
-              // price token0 vs token1
-              token1PriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-                chain: pool2.chain,
-                address: pool2.token1.address,
-                timestamp: options.timestamp,
-              });
-
-              token0PriceUsd = token0PriceVsToken1 * token1PriceUsd;
-            }
-
-            const balance0usd = balance0 * token0PriceUsd;
-            const balance1Usd = balance1 * token1PriceUsd;
-
-            if (!processedPools[pool2.address]) {
-              result.total.totalLiquidityUsd += balance0usd + balance1Usd;
-            }
-
-            // save cache
-            processedPools[pool2.address] = {
-              ...pool2,
-              token0PriceUsd,
-              token1PriceUsd,
-            };
-          }
-        }
-      }
-
-      logger.debug('processed pools liquidity data', {
-        service: this.name,
-        chain: options.dexConfig.chain,
-        protocol: this.protocolConfig.protocol,
-        version: options.dexConfig.version,
-        factory: options.dexConfig.factory,
-        pools: `${startIndex + callSize}/${options.pools.length}`,
-      });
-    }
-
-    const logs = await this.services.blockchain.evm.getAndFilterLogs({
-      chain: options.dexConfig.chain,
-      contracts: options.pools.map((item) => item.address),
-      signatures: [Uniswapv3Events.Swap, Uniswapv3Events.Mint, Uniswapv3Events.Burn],
-      fromBlock: options.beginBlock,
-      toBlock: options.endBlock,
-    });
-
-    for (const log of logs) {
-      const signature = log.topics[0];
-      if (
-        signature === Uniswapv3Events.Swap ||
-        signature === Uniswapv3Events.Mint ||
-        signature === Uniswapv3Events.Burn
-      ) {
-        const eventPool2 = processedPools[normalizeAddress(log.address)];
-        if (eventPool2) {
-          const event: any = decodeEventLog({
-            abi: UniswapV3PoolAbi,
-            topics: log.topics,
-            data: log.data,
+        if (
+          signature === Uniswapv2Events.Swap ||
+          signature === Uniswapv2Events.Mint ||
+          signature === Uniswapv2Events.Burn
+        ) {
+          const pool2: Pool2 | undefined = await this.storages.database.find({
+            collection: envConfig.mongodb.collections.cachingPool2.name,
+            query: {
+              chain: options.dexConfig.chain,
+              address: normalizeAddress(log.address),
+            },
           });
 
-          if (signature === Uniswapv3Events.Swap) {
-            const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), eventPool2.token0.decimals);
-            const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), eventPool2.token1.decimals);
+          if (pool2) {
+            const event: any = decodeEventLog({
+              abi: UniswapV2PairAbi,
+              topics: log.topics,
+              data: log.data,
+            });
 
-            let volumeUsd = 0;
-            if (amount0 > 0) {
-              // swap from token0 -> token1
-              volumeUsd = amount0 * eventPool2.token0PriceUsd;
-            } else if (amount1 > 0) {
-              volumeUsd = amount1 * eventPool2.token1PriceUsd;
-            }
+            const token0PriceUsd = cachingTokenPrices[pool2.token0.address]
+              ? cachingTokenPrices[pool2.token0.address]
+              : 0;
+            const token1PriceUsd = cachingTokenPrices[pool2.token1.address]
+              ? cachingTokenPrices[pool2.token1.address]
+              : 0;
 
-            const swapFeeUsd = volumeUsd * eventPool2.feeRate;
+            if (signature === Uniswapv2Events.Swap) {
+              const amount0In = formatBigNumberToNumber(event.args.amount0In.toString(), pool2.token0.decimals);
+              const amount1In = formatBigNumberToNumber(event.args.amount1In.toString(), pool2.token1.decimals);
 
-            const feeRateProtocol = options.dexConfig.feeRateForProtocol ? options.dexConfig.feeRateForProtocol : 0;
-            const feeUsdForProtocol = swapFeeUsd * feeRateProtocol;
+              let volumeUsd = 0;
+              if (amount0In > 0) {
+                volumeUsd = amount0In * token0PriceUsd;
+              } else if (amount1In > 0) {
+                volumeUsd = amount1In * token1PriceUsd;
+              }
 
-            result.total.volumeSwapUsd += volumeUsd;
-            result.total.totalSwapFeeUsdForLps += swapFeeUsd - feeUsdForProtocol;
-            result.total.totalSwapFeeUsdForProtocol += feeUsdForProtocol;
-          } else {
-            const amount0Usd =
-              formatBigNumberToNumber(event.args.amount0.toString(), eventPool2.token0.decimals) *
-              eventPool2.token0PriceUsd;
-            const amount1Usd =
-              formatBigNumberToNumber(event.args.amount1.toString(), eventPool2.token1.decimals) *
-              eventPool2.token1PriceUsd;
+              const feeRateLp = options.dexConfig.feeRateForLiquidityProviders
+                ? options.dexConfig.feeRateForLiquidityProviders
+                : pool2.feeRate
+                  ? pool2.feeRate
+                  : 0.003; // default 0.3%
+              const feeRateProtocol = options.dexConfig.feeRateForProtocol ? options.dexConfig.feeRateForProtocol : 0;
+              const feeUsdForLp = volumeUsd * feeRateLp;
+              const feeUsdForProtocol = volumeUsd * feeRateProtocol;
 
-            if (signature === Uniswapv3Events.Mint) {
-              result.total.volumeAddLiquidityUsd += Math.abs(amount0Usd) + Math.abs(amount1Usd);
-            } else {
-              result.total.volumeRemoveLiquidityUsd += Math.abs(amount0Usd) + Math.abs(amount1Usd);
+              result.volumeSwapUsd += volumeUsd;
+              result.totalSwapFeeUsdForLps += feeUsdForLp;
+              result.totalSwapFeeUsdForProtocol += feeUsdForProtocol;
+            } else if (signature === Uniswapv2Events.Mint || signature === Uniswapv2Events.Burn) {
+              const amount0Usd =
+                formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals) * token0PriceUsd;
+              const amount1Usd =
+                formatBigNumberToNumber(event.args.amount1.toString(), pool2.token1.decimals) * token1PriceUsd;
+
+              if (log.topics[0] === Uniswapv2Events.Mint) {
+                result.volumeAddLiquidityUsd += amount0Usd + amount1Usd;
+              } else {
+                result.volumeRemoveLiquidityUsd += amount0Usd + amount1Usd;
+              }
             }
           }
         }
       }
+
+      totalLogsCount += logs.length;
+      const processBlocks = startBlock - options.beginBlock;
+      const progress = (processBlocks / (options.endBlock - options.beginBlock)) * 100;
+
+      // less logs
+      if (progress - lastProgressPercentage >= 5) {
+        logger.debug('processing univ2 dex logs', {
+          service: this.name,
+          protocol: this.protocolConfig.protocol,
+          chain: options.dexConfig.chain,
+          version: options.dexConfig.version,
+          factory: options.dexConfig.factory,
+          blocks: `${startBlock}->${options.endBlock}`,
+          progress: `${progress.toFixed(2)}%`,
+        });
+        lastProgressPercentage = progress;
+      }
+
+      startBlock += blockRange + 1;
     }
 
     return result;
   }
+
+  // protected async getDexDataV3(options: GetDexDataDataOptions): Promise<GetDexDataResult | null> {
+  //   const result: GetDexDataResult = {
+  //     total: {
+  //       totalLiquidityUsd: 0,
+  //       totalSwapFeeUsdForLps: 0,
+  //       totalSwapFeeUsdForProtocol: 0,
+  //       volumeAddLiquidityUsd: 0,
+  //       volumeRemoveLiquidityUsd: 0,
+  //       volumeSwapUsd: 0,
+  //     },
+  //   };
+
+  //   // caching pool and token prices for fast calculate volumes from logs later below
+  //   const processedPools: { [key: string]: Pool2WithPrices } = {};
+
+  //   // query pools liquidity
+  //   for (let startIndex = 0; startIndex < options.pools.length; startIndex += callSize) {
+  //     // in very loop, make sure queryPools.length == 1/3 of balanceCalls.length == 1/3 of balanceResults
+
+  //     // query pools if this loop
+  //     const queryPools = options.pools.slice(startIndex, startIndex + callSize);
+
+  //     const balanceCalls: Array<ContractCall> = [];
+  //     for (const pool2 of queryPools) {
+  //       balanceCalls.push({
+  //         abi: UniswapV3PoolAbi,
+  //         target: pool2.address,
+  //         method: 'slot0',
+  //         params: [],
+  //       });
+  //       balanceCalls.push({
+  //         abi: Erc20Abi,
+  //         target: pool2.token0.address,
+  //         method: 'balanceOf',
+  //         params: [pool2.address],
+  //       });
+  //       balanceCalls.push({
+  //         abi: Erc20Abi,
+  //         target: pool2.token1.address,
+  //         method: 'balanceOf',
+  //         params: [pool2.address],
+  //       });
+  //     }
+
+  //     // query balances
+  //     const balanceResults: Array<any> = await this.services.blockchain.evm.multicall({
+  //       chain: options.dexConfig.chain,
+  //       blockNumber: options.blockNumber,
+  //       calls: balanceCalls,
+  //     });
+
+  //     if (balanceResults) {
+  //       for (let i = 0; i < queryPools.length; i++) {
+  //         const pool2 = queryPools[i];
+
+  //         const baseTokenAddress = this.helperGetBaseTokenAddress(pool2);
+  //         if (!baseTokenAddress) {
+  //           // this pool does not contain baseToken
+  //           continue;
+  //         }
+
+  //         const slot0 = balanceResults[i * 3];
+  //         const balance0 = formatBigNumberToNumber(
+  //           balanceResults[i * 3 + 1] ? balanceResults[i * 3 + 1].toString() : '0',
+  //           pool2.token0.decimals,
+  //         );
+  //         const balance1 = formatBigNumberToNumber(
+  //           balanceResults[i * 3 + 2] ? balanceResults[i * 3 + 2].toString() : '0',
+  //           pool2.token1.decimals,
+  //         );
+
+  //         if (slot0 && slot0[0] && balance0 > 0 && balance1 > 0) {
+  //           let token0PriceUsd = 0;
+  //           let token1PriceUsd = 0;
+
+  //           // https://blog.uniswap.org/uniswap-v3-math-primer
+  //           // slot0.sqrtPriceX96 -> sqrtPrice
+  //           const diffDecimals = pool2.token1.decimals - pool2.token0.decimals;
+  //           const sqrtPrice = new BigNumber(slot0[0].toString())
+  //             .dividedBy(2 ** 96)
+  //             .pow(2)
+  //             .dividedBy(10 ** diffDecimals)
+  //             .toNumber();
+
+  //           // sqrtPrice -> price
+  //           const token0PriceVsToken1 = sqrtPrice;
+  //           const token1PriceVsToken0 = sqrtPrice > 0 ? 1 / token0PriceVsToken1 : 0;
+
+  //           if (compareAddress(baseTokenAddress, pool2.token0.address)) {
+  //             // price token1 vs token0
+  //             token0PriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+  //               chain: pool2.chain,
+  //               address: pool2.token0.address,
+  //               timestamp: options.timestamp,
+  //             });
+
+  //             token1PriceUsd = token1PriceVsToken0 * token0PriceUsd;
+  //           } else {
+  //             // price token0 vs token1
+  //             token1PriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+  //               chain: pool2.chain,
+  //               address: pool2.token1.address,
+  //               timestamp: options.timestamp,
+  //             });
+
+  //             token0PriceUsd = token0PriceVsToken1 * token1PriceUsd;
+  //           }
+
+  //           const balance0usd = balance0 * token0PriceUsd;
+  //           const balance1Usd = balance1 * token1PriceUsd;
+
+  //           if (!processedPools[pool2.address]) {
+  //             result.total.totalLiquidityUsd += balance0usd + balance1Usd;
+  //           }
+
+  //           // save cache
+  //           processedPools[pool2.address] = {
+  //             ...pool2,
+  //             token0PriceUsd,
+  //             token1PriceUsd,
+  //           };
+  //         }
+  //       }
+  //     }
+
+  //     logger.debug('processed pools liquidity data', {
+  //       service: this.name,
+  //       chain: options.dexConfig.chain,
+  //       protocol: this.protocolConfig.protocol,
+  //       version: options.dexConfig.version,
+  //       factory: options.dexConfig.factory,
+  //       pools: `${startIndex + callSize}/${options.pools.length}`,
+  //     });
+  //   }
+
+  //   const logs = await this.services.blockchain.evm.getAndFilterLogs({
+  //     chain: options.dexConfig.chain,
+  //     contracts: options.pools.map((item) => item.address),
+  //     signatures: [Uniswapv3Events.Swap, Uniswapv3Events.Mint, Uniswapv3Events.Burn],
+  //     fromBlock: options.beginBlock,
+  //     toBlock: options.endBlock,
+  //   });
+
+  //   for (const log of logs) {
+  //     const signature = log.topics[0];
+  //     if (
+  //       signature === Uniswapv3Events.Swap ||
+  //       signature === Uniswapv3Events.Mint ||
+  //       signature === Uniswapv3Events.Burn
+  //     ) {
+  //       const eventPool2 = processedPools[normalizeAddress(log.address)];
+  //       if (eventPool2) {
+  //         const event: any = decodeEventLog({
+  //           abi: UniswapV3PoolAbi,
+  //           topics: log.topics,
+  //           data: log.data,
+  //         });
+
+  //         if (signature === Uniswapv3Events.Swap) {
+  //           const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), eventPool2.token0.decimals);
+  //           const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), eventPool2.token1.decimals);
+
+  //           let volumeUsd = 0;
+  //           if (amount0 > 0) {
+  //             // swap from token0 -> token1
+  //             volumeUsd = amount0 * eventPool2.token0PriceUsd;
+  //           } else if (amount1 > 0) {
+  //             volumeUsd = amount1 * eventPool2.token1PriceUsd;
+  //           }
+
+  //           const swapFeeUsd = volumeUsd * eventPool2.feeRate;
+
+  //           const feeRateProtocol = options.dexConfig.feeRateForProtocol ? options.dexConfig.feeRateForProtocol : 0;
+  //           const feeUsdForProtocol = swapFeeUsd * feeRateProtocol;
+
+  //           result.total.volumeSwapUsd += volumeUsd;
+  //           result.total.totalSwapFeeUsdForLps += swapFeeUsd - feeUsdForProtocol;
+  //           result.total.totalSwapFeeUsdForProtocol += feeUsdForProtocol;
+  //         } else {
+  //           const amount0Usd =
+  //             formatBigNumberToNumber(event.args.amount0.toString(), eventPool2.token0.decimals) *
+  //             eventPool2.token0PriceUsd;
+  //           const amount1Usd =
+  //             formatBigNumberToNumber(event.args.amount1.toString(), eventPool2.token1.decimals) *
+  //             eventPool2.token1PriceUsd;
+
+  //           if (signature === Uniswapv3Events.Mint) {
+  //             result.total.volumeAddLiquidityUsd += Math.abs(amount0Usd) + Math.abs(amount1Usd);
+  //           } else {
+  //             result.total.volumeRemoveLiquidityUsd += Math.abs(amount0Usd) + Math.abs(amount1Usd);
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+
+  //   return result;
+  // }
 }

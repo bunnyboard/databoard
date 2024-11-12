@@ -1,10 +1,8 @@
 import { ProtocolCategories } from '../../types/base';
-import { Pool2, Pool2Types } from '../../types/domains/pool2';
+import { Pool2Types } from '../../types/domains/pool2';
 import { PublicAddresses } from '../constants/addresses';
 import { ChainNames, ProtocolNames } from '../names';
 import { UniswapProtocolConfig } from './uniswap';
-import { compareAddress } from '../../lib/utils';
-import PancakePools from '../data/pool2/pancake.json';
 
 export const PancakeConfigs: UniswapProtocolConfig = {
   protocol: ProtocolNames.pancake,
@@ -121,9 +119,6 @@ export const PancakeConfigs: UniswapProtocolConfig = {
       birthday: 1680393600, // Sun Apr 02 2023 00:00:00 GMT+0000
       wrappedNative: PublicAddresses.bnbchain.wbnb,
       feeRateForProtocol: 0.32, // 32%
-      whitelistedPools: (PancakePools as Array<Pool2>)
-        .filter((pool) => pool.chain === ChainNames.bnbchain)
-        .filter((pool) => compareAddress(pool.factory, '0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865')),
     },
   ],
 };

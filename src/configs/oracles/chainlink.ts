@@ -277,4 +277,11 @@ export const OracleSourceChainlinkList: { [key: string]: OracleSourceChainlink }
     address: '0x0Fe4D87883005fCAFaF56B81d09473D9A29dCDC3',
     decimals: 8,
   },
+  CELO_USD: {
+    type: 'chainlink',
+    chain: 'celo',
+    currency: 'usd',
+    address: '0x0568fD19986748cEfF3301e55c0eb1E729E0Ab7e',
+    decimals: 8,
+  },
 };

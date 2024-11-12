@@ -3,8 +3,6 @@ import { Pool2Types } from '../../types/domains/pool2';
 import { PublicAddresses } from '../constants/addresses';
 import { ChainNames, ProtocolNames } from '../names';
 import { UniswapProtocolConfig } from './uniswap';
-import CamelotPools from '../data/pool2/camelot.json';
-import { compareAddress } from '../../lib/utils';
 
 export const CamelotConfigs: UniswapProtocolConfig = {
   protocol: ProtocolNames.camelot,
@@ -17,9 +15,6 @@ export const CamelotConfigs: UniswapProtocolConfig = {
       factory: '0x6EcCab422D763aC031210895C81787E87B43A652',
       birthday: 1667520000, // Fri Nov 04 2022 00:00:00 GMT+0000
       wrappedNative: PublicAddresses.arbitrum.weth,
-      whitelistedPools: CamelotPools.filter((pool) => pool.chain === ChainNames.arbitrum).filter((pool) =>
-        compareAddress(pool.factory, '0x6EcCab422D763aC031210895C81787E87B43A652'),
-      ),
     },
   ],
 };

@@ -1940,6 +1940,27 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.ethereum['0x92d6c1e31e14520e676a687f0a93788b716beff5'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
+  COQ_WAVAX: {
+    type: 'univ2',
+    chain: 'avalanche',
+    address: '0x41ab86eecbd110a82ca602d032a461f453066f1e',
+    baseToken: TokensBook.avalanche['0x420fca0121dc28039145009570975747295f2329'],
+    quotaToken: TokensBook.avalanche['0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7'],
+  },
+  CHR_WETH: {
+    type: 'univ2',
+    chain: 'ethereum',
+    address: '0xd366ed22f5b2262a2da4c32d8a4607c93690134a',
+    baseToken: TokensBook.ethereum['0x8a2279d4a90b6fe1c4b30fa660cc9f926797baa2'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
+  BTT_WETH: {
+    type: 'univ2',
+    chain: 'ethereum',
+    address: '0x2d0ba902badaa82592f0e1c04c71d66cea21d921',
+    baseToken: TokensBook.ethereum['0xc669928185dbce49d2230cc9b0979be6dc797957'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
   MOE_USDT: {
     type: 'univ2',
     chain: 'mantle',

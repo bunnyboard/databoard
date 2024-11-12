@@ -23,6 +23,9 @@ export interface DatabaseCollectionConfig {
   // safe to delete this collection anytime
   caching: MongoCollectionConfig;
 
+  // caching save liquidity pool2
+  cachingPool2: MongoCollectionConfig;
+
   // save contract logs
   contractLogs: MongoCollectionConfig;
 

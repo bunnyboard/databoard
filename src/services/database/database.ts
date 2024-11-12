@@ -137,6 +137,7 @@ export default class DatabaseService implements IDatabaseService {
             ...options.query,
           })
           .limit(options.options.limit)
+          .skip(options.options.skip)
           .sort(options.options.order)
           .toArray();
       }

@@ -64,6 +64,7 @@ export const ChainNames = {
   oasys: 'oasys',
   karakk2: 'karakk2',
   zircuit: 'zircuit',
+  morphl2: 'morphl2',
 };
 
 export const ProtocolNames = {
@@ -192,4 +193,5 @@ export const ProtocolNames = {
   zircuitNativeBridge: 'zircuitNativeBridge',
   dodoex: 'dodoex',
   odos: 'odos', // odos.xyz
+  morphl2NativeBridge: 'morphl2NativeBridge',
 };

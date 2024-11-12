@@ -58,6 +58,10 @@ export default class ProtocolAdapter implements IProtocolAdapter {
     //
     // collect current state data
     //
+    if (options.fromTime) {
+      throw Error('testting');
+    }
+
     if (!options.service || options.service === 'state') {
       this.executeSession.startSession('start to update protocol current data', {
         service: this.name,

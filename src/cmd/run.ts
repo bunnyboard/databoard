@@ -103,8 +103,11 @@ export class RunCommand extends BasicCommand {
               force: argv.force ? argv.force : false,
             });
           } catch (e: any) {
+            // send to Sentry
             Sentry.captureException(e);
-            throw new Error(e);
+
+            // exit
+            throw e;
           }
         }
       }

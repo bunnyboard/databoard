@@ -15,6 +15,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   AVAX: OracleCurrencyBaseConfigs.avax,
   FTM: OracleCurrencyBaseConfigs.ftm,
   GLMR: OracleCurrencyBaseConfigs.glmr,
+  CELO: OracleCurrencyBaseConfigs.celo,
   DAI: {
     currency: 'usd',
     sources: [OracleSourceChainlinkList.DAI_USD],
@@ -288,6 +289,10 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.miMATIC_USDC],
   },
+  MAI: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.miMATIC_USDC],
+  },
   stMATIC: {
     currency: 'matic',
     sources: [OracleSourceUniswapv3List.stMATIC_WMATIC],
@@ -377,8 +382,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv2List.WIN_WBNB],
   },
   BTT: {
-    currency: 'usd',
-    sources: [OracleSourceUniswapv2List.BTT_BUSD],
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BTT_WETH],
   },
   SnBNB: {
     currency: 'bnb',
@@ -1434,10 +1439,6 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv3List.G_USDC],
   },
-  cUSD: {
-    currency: 'usd',
-    sources: [OracleSourceUniswapv3List.cUSD_USDT],
-  },
   NEWO: {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.NEWO_USDC],
@@ -2097,6 +2098,46 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   DYDX: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.DYDX_WETH],
+  },
+  wQUIL: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.wQUIL_WETH],
+  },
+  DINERO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.DINERO_WETH],
+  },
+  USDs: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.USDs_USDC],
+  },
+  SPA: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.SPA_USDC],
+  },
+  COQ: {
+    currency: 'avax',
+    sources: [OracleSourceUniswapv2List.COQ_WAVAX],
+  },
+  CHR: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.CHR_WETH],
+  },
+  LOTUS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.LOTUS_WETH],
+  },
+  VOLT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.VOLT_WETH],
+  },
+  LUA: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.LUA_USDT],
+  },
+  LUAUSD: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.LUAUSD_USDT],
   },
   '0xMR': {
     currency: 'eth',

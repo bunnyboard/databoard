@@ -419,6 +419,12 @@
     "decimals": 18,
     "address": "0x1cc128a5d977b3ba7d598f01db20a2116f59ef68"
   },
+  "0x1dd6b5f9281c6b4f043c02a83a46c2772024636c": {
+    "chain": "arbitrum",
+    "symbol": "LUAUSD",
+    "decimals": 18,
+    "address": "0x1dd6b5f9281c6b4f043c02a83a46c2772024636c"
+  },
   "0x1debd73e752beaf79865fd6446b0c970eae7732f": {
     "chain": "arbitrum",
     "symbol": "CBETH",
@@ -1990,6 +1996,12 @@
     "symbol": "GM",
     "decimals": 18,
     "address": "0xc25cef6061cf5de5eb761b50e4743c1f5d7e5407"
+  },
+  "0xc3abc47863524ced8daf3ef98d74dd881e131c38": {
+    "chain": "arbitrum",
+    "symbol": "LUA",
+    "decimals": 18,
+    "address": "0xc3abc47863524ced8daf3ef98d74dd881e131c38"
   },
   "0xc3ae0333f0f34aa734d5493276223d95b8f9cb37": {
     "chain": "arbitrum",

@@ -54,4 +54,8 @@ export const OracleCurrencyBaseConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceChainlinkList.GLMR_USD],
   },
+  celo: {
+    currency: 'usd',
+    sources: [OracleSourceChainlinkList.CELO_USD],
+  },
 };
