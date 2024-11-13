@@ -22,6 +22,30 @@ export const ZerolendConfigs: AaveProtocolConfig = {
       },
     },
     {
+      chain: ChainNames.ethereum,
+      marketName: 'Bitcoin LRT Market',
+      version: 3,
+      birthday: 1725580800, // Fri Sep 06 2024 00:00:00 GMT+0000
+      lendingPool: '0xCD2b31071119D7eA449a9D211AC8eBF7Ee97F987',
+      dataProvider: '0x31063F7CA8ef4089Db0dEdf8D6e35690B468A611',
+      oracle: {
+        currency: 'usd',
+        address: '0xad19a55354614913B373E01da768ab679ac4DA41',
+      },
+    },
+    {
+      chain: ChainNames.ethereum,
+      marketName: 'Stablecoin RWA Market',
+      version: 3,
+      birthday: 1727049600, // Mon Sep 23 2024 00:00:00 GMT+0000
+      lendingPool: '0xD3a4DA66EC15a001466F324FA08037f3272BDbE8',
+      dataProvider: '0x298ECDcb0369Aef75cBbdA3e46a224Cfe622E287',
+      oracle: {
+        currency: 'usd',
+        address: '0x9a4BF8be3a363bd7fC50833c1C24e8076E2F762E',
+      },
+    },
+    {
       chain: ChainNames.blast,
       marketName: 'Main Market',
       version: 3,
@@ -43,6 +67,18 @@ export const ZerolendConfigs: AaveProtocolConfig = {
       oracle: {
         currency: 'usd',
         address: '0xff679e5b4178a2f74a56f0e2c0e1fa1c80579385',
+      },
+    },
+    {
+      chain: ChainNames.linea,
+      marketName: 'Croak Market',
+      version: 3,
+      birthday: 1717372800, // Mon Jun 03 2024 00:00:00 GMT+0000
+      lendingPool: '0xc6ff96AefD1cC757d56e1E8Dcc4633dD7AA5222D',
+      dataProvider: '0x9aFB91a3cfB9aBc8Cbc8429aB57b6593FE36E173',
+      oracle: {
+        currency: 'usd',
+        address: '0xCf3c9Bf6caD62A5eF2037322De6Da8216F31f9ec',
       },
     },
     {

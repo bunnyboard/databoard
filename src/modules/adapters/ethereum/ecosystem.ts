@@ -48,8 +48,6 @@ export default class EthereumEcosystemAdapter extends EvmIndexer {
       ethSupply: null,
       beaconDepositors: {},
       feeRecipients: {},
-      gasSpenders: {},
-      gasConsumers: {},
     };
 
     // get eth supply if etherescan api key config found
@@ -173,20 +171,6 @@ export default class EthereumEcosystemAdapter extends EvmIndexer {
               }
               ethereumProtocolData.beaconDepositors[depositor] += amount;
             }
-          }
-
-          const senderAddress = normalizeAddress(receipt.from);
-          if (!ethereumProtocolData.gasSpenders[senderAddress]) {
-            ethereumProtocolData.gasSpenders[senderAddress] = 0;
-          }
-          ethereumProtocolData.gasSpenders[senderAddress] += fee;
-
-          const toAddress = receipt.to ? normalizeAddress(receipt.to) : null;
-          if (toAddress) {
-            if (!ethereumProtocolData.gasConsumers[toAddress]) {
-              ethereumProtocolData.gasConsumers[toAddress] = 0;
-            }
-            ethereumProtocolData.gasConsumers[toAddress] += fee;
           }
         }
 
