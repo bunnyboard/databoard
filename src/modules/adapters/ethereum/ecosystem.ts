@@ -8,7 +8,6 @@ import {
   formatLittleEndian64ToString,
   getTimestamp,
   normalizeAddress,
-  sleep,
 } from '../../../lib/utils';
 import { ProtocolConfig } from '../../../types/base';
 import { EthereumProtocolData } from '../../../types/domains/ecosystems/ethereum';
@@ -17,84 +16,13 @@ import { GetProtocolDataOptions, TestAdapterOptions } from '../../../types/optio
 import BigNumber from 'bignumber.js';
 import { decodeEventLog } from 'viem';
 import BaeconDepositAbi from '../../../configs/abi/BeaconDeposit.json';
-import ProtocolAdapter from '../protocol';
+import EvmIndexer, { GetRawBlockDataResult } from './indexer';
 
-interface GetBlockDataResult {
-  block: any;
-  receipts: Array<any>;
-}
-
-export default class EthereumEcosystemAdapter extends ProtocolAdapter {
+export default class EthereumEcosystemAdapter extends EvmIndexer {
   public readonly name: string = 'adapter.ethereum';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {
     super(services, storages, protocolConfig);
-  }
-
-  private async getBlockData(rpc: string, blockNumber: number): Promise<GetBlockDataResult> {
-    const databaseConnected = await this.storages.database.isConnected();
-
-    if (databaseConnected) {
-      const caching = await this.storages.database.find({
-        collection: envConfig.mongodb.collections.caching.name,
-        query: {
-          name: `ethereum-block-${blockNumber}`,
-        },
-      });
-      if (caching) {
-        return {
-          block: caching.block,
-          receipts: caching.receipts,
-        };
-      }
-    }
-
-    const result: GetBlockDataResult = {
-      block: null,
-      receipts: [],
-    };
-
-    let response = await axios.post(rpc, {
-      id: 'any',
-      jsonrpc: '2.0',
-      method: 'eth_getBlockByNumber',
-      params: [`0x${blockNumber.toString(16)}`, true],
-    });
-
-    if (response.data && response.data.result) {
-      result.block = response.data.result;
-    }
-
-    await sleep(0.5);
-
-    response = await axios.post(rpc, {
-      id: 'any',
-      jsonrpc: '2.0',
-      method: 'eth_getBlockReceipts',
-      params: [`0x${blockNumber.toString(16)}`],
-    });
-    if (response.data && response.data.result) {
-      result.receipts = response.data.result;
-    }
-
-    if (databaseConnected) {
-      await this.storages.database.update({
-        collection: envConfig.mongodb.collections.caching.name,
-        keys: {
-          name: `ethereum-block-${blockNumber}`,
-          blockNumber: blockNumber,
-        },
-        updates: {
-          name: `ethereum-block-${blockNumber}`,
-          blockNumber: blockNumber,
-          block: result.block,
-          receipts: result.receipts,
-        },
-        upsert: true,
-      });
-    }
-
-    return result;
   }
 
   public async getProtocolData(options: GetProtocolDataOptions): Promise<EthereumProtocolData | null> {
@@ -160,11 +88,13 @@ export default class EthereumEcosystemAdapter extends ProtocolAdapter {
       timestamp: options.timestamp,
     });
 
-    // caching for logging
-    let indexBlock = beginBlock;
-    let lastProgressPercentage = 0;
+    await this.getRawBlocks({
+      rpcs: ethereumConfig.publicRpcs,
+      fromBlock: beginBlock,
+      toBlock: endBlock,
+    });
 
-    logger.info('getting ethereum blocks data', {
+    logger.info('processing blocks data from localdb', {
       service: this.name,
       chain: this.protocolConfig.protocol,
       blocks: `${beginBlock}->${endBlock}`,
@@ -172,11 +102,13 @@ export default class EthereumEcosystemAdapter extends ProtocolAdapter {
 
     let totalBaseFee = new BigNumber(0);
     const senderAddress: { [key: string]: boolean } = {};
-    while (indexBlock <= endBlock) {
-      const randomEndpoint = ethereumConfig.publicRpcs[Math.floor(Math.random() * ethereumConfig.publicRpcs.length)];
-      const blockData = await this.getBlockData(randomEndpoint, indexBlock);
+    for (let indexBlock = beginBlock; indexBlock <= endBlock; indexBlock++) {
+      const blockData: GetRawBlockDataResult = await this.storages.localdb.read({
+        database: `${this.name}.blocks`,
+        key: indexBlock.toString(),
+      });
 
-      if (blockData.block) {
+      if (blockData && blockData.block && blockData.receipts) {
         ethereumProtocolData.blockCount += 1;
         ethereumProtocolData.transactionCount += blockData.block.transactions.length;
         ethereumProtocolData.totalGasLimited = new BigNumber(ethereumProtocolData.totalGasLimited)
@@ -266,29 +198,13 @@ export default class EthereumEcosystemAdapter extends ProtocolAdapter {
         ethereumProtocolData.feeRecipients[feeRecipient] += blockReward;
         ethereumProtocolData.ethFeePaid += totalFeePaid;
       } else {
-        logger.warn('failed to get ethereum block data', {
+        logger.warn('failed to get block data from localdb', {
           service: this.name,
           chain: this.protocolConfig.protocol,
           number: indexBlock,
-          rpc: randomEndpoint,
         });
+        process.exit(1);
       }
-
-      const processBlocks = indexBlock - beginBlock + 1;
-      const progress = (processBlocks / (endBlock - beginBlock + 1)) * 100;
-
-      // less logs
-      if (progress - lastProgressPercentage >= 5) {
-        logger.debug('processed ethereum blocks data', {
-          service: this.name,
-          chain: this.protocolConfig.protocol,
-          blocks: `${indexBlock}->${endBlock}`,
-          progress: `${progress.toFixed(2)}%`,
-        });
-        lastProgressPercentage = progress;
-      }
-
-      indexBlock += 1;
     }
 
     ethereumProtocolData.senderAddressCount = Object.keys(senderAddress).length;

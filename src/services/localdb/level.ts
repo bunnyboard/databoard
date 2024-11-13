@@ -45,10 +45,17 @@ export default class LeveldbService implements ILocaldbService {
 
   public async read(options: LocaldbReadOptions): Promise<any> {
     const database = this.getDatabase(options.database);
-    const value = await database.get(options.key);
-    // need to close - other process can open and write to
-    await database.close();
 
-    return value;
+    try {
+      const value = await database.get(options.key);
+
+      // need to close - other process can open and write to
+      await database.close();
+
+      return value;
+    } catch (e: any) {
+      // need to close - other process can open and write to
+      await database.close();
+    }
   }
 }
