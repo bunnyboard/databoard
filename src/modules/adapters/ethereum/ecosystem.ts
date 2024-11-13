@@ -104,7 +104,7 @@ export default class EthereumEcosystemAdapter extends EvmIndexer {
     const senderAddress: { [key: string]: boolean } = {};
     for (let indexBlock = beginBlock; indexBlock <= endBlock; indexBlock++) {
       const blockData: GetRawBlockDataResult = await this.storages.localdb.read({
-        database: `${this.name}.blocks`,
+        database: this.getLocaldbDatabaseName(),
         key: indexBlock.toString(),
       });
 

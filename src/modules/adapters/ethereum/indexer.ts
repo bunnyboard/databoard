@@ -1,3 +1,4 @@
+import { EthereumProtocolConfig } from '../../../configs/protocols/ethereum';
 import logger from '../../../lib/logger';
 import { sleep } from '../../../lib/utils';
 import { ProtocolConfig } from '../../../types/base';
@@ -20,6 +21,11 @@ export default class EvmIndexer extends ProtocolAdapter {
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {
     super(services, storages, protocolConfig);
+  }
+
+  protected getLocaldbDatabaseName(): string {
+    const ethereumConfig = this.protocolConfig as EthereumProtocolConfig;
+    return `adapter.${ethereumConfig.chain}.blocks`;
   }
 
   protected async getRawBlockData(rpc: string, blockNumber: number): Promise<GetRawBlockDataResult> {
@@ -81,40 +87,51 @@ export default class EvmIndexer extends ProtocolAdapter {
     });
 
     while (indexBlock <= options.toBlock) {
-      const randomEndpoint = options.rpcs[Math.floor(Math.random() * options.rpcs.length)];
-      const rawBlockData = await this.getRawBlockData(randomEndpoint, indexBlock);
+      let rawBlockData: any = await this.storages.localdb.read({
+        database: this.getLocaldbDatabaseName(),
+        key: indexBlock.toString(),
+      });
 
-      if (rawBlockData.block && rawBlockData.receipts) {
-        await this.storages.localdb.writeSingle({
-          database: `${this.name}.blocks`,
-          key: indexBlock.toString(),
-          value: rawBlockData,
-        });
+      if (!rawBlockData) {
+        // get block data from rpc
+        const randomEndpoint = options.rpcs[Math.floor(Math.random() * options.rpcs.length)];
+        rawBlockData = await this.getRawBlockData(randomEndpoint, indexBlock);
 
-        const processBlocks = indexBlock - options.fromBlock + 1;
-        const progress = (processBlocks / (options.toBlock - options.fromBlock + 1)) * 100;
-
-        // less logs
-        if (progress - lastProgressPercentage >= 5) {
-          logger.debug('got and saved blocks data to localdb', {
+        if (rawBlockData && rawBlockData.block && rawBlockData.receipts) {
+          await this.storages.localdb.writeSingle({
+            database: this.getLocaldbDatabaseName(),
+            key: indexBlock.toString(),
+            value: rawBlockData,
+          });
+        } else {
+          logger.warn('failed to get block data, retry after 10s', {
             service: this.name,
             chain: this.protocolConfig.protocol,
-            blocks: `${indexBlock}->${options.fromBlock}`,
-            progress: `${progress.toFixed(2)}%`,
+            number: indexBlock,
+            usingRpc: randomEndpoint,
           });
-          lastProgressPercentage = progress;
-        }
+          await sleep(10);
 
-        indexBlock += 1;
-      } else {
-        logger.warn('failed to get block data, retry after 10s', {
+          // will rety this block
+          continue;
+        }
+      }
+
+      const processBlocks = indexBlock - options.fromBlock + 1;
+      const progress = (processBlocks / (options.toBlock - options.fromBlock + 1)) * 100;
+
+      // less logs
+      if (progress - lastProgressPercentage >= 5) {
+        logger.debug('got and saved blocks data to localdb', {
           service: this.name,
           chain: this.protocolConfig.protocol,
-          number: indexBlock,
-          usingRpc: randomEndpoint,
+          blocks: `${indexBlock}->${options.fromBlock}`,
+          progress: `${progress.toFixed(2)}%`,
         });
-        await sleep(10);
+        lastProgressPercentage = progress;
       }
+
+      indexBlock += 1;
     }
   }
 }
