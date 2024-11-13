@@ -113,6 +113,12 @@
     "decimals": 18,
     "address": "0x10010078a54396f62c96df8532dc2b4847d47ed3"
   },
+  "0x10b620b2dbac4faa7d7ffd71da486f5d44cd86f9": {
+    "chain": "fantom",
+    "symbol": "LQDR",
+    "decimals": 18,
+    "address": "0x10b620b2dbac4faa7d7ffd71da486f5d44cd86f9"
+  },
   "0x112df7e3b4b7ab424f07319d4e92f41e6608c48b": {
     "chain": "fantom",
     "symbol": "PFTM",

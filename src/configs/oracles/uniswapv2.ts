@@ -1989,6 +1989,27 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.ethereum['0x8de5b80a0c1b02fe4976851d030b36122dbb8624'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
+  LQDR_WFTM: {
+    type: 'univ2',
+    chain: 'fantom',
+    address: '0x4fe6f19031239f105f753d1df8a0d24857d0caa2',
+    baseToken: TokensBook.fantom['0x10b620b2dbac4faa7d7ffd71da486f5d44cd86f9'],
+    quotaToken: TokensBook.fantom['0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83'],
+  },
+  TAROT_WFTM: {
+    type: 'univ2',
+    chain: 'fantom',
+    address: '0x99b7daaf2468edcfbadd67df9bcea14d1a030675',
+    baseToken: TokensBook.fantom['0xb7c2ddb1ebac1056231ef22c1b0a13988537a274'],
+    quotaToken: TokensBook.fantom['0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83'],
+  },
+  EQUAL_WFTM: {
+    type: 'univ2',
+    chain: 'fantom',
+    address: '0x3d6c56f6855b7cc746fb80848755b0a9c3770122',
+    baseToken: TokensBook.fantom['0x3fd3a0c85b70754efc07ac9ac0cbbdce664865a6'],
+    quotaToken: TokensBook.fantom['0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83'],
+  },
   MOE_USDT: {
     type: 'univ2',
     chain: 'mantle',

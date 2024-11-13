@@ -2171,6 +2171,18 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.WINR_WETH],
   },
+  LQDR: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.LQDR_WFTM],
+  },
+  TAROT: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.TAROT_WFTM],
+  },
+  EQUAL: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.EQUAL_WFTM],
+  },
   '0xMR': {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List['0xMR_WETH']],

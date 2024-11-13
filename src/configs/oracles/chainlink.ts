@@ -39,11 +39,11 @@ export const OracleSourceChainlinkList: { [key: string]: OracleSourceChainlink }
     address: '0x0a77230d17318075983913bc2145db16c7366156',
     decimals: 8,
   },
-  FTM_ETH: {
+  FTM_USD: {
     type: 'chainlink',
-    chain: 'ethereum',
-    address: '0x2de7e4a9488488e0058b95854cc2f7955b35dc9b',
-    decimals: 18,
+    chain: 'fantom',
+    address: '0xf4766552D15AE4d256Ad41B6cf2933482B0680dc',
+    decimals: 8,
   },
   DAI_USD: {
     type: 'chainlink',
