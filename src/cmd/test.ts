@@ -1,10 +1,11 @@
-import { DefaultMemcacheTime, ProtocolConfigs } from '../configs';
+import { DefaultLocaldbDir, DefaultMemcacheTime, ProtocolConfigs } from '../configs';
 import BlockchainService from '../services/blockchains/blockchain';
 import { MemcacheService } from '../services/caching/memcache';
 import DatabaseService from '../services/database/database';
 import OracleService from '../services/oracle/oracle';
 import { BasicCommand } from './basic';
 import { getProtocolAdapters } from '../modules/adapters';
+import LeveldbService from '../services/localdb/level';
 
 export class TestCommand extends BasicCommand {
   public readonly name: string = 'test';
@@ -18,6 +19,7 @@ export class TestCommand extends BasicCommand {
     const blockchain = new BlockchainService();
     const oracle = new OracleService(blockchain);
     const memcache = new MemcacheService(DefaultMemcacheTime);
+    const localdb = new LeveldbService(DefaultLocaldbDir);
     const database = new DatabaseService();
 
     const protocol = argv.protocol;
@@ -31,6 +33,7 @@ export class TestCommand extends BasicCommand {
       {
         database: database,
         memcache: memcache,
+        localdb: localdb,
       },
     );
 
