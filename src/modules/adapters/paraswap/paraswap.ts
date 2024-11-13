@@ -97,9 +97,10 @@ export default class ParaswapAdapter extends ProtocolAdapter {
               timestamp: options.timestamp,
               disableWarning: true,
             });
+            let buyTokenPriceUsd = 0;
 
             if (sellTokenPriceUsd === 0) {
-              const buyTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+              buyTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
                 chain: buyToken.chain,
                 address: buyToken.address,
                 timestamp: options.timestamp,

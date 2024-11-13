@@ -87,42 +87,46 @@ export default class RenzoAdapter extends ProtocolAdapter {
       options.endTime,
     );
 
-    const [[, , tvl], ezTotalSupply, [, amounts], getRate, totalSupply] = await this.services.blockchain.evm.multicall({
-      chain: renzoConfig.chain,
-      blockNumber: blockNumber,
-      calls: [
-        {
-          abi: RestakeManagerAbi,
-          target: renzoConfig.restakeManager,
-          method: 'calculateTVLs',
-          params: [],
-        },
-        {
-          abi: Erc20Abi,
-          target: renzoConfig.ezETH,
-          method: 'totalSupply',
-          params: [],
-        },
-        {
-          abi: pzEthVaultAbi,
-          target: renzoConfig.pzETH,
-          method: 'underlyingTvl',
-          params: [],
-        },
-        {
-          abi: ezEigenVaultAbi,
-          target: renzoConfig.ezEIGEN,
-          method: 'getRate',
-          params: [],
-        },
-        {
-          abi: ezEigenVaultAbi,
-          target: renzoConfig.ezEIGEN,
-          method: 'totalSupply',
-          params: [],
-        },
-      ],
-    });
+    //
+    // ezETH
+    //
+    const [calculateTVLs, ezTotalSupply, underlyingTvl, getRate, totalSupply] =
+      await this.services.blockchain.evm.multicall({
+        chain: renzoConfig.chain,
+        blockNumber: blockNumber,
+        calls: [
+          {
+            abi: RestakeManagerAbi,
+            target: renzoConfig.restakeManager,
+            method: 'calculateTVLs',
+            params: [],
+          },
+          {
+            abi: Erc20Abi,
+            target: renzoConfig.ezETH,
+            method: 'totalSupply',
+            params: [],
+          },
+          {
+            abi: pzEthVaultAbi,
+            target: renzoConfig.pzETH,
+            method: 'underlyingTvl',
+            params: [],
+          },
+          {
+            abi: ezEigenVaultAbi,
+            target: renzoConfig.ezEIGEN,
+            method: 'getRate',
+            params: [],
+          },
+          {
+            abi: ezEigenVaultAbi,
+            target: renzoConfig.ezEIGEN,
+            method: 'totalSupply',
+            params: [],
+          },
+        ],
+      });
 
     // estimate staking APR beased last 7 day rewards
     const last7DaysTime =
@@ -133,7 +137,7 @@ export default class RenzoAdapter extends ProtocolAdapter {
       renzoConfig.chain,
       last7DaysTime,
     );
-    const [[, , preTvl], preEzTotalSupply] = await this.services.blockchain.evm.multicall({
+    const [preCalculateTVLs, preEzTotalSupply] = await this.services.blockchain.evm.multicall({
       chain: renzoConfig.chain,
       blockNumber: last7DaysBlock,
       calls: [
@@ -152,15 +156,25 @@ export default class RenzoAdapter extends ProtocolAdapter {
       ],
     });
 
-    const preSupply = formatBigNumberToNumber(preEzTotalSupply.toString(), 18);
-    const preExchangeRate = preSupply ? formatBigNumberToNumber(preTvl.toString(), 18) / preSupply : 0;
+    const preTotalTvlETH = formatBigNumberToNumber(
+      preCalculateTVLs && preCalculateTVLs[2] ? preCalculateTVLs[2].toString() : '0',
+      18,
+    );
+    const postTotalTvlETH = formatBigNumberToNumber(
+      calculateTVLs && calculateTVLs[2] ? calculateTVLs[2].toString() : '0',
+      18,
+    );
 
-    const postSupply = formatBigNumberToNumber(ezTotalSupply.toString(), 18);
-    const postExchangeRate = postSupply ? formatBigNumberToNumber(tvl.toString(), 18) / postSupply : 0;
+    const preEzSupply = formatBigNumberToNumber(preEzTotalSupply.toString(), 18);
+    const postEzSupply = formatBigNumberToNumber(ezTotalSupply.toString(), 18);
 
-    const stakingApr =
-      (TimeUnits.SecondsPerYear * ((postExchangeRate - preExchangeRate) / preExchangeRate)) /
-      (options.endTime - last7DaysTime);
+    const preExchangeRate = preEzSupply ? preTotalTvlETH / preEzSupply : 0;
+    const postExchangeRate = postEzSupply ? postTotalTvlETH / postEzSupply : 0;
+
+    const stakingApr = preExchangeRate
+      ? (TimeUnits.SecondsPerYear * ((postExchangeRate - preExchangeRate) / preExchangeRate)) /
+        (options.endTime - last7DaysTime)
+      : 0;
 
     const [ethPriceUsd, wstETHPriceUsd, eigenPriceUsd] = await Promise.all([
       this.services.oracle.getTokenPriceUsdRounded({
@@ -180,12 +194,22 @@ export default class RenzoAdapter extends ProtocolAdapter {
       }),
     ]);
 
-    const totalEthDepositedUsd = formatBigNumberToNumber(tvl.toString(), 18) * ethPriceUsd;
-    const totalwstETHDepositedUsd = formatBigNumberToNumber(amounts[0].toString(), 18) * wstETHPriceUsd;
-    const totalEigenDepositedUsd =
-      formatBigNumberToNumber(getRate.toString(), 18) *
-      formatBigNumberToNumber(totalSupply.toString(), 18) *
-      eigenPriceUsd;
+    // ETH locked in ezETh
+    const totalEthDepositedUsd = postTotalTvlETH * ethPriceUsd;
+
+    // wstETH locked in pzETH
+    const totalPzUnderlyingTvl =
+      underlyingTvl && underlyingTvl[1] && underlyingTvl[1][0]
+        ? formatBigNumberToNumber(underlyingTvl[1][0].toString(), 18)
+        : 0;
+    const totalwstETHDepositedUsd = totalPzUnderlyingTvl * wstETHPriceUsd;
+
+    // EIGEN locked in ezEIGEN
+    const totalEigenTvl =
+      getRate && totalSupply
+        ? formatBigNumberToNumber(getRate.toString(), 18) * formatBigNumberToNumber(totalSupply.toString(), 18)
+        : 0;
+    const totalEigenDepositedUsd = totalEigenTvl * eigenPriceUsd;
 
     protocolData.totalAssetDeposited += totalEthDepositedUsd + totalwstETHDepositedUsd + totalEigenDepositedUsd;
     protocolData.totalValueLocked += totalEthDepositedUsd + totalwstETHDepositedUsd + totalEigenDepositedUsd;

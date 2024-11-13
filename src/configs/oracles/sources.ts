@@ -2147,6 +2147,30 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.OPN_WETH],
   },
+  unshETH: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.unshETH_ETH],
+  },
+  BRUSH: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.BRUSH_WFTM],
+  },
+  SPIRIT: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.SPIRIT_WFTM],
+  },
+  LYXe: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.LYXe_WETH],
+  },
+  VANRY: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.VANRY_WETH],
+  },
+  WINR: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.WINR_WETH],
+  },
   '0xMR': {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List['0xMR_WETH']],

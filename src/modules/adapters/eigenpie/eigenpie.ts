@@ -141,8 +141,6 @@ export default class EigenpieAdapter extends ProtocolAdapter {
       }
     }
 
-    console.log(tokenPrices);
-
     const stakingLogs = await this.services.blockchain.evm.getContractLogs({
       chain: eigenpieConfig.chain,
       address: eigenpieConfig.staking,
