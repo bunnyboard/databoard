@@ -240,8 +240,7 @@ export default class SwellAdapter extends ProtocolAdapter {
                   topics: log.topics,
                   data: log.data,
                 });
-                const amountUsd =
-                  formatBigNumberToNumber(event.args.newTotalETHDeposited.toString(), 18) * tokenPriceUsd;
+                const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), 18) * tokenPriceUsd;
                 (protocolData.volumes.deposit as number) += amountUsd;
                 (protocolData.breakdown[liquidStakingConfig.chain][AddressZero].volumes.deposit as number) += amountUsd;
               }
