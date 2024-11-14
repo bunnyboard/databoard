@@ -22,6 +22,7 @@ import EulerAdapter from './euler/euler';
 import FluidAdapter from './fluid/fluid';
 import FraxEtherAdapter from './frax/fraxether';
 import FraxlendAdapter from './frax/fraxlend';
+import FuelNativeBridgeAdapter from './fuel/nativeBridge';
 import GnosisNativeBridgeAdapter from './gnosis/nativeBridge';
 import HopAdapter from './hop/hop';
 import HyphenAdapter from './hyphen/hyphen';
@@ -176,5 +177,6 @@ export function getProtocolAdapters(
     eigenpie: new EigenpieAdapter(services, storages, ProtocolConfigs.eigenpie),
     starknetNativeBridge: new StarknetNativeBridgeAdapter(services, storages, ProtocolConfigs.starknetNativeBridge),
     blastNativeBridge: new BlastNativeBridgeAdapter(services, storages, ProtocolConfigs.blastNativeBridge),
+    fuelNativeBridge: new FuelNativeBridgeAdapter(services, storages, ProtocolConfigs.fuelNativeBridge),
   };
 }

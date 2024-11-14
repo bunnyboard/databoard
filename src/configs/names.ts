@@ -200,4 +200,5 @@ export const ProtocolNames = {
   renzo: 'renzo',
   eigenpie: 'eigenpie',
   blastNativeBridge: 'blastNativeBridge',
+  fuelNativeBridge: 'fuelNativeBridge',
 };

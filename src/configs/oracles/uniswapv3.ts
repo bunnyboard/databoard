@@ -1255,6 +1255,13 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.ethereum['0xca14007eff0db1f8135f4c25b34de49ab0d42766'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
+  pumpBTC_WBTC: {
+    type: 'univ3',
+    chain: 'ethereum',
+    address: '0x6f5ec7c65c2744a963064f6d49df0f4eea7d7d90',
+    baseToken: TokensBook.ethereum['0xf469fbd2abcd6b9de8e169d128226c0fc90a012e'],
+    quotaToken: TokensBook.ethereum['0x2260fac5e5542a773aa44fbcfedf7c193bc2c599'],
+  },
   WCORE_USDT: {
     type: 'univ3',
     chain: 'core',

@@ -2199,6 +2199,10 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.STRK_WETH],
   },
+  pumpBTC: {
+    currency: 'btc',
+    sources: [OracleSourceUniswapv3List.pumpBTC_WBTC],
+  },
   '0xMR': {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List['0xMR_WETH']],
