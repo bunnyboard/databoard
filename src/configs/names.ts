@@ -199,4 +199,5 @@ export const ProtocolNames = {
   starknetNativeBridge: 'starknetNativeBridge',
   renzo: 'renzo',
   eigenpie: 'eigenpie',
+  blastNativeBridge: 'blastNativeBridge',
 };

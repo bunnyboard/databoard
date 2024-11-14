@@ -5,6 +5,7 @@ import AcrossAdapter from './across/across';
 import ArbitrumNativeBridgeAdapter from './arbitrum/nativeBridge';
 import AvalonAdapter from './avalon/avalon';
 import BenqiAdapter from './benqi/benqi';
+import BlastNativeBridgeAdapter from './blast/nativeBridge';
 import BungeeAdapter from './bungee/bungee';
 import CbridgeAdapter from './celer/cbridge';
 import CircleCctpAdapter from './circle/circlecctp';
@@ -174,5 +175,6 @@ export function getProtocolAdapters(
     renzo: new RenzoAdapter(services, storages, ProtocolConfigs.renzo),
     eigenpie: new EigenpieAdapter(services, storages, ProtocolConfigs.eigenpie),
     starknetNativeBridge: new StarknetNativeBridgeAdapter(services, storages, ProtocolConfigs.starknetNativeBridge),
+    blastNativeBridge: new BlastNativeBridgeAdapter(services, storages, ProtocolConfigs.blastNativeBridge),
   };
 }
