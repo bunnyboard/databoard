@@ -215,7 +215,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x6e5970dbd6fc7eb1f29c6d2edf2bc4c36124c0c1': OracleSourceConfigs.TRADE,
     '0xaea46a60368a7bd060eec7df8cba43b7ef41ad85': OracleSourceConfigs.FET,
     '0x455e53cbb86018ac2b8092fdcd39d8444affc3f6': OracleSourceConfigs.MATIC,
-    '0x74232704659ef37c08995e386a2e26cc27a8d7b1': OracleSourceConfigs.STRK,
+    '0xca14007eff0db1f8135f4c25b34de49ab0d42766': OracleSourceConfigs.STRK,
     '0x562e362876c8aee4744fc2c6aac8394c312d215d': OracleSourceConfigs.OPTIMUS,
     '0xcdb4a8742ed7d0259b51e3454c46c9d6c48d5e88': OracleSourceConfigs.GPT,
     '0x168e209d7b2f58f1f24b8ae7b7d35e662bbf11cc': OracleSourceConfigs.LAI,

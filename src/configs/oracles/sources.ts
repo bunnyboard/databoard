@@ -1303,10 +1303,6 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.FET_WETH],
   },
-  STRK: {
-    currency: 'eth',
-    sources: [OracleSourceUniswapv2List.STRK_WETH],
-  },
   OPTIMUS: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.OPTIMUS_WETH],
@@ -2198,6 +2194,10 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   ZETA: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.ZETA_WETH],
+  },
+  STRK: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.STRK_WETH],
   },
   '0xMR': {
     currency: 'eth',

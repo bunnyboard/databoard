@@ -65,6 +65,8 @@ export const ChainNames = {
   karakk2: 'karakk2',
   zircuit: 'zircuit',
   morphl2: 'morphl2',
+  starknet: 'starknet',
+  fuel: 'fuel',
 };
 
 export const ProtocolNames = {
@@ -194,6 +196,7 @@ export const ProtocolNames = {
   dodoex: 'dodoex',
   odos: 'odos', // odos.xyz
   morphl2NativeBridge: 'morphl2NativeBridge',
+  starknetNativeBridge: 'starknetNativeBridge',
   renzo: 'renzo',
   eigenpie: 'eigenpie',
 };

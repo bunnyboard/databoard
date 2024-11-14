@@ -54,6 +54,7 @@ import SpookyAdapter from './spooky/spooky';
 import EthxAdapter from './stader/ethx';
 import StakewiseAdapter from './stakewise/stakewise';
 import StargateAdapter from './stargate/stargate';
+import StarknetNativeBridgeAdapter from './starknet/starknetBridge';
 import SushiAdapter from './sushi/sushi';
 import SwellAdapter from './swell/swell';
 import SymbioticAdapter from './symbiotic/symbiotic';
@@ -172,5 +173,6 @@ export function getProtocolAdapters(
     odos: new OdosAdapter(services, storages, ProtocolConfigs.odos),
     renzo: new RenzoAdapter(services, storages, ProtocolConfigs.renzo),
     eigenpie: new EigenpieAdapter(services, storages, ProtocolConfigs.eigenpie),
+    starknetNativeBridge: new StarknetNativeBridgeAdapter(services, storages, ProtocolConfigs.starknetNativeBridge),
   };
 }

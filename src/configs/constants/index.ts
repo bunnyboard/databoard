@@ -24,6 +24,7 @@ export const AddressOne = '0x0000000000000000000000000000000000000001';
 export const AddressE = '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee';
 export const AddressF = '0xffffffffffffffffffffffffffffffffffffffff';
 export const AddressEF = '0xefefefefefefefefefefefefefefefefefefefef';
+export const Address455448 = '0x0000000000000000000000000000000000455448'; // starknet native ETH
 export const AddressMulticall3 = '0xca11bde05977b3631167028862be2a173976ca11';
 
 export const Erc20TransferEventSignature = '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef';

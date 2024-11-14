@@ -9,7 +9,15 @@ import {
   TokenList,
 } from '../../configs';
 import ERC20Abi from '../../configs/abi/ERC20.json';
-import { AddressE, AddressF, AddressEF, AddressMulticall3, AddressZero, AddressOne } from '../../configs/constants';
+import {
+  AddressE,
+  AddressF,
+  AddressEF,
+  Address455448,
+  AddressMulticall3,
+  AddressZero,
+  AddressOne,
+} from '../../configs/constants';
 import EnvConfig from '../../configs/envConfig';
 import logger from '../../lib/logger';
 import { compareAddress, normalizeAddress, sleep } from '../../lib/utils';
@@ -86,6 +94,7 @@ export default class BlockchainService extends CachingService implements IBlockc
         compareAddress(address, AddressOne) ||
         compareAddress(address, AddressE) ||
         compareAddress(address, AddressF) ||
+        compareAddress(address, Address455448) ||
         compareAddress(address, AddressEF)
       ) {
         return {

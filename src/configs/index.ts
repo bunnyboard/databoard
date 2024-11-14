@@ -97,6 +97,7 @@ import { SwellConfigs } from './protocols/swell';
 import { OdosConfigs } from './protocols/odos';
 import { RenzoConfigs } from './protocols/renzo';
 import { EigenpieConfigs } from './protocols/eigenpie';
+import { StarknetNativeBridgeConfigs } from './protocols/starknet';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -222,4 +223,5 @@ export const ProtocolConfigs = {
   odos: OdosConfigs,
   renzo: RenzoConfigs,
   eigenpie: EigenpieConfigs,
+  starknetNativeBridge: StarknetNativeBridgeConfigs,
 };
