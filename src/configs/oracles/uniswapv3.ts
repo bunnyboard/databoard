@@ -1234,6 +1234,20 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.bnbchain['0x0ae38f7e10a43b5b2fb064b42a2f4514cba909ef'],
     quotaToken: TokensBook.bnbchain['0x2170ed0880ac9a755fd29b2688956bd959f933f8'],
   },
+  JASMY_WETH: {
+    type: 'univ3',
+    chain: 'ethereum',
+    address: '0x4d1eff861316396dd1915f69b49f4c2d7b11590d',
+    baseToken: TokensBook.ethereum['0x7420b4b9a0110cdc71fb720908340c03f9bc03ec'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
+  ZETA_WETH: {
+    type: 'univ3',
+    chain: 'ethereum',
+    address: '0x738ea57616fa9dab407e9e7920d446eaf4e7eaaa',
+    baseToken: TokensBook.ethereum['0xf091867ec603a6628ed83d274e835539d82e9cc8'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
   WCORE_USDT: {
     type: 'univ3',
     chain: 'core',

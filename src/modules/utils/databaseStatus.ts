@@ -36,8 +36,8 @@ export default class DatabaseStatusReport {
 
       result.protocols.push({
         protocol: protocolDataState.protocol,
-        totalValueLocked: protocolDataState.totalValueLocked,
-        totalVolume: protocolDataState.totalVolume,
+        totalValueLocked: protocolDataState.totalValueLocked ? protocolDataState.totalValueLocked : 0,
+        totalVolume: protocolDataState.totalVolume ? protocolDataState.totalVolume : 0,
         timestamp: protocolDataState.timestamp,
         lastSnapshot: latestSnapshot ? latestSnapshot.timestamp : null,
       });

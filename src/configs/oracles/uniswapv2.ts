@@ -2010,6 +2010,20 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.fantom['0x3fd3a0c85b70754efc07ac9ac0cbbdce664865a6'],
     quotaToken: TokensBook.fantom['0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83'],
   },
+  STEAK_WAVAX: {
+    type: 'univ2',
+    chain: 'avalanche',
+    address: '0x76a551fc28029639ab017742c224159a786f544f',
+    baseToken: TokensBook.avalanche['0xb279f8dd152b99ec1d84a489d32c35bc0c7f5674'],
+    quotaToken: TokensBook.avalanche['0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7'],
+  },
+  HOLD_WETH: {
+    type: 'univ2',
+    chain: 'zksync',
+    address: '0x9bec30fd825f5e8e9bc6a84914b8a3ab31742103',
+    baseToken: TokensBook.zksync['0xed4040fd47629e7c8fbb7da76bb50b3e7695f0f2'],
+    quotaToken: TokensBook.zksync['0x5aea5775959fbc2557cc8789bc1bf90a239d9a91'],
+  },
   MOE_USDT: {
     type: 'univ2',
     chain: 'mantle',

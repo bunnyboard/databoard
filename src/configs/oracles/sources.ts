@@ -2183,6 +2183,22 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'ftm',
     sources: [OracleSourceUniswapv2List.EQUAL_WFTM],
   },
+  STEAK: {
+    currency: 'avax',
+    sources: [OracleSourceUniswapv2List.STEAK_WAVAX],
+  },
+  HOLD: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.HOLD_WETH],
+  },
+  JASMY: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.JASMY_WETH],
+  },
+  ZETA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ZETA_WETH],
+  },
   '0xMR': {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List['0xMR_WETH']],
