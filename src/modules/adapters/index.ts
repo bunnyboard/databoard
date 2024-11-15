@@ -9,6 +9,7 @@ import BlastNativeBridgeAdapter from './blast/nativeBridge';
 import BungeeAdapter from './bungee/bungee';
 import CbridgeAdapter from './celer/cbridge';
 import CircleCctpAdapter from './circle/circlecctp';
+import CbethAdapter from './coinbase/cbeth';
 import CompoundAdapter from './compound/compound';
 import CowswapAdapter from './cowswap/cowswap';
 import CurvelendAdapter from './curve/curvelend';
@@ -181,5 +182,6 @@ export function getProtocolAdapters(
     fuelNativeBridge: new FuelNativeBridgeAdapter(services, storages, ProtocolConfigs.fuelNativeBridge),
     taikoNativeBridge: new TaikoNativeBridgeAdapter(services, storages, ProtocolConfigs.taikoNativeBridge),
     bobaNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.bobaNativeBridge),
+    cbeth: new CbethAdapter(services, storages, ProtocolConfigs.cbeth),
   };
 }
