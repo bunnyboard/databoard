@@ -24,6 +24,7 @@ export const MorphoBlueEvents = {
   SupplyCollateral: '0xa3b9472a1399e17e123f3c2e6586c23e504184d504de59cdaa2b375e880c6184',
   WithdrawCollateral: '0xe80ebd7cc9223d7382aab2e0d1d6155c65651f83d53c8b9b06901d167e321142',
   Liquidate: '0xa4946ede45d0c6f06a0f5ce92c9ad3b4751452d2fe0e25010783bcab57a67e41',
+  Flashloan: '0xc76f1b4fe4396ac07a9fa55a415d4ca430e72651d37d3401f3bed7cb13fc4f12',
 };
 
 export interface MorphoBlueMarketMetadata {
@@ -547,6 +548,41 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
               ].volumes.liquidation as number) += liquidateAmountUsd;
 
               break;
+            }
+            case MorphoBlueEvents.Flashloan: {
+              const token = await this.services.blockchain.evm.getTokenInfo({
+                chain: morphoBlue.chain,
+                address: event.args.token,
+              });
+              if (token) {
+                const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+                  chain: token.chain,
+                  address: token.address,
+                  timestamp: options.timestamp,
+                });
+
+                const amountUsd = formatBigNumberToNumber(event.args.assets.toString(), token.decimals) * tokenPriceUsd;
+                (protocolData.volumes.flashloan as number) += amountUsd;
+
+                if (amountUsd > 0) {
+                  if (!protocolData.breakdown[token.chain][token.address]) {
+                    protocolData.breakdown[token.chain][token.address] = {
+                      ...getInitialProtocolCoreMetrics(),
+                      totalSupplied: 0,
+                      totalBorrowed: 0,
+                      volumes: {
+                        deposit: 0,
+                        withdraw: 0,
+                        borrow: 0,
+                        repay: 0,
+                        liquidation: 0,
+                        flashloan: 0,
+                      },
+                    };
+                  }
+                  (protocolData.breakdown[token.chain][token.address].volumes.flashloan as number) += amountUsd;
+                }
+              }
             }
           }
         }

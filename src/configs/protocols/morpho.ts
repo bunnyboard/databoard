@@ -81,6 +81,8 @@ export const MorphoConfigs: MorphoProtocolConfig = {
       morphoBlue: '0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb',
       morphoFactory: '0xa9c3d3a366466fa809d1ae982fb2c46e5fc41101',
       whitelistedMarketIds: [
+        '0x5e3e6b1e01c5708055548d82d01db741e37d03b948a7ef9f3d4b962648bcbfa7', // PT-sUSDE-24OCT2024 / DAI
+        '0xe37784e5ff9c2795395c5a41a0cb7ae1da4a93d67bfdd8654b9ff86b3065941c', // PT-sUSDE-24OCT2024 / DAI
         '0x8f46cd82c4c44a090c3d72bd7a84baf4e69ee50331d5deae514f86fe062b0748', // PT-sUSDE-24OCT2024 / DAI
         '0x39d11026eae1c6ec02aa4c0910778664089cdd97c3fd23f68f7cd05e2e95af48', // sUSDe / DAI
         '0xc581c5f70bd1afa283eed57d1418c6432cbff1d862f94eaf58fdd4e46afbb67f', // USDe / DAI
