@@ -922,7 +922,6 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.BNB,
     [AddressE]: OracleSourceConfigs.BNB,
     [AddressF]: OracleSourceConfigs.BNB,
-    '0x4aae823a6a0b376de6a78e74ecc5b079d38cbcf7': OracleSourceConfigs.SolvBTC,
     '0x2416092f143378750bb29b79ed961ab195cceea5': OracleSourceConfigs.ezETH,
     '0x39db1a30122031751e803fabf329c44efbbfbf4b': OracleSourceConfigs.frxETH,
     '0x76a797a59ba2c17726896976b7b3747bfd1d220f': OracleSourceConfigs.TON,
@@ -1379,7 +1378,6 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   },
 
   zksync: {
-    '0x5a7d6b2f92c77fad6ccabd7ee0624e64907eaf3e': OracleSourceConfigs.USDC,
     '0xdd9f72afed3631a6c85b5369d84875e6c42f1827': OracleSourceConfigs.SIS,
     '0xed4040fd47629e7c8fbb7da76bb50b3e7695f0f2': OracleSourceConfigs.HOLD,
     '0x787c09494ec8bcb24dcaf8659e7d5d69979ee508': OracleSourceConfigs.MAV,
