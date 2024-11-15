@@ -117,9 +117,10 @@ export default class FuelNativeBridgeAdapter extends ProtocolAdapter {
               bridge: 0,
             },
           };
-          protocolData.breakdown[fuelConfig.chain][tokenAddress].totalAssetDeposited += tokenBalance.balanceUsd;
-          protocolData.breakdown[fuelConfig.chain][tokenAddress].totalValueLocked += tokenBalance.balanceUsd;
         }
+
+        protocolData.breakdown[fuelConfig.chain][tokenAddress].totalAssetDeposited += tokenBalance.balanceUsd;
+        protocolData.breakdown[fuelConfig.chain][tokenAddress].totalValueLocked += tokenBalance.balanceUsd;
 
         tokenPrices[tokenAddress] = tokenBalance.priceUsd;
       }
@@ -154,6 +155,15 @@ export default class FuelNativeBridgeAdapter extends ProtocolAdapter {
           const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPriceUsd;
 
           (protocolData.volumes.bridge as number) += amountUsd;
+
+          if (!protocolData.breakdown[token.chain][token.address]) {
+            protocolData.breakdown[token.chain][token.address] = {
+              ...getInitialProtocolCoreMetrics(),
+              volumes: {
+                bridge: 0,
+              },
+            };
+          }
           (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += amountUsd;
 
           if (signature === Events.Withdraw) {
@@ -175,6 +185,15 @@ export default class FuelNativeBridgeAdapter extends ProtocolAdapter {
           const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPriceUsd;
 
           (protocolData.volumes.bridge as number) += amountUsd;
+
+          if (!protocolData.breakdown[token.chain][token.address]) {
+            protocolData.breakdown[token.chain][token.address] = {
+              ...getInitialProtocolCoreMetrics(),
+              volumes: {
+                bridge: 0,
+              },
+            };
+          }
           (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += amountUsd;
 
           // withdraw

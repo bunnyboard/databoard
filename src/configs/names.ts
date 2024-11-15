@@ -201,4 +201,5 @@ export const ProtocolNames = {
   eigenpie: 'eigenpie',
   blastNativeBridge: 'blastNativeBridge',
   fuelNativeBridge: 'fuelNativeBridge',
+  taikoNativeBridge: 'taikoNativeBridge',
 };

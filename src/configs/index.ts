@@ -100,6 +100,7 @@ import { EigenpieConfigs } from './protocols/eigenpie';
 import { StarknetNativeBridgeConfigs } from './protocols/starknet';
 import { BlastNativeBridgeConfigs } from './protocols/blast';
 import { FuelNativeBridgeConfigs } from './protocols/fuel';
+import { TaikoNativeBridgeConfigs } from './protocols/taiko';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -228,4 +229,5 @@ export const ProtocolConfigs = {
   starknetNativeBridge: StarknetNativeBridgeConfigs,
   blastNativeBridge: BlastNativeBridgeConfigs,
   fuelNativeBridge: FuelNativeBridgeConfigs,
+  taikoNativeBridge: TaikoNativeBridgeConfigs,
 };
