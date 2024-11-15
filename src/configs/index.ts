@@ -101,6 +101,7 @@ import { StarknetNativeBridgeConfigs } from './protocols/starknet';
 import { BlastNativeBridgeConfigs } from './protocols/blast';
 import { FuelNativeBridgeConfigs } from './protocols/fuel';
 import { TaikoNativeBridgeConfigs } from './protocols/taiko';
+import { BobaNativeBridgeConfigs } from './protocols/boba';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -230,4 +231,5 @@ export const ProtocolConfigs = {
   blastNativeBridge: BlastNativeBridgeConfigs,
   fuelNativeBridge: FuelNativeBridgeConfigs,
   taikoNativeBridge: TaikoNativeBridgeConfigs,
+  bobaNativeBridge: BobaNativeBridgeConfigs,
 };

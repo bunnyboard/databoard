@@ -202,4 +202,5 @@ export const ProtocolNames = {
   blastNativeBridge: 'blastNativeBridge',
   fuelNativeBridge: 'fuelNativeBridge',
   taikoNativeBridge: 'taikoNativeBridge',
+  bobaNativeBridge: 'bobaNativeBridge',
 };
