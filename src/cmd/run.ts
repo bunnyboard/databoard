@@ -19,6 +19,20 @@ export class RunCommand extends BasicCommand {
   }
 
   public async execute(argv: any) {
+    // check the protocol first
+    if (argv.protocol === '') {
+      console.log('required --protocol options');
+      process.exit(0);
+    }
+
+    const protocols = argv.protocol ? argv.protocol.split(',') : [];
+    for (const protocol of protocols) {
+      if (!(ProtocolConfigs as any)[protocol]) {
+        console.log(`protocol ${protocol} config not found`);
+        process.exit(0);
+      }
+    }
+
     // setup sentry in if any
     if (envConfig.sentry.dsn) {
       // Ensure to call this before importing any other modules!
@@ -39,13 +53,6 @@ export class RunCommand extends BasicCommand {
         profilesSampleRate: 1.0,
       });
     }
-
-    if (argv.protocol === '') {
-      console.log('required --protocol options');
-      process.exit(0);
-    }
-
-    const protocols = argv.protocol ? argv.protocol.split(',') : [];
 
     const cmdConfigs: any = {
       type: 'protocol',
