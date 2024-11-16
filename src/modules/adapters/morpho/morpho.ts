@@ -306,11 +306,6 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
             };
           }
 
-          if (marketLendingData.totalSuppliedUsd > 10000000000) {
-            console.log(marketLendingData);
-            process.exit(1);
-          }
-
           protocolData.totalAssetDeposited += marketLendingData.totalSuppliedUsd;
           protocolData.totalValueLocked += marketLendingData.totalSuppliedUsd - marketLendingData.totalBorrowedUsd;
           (protocolData.totalSupplied as number) += marketLendingData.totalSuppliedUsd;

@@ -122,7 +122,7 @@ export default class StarknetNativeBridgeAdapter extends ProtocolAdapter {
 
           const token = tokens.filter((item) => compareAddress(item.address, event.args.token))[0];
           if (token) {
-            const tokenPriceUsd = getBalanceResult.tokenBalanceUsds[token.address].priceUsd
+            const tokenPriceUsd = getBalanceResult.tokenBalanceUsds[token.address]
               ? getBalanceResult.tokenBalanceUsds[token.address].priceUsd
               : 0;
             const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPriceUsd;

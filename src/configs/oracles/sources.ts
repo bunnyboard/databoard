@@ -768,8 +768,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv3List.NMR_WETH],
   },
   MCB: {
-    currency: 'eth',
-    sources: [OracleSourceUniswapv3List.MCB_WETH],
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.MCB_USDC],
   },
   INST: {
     currency: 'eth',

@@ -590,7 +590,7 @@
   "0xd63ef5e9c628c8a0e8984cdfb7444aee44b09044": {
     "chain": "zksync",
     "symbol": "GOVI",
-    "decimals": 8,
+    "decimals": 18,
     "address": "0xd63ef5e9c628c8a0e8984cdfb7444aee44b09044"
   },
   "0xd6c008fb375648972206518fb0b1a1b65f371d05": {

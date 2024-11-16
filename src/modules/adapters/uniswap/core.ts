@@ -173,7 +173,9 @@ export default class UniswapCore extends UniswapIndexer {
           cachingTokenPrices[pool2.token0.address] = token0PriceUsd;
           cachingTokenPrices[pool2.token1.address] = token1PriceUsd;
 
-          result.totalLiquidityUsd += balance0 * token0PriceUsd + balance1 * token1PriceUsd;
+          const balanceUsd = balance0 * token0PriceUsd + balance1 * token1PriceUsd;
+
+          result.totalLiquidityUsd += balanceUsd;
         }
       }
 

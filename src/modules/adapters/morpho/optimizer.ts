@@ -53,6 +53,7 @@ export default class MorphoOptimizerAdapter extends ProtocolAdapter {
         borrow: 0,
         repay: 0,
         liquidation: 0,
+        flashloan: 0,
       },
     };
 
@@ -112,6 +113,7 @@ export default class MorphoOptimizerAdapter extends ProtocolAdapter {
                       borrow: 0,
                       repay: 0,
                       liquidation: 0,
+                      flashloan: 0,
                     },
                   };
                 }
@@ -219,6 +221,7 @@ export default class MorphoOptimizerAdapter extends ProtocolAdapter {
                       borrow: 0,
                       repay: 0,
                       liquidation: 0,
+                      flashloan: 0,
                     },
                   };
                 }
@@ -320,6 +323,7 @@ export default class MorphoOptimizerAdapter extends ProtocolAdapter {
                     borrow: 0,
                     repay: 0,
                     liquidation: 0,
+                    flashloan: 0,
                   },
                 };
               }
