@@ -2203,6 +2203,18 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.TAIKO_WETH],
   },
+  deUSD: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.deUSD_USDC],
+  },
+  ZK_Polyhedra_Network: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ZK_Polyhedra_Network_WETH],
+  },
+  Silo: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.Silo_WETH],
+  },
   '0xMR': {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List['0xMR_WETH']],

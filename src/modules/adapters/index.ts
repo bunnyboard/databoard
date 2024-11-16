@@ -19,6 +19,7 @@ import DodoexAdapter from './dodoex/dodoex';
 import EigenLayerAdapter from './eigenlayer/eigenlayer';
 import EigenpieAdapter from './eigenpie/eigenpie';
 import EthereumEcosystemAdapter from './ethereum/ecosystem';
+import EtherfiAdapter from './etherfi/etherfi';
 import EulerAdapter from './euler/euler';
 import FluidAdapter from './fluid/fluid';
 import FraxEtherAdapter from './frax/fraxether';
@@ -183,5 +184,6 @@ export function getProtocolAdapters(
     taikoNativeBridge: new TaikoNativeBridgeAdapter(services, storages, ProtocolConfigs.taikoNativeBridge),
     bobaNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.bobaNativeBridge),
     cbeth: new CbethAdapter(services, storages, ProtocolConfigs.cbeth),
+    etherfi: new EtherfiAdapter(services, storages, ProtocolConfigs.etherfi),
   };
 }

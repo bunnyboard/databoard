@@ -204,4 +204,6 @@ export const ProtocolNames = {
   taikoNativeBridge: 'taikoNativeBridge',
   bobaNativeBridge: 'bobaNativeBridge',
   cbeth: 'cbeth', // coinbase wrapped staked ETH
+  etherfi: 'etherfi', // https://ether.fi
+  solv: 'solv', // https://solv.finance
 };

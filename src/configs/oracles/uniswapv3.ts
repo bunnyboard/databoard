@@ -1262,6 +1262,27 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.ethereum['0x10dea67478c5f8c5e2d90e5e9b26dbe60c54d800'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
+  deUSD_USDC: {
+    type: 'univ3',
+    chain: 'ethereum',
+    address: '0xe780df05ed3d1d29b35edaf9c8f3131e9f4c799e',
+    baseToken: TokensBook.ethereum['0x15700b564ca08d9439c58ca5053166e8317aa138'],
+    quotaToken: TokensBook.ethereum['0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'],
+  },
+  ZK_Polyhedra_Network_WETH: {
+    type: 'univ3',
+    chain: 'ethereum',
+    address: '0xa3c61c2f81519953112b78a603353f4360a33a72',
+    baseToken: TokensBook.ethereum['0xc71b5f631354be6853efe9c3ab6b9590f8302e81'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
+  Silo_WETH: {
+    type: 'univ3',
+    chain: 'arbitrum',
+    address: '0xd3e11119d2680c963f1cdcffece0c4ade823fb58',
+    baseToken: TokensBook.arbitrum['0x0341c0c0ec423328621788d4854119b97f44e391'],
+    quotaToken: TokensBook.arbitrum['0x82af49447d8a07e3bd95bd0d56f35241523fbab1'],
+  },
   WCORE_USDT: {
     type: 'univ3',
     chain: 'core',
