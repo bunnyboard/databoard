@@ -238,14 +238,30 @@ export default class UniswapCore extends UniswapIndexer {
               : 0;
 
             if (signature === Uniswapv2Events.Swap) {
+              // to avoid wrong swap amount, we count only base token amount
+              // if swap from base token, we count the amountId
+              // otherwise we count the amountOut
               const amount0In = formatBigNumberToNumber(event.args.amount0In.toString(), pool2.token0.decimals);
+              const amount0Out = formatBigNumberToNumber(event.args.amount0Out.toString(), pool2.token0.decimals);
               const amount1In = formatBigNumberToNumber(event.args.amount1In.toString(), pool2.token1.decimals);
+              const amount1Out = formatBigNumberToNumber(event.args.amount1Out.toString(), pool2.token1.decimals);
 
               let volumeUsd = 0;
-              if (amount0In > 0) {
-                volumeUsd = amount0In * token0PriceUsd;
-              } else if (amount1In > 0) {
-                volumeUsd = amount1In * token1PriceUsd;
+              const baseTokenAddress = this.helperGetBaseTokenAddress(pool2);
+              if (baseTokenAddress && compareAddress(baseTokenAddress, pool2.token0.address)) {
+                if (amount0In > 0) {
+                  volumeUsd = amount0In * token0PriceUsd;
+                } else if (amount0Out > 0) {
+                  // amountOut have already deducted fees
+                  volumeUsd = (amount0Out * token0PriceUsd) / (1 - pool2.feeRate);
+                }
+              } else if (baseTokenAddress && compareAddress(baseTokenAddress, pool2.token1.address)) {
+                if (amount1In > 0) {
+                  volumeUsd = amount1In * token1PriceUsd;
+                } else if (amount1Out > 0) {
+                  // amountOut have already deducted fees
+                  volumeUsd = (amount1Out * token1PriceUsd) / (1 - pool2.feeRate);
+                }
               }
 
               const feeRateLp = options.dexConfig.feeRateForLiquidityProviders

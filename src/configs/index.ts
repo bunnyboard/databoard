@@ -106,6 +106,7 @@ import { CbethConfigs } from './protocols/coinbase';
 import { EtherfiConfigs } from './protocols/etherfi';
 import { PufferConfigs } from './protocols/puffer';
 import { KelpdaoConfigs } from './protocols/kelpdao';
+import { MorphL2NativeBridgeConfigs } from './protocols/morphl2';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -240,4 +241,5 @@ export const ProtocolConfigs = {
   etherfi: EtherfiConfigs,
   puffer: PufferConfigs,
   kelpdao: KelpdaoConfigs,
+  morphl2NativeBridge: MorphL2NativeBridgeConfigs,
 };

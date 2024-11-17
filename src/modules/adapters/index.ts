@@ -42,6 +42,7 @@ import MakerAdapter from './maker/maker';
 import MethAdapter from './mantle/meth';
 import MetisNativeBridgeAdapter from './metis/nativeBridge';
 import MoonwellAdapter from './moonwell/moonwell';
+import MorphL2NativeBridgeAdapter from './morphl2/nativeBridge';
 import MorphoAdapter from './morpho/morpho';
 import OdosAdapter from './odos/odos';
 import OptimismNativeBridgeAdapter from './optimism/nativeBridge';
@@ -189,5 +190,6 @@ export function getProtocolAdapters(
     etherfi: new EtherfiAdapter(services, storages, ProtocolConfigs.etherfi),
     puffer: new PufferAdapter(services, storages, ProtocolConfigs.puffer),
     kelpdao: new KelpdaoAdapter(services, storages, ProtocolConfigs.kelpdao),
+    morphl2NativeBridge: new MorphL2NativeBridgeAdapter(services, storages, ProtocolConfigs.morphl2NativeBridge),
   };
 }

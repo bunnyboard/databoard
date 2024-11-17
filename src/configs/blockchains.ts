@@ -620,4 +620,16 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
       decimals: 18,
     },
   },
+  [ChainNames.morphl2]: {
+    name: ChainNames.morphl2,
+    family: 'evm',
+    chainId: 2818,
+    nodeRpc: String(process.env.BLOCKCHAIN_MORPHL2_NODE),
+    nativeToken: {
+      chain: ChainNames.morphl2,
+      address: AddressZero,
+      symbol: 'ETH',
+      decimals: 18,
+    },
+  },
 };
