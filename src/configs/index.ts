@@ -104,6 +104,8 @@ import { TaikoNativeBridgeConfigs } from './protocols/taiko';
 import { BobaNativeBridgeConfigs } from './protocols/boba';
 import { CbethConfigs } from './protocols/coinbase';
 import { EtherfiConfigs } from './protocols/etherfi';
+import { PufferConfigs } from './protocols/puffer';
+import { KelpdaoConfigs } from './protocols/kelpdao';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -236,4 +238,6 @@ export const ProtocolConfigs = {
   bobaNativeBridge: BobaNativeBridgeConfigs,
   cbeth: CbethConfigs,
   etherfi: EtherfiConfigs,
+  puffer: PufferConfigs,
+  kelpdao: KelpdaoConfigs,
 };

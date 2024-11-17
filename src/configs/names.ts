@@ -206,4 +206,6 @@ export const ProtocolNames = {
   cbeth: 'cbeth', // coinbase wrapped staked ETH
   etherfi: 'etherfi', // https://ether.fi
   solv: 'solv', // https://solv.finance
+  puffer: 'puffer', // https://puffer.fi
+  kelpdao: 'kelpdao', // https://kelpdao.xyz
 };

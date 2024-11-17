@@ -29,6 +29,7 @@ import GnosisNativeBridgeAdapter from './gnosis/nativeBridge';
 import HopAdapter from './hop/hop';
 import HyphenAdapter from './hyphen/hyphen';
 import KarakAdapter from './karak/karak';
+import KelpdaoAdapter from './kelpdao/kelpdao';
 import KyberswapAdapter from './kyberswap/kyberswap';
 import LayerbankAdapter from './layerbank/layerbank';
 import LfjlendAdapter from './lfj/lfjlend';
@@ -50,6 +51,7 @@ import ParaswapAdapter from './paraswap/paraswap';
 import PellNetworkAdapter from './pellnetwork/pellnetwork';
 import PolygonNativeBridgeAdapter from './polygon/nativeBridge';
 import PolygonZzkevmNativeBridgeAdapter from './polygon/zkevmNativeBridge';
+import PufferAdapter from './puffer/puffer';
 import RenzoAdapter from './renzo/renzo';
 import RocketpoolAdapter from './rocketpool/rocketpool';
 import RubicAdapter from './rubic/rubic';
@@ -185,5 +187,7 @@ export function getProtocolAdapters(
     bobaNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.bobaNativeBridge),
     cbeth: new CbethAdapter(services, storages, ProtocolConfigs.cbeth),
     etherfi: new EtherfiAdapter(services, storages, ProtocolConfigs.etherfi),
+    puffer: new PufferAdapter(services, storages, ProtocolConfigs.puffer),
+    kelpdao: new KelpdaoAdapter(services, storages, ProtocolConfigs.kelpdao),
   };
 }

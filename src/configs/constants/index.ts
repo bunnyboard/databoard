@@ -48,3 +48,9 @@ export const ChainBlockPeriods: { [key: string]: number } = {
   bob: 2, // 2 seconds
   zksync: 1, // 1 seconds
 };
+
+export const EventSignatures = {
+  ERC20_Transfer: '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
+  ERC4626_Deposit: '0xdcbc1c05240f31ff3ad067ef1ee35ce4997762752e3a095284754544f4c709d7',
+  ERC4626_Withdraw: '0xfbde797d201c681b91056529119e0b02407c7bb96a4a2c75c01fc9667232c8db',
+};
