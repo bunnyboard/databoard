@@ -188,7 +188,7 @@ export default class UniswapCore extends UniswapIndexer {
 
                   if (signature === Uniswapv3Events.Swap) {
                     const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals);
-                    const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), pool2.token0.decimals);
+                    const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), pool2.token1.decimals);
 
                     let volumeUsd = 0;
                     if (compareAddress(baseTokenAddress, pool2.token0.address)) {
