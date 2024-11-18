@@ -284,4 +284,11 @@ export const OracleSourceChainlinkList: { [key: string]: OracleSourceChainlink }
     address: '0x0568fD19986748cEfF3301e55c0eb1E729E0Ab7e',
     decimals: 8,
   },
+  XLM_USD: {
+    type: 'chainlink',
+    chain: 'bnbchain',
+    currency: 'usd',
+    address: '0x27Cc356A5891A3Fe6f84D0457dE4d108C6078888',
+    decimals: 8,
+  },
 };

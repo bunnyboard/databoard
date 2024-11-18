@@ -2215,6 +2215,10 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.Silo_WETH],
   },
+  XLM: {
+    currency: 'eth',
+    sources: [OracleSourceChainlinkList.XLM_USD],
+  },
   '0xMR': {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List['0xMR_WETH']],

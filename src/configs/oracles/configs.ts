@@ -719,6 +719,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0x3b86ad95859b6ab773f55f8d94b4b9d443ee931f': OracleSourceConfigs.BTC,
+    '0xc26c9099bd3789107888c35bb41178079b282561': OracleSourceConfigs.BTC,
     '0xecc68d0451e20292406967fe7c04280e5238ac7d': OracleSourceConfigs.frxETH,
     '0xf469fbd2abcd6b9de8e169d128226c0fc90a012e': OracleSourceConfigs.BTC,
     '0xe3b53af74a4bf62ae5511055290838050bf764df': OracleSourceConfigs.STG,
@@ -932,6 +934,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.BNB,
     [AddressE]: OracleSourceConfigs.BNB,
     [AddressF]: OracleSourceConfigs.BNB,
+    '0x43c934a845205f0b514417d757d7235b8f53f1b9': OracleSourceConfigs.XLM,
     '0xc71b5f631354be6853efe9c3ab6b9590f8302e81': OracleSourceConfigs.ZK_Polyhedra_Network,
     '0x1ce0c2827e2ef14d5c4f29a091d735a204794041': OracleSourceConfigs.AVAX,
     '0x371c7ec6d8039ff7933a2aa28eb827ffe1f52f07': OracleSourceConfigs.JOE,
@@ -1368,6 +1371,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   },
 
   manta: {
+    '0xf417f5a458ec102b90352f697d6e2ac3a3d2851f': OracleSourceConfigs.USDT,
+    '0xb73603c5d87fa094b7314c74ace2e64d165016fb': OracleSourceConfigs.USDC,
     '0x0000000000000000000000000000000000000000': OracleSourceConfigs.ETH,
     '0x7d43aabc515c356145049227cee54b608342c0ad': OracleSourceConfigs.AVAX,
     '0xf5c6825015280cdfd0b56903f9f8b5a2233476f5': OracleSourceConfigs.BNB,

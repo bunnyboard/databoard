@@ -63,8 +63,6 @@ export default class UniswapIndexer extends ProtocolAdapter {
 
     const callSize = 200;
     while (startIndex < Number(poolLength)) {
-      this.executeSession.startSessionMuted();
-
       const targetIndexEnd = startIndex + callSize > Number(poolLength) ? Number(poolLength) : startIndex + callSize;
 
       const getAddressCalls: Array<ContractCall> = [];
@@ -157,7 +155,7 @@ export default class UniswapIndexer extends ProtocolAdapter {
         upsert: true,
       });
 
-      this.executeSession.endSession('got univ2 pool2 metadata from factory', {
+      logger.debug('got univ2 pool2 metadata from factory', {
         service: this.name,
         protocol: this.protocolConfig.protocol,
         chain: dexConfig.chain,
@@ -199,8 +197,6 @@ export default class UniswapIndexer extends ProtocolAdapter {
 
     const blockRange = 10000;
     while (startBlock <= Number(latestBlockNumber)) {
-      this.executeSession.startSessionMuted();
-
       const toBlock =
         startBlock + blockRange > Number(latestBlockNumber) ? Number(latestBlockNumber) : startBlock + blockRange;
 
@@ -267,7 +263,7 @@ export default class UniswapIndexer extends ProtocolAdapter {
         upsert: true,
       });
 
-      this.executeSession.endSession('got univ3 pool2 metadata from factory', {
+      logger.debug('got univ3 pool2 metadata from factory', {
         service: this.name,
         protocol: this.protocolConfig.protocol,
         chain: dexConfig.chain,

@@ -30,16 +30,242 @@ export default class UniswapCore extends UniswapIndexer {
   }
 
   public async getDexData(options: GetDexDataDataOptions): Promise<GetDexDataResult | null> {
-    if (options.dexConfig.version === Pool2Types.univ2) {
-      return await this.getDexDataV2(options);
-    } else if (options.dexConfig.version === Pool2Types.univ3) {
-      return await this.getDexDataV3(options);
+    const result: GetDexDataResult = {
+      totalLiquidityUsd: 0,
+      totalSwapFeeUsdForLps: 0,
+      totalSwapFeeUsdForProtocol: 0,
+      volumeAddLiquidityUsd: 0,
+      volumeRemoveLiquidityUsd: 0,
+      volumeSwapUsd: 0,
+    };
+
+    for (const dexConfig of options.chainConfig.dexes) {
+      if (dexConfig.birthday <= options.timestamp) {
+        if (dexConfig.version === Pool2Types.univ2) {
+          const balanceUsd = await this.getDexBalanceV2(dexConfig, options.timestamp, options.blockNumber);
+          result.totalLiquidityUsd += balanceUsd;
+        } else if (dexConfig.version === Pool2Types.univ3) {
+          const balanceUsd = await this.getDexBalanceV3(dexConfig, options.timestamp, options.blockNumber);
+          result.totalLiquidityUsd += balanceUsd;
+        }
+      }
     }
 
-    return null;
+    // process logs
+    const client = await this.services.blockchain.evm.getPublicClient(options.chainConfig.chain);
+
+    // custom config for every chain if possible
+    const blockRange = CustomQueryChainLogsBlockRange[options.chainConfig.chain]
+      ? CustomQueryChainLogsBlockRange[options.chainConfig.chain]
+      : DefaultQueryChainLogsBlockRange;
+
+    // caching for logging
+    let lastProgressPercentage = 0;
+    let totalLogsCount = 0;
+
+    let startBlock = options.beginBlock;
+    while (startBlock <= options.endBlock) {
+      const logs = await client.getLogs({
+        fromBlock: BigInt(startBlock),
+        toBlock: BigInt(startBlock + blockRange),
+      });
+
+      for (const log of logs) {
+        const signature = log.topics[0];
+
+        if (
+          // v2 pair events
+          signature === Uniswapv2Events.Swap ||
+          signature === Uniswapv2Events.Mint ||
+          signature === Uniswapv2Events.Burn ||
+          // v3 pool events
+          signature === Uniswapv3Events.Swap ||
+          signature === Uniswapv3Events.Mint ||
+          signature === Uniswapv3Events.Burn
+        ) {
+          const pool2: Pool2 | undefined = await this.storages.database.find({
+            collection: envConfig.mongodb.collections.metadataPool2.name,
+            query: {
+              chain: options.chainConfig.chain,
+              address: normalizeAddress(log.address),
+            },
+          });
+
+          if (pool2) {
+            // make sure the address is the pool of this dex config
+            const dexConfig = options.chainConfig.dexes.filter((dexConfig) =>
+              compareAddress(dexConfig.factory, pool2.factory),
+            )[0];
+            if (dexConfig) {
+              if ([Uniswapv2Events.Swap, Uniswapv2Events.Mint, Uniswapv2Events.Burn].includes(signature)) {
+                // v2 events
+                const event: any = decodeEventLog({
+                  abi: UniswapV2PairAbi,
+                  topics: log.topics,
+                  data: log.data,
+                });
+
+                const baseTokenAddress = this.helperGetBaseTokenAddress(pool2);
+                if (baseTokenAddress) {
+                  const baseTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+                    chain: options.chainConfig.chain,
+                    address: baseTokenAddress,
+                    timestamp: options.timestamp,
+                  });
+
+                  if (signature === Uniswapv2Events.Swap) {
+                    // to avoid wrong swap amount, we count only base token amount
+                    // if swap from base token, we count the amountId
+                    // otherwise we count the amountOut
+                    const amount0In = formatBigNumberToNumber(event.args.amount0In.toString(), pool2.token0.decimals);
+                    const amount0Out = formatBigNumberToNumber(event.args.amount0Out.toString(), pool2.token0.decimals);
+                    const amount1In = formatBigNumberToNumber(event.args.amount1In.toString(), pool2.token1.decimals);
+                    const amount1Out = formatBigNumberToNumber(event.args.amount1Out.toString(), pool2.token1.decimals);
+
+                    let volumeUsd = 0;
+                    if (compareAddress(baseTokenAddress, pool2.token0.address)) {
+                      if (amount0In > 0) {
+                        volumeUsd = amount0In * baseTokenPriceUsd;
+                      } else if (amount0Out > 0) {
+                        // amountOut have already deducted fees
+                        volumeUsd = (amount0Out * baseTokenPriceUsd) / (1 - pool2.feeRate);
+                      }
+                    } else if (compareAddress(baseTokenAddress, pool2.token1.address)) {
+                      if (amount1In > 0) {
+                        volumeUsd = amount1In * baseTokenPriceUsd;
+                      } else if (amount1Out > 0) {
+                        // amountOut have already deducted fees
+                        volumeUsd = (amount1Out * baseTokenPriceUsd) / (1 - pool2.feeRate);
+                      }
+                    }
+
+                    // cal fees
+                    const feeRateLp = dexConfig.feeRateForLiquidityProviders
+                      ? dexConfig.feeRateForLiquidityProviders
+                      : pool2.feeRate
+                        ? pool2.feeRate
+                        : 0.003; // default 0.3%
+                    const feeRateProtocol = dexConfig.feeRateForProtocol ? dexConfig.feeRateForProtocol : 0;
+                    const feeUsdForLp = volumeUsd * feeRateLp;
+                    const feeUsdForProtocol = volumeUsd * feeRateProtocol;
+
+                    result.volumeSwapUsd += volumeUsd;
+                    result.totalSwapFeeUsdForLps += feeUsdForLp;
+                    result.totalSwapFeeUsdForProtocol += feeUsdForProtocol;
+                  } else {
+                    const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals);
+                    const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), pool2.token1.decimals);
+
+                    let amountUsd = 0;
+                    if (compareAddress(baseTokenAddress, pool2.token0.address)) {
+                      amountUsd = amount0 * baseTokenPriceUsd;
+                    } else if (compareAddress(baseTokenAddress, pool2.token1.address)) {
+                      amountUsd = amount1 * baseTokenPriceUsd;
+                    }
+
+                    if (signature === Uniswapv2Events.Mint) {
+                      result.volumeAddLiquidityUsd += amountUsd;
+                    } else if (signature === Uniswapv2Events.Burn) {
+                      result.volumeRemoveLiquidityUsd += amountUsd;
+                    }
+                  }
+                }
+              } else {
+                // v3 events
+                const event: any = decodeEventLog({
+                  abi: UniswapV3PoolAbi,
+                  topics: log.topics,
+                  data: log.data,
+                });
+
+                const baseTokenAddress = this.helperGetBaseTokenAddress(pool2);
+                if (baseTokenAddress) {
+                  const baseTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+                    chain: options.chainConfig.chain,
+                    address: baseTokenAddress,
+                    timestamp: options.timestamp,
+                  });
+
+                  if (signature === Uniswapv3Events.Swap) {
+                    const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals);
+                    const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), pool2.token0.decimals);
+
+                    let volumeUsd = 0;
+                    if (compareAddress(baseTokenAddress, pool2.token0.address)) {
+                      if (amount0 > 0) {
+                        // swap token0 for token1
+                        volumeUsd = amount0 * baseTokenPriceUsd;
+                      } else if (amount0 < 0) {
+                        // swap token1 for token0
+                        volumeUsd = (Math.abs(amount0) * baseTokenPriceUsd) / (1 - pool2.feeRate);
+                      }
+                    } else if (compareAddress(baseTokenAddress, pool2.token1.address)) {
+                      if (amount1 > 0) {
+                        // swap token1 for token0
+                        volumeUsd = amount1 * baseTokenPriceUsd;
+                      } else if (amount1 < 0) {
+                        // swap token0 for token1
+                        volumeUsd = (Math.abs(amount1) * baseTokenPriceUsd) / (1 - pool2.feeRate);
+                      }
+                    }
+
+                    const feeRateLp = dexConfig.feeRateForLiquidityProviders
+                      ? dexConfig.feeRateForLiquidityProviders
+                      : pool2.feeRate;
+                    const feeRateProtocol = dexConfig.feeRateForProtocol ? dexConfig.feeRateForProtocol : 0;
+                    const feeUsdForLp = volumeUsd * feeRateLp;
+                    const feeUsdForProtocol = volumeUsd * feeRateProtocol;
+
+                    result.volumeSwapUsd += volumeUsd;
+                    result.totalSwapFeeUsdForLps += feeUsdForLp;
+                    result.totalSwapFeeUsdForProtocol += feeUsdForProtocol;
+                  } else {
+                    const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals);
+                    const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), pool2.token1.decimals);
+
+                    let amountUsd = 0;
+                    if (compareAddress(baseTokenAddress, pool2.token0.address)) {
+                      amountUsd = amount0 * baseTokenPriceUsd;
+                    } else if (compareAddress(baseTokenAddress, pool2.token1.address)) {
+                      amountUsd = amount1 * baseTokenPriceUsd;
+                    }
+
+                    if (signature === Uniswapv2Events.Mint) {
+                      result.volumeAddLiquidityUsd += amountUsd;
+                    } else if (signature === Uniswapv2Events.Burn) {
+                      result.volumeRemoveLiquidityUsd += amountUsd;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      totalLogsCount += logs.length;
+      const processBlocks = startBlock - options.beginBlock;
+      const progress = (processBlocks / (options.endBlock - options.beginBlock)) * 100;
+
+      // less logs
+      if (progress - lastProgressPercentage >= 5) {
+        logger.debug('processing univ2 dex logs', {
+          service: this.name,
+          protocol: this.protocolConfig.protocol,
+          chain: options.chainConfig.chain,
+          blocks: `${startBlock}->${options.endBlock}`,
+          progress: `${progress.toFixed(2)}%`,
+        });
+        lastProgressPercentage = progress;
+      }
+
+      startBlock += blockRange + 1;
+    }
+
+    return result;
   }
 
-  // helper
+  // helpers
   private helperGetBaseTokenAddress(pool2: Pool2): string | null {
     for (const whitelistBaseToken of TokenDexBase[pool2.chain]) {
       if (compareAddress(whitelistBaseToken, pool2.token0.address)) {
@@ -64,527 +290,298 @@ export default class UniswapCore extends UniswapIndexer {
     return false;
   }
 
-  protected async getDexDataV2(options: GetDexDataDataOptions): Promise<GetDexDataResult | null> {
-    const client = await this.services.blockchain.evm.getPublicClient(options.dexConfig.chain);
+  protected async getDexBalanceV2(
+    dexConfig: UniswapDexConfig,
+    timestamp: number,
+    blockNumber: number,
+  ): Promise<number> {
+    let totalBalanceUsd = 0;
 
-    const result: GetDexDataResult = {
-      totalLiquidityUsd: 0,
-      totalSwapFeeUsdForLps: 0,
-      totalSwapFeeUsdForProtocol: 0,
-      volumeAddLiquidityUsd: 0,
-      volumeRemoveLiquidityUsd: 0,
-      volumeSwapUsd: 0,
-    };
+    if (dexConfig.version === Pool2Types.univ2) {
+      const client = await this.services.blockchain.evm.getPublicClient(dexConfig.chain);
 
-    // caching
-    const cachingTokenPrices: { [key: string]: number } = {};
-    const cachingProcessedPools: { [key: string]: boolean } = {};
+      // cahing
+      const cachingProcessedPools: { [key: string]: boolean } = {};
 
-    let poolIndex = 0;
-    while (true) {
-      const poolConfigs: Array<Pool2> = await this.storages.database.query({
-        collection: envConfig.mongodb.collections.metadataPool2.name,
-        query: {
-          chain: options.dexConfig.chain,
-          factory: normalizeAddress(options.dexConfig.factory),
-        },
-        options: {
-          limit: callSize,
-          skip: poolIndex * callSize,
-          order: { address: 1 },
-        },
-      });
-
-      if (poolConfigs.length === 0) {
-        break;
-      }
-
-      const balanceCalls: Array<ContractCall> = [];
-      for (const pool2 of poolConfigs) {
-        balanceCalls.push({
-          abi: Erc20Abi,
-          target: pool2.token0.address,
-          method: 'balanceOf',
-          params: [pool2.address],
+      let poolIndex = 0;
+      while (true) {
+        const poolConfigs: Array<Pool2> = await this.storages.database.query({
+          collection: envConfig.mongodb.collections.metadataPool2.name,
+          query: {
+            chain: dexConfig.chain,
+            factory: normalizeAddress(dexConfig.factory),
+          },
+          options: {
+            limit: callSize,
+            skip: poolIndex * callSize,
+            order: { address: 1 },
+          },
         });
-        balanceCalls.push({
-          abi: Erc20Abi,
-          target: pool2.token1.address,
-          method: 'balanceOf',
-          params: [pool2.address],
-        });
-      }
 
-      // query balances
-      const contracts = balanceCalls.map((call) => {
-        return {
-          address: call.target as Address,
-          abi: call.abi,
-          functionName: call.method,
-          args: call.params,
-        } as const;
-      });
-      const callResults: Array<any> = await client.multicall({
-        multicallAddress: AddressMulticall3,
-        contracts: contracts,
-        blockNumber: BigInt(options.blockNumber),
-        allowFailure: true,
-      });
-      // we allow failure on multicall
-      // so if a call failed, we count the balance is zero
-      const balanceResults: Array<any> = callResults.map((item) => (item.result ? item.result : 0n));
-
-      for (let i = 0; i < poolConfigs.length; i++) {
-        const pool2 = poolConfigs[i];
-
-        if (cachingProcessedPools[pool2.address]) {
-          continue;
-        } else {
-          cachingProcessedPools[pool2.address] = true;
+        if (poolConfigs.length === 0) {
+          break;
         }
 
-        const balance0 = formatBigNumberToNumber(
-          balanceResults[i * 2] ? balanceResults[i * 2].toString() : '0',
-          pool2.token0.decimals,
-        );
-        const balance1 = formatBigNumberToNumber(
-          balanceResults[i * 2 + 1] ? balanceResults[i * 2 + 1].toString() : '0',
-          pool2.token1.decimals,
-        );
-
-        const baseTokenAddress = this.helperGetBaseTokenAddress(pool2);
-        if (baseTokenAddress) {
-          const baseTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-            chain: pool2.chain,
-            address: baseTokenAddress,
-            timestamp: options.timestamp,
+        const balanceCalls: Array<ContractCall> = [];
+        for (const pool2 of poolConfigs) {
+          balanceCalls.push({
+            abi: Erc20Abi,
+            target: pool2.token0.address,
+            method: 'balanceOf',
+            params: [pool2.address],
           });
+          balanceCalls.push({
+            abi: Erc20Abi,
+            target: pool2.token1.address,
+            method: 'balanceOf',
+            params: [pool2.address],
+          });
+        }
 
-          let token0PriceUsd = 0;
-          let token1PriceUsd = 0;
-          if (compareAddress(pool2.token0.address, baseTokenAddress)) {
-            token0PriceUsd = baseTokenPriceUsd;
-            token1PriceUsd = balance1 > 0 ? (balance0 / balance1) * baseTokenPriceUsd : 0;
+        // query balances
+        const contracts = balanceCalls.map((call) => {
+          return {
+            address: call.target as Address,
+            abi: call.abi,
+            functionName: call.method,
+            args: call.params,
+          } as const;
+        });
+        const callResults: Array<any> = await client.multicall({
+          multicallAddress: AddressMulticall3,
+          contracts: contracts,
+          blockNumber: BigInt(blockNumber),
+          allowFailure: true,
+        });
+        // we allow failure on multicall
+        // so if a call failed, we count the balance is zero
+        const balanceResults: Array<any> = callResults.map((item) => (item.result ? item.result : 0n));
+
+        for (let i = 0; i < poolConfigs.length; i++) {
+          const pool2 = poolConfigs[i];
+
+          if (cachingProcessedPools[pool2.address]) {
+            continue;
           } else {
-            token1PriceUsd = baseTokenPriceUsd;
-            token0PriceUsd = balance0 > 0 ? (balance1 / balance0) * baseTokenPriceUsd : 0;
+            cachingProcessedPools[pool2.address] = true;
           }
 
-          cachingTokenPrices[pool2.token0.address] = token0PriceUsd;
-          cachingTokenPrices[pool2.token1.address] = token1PriceUsd;
+          const balance0 = formatBigNumberToNumber(
+            balanceResults[i * 2] ? balanceResults[i * 2].toString() : '0',
+            pool2.token0.decimals,
+          );
+          const balance1 = formatBigNumberToNumber(
+            balanceResults[i * 2 + 1] ? balanceResults[i * 2 + 1].toString() : '0',
+            pool2.token1.decimals,
+          );
 
-          const balanceUsd = balance0 * token0PriceUsd + balance1 * token1PriceUsd;
-
-          result.totalLiquidityUsd += balanceUsd;
-        }
-      }
-
-      logger.debug('processed pools liquidity data', {
-        service: this.name,
-        protocol: this.protocolConfig.protocol,
-        chain: options.dexConfig.chain,
-        version: options.dexConfig.version,
-        factory: options.dexConfig.factory,
-        totalPools: poolIndex * callSize + poolConfigs.length,
-      });
-
-      poolIndex += 1;
-    }
-
-    // process logs
-    const blockRange = CustomQueryChainLogsBlockRange[options.dexConfig.chain]
-      ? CustomQueryChainLogsBlockRange[options.dexConfig.chain]
-      : DefaultQueryChainLogsBlockRange;
-
-    // caching for logging
-    let lastProgressPercentage = 0;
-    let totalLogsCount = 0;
-
-    let startBlock = options.beginBlock;
-    while (startBlock <= options.endBlock) {
-      const logs = await client.getLogs({
-        fromBlock: BigInt(startBlock),
-        toBlock: BigInt(startBlock + blockRange),
-      });
-
-      for (const log of logs) {
-        const signature = log.topics[0];
-
-        if (
-          signature === Uniswapv2Events.Swap ||
-          signature === Uniswapv2Events.Mint ||
-          signature === Uniswapv2Events.Burn
-        ) {
-          const pool2: Pool2 | undefined = await this.storages.database.find({
-            collection: envConfig.mongodb.collections.metadataPool2.name,
-            query: {
-              chain: options.dexConfig.chain,
-              address: normalizeAddress(log.address),
-            },
-          });
-
-          if (pool2) {
-            const event: any = decodeEventLog({
-              abi: UniswapV2PairAbi,
-              topics: log.topics,
-              data: log.data,
+          const baseTokenAddress = this.helperGetBaseTokenAddress(pool2);
+          if (baseTokenAddress) {
+            const baseTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+              chain: pool2.chain,
+              address: baseTokenAddress,
+              timestamp: timestamp,
             });
 
-            const token0PriceUsd = cachingTokenPrices[pool2.token0.address]
-              ? cachingTokenPrices[pool2.token0.address]
-              : 0;
-            const token1PriceUsd = cachingTokenPrices[pool2.token1.address]
-              ? cachingTokenPrices[pool2.token1.address]
-              : 0;
-
-            if (signature === Uniswapv2Events.Swap) {
-              // to avoid wrong swap amount, we count only base token amount
-              // if swap from base token, we count the amountId
-              // otherwise we count the amountOut
-              const amount0In = formatBigNumberToNumber(event.args.amount0In.toString(), pool2.token0.decimals);
-              const amount0Out = formatBigNumberToNumber(event.args.amount0Out.toString(), pool2.token0.decimals);
-              const amount1In = formatBigNumberToNumber(event.args.amount1In.toString(), pool2.token1.decimals);
-              const amount1Out = formatBigNumberToNumber(event.args.amount1Out.toString(), pool2.token1.decimals);
-
-              let volumeUsd = 0;
-              const baseTokenAddress = this.helperGetBaseTokenAddress(pool2);
-              if (baseTokenAddress && compareAddress(baseTokenAddress, pool2.token0.address)) {
-                if (amount0In > 0) {
-                  volumeUsd = amount0In * token0PriceUsd;
-                } else if (amount0Out > 0) {
-                  // amountOut have already deducted fees
-                  volumeUsd = (amount0Out * token0PriceUsd) / (1 - pool2.feeRate);
-                }
-              } else if (baseTokenAddress && compareAddress(baseTokenAddress, pool2.token1.address)) {
-                if (amount1In > 0) {
-                  volumeUsd = amount1In * token1PriceUsd;
-                } else if (amount1Out > 0) {
-                  // amountOut have already deducted fees
-                  volumeUsd = (amount1Out * token1PriceUsd) / (1 - pool2.feeRate);
-                }
-              }
-
-              const feeRateLp = options.dexConfig.feeRateForLiquidityProviders
-                ? options.dexConfig.feeRateForLiquidityProviders
-                : pool2.feeRate
-                  ? pool2.feeRate
-                  : 0.003; // default 0.3%
-              const feeRateProtocol = options.dexConfig.feeRateForProtocol ? options.dexConfig.feeRateForProtocol : 0;
-              const feeUsdForLp = volumeUsd * feeRateLp;
-              const feeUsdForProtocol = volumeUsd * feeRateProtocol;
-
-              result.volumeSwapUsd += volumeUsd;
-              result.totalSwapFeeUsdForLps += feeUsdForLp;
-              result.totalSwapFeeUsdForProtocol += feeUsdForProtocol;
-            } else if (signature === Uniswapv2Events.Mint || signature === Uniswapv2Events.Burn) {
-              const amount0Usd =
-                formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals) * token0PriceUsd;
-              const amount1Usd =
-                formatBigNumberToNumber(event.args.amount1.toString(), pool2.token1.decimals) * token1PriceUsd;
-
-              if (log.topics[0] === Uniswapv2Events.Mint) {
-                result.volumeAddLiquidityUsd += amount0Usd + amount1Usd;
-              } else {
-                result.volumeRemoveLiquidityUsd += amount0Usd + amount1Usd;
-              }
+            let token0PriceUsd = 0;
+            let token1PriceUsd = 0;
+            if (compareAddress(pool2.token0.address, baseTokenAddress)) {
+              token0PriceUsd = baseTokenPriceUsd;
+              token1PriceUsd = balance1 > 0 ? (balance0 / balance1) * baseTokenPriceUsd : 0;
+            } else {
+              token1PriceUsd = baseTokenPriceUsd;
+              token0PriceUsd = balance0 > 0 ? (balance1 / balance0) * baseTokenPriceUsd : 0;
             }
+
+            const balanceUsd = balance0 * token0PriceUsd + balance1 * token1PriceUsd;
+
+            totalBalanceUsd += balanceUsd;
           }
         }
-      }
 
-      totalLogsCount += logs.length;
-      const processBlocks = startBlock - options.beginBlock;
-      const progress = (processBlocks / (options.endBlock - options.beginBlock)) * 100;
-
-      // less logs
-      if (progress - lastProgressPercentage >= 5) {
-        logger.debug('processing univ2 dex logs', {
+        logger.debug('processed pools liquidity data', {
           service: this.name,
           protocol: this.protocolConfig.protocol,
-          chain: options.dexConfig.chain,
-          version: options.dexConfig.version,
-          factory: options.dexConfig.factory,
-          blocks: `${startBlock}->${options.endBlock}`,
-          progress: `${progress.toFixed(2)}%`,
+          chain: dexConfig.chain,
+          version: dexConfig.version,
+          factory: dexConfig.factory,
+          totalPools: poolIndex * callSize + poolConfigs.length,
         });
-        lastProgressPercentage = progress;
-      }
 
-      startBlock += blockRange + 1;
+        poolIndex += 1;
+      }
     }
 
-    return result;
+    return totalBalanceUsd;
   }
 
-  protected async getDexDataV3(options: GetDexDataDataOptions): Promise<GetDexDataResult | null> {
-    const client = await this.services.blockchain.evm.getPublicClient(options.dexConfig.chain);
+  protected async getDexBalanceV3(
+    dexConfig: UniswapDexConfig,
+    timestamp: number,
+    blockNumber: number,
+  ): Promise<number> {
+    let totalBalanceUsd = 0;
 
-    const result: GetDexDataResult = {
-      totalLiquidityUsd: 0,
-      totalSwapFeeUsdForLps: 0,
-      totalSwapFeeUsdForProtocol: 0,
-      volumeAddLiquidityUsd: 0,
-      volumeRemoveLiquidityUsd: 0,
-      volumeSwapUsd: 0,
-    };
+    if (dexConfig.version === Pool2Types.univ3) {
+      const client = await this.services.blockchain.evm.getPublicClient(dexConfig.chain);
 
-    // caching
-    const cachingTokenPrices: { [key: string]: number } = {};
-    const cachingProcessedPools: { [key: string]: boolean } = {};
+      // cahing
+      const cachingProcessedPools: { [key: string]: boolean } = {};
 
-    let poolIndex = 0;
-    while (true) {
-      const poolConfigs: Array<Pool2> = await this.storages.database.query({
-        collection: envConfig.mongodb.collections.metadataPool2.name,
-        query: {
-          chain: options.dexConfig.chain,
-          factory: normalizeAddress(options.dexConfig.factory),
-        },
-        options: {
-          limit: callSize,
-          skip: poolIndex * callSize,
-          order: { address: 1 },
-        },
-      });
-
-      if (poolConfigs.length === 0) {
-        break;
-      }
-
-      const balanceCalls: Array<ContractCall> = [];
-      for (const pool2 of poolConfigs) {
-        balanceCalls.push({
-          abi: UniswapV3PoolAbi,
-          target: pool2.address,
-          method: 'slot0',
-          params: [],
+      let poolIndex = 0;
+      while (true) {
+        const poolConfigs: Array<Pool2> = await this.storages.database.query({
+          collection: envConfig.mongodb.collections.metadataPool2.name,
+          query: {
+            chain: dexConfig.chain,
+            factory: normalizeAddress(dexConfig.factory),
+          },
+          options: {
+            limit: callSize,
+            skip: poolIndex * callSize,
+            order: { address: 1 },
+          },
         });
-        balanceCalls.push({
-          abi: Erc20Abi,
-          target: pool2.token0.address,
-          method: 'balanceOf',
-          params: [pool2.address],
-        });
-        balanceCalls.push({
-          abi: Erc20Abi,
-          target: pool2.token1.address,
-          method: 'balanceOf',
-          params: [pool2.address],
-        });
-      }
 
-      // query balances
-      const contracts = balanceCalls.map((call) => {
-        return {
-          address: call.target as Address,
-          abi: call.abi,
-          functionName: call.method,
-          args: call.params,
-        } as const;
-      });
-      const callResults: Array<any> = await client.multicall({
-        multicallAddress: AddressMulticall3,
-        contracts: contracts,
-        blockNumber: BigInt(options.blockNumber),
-        allowFailure: true,
-      });
-      // we allow failure on multicall
-      // so if a call failed, we count the balance is zero
-      const balanceResults: Array<any> = callResults.map((item) => (item.result ? item.result : 0n));
-
-      for (let i = 0; i < poolConfigs.length; i++) {
-        const pool2 = poolConfigs[i];
-
-        // ignore blacklist pools
-        if (this.helperGetIsBlacklistPool(pool2, options.dexConfig)) {
-          continue;
+        if (poolConfigs.length === 0) {
+          break;
         }
 
-        if (cachingProcessedPools[pool2.address]) {
-          continue;
-        } else {
-          cachingProcessedPools[pool2.address] = true;
+        const balanceCalls: Array<ContractCall> = [];
+        for (const pool2 of poolConfigs) {
+          balanceCalls.push({
+            abi: UniswapV3PoolAbi,
+            target: pool2.address,
+            method: 'slot0',
+            params: [],
+          });
+          balanceCalls.push({
+            abi: Erc20Abi,
+            target: pool2.token0.address,
+            method: 'balanceOf',
+            params: [pool2.address],
+          });
+          balanceCalls.push({
+            abi: Erc20Abi,
+            target: pool2.token1.address,
+            method: 'balanceOf',
+            params: [pool2.address],
+          });
         }
 
-        const baseTokenAddress = this.helperGetBaseTokenAddress(pool2);
-        if (!baseTokenAddress) {
-          // this pool does not contain baseToken
-          continue;
-        }
+        // query balances
+        const contracts = balanceCalls.map((call) => {
+          return {
+            address: call.target as Address,
+            abi: call.abi,
+            functionName: call.method,
+            args: call.params,
+          } as const;
+        });
+        const callResults: Array<any> = await client.multicall({
+          multicallAddress: AddressMulticall3,
+          contracts: contracts,
+          blockNumber: BigInt(blockNumber),
+          allowFailure: true,
+        });
+        // we allow failure on multicall
+        // so if a call failed, we count the balance is zero
+        const balanceResults: Array<any> = callResults.map((item) => (item.result ? item.result : 0n));
 
-        const slot0 = balanceResults[i * 3];
-        const balance0 = formatBigNumberToNumber(
-          balanceResults[i * 3 + 1] ? balanceResults[i * 3 + 1].toString() : '0',
-          pool2.token0.decimals,
-        );
-        const balance1 = formatBigNumberToNumber(
-          balanceResults[i * 3 + 2] ? balanceResults[i * 3 + 2].toString() : '0',
-          pool2.token1.decimals,
-        );
+        for (let i = 0; i < poolConfigs.length; i++) {
+          const pool2 = poolConfigs[i];
 
-        if (slot0 && balance0 > 0 && balance1 > 0) {
-          let token0PriceUsd = 0;
-          let token1PriceUsd = 0;
-
-          // https://blog.uniswap.org/uniswap-v3-math-primer
-          // slot0.sqrtPriceX96 -> sqrtPrice
-          const diffDecimals = pool2.token1.decimals - pool2.token0.decimals;
-          const sqrtPrice = new BigNumber(slot0[0].toString())
-            .dividedBy(2 ** 96)
-            .pow(2)
-            .dividedBy(10 ** diffDecimals)
-            .toNumber();
-
-          // sqrtPrice -> price
-          const token0PriceVsToken1 = sqrtPrice;
-          const token1PriceVsToken0 = sqrtPrice > 0 ? 1 / token0PriceVsToken1 : 0;
-
-          if (compareAddress(baseTokenAddress, pool2.token0.address)) {
-            // price token1 vs token0
-            token0PriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-              chain: pool2.chain,
-              address: pool2.token0.address,
-              timestamp: options.timestamp,
-            });
-
-            token1PriceUsd = token1PriceVsToken0 * token0PriceUsd;
-
-            if (balance0 * token0PriceUsd < MaliciousPoolBaseAssetBalance) {
-              continue;
-            }
-          } else {
-            // price token0 vs token1
-            token1PriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-              chain: pool2.chain,
-              address: pool2.token1.address,
-              timestamp: options.timestamp,
-            });
-
-            token0PriceUsd = token0PriceVsToken1 * token1PriceUsd;
-
-            if (balance1 * token1PriceUsd < MaliciousPoolBaseAssetBalance) {
-              continue;
-            }
+          // ignore blacklist pools
+          if (this.helperGetIsBlacklistPool(pool2, dexConfig)) {
+            continue;
           }
 
-          cachingTokenPrices[pool2.token0.address] = token0PriceUsd;
-          cachingTokenPrices[pool2.token1.address] = token1PriceUsd;
+          if (cachingProcessedPools[pool2.address]) {
+            continue;
+          } else {
+            cachingProcessedPools[pool2.address] = true;
+          }
 
-          const balanceUsd = balance0 * token0PriceUsd + balance1 * token1PriceUsd;
+          const baseTokenAddress = this.helperGetBaseTokenAddress(pool2);
+          if (!baseTokenAddress) {
+            // this pool does not contain baseToken
+            continue;
+          }
 
-          result.totalLiquidityUsd += balanceUsd;
-        }
-      }
+          const slot0 = balanceResults[i * 3];
+          const balance0 = formatBigNumberToNumber(
+            balanceResults[i * 3 + 1] ? balanceResults[i * 3 + 1].toString() : '0',
+            pool2.token0.decimals,
+          );
+          const balance1 = formatBigNumberToNumber(
+            balanceResults[i * 3 + 2] ? balanceResults[i * 3 + 2].toString() : '0',
+            pool2.token1.decimals,
+          );
 
-      logger.debug('processed pools liquidity data', {
-        service: this.name,
-        protocol: this.protocolConfig.protocol,
-        chain: options.dexConfig.chain,
-        version: options.dexConfig.version,
-        factory: options.dexConfig.factory,
-        totalPools: poolIndex * callSize + poolConfigs.length,
-      });
+          if (slot0 && balance0 > 0 && balance1 > 0) {
+            let token0PriceUsd = 0;
+            let token1PriceUsd = 0;
 
-      poolIndex += 1;
-    }
+            // https://blog.uniswap.org/uniswap-v3-math-primer
+            // slot0.sqrtPriceX96 -> sqrtPrice
+            const diffDecimals = pool2.token1.decimals - pool2.token0.decimals;
+            const sqrtPrice = new BigNumber(slot0[0].toString())
+              .dividedBy(2 ** 96)
+              .pow(2)
+              .dividedBy(10 ** diffDecimals)
+              .toNumber();
 
-    // process logs
-    const blockRange = CustomQueryChainLogsBlockRange[options.dexConfig.chain]
-      ? CustomQueryChainLogsBlockRange[options.dexConfig.chain]
-      : DefaultQueryChainLogsBlockRange;
+            // sqrtPrice -> price
+            const token0PriceVsToken1 = sqrtPrice;
+            const token1PriceVsToken0 = sqrtPrice > 0 ? 1 / token0PriceVsToken1 : 0;
 
-    // caching for logging
-    let lastProgressPercentage = 0;
-    let totalLogsCount = 0;
+            if (compareAddress(baseTokenAddress, pool2.token0.address)) {
+              // price token1 vs token0
+              token0PriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+                chain: pool2.chain,
+                address: pool2.token0.address,
+                timestamp: timestamp,
+              });
 
-    let startBlock = options.beginBlock;
-    while (startBlock <= options.endBlock) {
-      const logs = await client.getLogs({
-        fromBlock: BigInt(startBlock),
-        toBlock: BigInt(startBlock + blockRange),
-      });
+              token1PriceUsd = token1PriceVsToken0 * token0PriceUsd;
 
-      for (const log of logs) {
-        const signature = log.topics[0];
+              if (balance0 * token0PriceUsd < MaliciousPoolBaseAssetBalance) {
+                continue;
+              }
+            } else {
+              // price token0 vs token1
+              token1PriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+                chain: pool2.chain,
+                address: pool2.token1.address,
+                timestamp: timestamp,
+              });
 
-        if (
-          signature === Uniswapv3Events.Swap ||
-          signature === Uniswapv3Events.Mint ||
-          signature === Uniswapv3Events.Burn
-        ) {
-          const pool2: Pool2 | undefined = await this.storages.database.find({
-            collection: envConfig.mongodb.collections.metadataPool2.name,
-            query: {
-              chain: options.dexConfig.chain,
-              address: normalizeAddress(log.address),
-            },
-          });
+              token0PriceUsd = token0PriceVsToken1 * token1PriceUsd;
 
-          if (pool2) {
-            const event: any = decodeEventLog({
-              abi: UniswapV3PoolAbi,
-              topics: log.topics,
-              data: log.data,
-            });
-
-            const token0PriceUsd = cachingTokenPrices[pool2.token0.address]
-              ? cachingTokenPrices[pool2.token0.address]
-              : 0;
-            const token1PriceUsd = cachingTokenPrices[pool2.token1.address]
-              ? cachingTokenPrices[pool2.token1.address]
-              : 0;
-
-            if (signature === Uniswapv3Events.Swap) {
-              const amount0 = Math.abs(formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals));
-              const volumeUsd = amount0 * token0PriceUsd;
-
-              const feeRateLp = options.dexConfig.feeRateForLiquidityProviders
-                ? options.dexConfig.feeRateForLiquidityProviders
-                : pool2.feeRate;
-              const feeRateProtocol = options.dexConfig.feeRateForProtocol ? options.dexConfig.feeRateForProtocol : 0;
-              const feeUsdForLp = volumeUsd * feeRateLp;
-              const feeUsdForProtocol = volumeUsd * feeRateProtocol;
-
-              result.volumeSwapUsd += volumeUsd;
-              result.totalSwapFeeUsdForLps += feeUsdForLp;
-              result.totalSwapFeeUsdForProtocol += feeUsdForProtocol;
-            } else if (signature === Uniswapv3Events.Mint || signature === Uniswapv3Events.Burn) {
-              const amount0Usd =
-                formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals) * token0PriceUsd;
-              const amount1Usd =
-                formatBigNumberToNumber(event.args.amount1.toString(), pool2.token1.decimals) * token1PriceUsd;
-
-              if (log.topics[0] === Uniswapv3Events.Mint) {
-                result.volumeAddLiquidityUsd += amount0Usd + amount1Usd;
-              } else {
-                result.volumeRemoveLiquidityUsd += amount0Usd + amount1Usd;
+              if (balance1 * token1PriceUsd < MaliciousPoolBaseAssetBalance) {
+                continue;
               }
             }
+
+            const balanceUsd = balance0 * token0PriceUsd + balance1 * token1PriceUsd;
+
+            totalBalanceUsd += balanceUsd;
           }
         }
-      }
 
-      totalLogsCount += logs.length;
-      const processBlocks = startBlock - options.beginBlock;
-      const progress = (processBlocks / (options.endBlock - options.beginBlock)) * 100;
-
-      // less logs
-      if (progress - lastProgressPercentage >= 5) {
-        logger.debug('processing univ3 dex logs', {
+        logger.debug('processed pools liquidity data', {
           service: this.name,
           protocol: this.protocolConfig.protocol,
-          chain: options.dexConfig.chain,
-          version: options.dexConfig.version,
-          factory: options.dexConfig.factory,
-          blocks: `${startBlock}->${options.endBlock}`,
-          progress: `${progress.toFixed(2)}%`,
+          chain: dexConfig.chain,
+          version: dexConfig.version,
+          factory: dexConfig.factory,
+          totalPools: poolIndex * callSize + poolConfigs.length,
         });
-        lastProgressPercentage = progress;
-      }
 
-      startBlock += blockRange + 1;
+        poolIndex += 1;
+      }
     }
 
-    return result;
+    return totalBalanceUsd;
   }
 }

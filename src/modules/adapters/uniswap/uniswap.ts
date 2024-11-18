@@ -31,14 +31,9 @@ export default class UniswapAdapter extends UniswapCore {
     };
 
     const uniswapConfig = this.protocolConfig as UniswapProtocolConfig;
-    for (const dexConfig of uniswapConfig.dexes) {
-      if (dexConfig.birthday > options.timestamp) {
-        // dex was not deployed yet
-        continue;
-      }
-
-      if (!(protocolData.breakdownChains as any)[dexConfig.chain]) {
-        (protocolData.breakdownChains as any)[dexConfig.chain] = {
+    for (const chainConfig of uniswapConfig.chains) {
+      if (!(protocolData.breakdownChains as any)[chainConfig.chain]) {
+        (protocolData.breakdownChains as any)[chainConfig.chain] = {
           ...getInitialProtocolCoreMetrics(),
           totalSupplied: 0,
           volumes: {
@@ -50,22 +45,24 @@ export default class UniswapAdapter extends UniswapCore {
       }
 
       const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-        dexConfig.chain,
+        chainConfig.chain,
         options.timestamp,
       );
       const beginBlockk = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-        dexConfig.chain,
+        chainConfig.chain,
         options.beginTime,
       );
       const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-        dexConfig.chain,
+        chainConfig.chain,
         options.endTime,
       );
 
-      await this.indexDexData(dexConfig);
+      for (const dexConfig of chainConfig.dexes) {
+        await this.indexDexData(dexConfig);
+      }
 
       const dexData = await this.getDexData({
-        dexConfig: dexConfig,
+        chainConfig: chainConfig,
         timestamp: options.timestamp,
         blockNumber: blockNumber,
         beginBlock: beginBlockk,
@@ -83,17 +80,22 @@ export default class UniswapAdapter extends UniswapCore {
         (protocolData.volumes.deposit as number) += dexData.volumeAddLiquidityUsd;
         (protocolData.volumes.withdraw as number) += dexData.volumeRemoveLiquidityUsd;
 
-        (protocolData.breakdownChains as any)[dexConfig.chain].totalAssetDeposited += dexData.totalLiquidityUsd;
-        (protocolData.breakdownChains as any)[dexConfig.chain].totalValueLocked += dexData.totalLiquidityUsd;
-        (protocolData.breakdownChains as any)[dexConfig.chain].totalSupplied += dexData.totalLiquidityUsd;
-        (protocolData.breakdownChains as any)[dexConfig.chain].totalFees +=
+        (protocolData.breakdownChains as any)[chainConfig.chain].totalAssetDeposited += dexData.totalLiquidityUsd;
+        (protocolData.breakdownChains as any)[chainConfig.chain].totalValueLocked += dexData.totalLiquidityUsd;
+        (protocolData.breakdownChains as any)[chainConfig.chain].totalSupplied += dexData.totalLiquidityUsd;
+        (protocolData.breakdownChains as any)[chainConfig.chain].totalFees +=
           dexData.totalSwapFeeUsdForLps + dexData.totalSwapFeeUsdForProtocol;
-        (protocolData.breakdownChains as any)[dexConfig.chain].supplySideRevenue += dexData.totalSwapFeeUsdForLps;
-        (protocolData.breakdownChains as any)[dexConfig.chain].protocolRevenue += dexData.totalSwapFeeUsdForProtocol;
-        (protocolData.breakdownChains as any)[dexConfig.chain].volumes.swap += dexData.volumeSwapUsd;
-        (protocolData.breakdownChains as any)[dexConfig.chain].volumes.deposit += dexData.volumeAddLiquidityUsd;
-        (protocolData.breakdownChains as any)[dexConfig.chain].volumes.withdraw += dexData.volumeRemoveLiquidityUsd;
+        (protocolData.breakdownChains as any)[chainConfig.chain].supplySideRevenue += dexData.totalSwapFeeUsdForLps;
+        (protocolData.breakdownChains as any)[chainConfig.chain].protocolRevenue += dexData.totalSwapFeeUsdForProtocol;
+        (protocolData.breakdownChains as any)[chainConfig.chain].volumes.swap += dexData.volumeSwapUsd;
+        (protocolData.breakdownChains as any)[chainConfig.chain].volumes.deposit += dexData.volumeAddLiquidityUsd;
+        (protocolData.breakdownChains as any)[chainConfig.chain].volumes.withdraw += dexData.volumeRemoveLiquidityUsd;
       }
+    }
+
+    if (protocolData) {
+      console.log(protocolData);
+      process.exit(0);
     }
 
     return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);

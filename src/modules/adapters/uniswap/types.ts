@@ -1,4 +1,4 @@
-import { UniswapDexConfig } from '../../../configs/protocols/uniswap';
+import { UniswapChainConfig } from '../../../configs/protocols/uniswap';
 
 export const Uniswapv2Events = {
   PairCreated: '0x0d3648bd0f6ba80134a33ba9275ac585d9d315f0ad8355cddefde31afa28d0e9',
@@ -15,20 +15,11 @@ export const Uniswapv3Events = {
 };
 
 export interface GetDexDataDataOptions {
-  dexConfig: UniswapDexConfig;
+  chainConfig: UniswapChainConfig;
   timestamp: number;
   blockNumber: number;
   beginBlock: number;
   endBlock: number;
-}
-
-export interface GetDexDataResultBasics {
-  totalLiquidityUsd: number;
-  totalSwapFeeUsdForLps: number;
-  totalSwapFeeUsdForProtocol: number;
-  volumeSwapUsd: number;
-  volumeAddLiquidityUsd: number;
-  volumeRemoveLiquidityUsd: number;
 }
 
 export interface GetDexDataResult {
