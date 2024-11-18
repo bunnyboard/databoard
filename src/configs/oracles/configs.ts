@@ -9,6 +9,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0xb131f4a55907b10d1f0a50d8ab8fa09ec342cd74': OracleSourceConfigs.MEME,
     '0xc71b5f631354be6853efe9c3ab6b9590f8302e81': OracleSourceConfigs.ZK_Polyhedra_Network,
     '0x15700b564ca08d9439c58ca5053166e8317aa138': OracleSourceConfigs.deUSD,
     '0x9ad37205d608b8b219e6a2573f922094cec5c200': OracleSourceConfigs.IZI,

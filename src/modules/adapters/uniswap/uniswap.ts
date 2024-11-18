@@ -93,11 +93,6 @@ export default class UniswapAdapter extends UniswapCore {
       }
     }
 
-    if (protocolData) {
-      console.log(protocolData);
-      process.exit(0);
-    }
-
     return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
   }
 }
