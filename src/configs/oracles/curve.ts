@@ -104,4 +104,14 @@ export const OracleSourceCurveList: {
     quotaToken: TokensBook.ethereum['0x0000000000000000000000000000000000000000'],
     quotaTokenIndex: 0,
   },
+  sBTC_WBTC_renBTC: {
+    type: 'curveFactoryPool',
+    chain: 'ethereum',
+    currency: 'btc',
+    address: '0x7fc77b5c7614e1533320ea6ddc2eb61fa00a9714',
+    baseToken: TokensBook.ethereum['0xfe18be6b3bd88a2d2a7f928d00292e7a9963cfc6'],
+    baseTokenIndex: 2,
+    quotaToken: TokensBook.ethereum['0x2260fac5e5542a773aa44fbcfedf7c193bc2c599'],
+    quotaTokenIndex: 1,
+  },
 };

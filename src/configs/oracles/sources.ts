@@ -1,4 +1,5 @@
 import { OracleConfig } from '../../types/oracles';
+import { OracleSourceBalancerList } from './balancer';
 import { OracleSourceChainlinkList } from './chainlink';
 import { OracleCurrencyBaseConfigs } from './currency';
 import { OracleSourceCurveList } from './curve';
@@ -659,10 +660,6 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceCurveList.ETHx_WETH],
   },
-  mevETH: {
-    currency: 'eth',
-    sources: [OracleSourceUniswapv3List.mevETH_WETH],
-  },
   pxETH: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.pxETH_WETH],
@@ -1203,7 +1200,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   },
   CDCETH: {
     currency: 'eth',
-    sources: [OracleSourceUniswapv2List.CDCETH_WETH],
+    sources: [OracleSourceUniswapv2List.CDCETH_WETH, OracleSourceUniswapv3List.CDCETH_WETH],
   },
   GRAI: {
     currency: 'usd',
@@ -2223,6 +2220,82 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.MEME_WETH],
   },
+  OSAK: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.OSAK_WETH],
+  },
+  FARM: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.FARM_WETH],
+  },
+  NPC: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.NPC_WETH],
+  },
+  ANYONE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ANYONE_WETH],
+  },
+  ICE_NETWORK: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.ICE_USDT],
+  },
+  GYD: {
+    currency: 'usd',
+    sources: [OracleSourceBalancerList.GYD_USDC],
+  },
+  AURA: {
+    currency: 'eth',
+    sources: [OracleSourceBalancerList.AURA_WETH],
+  },
+  QI_DAO: {
+    currency: 'eth',
+    sources: [OracleSourceBalancerList.QI_DAO_WETH],
+  },
+  ALCX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ALCX_WETH],
+  },
+  PSP: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.PSP_WETH],
+  },
+  sBTC: {
+    currency: 'btc',
+    sources: [OracleSourceCurveList.sBTC_WBTC_renBTC],
+  },
+  T: {
+    currency: 'btc',
+    sources: [OracleSourceUniswapv3List.T_WBTC],
+  },
+  AGETH: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.AGETH_WETH],
+  },
+  TEMPLE: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.TEMPLE_FRAX],
+  },
+  PAR: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.PAR_USDC],
+  },
+  FOLD: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.FOLD_WETH],
+  },
+  mevETH: {
+    currency: 'eth',
+    sources: [OracleSourceBalancerList.mevETH_WETH],
+  },
+  SYNO: {
+    currency: 'eth',
+    sources: [OracleSourceBalancerList.SYNO_WETH],
+  },
+  PICKLE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.PICKLE_WETH],
+  },
   '0xMR': {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List['0xMR_WETH']],
@@ -2234,5 +2307,53 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   'ETH+': {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List['ETH+_WETH']],
+  },
+  TECH: {
+    currency: 'avax',
+    sources: [OracleSourceUniswapv2List.TECH_WAVAX],
+  },
+  GEC: {
+    currency: 'avax',
+    sources: [OracleSourceUniswapv2List.GEC_WAVAX],
+  },
+  ZBU: {
+    currency: 'usd',
+    sources: [OracleSourceBalancerList.ZBU_USDC],
+  },
+  IMO: {
+    currency: 'eth',
+    sources: [OracleSourceBalancerList.IMO_WETH],
+  },
+  BANK: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BANK_WETH],
+  },
+  BEETS: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.BEETS_WFTM],
+  },
+  HND: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.HND_WFTM],
+  },
+  GOGLZ: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.GOGLZ_WFTM],
+  },
+  DEUS: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.DEUS_WFTM],
+  },
+  BAY: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.BAY_WFTM],
+  },
+  IB: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.IB_WFTM],
+  },
+  BOB: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.BOB_USDC],
   },
 };

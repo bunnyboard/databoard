@@ -107,6 +107,8 @@ import { EtherfiConfigs } from './protocols/etherfi';
 import { PufferConfigs } from './protocols/puffer';
 import { KelpdaoConfigs } from './protocols/kelpdao';
 import { MorphL2NativeBridgeConfigs } from './protocols/morphl2';
+import { BalancerConfigs } from './protocols/balancer';
+import { BeetsConfigs } from './protocols/beets';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -243,4 +245,6 @@ export const ProtocolConfigs = {
   puffer: PufferConfigs,
   kelpdao: KelpdaoConfigs,
   morphl2NativeBridge: MorphL2NativeBridgeConfigs,
+  balancer: BalancerConfigs,
+  beets: BeetsConfigs,
 };

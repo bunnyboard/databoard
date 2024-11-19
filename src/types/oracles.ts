@@ -41,6 +41,9 @@ export const OracleTypes = {
   // get the price of a staking wrapper token, let say xSUSHI
   // by get SUSHI balance and divide to xSUSHI supply
   stakingTokenWrapper: 'stakingTokenWrapper',
+
+  // balancer.fi
+  balv2: 'balv2',
 };
 const AllOracleTypes = Object.values(OracleTypes);
 export type OracleType = (typeof AllOracleTypes)[number];
@@ -98,6 +101,16 @@ export interface OracleSourceStakingTokenWrapper extends OracleSourceBase {
   underlyingToken: Token;
 }
 
+export interface OracleSourceBalancerPool extends OracleSourceBase {
+  type: 'balv2_Gyro_ECLP' | 'balv2_Weight';
+  vault: string;
+  poolId: string;
+  baseWeight?: number;
+  baseToken: Token;
+  quotaWeight?: number;
+  quotaToken: Token;
+}
+
 export interface OracleConfig {
   // if the currency is not usd
   // we need to get currency base token price too
@@ -110,6 +123,7 @@ export interface OracleConfig {
     | OracleSourceSavingDai
     | OracleSourceMakerRwaPip
     | OracleSourceCurvePool
+    | OracleSourceBalancerPool
     | OracleSourceStakingTokenWrapper
   >;
 

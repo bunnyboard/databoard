@@ -10,6 +10,7 @@ import OracleLibs from '../../modules/libs/custom';
 import UniswapLibs from '../../modules/libs/uniswap';
 import {
   OracleCurrencyBase,
+  OracleSourceBalancerPool,
   OracleSourceChainlink,
   OracleSourceCurvePool,
   OracleSourceMakerRwaPip,
@@ -32,6 +33,7 @@ import UniswapFactoryV3 from '../../configs/abi/uniswap/UniswapV3Factory.json';
 import { AutoOracleConfigs } from '../../configs/oracles/auto';
 import { AddressZero } from '../../configs/constants';
 import { Token } from '../../types/base';
+import BalancerLibs from '../../modules/libs/balancer';
 
 export default class OracleService extends CachingService implements IOracleService {
   public readonly name: string = 'oracle';
@@ -58,6 +60,7 @@ export default class OracleService extends CachingService implements IOracleServ
       | OracleSourceSavingDai
       | OracleSourceMakerRwaPip
       | OracleSourceCurvePool
+      | OracleSourceBalancerPool
       | OracleSourceStakingTokenWrapper,
     timestamp: number,
   ): Promise<string | null> {
@@ -122,6 +125,19 @@ export default class OracleService extends CachingService implements IOracleServ
       case 'curveFactoryPool': {
         const answer = await CurveLibs.getCurvePoolPrice({
           config: source as OracleSourceCurvePool,
+          blockNumber: blockNumber,
+        });
+        if (answer) {
+          await this.setCachingData(sourceCachingKey, answer);
+          return answer;
+        }
+
+        break;
+      }
+      case 'balv2_Weight':
+      case 'balv2_Gyro_ECLP': {
+        const answer = await BalancerLibs.getPoolSpotPrice({
+          config: source as OracleSourceBalancerPool,
           blockNumber: blockNumber,
         });
         if (answer) {

@@ -4,6 +4,7 @@ import AaveAdapter from './aave/aave';
 import AcrossAdapter from './across/across';
 import ArbitrumNativeBridgeAdapter from './arbitrum/nativeBridge';
 import AvalonAdapter from './avalon/avalon';
+import BalancerAdapter from './balancer/balancer';
 import BenqiAdapter from './benqi/benqi';
 import BlastNativeBridgeAdapter from './blast/nativeBridge';
 import BungeeAdapter from './bungee/bungee';
@@ -191,5 +192,7 @@ export function getProtocolAdapters(
     puffer: new PufferAdapter(services, storages, ProtocolConfigs.puffer),
     kelpdao: new KelpdaoAdapter(services, storages, ProtocolConfigs.kelpdao),
     morphl2NativeBridge: new MorphL2NativeBridgeAdapter(services, storages, ProtocolConfigs.morphl2NativeBridge),
+    balancer: new BalancerAdapter(services, storages, ProtocolConfigs.balancer),
+    beets: new BalancerAdapter(services, storages, ProtocolConfigs.beets),
   };
 }

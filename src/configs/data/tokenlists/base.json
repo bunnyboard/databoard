@@ -2153,6 +2153,12 @@
     "decimals": 18,
     "address": "0x5a76a56ad937335168b30df3aa1327277421c6ae"
   },
+  "0x5a7a2bf9ffae199f088b25837dcd7e115cf8e1bb": {
+    "chain": "base",
+    "symbol": "IMO",
+    "decimals": 18,
+    "address": "0x5a7a2bf9ffae199f088b25837dcd7e115cf8e1bb"
+  },
   "0x5ace197d87b614942bc1670eb0ddd55ce4432801": {
     "chain": "base",
     "symbol": "QUACK",

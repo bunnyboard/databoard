@@ -1055,6 +1055,12 @@
     "decimals": 18,
     "address": "0x565609faf65b92f7be02468acf86f8979423e514"
   },
+  "0x577fd586c9e6ba7f2e85e025d5824dbe19896656": {
+    "chain": "arbitrum",
+    "symbol": "SYNO",
+    "decimals": 18,
+    "address": "0x577fd586c9e6ba7f2e85e025d5824dbe19896656"
+  },
   "0x57f12fe6a4e5fe819eec699fadf9db2d06606bb4": {
     "chain": "arbitrum",
     "symbol": "NPM",

@@ -45,7 +45,7 @@ export default class EigenLayerIndexer extends ProtocolAdapter {
       toBlock: latestBlock,
     });
 
-    const patchSize = 100000; // 100k blocks
+    const patchSize = 10000; // 10k blocks
     while (startFromBlock < latestBlock) {
       const toBlock = startFromBlock + patchSize > latestBlock ? latestBlock : startFromBlock + patchSize;
 
