@@ -183,6 +183,17 @@ export default class UniswapIndexer extends ProtocolAdapter {
       startBlock = latestStateIndexFromDb.latestBlockNumber;
     }
 
+    if (startBlock === 0) {
+      logger.error('failed to get start block to index', {
+        service: this.name,
+        chain: dexConfig.chain,
+        protocol: this.protocolConfig.protocol,
+        factory: dexConfig.factory,
+        version: dexConfig.version,
+      });
+      process.exit(1);
+    }
+
     const latestBlockNumber = await this.services.blockchain.evm.getLastestBlockNumber(dexConfig.chain);
 
     logger.info('start to index univ3 pool2 metadata', {

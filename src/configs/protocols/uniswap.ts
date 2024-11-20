@@ -12,7 +12,8 @@ export interface UniswapDexConfig {
   // which created this pool2
   factory: string;
 
-  factoryBirthBlock?: number;
+  // block number when factory contract was deployed
+  factoryBirthBlock: number;
 
   // 0.3% -> 0.003
   // original uniswap takes total of 0.3% fees per swap
@@ -58,6 +59,7 @@ export const UniswapConfigs: UniswapProtocolConfig = {
           version: Pool2Types.univ2,
           factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
           birthday: 1588636800, // Tue May 05 2020 00:00:00 GMT+0000
+          factoryBirthBlock: 10000835,
           wrappedNative: PublicAddresses.ethereum.weth,
         },
         {
@@ -79,6 +81,7 @@ export const UniswapConfigs: UniswapProtocolConfig = {
           version: Pool2Types.univ2,
           factory: '0xf1D7CC64Fb4452F05c498126312eBE29f30Fbcf9',
           birthday: 1700006400, // Wed Nov 15 2023 00:00:00 GMT+0000
+          factoryBirthBlock: 150442611,
           wrappedNative: PublicAddresses.arbitrum.weth,
         },
         {
@@ -99,6 +102,7 @@ export const UniswapConfigs: UniswapProtocolConfig = {
           version: Pool2Types.univ2,
           factory: '0x9e5A52f57b3038F1B8EeE45F28b3C1967e22799C',
           birthday: 1700006400, // Wed Nov 15 2023 00:00:00 GMT+0000
+          factoryBirthBlock: 37767795,
           wrappedNative: PublicAddresses.avalanche.wavax,
         },
         {
@@ -119,6 +123,7 @@ export const UniswapConfigs: UniswapProtocolConfig = {
           version: Pool2Types.univ2,
           factory: '0x8909Dc15e40173Ff4699343b6eB8132c65e18eC6',
           birthday: 1700006400, // Wed Nov 15 2023 00:00:00 GMT+0000
+          factoryBirthBlock: 6601915,
           wrappedNative: PublicAddresses.base.weth,
         },
         {
@@ -139,6 +144,7 @@ export const UniswapConfigs: UniswapProtocolConfig = {
           version: Pool2Types.univ2,
           factory: '0x8909Dc15e40173Ff4699343b6eB8132c65e18eC6',
           birthday: 1700006400, // Wed Nov 15 2023 00:00:00 GMT+0000
+          factoryBirthBlock: 33496018,
           wrappedNative: PublicAddresses.bnbchain.wbnb,
         },
         {
@@ -159,6 +165,7 @@ export const UniswapConfigs: UniswapProtocolConfig = {
           version: Pool2Types.univ2,
           factory: '0x0c3c1c532F1e39EdF36BE9Fe0bE1410313E074Bf',
           birthday: 1700006400, // Wed Nov 15 2023 00:00:00 GMT+0000
+          factoryBirthBlock: 112197986,
           wrappedNative: PublicAddresses.optimism.weth,
         },
         {
@@ -179,6 +186,7 @@ export const UniswapConfigs: UniswapProtocolConfig = {
           version: Pool2Types.univ2,
           factory: '0x9e5A52f57b3038F1B8EeE45F28b3C1967e22799C',
           birthday: 1700006400, // Wed Nov 15 2023 00:00:00 GMT+0000
+          factoryBirthBlock: 49948178,
           wrappedNative: PublicAddresses.polygon.wmatic,
         },
         {
@@ -199,6 +207,7 @@ export const UniswapConfigs: UniswapProtocolConfig = {
           version: Pool2Types.univ2,
           factory: '0x5C346464d33F90bABaf70dB6388507CC889C1070',
           birthday: 1709683200, // Wed Mar 06 2024 00:00:00 GMT+0000
+          factoryBirthBlock: 399405,
           wrappedNative: PublicAddresses.blast.weth,
         },
         {
@@ -219,6 +228,7 @@ export const UniswapConfigs: UniswapProtocolConfig = {
           version: Pool2Types.univ2,
           factory: '0x0F797dC7efaEA995bB916f268D919d0a1950eE3C',
           birthday: 1708732800, // Sat Feb 24 2024 00:00:00 GMT+0000
+          factoryBirthBlock: 10973308,
           wrappedNative: PublicAddresses.zora.weth,
         },
         {

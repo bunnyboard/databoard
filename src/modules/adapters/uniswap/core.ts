@@ -70,178 +70,19 @@ export default class UniswapCore extends UniswapIndexer {
         toBlock: BigInt(startBlock + blockRange),
       });
 
-      for (const log of logs) {
-        const signature = log.topics[0];
+      const parseResultV2 = await this.parseDexV2Events(options, logs);
+      result.volumeSwapUsd += parseResultV2.volumeSwapUsd;
+      result.volumeAddLiquidityUsd += parseResultV2.volumeAddLiquidityUsd;
+      result.volumeRemoveLiquidityUsd += parseResultV2.volumeRemoveLiquidityUsd;
+      result.totalSwapFeeUsdForLps += parseResultV2.totalSwapFeeUsdForLps;
+      result.totalSwapFeeUsdForProtocol += parseResultV2.totalSwapFeeUsdForProtocol;
 
-        if (
-          // v2 pair events
-          signature === Uniswapv2Events.Swap ||
-          signature === Uniswapv2Events.Mint ||
-          signature === Uniswapv2Events.Burn ||
-          // v3 pool events
-          signature === Uniswapv3Events.Swap ||
-          signature === Uniswapv3Events.Mint ||
-          signature === Uniswapv3Events.Burn
-        ) {
-          const pool2: Pool2 | undefined = await this.storages.database.find({
-            collection: envConfig.mongodb.collections.metadataPool2.name,
-            query: {
-              chain: options.chainConfig.chain,
-              address: normalizeAddress(log.address),
-            },
-          });
-
-          if (pool2) {
-            // make sure the address is the pool of this dex config
-            const dexConfig = options.chainConfig.dexes.filter((dexConfig) =>
-              compareAddress(dexConfig.factory, pool2.factory),
-            )[0];
-            if (dexConfig) {
-              if ([Uniswapv2Events.Swap, Uniswapv2Events.Mint, Uniswapv2Events.Burn].includes(signature)) {
-                // v2 events
-                const event: any = decodeEventLog({
-                  abi: UniswapV2PairAbi,
-                  topics: log.topics,
-                  data: log.data,
-                });
-
-                const baseTokenAddress = this.helperGetBaseTokenAddress(pool2);
-                if (baseTokenAddress) {
-                  const baseTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-                    chain: options.chainConfig.chain,
-                    address: baseTokenAddress,
-                    timestamp: options.timestamp,
-                  });
-
-                  if (signature === Uniswapv2Events.Swap) {
-                    // to avoid wrong swap amount, we count only base token amount
-                    // if swap from base token, we count the amountId
-                    // otherwise we count the amountOut
-                    const amount0In = formatBigNumberToNumber(event.args.amount0In.toString(), pool2.token0.decimals);
-                    const amount0Out = formatBigNumberToNumber(event.args.amount0Out.toString(), pool2.token0.decimals);
-                    const amount1In = formatBigNumberToNumber(event.args.amount1In.toString(), pool2.token1.decimals);
-                    const amount1Out = formatBigNumberToNumber(event.args.amount1Out.toString(), pool2.token1.decimals);
-
-                    let volumeUsd = 0;
-                    if (compareAddress(baseTokenAddress, pool2.token0.address)) {
-                      if (amount0In > 0) {
-                        volumeUsd = amount0In * baseTokenPriceUsd;
-                      } else if (amount0Out > 0) {
-                        // amountOut have already deducted fees
-                        volumeUsd = (amount0Out * baseTokenPriceUsd) / (1 - pool2.feeRate);
-                      }
-                    } else if (compareAddress(baseTokenAddress, pool2.token1.address)) {
-                      if (amount1In > 0) {
-                        volumeUsd = amount1In * baseTokenPriceUsd;
-                      } else if (amount1Out > 0) {
-                        // amountOut have already deducted fees
-                        volumeUsd = (amount1Out * baseTokenPriceUsd) / (1 - pool2.feeRate);
-                      }
-                    }
-
-                    // cal fees
-                    const feeRateLp = dexConfig.feeRateForLiquidityProviders
-                      ? dexConfig.feeRateForLiquidityProviders
-                      : pool2.feeRate
-                        ? pool2.feeRate
-                        : 0.003; // default 0.3%
-                    const feeRateProtocol = dexConfig.feeRateForProtocol ? dexConfig.feeRateForProtocol : 0;
-                    const feeUsdForLp = volumeUsd * feeRateLp;
-                    const feeUsdForProtocol = volumeUsd * feeRateProtocol;
-
-                    result.volumeSwapUsd += volumeUsd;
-                    result.totalSwapFeeUsdForLps += feeUsdForLp;
-                    result.totalSwapFeeUsdForProtocol += feeUsdForProtocol;
-                  } else {
-                    const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals);
-                    const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), pool2.token1.decimals);
-
-                    let amountUsd = 0;
-                    if (compareAddress(baseTokenAddress, pool2.token0.address)) {
-                      amountUsd = amount0 * baseTokenPriceUsd;
-                    } else if (compareAddress(baseTokenAddress, pool2.token1.address)) {
-                      amountUsd = amount1 * baseTokenPriceUsd;
-                    }
-
-                    if (signature === Uniswapv2Events.Mint) {
-                      result.volumeAddLiquidityUsd += amountUsd;
-                    } else if (signature === Uniswapv2Events.Burn) {
-                      result.volumeRemoveLiquidityUsd += amountUsd;
-                    }
-                  }
-                }
-              } else {
-                // v3 events
-                const event: any = decodeEventLog({
-                  abi: UniswapV3PoolAbi,
-                  topics: log.topics,
-                  data: log.data,
-                });
-
-                const baseTokenAddress = this.helperGetBaseTokenAddress(pool2);
-                if (baseTokenAddress) {
-                  const baseTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-                    chain: options.chainConfig.chain,
-                    address: baseTokenAddress,
-                    timestamp: options.timestamp,
-                  });
-
-                  if (signature === Uniswapv3Events.Swap) {
-                    const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals);
-                    const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), pool2.token1.decimals);
-
-                    let volumeUsd = 0;
-                    if (compareAddress(baseTokenAddress, pool2.token0.address)) {
-                      if (amount0 > 0) {
-                        // swap token0 for token1
-                        volumeUsd = amount0 * baseTokenPriceUsd;
-                      } else if (amount0 < 0) {
-                        // swap token1 for token0
-                        volumeUsd = (Math.abs(amount0) * baseTokenPriceUsd) / (1 - pool2.feeRate);
-                      }
-                    } else if (compareAddress(baseTokenAddress, pool2.token1.address)) {
-                      if (amount1 > 0) {
-                        // swap token1 for token0
-                        volumeUsd = amount1 * baseTokenPriceUsd;
-                      } else if (amount1 < 0) {
-                        // swap token0 for token1
-                        volumeUsd = (Math.abs(amount1) * baseTokenPriceUsd) / (1 - pool2.feeRate);
-                      }
-                    }
-
-                    const feeRateLp = dexConfig.feeRateForLiquidityProviders
-                      ? dexConfig.feeRateForLiquidityProviders
-                      : pool2.feeRate;
-                    const feeRateProtocol = dexConfig.feeRateForProtocol ? dexConfig.feeRateForProtocol : 0;
-                    const feeUsdForLp = volumeUsd * feeRateLp;
-                    const feeUsdForProtocol = volumeUsd * feeRateProtocol;
-
-                    result.volumeSwapUsd += volumeUsd;
-                    result.totalSwapFeeUsdForLps += feeUsdForLp;
-                    result.totalSwapFeeUsdForProtocol += feeUsdForProtocol;
-                  } else {
-                    const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals);
-                    const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), pool2.token1.decimals);
-
-                    let amountUsd = 0;
-                    if (compareAddress(baseTokenAddress, pool2.token0.address)) {
-                      amountUsd = amount0 * baseTokenPriceUsd;
-                    } else if (compareAddress(baseTokenAddress, pool2.token1.address)) {
-                      amountUsd = amount1 * baseTokenPriceUsd;
-                    }
-
-                    if (signature === Uniswapv2Events.Mint) {
-                      result.volumeAddLiquidityUsd += amountUsd;
-                    } else if (signature === Uniswapv2Events.Burn) {
-                      result.volumeRemoveLiquidityUsd += amountUsd;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+      const parseResultV3 = await this.parseDexV3Events(options, logs);
+      result.volumeSwapUsd += parseResultV3.volumeSwapUsd;
+      result.volumeAddLiquidityUsd += parseResultV3.volumeAddLiquidityUsd;
+      result.volumeRemoveLiquidityUsd += parseResultV3.volumeRemoveLiquidityUsd;
+      result.totalSwapFeeUsdForLps += parseResultV3.totalSwapFeeUsdForLps;
+      result.totalSwapFeeUsdForProtocol += parseResultV3.totalSwapFeeUsdForProtocol;
 
       totalLogsCount += logs.length;
       const processBlocks = startBlock - options.beginBlock;
@@ -288,6 +129,223 @@ export default class UniswapCore extends UniswapIndexer {
     }
 
     return false;
+  }
+
+  protected async parseDexV2Events(options: GetDexDataDataOptions, logs: Array<any>): Promise<GetDexDataResult> {
+    const result: GetDexDataResult = {
+      totalLiquidityUsd: 0,
+      totalSwapFeeUsdForLps: 0,
+      totalSwapFeeUsdForProtocol: 0,
+      volumeAddLiquidityUsd: 0,
+      volumeRemoveLiquidityUsd: 0,
+      volumeSwapUsd: 0,
+    };
+
+    for (const log of logs) {
+      const signature = log.topics[0];
+
+      if (
+        // v2 pair events
+        signature === Uniswapv2Events.Swap ||
+        signature === Uniswapv2Events.Mint ||
+        signature === Uniswapv2Events.Burn
+      ) {
+        const pool2: Pool2 | undefined = await this.storages.database.find({
+          collection: envConfig.mongodb.collections.metadataPool2.name,
+          query: {
+            chain: options.chainConfig.chain,
+            address: normalizeAddress(log.address),
+          },
+        });
+
+        if (pool2) {
+          // make sure the address is the pool of this dex config
+          const dexConfig = options.chainConfig.dexes.filter((dexConfig) =>
+            compareAddress(dexConfig.factory, pool2.factory),
+          )[0];
+          if (dexConfig) {
+            // v2 events
+            const event: any = decodeEventLog({
+              abi: UniswapV2PairAbi,
+              topics: log.topics,
+              data: log.data,
+            });
+
+            const baseTokenAddress = this.helperGetBaseTokenAddress(pool2);
+            if (baseTokenAddress) {
+              const baseTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+                chain: options.chainConfig.chain,
+                address: baseTokenAddress,
+                timestamp: options.timestamp,
+              });
+
+              if (signature === Uniswapv2Events.Swap) {
+                // to avoid wrong swap amount, we count only base token amount
+                // if swap from base token, we count the amountId
+                // otherwise we count the amountOut
+                const amount0In = formatBigNumberToNumber(event.args.amount0In.toString(), pool2.token0.decimals);
+                const amount0Out = formatBigNumberToNumber(event.args.amount0Out.toString(), pool2.token0.decimals);
+                const amount1In = formatBigNumberToNumber(event.args.amount1In.toString(), pool2.token1.decimals);
+                const amount1Out = formatBigNumberToNumber(event.args.amount1Out.toString(), pool2.token1.decimals);
+
+                let volumeUsd = 0;
+                if (compareAddress(baseTokenAddress, pool2.token0.address)) {
+                  if (amount0In > 0) {
+                    volumeUsd = amount0In * baseTokenPriceUsd;
+                  } else if (amount0Out > 0) {
+                    // amountOut have already deducted fees
+                    volumeUsd = (amount0Out * baseTokenPriceUsd) / (1 - pool2.feeRate);
+                  }
+                } else if (compareAddress(baseTokenAddress, pool2.token1.address)) {
+                  if (amount1In > 0) {
+                    volumeUsd = amount1In * baseTokenPriceUsd;
+                  } else if (amount1Out > 0) {
+                    // amountOut have already deducted fees
+                    volumeUsd = (amount1Out * baseTokenPriceUsd) / (1 - pool2.feeRate);
+                  }
+                }
+
+                // cal fees
+                const feeRateLp = dexConfig.feeRateForLiquidityProviders
+                  ? dexConfig.feeRateForLiquidityProviders
+                  : pool2.feeRate
+                    ? pool2.feeRate
+                    : 0.003; // default 0.3%
+                const feeRateProtocol = dexConfig.feeRateForProtocol ? dexConfig.feeRateForProtocol : 0;
+                const feeUsdForLp = volumeUsd * feeRateLp;
+                const feeUsdForProtocol = volumeUsd * feeRateProtocol;
+
+                result.volumeSwapUsd += volumeUsd;
+                result.totalSwapFeeUsdForLps += feeUsdForLp;
+                result.totalSwapFeeUsdForProtocol += feeUsdForProtocol;
+              } else {
+                const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals);
+                const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), pool2.token1.decimals);
+
+                let amountUsd = 0;
+                if (compareAddress(baseTokenAddress, pool2.token0.address)) {
+                  amountUsd = amount0 * baseTokenPriceUsd;
+                } else if (compareAddress(baseTokenAddress, pool2.token1.address)) {
+                  amountUsd = amount1 * baseTokenPriceUsd;
+                }
+
+                if (signature === Uniswapv2Events.Mint) {
+                  result.volumeAddLiquidityUsd += amountUsd;
+                } else if (signature === Uniswapv2Events.Burn) {
+                  result.volumeRemoveLiquidityUsd += amountUsd;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    return result;
+  }
+
+  protected async parseDexV3Events(options: GetDexDataDataOptions, logs: Array<any>): Promise<GetDexDataResult> {
+    const result: GetDexDataResult = {
+      totalLiquidityUsd: 0,
+      totalSwapFeeUsdForLps: 0,
+      totalSwapFeeUsdForProtocol: 0,
+      volumeAddLiquidityUsd: 0,
+      volumeRemoveLiquidityUsd: 0,
+      volumeSwapUsd: 0,
+    };
+
+    for (const log of logs) {
+      const signature = log.topics[0];
+
+      if (
+        // v3 pair events
+        signature === Uniswapv3Events.Swap ||
+        signature === Uniswapv3Events.Mint ||
+        signature === Uniswapv3Events.Burn
+      ) {
+        const pool2: Pool2 | undefined = await this.storages.database.find({
+          collection: envConfig.mongodb.collections.metadataPool2.name,
+          query: {
+            chain: options.chainConfig.chain,
+            address: normalizeAddress(log.address),
+          },
+        });
+
+        if (pool2) {
+          // make sure the address is the pool of this dex config
+          const dexConfig = options.chainConfig.dexes.filter((dexConfig) =>
+            compareAddress(dexConfig.factory, pool2.factory),
+          )[0];
+          if (dexConfig) {
+            // v3 events
+            const event: any = decodeEventLog({
+              abi: UniswapV3PoolAbi,
+              topics: log.topics,
+              data: log.data,
+            });
+
+            const baseTokenAddress = this.helperGetBaseTokenAddress(pool2);
+            if (baseTokenAddress) {
+              const baseTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+                chain: options.chainConfig.chain,
+                address: baseTokenAddress,
+                timestamp: options.timestamp,
+              });
+
+              if (signature === Uniswapv3Events.Swap) {
+                const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals);
+                const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), pool2.token1.decimals);
+
+                let volumeUsd = 0;
+                if (compareAddress(baseTokenAddress, pool2.token0.address)) {
+                  if (amount0 > 0) {
+                    // swap token0 for token1
+                    volumeUsd = amount0 * baseTokenPriceUsd;
+                  } else if (amount0 < 0) {
+                    // swap token1 for token0
+                    volumeUsd = (Math.abs(amount0) * baseTokenPriceUsd) / (1 - pool2.feeRate);
+                  }
+                } else if (compareAddress(baseTokenAddress, pool2.token1.address)) {
+                  if (amount1 > 0) {
+                    // swap token1 for token0
+                    volumeUsd = amount1 * baseTokenPriceUsd;
+                  } else if (amount1 < 0) {
+                    // swap token0 for token1
+                    volumeUsd = (Math.abs(amount1) * baseTokenPriceUsd) / (1 - pool2.feeRate);
+                  }
+                }
+
+                const totalSwapFees = volumeUsd * pool2.feeRate;
+                const feeRateProtocol = dexConfig.feeRateForProtocol ? dexConfig.feeRateForProtocol : 0;
+                const feeRateForLps = 1 - feeRateProtocol;
+
+                result.volumeSwapUsd += volumeUsd;
+                result.totalSwapFeeUsdForLps += totalSwapFees * feeRateForLps;
+                result.totalSwapFeeUsdForProtocol += totalSwapFees * feeRateProtocol;
+              } else {
+                const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals);
+                const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), pool2.token1.decimals);
+
+                let amountUsd = 0;
+                if (compareAddress(baseTokenAddress, pool2.token0.address)) {
+                  amountUsd = amount0 * baseTokenPriceUsd;
+                } else if (compareAddress(baseTokenAddress, pool2.token1.address)) {
+                  amountUsd = amount1 * baseTokenPriceUsd;
+                }
+
+                if (signature === Uniswapv2Events.Mint) {
+                  result.volumeAddLiquidityUsd += amountUsd;
+                } else if (signature === Uniswapv2Events.Burn) {
+                  result.volumeRemoveLiquidityUsd += amountUsd;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    return result;
   }
 
   protected async getDexBalanceV2(
