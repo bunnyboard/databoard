@@ -110,6 +110,7 @@ import { MorphL2NativeBridgeConfigs } from './protocols/morphl2';
 import { BalancerConfigs } from './protocols/balancer';
 import { BeetsConfigs } from './protocols/beets';
 import { SlisBnbConfigs } from './protocols/slisbnb';
+import { MellowConfigs } from './protocols/mellow';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -249,4 +250,5 @@ export const ProtocolConfigs = {
   balancer: BalancerConfigs,
   beets: BeetsConfigs,
   slisbnb: SlisBnbConfigs,
+  mellow: MellowConfigs,
 };

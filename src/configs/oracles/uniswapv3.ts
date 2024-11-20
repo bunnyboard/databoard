@@ -1356,4 +1356,11 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
       address: '0x900101d06a7426441ae63e9ab3b9b0f63be145f1',
     },
   },
+  BFR_WETH: {
+    type: 'univ3',
+    chain: 'arbitrum',
+    address: '0xb529f885260321729d9ff1c69804c5bf9b3a95a5',
+    baseToken: TokensBook.arbitrum['0x1a5b0aaf478bf1fda7b934c76e7692d722982a6d'],
+    quotaToken: TokensBook.arbitrum['0x82af49447d8a07e3bd95bd0d56f35241523fbab1'],
+  },
 };

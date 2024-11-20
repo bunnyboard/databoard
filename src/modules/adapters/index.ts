@@ -43,6 +43,7 @@ import LiquityAdapter from './liquity/liquity';
 import SlisbnbAdapter from './listadao/slisbnb';
 import MakerAdapter from './maker/maker';
 import MethAdapter from './mantle/meth';
+import MellowAdapter from './mellow/mellow';
 import MetisNativeBridgeAdapter from './metis/nativeBridge';
 import MoonwellAdapter from './moonwell/moonwell';
 import MorphL2NativeBridgeAdapter from './morphl2/nativeBridge';
@@ -197,5 +198,6 @@ export function getProtocolAdapters(
     balancer: new BalancerAdapter(services, storages, ProtocolConfigs.balancer),
     beets: new BalancerAdapter(services, storages, ProtocolConfigs.beets),
     slisbnb: new SlisbnbAdapter(services, storages, ProtocolConfigs.slisbnb),
+    mellow: new MellowAdapter(services, storages, ProtocolConfigs.mellow),
   };
 }

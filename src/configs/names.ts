@@ -209,4 +209,5 @@ export const ProtocolNames = {
   puffer: 'puffer', // https://puffer.fi
   kelpdao: 'kelpdao', // https://kelpdao.xyz
   slisbnb: 'slisbnb', // https://lista.org/
+  mellow: 'mellow', // https://mellow.finance
 };

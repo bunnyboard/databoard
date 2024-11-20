@@ -472,6 +472,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0x1a5b0aaf478bf1fda7b934c76e7692d722982a6d': OracleSourceConfigs.BFR,
+    '0x431402e8b9de9aa016c743880e04e517074d8cec': OracleSourceConfigs.HEGIC,
     '0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b': OracleSourceConfigs.BOB,
     '0x13ad51ed4f1b7e9dc168d8a00cb3f4ddd85efa60': OracleSourceConfigs.LDO,
     '0x211cc4dd073734da055fbf44a2b4667d5e5fe5d2': OracleSourceConfigs.eUSD,

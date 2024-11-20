@@ -2356,4 +2356,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv3List.BOB_USDC],
   },
+  BFR: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.BFR_WETH],
+  },
 };
