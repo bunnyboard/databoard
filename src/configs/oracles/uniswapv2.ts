@@ -2129,12 +2129,12 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.fantom['0xd361474bb19c8b98870bb67f5759cdf277dee7f9'],
     quotaToken: TokensBook.fantom['0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83'],
   },
-  IB_WFTM: {
+  IB_WETH: {
     type: 'univ2',
-    chain: 'fantom',
-    address: '0x304b61f3481c977ffbe630b55f2abeee74792664',
-    baseToken: TokensBook.fantom['0x00a35fd824c717879bf370e70ac6868b95870dfb'],
-    quotaToken: TokensBook.fantom['0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83'],
+    chain: 'optimism',
+    address: '0xb545592e38b603f4a904a5260a6ffc538bfcb424',
+    baseToken: TokensBook.optimism['0x00a35fd824c717879bf370e70ac6868b95870dfb'],
+    quotaToken: TokensBook.optimism['0x4200000000000000000000000000000000000006'],
   },
   MOE_USDT: {
     type: 'univ2',

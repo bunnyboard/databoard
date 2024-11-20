@@ -5,6 +5,12 @@
     "symbol": "ETH",
     "decimals": 18
   },
+  "0x00a35fd824c717879bf370e70ac6868b95870dfb": {
+    "chain": "optimism",
+    "symbol": "IB",
+    "decimals": 18,
+    "address": "0x00a35fd824c717879bf370e70ac6868b95870dfb"
+  },
   "0x00f932f0fe257456b32deda4758922e56a4f4b42": {
     "chain": "optimism",
     "symbol": "PAPER",

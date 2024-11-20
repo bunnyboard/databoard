@@ -1,10 +1,8 @@
-import { Token as UniswapSdkToken } from '@uniswap/sdk-core';
-import { Pool } from '@uniswap/v3-sdk';
 import BigNumber from 'bignumber.js';
 
 import ERC20Abi from '../../configs/abi/ERC20.json';
 import UniswapV3PoolAbi from '../../configs/abi/uniswap/UniswapV3Pool.json';
-import { normalizeAddress } from '../../lib/utils';
+import { compareAddress } from '../../lib/utils';
 import BlockchainService from '../../services/blockchains/blockchain';
 import { Token } from '../../types/base';
 import { OracleSourcePool2 } from '../../types/oracles';
@@ -18,22 +16,23 @@ export default class UniswapLibs {
     const blockchain = new BlockchainService();
 
     if (source.type === 'univ2') {
-      const baseTokenBalance = await blockchain.readContract({
+      const [baseTokenBalance, quotaTokenBalance] = await blockchain.multicall({
         chain: source.chain,
-        abi: ERC20Abi,
-        target: source.baseToken.address,
-        method: 'balanceOf',
-        params: [source.address],
         blockNumber: blockNumber,
-      });
-
-      const quotaTokenBalance = await blockchain.readContract({
-        chain: source.chain,
-        abi: ERC20Abi,
-        target: source.quotaToken.address,
-        method: 'balanceOf',
-        params: [source.address],
-        blockNumber: blockNumber,
+        calls: [
+          {
+            abi: ERC20Abi,
+            target: source.baseToken.address,
+            method: 'balanceOf',
+            params: [source.address],
+          },
+          {
+            abi: ERC20Abi,
+            target: source.quotaToken.address,
+            method: 'balanceOf',
+            params: [source.address],
+          },
+        ],
       });
 
       if (baseTokenBalance && quotaTokenBalance && baseTokenBalance.toString() !== '0') {
@@ -44,50 +43,43 @@ export default class UniswapLibs {
           .toString(10);
       }
     } else if (source.type === 'univ3') {
-      const [fee, state, liquidity] = await Promise.all([
-        blockchain.readContract({
-          chain: source.chain,
-          abi: UniswapV3PoolAbi,
-          target: source.address,
-          method: 'fee',
-          params: [],
-          blockNumber: blockNumber,
-        }),
-        blockchain.readContract({
-          chain: source.chain,
-          abi: UniswapV3PoolAbi,
-          target: source.address,
-          method: 'slot0',
-          params: [],
-          blockNumber: blockNumber,
-        }),
-        blockchain.readContract({
-          chain: source.chain,
-          abi: UniswapV3PoolAbi,
-          target: source.address,
-          method: 'liquidity',
-          params: [],
-          blockNumber: blockNumber,
-        }),
-      ]);
+      // https://blog.uniswap.org/uniswap-v3-math-primer
+      const [token0, token1, slot0] = await blockchain.multicall({
+        chain: source.chain,
+        blockNumber: blockNumber,
+        calls: [
+          {
+            abi: UniswapV3PoolAbi,
+            target: source.address,
+            method: 'token0',
+            params: [],
+          },
+          {
+            abi: UniswapV3PoolAbi,
+            target: source.address,
+            method: 'token1',
+            params: [],
+          },
+          {
+            abi: UniswapV3PoolAbi,
+            target: source.address,
+            method: 'slot0',
+            params: [],
+          },
+        ],
+      });
 
-      if (fee && state && liquidity) {
-        const baseTokenConfig = new UniswapSdkToken(1, source.baseToken.address, source.baseToken.decimals, '', '');
-        const quoteTokenConfig = new UniswapSdkToken(1, source.quotaToken.address, source.quotaToken.decimals, '', '');
+      if (token0 && token1 && slot0) {
+        // slot0.sqrtPriceX96
+        const sqrtPriceX96 = new BigNumber(slot0[0].toString());
+        const buyOneOfToken0 = sqrtPriceX96.dividedBy(2 ** 96).pow(2);
 
-        const pool = new Pool(
-          baseTokenConfig,
-          quoteTokenConfig,
-          Number(fee.toString()),
-          state[0].toString(),
-          liquidity.toString(),
-          new BigNumber(state[1].toString()).toNumber(),
-        );
-
-        if (normalizeAddress(pool.token0.address) === normalizeAddress(source.baseToken.address)) {
-          return new BigNumber(pool.token0Price.toFixed(12)).toString(10);
-        } else {
-          return new BigNumber(pool.token1Price.toFixed(12)).toString(10);
+        if (compareAddress(source.baseToken.address, token0)) {
+          const decimals = 10 ** source.baseToken.decimals / 10 ** source.quotaToken.decimals;
+          return buyOneOfToken0.dividedBy(decimals).toString(10);
+        } else if (compareAddress(source.baseToken.address, token1)) {
+          const decimals = 10 ** source.quotaToken.decimals / 10 ** source.baseToken.decimals;
+          return new BigNumber(1).dividedBy(buyOneOfToken0.dividedBy(decimals)).toString(10);
         }
       }
     }

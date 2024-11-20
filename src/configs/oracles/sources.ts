@@ -2349,8 +2349,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv2List.BAY_WFTM],
   },
   IB: {
-    currency: 'ftm',
-    sources: [OracleSourceUniswapv2List.IB_WFTM],
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.IB_WETH],
   },
   BOB: {
     currency: 'usd',
