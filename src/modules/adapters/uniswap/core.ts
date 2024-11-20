@@ -107,7 +107,7 @@ export default class UniswapCore extends UniswapIndexer {
   }
 
   // helpers
-  private helperGetBaseTokenAddress(pool2: Pool2): string | null {
+  protected helperGetBaseTokenAddress(pool2: Pool2): string | null {
     for (const whitelistBaseToken of TokenDexBase[pool2.chain]) {
       if (compareAddress(whitelistBaseToken, pool2.token0.address)) {
         return pool2.token0.address;
@@ -119,7 +119,7 @@ export default class UniswapCore extends UniswapIndexer {
     return null;
   }
 
-  private helperGetIsBlacklistPool(pool2: Pool2, dexConfig: UniswapDexConfig): boolean {
+  protected helperGetIsBlacklistPool(pool2: Pool2, dexConfig: UniswapDexConfig): boolean {
     if (dexConfig.blacklistPools) {
       for (const blacklistPool of dexConfig.blacklistPools) {
         if (compareAddress(blacklistPool, pool2.address)) {
@@ -333,9 +333,9 @@ export default class UniswapCore extends UniswapIndexer {
                   amountUsd = amount1 * baseTokenPriceUsd;
                 }
 
-                if (signature === Uniswapv2Events.Mint) {
+                if (signature === Uniswapv3Events.Mint) {
                   result.volumeAddLiquidityUsd += amountUsd;
-                } else if (signature === Uniswapv2Events.Burn) {
+                } else if (signature === Uniswapv3Events.Burn) {
                   result.volumeRemoveLiquidityUsd += amountUsd;
                 }
               }
