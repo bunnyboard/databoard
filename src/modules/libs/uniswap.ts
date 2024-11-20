@@ -69,8 +69,6 @@ export default class UniswapLibs {
         ],
       });
 
-      console.log(token0, token1, slot0);
-
       if (token0 && token1 && slot0) {
         // slot0.sqrtPriceX96
         const sqrtPriceX96 = new BigNumber(slot0[0].toString());
