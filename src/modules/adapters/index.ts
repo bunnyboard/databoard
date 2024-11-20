@@ -91,7 +91,7 @@ export function getProtocolAdapters(
     cowswap: new CowswapAdapter(services, storages, ProtocolConfigs.cowswap),
     hana: new AaveAdapter(services, storages, ProtocolConfigs.hana),
     ionic: new CompoundAdapter(services, storages, ProtocolConfigs.ionic),
-    // ironbank: new CompoundAdapter(services, storages, ProtocolConfigs.ironbank),
+    ironbank: new CompoundAdapter(services, storages, ProtocolConfigs.ironbank),
     ironclad: new AaveAdapter(services, storages, ProtocolConfigs.ironclad),
     kinza: new AaveAdapter(services, storages, ProtocolConfigs.kinza),
     lendle: new AaveAdapter(services, storages, ProtocolConfigs.lendle),

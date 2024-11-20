@@ -16,7 +16,7 @@ import { FluidConfigs } from './protocols/fluid';
 import { FraxlendConfigs } from './protocols/fraxlend';
 import { HanaConfigs } from './protocols/hana';
 import { IonicConfigs } from './protocols/ionic';
-import { IronabnkConfigs } from './protocols/ironbank';
+import { IronbankConfigs } from './protocols/ironbank';
 import { IroncladConfigs } from './protocols/ironclad';
 import { KinzaConfigs } from './protocols/kinza';
 import { LendleConfigs } from './protocols/lendle';
@@ -147,7 +147,7 @@ export const ProtocolConfigs = {
   cowswap: CowswapConfigs,
   hana: HanaConfigs,
   ionic: IonicConfigs,
-  ironbank: IronabnkConfigs,
+  ironbank: IronbankConfigs,
   ironclad: IroncladConfigs,
   kinza: KinzaConfigs,
   lendle: LendleConfigs,

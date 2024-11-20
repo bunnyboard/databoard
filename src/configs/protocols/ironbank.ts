@@ -2,7 +2,7 @@ import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { CompoundProtocolConfig } from './compound';
 
-export const IronabnkConfigs: CompoundProtocolConfig = {
+export const IronbankConfigs: CompoundProtocolConfig = {
   protocol: ProtocolNames.ironbank,
   category: ProtocolCategories.lending,
   birthday: 1607126400, // Sat Dec 05 2020 00:00:00 GMT+0000
