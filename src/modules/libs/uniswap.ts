@@ -69,16 +69,18 @@ export default class UniswapLibs {
         ],
       });
 
+      console.log(token0, token1, slot0);
+
       if (token0 && token1 && slot0) {
         // slot0.sqrtPriceX96
         const sqrtPriceX96 = new BigNumber(slot0[0].toString());
         const buyOneOfToken0 = sqrtPriceX96.dividedBy(2 ** 96).pow(2);
 
         if (compareAddress(source.baseToken.address, token0)) {
-          const decimals = 10 ** source.baseToken.decimals / 10 ** source.quotaToken.decimals;
+          const decimals = 10 ** source.quotaToken.decimals / 10 ** source.baseToken.decimals;
           return buyOneOfToken0.dividedBy(decimals).toString(10);
         } else if (compareAddress(source.baseToken.address, token1)) {
-          const decimals = 10 ** source.quotaToken.decimals / 10 ** source.baseToken.decimals;
+          const decimals = 10 ** source.baseToken.decimals / 10 ** source.quotaToken.decimals;
           return new BigNumber(1).dividedBy(buyOneOfToken0.dividedBy(decimals)).toString(10);
         }
       }
