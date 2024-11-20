@@ -1555,6 +1555,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xdcc0f2d8f90fde85b10ac1c8ab57dc0ae946a543': OracleSourceConfigs.USDC,
     '0x2416092f143378750bb29b79ed961ab195cceea5': OracleSourceConfigs.ezETH,
     '0x331b9182088e2a7d6d3fe4742aba1fb231aecc56': OracleSourceConfigs.CRV,
+    '0xb102f7efa0d5de071a8d37b3548e1c7cb148caf3': OracleSourceConfigs.crvUSD,
     '0x4d15ea9c2573addaed814e48c148b5262694646a': OracleSourceConfigs.USDT,
     '0xa8a59d73388d0c4344a7b0ba287ddb654227c38a': OracleSourceConfigs.ETH,
 

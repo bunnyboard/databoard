@@ -208,4 +208,5 @@ export const ProtocolNames = {
   solv: 'solv', // https://solv.finance
   puffer: 'puffer', // https://puffer.fi
   kelpdao: 'kelpdao', // https://kelpdao.xyz
+  slisbnb: 'slisbnb', // https://lista.org/
 };

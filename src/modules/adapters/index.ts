@@ -6,6 +6,7 @@ import ArbitrumNativeBridgeAdapter from './arbitrum/nativeBridge';
 import AvalonAdapter from './avalon/avalon';
 import BalancerAdapter from './balancer/balancer';
 import BenqiAdapter from './benqi/benqi';
+import BenqiStakingAvaxAdapter from './benqi/savax';
 import BlastNativeBridgeAdapter from './blast/nativeBridge';
 import BungeeAdapter from './bungee/bungee';
 import CbridgeAdapter from './celer/cbridge';
@@ -39,6 +40,7 @@ import LifiAdapter from './lifi/lifi';
 import LineaNativeBridgeAdapter from './linea/nativeBridge';
 import LiquidCollectiveAdapter from './liquidcollective/lseth';
 import LiquityAdapter from './liquity/liquity';
+import SlisbnbAdapter from './listadao/slisbnb';
 import MakerAdapter from './maker/maker';
 import MethAdapter from './mantle/meth';
 import MetisNativeBridgeAdapter from './metis/nativeBridge';
@@ -135,7 +137,7 @@ export function getProtocolAdapters(
     across: new AcrossAdapter(services, storages, ProtocolConfigs.across),
     layerbank: new LayerbankAdapter(services, storages, ProtocolConfigs.layerbank),
     pancake: new PancakeAdapter(services, storages, ProtocolConfigs.pancake),
-    // savax: new BenqiStakingAvaxAdapter(services, storages, ProtocolConfigs.savax),
+    savax: new BenqiStakingAvaxAdapter(services, storages, ProtocolConfigs.savax),
     circlecctp: new CircleCctpAdapter(services, storages, ProtocolConfigs.circlecctp),
     synapse: new SynapseAdapter(services, storages, ProtocolConfigs.synapse),
     stargate: new StargateAdapter(services, storages, ProtocolConfigs.stargate),
@@ -194,5 +196,6 @@ export function getProtocolAdapters(
     morphl2NativeBridge: new MorphL2NativeBridgeAdapter(services, storages, ProtocolConfigs.morphl2NativeBridge),
     balancer: new BalancerAdapter(services, storages, ProtocolConfigs.balancer),
     beets: new BalancerAdapter(services, storages, ProtocolConfigs.beets),
+    slisbnb: new SlisbnbAdapter(services, storages, ProtocolConfigs.slisbnb),
   };
 }

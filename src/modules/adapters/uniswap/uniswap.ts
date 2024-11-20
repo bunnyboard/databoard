@@ -31,6 +31,15 @@ export default class UniswapAdapter extends UniswapCore {
     };
 
     const uniswapConfig = this.protocolConfig as UniswapProtocolConfig;
+
+    // sync pools first
+    for (const chainConfig of uniswapConfig.chains) {
+      for (const dexConfig of chainConfig.dexes) {
+        await this.indexDexData(dexConfig);
+      }
+    }
+
+    // query data
     for (const chainConfig of uniswapConfig.chains) {
       if (!(protocolData.breakdownChains as any)[chainConfig.chain]) {
         (protocolData.breakdownChains as any)[chainConfig.chain] = {
@@ -56,10 +65,6 @@ export default class UniswapAdapter extends UniswapCore {
         chainConfig.chain,
         options.endTime,
       );
-
-      for (const dexConfig of chainConfig.dexes) {
-        await this.indexDexData(dexConfig);
-      }
 
       const dexData = await this.getDexData({
         chainConfig: chainConfig,
