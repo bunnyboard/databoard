@@ -2289,4 +2289,11 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
       address: '0xdc3af65ecbd339309ec55f109cb214e0325c5ed4',
     },
   },
+  APU_WETH: {
+    type: 'univ2',
+    chain: 'ethereum',
+    address: '0x5ced44f03ff443bbe14d8ea23bc24425fb89e3ed',
+    baseToken: TokensBook.ethereum['0x594daad7d77592a2b97b725a7ad59d7e188b5bfa'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
 };

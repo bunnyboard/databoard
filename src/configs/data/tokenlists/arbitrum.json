@@ -521,6 +521,12 @@
     "decimals": 18,
     "address": "0x25d887ce7a35172c62febfd67a1856f20faebb00"
   },
+  "0x25ea98ac87a38142561ea70143fd44c4772a16b6": {
+    "chain": "arbitrum",
+    "symbol": "MORE",
+    "decimals": 18,
+    "address": "0x25ea98ac87a38142561ea70143fd44c4772a16b6"
+  },
   "0x27d22eb71f00495eccc89bb02c2b68e6988c6a42": {
     "chain": "arbitrum",
     "symbol": "ETH++",
@@ -2045,6 +2051,12 @@
     "decimals": 18,
     "address": "0xc636c1f678df0a834ad103196338cb7dd1d194ff"
   },
+  "0xc760f9782f8cea5b06d862574464729537159966": {
+    "chain": "arbitrum",
+    "symbol": "TANGO",
+    "decimals": 18,
+    "address": "0xc760f9782f8cea5b06d862574464729537159966"
+  },
   "0xc87b37a581ec3257b734886d9d3a581f5a9d056c": {
     "chain": "arbitrum",
     "symbol": "ATH",
@@ -2056,6 +2068,12 @@
     "symbol": "AARK",
     "decimals": 18,
     "address": "0xca4e51f6ad4afd9d1068e5899de9dd7d73f3463d"
+  },
+  "0xca5d8f8a8d49439357d3cf46ca2e720702f132b8": {
+    "chain": "arbitrum",
+    "symbol": "GYD",
+    "decimals": 18,
+    "address": "0xca5d8f8a8d49439357d3cf46ca2e720702f132b8"
   },
   "0xcafcd85d8ca7ad1e1c6f82f651fa15e33aefd07b": {
     "chain": "arbitrum",

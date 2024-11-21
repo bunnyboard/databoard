@@ -114,4 +114,14 @@ export const OracleSourceCurveList: {
     quotaToken: TokensBook.ethereum['0x2260fac5e5542a773aa44fbcfedf7c193bc2c599'],
     quotaTokenIndex: 1,
   },
+  tETH_wstETH: {
+    type: 'curveFactoryPool',
+    chain: 'ethereum',
+    currency: 'wstETH',
+    address: '0xa10d15538e09479186b4d3278ba5c979110dddb1',
+    baseToken: TokensBook.ethereum['0xd11c452fc99cf405034ee446803b6f6c1f6d5ed8'],
+    baseTokenIndex: 0,
+    quotaToken: TokensBook.ethereum['0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0'],
+    quotaTokenIndex: 1,
+  },
 };

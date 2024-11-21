@@ -2360,4 +2360,20 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.BFR_WETH],
   },
+  APU: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.APU_WETH],
+  },
+  tETH: {
+    currency: 'wstETH',
+    sources: [OracleSourceCurveList.tETH_wstETH],
+  },
+  TANGO: {
+    currency: 'wstETH',
+    sources: [OracleSourceBalancerList.TANGO_wstETH],
+  },
+  MORE: {
+    currency: 'usd',
+    sources: [OracleSourceBalancerList.MORE_GYD],
+  },
 };

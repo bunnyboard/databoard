@@ -24,6 +24,8 @@ export const BalancerConfigs: BalancerProtocolConfig = {
       birthday: 1618876800, // Tue Apr 20 2021 00:00:00 GMT+0000
       vault: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       tokens: [
+        '0x594daad7d77592a2b97b725a7ad59d7e188b5bfa',
+        '0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84',
         '0x68037790A0229e9Ce6EaA8A99ea92964106C4703',
         '0xd084944d3c05CD115C09d072B9F44bA3E0E45921',
         '0x24Ae2dA0f361AA4BE46b48EB19C91e02c5e4f27E',

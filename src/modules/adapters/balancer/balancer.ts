@@ -8,7 +8,7 @@ import { BalancerDexConfig, BalancerProtocolConfig } from '../../../configs/prot
 import { decodeEventLog } from 'viem';
 import BalancerVaultAbi from '../../../configs/abi/balancer/Vault.json';
 import WeightPoolAbi from '../../../configs/abi/balancer/WeightedPool.json';
-import { compareAddress, formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
+import { formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
 import logger from '../../../lib/logger';
 
 const Events = {
@@ -186,14 +186,27 @@ export default class BalancerAdapter extends ProtocolAdapter {
               let volumeUsd = 0;
               let swapFeeUsd = 0;
 
-              const tokenIn = tokens.filter((token) => compareAddress(token.address, event.args.tokenIn))[0];
-              const tokenOut = tokens.filter((token) => compareAddress(token.address, event.args.tokenOut))[0];
+              // we count volume on these tokens we have already known in balancer vaults
+              // these tokens are configured at BalancerConfigs
+
+              const [tokenIn, tokenOut] = await Promise.all([
+                this.services.blockchain.evm.getTokenInfo({
+                  chain: dexConfig.chain,
+                  address: event.args.tokenIn,
+                }),
+                this.services.blockchain.evm.getTokenInfo({
+                  chain: dexConfig.chain,
+                  address: event.args.tokenOut,
+                }),
+              ]);
+
               if (tokenIn) {
                 const feePercentage = await this.getPoolSwapFeePercentage(dexConfig, event.args.poolId);
                 const tokenInPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
                   chain: tokenIn.chain,
                   address: tokenIn.address,
                   timestamp: options.timestamp,
+                  disableWarning: true,
                 });
                 volumeUsd = formatBigNumberToNumber(event.args.amountIn.toString(), tokenIn.decimals) * tokenInPriceUsd;
                 swapFeeUsd = volumeUsd * feePercentage;
@@ -203,30 +216,15 @@ export default class BalancerAdapter extends ProtocolAdapter {
                   chain: tokenOut.chain,
                   address: tokenOut.address,
                   timestamp: options.timestamp,
+                  disableWarning: true,
                 });
                 // amountOut is deducted by fees
                 const amountOut =
                   formatBigNumberToNumber(event.args.amountOut.toString(), tokenOut.decimals) * tokenOutPriceUsd;
                 volumeUsd = amountOut / (1 - feePercentage);
                 swapFeeUsd = volumeUsd * feePercentage;
-              }
-
-              if (tokenIn || tokenOut) {
-                // 50%
-                // https://forum.balancer.fi/t/bip-371-adjust-protocol-fee-split/4978
-                const protocolRevenue = swapFeeUsd * 0.5;
-
-                protocolData.totalFees += swapFeeUsd;
-                protocolData.supplySideRevenue += swapFeeUsd - protocolRevenue;
-                protocolData.protocolRevenue += protocolRevenue;
-                (protocolData.volumes.swap as number) += volumeUsd;
-
-                (protocolData.breakdownChains as any)[dexConfig.chain].totalFees += swapFeeUsd;
-                (protocolData.breakdownChains as any)[dexConfig.chain].supplySideRevenue +=
-                  swapFeeUsd - protocolRevenue;
-                (protocolData.breakdownChains as any)[dexConfig.chain].protocolRevenue += protocolRevenue;
-                (protocolData.breakdownChains as any)[dexConfig.chain].volumes.swap += volumeUsd;
               } else {
+                // log the unknown tokens swap
                 logger.warn('failed to get token price for swap', {
                   service: this.name,
                   protocol: this.protocolConfig.protocol,
@@ -235,6 +233,60 @@ export default class BalancerAdapter extends ProtocolAdapter {
                   logIndex: log.logIndex,
                 });
               }
+
+              // 50%
+              // https://forum.balancer.fi/t/bip-371-adjust-protocol-fee-split/4978
+              const protocolRevenue = swapFeeUsd * 0.5;
+
+              protocolData.totalFees += swapFeeUsd;
+              protocolData.supplySideRevenue += swapFeeUsd - protocolRevenue;
+              protocolData.protocolRevenue += protocolRevenue;
+              (protocolData.volumes.swap as number) += volumeUsd;
+
+              (protocolData.breakdownChains as any)[dexConfig.chain].totalFees += swapFeeUsd;
+              (protocolData.breakdownChains as any)[dexConfig.chain].supplySideRevenue += swapFeeUsd - protocolRevenue;
+              (protocolData.breakdownChains as any)[dexConfig.chain].protocolRevenue += protocolRevenue;
+              (protocolData.breakdownChains as any)[dexConfig.chain].volumes.swap += volumeUsd;
+
+              break;
+            }
+            case Events.PoolBalanceChanged: {
+              const tokens: Array<Token | null> = [];
+              for (const address of event.args.tokens) {
+                const token = await this.services.blockchain.evm.getTokenInfo({
+                  chain: dexConfig.chain,
+                  address: address,
+                });
+                tokens.push(token);
+              }
+
+              for (let i = 0; i < tokens.length; i++) {
+                const token = tokens[i];
+                if (token) {
+                  const amount = formatBigNumberToNumber(
+                    event.args.deltas[i] ? event.args.deltas[i] : '0',
+                    token.decimals,
+                  );
+                  if (amount !== 0) {
+                    const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+                      chain: token.chain,
+                      address: token.address,
+                      timestamp: options.timestamp,
+                    });
+                    const amountUsd = amount * tokenPriceUsd;
+
+                    if (amountUsd > 0) {
+                      (protocolData.volumes.deposit as number) += Math.abs(amountUsd);
+                      (protocolData.breakdownChains as any)[dexConfig.chain].volumes.deposit += Math.abs(amountUsd);
+                    } else if (amountUsd < 0) {
+                      (protocolData.volumes.withdraw as number) += Math.abs(amountUsd);
+                      (protocolData.breakdownChains as any)[dexConfig.chain].volumes.withdraw += Math.abs(amountUsd);
+                    }
+                  }
+                }
+              }
+
+              break;
             }
           }
         }
