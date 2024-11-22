@@ -67,6 +67,7 @@ export const ChainNames = {
   morphl2: 'morphl2',
   starknet: 'starknet',
   fuel: 'fuel',
+  eclipsel2: 'eclipsel2',
 };
 
 export const ProtocolNames = {
@@ -210,4 +211,5 @@ export const ProtocolNames = {
   kelpdao: 'kelpdao', // https://kelpdao.xyz
   slisbnb: 'slisbnb', // https://lista.org/
   mellow: 'mellow', // https://mellow.finance
+  eclipsel2NativeBridge: 'eclipsel2NativeBridge',
 };

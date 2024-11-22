@@ -145,7 +145,7 @@ export default class MellowAdapter extends ProtocolAdapter {
                 const amountUsd =
                   formatBigNumberToNumber(
                     event.args.request.minAmounts[i] ? event.args.request.minAmounts[i] : '0',
-                    token.decimals,
+                    18, // 18 decimals
                   ) * tokenPriceUsd;
 
                 (protocolData.volumes.withdraw as number) += amountUsd;

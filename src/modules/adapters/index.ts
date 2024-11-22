@@ -18,6 +18,7 @@ import CurvelendAdapter from './curve/curvelend';
 import CurveusdAdapter from './curve/curveusd';
 import DineroAdapter from './dinero/dinero';
 import DodoexAdapter from './dodoex/dodoex';
+import Eclipsel2NativeBridgeAdapter from './eclipsel2/nativeBridge';
 import EigenLayerAdapter from './eigenlayer/eigenlayer';
 import EigenpieAdapter from './eigenpie/eigenpie';
 import EthereumEcosystemAdapter from './ethereum/ecosystem';
@@ -199,5 +200,6 @@ export function getProtocolAdapters(
     beets: new BalancerAdapter(services, storages, ProtocolConfigs.beets),
     slisbnb: new SlisbnbAdapter(services, storages, ProtocolConfigs.slisbnb),
     mellow: new MellowAdapter(services, storages, ProtocolConfigs.mellow),
+    eclipsel2NativeBridge: new Eclipsel2NativeBridgeAdapter(services, storages, ProtocolConfigs.eclipsel2NativeBridge),
   };
 }
