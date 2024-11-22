@@ -764,10 +764,6 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.NMR_WETH],
   },
-  MCB: {
-    currency: 'usd',
-    sources: [OracleSourceUniswapv3List.MCB_USDC],
-  },
   INST: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.INST_WETH],
@@ -2375,5 +2371,41 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   MORE: {
     currency: 'usd',
     sources: [OracleSourceBalancerList.MORE_GYD],
+  },
+  yyAVAX: {
+    currency: 'avax',
+    sources: [OracleSourceUniswapv3List.yyAVAX_WAVAX],
+  },
+  ggAVAX: {
+    currency: 'avax',
+    sources: [OracleSourceUniswapv3List.ggAVAX_WAVAX],
+  },
+  GOLD: {
+    currency: 'eth',
+    sources: [OracleSourceBalancerList.GOLD_WETH],
+  },
+  AGVE: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.AGVE_WXDAI],
+  },
+  PAXG: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.PAXG_WETH],
+  },
+  GNS: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.GNS_DAI],
+  },
+  ADS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ADS_WETH],
+  },
+  Y2K: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.Y2K_WETH],
+  },
+  NESG: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.NESG_USDT],
   },
 };

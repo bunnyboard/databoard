@@ -65429,6 +65429,12 @@
     "decimals": 9,
     "address": "0xfccf3229063b1aa16af6b9b5de1b7e0c1bfe4046"
   },
+  "0xfccf5becfcc0978a3a766476bb58d5f13565d999": {
+    "chain": "bnbchain",
+    "symbol": "NESG",
+    "decimals": 18,
+    "address": "0xfccf5becfcc0978a3a766476bb58d5f13565d999"
+  },
   "0xfce146bf3146100cfe5db4129cf6c82b0ef4ad8c": {
     "chain": "bnbchain",
     "symbol": "renBTC",

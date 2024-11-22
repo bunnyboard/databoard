@@ -352,13 +352,6 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.ethereum['0x1776e1f26f98b1a5df9cd347953a26dd3cb46671'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
-  MCB_USDC: {
-    type: 'univ3',
-    chain: 'arbitrum',
-    address: '0x4bbac3bbe0545f1ef3214af9b5dd842c7cab8846',
-    baseToken: TokensBook.arbitrum['0x4e352cf164e64adcbad318c3a1e222e9eba4ce42'],
-    quotaToken: TokensBook.arbitrum['0xaf88d065e77c8cc2239327c5edb3a432268e5831'],
-  },
   XSDG_WETH: {
     type: 'univ3',
     chain: 'ethereum',
@@ -1361,6 +1354,27 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     chain: 'arbitrum',
     address: '0xb529f885260321729d9ff1c69804c5bf9b3a95a5',
     baseToken: TokensBook.arbitrum['0x1a5b0aaf478bf1fda7b934c76e7692d722982a6d'],
+    quotaToken: TokensBook.arbitrum['0x82af49447d8a07e3bd95bd0d56f35241523fbab1'],
+  },
+  yyAVAX_WAVAX: {
+    type: 'univ3',
+    chain: 'avalanche',
+    address: '0xb978a8c502ce97b04043036a91548b846067f9ea',
+    baseToken: TokensBook.avalanche['0xf7d9281e8e363584973f946201b82ba72c965d27'],
+    quotaToken: TokensBook.avalanche['0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7'],
+  },
+  ggAVAX_WAVAX: {
+    type: 'univ3',
+    chain: 'avalanche',
+    address: '0x365ac0c19b8171151a10ea1af308c476df18b127',
+    baseToken: TokensBook.avalanche['0xa25eaf2906fa1a3a13edac9b9657108af7b703e3'],
+    quotaToken: TokensBook.avalanche['0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7'],
+  },
+  Y2K_WETH: {
+    type: 'univ3',
+    chain: 'arbitrum',
+    address: '0x10e105f4baca3fff9d02f69864209caf4917a5c6',
+    baseToken: TokensBook.arbitrum['0x65c936f008bc34fe819bce9fa5afd9dc2d49977f'],
     quotaToken: TokensBook.arbitrum['0x82af49447d8a07e3bd95bd0d56f35241523fbab1'],
   },
 };

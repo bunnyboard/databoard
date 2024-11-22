@@ -123,6 +123,17 @@ export default class DodoexAdapter extends ProtocolAdapter {
             } else {
               swapAmountUsd = sellAmount * sellTokenPriceUsd;
 
+              if (swapAmountUsd > 100000000) {
+                console.log(
+                  log.transactionHash,
+                  event,
+                  sellToken.symbol,
+                  sellTokenPriceUsd,
+                  buyToken.symbol,
+                  buyTokenPriceUsd,
+                );
+              }
+
               // https://docs.dodoex.io/en/product/fees#route-fee
               const feeAmountUsd = swapAmountUsd * 0.001;
 

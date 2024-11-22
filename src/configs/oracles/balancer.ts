@@ -106,4 +106,16 @@ export const OracleSourceBalancerList: {
     quotaWeight: 0.2,
     quotaToken: TokensBook.arbitrum['0x5979d7b546e38e414f7e9822514be443a4800529'],
   },
+  GOLD_WETH: {
+    type: 'balv2_Weight',
+    chain: 'base',
+    currency: 'eth',
+    vault: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+    address: '0xe40cbccba664c7b1a953827c062f5070b78de868',
+    poolId: '0xe40cbccba664c7b1a953827c062f5070b78de86800020000000000000000001b',
+    baseWeight: 0.5,
+    baseToken: TokensBook.base['0xbefd5c25a59ef2c1316c5a4944931171f30cd3e4'],
+    quotaWeight: 0.5,
+    quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
+  },
 };

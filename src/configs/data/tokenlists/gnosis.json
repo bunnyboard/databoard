@@ -29,6 +29,12 @@
     "decimals": 6,
     "address": "0x2a22f9c3b484c3629090feed35f17ff8f88f76f0"
   },
+  "0x3a97704a1b25f08aa230ae53b352e2e72ef52843": {
+    "chain": "gnosis",
+    "symbol": "AGVE",
+    "decimals": 18,
+    "address": "0x3a97704a1b25f08aa230ae53b352e2e72ef52843"
+  },
   "0x3f56e0c36d275367b8c502090edf38289b3dea0d": {
     "chain": "gnosis",
     "symbol": "MIMATIC",

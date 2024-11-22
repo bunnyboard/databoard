@@ -1949,6 +1949,12 @@
     "decimals": 18,
     "address": "0xe4c293403fa3fc20853b22c8fd766266d44f83ef"
   },
+  "0xe5417af564e4bfda1c483642db72007871397896": {
+    "chain": "polygon",
+    "symbol": "GNS",
+    "decimals": 18,
+    "address": "0xe5417af564e4bfda1c483642db72007871397896"
+  },
   "0xe6046210d023a1d52014b585ed29840f815cdc5b": {
     "chain": "polygon",
     "symbol": "jWETH",
