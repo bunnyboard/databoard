@@ -68,6 +68,11 @@ export const ChainNames = {
   starknet: 'starknet',
   fuel: 'fuel',
   eclipsel2: 'eclipsel2',
+  shape: 'shape',
+  dbkchain: 'dbkchain',
+  optopia: 'optopia',
+  derive: 'derive',
+  orderly: 'orderly',
 };
 
 export const ProtocolNames = {
@@ -212,4 +217,13 @@ export const ProtocolNames = {
   slisbnb: 'slisbnb', // https://lista.org/
   mellow: 'mellow', // https://mellow.finance
   eclipsel2NativeBridge: 'eclipsel2NativeBridge',
+  mantaNativeBridge: 'mantaNativeBridge',
+  shapeNativeBridge: 'shapeNativeBridge',
+  dbkchainNativeBridge: 'dbkchainNativeBridge',
+  optopiaNativeBridge: 'optopiaNativeBridge',
+  deriveNativeBridge: 'deriveNativeBridge',
+  aevoNativeBridge: 'aevoNativeBridge',
+  karakk2NativeBridge: 'karakk2NativeBridge',
+  cyberNativeBridge: 'cyberNativeBridge',
+  orderlyNativeBridge: 'orderlyNativeBridge',
 };

@@ -2408,4 +2408,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.NESG_USDT],
   },
+  OPAI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.OPAI_WETH],
+  },
 };

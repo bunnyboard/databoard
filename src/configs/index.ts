@@ -77,7 +77,7 @@ import { GnosisNativeBridgeConfigs } from './protocols/gnosis';
 import { LfjlendConfigs } from './protocols/lfj';
 import { EigenLayerConfigs } from './protocols/eigenlayer';
 import { SymbioticConfigs } from './protocols/symbiotic';
-import { KarakConfigs } from './protocols/karak';
+import { KarakConfigs, Karakk2NativeBridgeConfigs } from './protocols/karak';
 import { LineaNativeBridgeConfigs } from './protocols/linea';
 import { ZoraNativeBridgeConfigs } from './protocols/zora';
 import { WorldchainativeBridgeConfigs } from './protocols/worldchain';
@@ -112,6 +112,14 @@ import { BeetsConfigs } from './protocols/beets';
 import { SlisBnbConfigs } from './protocols/slisbnb';
 import { MellowConfigs } from './protocols/mellow';
 import { EclipseL2NativeConfigs } from './protocols/eclipsel2';
+import { MantaNativeBridgeConfigs } from './protocols/manta';
+import { ShapeNativeBridgeConfigs } from './protocols/shape';
+import { DbkchainNativeBridgeConfigs } from './protocols/dbkchain';
+import { OptopiaNativeBridgeConfigs } from './protocols/optopia';
+import { DeriveNativeBridgeConfigs } from './protocols/derive';
+import { AevoNativeBridgeConfigs } from './protocols/aevo';
+import { CyberNativeBridgeConfigs } from './protocols/cyber';
+import { OrderlyNativeBridgeConfigs } from './protocols/orderly';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -253,4 +261,13 @@ export const ProtocolConfigs = {
   slisbnb: SlisBnbConfigs,
   mellow: MellowConfigs,
   eclipsel2NativeBridge: EclipseL2NativeConfigs,
+  mantaNativeBridge: MantaNativeBridgeConfigs,
+  shapeNativeBridge: ShapeNativeBridgeConfigs,
+  dbkchainNativeBridge: DbkchainNativeBridgeConfigs,
+  optopiaNativeBridge: OptopiaNativeBridgeConfigs,
+  deriveNativeBridge: DeriveNativeBridgeConfigs,
+  aevoNativeBridge: AevoNativeBridgeConfigs,
+  karakk2NativeBridge: Karakk2NativeBridgeConfigs,
+  cyberNativeBridge: CyberNativeBridgeConfigs,
+  orderlyNativeBridge: OrderlyNativeBridgeConfigs,
 };

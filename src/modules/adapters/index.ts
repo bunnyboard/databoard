@@ -201,5 +201,14 @@ export function getProtocolAdapters(
     slisbnb: new SlisbnbAdapter(services, storages, ProtocolConfigs.slisbnb),
     mellow: new MellowAdapter(services, storages, ProtocolConfigs.mellow),
     eclipsel2NativeBridge: new Eclipsel2NativeBridgeAdapter(services, storages, ProtocolConfigs.eclipsel2NativeBridge),
+    mantaNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.mantaNativeBridge),
+    shapeNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.shapeNativeBridge),
+    dbkchainNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.dbkchainNativeBridge),
+    optopiaNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.optopiaNativeBridge),
+    deriveNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.deriveNativeBridge),
+    aevoNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.aevoNativeBridge),
+    karakk2NativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.karakk2NativeBridge),
+    cyberNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.cyberNativeBridge),
+    orderlyNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.orderlyNativeBridge),
   };
 }

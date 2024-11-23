@@ -57,6 +57,9 @@ export const OptimismSuperchainTokens = [
   '0x111111111117dC0aa78b770fA6A738034120C302',
   '0x6033f7f88332b8db6ad452b7c6d5bb643990ae3f',
   '0x9e32b13ce7f2e80a01932b42553652e053d6ed8e',
+  '0xf8e57ac2730d3088d98b79209739b0d5ba085a03',
+  '0xFAe103DC9cf190eD75350761e95403b7b8aFa6c0',
+  '0x8457CA5040ad67fdebbCC8EdCE889A335Bc0fbFB',
 ];
 
 export const OptimismNativeBridgeConfigs: OptimismBridgeProtocolConfig = {

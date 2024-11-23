@@ -1,5 +1,6 @@
 import { ProtocolCategories, ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
+import { OptimismBridgeProtocolConfig, OptimismSuperchainTokens } from './optimism';
 
 export interface KarakVault {
   address: string;
@@ -400,4 +401,15 @@ export const KarakConfigs: KarakProtocolConfig = {
     //   ],
     // },
   ],
+};
+
+export const Karakk2NativeBridgeConfigs: OptimismBridgeProtocolConfig = {
+  protocol: ProtocolNames.karakk2NativeBridge,
+  category: ProtocolCategories.bridge,
+  birthday: 1703116800, // Thu Dec 21 2023 00:00:00 GMT+0000
+  chain: ChainNames.ethereum,
+  layer2Chain: ChainNames.karakk2,
+  optimismPortal: '0xeeCE9CD7Abd1CC84d9dfc7493e7e68079E47eA73',
+  optimismGateway: '0xBA61F25dd9f2d5f02D01B1C2c1c5F0B14c4B48A3',
+  supportedTokens: OptimismSuperchainTokens,
 };
