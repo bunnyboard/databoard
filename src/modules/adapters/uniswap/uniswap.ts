@@ -5,6 +5,9 @@ import { GetProtocolDataOptions } from '../../../types/options';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import AdapterDataHelper from '../helpers';
 import UniswapCore from './core';
+import { GetDexDataResult } from './types';
+
+const localdbName = 'adapter.uniswap';
 
 export default class UniswapAdapter extends UniswapCore {
   public readonly name: string = 'adapter.uniswap 🦄';
@@ -66,13 +69,31 @@ export default class UniswapAdapter extends UniswapCore {
         options.endTime,
       );
 
-      const dexData = await this.getDexData({
-        chainConfig: chainConfig,
-        timestamp: options.timestamp,
-        blockNumber: blockNumber,
-        beginBlock: beginBlockk,
-        endBlock: endBlock,
+      let dexData: GetDexDataResult | null = null;
+
+      // get data from local caching
+      const localdbCachingKey = `dexdata-${this.protocolConfig.birthday}-${chainConfig.chain})}`;
+      const cachingDataIfAny = await this.storages.localdb.read({
+        database: localdbName,
+        key: localdbCachingKey,
       });
+      if (cachingDataIfAny) {
+        const elapsed = options.timestamp - cachingDataIfAny.timestamp;
+        // 30 minutes
+        if (elapsed <= 30 * 60) {
+          dexData = cachingDataIfAny;
+        }
+      }
+
+      if (!dexData) {
+        dexData = await this.getDexData({
+          chainConfig: chainConfig,
+          timestamp: options.timestamp,
+          blockNumber: blockNumber,
+          beginBlock: beginBlockk,
+          endBlock: endBlock,
+        });
+      }
 
       if (dexData) {
         protocolData.totalAssetDeposited += dexData.totalLiquidityUsd;
@@ -95,6 +116,13 @@ export default class UniswapAdapter extends UniswapCore {
         (protocolData.breakdownChains as any)[chainConfig.chain].volumes.swap += dexData.volumeSwapUsd;
         (protocolData.breakdownChains as any)[chainConfig.chain].volumes.deposit += dexData.volumeAddLiquidityUsd;
         (protocolData.breakdownChains as any)[chainConfig.chain].volumes.withdraw += dexData.volumeRemoveLiquidityUsd;
+
+        // update caching data
+        await this.storages.localdb.writeSingle({
+          database: localdbName,
+          key: localdbCachingKey,
+          value: dexData,
+        });
       }
     }
 

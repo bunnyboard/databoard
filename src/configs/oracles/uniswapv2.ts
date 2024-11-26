@@ -2331,4 +2331,11 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.bnbchain['0xfccf5becfcc0978a3a766476bb58d5f13565d999'],
     quotaToken: TokensBook.bnbchain['0x55d398326f99059ff775485246999027b3197955'],
   },
+  KLIMA_USDC: {
+    type: 'univ2',
+    chain: 'polygon',
+    address: '0x5786b267d35f9d011c4750e0b0ba584e1fdbead1',
+    baseToken: TokensBook.polygon['0x4e78011ce80ee02d2c3e649fb657e45898257815'],
+    quotaToken: TokensBook.polygon['0x2791bca1f2de4661ed88a30c99a7a9449aa84174'],
+  },
 };

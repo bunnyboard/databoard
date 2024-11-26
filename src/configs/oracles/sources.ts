@@ -2412,4 +2412,12 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.OPAI_WETH],
   },
+  MORPHO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.MORPHO_WETH],
+  },
+  KLIMA: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.KLIMA_USDC],
+  },
 };

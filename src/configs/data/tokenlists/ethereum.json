@@ -14537,6 +14537,12 @@
     "decimals": 18,
     "address": "0x58d65bb61bdd4df764a4fba87d23d628a8a79b89"
   },
+  "0x58d97b57bb95320f9a05dc918aef65434969c2b2": {
+    "chain": "ethereum",
+    "symbol": "MORPHO",
+    "decimals": 18,
+    "address": "0x58d97b57bb95320f9a05dc918aef65434969c2b2"
+  },
   "0x58f7345b5295e43aa454911571f13be186655be9": {
     "chain": "ethereum",
     "symbol": "GRLC",
