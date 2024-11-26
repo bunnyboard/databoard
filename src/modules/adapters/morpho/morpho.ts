@@ -3,7 +3,7 @@ import logger from '../../../lib/logger';
 import { ProtocolConfig, Token } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
-import { GetProtocolDataOptions, TestAdapterOptions } from '../../../types/options';
+import { GetProtocolDataOptions } from '../../../types/options';
 import MorphoIndexerAdapter from './indexer';
 import MorphoBlueAbi from '../../../configs/abi/morpho/MorphoBlue.json';
 import MorphoOracleAbi from '../../../configs/abi/morpho/MorphoOracle.json';
@@ -446,137 +446,138 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
           data: log.data,
         });
 
-        const marketData = marketsData.filter((item) => item.marketMetadata.marketId === event.args.id)[0];
-        if (marketData) {
-          switch (signature) {
-            case MorphoBlueEvents.Supply: {
-              const amountUsd =
-                formatBigNumberToNumber(event.args.assets.toString(), marketData.marketMetadata.debtToken.decimals) *
-                marketData.debtTokenPriceUsd;
+        if (signature === MorphoBlueEvents.Flashloan) {
+          const token = await this.services.blockchain.evm.getTokenInfo({
+            chain: morphoBlue.chain,
+            address: event.args.token,
+          });
+          if (token) {
+            const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+              chain: token.chain,
+              address: token.address,
+              timestamp: options.timestamp,
+            });
 
-              (protocolData.volumes.deposit as number) += amountUsd;
-              (protocolData.breakdown[marketData.marketMetadata.chain][marketData.marketMetadata.debtToken.address]
-                .volumes.deposit as number) += amountUsd;
+            const amountUsd = formatBigNumberToNumber(event.args.assets.toString(), token.decimals) * tokenPriceUsd;
+            (protocolData.volumes.flashloan as number) += amountUsd;
 
-              break;
+            if (amountUsd > 0) {
+              if (!protocolData.breakdown[token.chain][token.address]) {
+                protocolData.breakdown[token.chain][token.address] = {
+                  ...getInitialProtocolCoreMetrics(),
+                  totalSupplied: 0,
+                  totalBorrowed: 0,
+                  volumes: {
+                    deposit: 0,
+                    withdraw: 0,
+                    borrow: 0,
+                    repay: 0,
+                    liquidation: 0,
+                    flashloan: 0,
+                  },
+                };
+              }
+              (protocolData.breakdown[token.chain][token.address].volumes.flashloan as number) += amountUsd;
             }
-            case MorphoBlueEvents.Withdraw: {
-              const amountUsd =
-                formatBigNumberToNumber(event.args.assets.toString(), marketData.marketMetadata.debtToken.decimals) *
-                marketData.debtTokenPriceUsd;
+          }
+        } else {
+          const marketData = marketsData.filter((item) => item.marketMetadata.marketId === event.args.id)[0];
+          if (marketData) {
+            switch (signature) {
+              case MorphoBlueEvents.Supply: {
+                const amountUsd =
+                  formatBigNumberToNumber(event.args.assets.toString(), marketData.marketMetadata.debtToken.decimals) *
+                  marketData.debtTokenPriceUsd;
 
-              (protocolData.volumes.withdraw as number) += amountUsd;
-              (protocolData.breakdown[marketData.marketMetadata.chain][marketData.marketMetadata.debtToken.address]
-                .volumes.withdraw as number) += amountUsd;
+                (protocolData.volumes.deposit as number) += amountUsd;
+                (protocolData.breakdown[marketData.marketMetadata.chain][marketData.marketMetadata.debtToken.address]
+                  .volumes.deposit as number) += amountUsd;
 
-              break;
-            }
-            case MorphoBlueEvents.Borrow: {
-              const amountUsd =
-                formatBigNumberToNumber(event.args.assets.toString(), marketData.marketMetadata.debtToken.decimals) *
-                marketData.debtTokenPriceUsd;
+                break;
+              }
+              case MorphoBlueEvents.Withdraw: {
+                const amountUsd =
+                  formatBigNumberToNumber(event.args.assets.toString(), marketData.marketMetadata.debtToken.decimals) *
+                  marketData.debtTokenPriceUsd;
 
-              (protocolData.volumes.borrow as number) += amountUsd;
-              (protocolData.breakdown[marketData.marketMetadata.chain][marketData.marketMetadata.debtToken.address]
-                .volumes.borrow as number) += amountUsd;
+                (protocolData.volumes.withdraw as number) += amountUsd;
+                (protocolData.breakdown[marketData.marketMetadata.chain][marketData.marketMetadata.debtToken.address]
+                  .volumes.withdraw as number) += amountUsd;
 
-              break;
-            }
-            case MorphoBlueEvents.Repay: {
-              const amountUsd =
-                formatBigNumberToNumber(event.args.assets.toString(), marketData.marketMetadata.debtToken.decimals) *
-                marketData.debtTokenPriceUsd;
+                break;
+              }
+              case MorphoBlueEvents.Borrow: {
+                const amountUsd =
+                  formatBigNumberToNumber(event.args.assets.toString(), marketData.marketMetadata.debtToken.decimals) *
+                  marketData.debtTokenPriceUsd;
 
-              (protocolData.volumes.repay as number) += amountUsd;
-              (protocolData.breakdown[marketData.marketMetadata.chain][marketData.marketMetadata.debtToken.address]
-                .volumes.repay as number) += amountUsd;
+                (protocolData.volumes.borrow as number) += amountUsd;
+                (protocolData.breakdown[marketData.marketMetadata.chain][marketData.marketMetadata.debtToken.address]
+                  .volumes.borrow as number) += amountUsd;
 
-              break;
-              break;
-            }
-            case MorphoBlueEvents.SupplyCollateral: {
-              const amountUsd =
-                formatBigNumberToNumber(
-                  event.args.assets.toString(),
-                  marketData.marketMetadata.collateralToken.decimals,
-                ) * marketData.collateralTokenPriceUsd;
+                break;
+              }
+              case MorphoBlueEvents.Repay: {
+                const amountUsd =
+                  formatBigNumberToNumber(event.args.assets.toString(), marketData.marketMetadata.debtToken.decimals) *
+                  marketData.debtTokenPriceUsd;
 
-              (protocolData.volumes.deposit as number) += amountUsd;
-              (protocolData.breakdown[marketData.marketMetadata.chain][
-                marketData.marketMetadata.collateralToken.address
-              ].volumes.deposit as number) += amountUsd;
+                (protocolData.volumes.repay as number) += amountUsd;
+                (protocolData.breakdown[marketData.marketMetadata.chain][marketData.marketMetadata.debtToken.address]
+                  .volumes.repay as number) += amountUsd;
 
-              break;
-            }
-            case MorphoBlueEvents.WithdrawCollateral: {
-              const amountUsd =
-                formatBigNumberToNumber(
-                  event.args.assets.toString(),
-                  marketData.marketMetadata.collateralToken.decimals,
-                ) * marketData.collateralTokenPriceUsd;
+                break;
+                break;
+              }
+              case MorphoBlueEvents.SupplyCollateral: {
+                const amountUsd =
+                  formatBigNumberToNumber(
+                    event.args.assets.toString(),
+                    marketData.marketMetadata.collateralToken.decimals,
+                  ) * marketData.collateralTokenPriceUsd;
 
-              (protocolData.volumes.withdraw as number) += amountUsd;
-              (protocolData.breakdown[marketData.marketMetadata.chain][
-                marketData.marketMetadata.collateralToken.address
-              ].volumes.withdraw as number) += amountUsd;
+                (protocolData.volumes.deposit as number) += amountUsd;
+                (protocolData.breakdown[marketData.marketMetadata.chain][
+                  marketData.marketMetadata.collateralToken.address
+                ].volumes.deposit as number) += amountUsd;
 
-              break;
-            }
-            case MorphoBlueEvents.Liquidate: {
-              const repayAmountUsd =
-                formatBigNumberToNumber(
-                  event.args.repaidAssets.toString(),
-                  marketData.marketMetadata.debtToken.decimals,
-                ) * marketData.debtTokenPriceUsd;
-              const liquidateAmountUsd =
-                formatBigNumberToNumber(
-                  event.args.seizedAssets.toString(),
-                  marketData.marketMetadata.collateralToken.decimals,
-                ) * marketData.collateralTokenPriceUsd;
+                break;
+              }
+              case MorphoBlueEvents.WithdrawCollateral: {
+                const amountUsd =
+                  formatBigNumberToNumber(
+                    event.args.assets.toString(),
+                    marketData.marketMetadata.collateralToken.decimals,
+                  ) * marketData.collateralTokenPriceUsd;
 
-              (protocolData.volumes.repay as number) += repayAmountUsd;
-              (protocolData.volumes.liquidation as number) += liquidateAmountUsd;
-              (protocolData.breakdown[marketData.marketMetadata.chain][marketData.marketMetadata.debtToken.address]
-                .volumes.repay as number) += repayAmountUsd;
-              (protocolData.breakdown[marketData.marketMetadata.chain][
-                marketData.marketMetadata.collateralToken.address
-              ].volumes.liquidation as number) += liquidateAmountUsd;
+                (protocolData.volumes.withdraw as number) += amountUsd;
+                (protocolData.breakdown[marketData.marketMetadata.chain][
+                  marketData.marketMetadata.collateralToken.address
+                ].volumes.withdraw as number) += amountUsd;
 
-              break;
-            }
-            case MorphoBlueEvents.Flashloan: {
-              const token = await this.services.blockchain.evm.getTokenInfo({
-                chain: morphoBlue.chain,
-                address: event.args.token,
-              });
-              if (token) {
-                const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-                  chain: token.chain,
-                  address: token.address,
-                  timestamp: options.timestamp,
-                });
+                break;
+              }
+              case MorphoBlueEvents.Liquidate: {
+                const repayAmountUsd =
+                  formatBigNumberToNumber(
+                    event.args.repaidAssets.toString(),
+                    marketData.marketMetadata.debtToken.decimals,
+                  ) * marketData.debtTokenPriceUsd;
+                const liquidateAmountUsd =
+                  formatBigNumberToNumber(
+                    event.args.seizedAssets.toString(),
+                    marketData.marketMetadata.collateralToken.decimals,
+                  ) * marketData.collateralTokenPriceUsd;
 
-                const amountUsd = formatBigNumberToNumber(event.args.assets.toString(), token.decimals) * tokenPriceUsd;
-                (protocolData.volumes.flashloan as number) += amountUsd;
+                (protocolData.volumes.repay as number) += repayAmountUsd;
+                (protocolData.volumes.liquidation as number) += liquidateAmountUsd;
+                (protocolData.breakdown[marketData.marketMetadata.chain][marketData.marketMetadata.debtToken.address]
+                  .volumes.repay as number) += repayAmountUsd;
+                (protocolData.breakdown[marketData.marketMetadata.chain][
+                  marketData.marketMetadata.collateralToken.address
+                ].volumes.liquidation as number) += liquidateAmountUsd;
 
-                if (amountUsd > 0) {
-                  if (!protocolData.breakdown[token.chain][token.address]) {
-                    protocolData.breakdown[token.chain][token.address] = {
-                      ...getInitialProtocolCoreMetrics(),
-                      totalSupplied: 0,
-                      totalBorrowed: 0,
-                      volumes: {
-                        deposit: 0,
-                        withdraw: 0,
-                        borrow: 0,
-                        repay: 0,
-                        liquidation: 0,
-                        flashloan: 0,
-                      },
-                    };
-                  }
-                  (protocolData.breakdown[token.chain][token.address].volumes.flashloan as number) += amountUsd;
-                }
+                break;
               }
             }
           }
@@ -587,73 +588,11 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
       protocolData.totalValueLocked += totalCollateralUsd;
     }
 
+    if (protocolData) {
+      console.log(protocolData);
+      process.exit(0);
+    }
+
     return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
-  }
-
-  public async runTest(options: TestAdapterOptions): Promise<void> {
-    const optimizerAdapter = new MorphoOptimizerAdapter(this.services, this.storages, this.protocolConfig);
-
-    console.log(
-      await optimizerAdapter.getProtocolData({
-        timestamp: 1672617600,
-        beginTime: 1672531200,
-        endTime: 1672617600,
-      }),
-    );
-
-    // const morphoBlueConfig = this.protocolConfig as MorphoProtocolConfig;
-
-    // const pools: { [key: string]: MorphoBlueMarketMetadata } = {
-    //   ethereum: {
-    //     chain: 'ethereum',
-    //     morphoBlue: '0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb',
-    //     marketId: '0xc54d7acf14de29e0e5527cabd7a576506870346a78a11a6762e2cca66322ec41',
-    //     debtToken: {
-    //       chain: 'ethereum',
-    //       symbol: 'WETH',
-    //       decimals: 18,
-    //       address: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-    //     },
-    //     collateralToken: {
-    //       chain: 'ethereum',
-    //       symbol: 'WSTETH',
-    //       decimals: 18,
-    //       address: '0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0',
-    //     },
-    //     oracle: '0x2a01eb9496094da03c4e364def50f5ad1280ad72',
-    //     irm: '0x870ac11d48b15db9a138cf899d20f13f79ba00bc',
-    //     ltv: '945000000000000000',
-    //     birthblock: 18919623,
-    //     birthday: 1704240000,
-    //   },
-    // };
-
-    // const timestamp = options.timestamp ? options.timestamp : getTimestamp();
-    // for (const morphoBlue of morphoBlueConfig.morphoBlues) {
-    //   if (pools[morphoBlue.chain]) {
-    //     const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-    //       morphoBlue.chain,
-    //       timestamp - TimeUnits.SecondsPerDay,
-    //     );
-    //     const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(morphoBlue.chain, timestamp);
-
-    //     const marketData = await this.getMarketData({
-    //       morphoBlueConfig: morphoBlue,
-    //       marketMetadata: pools[morphoBlue.chain],
-    //       timestamp: timestamp,
-    //       blockNumber: endBlock,
-    //       beginBlock: beginBlock,
-    //       endBlock: endBlock,
-    //     });
-
-    //     if (marketData) {
-    //       if (options.output === 'json') {
-    //         console.log(JSON.stringify(marketData));
-    //       } else {
-    //         console.log(marketData);
-    //       }
-    //     }
-    //   }
-    // }
   }
 }
