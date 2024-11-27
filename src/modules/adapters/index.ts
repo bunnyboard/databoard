@@ -42,6 +42,7 @@ import LineaNativeBridgeAdapter from './linea/nativeBridge';
 import LiquidCollectiveAdapter from './liquidcollective/lseth';
 import LiquityAdapter from './liquity/liquity';
 import SlisbnbAdapter from './listadao/slisbnb';
+import LoopringNativeBridgeAdapter from './loopring/nativeBridge';
 import MakerAdapter from './maker/maker';
 import MethAdapter from './mantle/meth';
 import MellowAdapter from './mellow/mellow';
@@ -210,5 +211,7 @@ export function getProtocolAdapters(
     karakk2NativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.karakk2NativeBridge),
     cyberNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.cyberNativeBridge),
     orderlyNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.orderlyNativeBridge),
+    opbnbNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.opbnbNativeBridge),
+    loopringNativeBridge: new LoopringNativeBridgeAdapter(services, storages, ProtocolConfigs.loopringNativeBridge),
   };
 }

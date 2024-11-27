@@ -4,7 +4,6 @@ import { normalizeAddress } from '../../../lib/utils';
 import { ProtocolConfig } from '../../../types/base';
 import { Pool2, Pool2Types } from '../../../types/domains/pool2';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
-import ProtocolAdapter from '../protocol';
 import UniswapV2FactoryAbi from '../../../configs/abi/uniswap/UniswapV2Factory.json';
 import UniswapV3FactoryAbi from '../../../configs/abi/uniswap/UniswapV3Factory.json';
 import UniswapV2PairAbi from '../../../configs/abi/uniswap/UniswapV2Pair.json';
@@ -12,9 +11,10 @@ import { ContractCall } from '../../../services/blockchains/domains';
 import logger from '../../../lib/logger';
 import { Uniswapv3Events } from './types';
 import { decodeEventLog } from 'viem';
+import ProtocolExtendedAdapter from '../extended';
 
 // help to index logs for uniswap v2, v3 dex data
-export default class UniswapIndexer extends ProtocolAdapter {
+export default class UniswapIndexer extends ProtocolExtendedAdapter {
   public readonly name: string = 'adapter.uniswap 🦄';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

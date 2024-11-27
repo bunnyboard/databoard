@@ -73,6 +73,8 @@ export const ChainNames = {
   optopia: 'optopia',
   derive: 'derive',
   orderly: 'orderly',
+  kinto: 'kinto',
+  loopring: 'loopring',
 };
 
 export const ProtocolNames = {
@@ -226,4 +228,7 @@ export const ProtocolNames = {
   karakk2NativeBridge: 'karakk2NativeBridge',
   cyberNativeBridge: 'cyberNativeBridge',
   orderlyNativeBridge: 'orderlyNativeBridge',
+  opbnbNativeBridge: 'opbnbNativeBridge',
+  kintoNativeBridge: 'kintoNativeBridge',
+  loopringNativeBridge: 'loopringNativeBridge',
 };

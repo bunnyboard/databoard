@@ -2,7 +2,6 @@ import { ProtocolConfig, Token } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
-import ProtocolAdapter from '../protocol';
 import AdapterDataHelper from '../helpers';
 import { compareAddress, formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
 import { Address, decodeEventLog } from 'viem';
@@ -10,6 +9,7 @@ import { AddressOne, AddressZero } from '../../../configs/constants';
 import { ZksyncNativeBridgeProtocolConfig } from '../../../configs/protocols/zksync';
 import ZksyncBridgeAbi from '../../../configs/abi/zksync/L1SharedBridge.json';
 import { BlockchainConfigs } from '../../../configs/blockchains';
+import ProtocolExtendedAdapter from '../extended';
 
 const Events = {
   // deposit from ethereum -> zksync
@@ -19,7 +19,7 @@ const Events = {
   WithdrawalFinalizedSharedBridge: '0x05518b128f0a9b11ddddebd5211a7fc2f4a689dab3a3e258d93eb13049983c3e',
 };
 
-export default class ZksyncNativeBridgeAdapter extends ProtocolAdapter {
+export default class ZksyncNativeBridgeAdapter extends ProtocolExtendedAdapter {
   public readonly name: string = 'adapter.zksync';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

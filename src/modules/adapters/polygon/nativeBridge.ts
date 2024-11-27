@@ -2,7 +2,6 @@ import { ProtocolConfig, Token } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
-import ProtocolAdapter from '../protocol';
 import AdapterDataHelper from '../helpers';
 import { PolygonBridgeProtocolConfig } from '../../../configs/protocols/polygon';
 import BridgeERC20Abi from '../../../configs/abi/polygon/L1PoSBridgeERC20.json';
@@ -12,6 +11,7 @@ import BridgePlasmaWithdrawAbi from '../../../configs/abi/polygon/L1PosBridgePla
 import { AddressZero } from '../../../configs/constants';
 import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
 import { decodeEventLog } from 'viem';
+import ProtocolExtendedAdapter from '../extended';
 
 const Events = {
   // deposit ERC20 from ethereum to polygon
@@ -30,7 +30,7 @@ const Events = {
   Withdraw: '0xfeb2000dca3e617cd6f3a8bbb63014bb54a124aac6ccbf73ee7229b4cd01f120',
 };
 
-export default class PolygonNativeBridgeAdapter extends ProtocolAdapter {
+export default class PolygonNativeBridgeAdapter extends ProtocolExtendedAdapter {
   public readonly name: string = 'adapter.polygon';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

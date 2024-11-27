@@ -51,9 +51,6 @@ export default class UniswapCore extends UniswapIndexer {
       }
     }
 
-    // process logs
-    const client = await this.services.blockchain.evm.getPublicClient(options.chainConfig.chain);
-
     // custom config for every chain if possible
     const blockRange = CustomQueryChainLogsBlockRange[options.chainConfig.chain]
       ? CustomQueryChainLogsBlockRange[options.chainConfig.chain]
@@ -65,9 +62,10 @@ export default class UniswapCore extends UniswapIndexer {
 
     let startBlock = options.beginBlock;
     while (startBlock <= options.endBlock) {
-      const logs = await client.getLogs({
-        fromBlock: BigInt(startBlock),
-        toBlock: BigInt(startBlock + blockRange),
+      const logs = await this.getChainLogs({
+        chain: options.chainConfig.chain,
+        fromBlock: startBlock,
+        toBlock: startBlock + blockRange,
       });
 
       const parseResultV2 = await this.parseDexV2Events(options, logs);

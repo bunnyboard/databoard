@@ -2,7 +2,6 @@ import { ProtocolConfig, Token } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
-import ProtocolAdapter from '../protocol';
 import AdapterDataHelper from '../helpers';
 import { BalancerDexConfig, BalancerProtocolConfig } from '../../../configs/protocols/balancer';
 import { decodeEventLog } from 'viem';
@@ -10,6 +9,7 @@ import BalancerVaultAbi from '../../../configs/abi/balancer/Vault.json';
 import WeightPoolAbi from '../../../configs/abi/balancer/WeightedPool.json';
 import { formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
 import logger from '../../../lib/logger';
+import ProtocolExtendedAdapter from '../extended';
 
 const Events = {
   FlashLoan: '0x0d7d75e01ab95780d3cd1c8ec0dd6c2ce19e3a20427eec8bf53283b6fb8e95f0',
@@ -17,7 +17,7 @@ const Events = {
   Swap: '0x2170c741c41531aec20e7c107c24eecfdd15e69c9bb0a8dd37b1840b9e0b207b',
 };
 
-export default class BalancerAdapter extends ProtocolAdapter {
+export default class BalancerAdapter extends ProtocolExtendedAdapter {
   public readonly name: string = 'adapter.balancer';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

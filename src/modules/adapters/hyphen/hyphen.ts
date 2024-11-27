@@ -2,7 +2,6 @@ import { ProtocolConfig } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
-import ProtocolAdapter from '../protocol';
 import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
 import AdapterDataHelper from '../helpers';
 import { HyphenProtocolConfig } from '../../../configs/protocols/hyphen';
@@ -10,6 +9,7 @@ import { decodeEventLog } from 'viem';
 import LiquidityPoolAbi from '../../../configs/abi/hyphen/LiquidityPool.json';
 import LiquidityProvidersAbi from '../../../configs/abi/hyphen/LiquidityProviders.json';
 import { getChainNameById } from '../../../lib/helpers';
+import ProtocolExtendedAdapter from '../extended';
 
 const LiquidityPoolEvents: any = {
   LiquidityAdded: '0xa21288bdd948f634bcd5a8bfc9825db1b01914f370ef82149e123b7c8dc3b65b',
@@ -23,7 +23,7 @@ const LiquidityPoolEvents: any = {
   DepositAndSwap: '0xe0c1647854700a22165488c301138e1e29036e60ec14c1e78653b1e0c918f874',
 };
 
-export default class HyphenAdapter extends ProtocolAdapter {
+export default class HyphenAdapter extends ProtocolExtendedAdapter {
   public readonly name: string = 'adapter.hphen';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

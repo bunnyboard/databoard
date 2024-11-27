@@ -2,13 +2,13 @@ import { ProtocolConfig, Token } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
-import ProtocolAdapter from '../protocol';
 import AdapterDataHelper from '../helpers';
 import { PolygonZkevmBridgeProtocolConfig } from '../../../configs/protocols/polygon';
 import BridgeAbi from '../../../configs/abi/polygon/PolygonZkEVMBridgeV2.json';
 import { AddressZero } from '../../../configs/constants';
 import { formatBigNumberToNumber } from '../../../lib/utils';
 import { decodeEventLog } from 'viem';
+import ProtocolExtendedAdapter from '../extended';
 
 const Events = {
   // withdraw
@@ -18,7 +18,7 @@ const Events = {
   BridgeEvent: '0x501781209a1f8899323b96b4ef08b168df93e0a90c673d1e4cce39366cb62f9b',
 };
 
-export default class PolygonZzkevmNativeBridgeAdapter extends ProtocolAdapter {
+export default class PolygonZzkevmNativeBridgeAdapter extends ProtocolExtendedAdapter {
   public readonly name: string = 'adapter.polygonzkevm';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

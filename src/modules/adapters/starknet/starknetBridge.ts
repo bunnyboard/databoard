@@ -2,20 +2,20 @@ import { ProtocolConfig, Token } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
-import ProtocolAdapter from '../protocol';
 import AdapterDataHelper from '../helpers';
 import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
 import { decodeEventLog } from 'viem';
 import { AddressZero } from '../../../configs/constants';
 import { StarknetNativeBridgeConfig } from '../../../configs/protocols/starknet';
 import StarknetBridgeAbi from '../../../configs/abi/starknet/StarknetTokenBridge.json';
+import ProtocolExtendedAdapter from '../extended';
 
 const Events = {
   Deposit: '0x5f971bd00bf3ffbca8a6d72cdd4fd92cfd4f62636161921d1e5a64f0b64ccb6d',
   Withdrawal: '0x2717ead6b9200dd235aad468c9809ea400fe33ac69b5bfaa6d3e90fc922b6398',
 };
 
-export default class StarknetNativeBridgeAdapter extends ProtocolAdapter {
+export default class StarknetNativeBridgeAdapter extends ProtocolExtendedAdapter {
   public readonly name: string = 'adapter.starknet';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

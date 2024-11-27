@@ -191,13 +191,6 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.arbitrum['0x3082cc23568ea640225c2467653db90e9250aaa0'],
     quotaToken: TokensBook.arbitrum['0x82af49447d8a07e3bd95bd0d56f35241523fbab1'],
   },
-  FDUSD_USDT: {
-    type: 'univ3',
-    chain: 'ethereum',
-    address: '0xcdfc3d54c8452b12285abb8c102df09ce83b8334',
-    baseToken: TokensBook.ethereum['0xc5f0f7b66764F6ec8C8Dff7BA683102295E16409'],
-    quotaToken: TokensBook.ethereum['0xdac17f958d2ee523a2206206994597c13d831ec7'],
-  },
   GMX_WETH: {
     type: 'univ3',
     chain: 'arbitrum',
@@ -1389,6 +1382,27 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     chain: 'ethereum',
     address: '0xc8219b876753a85025156b22176c2edea17aac53',
     baseToken: TokensBook.ethereum['0x58d97b57bb95320f9a05dc918aef65434969c2b2'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
+  XCAD_USDT: {
+    type: 'univ3',
+    chain: 'bnbchain',
+    address: '0x302e26e9bda986709b5f504d3426c2310e6383c6',
+    baseToken: TokensBook.bnbchain['0xa026ad2ceda16ca5fc28fd3c72f99e2c332c8a26'],
+    quotaToken: TokensBook.bnbchain['0x55d398326f99059ff775485246999027b3197955'],
+  },
+  RICE_USDT: {
+    type: 'univ3',
+    chain: 'ethereum',
+    address: '0x41d552e27c480b7a639232329a50d96a1933abdd',
+    baseToken: TokensBook.ethereum['0xbd9908b0cdd50386f92efcc8e1d71766c2782df0'],
+    quotaToken: TokensBook.ethereum['0xdac17f958d2ee523a2206206994597c13d831ec7'],
+  },
+  OVR_WETH: {
+    type: 'univ3',
+    chain: 'ethereum',
+    address: '0xc3f6b81fb9e6db259272026601689e383f94c0b0',
+    baseToken: TokensBook.ethereum['0x21bfbda47a0b4b5b1248c767ee49f7caa9b23697'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
 };

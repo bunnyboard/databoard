@@ -2,7 +2,6 @@ import { ProtocolConfig, Token } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
-import ProtocolAdapter from '../protocol';
 import AdapterDataHelper from '../helpers';
 import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
 import { Address, decodeEventLog } from 'viem';
@@ -10,6 +9,7 @@ import { AddressZero } from '../../../configs/constants';
 import EthGatewayAbi from '../../../configs/abi/scroll/L1ETHGateway.json';
 import Erc20GatewayAbi from '../../../configs/abi/scroll/L1StandardERC20Gateway.json';
 import { ScrollBridgeProtocolConfig } from '../../../configs/protocols/scroll';
+import ProtocolExtendedAdapter from '../extended';
 
 const Events = {
   // ERC20 deposit
@@ -21,7 +21,7 @@ const Events = {
   FinalizeWithdrawETH: '0x96db5d1cee1dd2760826bb56fabd9c9f6e978083e0a8b88559c741a29e9746e7',
 };
 
-export default class ScrollNativeBridgeAdapter extends ProtocolAdapter {
+export default class ScrollNativeBridgeAdapter extends ProtocolExtendedAdapter {
   public readonly name: string = 'adapter.scroll 📜';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

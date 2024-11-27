@@ -555,10 +555,6 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceChainlinkList.CHF_USD],
   },
-  FDUSD: {
-    currency: 'usd',
-    sources: [OracleSourceUniswapv3List.FDUSD_USDT],
-  },
   LRC: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.LRC_WETH],
@@ -2419,5 +2415,25 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   KLIMA: {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.KLIMA_USDC],
+  },
+  XCAD: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.XCAD_USDT],
+  },
+  RICE: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.RICE_USDT],
+  },
+  IMX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.IMX_WETH],
+  },
+  OVR: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.OVR_WETH],
+  },
+  BIT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BIT_WETH],
   },
 };

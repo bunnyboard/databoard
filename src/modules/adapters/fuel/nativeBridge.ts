@@ -2,7 +2,6 @@ import { ProtocolConfig, Token } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
-import ProtocolAdapter from '../protocol';
 import AdapterDataHelper from '../helpers';
 import { AddressZero } from '../../../configs/constants';
 import { FuelBridgeProtocolConfig } from '../../../configs/protocols/fuel';
@@ -10,6 +9,7 @@ import PreDepositAbi from '../../../configs/abi/fuel/PreDeposits.json';
 import Erc20BridgeAbi from '../../../configs/abi/fuel/FuelERC20GatewayV4.json';
 import { decodeEventLog } from 'viem';
 import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
+import ProtocolExtendedAdapter from '../extended';
 
 const Events = {
   // count deposit volume by Deposit and Migration in PreDeposit contract
@@ -24,7 +24,7 @@ const Events = {
   WithdrawERC20: '0x028ab133c73f6c00ad0c5896ef40eff18378acd3d7f2ecf573c2706582bf73bf',
 };
 
-export default class FuelNativeBridgeAdapter extends ProtocolAdapter {
+export default class FuelNativeBridgeAdapter extends ProtocolExtendedAdapter {
   public readonly name: string = 'adapter.fuel';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

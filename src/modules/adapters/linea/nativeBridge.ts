@@ -2,7 +2,6 @@ import { ProtocolConfig, Token } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
-import ProtocolAdapter from '../protocol';
 import AdapterDataHelper from '../helpers';
 import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
 import { Address, decodeEventLog } from 'viem';
@@ -10,6 +9,7 @@ import { AddressZero } from '../../../configs/constants';
 import { LineaNativeBridgeProtocolConfig } from '../../../configs/protocols/linea';
 import MessageServiceAbi from '../../../configs/abi/linea/MessageService.json';
 import TokenBridgeAbi from '../../../configs/abi/linea/TokenBridge.json';
+import ProtocolExtendedAdapter from '../extended';
 
 const Events = {
   // ERC20 deposit/withdraw
@@ -22,7 +22,7 @@ const Events = {
   MessageSent: '0xe856c2b8bd4eb0027ce32eeaf595c21b0b6b4644b326e5b7bd80a1cf8db72e6c',
 };
 
-export default class LineaNativeBridgeAdapter extends ProtocolAdapter {
+export default class LineaNativeBridgeAdapter extends ProtocolExtendedAdapter {
   public readonly name: string = 'adapter.linea';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

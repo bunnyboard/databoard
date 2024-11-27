@@ -120,6 +120,8 @@ import { DeriveNativeBridgeConfigs } from './protocols/derive';
 import { AevoNativeBridgeConfigs } from './protocols/aevo';
 import { CyberNativeBridgeConfigs } from './protocols/cyber';
 import { OrderlyNativeBridgeConfigs } from './protocols/orderly';
+import { OpbnbNativeBridgeConfigs } from './protocols/opbnb';
+import { LoopringNativeBridgeConfigs } from './protocols/loopring';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -270,4 +272,6 @@ export const ProtocolConfigs = {
   karakk2NativeBridge: Karakk2NativeBridgeConfigs,
   cyberNativeBridge: CyberNativeBridgeConfigs,
   orderlyNativeBridge: OrderlyNativeBridgeConfigs,
+  opbnbNativeBridge: OpbnbNativeBridgeConfigs,
+  loopringNativeBridge: LoopringNativeBridgeConfigs,
 };

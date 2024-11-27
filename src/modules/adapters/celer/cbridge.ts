@@ -2,7 +2,6 @@ import { ProtocolConfig } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
-import ProtocolAdapter from '../protocol';
 import AdapterDataHelper from '../helpers';
 import { CbridgeProtocolConfig } from '../../../configs/protocols/celer';
 import { decodeEventLog } from 'viem';
@@ -11,6 +10,7 @@ import OriginVaultV1Abi from '../.././../configs/abi/celer/OriginalTokenVault.js
 import OriginVaultV2Abi from '../.././../configs/abi/celer/OriginalTokenVaultV2.json';
 import { getChainNameById } from '../../../lib/helpers';
 import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
+import ProtocolExtendedAdapter from '../extended';
 
 // on bridge contract
 const SendEvent = '0x89d8051e597ab4178a863a5190407b98abfeff406aa8db90c59af76612e58f01';
@@ -21,7 +21,7 @@ const DepositedV1 = '0x89d8051e597ab4178a863a5190407b98abfeff406aa8db90c59af7661
 // on vault v2 contract
 const DepositedV2 = '0x28d226819e371600e26624ebc4a9a3947117ee2760209f816c789d3a99bf481b';
 
-export default class CbridgeAdapter extends ProtocolAdapter {
+export default class CbridgeAdapter extends ProtocolExtendedAdapter {
   public readonly name: string = 'adapter.cbridge 🌈';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {
