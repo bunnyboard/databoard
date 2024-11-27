@@ -10,5 +10,5 @@ export const ZircuitNativeBridgeConfigs: OptimismBridgeProtocolConfig = {
   layer2Chain: ChainNames.zircuit,
   optimismPortal: '0x17bfAfA932d2e23Bd9B909Fd5B4D2e2a27043fb1',
   optimismGateway: '0x386B76D9cA5F5Fb150B6BFB35CF5379B22B26dd8',
-  supportedTokens: OptimismSuperchainTokens,
+  supportedTokens: [...OptimismSuperchainTokens, '0xfd418e42783382E86Ae91e445406600Ba144D162'],
 };

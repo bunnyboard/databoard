@@ -2436,4 +2436,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.BIT_WETH],
   },
+  ZRC: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ZRC_WETH],
+  },
 };
