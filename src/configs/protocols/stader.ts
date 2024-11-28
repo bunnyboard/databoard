@@ -53,7 +53,7 @@ export const StaderConfigs: StaderProtocolConfig = {
   },
   maticx: {
     chain: ChainNames.ethereum,
-    birthday: 1722556800, // Fri Aug 02 2024 00:00:00 GMT+0000
+    birthday: 1649808000, // Wed Apr 13 2022 00:00:00 GMT+0000
     maticx: '0xf03a7eb46d01d9ecaa104558c732cf82f6b6b645',
     // https://www.staderlabs.com/docs-v1/polygon/fees
     protocolFeeRate: 0.11, // 11%
