@@ -135,12 +135,17 @@ export default class BalancerAdapter extends ProtocolExtendedAdapter {
 
       protocolData.totalAssetDeposited += getBalanceResult.totalBalanceUsd;
       protocolData.totalValueLocked += getBalanceResult.totalBalanceUsd;
-      (protocolData.totalValueLocked as number) += getBalanceResult.totalBalanceUsd;
+      (protocolData.totalSupplied as number) += getBalanceResult.totalBalanceUsd;
 
       for (const tokenBalance of Object.values(getBalanceResult.tokenBalanceUsds)) {
         (protocolData.breakdownChains as any)[dexConfig.chain].totalAssetDeposited += tokenBalance.balanceUsd;
         (protocolData.breakdownChains as any)[dexConfig.chain].totalValueLocked += tokenBalance.balanceUsd;
         (protocolData.breakdownChains as any)[dexConfig.chain].totalSupplied += tokenBalance.balanceUsd;
+
+        if (tokenBalance.balanceUsd > 1000000000) {
+          console.log(tokenBalance);
+          process.exit(0);
+        }
       }
 
       const logs = await this.services.blockchain.evm.getContractLogs({

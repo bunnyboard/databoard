@@ -115,7 +115,6 @@ export const BalancerConfigs: BalancerProtocolConfig = {
         '0xfc5a1a6eb076a2c7ad06ed22c90d7e710e35ad0a',
         '0xf97f4df75117a78c1a5a0dbb814af92458539fb4',
         '0x3F56e0c36d275367b8C502090EDF38289b3dEa0d',
-        '0x4e352cf164e64adcbad318c3a1e222e9eba4ce42',
         '0x0c880f6761f1af8d9aa9c466984b80dab9a8c9e8',
         '0x371c7ec6d8039ff7933a2aa28eb827ffe1f52f07',
         '0xd4d42f0b6def4ce0383636770ef773390d85c61a',

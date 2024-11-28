@@ -356,7 +356,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   },
   ankrETH: {
     currency: 'eth',
-    sources: [OracleSourceUniswapv2List.ankrETH_WETH],
+    sources: [OracleSourceUniswapv3List.ankrETH_WETH],
   },
   REZ: {
     currency: 'eth',
@@ -2439,5 +2439,9 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   ZRC: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.ZRC_WETH],
+  },
+  INV: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.INV_WETH],
   },
 };

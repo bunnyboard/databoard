@@ -1055,13 +1055,6 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.avalanche['0x8cd309e14575203535ef120b5b0ab4dded0c2073'],
     quotaToken: TokensBook.avalanche['0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7'],
   },
-  ankrETH_WETH: {
-    type: 'univ2',
-    chain: 'blast',
-    address: '0xac2b49de08bdbb9a222c2c35dea1ecc55aeddde2',
-    baseToken: TokensBook.blast['0x049e6a52e2c9b7814c8178908f3630726c134c92'],
-    quotaToken: TokensBook.blast['0x4300000000000000000000000000000000000004'],
-  },
   ARPA_WBNB: {
     type: 'univ2',
     chain: 'bnbchain',
@@ -2350,6 +2343,13 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     chain: 'ethereum',
     address: '0xe12af1218b4e9272e9628d7c7dc6354d137d024e',
     baseToken: TokensBook.ethereum['0x1a4b46696b2bb4794eb3d4c26f1c55f9170fa4c5'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
+  INV_WETH: {
+    type: 'univ2',
+    chain: 'ethereum',
+    address: '0x328dfd0139e26cb0fef7b0742b49b0fe4325f821',
+    baseToken: TokensBook.ethereum['0x41d5d79431a913c4ae7d69a668ecdfe5ff9dfb68'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
 };
