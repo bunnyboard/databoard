@@ -45,7 +45,7 @@ import { VenusConfigs } from './protocols/venus';
 import { YeifinanceConfigs } from './protocols/yeifinance';
 import { ZerolendConfigs } from './protocols/zerolend';
 import { MethConfigs } from './protocols/mantle';
-import { EthxConfigs } from './protocols/stader';
+import { StaderConfigs } from './protocols/stader';
 import { FraxEtherConfigs } from './protocols/frax';
 import { StakeStoneConfigs } from './protocols/stakestone';
 import { StakewiseConfigs } from './protocols/stakewise';
@@ -122,6 +122,7 @@ import { CyberNativeBridgeConfigs } from './protocols/cyber';
 import { OrderlyNativeBridgeConfigs } from './protocols/orderly';
 import { OpbnbNativeBridgeConfigs } from './protocols/opbnb';
 import { LoopringNativeBridgeConfigs } from './protocols/loopring';
+import { AnkrConfigs } from './protocols/ankr';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -196,7 +197,7 @@ export const ProtocolConfigs = {
   wbeth: WbethConfigs,
   meth: MethConfigs,
   swell: SwellConfigs,
-  ethx: EthxConfigs,
+  stader: StaderConfigs,
   fraxether: FraxEtherConfigs,
   stakestone: StakeStoneConfigs,
   stakewise: StakewiseConfigs,
@@ -274,4 +275,5 @@ export const ProtocolConfigs = {
   orderlyNativeBridge: OrderlyNativeBridgeConfigs,
   opbnbNativeBridge: OpbnbNativeBridgeConfigs,
   loopringNativeBridge: LoopringNativeBridgeConfigs,
+  ankr: AnkrConfigs,
 };

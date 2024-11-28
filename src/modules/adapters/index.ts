@@ -2,6 +2,7 @@ import { ProtocolConfigs } from '../../configs';
 import { ContextServices, ContextStorages, IProtocolAdapter } from '../../types/namespaces';
 import AaveAdapter from './aave/aave';
 import AcrossAdapter from './across/across';
+import AnkrAdapter from './ankr/ankr';
 import ArbitrumNativeBridgeAdapter from './arbitrum/nativeBridge';
 import AvalonAdapter from './avalon/avalon';
 import BalancerAdapter from './balancer/balancer';
@@ -64,7 +65,7 @@ import RocketpoolAdapter from './rocketpool/rocketpool';
 import RubicAdapter from './rubic/rubic';
 import ScrollNativeBridgeAdapter from './scroll/nativeBridge';
 import SpookyAdapter from './spooky/spooky';
-import EthxAdapter from './stader/ethx';
+import StaderAdapter from './stader/stader';
 import StakewiseAdapter from './stakewise/stakewise';
 import StargateAdapter from './stargate/stargate';
 import StarknetNativeBridgeAdapter from './starknet/starknetBridge';
@@ -132,7 +133,7 @@ export function getProtocolAdapters(
     wbeth: new WbethAdapter(services, storages, ProtocolConfigs.wbeth),
     meth: new MethAdapter(services, storages, ProtocolConfigs.meth),
     swell: new SwellAdapter(services, storages, ProtocolConfigs.swell),
-    ethx: new EthxAdapter(services, storages, ProtocolConfigs.ethx),
+    stader: new StaderAdapter(services, storages, ProtocolConfigs.stader),
     stakewise: new StakewiseAdapter(services, storages, ProtocolConfigs.stakewise),
     liquidcollective: new LiquidCollectiveAdapter(services, storages, ProtocolConfigs.liquidcollective),
     dinero: new DineroAdapter(services, storages, ProtocolConfigs.dinero),
@@ -213,5 +214,6 @@ export function getProtocolAdapters(
     orderlyNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.orderlyNativeBridge),
     opbnbNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.opbnbNativeBridge),
     loopringNativeBridge: new LoopringNativeBridgeAdapter(services, storages, ProtocolConfigs.loopringNativeBridge),
+    ankr: new AnkrAdapter(services, storages, ProtocolConfigs.ankr),
   };
 }
