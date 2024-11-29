@@ -588,11 +588,6 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
       protocolData.totalValueLocked += totalCollateralUsd;
     }
 
-    if (protocolData) {
-      console.log(protocolData);
-      process.exit(0);
-    }
-
     return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
   }
 }
