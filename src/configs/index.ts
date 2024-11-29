@@ -123,6 +123,7 @@ import { OrderlyNativeBridgeConfigs } from './protocols/orderly';
 import { OpbnbNativeBridgeConfigs } from './protocols/opbnb';
 import { LoopringNativeBridgeConfigs } from './protocols/loopring';
 import { AnkrConfigs } from './protocols/ankr';
+import { BedrockConfigs } from './protocols/bedrock';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -276,4 +277,5 @@ export const ProtocolConfigs = {
   opbnbNativeBridge: OpbnbNativeBridgeConfigs,
   loopringNativeBridge: LoopringNativeBridgeConfigs,
   ankr: AnkrConfigs,
+  bedrock: BedrockConfigs,
 };

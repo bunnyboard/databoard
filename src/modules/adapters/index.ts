@@ -6,6 +6,7 @@ import AnkrAdapter from './ankr/ankr';
 import ArbitrumNativeBridgeAdapter from './arbitrum/nativeBridge';
 import AvalonAdapter from './avalon/avalon';
 import BalancerAdapter from './balancer/balancer';
+import BedrockAdapter from './bedrock/bedrock';
 import BenqiAdapter from './benqi/benqi';
 import BenqiStakingAvaxAdapter from './benqi/savax';
 import BlastNativeBridgeAdapter from './blast/nativeBridge';
@@ -215,5 +216,6 @@ export function getProtocolAdapters(
     opbnbNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.opbnbNativeBridge),
     loopringNativeBridge: new LoopringNativeBridgeAdapter(services, storages, ProtocolConfigs.loopringNativeBridge),
     ankr: new AnkrAdapter(services, storages, ProtocolConfigs.ankr),
+    bedrock: new BedrockAdapter(services, storages, ProtocolConfigs.bedrock),
   };
 }

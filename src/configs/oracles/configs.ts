@@ -484,6 +484,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf': OracleSourceConfigs.BTC,
     '0xe3b3fe7bca19ca77ad877a5bebab186becfad906': OracleSourceConfigs.sFRAX,
     '0x32df62dc3aed2cd6224193052ce665dc18165841': OracleSourceConfigs.RDNT,
     '0x8b5e4c9a188b1a187f2d1e80b1c2fb17fa2922e1': OracleSourceConfigs.GOLD,
@@ -1018,6 +1019,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.BNB,
     [AddressE]: OracleSourceConfigs.BNB,
     [AddressF]: OracleSourceConfigs.BNB,
+    '0xc96de26018a54d51c097160568752c4e3bd6c364': OracleSourceConfigs.FBTC,
     '0xa026ad2ceda16ca5fc28fd3c72f99e2c332c8a26': OracleSourceConfigs.XCAD,
     '0xfccf5becfcc0978a3a766476bb58d5f13565d999': OracleSourceConfigs.NESG,
     '0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b': OracleSourceConfigs.BOB,
@@ -1467,6 +1469,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   },
 
   mantle: {
+    '0xd681c5574b7f4e387b608ed9af5f5fc88662b37c': OracleSourceConfigs.BTC,
     '0xeb466342c4d449bc9f53a865d5cb90586f405215': OracleSourceConfigs.USDC,
     '0xecc68d0451e20292406967fe7c04280e5238ac7d': OracleSourceConfigs.frxETH,
     '0x371c7ec6d8039ff7933a2aa28eb827ffe1f52f07': OracleSourceConfigs.JOE,
@@ -1793,8 +1796,10 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   },
 
   bob: {
+    '0xee03e367bcb59a9b4c1c0ea495a2e9cac36372c8': OracleSourceConfigs.BTC,
     '0x03c7054bcb39f7b2e5b2c7acb37583e32d70cfa3': OracleSourceConfigs.WBTC,
     '0xbba2ef945d523c4e2608c9e1214c2cc64d4fc2e2': OracleSourceConfigs.tBTC,
+    '0xc96de26018a54d51c097160568752c4e3bd6c364': OracleSourceConfigs.FBTC,
   },
 
   oasys: {
@@ -1813,5 +1818,18 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x4200000000000000000000000000000000000006': OracleSourceConfigs.ETH,
     '0xa415021bc5c4c3b5b989116dc35ae95d9c962c8d': OracleSourceConfigs.USDC,
     '0xf948aacec00289fc33d8226391f7e04bb457ad49': OracleSourceConfigs.rswETH,
+  },
+
+  merlin: {
+    '0xb880fd278198bd590252621d4cd071b1842e9bcd': OracleSourceConfigs.BTC,
+  },
+
+  bitlayer: {
+    '0xff204e2681a6fa0e2c3fade68a1b28fb90e4fc5f': OracleSourceConfigs.WBTC,
+  },
+
+  bsquared: {
+    '0x3e904af0cf56b304d0d286c8fb6ea5a84e33eab5': OracleSourceConfigs.BTC,
+    '0x4200000000000000000000000000000000000006': OracleSourceConfigs.WBTC,
   },
 };

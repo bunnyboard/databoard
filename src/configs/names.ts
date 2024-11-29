@@ -231,4 +231,5 @@ export const ProtocolNames = {
   opbnbNativeBridge: 'opbnbNativeBridge',
   kintoNativeBridge: 'kintoNativeBridge',
   loopringNativeBridge: 'loopringNativeBridge',
+  bedrock: 'bedrock',
 };
