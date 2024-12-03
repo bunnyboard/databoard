@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface MellowVaultConfig {
@@ -17,7 +17,6 @@ export interface MellowProtocolConfig extends ProtocolConfig {
 
 export const MellowConfigs: MellowProtocolConfig = {
   protocol: ProtocolNames.mellow,
-  category: ProtocolCategories.liquidStaking,
   birthday: 1717891200, // Sun Jun 09 2024 00:00:00 GMT+0000
   chains: [
     {

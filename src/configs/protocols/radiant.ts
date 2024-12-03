@@ -1,4 +1,3 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { AaveProtocolConfig } from './aave';
 
@@ -6,7 +5,6 @@ import { AaveProtocolConfig } from './aave';
 // forked from Aave v2
 export const RadiantConfigs: AaveProtocolConfig = {
   protocol: ProtocolNames.radiant,
-  category: ProtocolCategories.lending,
   birthday: 1679184000, // Sun Mar 19 2023 00:00:00 GMT+0000
   lendingMarkets: [
     {

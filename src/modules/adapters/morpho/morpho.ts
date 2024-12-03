@@ -198,7 +198,6 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
     if (!protocolData) {
       protocolData = {
         protocol: this.protocolConfig.protocol,
-        category: this.protocolConfig.category,
         birthday: this.protocolConfig.birthday,
         timestamp: options.timestamp,
         breakdown: {},

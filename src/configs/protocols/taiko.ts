@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface TaikoBridgeProtocolConfig extends ProtocolConfig {
@@ -11,7 +11,6 @@ export interface TaikoBridgeProtocolConfig extends ProtocolConfig {
 
 export const TaikoNativeBridgeConfigs: TaikoBridgeProtocolConfig = {
   protocol: ProtocolNames.taikoNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1714608000, // Thu May 02 2024 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.taiko,

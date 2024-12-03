@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig, Token } from '../../types/base';
+import { ProtocolConfig, Token } from '../../types/base';
 import { AddressZero } from '../constants';
 import { ChainNames, ProtocolNames } from '../names';
 export interface LiquityProtocolConfig extends ProtocolConfig {
@@ -11,7 +11,6 @@ export interface LiquityProtocolConfig extends ProtocolConfig {
 
 export const LiquityConfigs: LiquityProtocolConfig = {
   protocol: ProtocolNames.liquity,
-  category: ProtocolCategories.lending,
   birthday: 1617667200, // Tue Apr 06 2021 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   stablecoin: {

@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface EulerFactoryConfig {
@@ -14,7 +14,6 @@ export interface EulerProtocolConfig extends ProtocolConfig {
 
 export const EulerConfigs: EulerProtocolConfig = {
   protocol: ProtocolNames.euler,
-  category: ProtocolCategories.lending,
   birthday: 1724025600, // Mon Aug 19 2024 00:00:00 GMT+0000
   factories: [
     {

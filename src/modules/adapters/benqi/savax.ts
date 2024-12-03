@@ -28,7 +28,6 @@ export default class BenqiStakingAvaxAdapter extends ProtocolAdapter {
 
     const protocolData: ProtocolData = {
       protocol: this.protocolConfig.protocol,
-      category: this.protocolConfig.category,
       birthday: this.protocolConfig.birthday,
       timestamp: options.timestamp,
       breakdown: {

@@ -1,4 +1,3 @@
-import { ProtocolCategories } from '../../types/base';
 import { Pool2Types } from '../../types/domains/pool2';
 import { PublicAddresses } from '../constants/addresses';
 import { ChainNames, ProtocolNames } from '../names';
@@ -6,7 +5,6 @@ import { UniswapProtocolConfig } from './uniswap';
 
 export const SpookyConfigs: UniswapProtocolConfig = {
   protocol: ProtocolNames.spooky,
-  category: ProtocolCategories.dex,
   birthday: 1646870400, // Thu Mar 10 2022 00:00:00 GMT+0000
   chains: [
     {

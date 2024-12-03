@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface BalancerDexConfig {
@@ -15,7 +15,6 @@ export interface BalancerProtocolConfig extends ProtocolConfig {
 
 export const BalancerConfigs: BalancerProtocolConfig = {
   protocol: ProtocolNames.balancer,
-  category: ProtocolCategories.dex,
   birthday: 1618876800, // Tue Apr 20 2021 00:00:00 GMT+0000
   dexes: [
     {

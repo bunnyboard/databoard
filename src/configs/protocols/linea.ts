@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface LineaNativeBridgeProtocolConfig extends ProtocolConfig {
@@ -12,7 +12,6 @@ export interface LineaNativeBridgeProtocolConfig extends ProtocolConfig {
 
 export const LineaNativeBridgeConfigs: LineaNativeBridgeProtocolConfig = {
   protocol: ProtocolNames.lineaNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1689206400, // Thu Jul 13 2023 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.linea,

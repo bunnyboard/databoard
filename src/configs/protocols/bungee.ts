@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig, Token } from '../../types/base';
+import { ProtocolConfig, Token } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import BungeeSupportedTokens from '../data/constants/BungeeTokens.json';
 
@@ -17,7 +17,6 @@ export interface BungeeProtocolConfig extends ProtocolConfig {
 
 export const BungeeConfigs: BungeeProtocolConfig = {
   protocol: ProtocolNames.bungee,
-  category: ProtocolCategories.aggregator,
   birthday: 1679097600, // gateway deployed on ethereum
   socketGateways: [
     {

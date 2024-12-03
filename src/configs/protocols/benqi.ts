@@ -1,10 +1,9 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { CompoundProtocolConfig } from './compound';
 
 export const BenqiConfigs: CompoundProtocolConfig = {
   protocol: ProtocolNames.benqi,
-  category: ProtocolCategories.lending,
   birthday: 1629331200, // Thu Aug 19 2021 00:00:00 GMT+0000
   comptrollers: [
     {
@@ -41,7 +40,6 @@ export interface BenqiStakingAvaxProtocolConfig extends ProtocolConfig {
 
 export const BenqiStakingAvaxConfigs: BenqiStakingAvaxProtocolConfig = {
   protocol: ProtocolNames.savax,
-  category: ProtocolCategories.liquidStaking,
   birthday: 1643241600, // Thu Jan 27 2022 00:00:00 GMT+0000
   chain: ChainNames.avalanche,
   savax: '0x2b2c81e08f1af8835a78bb2a90ae924ace0ea4be',

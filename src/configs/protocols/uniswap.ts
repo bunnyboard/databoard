@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { Pool2Type, Pool2Types } from '../../types/domains/pool2';
 import { PublicAddresses } from '../constants/addresses';
 import { ChainNames, ProtocolNames } from '../names';
@@ -44,7 +44,6 @@ export interface UniswapProtocolConfig extends ProtocolConfig {
 
 export const UniswapConfigs: UniswapProtocolConfig = {
   protocol: ProtocolNames.uniswap,
-  category: ProtocolCategories.dex,
 
   // v2 deployed
   // Tue May 05 2020 00:00:00 GMT+0000

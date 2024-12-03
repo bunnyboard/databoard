@@ -1,10 +1,8 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { CompoundProtocolConfig } from './compound';
 
 export const LfjlendConfigs: CompoundProtocolConfig = {
   protocol: ProtocolNames.lfjlend,
-  category: ProtocolCategories.lending,
   birthday: 1633910400, // Mon Oct 11 2021 00:00:00 GMT+0000
   comptrollers: [
     {

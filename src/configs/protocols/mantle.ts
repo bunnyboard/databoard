@@ -1,11 +1,10 @@
 import { normalizeAddress } from '../../lib/utils';
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { OptimismBridgeProtocolConfig, OptimismSuperchainTokens } from './optimism';
 
 export const MantleNativeBridgeConfigs: OptimismBridgeProtocolConfig = {
   protocol: ProtocolNames.mantleNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1687996800, // Thu Jun 29 2023 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.mantle,
@@ -23,7 +22,6 @@ export interface MethProtocolConfig extends ProtocolConfig {
 
 export const MethConfigs: MethProtocolConfig = {
   protocol: ProtocolNames.meth,
-  category: ProtocolCategories.liquidStaking,
   birthday: 1696636800, // Sat Oct 07 2023 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   mETH: normalizeAddress('0xd5f7838f5c461feff7fe49ea5ebaf7728bb0adfa'),

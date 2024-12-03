@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface ArbitrumBridgeProtocolConfig extends ProtocolConfig {
@@ -12,7 +12,6 @@ export interface ArbitrumBridgeProtocolConfig extends ProtocolConfig {
 
 export const ArbitrumNativeBridgeConfigs: ArbitrumBridgeProtocolConfig = {
   protocol: ProtocolNames.arbitrumNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1661472000, // Fri Aug 26 2022 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.arbitrum,

@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface AcrossSpokePoolConfig {
@@ -14,7 +14,6 @@ export interface AcrossProtocolConfig extends ProtocolConfig {
 
 export const AcrossConfigs: AcrossProtocolConfig = {
   protocol: ProtocolNames.across,
-  category: ProtocolCategories.bridge,
   birthday: 1682380800, // Tue Apr 25 2023 00:00:00 GMT+0000
   spokePools: [
     {

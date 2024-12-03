@@ -25,7 +25,6 @@ export default class AaveAdapter extends AaveCore {
     logger.info('getting aave protocol data', {
       service: this.name,
       protocol: this.protocolConfig.protocol,
-      category: this.protocolConfig.category,
       blockTime: options.timestamp,
       beginTime: options.beginTime,
       endTime: options.endTime,
@@ -33,7 +32,6 @@ export default class AaveAdapter extends AaveCore {
 
     const protocolData: ProtocolData = {
       protocol: this.protocolConfig.protocol,
-      category: this.protocolConfig.category,
       birthday: this.protocolConfig.birthday,
       timestamp: options.timestamp,
       breakdown: {},

@@ -42,7 +42,6 @@ export default class PolygonNativeBridgeAdapter extends ProtocolExtendedAdapter 
 
     const protocolData: ProtocolData = {
       protocol: this.protocolConfig.protocol,
-      category: this.protocolConfig.category,
       birthday: this.protocolConfig.birthday,
       timestamp: options.timestamp,
       breakdown: {

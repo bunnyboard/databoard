@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 // avax/pol staking
@@ -28,7 +28,6 @@ export interface AnkrProtocolConfig extends ProtocolConfig {
 
 export const AnkrConfigs: AnkrProtocolConfig = {
   protocol: ProtocolNames.ankr,
-  category: ProtocolCategories.liquidStaking,
   birthday: 1640995200, // Sat Jan 01 2022 00:00:00 GMT+0000
   ethStaking: {
     chain: ChainNames.ethereum,

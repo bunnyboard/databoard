@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface EigenLayerStrategyConfig {
@@ -17,7 +17,6 @@ export interface EigenLayerProtocolConfig extends ProtocolConfig {
 
 export const EigenLayerConfigs: EigenLayerProtocolConfig = {
   protocol: ProtocolNames.eigenlayer,
-  category: ProtocolCategories.restaking,
   birthday: 1686355200, // Sat Jun 10 2023 00:00:00 GMT+0000
   birthblock: 17445565,
   chain: ChainNames.ethereum,

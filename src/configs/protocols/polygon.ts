@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface PolygonBridgeProtocolConfig extends ProtocolConfig {
@@ -13,7 +13,6 @@ export interface PolygonBridgeProtocolConfig extends ProtocolConfig {
 
 export const PolygonNativeBridgeConfigs: PolygonBridgeProtocolConfig = {
   protocol: ProtocolNames.polygonNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1590969600, // Mon Jun 01 2020 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.polygon,
@@ -82,7 +81,6 @@ export interface PolygonZkevmBridgeProtocolConfig extends ProtocolConfig {
 
 export const PolygonZkevmNativeBridgeConfigs: PolygonZkevmBridgeProtocolConfig = {
   protocol: ProtocolNames.polygonzkevmNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1679702400, // Sat Mar 25 2023 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.polygonzkevm,

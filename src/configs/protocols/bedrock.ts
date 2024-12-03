@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface BedrockEthStakingConfig {
@@ -22,7 +22,6 @@ export interface BedrockProtocolConfig extends ProtocolConfig {
 
 export const BedrockConfigs: BedrockProtocolConfig = {
   protocol: ProtocolNames.bedrock,
-  category: ProtocolCategories.liquidStaking,
   birthday: 1664582400, // Sat Oct 01 2022 00:00:00 GMT+0000
   ethStaking: {
     chain: ChainNames.ethereum,

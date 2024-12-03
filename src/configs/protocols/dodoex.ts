@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ProtocolNames } from '../names';
 
 export interface DodoexRouterConfig {
@@ -81,7 +81,6 @@ const DodoexRouters: Array<string> = [
 
 export const DodoexConfigs: DodoexProtocolConfig = {
   protocol: ProtocolNames.dodoex,
-  category: ProtocolCategories.aggregator,
   birthday: 1625270400, // Sat Jul 03 2021 00:00:00 GMT+0000
   routers: DodoexRouters.map((config) => {
     const [chain, address, birthday, endday] = config.split(':');

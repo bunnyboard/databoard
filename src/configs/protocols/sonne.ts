@@ -1,10 +1,8 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { CompoundProtocolConfig } from './compound';
 
 export const SonneConfigs: CompoundProtocolConfig = {
   protocol: ProtocolNames.sonne,
-  category: ProtocolCategories.lending,
   birthday: 1664409600, // Thu Sep 29 2022 00:00:00 GMT+0000
   comptrollers: [
     {

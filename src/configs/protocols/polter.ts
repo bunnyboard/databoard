@@ -1,4 +1,3 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { AaveProtocolConfig } from './aave';
 
@@ -6,7 +5,6 @@ import { AaveProtocolConfig } from './aave';
 // forked from Aave v2
 export const PolterConfigs: AaveProtocolConfig = {
   protocol: ProtocolNames.polter,
-  category: ProtocolCategories.lending,
   birthday: 1706745600, // Thu Feb 01 2024 00:00:00 GMT+0000
   lendingMarkets: [
     {

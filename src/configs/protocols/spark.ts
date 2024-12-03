@@ -1,4 +1,3 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { AaveProtocolConfig } from './aave';
 
@@ -6,7 +5,6 @@ import { AaveProtocolConfig } from './aave';
 // forked from Aave v3
 export const SparkConfigs: AaveProtocolConfig = {
   protocol: ProtocolNames.spark,
-  category: ProtocolCategories.lending,
   birthday: 1678233600, // Wed Mar 08 2023 00:00:00 GMT+0000
   lendingMarkets: [
     {

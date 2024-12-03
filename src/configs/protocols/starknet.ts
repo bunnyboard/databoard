@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface StarknetNativeBridgeConfig extends ProtocolConfig {
@@ -17,7 +17,6 @@ export interface StarknetNativeBridgeConfig extends ProtocolConfig {
 
 export const StarknetNativeBridgeConfigs: StarknetNativeBridgeConfig = {
   protocol: ProtocolNames.starknetNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1647907200, // Tue Mar 22 2022 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.starknet,

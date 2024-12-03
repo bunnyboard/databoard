@@ -31,7 +31,6 @@ export default class CbridgeAdapter extends ProtocolExtendedAdapter {
   public async getProtocolData(options: GetProtocolDataOptions): Promise<ProtocolData | null> {
     const protocolData: ProtocolData = {
       protocol: this.protocolConfig.protocol,
-      category: this.protocolConfig.category,
       birthday: this.protocolConfig.birthday,
       timestamp: options.timestamp,
       breakdown: {},

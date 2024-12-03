@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface StakeStoneProtocolConfig extends ProtocolConfig {
@@ -10,7 +10,6 @@ export interface StakeStoneProtocolConfig extends ProtocolConfig {
 
 export const StakeStoneConfigs: StakeStoneProtocolConfig = {
   protocol: ProtocolNames.stakestone,
-  category: ProtocolCategories.liquidStaking,
   birthday: 1695600000, // Mon Sep 25 2023 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   stone: '0x7122985656e38BDC0302Db86685bb972b145bD3C',

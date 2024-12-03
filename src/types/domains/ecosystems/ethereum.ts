@@ -1,7 +1,5 @@
 // ethereum ecosystem data metrics
 
-import { ProtocolCategory } from '../../base';
-
 export interface EthereumChainMetrics {
   // number of blocks were processed
   // in the period of time
@@ -61,9 +59,6 @@ export interface EthSupplyMetrics {
 export interface EthereumProtocolData extends EthereumChainMetrics {
   // should be ethereum
   protocol: string;
-
-  // shoulde be blockchain
-  category: ProtocolCategory;
 
   // timestamp
   timestamp: number;

@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface OptimismBridgeProtocolConfig extends ProtocolConfig {
@@ -69,7 +69,6 @@ export const OptimismSuperchainTokens = [
 
 export const OptimismNativeBridgeConfigs: OptimismBridgeProtocolConfig = {
   protocol: ProtocolNames.optimismNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1624406400, // Wed Jun 23 2021 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.optimism,

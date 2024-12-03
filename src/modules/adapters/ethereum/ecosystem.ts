@@ -30,7 +30,6 @@ export default class EthereumEcosystemAdapter extends EvmIndexer {
 
     const ethereumProtocolData: EthereumProtocolData = {
       protocol: this.protocolConfig.protocol,
-      category: this.protocolConfig.category,
       timestamp: options.timestamp,
       ethPriceUsd: 0,
       blockCount: 0,

@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface StakewiseProtocolConfig extends ProtocolConfig {
@@ -14,7 +14,6 @@ export interface StakewiseProtocolConfig extends ProtocolConfig {
 
 export const StakewiseConfigs: StakewiseProtocolConfig = {
   protocol: ProtocolNames.stakewise,
-  category: ProtocolCategories.liquidStaking,
   birthday: 1698796800, // Wed Nov 01 2023 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
 

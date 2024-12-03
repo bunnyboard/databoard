@@ -2282,6 +2282,23 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
       address: '0xdc3af65ecbd339309ec55f109cb214e0325c5ed4',
     },
   },
+  CELO_mCUSD: {
+    type: 'univ2',
+    chain: 'celo',
+    address: '0xb460f9ae1fea4f77107146c1960bb1c978118816',
+    baseToken: {
+      chain: 'celo',
+      symbol: 'CELO',
+      decimals: 18,
+      address: '0x471ece3750da237f93b8e339c536989b8978a438',
+    },
+    quotaToken: {
+      chain: 'celo',
+      symbol: 'mCUSD',
+      decimals: 18,
+      address: '0x918146359264c492bd6934071c6bd31c854edbc3',
+    },
+  },
   APU_WETH: {
     type: 'univ2',
     chain: 'ethereum',

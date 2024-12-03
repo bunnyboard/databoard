@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface KyberswapMetaRouterConfig {
@@ -13,7 +13,6 @@ export interface KyberswapProtocolConfig extends ProtocolConfig {
 
 export const KyberswapConfigs: KyberswapProtocolConfig = {
   protocol: ProtocolNames.kyberswap,
-  category: ProtocolCategories.aggregator,
   birthday: 1673308800, // Tue Jan 10 2023 00:00:00 GMT+0000
   routers: [
     {

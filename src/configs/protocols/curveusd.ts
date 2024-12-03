@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig, Token } from '../../types/base';
+import { ProtocolConfig, Token } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface CurveusdLlammaConfig {
@@ -16,7 +16,6 @@ export interface CurveusdProtocolConfig extends ProtocolConfig {
 
 export const CurveusdConfigs: CurveusdProtocolConfig = {
   protocol: ProtocolNames.curveusd,
-  category: ProtocolCategories.lending,
   birthday: 1686268800, // Fri Jun 09 2023 00:00:00 GMT+0000
   stablecoin: {
     chain: ChainNames.ethereum,

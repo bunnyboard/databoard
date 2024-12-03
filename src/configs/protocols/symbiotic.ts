@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface SymbioticCollateralPool {
@@ -13,7 +13,6 @@ export interface SymbioticProtocolConfig extends ProtocolConfig {
 
 export const SymbioticConfigs: SymbioticProtocolConfig = {
   protocol: ProtocolNames.symbiotic,
-  category: ProtocolCategories.restaking,
   birthday: 1717459200, // Tue Jun 04 2024 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   defaultCollaterals: [

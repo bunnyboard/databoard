@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { AddressZero } from '../constants';
 import { ChainNames, ProtocolNames } from '../names';
 
@@ -56,7 +56,6 @@ export interface StargateProtocolConfig extends ProtocolConfig {
 
 export const StargateConfigs: StargateProtocolConfig = {
   protocol: ProtocolNames.stargate,
-  category: ProtocolCategories.bridge,
   birthday: 1647561600, // Fri Mar 18 2022 00:00:00 GMT+0000
   bridgeConfigs: [
     // version 1

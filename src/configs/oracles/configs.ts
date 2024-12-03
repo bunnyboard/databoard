@@ -9,6 +9,9 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0xb165a74407fe1e519d6bcbdec1ed3202b35a4140': OracleSourceConfigs.USDT,
+    '0x7cfadfd5645b50be87d546f42699d863648251ad': OracleSourceConfigs.USDC,
+    '0xd9fba68d89178e3538e708939332c79efc540179': OracleSourceConfigs.GHO,
     '0x09d4214c03d01f49544c0448dbe3a27f768f2b34': OracleSourceConfigs.USDT,
     '0x64351fc9810adad17a690e4e1717df5e7e085160': OracleSourceConfigs.msETH,
     '0x41d5d79431a913c4ae7d69a668ecdfe5ff9dfb68': OracleSourceConfigs.INV,
@@ -1182,6 +1185,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.AVAX,
     [AddressE]: OracleSourceConfigs.AVAX,
     [AddressF]: OracleSourceConfigs.AVAX,
+    '0x6a02c7a974f1f13a67980c80f774ec1d2ed8f98d': OracleSourceConfigs.AVAX,
     '0xa25eaf2906fa1a3a13edac9b9657108af7b703e3': OracleSourceConfigs.ggAVAX,
     '0x7678e162f38ec9ef2bfd1d0aaf9fd93355e5fa0b': OracleSourceConfigs.EUR,
     '0x228a48df6819ccc2eca01e2192ebafffdad56c19': OracleSourceConfigs.CHF,
@@ -1796,6 +1800,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x2def4285787d58a2f811af24755a8150622f4361': OracleSourceConfigs.ETH,
     '0x471ece3750da237f93b8e339c536989b8978a438': OracleSourceConfigs.CELO,
     '0x765de816845861e75a25fca122bb6898b8b1282a': OracleSourceConfigs.USDT,
+    '0xef4229c8c3250c675f21bcefa42f58efbff6002a': OracleSourceConfigs.USDC,
   },
 
   bob: {

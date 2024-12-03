@@ -1,4 +1,3 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { AaveProtocolConfig } from './aave';
 
@@ -6,7 +5,6 @@ import { AaveProtocolConfig } from './aave';
 // forked from Aave v3
 export const YeifinanceConfigs: AaveProtocolConfig = {
   protocol: ProtocolNames.yeifinance,
-  category: ProtocolCategories.lending,
   birthday: 1717372800, // Mon Jun 03 2024 00:00:00 GMT+0000
   lendingMarkets: [
     {

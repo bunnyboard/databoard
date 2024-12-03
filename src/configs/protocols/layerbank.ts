@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface LayerBankConfig {
@@ -13,7 +13,6 @@ export interface LayerBankProtocolConfig extends ProtocolConfig {
 
 export const LayerbankConfigs: LayerBankProtocolConfig = {
   protocol: ProtocolNames.layerbank,
-  category: ProtocolCategories.lending,
   birthday: 1697846400, // Sat Oct 21 2023 00:00:00 GMT+0000
   banks: [
     {

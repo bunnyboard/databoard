@@ -1,10 +1,8 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { OptimismBridgeProtocolConfig, OptimismSuperchainTokens } from './optimism';
 
 export const ZircuitNativeBridgeConfigs: OptimismBridgeProtocolConfig = {
   protocol: ProtocolNames.zircuitNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1719964800, // Wed Jul 03 2024 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.zircuit,

@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface EigenpieProtocolConfig extends ProtocolConfig {
@@ -10,7 +10,6 @@ export interface EigenpieProtocolConfig extends ProtocolConfig {
 
 export const EigenpieConfigs: EigenpieProtocolConfig = {
   protocol: ProtocolNames.eigenpie,
-  category: ProtocolCategories.liquidStaking,
   birthday: 1706313600, // Sat Jan 27 2024 00:00:00 GMT+0000
 
   chain: ChainNames.ethereum,

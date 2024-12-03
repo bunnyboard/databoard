@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface FuelBridgeProtocolConfig extends ProtocolConfig {
@@ -19,7 +19,6 @@ export interface FuelBridgeProtocolConfig extends ProtocolConfig {
 
 export const FuelNativeBridgeConfigs: FuelBridgeProtocolConfig = {
   protocol: ProtocolNames.fuelNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1720051200, // Thu Jul 04 2024 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.fuel,

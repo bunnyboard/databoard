@@ -1,10 +1,8 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { OptimismBridgeProtocolConfig, OptimismSuperchainTokens } from './optimism';
 
 export const FraxtalNativeBridgeConfigs: OptimismBridgeProtocolConfig = {
   protocol: ProtocolNames.fraxtalNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1706832000, // Fri Feb 02 2024 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.fraxtal,

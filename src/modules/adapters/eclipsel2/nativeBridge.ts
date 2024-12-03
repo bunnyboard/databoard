@@ -27,7 +27,6 @@ export default class Eclipsel2NativeBridgeAdapter extends ProtocolAdapter {
 
     const protocolData: ProtocolData = {
       protocol: this.protocolConfig.protocol,
-      category: this.protocolConfig.category,
       birthday: this.protocolConfig.birthday,
       timestamp: options.timestamp,
       breakdown: {

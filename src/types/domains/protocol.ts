@@ -1,5 +1,3 @@
-import { ProtocolCategory } from '../base';
-
 export interface ProtocolCoreMetrics {
   // total assets value are being deposited
   totalAssetDeposited: number;
@@ -73,8 +71,6 @@ export interface ProtocolCoreMetrics {
 
 export interface ProtocolData extends ProtocolCoreMetrics {
   protocol: string;
-
-  category: ProtocolCategory;
 
   birthday: number;
 

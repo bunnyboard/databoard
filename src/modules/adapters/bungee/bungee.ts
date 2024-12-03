@@ -60,7 +60,6 @@ export default class BungeeAdapter extends ProtocolAdapter {
   public async getProtocolData(options: GetProtocolDataOptions): Promise<BungeeProtocolData | null> {
     const protocolData: ProtocolData = {
       protocol: this.protocolConfig.protocol,
-      category: this.protocolConfig.category,
       birthday: this.protocolConfig.birthday,
       timestamp: options.timestamp,
       breakdown: {},

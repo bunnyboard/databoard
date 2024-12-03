@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface ScrollGatewayConfig {
@@ -16,7 +16,6 @@ export interface ScrollBridgeProtocolConfig extends ProtocolConfig {
 
 export const ScrollNativeBridgeConfigs: ScrollBridgeProtocolConfig = {
   protocol: ProtocolNames.scrollNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1696809600, // Mon Oct 09 2023 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.scroll,

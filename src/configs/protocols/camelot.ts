@@ -1,10 +1,8 @@
-import { ProtocolCategories } from '../../types/base';
 import { ProtocolNames } from '../names';
 import { UniswapProtocolConfig } from './uniswap';
 
 export const CamelotConfigs: UniswapProtocolConfig = {
   protocol: ProtocolNames.camelot,
-  category: ProtocolCategories.dex,
   birthday: 1667520000, // Fri Nov 04 2022 00:00:00 GMT+0000
   chains: [
     // {

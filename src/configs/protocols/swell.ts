@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { AddressZero } from '../constants';
 import { ChainNames, ProtocolNames } from '../names';
 
@@ -18,7 +18,6 @@ export interface SwellProtocolConfig extends ProtocolConfig {
 
 export const SwellConfigs: SwellProtocolConfig = {
   protocol: ProtocolNames.swell,
-  category: ProtocolCategories.liquidStaking,
   birthday: 1681344000, // Thu Apr 13 2023 00:00:00 GMT+0000
 
   liquidStakingconfigs: [

@@ -1,10 +1,8 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { CompoundProtocolConfig } from './compound';
 
 export const RhoConfigs: CompoundProtocolConfig = {
   protocol: ProtocolNames.rho,
-  category: ProtocolCategories.lending,
   birthday: 1718150400, // Wed Jun 12 2024 00:00:00 GMT+0000
   comptrollers: [
     {

@@ -31,7 +31,6 @@ export default class MorphL2NativeBridgeAdapter extends ProtocolExtendedAdapter 
 
     const protocolData: ProtocolData = {
       protocol: this.protocolConfig.protocol,
-      category: this.protocolConfig.category,
       birthday: this.protocolConfig.birthday,
       timestamp: options.timestamp,
       breakdown: {

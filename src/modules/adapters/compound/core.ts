@@ -225,7 +225,6 @@ export default class CompoundCore extends ProtocolAdapter {
     logger.info('getting compound protocol data', {
       service: this.name,
       protocol: this.protocolConfig.protocol,
-      category: this.protocolConfig.category,
       blockTime: options.timestamp,
       beginTime: options.beginTime,
       endTime: options.endTime,
@@ -233,7 +232,6 @@ export default class CompoundCore extends ProtocolAdapter {
 
     const protocolData: ProtocolData = {
       protocol: this.protocolConfig.protocol,
-      category: this.protocolConfig.category,
       birthday: this.protocolConfig.birthday,
       timestamp: options.timestamp,
       breakdown: {},
@@ -482,7 +480,6 @@ export default class CompoundCore extends ProtocolAdapter {
         logger.info('get compound comet info', {
           service: this.name,
           protocol: this.protocolConfig.protocol,
-          category: this.protocolConfig.category,
           chain: cometConfig.chain,
           comet: cometConfig.comet,
         });

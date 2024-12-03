@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface AaveOracleConfig {
@@ -55,7 +55,6 @@ export interface AaveProtocolConfig extends ProtocolConfig {
 
 export const AaveConfigs: AaveProtocolConfig = {
   protocol: ProtocolNames.aave,
-  category: ProtocolCategories.lending,
   birthday: 1578528000, // Thu Jan 09 2020 00:00:00 GMT+0000
   lendingMarkets: [
     // version 1

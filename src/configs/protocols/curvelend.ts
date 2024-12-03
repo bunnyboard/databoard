@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface CurvelendFactoryConfig {
@@ -15,7 +15,6 @@ export interface CurvelendProtocolConfig extends ProtocolConfig {
 
 export const CurvelendConfigs: CurvelendProtocolConfig = {
   protocol: ProtocolNames.curvelend,
-  category: ProtocolCategories.lending,
   birthday: 1710374400, // Thu Mar 14 2024 00:00:00 GMT+0000,
   factories: [
     {

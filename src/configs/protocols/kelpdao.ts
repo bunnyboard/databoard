@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface KelpdaoRsEthPool {
@@ -18,7 +18,6 @@ export interface KelpdaoProtocolConfig extends ProtocolConfig {
 
 export const KelpdaoConfigs: KelpdaoProtocolConfig = {
   protocol: ProtocolNames.kelpdao,
-  category: ProtocolCategories.liquidStaking,
   birthday: 1702252800, // Mon Dec 11 2023 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   lrtConfig: '0x947Cb49334e6571ccBFEF1f1f1178d8469D65ec7',

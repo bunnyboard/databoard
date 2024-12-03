@@ -1,10 +1,8 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { OptimismBridgeProtocolConfig, OptimismSuperchainTokens } from './optimism';
 
 export const RedstoneNativeBridgeConfigs: OptimismBridgeProtocolConfig = {
   protocol: ProtocolNames.redstoneNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1712188800, // Thu Apr 04 2024 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.redstone,

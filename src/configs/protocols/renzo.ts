@@ -1,5 +1,5 @@
 import { normalizeAddress } from '../../lib/utils';
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface RenzoProtocolConfig extends ProtocolConfig {
@@ -20,7 +20,6 @@ export interface RenzoProtocolConfig extends ProtocolConfig {
 
 export const RenzoConfigs: RenzoProtocolConfig = {
   protocol: ProtocolNames.renzo,
-  category: ProtocolCategories.liquidStaking,
   birthday: 1701820800, // Wed Dec 06 2023 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
 

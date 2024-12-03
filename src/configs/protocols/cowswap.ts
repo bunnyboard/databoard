@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface CowswapSettlementConfig {
@@ -13,7 +13,6 @@ export interface CowswapProtocolConfig extends ProtocolConfig {
 
 export const CowswapConfigs: CowswapProtocolConfig = {
   protocol: ProtocolNames.cowswap,
-  category: ProtocolCategories.aggregator,
   birthday: 1623196800, // Wed Jun 09 2021 00:00:00 GMT+0000
   settlements: [
     {

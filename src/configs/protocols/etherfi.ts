@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface EthefiVault {
@@ -24,7 +24,6 @@ export interface EtherfiProtocolConfig extends ProtocolConfig {
 
 export const EtherfiConfigs: EtherfiProtocolConfig = {
   protocol: ProtocolNames.etherfi,
-  category: ProtocolCategories.liquidStaking,
   birthday: 1689033600, // Tue Jul 11 2023 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   liquidityPool: '0x308861A430be4cce5502d0A12724771Fc6DaF216',

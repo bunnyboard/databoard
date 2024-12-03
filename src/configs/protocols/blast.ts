@@ -1,4 +1,3 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { OptimismBridgeProtocolConfig, OptimismSuperchainTokens } from './optimism';
 
@@ -12,7 +11,6 @@ export interface BlastBridgeProtocolConfig extends OptimismBridgeProtocolConfig 
 
 export const BlastNativeBridgeConfigs: BlastBridgeProtocolConfig = {
   protocol: ProtocolNames.blastNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1708819200, // Sun Feb 25 2024 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.blast,

@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface CircleCctpMessengerConfig {
@@ -22,7 +22,6 @@ export const CircleCctpDomainChains: { [key: number]: string } = {
 
 export const CircleCctpConfigs: CircleCctpProtocolConfig = {
   protocol: ProtocolNames.circlecctp,
-  category: ProtocolCategories.bridge,
   birthday: 1674086400, // Thu Jan 19 2023 00:00:00 GMT+0000
   messengers: [
     {

@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface RubicExchangeConfig {
@@ -13,7 +13,6 @@ export interface RubicProtocolConfig extends ProtocolConfig {
 
 export const RubicConfigs: RubicProtocolConfig = {
   protocol: ProtocolNames.rubic,
-  category: ProtocolCategories.aggregator,
   birthday: 1679702400, // Sat Mar 25 2023 00:00:00 GMT+0000
   exchanges: [
     {

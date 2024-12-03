@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface StaderEthxConfig {
@@ -33,7 +33,6 @@ export interface StaderProtocolConfig extends ProtocolConfig {
 
 export const StaderConfigs: StaderProtocolConfig = {
   protocol: ProtocolNames.stader,
-  category: ProtocolCategories.liquidStaking,
   birthday: 1686096000, // Wed Jun 07 2023 00:00:00 GMT+0000
   ethx: {
     chain: ChainNames.ethereum,

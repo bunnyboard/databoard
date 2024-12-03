@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface RocketpoolProtocolConfig extends ProtocolConfig {
@@ -9,7 +9,6 @@ export interface RocketpoolProtocolConfig extends ProtocolConfig {
 
 export const RocketpoolConfigs: RocketpoolProtocolConfig = {
   protocol: ProtocolNames.rocketpool,
-  category: ProtocolCategories.liquidStaking,
   birthday: 1635897600, // Wed Nov 03 2021 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   rETH: '0xae78736cd615f374d3085123a210448e74fc6393',

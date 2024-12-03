@@ -1,4 +1,3 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { AaveProtocolConfig } from './aave';
 
@@ -6,7 +5,6 @@ import { AaveProtocolConfig } from './aave';
 // forked from Aave v3
 export const ZerolendConfigs: AaveProtocolConfig = {
   protocol: ProtocolNames.zerolend,
-  category: ProtocolCategories.lending,
   birthday: 1689552000, // Mon Jul 17 2023 00:00:00 GMT+0000
   lendingMarkets: [
     {

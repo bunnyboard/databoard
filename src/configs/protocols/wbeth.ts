@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface WbethTokenConfig {
@@ -13,7 +13,6 @@ export interface WbethProtocolConfig extends ProtocolConfig {
 
 export const WbethConfigs: WbethProtocolConfig = {
   protocol: ProtocolNames.wbeth,
-  category: ProtocolCategories.liquidStaking,
   birthday: 1681948800, // Thu Apr 20 2023 00:00:00 GMT+0000
   tokens: [
     {

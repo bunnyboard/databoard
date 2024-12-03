@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig, Token } from '../../types/base';
+import { ProtocolConfig, Token } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import SynapseSupportedTokens from '../data/constants/SynapseTokens.json';
 
@@ -30,7 +30,6 @@ export interface SynapseProtocolConfig extends ProtocolConfig {
 
 export const SynapseConfigs: SynapseProtocolConfig = {
   protocol: ProtocolNames.synapse,
-  category: ProtocolCategories.bridge,
   birthday: 1629158400, // Tue Aug 17 2021 00:00:00 GMT+0000
   bridges: [
     {

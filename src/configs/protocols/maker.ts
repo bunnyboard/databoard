@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 const MakerGemJoins: Array<string> = [
@@ -55,7 +55,6 @@ export interface MakerProtocolConfig extends ProtocolConfig {
 
 export const MakerConfigs: MakerProtocolConfig = {
   protocol: ProtocolNames.maker,
-  category: ProtocolCategories.lending,
   birthday: 1640995200, // Sat Jan 01 2022 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   dai: '0x6b175474e89094c44da98b954eedeac495271d0f',

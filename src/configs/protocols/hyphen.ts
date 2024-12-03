@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig, Token } from '../../types/base';
+import { ProtocolConfig, Token } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import HyphenSupportedTokens from '../data/constants/HyphenTokens.json';
 
@@ -16,7 +16,6 @@ export interface HyphenProtocolConfig extends ProtocolConfig {
 
 export const HyphenConfigs: HyphenProtocolConfig = {
   protocol: ProtocolNames.hyphen,
-  category: ProtocolCategories.bridge,
   birthday: 1647129600, // Sun Mar 13 2022 00:00:00 GMT+0000
   liquidityPools: [
     {

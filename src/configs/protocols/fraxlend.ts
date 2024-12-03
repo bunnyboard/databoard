@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface FraxlendFactoryConfig {
@@ -17,7 +17,6 @@ export interface FraxlendProtocolConfig extends ProtocolConfig {
 
 export const FraxlendConfigs: FraxlendProtocolConfig = {
   protocol: ProtocolNames.fraxlend,
-  category: ProtocolCategories.lending,
   birthday: 1662076800, // Fri Sep 02 2022 00:00:00 GMT+0000
   factories: [
     {

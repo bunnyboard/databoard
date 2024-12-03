@@ -1,10 +1,8 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { OptimismBridgeProtocolConfig, OptimismSuperchainTokens } from './optimism';
 
 export const LiskNativeBridgeConfigs: OptimismBridgeProtocolConfig = {
   protocol: ProtocolNames.liskNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1714780800, // Sat May 04 2024 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.lisk,

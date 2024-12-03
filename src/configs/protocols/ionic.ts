@@ -1,10 +1,8 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { CompoundProtocolConfig } from './compound';
 
 export const IonicConfigs: CompoundProtocolConfig = {
   protocol: ProtocolNames.ionic,
-  category: ProtocolCategories.lending,
   birthday: 1704844800, // Wed Jan 10 2024 00:00:00 GMT+0000
   comptrollers: [
     {

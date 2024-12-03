@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig, Token } from '../../types/base';
+import { ProtocolConfig, Token } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface ComptrollerConfig {
@@ -47,7 +47,6 @@ export interface CompoundProtocolConfig extends ProtocolConfig {
 
 export const CompoundConfigs: CompoundProtocolConfig = {
   protocol: ProtocolNames.compound,
-  category: ProtocolCategories.lending,
   birthday: 1557273600, // Wed May 08 2019 00:00:00 GMT+0000
   comptrollers: [
     {

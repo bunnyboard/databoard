@@ -1,10 +1,8 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { CompoundProtocolConfig } from './compound';
 
 export const OrbitConfigs: CompoundProtocolConfig = {
   protocol: ProtocolNames.orbit,
-  category: ProtocolCategories.lending,
   birthday: 1709251200, // Fri Mar 01 2024 00:00:00 GMT+0000
   comptrollers: [
     {

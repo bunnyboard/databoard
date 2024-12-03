@@ -1,10 +1,8 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { CompoundProtocolConfig } from './compound';
 
 export const VenusConfigs: CompoundProtocolConfig = {
   protocol: ProtocolNames.venus,
-  category: ProtocolCategories.lending,
   birthday: 1614211200, // Fri Jan 01 2021 00:00:00 GMT+0000
   comptrollers: [
     {

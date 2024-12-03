@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface OdosRouterConfig {
@@ -14,7 +14,6 @@ export interface OdosProtocolConfig extends ProtocolConfig {
 
 export const OdosConfigs: OdosProtocolConfig = {
   protocol: ProtocolNames.odos,
-  category: ProtocolCategories.aggregator,
   birthday: 1662508800, // Wed Sep 07 2022 00:00:00 GMT+0000
   routers: [
     {

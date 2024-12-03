@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface MorphL2BridgeProtocolConfig extends ProtocolConfig {
@@ -12,7 +12,6 @@ export interface MorphL2BridgeProtocolConfig extends ProtocolConfig {
 
 export const MorphL2NativeBridgeConfigs: MorphL2BridgeProtocolConfig = {
   protocol: ProtocolNames.morphl2NativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1729382400, // Sun Oct 20 2024 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.morphl2,

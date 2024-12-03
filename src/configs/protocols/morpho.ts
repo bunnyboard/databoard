@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface MorphoBlueConfig {
@@ -29,7 +29,6 @@ export interface MorphoProtocolConfig extends ProtocolConfig {
 
 export const MorphoConfigs: MorphoProtocolConfig = {
   protocol: ProtocolNames.morpho,
-  category: ProtocolCategories.lending,
   birthday: 1653782400, // compound optimizer deployed
   optimizers: [
     {

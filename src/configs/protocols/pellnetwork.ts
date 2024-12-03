@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface PellNetworkStrategyConfig {
@@ -20,7 +20,6 @@ export interface PellNetworkProtocolConfig extends ProtocolConfig {
 
 export const PellNetworkConfigs: PellNetworkProtocolConfig = {
   protocol: ProtocolNames.pellnetwork,
-  category: ProtocolCategories.restaking,
   birthday: 1722470400, // Thu Aug 01 2024 00:00:00 GMT+0000
   configs: [
     {

@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface ParaswapSwapperConfig {
@@ -13,7 +13,6 @@ export interface ParaswapProtocolConfig extends ProtocolConfig {
 
 export const ParaswapConfigs: ParaswapProtocolConfig = {
   protocol: ProtocolNames.paraswap,
-  category: ProtocolCategories.aggregator,
   birthday: 1629331200, // Thu Aug 19 2021 00:00:00 GMT+0000
   swappers: [
     {

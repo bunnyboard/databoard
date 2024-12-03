@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface ZksyncNativeBridgeProtocolConfig extends ProtocolConfig {
@@ -10,7 +10,6 @@ export interface ZksyncNativeBridgeProtocolConfig extends ProtocolConfig {
 
 export const ZksyncNativeBridgeConfigs: ZksyncNativeBridgeProtocolConfig = {
   protocol: ProtocolNames.zksyncNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1717545600, // Wed Jun 05 2024 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.zksync,

@@ -1,10 +1,8 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { OptimismBridgeProtocolConfig } from './optimism';
 
 export const OpbnbNativeBridgeConfigs: OptimismBridgeProtocolConfig = {
   protocol: ProtocolNames.opbnbNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1691798400, // Sat Aug 12 2023 00:00:00 GMT+0000
   chain: ChainNames.bnbchain,
   layer2Chain: ChainNames.opbnb,

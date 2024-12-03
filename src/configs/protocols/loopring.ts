@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface LoopringBridgeProtocolConfig extends ProtocolConfig {
@@ -11,7 +11,6 @@ export interface LoopringBridgeProtocolConfig extends ProtocolConfig {
 
 export const LoopringNativeBridgeConfigs: LoopringBridgeProtocolConfig = {
   protocol: ProtocolNames.loopringNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1606348800, // Thu Nov 26 2020 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.loopring,

@@ -1,10 +1,8 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { BalancerProtocolConfig } from './balancer';
 
 export const BeetsConfigs: BalancerProtocolConfig = {
   protocol: ProtocolNames.beets,
-  category: ProtocolCategories.dex,
   birthday: 1618876800, // Tue Apr 20 2021 00:00:00 GMT+0000
   dexes: [
     {

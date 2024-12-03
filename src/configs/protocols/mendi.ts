@@ -1,10 +1,8 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { CompoundProtocolConfig } from './compound';
 
 export const MendiConfigs: CompoundProtocolConfig = {
   protocol: ProtocolNames.mendi,
-  category: ProtocolCategories.lending,
   birthday: 1692316800, // Fri Aug 18 2023 00:00:00 GMT+0000
   comptrollers: [
     {

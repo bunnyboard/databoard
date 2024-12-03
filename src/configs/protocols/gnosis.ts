@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface GnosisBridgeProtocolConfig extends ProtocolConfig {
@@ -13,7 +13,6 @@ export interface GnosisBridgeProtocolConfig extends ProtocolConfig {
 
 export const GnosisNativeBridgeConfigs: GnosisBridgeProtocolConfig = {
   protocol: ProtocolNames.gnosisNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1539043200, // Tue Oct 09 2018 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.gnosis,

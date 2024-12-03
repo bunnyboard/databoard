@@ -232,4 +232,5 @@ export const ProtocolNames = {
   kintoNativeBridge: 'kintoNativeBridge',
   loopringNativeBridge: 'loopringNativeBridge',
   bedrock: 'bedrock',
+  synthetix: 'synthetix',
 };

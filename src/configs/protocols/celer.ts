@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig, Token } from '../../types/base';
+import { ProtocolConfig, Token } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import CbridgeSupportedTokens from '../data/constants/CbridgeTokens.json';
 
@@ -17,7 +17,6 @@ export interface CbridgeProtocolConfig extends ProtocolConfig {
 
 export const CbridgeConfigs: CbridgeProtocolConfig = {
   protocol: ProtocolNames.cbridge,
-  category: ProtocolCategories.bridge,
   birthday: 1640995200, // Sat Jan 01 2022 00:00:00 GMT+0000
   bridges: [
     {

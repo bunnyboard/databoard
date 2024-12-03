@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface HopPoolConfig {
@@ -19,7 +19,6 @@ export interface HopProtocolConfig extends ProtocolConfig {
 
 export const HopConfigs: HopProtocolConfig = {
   protocol: ProtocolNames.hop,
-  category: ProtocolCategories.bridge,
   birthday: 1640995200, // Sat Jan 01 2022 00:00:00 GMT+0000
   bridges: [
     {

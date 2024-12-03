@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface AjnaFactoryConfig {
@@ -18,7 +18,6 @@ export interface AjnaProtocolConfigs extends ProtocolConfig {
 
 export const AjnaConfigs: AjnaProtocolConfigs = {
   protocol: ProtocolNames.ajna,
-  category: ProtocolCategories.lending,
   birthday: 1704499200, // Sat Jan 06 2024 00:00:00 GMT+0000
   poolFactories: [
     {

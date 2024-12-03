@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface ZeroxExchangeConfig {
@@ -14,7 +14,6 @@ export interface ZeroxProtocolConfig extends ProtocolConfig {
 
 export const ZeroxConfigs: ZeroxProtocolConfig = {
   protocol: ProtocolNames.zerox,
-  category: ProtocolCategories.aggregator,
   birthday: 1591920000, // Fri Jun 12 2020 00:00:00 GMT+0000
   exchanges: [
     {

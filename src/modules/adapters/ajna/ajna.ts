@@ -35,7 +35,6 @@ export default class AjnaAdapter extends ProtocolAdapter {
     logger.info('getting ajna protocol data', {
       service: this.name,
       protocol: this.protocolConfig.protocol,
-      category: this.protocolConfig.category,
       blockTime: options.timestamp,
       beginTime: options.beginTime,
       endTime: options.endTime,
@@ -43,7 +42,6 @@ export default class AjnaAdapter extends ProtocolAdapter {
 
     const protocolData: ProtocolData = {
       protocol: this.protocolConfig.protocol,
-      category: this.protocolConfig.category,
       birthday: this.protocolConfig.birthday,
       timestamp: options.timestamp,
       breakdown: {},

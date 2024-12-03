@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { OptimismBridgeProtocolConfig, OptimismSuperchainTokens } from './optimism';
 
@@ -22,7 +22,6 @@ export interface KarakProtocolConfig extends ProtocolConfig {
 
 export const KarakConfigs: KarakProtocolConfig = {
   protocol: ProtocolNames.karak,
-  category: ProtocolCategories.restaking,
   birthday: 1712361600, // Sat Apr 06 2024 00:00:00 GMT+0000
   chainConfigs: [
     {
@@ -405,7 +404,6 @@ export const KarakConfigs: KarakProtocolConfig = {
 
 export const Karakk2NativeBridgeConfigs: OptimismBridgeProtocolConfig = {
   protocol: ProtocolNames.karakk2NativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1703116800, // Thu Dec 21 2023 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.karakk2,

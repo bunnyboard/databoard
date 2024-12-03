@@ -1,10 +1,8 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { CompoundProtocolConfig } from './compound';
 
 export const TectonicConfigs: CompoundProtocolConfig = {
   protocol: ProtocolNames.tectonic,
-  category: ProtocolCategories.lending,
   birthday: 1639612800, // Thu Dec 16 2021 00:00:00 GMT+0000
   comptrollers: [
     {

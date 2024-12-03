@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface SeaportConfig {
@@ -14,7 +14,6 @@ export interface OpenseaProtocolConfig extends ProtocolConfig {
 
 export const OpenseaConfigs: OpenseaProtocolConfig = {
   protocol: ProtocolNames.opensea,
-  category: ProtocolCategories.marketplace,
   birthday: 1654992000, // Sun Jun 12 2022 00:00:00 GMT+0000
   seaports: [
     {

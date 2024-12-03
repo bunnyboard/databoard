@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface SolvPoolConfig {
@@ -21,7 +21,6 @@ export interface SolvProtocolConfig extends ProtocolConfig {
 
 export const SolvConfigs: SolvProtocolConfig = {
   protocol: ProtocolNames.solv,
-  category: ProtocolCategories.liquidStaking,
   birthday: 1711756800, // Sat Mar 30 2024 00:00:00 GMT+0000
   pools: [
     {

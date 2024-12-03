@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface SlisbnbProtocolConfig extends ProtocolConfig {
@@ -9,7 +9,6 @@ export interface SlisbnbProtocolConfig extends ProtocolConfig {
 
 export const SlisBnbConfigs: SlisbnbProtocolConfig = {
   protocol: ProtocolNames.slisbnb,
-  category: ProtocolCategories.liquidStaking,
   birthday: 1688169600, // Sat Jul 01 2023 00:00:00 GMT+0000
   chain: ChainNames.bnbchain,
   slisBNB: '0xB0b84D294e0C75A6abe60171b70edEb2EFd14A1B',

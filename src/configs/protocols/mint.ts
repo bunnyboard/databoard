@@ -1,10 +1,8 @@
-import { ProtocolCategories } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 import { OptimismBridgeProtocolConfig, OptimismSuperchainTokens } from './optimism';
 
 export const MintNativeBridgeConfigs: OptimismBridgeProtocolConfig = {
   protocol: ProtocolNames.mintNativeBridge,
-  category: ProtocolCategories.bridge,
   birthday: 1715644800, // Tue May 14 2024 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.mint,

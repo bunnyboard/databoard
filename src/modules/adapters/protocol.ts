@@ -35,7 +35,6 @@ export default class ProtocolAdapter implements IProtocolAdapter {
       this.executeSession.startSession('start to update protocol current data', {
         service: this.name,
         protocol: this.protocolConfig.protocol,
-        category: this.protocolConfig.category,
       });
 
       const currentTimestamp = getTimestamp();
@@ -82,7 +81,6 @@ export default class ProtocolAdapter implements IProtocolAdapter {
       this.executeSession.endSession('updated current data for protocol', {
         service: this.name,
         protocol: this.protocolConfig.protocol,
-        category: this.protocolConfig.category,
       });
     }
 
@@ -120,7 +118,6 @@ export default class ProtocolAdapter implements IProtocolAdapter {
       logger.info('start to update protocol snapshots data', {
         service: this.name,
         protocol: this.protocolConfig.protocol,
-        category: this.protocolConfig.category,
         fromDate: getDateString(startTime),
         toDate: getDateString(todayTimestamp),
       });
@@ -129,7 +126,6 @@ export default class ProtocolAdapter implements IProtocolAdapter {
         this.executeSession.startSession('start to update protocol snapshot', {
           service: this.name,
           protocol: this.protocolConfig.protocol,
-          category: this.protocolConfig.category,
           date: getDateString(startTime),
         });
 
@@ -160,7 +156,6 @@ export default class ProtocolAdapter implements IProtocolAdapter {
         this.executeSession.endSession('updated snapshot data for protocol', {
           service: this.name,
           protocol: this.protocolConfig.protocol,
-          category: this.protocolConfig.category,
           date: getDateString(startTime),
         });
 

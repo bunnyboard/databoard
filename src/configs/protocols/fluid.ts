@@ -1,4 +1,4 @@
-import { ProtocolCategories, ProtocolConfig } from '../../types/base';
+import { ProtocolConfig } from '../../types/base';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface FluidMarketConfig {
@@ -16,7 +16,6 @@ export interface FluidProtocolConfig extends ProtocolConfig {
 
 export const FluidConfigs: FluidProtocolConfig = {
   protocol: ProtocolNames.fluid,
-  category: ProtocolCategories.lending,
   birthday: 1717200000, // Sat Jun 01 2024 00:00:00 GMT+0000
   markets: [
     {
