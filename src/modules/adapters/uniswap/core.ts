@@ -61,11 +61,11 @@ export default class UniswapCore extends UniswapIndexer {
     let totalLogsCount = 0;
 
     let startBlock = options.beginBlock;
+    const client = this.services.blockchain.evm.getPublicClient(options.chainConfig.chain);
     while (startBlock <= options.endBlock) {
-      const logs = await this.getChainLogs({
-        chain: options.chainConfig.chain,
-        fromBlock: startBlock,
-        toBlock: startBlock + blockRange,
+      const logs = await client.getLogs({
+        fromBlock: BigInt(startBlock),
+        toBlock: BigInt(startBlock + blockRange),
       });
 
       const parseResultV2 = await this.parseDexV2Events(options, logs);

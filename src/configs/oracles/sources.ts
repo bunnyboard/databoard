@@ -1,6 +1,7 @@
 import { OracleConfig } from '../../types/oracles';
 import { OracleSourceBalancerList } from './balancer';
 import { OracleSourceChainlinkList } from './chainlink';
+import { OffchainOracleSourcesFromCoingecko } from './coingecko';
 import { OracleCurrencyBaseConfigs } from './currency';
 import { OracleSourceCurveList } from './curve';
 import { OracleSourceCustomList } from './custom';
@@ -2447,5 +2448,10 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   msETH: {
     currency: 'eth',
     sources: [OracleSourceCurveList.msETH_WETH],
+  },
+  WIF: {
+    currency: 'usd',
+    sources: [],
+    offchainSources: [OffchainOracleSourcesFromCoingecko.WIF],
   },
 };

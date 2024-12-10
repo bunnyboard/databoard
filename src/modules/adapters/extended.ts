@@ -24,19 +24,6 @@ interface GetAddressBalanceUsdResult {
   };
 }
 
-interface GetChainLogsOptions {
-  chain: string;
-  fromBlock: number;
-  toBlock: number;
-}
-
-interface GetChainLogItem {
-  blockNumber: number;
-  transactionHash: string;
-  topics: Array<any>;
-  data: string;
-}
-
 export default class ProtocolExtendedAdapter extends ProtocolAdapter {
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {
     super(services, storages, protocolConfig);
@@ -70,7 +57,7 @@ export default class ProtocolExtendedAdapter extends ProtocolAdapter {
       for (let i = 0; i < queryTokens.length; i++) {
         const token = queryTokens[i];
 
-        if (token && results[i] && results[i].toString() !== '0') {
+        if (token && results[i]) {
           const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
             chain: token.chain,
             address: token.address,
@@ -123,62 +110,5 @@ export default class ProtocolExtendedAdapter extends ProtocolAdapter {
     }
 
     return getResult;
-  }
-
-  public async getChainLogs(options: GetChainLogsOptions): Promise<Array<GetChainLogItem>> {
-    const localDatabase = `${options.chain}.logs`;
-
-    let logs: Array<GetChainLogItem> = [];
-
-    let startBlock = options.fromBlock;
-    while (true) {
-      const localDbLogs = await this.storages.localdb.read({
-        database: localDatabase,
-        key: startBlock.toString(),
-      });
-
-      if (!localDbLogs) {
-        break;
-      }
-
-      logs = logs.concat(localDbLogs);
-
-      startBlock += 1;
-    }
-
-    if (startBlock < options.toBlock) {
-      const client = this.services.blockchain.evm.getPublicClient(options.chain);
-      let rawlogs = await client.getLogs({
-        fromBlock: BigInt(startBlock),
-        toBlock: BigInt(options.toBlock),
-      });
-
-      const items: Array<GetChainLogItem> = rawlogs.map((rawlog) => {
-        return {
-          blockNumber: Number(rawlog.blockNumber),
-          transactionHash: rawlog.transactionHash,
-          topics: rawlog.topics,
-          data: rawlog.data,
-        };
-      });
-
-      logs = logs.concat(items);
-
-      // save to local db
-      const writeOperations: Array<any> = [];
-      for (let i = startBlock; i <= options.toBlock; i++) {
-        writeOperations.push({
-          key: i.toString(),
-          value: items.filter((item) => item.blockNumber === i),
-        });
-      }
-
-      await this.storages.localdb.writeBatch({
-        database: localDatabase,
-        values: writeOperations,
-      });
-    }
-
-    return logs;
   }
 }

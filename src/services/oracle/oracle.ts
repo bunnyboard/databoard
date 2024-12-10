@@ -34,6 +34,8 @@ import { AutoOracleConfigs } from '../../configs/oracles/auto';
 import { AddressZero } from '../../configs/constants';
 import { Token } from '../../types/base';
 import BalancerLibs from '../../modules/libs/balancer';
+import { getTokenPriceFromCoingecko } from './coingecko';
+import envConfig from '../../configs/envConfig';
 
 export default class OracleService extends CachingService implements IOracleService {
   public readonly name: string = 'oracle';
@@ -267,6 +269,12 @@ export default class OracleService extends CachingService implements IOracleServ
         for (const offchainSource of sources) {
           if (offchainSource.source === 'binance') {
             returnPrice = await getTokenPriceFromBinance(offchainSource, options.timestamp);
+          } else if (offchainSource.source === 'coingecko' && envConfig.coingecko.coingeckoApiKey) {
+            returnPrice = await getTokenPriceFromCoingecko(
+              offchainSource,
+              options.timestamp,
+              envConfig.coingecko.coingeckoApiKey,
+            );
           }
         }
       }

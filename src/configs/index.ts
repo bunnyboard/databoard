@@ -124,11 +124,13 @@ import { OpbnbNativeBridgeConfigs } from './protocols/opbnb';
 import { LoopringNativeBridgeConfigs } from './protocols/loopring';
 import { AnkrConfigs } from './protocols/ankr';
 import { BedrockConfigs } from './protocols/bedrock';
+import { GmxConfigs } from './protocols/gmx';
+import { WasabiConfigs } from './protocols/wasabi';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
   polygon: 200,
-  merlin: 200,
+  merlin: 100,
   ronin: 400,
   zklinknova: 5000,
   fantom: 1000,
@@ -278,4 +280,6 @@ export const ProtocolConfigs = {
   loopringNativeBridge: LoopringNativeBridgeConfigs,
   ankr: AnkrConfigs,
   bedrock: BedrockConfigs,
+  gmx: GmxConfigs,
+  wasabi: WasabiConfigs,
 };

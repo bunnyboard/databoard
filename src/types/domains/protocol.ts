@@ -57,6 +57,26 @@ export interface ProtocolCoreMetrics {
     bridge?: number;
   };
 
+  // for perpetual trading
+  volumePerpetual?: {
+    // volume in size of open long positions
+    perpetualOpenLong: number;
+    // volume in size of close long positions
+    perpetualCloseLong: number;
+    // volume in size of open short positions
+    perpetualOpenShort: number;
+    // volume in size of close short positions
+    perpetualCloseShort: number;
+    // volume in size of liquidate long positions
+    perpetualLiquidateLong: number;
+    // volume in size of liquidate short positions
+    perpetualLiquidateShort: number;
+    // volume of collateral liquidated on long positions
+    perpetualCollateralLiquidateLong: number;
+    // volume of collateral liquidated on short positions
+    perpetualCollateralLiquidateShort: number;
+  };
+
   // for bridge protocols
   volumeBridgePaths?: {
     // source chain -> dest chain -> volume usd

@@ -233,4 +233,6 @@ export const ProtocolNames = {
   loopringNativeBridge: 'loopringNativeBridge',
   bedrock: 'bedrock',
   synthetix: 'synthetix',
+  gmx: 'gmx',
+  wasabi: 'wasabi',
 };

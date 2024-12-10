@@ -23,6 +23,9 @@ const envConfig: EnvConfig = {
   etherscan: {
     etherscanApiKey: String(process.env.ETHERSCAN_API_KEY),
   },
+  coingecko: {
+    coingeckoApiKey: process.env.COINGECKO_API_KEY ? String(process.env.COINGECKO_API_KEY) : null,
+  },
 };
 
 export default envConfig;

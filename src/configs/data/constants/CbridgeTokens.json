@@ -115,12 +115,6 @@
   },
   {
     "chain": "ethereum",
-    "symbol": "MCB",
-    "decimals": 18,
-    "address": "0x4e352cf164e64adcbad318c3a1e222e9eba4ce42"
-  },
-  {
-    "chain": "ethereum",
     "symbol": "METIS",
     "decimals": 18,
     "address": "0x9e32b13ce7f2e80a01932b42553652e053d6ed8e"
@@ -1048,12 +1042,6 @@
     "symbol": "KWENTA",
     "decimals": 18,
     "address": "0x7fe5e5befa99a57cd690f2e220c251c90422da8b"
-  },
-  {
-    "chain": "arbitrum",
-    "symbol": "MCB",
-    "decimals": 18,
-    "address": "0x4e352cf164e64adcbad318c3a1e222e9eba4ce42"
   },
   {
     "chain": "arbitrum",

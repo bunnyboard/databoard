@@ -1,5 +1,6 @@
 import BigNumber from 'bignumber.js';
 import dayjs from 'dayjs';
+import util from 'util';
 
 export async function sleep(seconds: number) {
   return new Promise((resolve) => setTimeout(resolve, seconds * 1000));
@@ -126,4 +127,8 @@ export function removeNullBytes(str: string): string {
     .split('')
     .filter((char) => char.codePointAt(0))
     .join('');
+}
+
+export function consoleLogFull(item: any) {
+  console.log(util.inspect(item, { showHidden: false, depth: null, colors: true }));
 }

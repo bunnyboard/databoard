@@ -30,6 +30,7 @@ import FluidAdapter from './fluid/fluid';
 import FraxEtherAdapter from './frax/fraxether';
 import FraxlendAdapter from './frax/fraxlend';
 import FuelNativeBridgeAdapter from './fuel/nativeBridge';
+import GmxAdapter from './gmx/gmx';
 import GnosisNativeBridgeAdapter from './gnosis/nativeBridge';
 import HopAdapter from './hop/hop';
 import HyphenAdapter from './hyphen/hyphen';
@@ -217,5 +218,6 @@ export function getProtocolAdapters(
     loopringNativeBridge: new LoopringNativeBridgeAdapter(services, storages, ProtocolConfigs.loopringNativeBridge),
     ankr: new AnkrAdapter(services, storages, ProtocolConfigs.ankr),
     bedrock: new BedrockAdapter(services, storages, ProtocolConfigs.bedrock),
+    gmx: new GmxAdapter(services, storages, ProtocolConfigs.gmx),
   };
 }

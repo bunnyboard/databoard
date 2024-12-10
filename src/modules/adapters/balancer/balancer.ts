@@ -10,6 +10,7 @@ import WeightPoolAbi from '../../../configs/abi/balancer/WeightedPool.json';
 import { formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
 import logger from '../../../lib/logger';
 import ProtocolExtendedAdapter from '../extended';
+import envConfig from '../../../configs/envConfig';
 
 const Events = {
   FlashLoan: '0x0d7d75e01ab95780d3cd1c8ec0dd6c2ce19e3a20427eec8bf53283b6fb8e95f0',
@@ -26,12 +27,14 @@ export default class BalancerAdapter extends ProtocolExtendedAdapter {
 
   private async getPoolSwapFeePercentage(dexConfig: BalancerDexConfig, poolId: string): Promise<number> {
     const datakey = `balancer-pool-swapFee-${dexConfig.chain}-${normalizeAddress(dexConfig.vault)}-${poolId}`;
-    const cachingData = await this.storages.localdb.read({
-      database: 'adapter.balancer',
-      key: datakey,
+    const cachingData = await this.storages.database.find({
+      collection: envConfig.mongodb.collections.caching.name,
+      query: {
+        name: datakey,
+      },
     });
     if (cachingData) {
-      return cachingData;
+      return Number(cachingData.feePercentage);
     }
 
     let feePercentage = 0;
@@ -55,10 +58,16 @@ export default class BalancerAdapter extends ProtocolExtendedAdapter {
       feePercentage = formatBigNumberToNumber(getSwapFeePercentage ? getSwapFeePercentage.toString() : '0', 18);
     }
 
-    await this.storages.localdb.writeSingle({
-      database: 'adapter.balancer',
-      key: datakey,
-      value: feePercentage,
+    await this.storages.database.update({
+      collection: envConfig.mongodb.collections.caching.name,
+      keys: {
+        name: datakey,
+      },
+      updates: {
+        name: datakey,
+        feePercentage: feePercentage,
+      },
+      upsert: true,
     });
 
     return feePercentage;
