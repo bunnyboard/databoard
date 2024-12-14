@@ -2376,4 +2376,11 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.ethereum['0xabd4c63d2616a5201454168269031355f4764337'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
+  YAK_WAVAX: {
+    type: 'univ2',
+    chain: 'avalanche',
+    address: '0xd2f01cd87a43962fd93c21e07c1a420714cc94c9',
+    baseToken: TokensBook.avalanche['0x59414b3089ce2af0010e7523dea7e2b35d776ec7'],
+    quotaToken: TokensBook.avalanche['0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7'],
+  },
 };

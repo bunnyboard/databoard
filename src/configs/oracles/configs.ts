@@ -1191,6 +1191,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.AVAX,
     [AddressE]: OracleSourceConfigs.AVAX,
     [AddressF]: OracleSourceConfigs.AVAX,
+    '0x59414b3089ce2af0010e7523dea7e2b35d776ec7': OracleSourceConfigs.YAK,
     '0x6a02c7a974f1f13a67980c80f774ec1d2ed8f98d': OracleSourceConfigs.AVAX,
     '0xa25eaf2906fa1a3a13edac9b9657108af7b703e3': OracleSourceConfigs.ggAVAX,
     '0x7678e162f38ec9ef2bfd1d0aaf9fd93355e5fa0b': OracleSourceConfigs.EUR,
@@ -1539,6 +1540,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   },
 
   zksync: {
+    '0x000000000000000000000000000000000000800a': OracleSourceConfigs.ETH,
     '0xdd9f72afed3631a6c85b5369d84875e6c42f1827': OracleSourceConfigs.SIS,
     '0xed4040fd47629e7c8fbb7da76bb50b3e7695f0f2': OracleSourceConfigs.HOLD,
     '0x787c09494ec8bcb24dcaf8659e7d5d69979ee508': OracleSourceConfigs.MAV,
