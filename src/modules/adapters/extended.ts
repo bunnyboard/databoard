@@ -24,6 +24,21 @@ interface GetAddressBalanceUsdResult {
   };
 }
 
+// interface LogItem {
+//   chain: string;
+//   transactionHash: string;
+//   logIndex: number;
+//   blockNumber: number;
+//   topics: Array<string>;
+//   data: string;
+// }
+
+// interface GetChainLogsOptions {
+//   chain: string;
+//   fromBlock: number;
+//   toBlock: number;
+// }
+
 export default class ProtocolExtendedAdapter extends ProtocolAdapter {
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {
     super(services, storages, protocolConfig);
@@ -111,4 +126,35 @@ export default class ProtocolExtendedAdapter extends ProtocolAdapter {
 
     return getResult;
   }
+
+  // when query events of protocol which have many contracts like Uniswap
+  // we got a problem of query events from a single contract, one-by-one
+  // it take too long
+  // this function provide a solution of query logs from blockchain blocks
+  // save them into database and will be reused by multiple protocols later
+  // public async indexChainLogs(options: GetChainLogsOptions): Promise<void> {
+  //   let syncFromBlock = options.fromBlock;
+  //   let syncToBlock = options.toBlock;
+
+  //   // first we check current database block state: oldest and latest block number
+  //   const oldestBlockSyncKey = `sync-chain-logs-${options.chain}-oldest`;
+  //   const latestBlockSyncKey = `sync-chain-logs-${options.chain}-latest`;
+
+  //   const oldestSyncState = await this.storages.database.find({
+  //     collection: envConfig.mongodb.collections.caching.name,
+  //     query: {
+  //       name: oldestBlockSyncKey,
+  //     }
+  //   });
+  //   const latestSyncState = await this.storages.database.find({
+  //     collection: envConfig.mongodb.collections.caching.name,
+  //     query: {
+  //       name: latestBlockSyncKey,
+  //     }
+  //   });
+
+  //   if (oldestSyncState && latestSyncState) {
+  //     if ()
+  //   }
+  // }
 }

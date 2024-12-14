@@ -338,6 +338,28 @@ export default class GmxAdapter extends ProtocolExtendedAdapter {
                 const supplySideRevenue = feeUsd * 0.7;
                 const protocolRevenue = feeUsd - supplySideRevenue;
 
+                if (!protocolData.breakdown[token.chain][token.address]) {
+                  protocolData.breakdown[token.chain][token.address] = {
+                    ...getInitialProtocolCoreMetrics(),
+                    totalSupplied: 0,
+                    volumes: {
+                      deposit: 0,
+                      withdraw: 0,
+                      swap: 0,
+                    },
+                    volumePerpetual: {
+                      perpetualOpenLong: 0,
+                      perpetualOpenShort: 0,
+                      perpetualCloseLong: 0,
+                      perpetualCloseShort: 0,
+                      perpetualLiquidateLong: 0,
+                      perpetualLiquidateShort: 0,
+                      perpetualCollateralLiquidateLong: 0,
+                      perpetualCollateralLiquidateShort: 0,
+                    },
+                  };
+                }
+
                 protocolData.totalFees += feeUsd;
                 protocolData.supplySideRevenue += supplySideRevenue;
                 protocolData.protocolRevenue += protocolRevenue;

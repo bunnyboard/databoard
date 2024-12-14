@@ -126,6 +126,7 @@ import { AnkrConfigs } from './protocols/ankr';
 import { BedrockConfigs } from './protocols/bedrock';
 import { GmxConfigs } from './protocols/gmx';
 import { WasabiConfigs } from './protocols/wasabi';
+import { WoofiConfigs } from './protocols/woofi';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -282,4 +283,5 @@ export const ProtocolConfigs = {
   bedrock: BedrockConfigs,
   gmx: GmxConfigs,
   wasabi: WasabiConfigs,
+  woofi: WoofiConfigs,
 };

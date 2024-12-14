@@ -235,4 +235,5 @@ export const ProtocolNames = {
   synthetix: 'synthetix',
   gmx: 'gmx',
   wasabi: 'wasabi',
+  woofi: 'woofi',
 };

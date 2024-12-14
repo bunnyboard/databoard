@@ -79,6 +79,7 @@ import TaikoNativeBridgeAdapter from './taiko/nativeBridge';
 import UniswapAdapter from './uniswap/uniswap';
 import VenusAdapter from './venus/venus';
 import WbethAdapter from './wbeth/wbeth';
+import WoofiAdapter from './woofi/woofi';
 import ZeroxAdapter from './zerox/zerox';
 import ZksyncNativeBridgeAdapter from './zksync/nativeBridge';
 
@@ -219,5 +220,6 @@ export function getProtocolAdapters(
     ankr: new AnkrAdapter(services, storages, ProtocolConfigs.ankr),
     bedrock: new BedrockAdapter(services, storages, ProtocolConfigs.bedrock),
     gmx: new GmxAdapter(services, storages, ProtocolConfigs.gmx),
+    woofi: new WoofiAdapter(services, storages, ProtocolConfigs.woofi),
   };
 }

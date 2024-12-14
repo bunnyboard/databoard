@@ -1,19 +1,19 @@
-import { CowswapProtocolConfig } from '../../../configs/protocols/cowswap';
 import { ProtocolConfig } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
 import ProtocolAdapter from '../protocol';
-import GPv2SettlementAbi from '../../../configs/abi/cowswap/GPv2Settlement.json';
 import { decodeEventLog } from 'viem';
 import { formatBigNumberToNumber } from '../../../lib/utils';
 import logger from '../../../lib/logger';
 import AdapterDataHelper from '../helpers';
+import { WoofiProtocolConfig } from '../../../configs/protocols/woofi';
+import WooRouterV2Abi from '../../../configs/abi/woofi/WooRouterV2.json';
 
-const TradeEvent = '0xa07a543ab8a018198e99ca0184c93fe9050a79400a0a723441f84de1d972cc17';
+const WooRouterSwapEvent = '0x27c98e911efdd224f4002f6cd831c3ad0d2759ee176f9ee8466d95826af22a1c';
 
-export default class CowswapAdapter extends ProtocolAdapter {
-  public readonly name: string = 'adapter.cowswap 🐮';
+export default class WoofiAdapter extends ProtocolAdapter {
+  public readonly name: string = 'adapter.woofi';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {
     super(services, storages, protocolConfig);
@@ -27,21 +27,22 @@ export default class CowswapAdapter extends ProtocolAdapter {
       breakdown: {},
       ...getInitialProtocolCoreMetrics(),
       volumes: {
-        // cowswap is dex aggregator
-        // we count token swaps on cowswap as trade volume
+        // woofi is dex aggregator
+        // we count token swaps on woofi as trade volume
+        // woofi dex aggregator charges 0 fees
         trade: 0,
       },
       breakdownChains: {},
     };
 
-    const cowswapConfig = this.protocolConfig as CowswapProtocolConfig;
-    for (const settlementConfig of cowswapConfig.settlements) {
-      if (settlementConfig.birthday > options.timestamp) {
+    const woofiConfig = this.protocolConfig as WoofiProtocolConfig;
+    for (const routerConfig of woofiConfig.routers) {
+      if (routerConfig.birthday > options.timestamp) {
         continue;
       }
 
-      if (!(protocolData as any).breakdownChains[settlementConfig.chain]) {
-        (protocolData as any).breakdownChains[settlementConfig.chain] = {
+      if (!(protocolData as any).breakdownChains[routerConfig.chain]) {
+        (protocolData as any).breakdownChains[routerConfig.chain] = {
           ...getInitialProtocolCoreMetrics(),
           volumes: {
             trade: 0,
@@ -50,43 +51,42 @@ export default class CowswapAdapter extends ProtocolAdapter {
       }
 
       const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-        settlementConfig.chain,
+        routerConfig.chain,
         options.beginTime,
       );
       const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-        settlementConfig.chain,
+        routerConfig.chain,
         options.endTime,
       );
       const logs = await this.services.blockchain.evm.getContractLogs({
-        chain: settlementConfig.chain,
-        address: settlementConfig.settlement,
+        chain: routerConfig.chain,
+        address: routerConfig.router,
         fromBlock: beginBlock,
         toBlock: endBlock,
       });
 
       for (const log of logs) {
-        if (log.topics[0] === TradeEvent) {
+        if (log.topics[0] === WooRouterSwapEvent) {
           const event: any = decodeEventLog({
-            abi: GPv2SettlementAbi,
+            abi: WooRouterV2Abi,
             topics: log.topics,
             data: log.data,
           });
 
-          let amountUsd = 0;
-          let feesUsd = 0;
-
           const sellToken = await this.services.blockchain.evm.getTokenInfo({
-            chain: settlementConfig.chain,
-            address: event.args.sellToken,
+            chain: routerConfig.chain,
+            address: event.args.fromToken,
           });
           const buyToken = await this.services.blockchain.evm.getTokenInfo({
-            chain: settlementConfig.chain,
-            address: event.args.buyToken,
+            chain: routerConfig.chain,
+            address: event.args.toToken,
           });
 
           if (sellToken && buyToken) {
-            const sellAmount = formatBigNumberToNumber(event.args.sellAmount.toString(), sellToken.decimals);
-            const buyAmount = formatBigNumberToNumber(event.args.buyAmount.toString(), buyToken.decimals);
+            let volumeUsd = 0;
+
+            const sellAmount = formatBigNumberToNumber(event.args.fromAmount.toString(), sellToken.decimals);
+            const buyAmount = formatBigNumberToNumber(event.args.toAmount.toString(), buyToken.decimals);
 
             let sellTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
               chain: sellToken.chain,
@@ -94,39 +94,32 @@ export default class CowswapAdapter extends ProtocolAdapter {
               timestamp: options.timestamp,
               disableWarning: true,
             });
-            let buyTokenPriceUsd = 0;
 
-            if (sellTokenPriceUsd === 0) {
-              buyTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+            volumeUsd = sellAmount * sellTokenPriceUsd;
+
+            if (volumeUsd === 0) {
+              const buyTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
                 chain: buyToken.chain,
                 address: buyToken.address,
                 timestamp: options.timestamp,
                 disableWarning: true,
               });
-              sellTokenPriceUsd = sellAmount > 0 ? (buyAmount * buyTokenPriceUsd) / sellAmount : 0;
+              volumeUsd = buyAmount * buyTokenPriceUsd;
             }
 
-            if (sellTokenPriceUsd === 0 && buyTokenPriceUsd === 0) {
+            if (volumeUsd === 0) {
               logger.warn('failed to get token prices for trade', {
                 service: this.name,
                 protocol: this.protocolConfig.protocol,
-                chain: settlementConfig.chain,
+                chain: routerConfig.chain,
                 token: `${sellToken.symbol}-${buyToken.symbol}`,
                 logIndex: log.logIndex,
                 txn: log.transactionHash,
               });
-            } else {
-              amountUsd =
-                formatBigNumberToNumber(event.args.sellAmount.toString(), sellToken.decimals) * sellTokenPriceUsd;
-              feesUsd =
-                formatBigNumberToNumber(event.args.feeAmount.toString(), sellToken.decimals) * sellTokenPriceUsd;
-
-              protocolData.totalFees += feesUsd;
-              protocolData.protocolRevenue += feesUsd;
-              (protocolData.volumes.trade as number) += amountUsd;
-              (protocolData.breakdownChains as any)[settlementConfig.chain].totalFees += feesUsd;
-              ((protocolData.breakdownChains as any)[settlementConfig.chain].volumes.trade as number) += amountUsd;
             }
+
+            (protocolData.volumes.trade as number) += volumeUsd;
+            ((protocolData.breakdownChains as any)[routerConfig.chain].volumes.trade as number) += volumeUsd;
           }
         }
       }

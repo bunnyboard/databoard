@@ -2454,4 +2454,12 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [],
     offchainSources: [OffchainOracleSourcesFromCoingecko.WIF],
   },
+  ORDER: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ORDER_WETH],
+  },
+  PEAR: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.PEAR_WETH],
+  },
 };

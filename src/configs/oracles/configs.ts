@@ -9,6 +9,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0xabd4c63d2616a5201454168269031355f4764337': OracleSourceConfigs.ORDER,
     '0xb165a74407fe1e519d6bcbdec1ed3202b35a4140': OracleSourceConfigs.USDT,
     '0x7cfadfd5645b50be87d546f42699d863648251ad': OracleSourceConfigs.USDC,
     '0xd9fba68d89178e3538e708939332c79efc540179': OracleSourceConfigs.GHO,
@@ -489,6 +490,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0x3212dc0f8c834e4de893532d27cc9b6001684db0': OracleSourceConfigs.PEAR,
+    '0x4e200fe2f3efb977d5fd9c430a41531fb04d97b8': OracleSourceConfigs.ORDER,
     '0xa1b91fe9fd52141ff8cac388ce3f10bfdc1de79d': OracleSourceConfigs.WIF,
     '0x74885b4d524d497261259b38900f54e6dbad2210': OracleSourceConfigs.APE,
     '0xac800fd6159c2a2cb8fc31ef74621eb430287a5a': OracleSourceConfigs.OP,
@@ -1792,6 +1795,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   },
 
   celo: {
+    '0x0000000000000000000000000000000000000000': OracleSourceConfigs.CELO,
+    '0x471ece3750da237f93b8e339c536989b8978a438': OracleSourceConfigs.CELO,
     '0x639a647fbe20b6c8ac19e48e2de44ea792c62c5c': OracleSourceConfigs.BIFI,
     '0xb9c8f0d3254007ee4b98970b94544e473cd610ec': OracleSourceConfigs.miMATIC,
     '0x8e3670fd7b0935d3fe832711debfe13bb689b690': OracleSourceConfigs.AVAX,
@@ -1801,7 +1806,6 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xd15ec721c2a896512ad29c671997dd68f9593226': OracleSourceConfigs.SUSHI,
     '0x122013fd7df1c6f636a5bb8f03108e876548b455': OracleSourceConfigs.ETH,
     '0x2def4285787d58a2f811af24755a8150622f4361': OracleSourceConfigs.ETH,
-    '0x471ece3750da237f93b8e339c536989b8978a438': OracleSourceConfigs.CELO,
     '0x765de816845861e75a25fca122bb6898b8b1282a': OracleSourceConfigs.USDT,
     '0xef4229c8c3250c675f21bcefa42f58efbff6002a': OracleSourceConfigs.USDC,
   },
