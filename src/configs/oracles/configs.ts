@@ -785,6 +785,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0x3055913c90fcc1a6ce9a358911721eeb942013a1': OracleSourceConfigs.CAKE,
     '0x7ba6f01772924a82d9626c126347a28299e98c98': OracleSourceConfigs.msETH,
     '0xdcefd8c8fcc492630b943abcab3429f12ea9fea2': OracleSourceConfigs.KLIMA,
     '0x2081ab0d9ec9e4303234ab26d86b20b3367946ee': OracleSourceConfigs.EIGEN,

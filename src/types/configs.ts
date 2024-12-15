@@ -32,8 +32,8 @@ export interface DatabaseCollectionConfig {
   // save protocol data historical/snapshots
   protocolDataSnapshots: MongoCollectionConfig;
 
-  // save constant liquidity pool2 configs
-  metadataPool2: MongoCollectionConfig;
+  // save liquidity pool2 (uniswap v2, v3) configs
+  datasyncPool2: MongoCollectionConfig;
 }
 
 export interface EnvConfig {

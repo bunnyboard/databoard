@@ -36,10 +36,7 @@ import { RocketpoolConfigs } from './protocols/rocketpool';
 import { SeamlessConfigs } from './protocols/seamless';
 import { SonneConfigs } from './protocols/sonne';
 import { SparkConfigs } from './protocols/spark';
-import { SpookyConfigs } from './protocols/spooky';
-import { SushiConfigs } from './protocols/sushi';
 import { TectonicConfigs } from './protocols/tectonic';
-import { UniswapConfigs } from './protocols/uniswap';
 import { UwulendConfigs } from './protocols/uwulend';
 import { VenusConfigs } from './protocols/venus';
 import { YeifinanceConfigs } from './protocols/yeifinance';
@@ -53,7 +50,6 @@ import { LiquidCollectiveConfigs } from './protocols/liquidcollective';
 import { DineroConfigs } from './protocols/dinero';
 import { AcrossConfigs } from './protocols/across';
 import { LayerbankConfigs } from './protocols/layerbank';
-import { PancakeConfigs } from './protocols/pancake';
 import { CircleCctpConfigs } from './protocols/circle';
 import { SynapseConfigs } from './protocols/synapse';
 import { StargateConfigs } from './protocols/stargate';
@@ -66,8 +62,6 @@ import { BobNativeBridgeConfigs } from './protocols/bob';
 import { RedstoneNativeBridgeConfigs } from './protocols/redstone';
 import { ArbitrumNativeBridgeConfigs } from './protocols/arbitrum';
 import { ScrollNativeBridgeConfigs } from './protocols/scroll';
-import { KatanaConfigs } from './protocols/katana';
-import { CamelotConfigs } from './protocols/camelot';
 import { HyphenConfigs } from './protocols/hyphen';
 import { CbridgeConfigs } from './protocols/celer';
 import { ZksyncNativeBridgeConfigs } from './protocols/zksync';
@@ -181,9 +175,7 @@ export const ProtocolConfigs = {
   seamless: SeamlessConfigs,
   sonne: SonneConfigs,
   spark: SparkConfigs,
-  sushi: SushiConfigs,
   tectonic: TectonicConfigs,
-  uniswap: UniswapConfigs,
   uwulend: UwulendConfigs,
   venus: VenusConfigs,
   yeifinance: YeifinanceConfigs,
@@ -194,7 +186,6 @@ export const ProtocolConfigs = {
   fraxlend: FraxlendConfigs,
   curveusd: CurveusdConfigs,
   curvelend: CurvelendConfigs,
-  spooky: SpookyConfigs,
   bungee: BungeeConfigs,
   lifi: LifiConfigs,
   rocketpool: RocketpoolConfigs,
@@ -209,7 +200,6 @@ export const ProtocolConfigs = {
   dinero: DineroConfigs,
   across: AcrossConfigs,
   layerbank: LayerbankConfigs,
-  pancake: PancakeConfigs,
   savax: BenqiStakingAvaxConfigs,
   circlecctp: CircleCctpConfigs,
   synapse: SynapseConfigs,
@@ -223,8 +213,6 @@ export const ProtocolConfigs = {
   bobNativeBridge: BobNativeBridgeConfigs,
   redstoneNativeBridge: RedstoneNativeBridgeConfigs,
   scrollNativeBridge: ScrollNativeBridgeConfigs,
-  katana: KatanaConfigs,
-  camelot: CamelotConfigs,
   hyphen: HyphenConfigs,
   cbridge: CbridgeConfigs,
   zksyncNativeBridge: ZksyncNativeBridgeConfigs,

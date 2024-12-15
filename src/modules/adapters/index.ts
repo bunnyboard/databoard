@@ -56,7 +56,6 @@ import MorphoAdapter from './morpho/morpho';
 import OdosAdapter from './odos/odos';
 import OptimismNativeBridgeAdapter from './optimism/nativeBridge';
 import OptimismNativeBridgeLegacyAdapter from './optimism/nativeBridgeLegacy';
-import PancakeAdapter from './pancake/pancake';
 import ParaswapAdapter from './paraswap/paraswap';
 import PellNetworkAdapter from './pellnetwork/pellnetwork';
 import PolygonNativeBridgeAdapter from './polygon/nativeBridge';
@@ -66,17 +65,14 @@ import RenzoAdapter from './renzo/renzo';
 import RocketpoolAdapter from './rocketpool/rocketpool';
 import RubicAdapter from './rubic/rubic';
 import ScrollNativeBridgeAdapter from './scroll/nativeBridge';
-import SpookyAdapter from './spooky/spooky';
 import StaderAdapter from './stader/stader';
 import StakewiseAdapter from './stakewise/stakewise';
 import StargateAdapter from './stargate/stargate';
 import StarknetNativeBridgeAdapter from './starknet/starknetBridge';
-import SushiAdapter from './sushi/sushi';
 import SwellAdapter from './swell/swell';
 import SymbioticAdapter from './symbiotic/symbiotic';
 import SynapseAdapter from './synapse/synapse';
 import TaikoNativeBridgeAdapter from './taiko/nativeBridge';
-import UniswapAdapter from './uniswap/uniswap';
 import VenusAdapter from './venus/venus';
 import WbethAdapter from './wbeth/wbeth';
 import WoofiAdapter from './woofi/woofi';
@@ -115,9 +111,7 @@ export function getProtocolAdapters(
     seamless: new AaveAdapter(services, storages, ProtocolConfigs.seamless),
     sonne: new CompoundAdapter(services, storages, ProtocolConfigs.sonne),
     spark: new AaveAdapter(services, storages, ProtocolConfigs.spark),
-    sushi: new SushiAdapter(services, storages, ProtocolConfigs.sushi),
     tectonic: new CompoundAdapter(services, storages, ProtocolConfigs.tectonic),
-    uniswap: new UniswapAdapter(services, storages, ProtocolConfigs.uniswap),
     // uwulend: new AaveAdapter(services, storages, ProtocolConfigs.uwulend),
     venus: new VenusAdapter(services, storages, ProtocolConfigs.venus),
     yeifinance: new AaveAdapter(services, storages, ProtocolConfigs.yeifinance),
@@ -129,7 +123,6 @@ export function getProtocolAdapters(
     fraxether: new FraxEtherAdapter(services, storages, ProtocolConfigs.fraxether),
     curveusd: new CurveusdAdapter(services, storages, ProtocolConfigs.curveusd),
     curvelend: new CurvelendAdapter(services, storages, ProtocolConfigs.curvelend),
-    spooky: new SpookyAdapter(services, storages, ProtocolConfigs.spooky),
     bungee: new BungeeAdapter(services, storages, ProtocolConfigs.bungee),
     lifi: new LifiAdapter(services, storages, ProtocolConfigs.lifi),
     rocketpool: new RocketpoolAdapter(services, storages, ProtocolConfigs.rocketpool),
@@ -143,7 +136,6 @@ export function getProtocolAdapters(
     // stakestone: new StakeStoneAdapter(services, storages, ProtocolConfigs.stakestone),
     across: new AcrossAdapter(services, storages, ProtocolConfigs.across),
     layerbank: new LayerbankAdapter(services, storages, ProtocolConfigs.layerbank),
-    pancake: new PancakeAdapter(services, storages, ProtocolConfigs.pancake),
     savax: new BenqiStakingAvaxAdapter(services, storages, ProtocolConfigs.savax),
     circlecctp: new CircleCctpAdapter(services, storages, ProtocolConfigs.circlecctp),
     synapse: new SynapseAdapter(services, storages, ProtocolConfigs.synapse),
@@ -164,8 +156,6 @@ export function getProtocolAdapters(
       storages,
       ProtocolConfigs.polygonzkevmNativeBridge,
     ),
-    katana: new UniswapAdapter(services, storages, ProtocolConfigs.katana),
-    camelot: new UniswapAdapter(services, storages, ProtocolConfigs.camelot),
     hyphen: new HyphenAdapter(services, storages, ProtocolConfigs.hyphen),
     cbridge: new CbridgeAdapter(services, storages, ProtocolConfigs.cbridge),
     hop: new HopAdapter(services, storages, ProtocolConfigs.hop),

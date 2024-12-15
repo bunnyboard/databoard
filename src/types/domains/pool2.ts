@@ -8,7 +8,6 @@ const AllPool2Types = Object.values(Pool2Types);
 export type Pool2Type = (typeof AllPool2Types)[number];
 
 export interface Pool2 {
-  protocol: string;
   chain: string;
   type: Pool2Type;
   factory: string;

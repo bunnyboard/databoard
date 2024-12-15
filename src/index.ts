@@ -3,8 +3,9 @@
 import dotenv from 'dotenv';
 import yargs from 'yargs/yargs';
 
-import { RunCommand } from './cmd/run';
 import { TestCommand } from './cmd/test';
+import { RunCommand } from './cmd/run';
+import { DexscanCommand } from './cmd/dexscan';
 import { ClearProtocolDataCommand } from './cmd/clearProtocolData';
 import { GetTokenPriceCommand } from './cmd/getTokenPrice';
 import { GetDatabaseReportCommand } from './cmd/getDatabaseReport';
@@ -12,16 +13,18 @@ import { GetDatabaseReportCommand } from './cmd/getDatabaseReport';
 (async function () {
   dotenv.config();
 
-  const runCommand = new RunCommand();
   const testCommand = new TestCommand();
+  const runCommand = new RunCommand();
+  const dexscanCommand = new DexscanCommand();
   const clearProtocolDataCommand = new ClearProtocolDataCommand();
   const getTokenPriceCommand = new GetTokenPriceCommand();
   const getDatabaseReportCommand = new GetDatabaseReportCommand();
 
   yargs(process.argv.slice(2))
     .scriptName('bunny')
-    .command(runCommand.name, runCommand.describe, runCommand.setOptions, runCommand.execute)
     .command(testCommand.name, testCommand.describe, testCommand.setOptions, testCommand.execute)
+    .command(runCommand.name, runCommand.describe, runCommand.setOptions, runCommand.execute)
+    .command(dexscanCommand.name, dexscanCommand.describe, dexscanCommand.setOptions, dexscanCommand.execute)
     .command(
       clearProtocolDataCommand.name,
       clearProtocolDataCommand.describe,

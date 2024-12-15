@@ -94,11 +94,12 @@ export default class WoofiAdapter extends ProtocolAdapter {
               timestamp: options.timestamp,
               disableWarning: true,
             });
+            let buyTokenPriceUsd = 0;
 
             volumeUsd = sellAmount * sellTokenPriceUsd;
 
             if (volumeUsd === 0) {
-              const buyTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+              buyTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
                 chain: buyToken.chain,
                 address: buyToken.address,
                 timestamp: options.timestamp,
@@ -107,7 +108,7 @@ export default class WoofiAdapter extends ProtocolAdapter {
               volumeUsd = buyAmount * buyTokenPriceUsd;
             }
 
-            if (volumeUsd === 0) {
+            if (sellTokenPriceUsd === 0 && buyTokenPriceUsd === 0) {
               logger.warn('failed to get token prices for trade', {
                 service: this.name,
                 protocol: this.protocolConfig.protocol,

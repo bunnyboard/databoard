@@ -6,7 +6,7 @@ import { DatabaseCollectionConfig } from '../types/configs';
 dotenv.config();
 
 const CollectionPrefix = 'databoard';
-const MetadataPrefix = 'metadata';
+const DatasyncPrefix = 'datasync';
 export const DatabaseCollectionConfigs: DatabaseCollectionConfig = {
   caching: {
     name: `${CollectionPrefix}.caching`,
@@ -45,9 +45,9 @@ export const DatabaseCollectionConfigs: DatabaseCollectionConfig = {
     ],
   },
 
-  // helper and metadata for devs
-  metadataPool2: {
-    name: `${MetadataPrefix}.pool2`,
+  // datasync
+  datasyncPool2: {
+    name: `${DatasyncPrefix}.pool2`,
     indies: [
       {
         chain: 1,
