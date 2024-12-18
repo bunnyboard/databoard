@@ -121,6 +121,9 @@ import { BedrockConfigs } from './protocols/bedrock';
 import { GmxConfigs } from './protocols/gmx';
 import { WasabiConfigs } from './protocols/wasabi';
 import { WoofiConfigs } from './protocols/woofi';
+import { ZeroNetworkNativeBridgeConfigs } from './protocols/zeronetwork';
+import { TreasureNativeBridgeConfigs } from './protocols/treasure';
+import { CronosZkEvmNativeBridgeConfigs } from './protocols/cronos';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -272,4 +275,7 @@ export const ProtocolConfigs = {
   gmx: GmxConfigs,
   wasabi: WasabiConfigs,
   woofi: WoofiConfigs,
+  zeronetworkNativeBridge: ZeroNetworkNativeBridgeConfigs,
+  treasureNativeBridge: TreasureNativeBridgeConfigs,
+  cronoszkevmNativeBridge: CronosZkEvmNativeBridgeConfigs,
 };

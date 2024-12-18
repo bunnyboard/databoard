@@ -211,5 +211,8 @@ export function getProtocolAdapters(
     bedrock: new BedrockAdapter(services, storages, ProtocolConfigs.bedrock),
     gmx: new GmxAdapter(services, storages, ProtocolConfigs.gmx),
     woofi: new WoofiAdapter(services, storages, ProtocolConfigs.woofi),
+    zeronetworkNativeBridge: new ZksyncNativeBridgeAdapter(services, storages, ProtocolConfigs.zeronetworkNativeBridge),
+    treasureNativeBridge: new ZksyncNativeBridgeAdapter(services, storages, ProtocolConfigs.treasureNativeBridge),
+    cronoszkevmNativeBridge: new ZksyncNativeBridgeAdapter(services, storages, ProtocolConfigs.cronoszkevmNativeBridge),
   };
 }

@@ -1,15 +1,15 @@
-import { ProtocolConfig, Token } from '../../../types/base';
+import { ProtocolConfig } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
 import AdapterDataHelper from '../helpers';
-import { compareAddress, formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
-import { Address, decodeEventLog } from 'viem';
+import { formatBigNumberToNumber } from '../../../lib/utils';
+import { decodeEventLog } from 'viem';
 import { AddressOne, AddressZero } from '../../../configs/constants';
 import { ZksyncNativeBridgeProtocolConfig } from '../../../configs/protocols/zksync';
 import ZksyncBridgeAbi from '../../../configs/abi/zksync/L1SharedBridge.json';
-import { BlockchainConfigs } from '../../../configs/blockchains';
 import ProtocolExtendedAdapter from '../extended';
+import { ContractCall } from '../../../services/blockchains/domains';
 
 const Events = {
   // deposit from ethereum -> zksync
@@ -82,59 +82,52 @@ export default class ZksyncNativeBridgeAdapter extends ProtocolExtendedAdapter {
       options.endTime,
     );
 
-    // count ERC20 tokens balances
-    const tokens: Array<Token> = [];
-    for (const address of zksyncConfig.tokens) {
+    // zksync use AddressOne as native ETH
+    const tokenAddresses = zksyncConfig.tokens.concat(AddressOne);
+    const calls: Array<ContractCall> = tokenAddresses.map((address) => {
+      return {
+        abi: ZksyncBridgeAbi,
+        target: zksyncConfig.shareBridge,
+        method: 'chainBalance',
+        params: [zksyncConfig.layer2ChainId, address],
+      };
+    });
+    const getBalanceResults = await this.services.blockchain.evm.multicall({
+      chain: zksyncConfig.chain,
+      blockNumber: blockNumber,
+      calls: calls,
+    });
+    for (let i = 0; i < tokenAddresses.length; i++) {
       const token = await this.services.blockchain.evm.getTokenInfo({
         chain: zksyncConfig.chain,
-        address: address,
+        address: tokenAddresses[i],
       });
       if (token) {
-        tokens.push(token);
+        const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+          chain: token.chain,
+          address: token.address,
+          timestamp: options.timestamp,
+        });
+
+        const balanceUsd =
+          formatBigNumberToNumber(getBalanceResults[i] ? getBalanceResults[i].toString() : '0', token.decimals) *
+          tokenPriceUsd;
+
+        protocolData.totalAssetDeposited += balanceUsd;
+        protocolData.totalValueLocked += balanceUsd;
+
+        if (!protocolData.breakdown[token.chain][token.address]) {
+          protocolData.breakdown[token.chain][token.address] = {
+            ...getInitialProtocolCoreMetrics(),
+            volumes: {
+              bridge: 0,
+            },
+          };
+        }
+        protocolData.breakdown[token.chain][token.address].totalAssetDeposited += balanceUsd;
+        protocolData.breakdown[token.chain][token.address].totalValueLocked += balanceUsd;
       }
     }
-    const getBalanceResults = await this.getAddressBalanceUsd({
-      chain: zksyncConfig.chain,
-      ownerAddress: zksyncConfig.shareBridge,
-      timestamp: options.timestamp,
-      blockNumber: blockNumber,
-      tokens: tokens,
-    });
-    protocolData.totalAssetDeposited += getBalanceResults.totalBalanceUsd;
-    protocolData.totalValueLocked += getBalanceResults.totalBalanceUsd;
-    for (const [address, tokenBalance] of Object.entries(getBalanceResults.tokenBalanceUsds)) {
-      if (!protocolData.breakdown[zksyncConfig.chain][address]) {
-        protocolData.breakdown[zksyncConfig.chain][address] = {
-          ...getInitialProtocolCoreMetrics(),
-          volumes: {
-            bridge: 0,
-          },
-        };
-      }
-
-      protocolData.breakdown[zksyncConfig.chain][address].totalAssetDeposited += tokenBalance.balanceUsd;
-      protocolData.breakdown[zksyncConfig.chain][address].totalValueLocked += tokenBalance.balanceUsd;
-    }
-
-    // native ETH balance
-    const client = this.services.blockchain.evm.getPublicClient(zksyncConfig.chain);
-    const nativeBalance = await client.getBalance({
-      address: zksyncConfig.shareBridge as Address,
-      blockNumber: BigInt(blockNumber),
-    });
-    const nativeTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-      chain: zksyncConfig.chain,
-      address: AddressZero,
-      timestamp: options.timestamp,
-    });
-
-    const nativeBalanceLockedUsd =
-      formatBigNumberToNumber(nativeBalance ? nativeBalance.toString() : '0', 18) * nativeTokenPriceUsd;
-
-    protocolData.totalAssetDeposited += nativeBalanceLockedUsd;
-    protocolData.totalValueLocked += nativeBalanceLockedUsd;
-    protocolData.breakdown[zksyncConfig.chain][AddressZero].totalAssetDeposited += nativeBalanceLockedUsd;
-    protocolData.breakdown[zksyncConfig.chain][AddressZero].totalValueLocked += nativeBalanceLockedUsd;
 
     const logs = await this.services.blockchain.evm.getContractLogs({
       chain: zksyncConfig.chain,
@@ -154,38 +147,37 @@ export default class ZksyncNativeBridgeAdapter extends ProtocolExtendedAdapter {
         });
 
         const chainId = Number(event.args.chainId);
-        const l1Token = normalizeAddress(event.args.l1Token);
+        const l1Token = await this.services.blockchain.evm.getTokenInfo({
+          chain: zksyncConfig.chain,
+          address: event.args.l1Token,
+        });
 
-        if (
-          chainId === BlockchainConfigs.zksync.chainId &&
-          getBalanceResults.tokenBalanceUsds[l1Token] &&
-          getBalanceResults.tokenBalanceUsds[l1Token].priceUsd > 0
-        ) {
-          let token: Token | null = null;
-          if (compareAddress(l1Token, AddressOne)) {
-            token = await this.services.blockchain.evm.getTokenInfo({
-              chain: zksyncConfig.chain,
-              address: AddressOne,
-            });
+        if (chainId === zksyncConfig.layer2ChainId && l1Token) {
+          const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+            chain: l1Token.chain,
+            address: l1Token.address,
+            timestamp: options.timestamp,
+          });
+
+          const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), l1Token.decimals) * tokenPriceUsd;
+
+          if (log.topics[0] === Events.BridgehubDepositInitiated) {
+            (protocolData.volumes.bridge as number) += amountUsd;
+            (protocolData.volumeBridgePaths as any)[zksyncConfig.chain][zksyncConfig.layer2Chain] += amountUsd;
           } else {
-            token = tokens.filter((item) => compareAddress(item.address, l1Token))[0];
+            (protocolData.volumes.bridge as number) += amountUsd;
+            (protocolData.volumeBridgePaths as any)[zksyncConfig.layer2Chain][zksyncConfig.chain] += amountUsd;
           }
 
-          if (token) {
-            const amountUsd =
-              formatBigNumberToNumber(event.args.amount.toString(), token.decimals) *
-              getBalanceResults.tokenBalanceUsds[l1Token].priceUsd;
-
-            if (log.topics[0] === Events.BridgehubDepositInitiated) {
-              (protocolData.volumes.bridge as number) += amountUsd;
-              (protocolData.volumeBridgePaths as any)[zksyncConfig.chain][zksyncConfig.layer2Chain] += amountUsd;
-            } else {
-              (protocolData.volumes.bridge as number) += amountUsd;
-              (protocolData.volumeBridgePaths as any)[zksyncConfig.layer2Chain][zksyncConfig.chain] += amountUsd;
-            }
-
-            (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += amountUsd;
+          if (!protocolData.breakdown[l1Token.chain][l1Token.address]) {
+            protocolData.breakdown[l1Token.chain][l1Token.address] = {
+              ...getInitialProtocolCoreMetrics(),
+              volumes: {
+                bridge: 0,
+              },
+            };
           }
+          (protocolData.breakdown[l1Token.chain][l1Token.address].volumes.bridge as number) += amountUsd;
         }
       }
     }

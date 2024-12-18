@@ -47,6 +47,8 @@ export const ChainBlockPeriods: { [key: string]: number } = {
   scroll: 3, // 3 seconds
   bob: 2, // 2 seconds
   zksync: 1, // 1 seconds
+  fraxtal: 1, // 2 seconds
+  lisk: 2, // 2 seconds
 };
 
 export const EventSignatures = {

@@ -7,10 +7,8 @@ import UniswapV3FactoryAbi from '../../../configs/abi/uniswap/UniswapV3Factory.j
 import UniswapV2PairAbi from '../../../configs/abi/uniswap/UniswapV2Pair.json';
 import { ContractCall } from '../../../services/blockchains/domains';
 import logger from '../../../lib/logger';
-import { Uniswapv3Events } from './types';
 import { decodeEventLog } from 'viem';
-import { DexscanModuleConfig } from '../../../configs/dexscan';
-import { UniswapFactoryConfig } from '../../../configs/protocols/uniswap';
+import { DexscanFactoryConfig, DexscanModuleConfig } from '../../../configs/dexscan';
 import { CustomQueryChainLogsBlockRange, DefaultQueryChainLogsBlockRange } from '../../../configs';
 
 // help to index liquidity pools of uniswap v2, v3
@@ -29,22 +27,20 @@ export default class UniswapIndexer {
 
   // index all liquidity pools were deployed from all uniswap factories
   // include v2 and v3
-  protected async indexLiquidityPools(): Promise<void> {
-    const v2Factories: Array<UniswapFactoryConfig> = [];
+  public async indexLiquidityPools(): Promise<void> {
+    const v2Factories: Array<DexscanFactoryConfig> = [];
 
-    // chain => Array<UniswapFactoryConfig>
-    const v3Factories: { [key: string]: Array<UniswapFactoryConfig> } = {};
+    // chain => Array<DexscanFactoryConfig>
+    const v3Factories: { [key: string]: Array<DexscanFactoryConfig> } = {};
 
-    for (const protocolConfig of this.dexscanConfig.protocolConfigs) {
-      for (const factoryConfig of protocolConfig.factories) {
-        if (factoryConfig.version === Pool2Types.univ2) {
-          v2Factories.push(factoryConfig);
-        } else if (factoryConfig.version === Pool2Types.univ3) {
-          if (!v3Factories[factoryConfig.chain]) {
-            v3Factories[factoryConfig.chain] = [];
-          }
-          v3Factories[factoryConfig.chain].push(factoryConfig);
+    for (const factoryConfig of this.dexscanConfig.factories) {
+      if (factoryConfig.version === Pool2Types.univ2) {
+        v2Factories.push(factoryConfig);
+      } else if (factoryConfig.version === Pool2Types.univ3) {
+        if (!v3Factories[factoryConfig.chain]) {
+          v3Factories[factoryConfig.chain] = [];
         }
+        v3Factories[factoryConfig.chain].push(factoryConfig);
       }
     }
 
@@ -61,7 +57,7 @@ export default class UniswapIndexer {
     }
   }
 
-  private async indexPoolsFromFactoryV2(factoryConfig: UniswapFactoryConfig): Promise<void> {
+  private async indexPoolsFromFactoryV2(factoryConfig: DexscanFactoryConfig): Promise<void> {
     const latestPoolIndexingKey = `datasync-UniV2FactoryPoolIndex-${factoryConfig.chain}-${normalizeAddress(factoryConfig.factory)}`;
 
     let startIndex = 0;
@@ -198,14 +194,17 @@ export default class UniswapIndexer {
   }
 
   // index UniswapV3Factory contract logs
-  private async indexDexDataUniV3(chain: string, factories: Array<UniswapFactoryConfig>): Promise<void> {
+  // it doesn't care about which factories are enabled
+  // it just found exact the event with signature: 0x783cca1c0412dd0d695e784568c96da2e9c22ff989357a2e8b1d9b2b4e6b7118
+  // build up Pool2 item and save to database
+  private async indexDexDataUniV3(chain: string, factories: Array<DexscanFactoryConfig>): Promise<void> {
     const latestPoolIndexingKey = `datasync-UniV3FactoryPoolIndex-${chain}`;
 
-    let startBlock = 0;
-    for (const factoryConfig of factories) {
-      if (startBlock === 0 || startBlock > factoryConfig.factoryBirthBlock) {
-        startBlock = factoryConfig.factoryBirthBlock;
-      }
+    let startBlock = this.dexscanConfig.univ3Birthblocks[chain] ? this.dexscanConfig.univ3Birthblocks[chain] : 0;
+    if (startBlock === 0) {
+      logger.warn(`config not found dexscanConfig.univ3Birthblocks[${chain}]`, {
+        service: this.name,
+      });
     }
 
     const latestStateIndexFromDb = await this.storages.database.find({
@@ -233,7 +232,7 @@ export default class UniswapIndexer {
       chain: chain,
       factories: factories.length,
       fromBlock: startBlock,
-      toIndex: latestBlockNumber,
+      toBlock: latestBlockNumber,
     });
 
     // custom config for every chain if possible
@@ -244,11 +243,11 @@ export default class UniswapIndexer {
     // caching for logging
     let lastProgressPercentage = 0;
     let totalLogsCount = 0;
-    let indexBlock = 0;
+    let indexBlock = startBlock;
 
     const client = this.services.blockchain.evm.getPublicClient(chain);
     while (indexBlock <= latestBlockNumber) {
-      const toBlock = indexBlock + blockRange;
+      const toBlock = indexBlock + blockRange > latestBlockNumber ? latestBlockNumber : indexBlock + blockRange;
 
       const logs = await client.getLogs({
         fromBlock: BigInt(indexBlock),
@@ -256,7 +255,7 @@ export default class UniswapIndexer {
       });
 
       for (const log of logs) {
-        if (log.topics[0] === Uniswapv3Events.PoolCreated) {
+        if (log.topics[0] === this.dexscanConfig.events.factory.univ3PoolCreated) {
           const event: any = decodeEventLog({
             abi: UniswapV3FactoryAbi,
             topics: log.topics,
@@ -319,17 +318,17 @@ export default class UniswapIndexer {
 
       // less logs
       if (progress - lastProgressPercentage >= 5) {
-        logger.debug('processing chain logs to find univ3 pools', {
+        logger.debug('get chain logs to find univ3 pools', {
           service: this.name,
           chain: chain,
           factories: factories.length,
-          blocks: `${startBlock}->${latestBlockNumber}`,
+          blocks: `${indexBlock}->${latestBlockNumber}`,
           progress: `${progress.toFixed(2)}%`,
         });
         lastProgressPercentage = progress;
       }
 
-      indexBlock = toBlock;
+      indexBlock = toBlock + 1;
     }
   }
 }

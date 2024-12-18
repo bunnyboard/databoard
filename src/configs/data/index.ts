@@ -50,6 +50,8 @@ export const TokenBookDexBase = {
   ],
   arbitrum: [
     '0x82af49447d8a07e3bd95bd0d56f35241523fbab1', // WETH
+    '0xaf88d065e77c8cc2239327c5edb3a432268e5831', // USDC
+    '0xff970a61a04b1ca14834a43f5de4533ebddb5cc8', // USDC.e
   ],
   optimism: [
     '0x4200000000000000000000000000000000000006', // WETH
@@ -71,7 +73,7 @@ export const TokenBookDexBase = {
     '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c', // WBNB
     '0x55d398326f99059ff775485246999027b3197955', // USDT
     '0xe9e7cea3dedca5984780bafc599bd69add087d56', // BUSD
-    // '0x2170ed0880ac9a755fd29b2688956bd959f933f8', // ETH
+    '0x2170ed0880ac9a755fd29b2688956bd959f933f8', // ETH
   ],
   cronos: [
     '0x5c7f8a570d578ed84e63fdfa7b1ee72deae1ae23', // WCRO

@@ -15,4 +15,7 @@ export interface Pool2 {
   feeRate: number;
   token0: Token;
   token1: Token;
+
+  createdAtBlockNumber?: number;
+  createdAtTimestamp?: number;
 }

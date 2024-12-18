@@ -4,13 +4,12 @@ import envConfig from '../../configs/envConfig';
 import logger from '../../lib/logger';
 import { getDateString, getStartDayTimestamp, getTimestamp, getTodayUTCTimestamp } from '../../lib/utils';
 import ExecuteSession from '../../services/executeSession';
-import { ProtocolData } from '../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../types/namespaces';
-import { GetProtocolDataOptions, RunAdapterOptions } from '../../types/options';
-import UniswapIndexer from './uniswap/indexer';
+import { RunAdapterOptions } from '../../types/options';
+import UniswapCore from './uniswap/core';
 
-export default class DexscanModule extends UniswapIndexer {
-  public readonly name: string = 'dexscan';
+export default class DexscanModule extends UniswapCore {
+  public readonly name: string = 'dexscan.uniswap 🦄';
 
   public executeSession: ExecuteSession;
 
@@ -20,21 +19,14 @@ export default class DexscanModule extends UniswapIndexer {
   }
 
   private getOldestBirthday(): number {
-    let oldestBirthday = this.dexscanConfig.protocolConfigs[0].birthday;
-    for (const protocolConfig of this.dexscanConfig.protocolConfigs) {
-      if (protocolConfig.birthday < oldestBirthday) {
-        oldestBirthday = protocolConfig.birthday;
+    let oldestBirthday = this.dexscanConfig.factories[0].birthday;
+    for (const factoryConfig of this.dexscanConfig.factories) {
+      if (factoryConfig.birthday < oldestBirthday) {
+        oldestBirthday = factoryConfig.birthday;
       }
     }
 
     return oldestBirthday;
-  }
-
-  public async getDexscanProtocolsData(options: GetProtocolDataOptions): Promise<Array<ProtocolData>> {
-    // synced liquidity pools were deployed
-    await this.indexLiquidityPools();
-
-    return [];
   }
 
   public async run(options: RunAdapterOptions): Promise<void> {
@@ -44,19 +36,19 @@ export default class DexscanModule extends UniswapIndexer {
     if (!options.service || options.service === 'state') {
       this.executeSession.startSession('start to update dexscan state data', {
         service: this.name,
-        protocols: this.dexscanConfig.protocolConfigs.length,
+        factories: this.dexscanConfig.factories.length,
       });
 
       const currentTimestamp = getTimestamp();
       const last24HoursTimestamp = currentTimestamp - TimeUnits.SecondsPerDay;
       const last48HoursTimestamp = last24HoursTimestamp - TimeUnits.SecondsPerDay;
 
-      const last24HoursProtocols = await this.getDexscanProtocolsData({
+      const last24HoursProtocols = await this.getProtocolsData({
         timestamp: currentTimestamp,
         beginTime: last24HoursTimestamp,
         endTime: currentTimestamp,
       });
-      const last48HoursProtocols = await this.getDexscanProtocolsData({
+      const last48HoursProtocols = await this.getProtocolsData({
         timestamp: last24HoursTimestamp,
         beginTime: last48HoursTimestamp,
         endTime: last24HoursTimestamp,
@@ -92,7 +84,7 @@ export default class DexscanModule extends UniswapIndexer {
 
       this.executeSession.endSession('updated current data for protocol', {
         service: this.name,
-        protocols: this.dexscanConfig.protocolConfigs.length,
+        factories: this.dexscanConfig.factories.length,
       });
     }
 
@@ -124,7 +116,7 @@ export default class DexscanModule extends UniswapIndexer {
       const todayTimestamp = getTodayUTCTimestamp();
       logger.info('start to update dexscan snapshots data', {
         service: this.name,
-        protocols: this.dexscanConfig.protocolConfigs.length,
+        factories: this.dexscanConfig.factories.length,
         fromDate: getDateString(startTime),
         toDate: getDateString(todayTimestamp),
       });
@@ -132,7 +124,7 @@ export default class DexscanModule extends UniswapIndexer {
       while (startTime <= todayTimestamp) {
         this.executeSession.startSession('start to update dexscan snapshots', {
           service: this.name,
-          protocols: this.dexscanConfig.protocolConfigs.length,
+          factories: this.dexscanConfig.factories.length,
           date: getDateString(startTime),
         });
 
@@ -141,7 +133,7 @@ export default class DexscanModule extends UniswapIndexer {
           endTime = currentTimestamp;
         }
 
-        const dataTimeframe24Hours = await this.getDexscanProtocolsData({
+        const dataTimeframe24Hours = await this.getProtocolsData({
           timestamp: startTime,
           beginTime: startTime,
           endTime: endTime,
@@ -177,7 +169,7 @@ export default class DexscanModule extends UniswapIndexer {
 
         this.executeSession.endSession('updated dexscan snapshot', {
           service: this.name,
-          protocols: this.dexscanConfig.protocolConfigs.length,
+          factories: this.dexscanConfig.factories.length,
           date: getDateString(startTime),
         });
 

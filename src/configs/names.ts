@@ -75,6 +75,9 @@ export const ChainNames = {
   orderly: 'orderly',
   kinto: 'kinto',
   loopring: 'loopring',
+  zeronetwork: 'zeronetwork',
+  cronoszkevm: 'cronoszkevm',
+  treasure: 'treasure',
 };
 
 export const ProtocolNames = {
@@ -236,4 +239,8 @@ export const ProtocolNames = {
   gmx: 'gmx',
   wasabi: 'wasabi',
   woofi: 'woofi',
+  gearbox: 'gearbox', // https://gearbox.fi
+  treasureNativeBridge: 'treasureNativeBridge',
+  zeronetworkNativeBridge: 'zeronetworkNativeBridge',
+  cronoszkevmNativeBridge: 'cronoszkevmNativeBridge',
 };

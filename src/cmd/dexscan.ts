@@ -19,8 +19,6 @@ export class DexscanCommand extends BasicCommand {
   }
 
   public async execute(argv: any) {
-    const protocols = DexscanConfigs.protocolConfigs.map((item) => item.protocol);
-
     // setup sentry in if any
     if (envConfig.sentry.dsn) {
       // Ensure to call this before importing any other modules!
@@ -44,7 +42,6 @@ export class DexscanCommand extends BasicCommand {
 
     const cmdConfigs: any = {
       type: 'dexscan',
-      protocol: protocols.toString(),
     };
 
     cmdConfigs.service = argv.service === 'state' || argv.service === 'snapshot' ? argv.service : 'state and snapshot';
@@ -54,7 +51,7 @@ export class DexscanCommand extends BasicCommand {
     cmdConfigs.force = argv.force;
     cmdConfigs.interval = `${argv.interval} seconds`;
 
-    logger.info('attemp run command', {
+    logger.info('attemp dexscan command', {
       service: 'command',
       configs: cmdConfigs,
     });
@@ -75,7 +72,29 @@ export class DexscanCommand extends BasicCommand {
     }
     logger.info(`loaded blockchain rpc configs (${Object.keys(chainConfigs).length})`, {
       service: 'configs',
-      configs: chainConfigs,
+    });
+
+    for (const factoryConfig of DexscanConfigs.factories) {
+      // have base tokens config for chain
+      if (!DexscanConfigs.baseTokens[factoryConfig.chain]) {
+        logger.error(`no dex base tokens configs for chain ${factoryConfig.chain}`, {
+          service: 'configs',
+        });
+        process.exit(1);
+      }
+
+      // must have univ3Birthblocks config
+      if (!DexscanConfigs.univ3Birthblocks[factoryConfig.chain]) {
+        logger.error(`no univ3Birthblocks configs for chain ${factoryConfig.chain}`, {
+          service: 'configs',
+        });
+        process.exit(1);
+      }
+    }
+
+    logger.info(`loaded factories configs (${DexscanConfigs.factories.length})`, {
+      service: 'configs',
+      configs: {},
     });
 
     logBreakLine();
