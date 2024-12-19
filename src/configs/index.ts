@@ -125,6 +125,8 @@ import { ZeroNetworkNativeBridgeConfigs } from './protocols/zeronetwork';
 import { TreasureNativeBridgeConfigs } from './protocols/treasure';
 import { CronosZkEvmNativeBridgeConfigs } from './protocols/cronos';
 import { InkNativeBridgeConfigs } from './protocols/ink';
+import { HyperLiquidNativeBridgeConfigs } from './protocols/hyperliquid';
+import { SophonNativeBridgeConfigs } from './protocols/sophon';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -280,4 +282,6 @@ export const ProtocolConfigs = {
   treasureNativeBridge: TreasureNativeBridgeConfigs,
   cronoszkevmNativeBridge: CronosZkEvmNativeBridgeConfigs,
   inkNativeBridge: InkNativeBridgeConfigs,
+  hyperliquidNativeBridge: HyperLiquidNativeBridgeConfigs,
+  sophonNativeBridge: SophonNativeBridgeConfigs,
 };

@@ -2470,4 +2470,20 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceCurveList.alETH_WETH],
   },
+  PEPU: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.PEPU_WETH],
+  },
+  GALA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.GALA_WETH],
+  },
+  SLAP: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SLAP_WETH],
+  },
+  DSYNC: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.DSYNC_WETH],
+  },
 };

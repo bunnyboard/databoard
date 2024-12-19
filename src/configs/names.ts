@@ -79,6 +79,8 @@ export const ChainNames = {
   cronoszkevm: 'cronoszkevm',
   treasure: 'treasure',
   ink: 'ink',
+  hyperliquid: 'hyperliquid',
+  sophon: 'sophon',
 };
 
 export const ProtocolNames = {
@@ -245,4 +247,6 @@ export const ProtocolNames = {
   zeronetworkNativeBridge: 'zeronetworkNativeBridge',
   cronoszkevmNativeBridge: 'cronoszkevmNativeBridge',
   inkNativeBridge: 'inkNativeBridge',
+  hyperliquidNativeBridge: 'hyperliquidNativeBridge',
+  sophonNativeBridge: 'sophonNativeBridge',
 };

@@ -33,6 +33,7 @@ import FuelNativeBridgeAdapter from './fuel/nativeBridge';
 import GmxAdapter from './gmx/gmx';
 import GnosisNativeBridgeAdapter from './gnosis/nativeBridge';
 import HopAdapter from './hop/hop';
+import HyperLiquidNativeBridgeAdapter from './hyperliquid/nativeBridge';
 import HyphenAdapter from './hyphen/hyphen';
 import KarakAdapter from './karak/karak';
 import KelpdaoAdapter from './kelpdao/kelpdao';
@@ -215,5 +216,11 @@ export function getProtocolAdapters(
     treasureNativeBridge: new ZksyncNativeBridgeAdapter(services, storages, ProtocolConfigs.treasureNativeBridge),
     cronoszkevmNativeBridge: new ZksyncNativeBridgeAdapter(services, storages, ProtocolConfigs.cronoszkevmNativeBridge),
     inkNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.inkNativeBridge),
+    sophonNativeBridge: new ZksyncNativeBridgeAdapter(services, storages, ProtocolConfigs.sophonNativeBridge),
+    hyperliquidNativeBridge: new HyperLiquidNativeBridgeAdapter(
+      services,
+      storages,
+      ProtocolConfigs.hyperliquidNativeBridge,
+    ),
   };
 }

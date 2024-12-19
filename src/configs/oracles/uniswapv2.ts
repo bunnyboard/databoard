@@ -2383,4 +2383,18 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.avalanche['0x59414b3089ce2af0010e7523dea7e2b35d776ec7'],
     quotaToken: TokensBook.avalanche['0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7'],
   },
+  SLAP_WETH: {
+    type: 'univ2',
+    chain: 'ethereum',
+    address: '0x9ec9620e1fda9c1e57c46782bc3232903cacb59b',
+    baseToken: TokensBook.ethereum['0xf107edabf59ba696e38de62ad5327415bd4d4236'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
+  DSYNC_WETH: {
+    type: 'univ2',
+    chain: 'ethereum',
+    address: '0x1ffec7119e315b15852557f654ae0052f76e6ae1',
+    baseToken: TokensBook.ethereum['0xf94e7d0710709388bce3161c32b4eea56d3f91cc'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
 };

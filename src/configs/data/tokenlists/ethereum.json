@@ -28553,6 +28553,12 @@
     "decimals": 18,
     "address": "0xadd353fb2e2c563383ff3272a500f3e7134dafe4"
   },
+  "0xadd39272e83895e7d3f244f696b7a25635f34234": {
+    "chain": "ethereum",
+    "symbol": "PEPU",
+    "decimals": 18,
+    "address": "0xadd39272e83895e7d3f244f696b7a25635f34234"
+  },
   "0xadd5e881984783dd432f80381fb52f45b53f3e70": {
     "chain": "ethereum",
     "symbol": "VITE",
@@ -38974,6 +38980,12 @@
     "symbol": "PAMP",
     "decimals": 18,
     "address": "0xf0fac7104aac544e4a7ce1a55adf2b5a25c65bd1"
+  },
+  "0xf107edabf59ba696e38de62ad5327415bd4d4236": {
+    "chain": "ethereum",
+    "symbol": "SLAP",
+    "decimals": 18,
+    "address": "0xf107edabf59ba696e38de62ad5327415bd4d4236"
   },
   "0xf10da48d4aaa8d784c5e369cb998e263cfe32aa8": {
     "chain": "ethereum",
