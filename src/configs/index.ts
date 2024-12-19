@@ -124,6 +124,7 @@ import { WoofiConfigs } from './protocols/woofi';
 import { ZeroNetworkNativeBridgeConfigs } from './protocols/zeronetwork';
 import { TreasureNativeBridgeConfigs } from './protocols/treasure';
 import { CronosZkEvmNativeBridgeConfigs } from './protocols/cronos';
+import { InkNativeBridgeConfigs } from './protocols/ink';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -278,4 +279,5 @@ export const ProtocolConfigs = {
   zeronetworkNativeBridge: ZeroNetworkNativeBridgeConfigs,
   treasureNativeBridge: TreasureNativeBridgeConfigs,
   cronoszkevmNativeBridge: CronosZkEvmNativeBridgeConfigs,
+  inkNativeBridge: InkNativeBridgeConfigs,
 };

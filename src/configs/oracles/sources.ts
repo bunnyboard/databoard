@@ -2466,4 +2466,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'avax',
     sources: [OracleSourceUniswapv2List.YAK_WAVAX],
   },
+  alETH: {
+    currency: 'eth',
+    sources: [OracleSourceCurveList.alETH_WETH],
+  },
 };

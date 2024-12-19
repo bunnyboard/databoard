@@ -214,5 +214,6 @@ export function getProtocolAdapters(
     zeronetworkNativeBridge: new ZksyncNativeBridgeAdapter(services, storages, ProtocolConfigs.zeronetworkNativeBridge),
     treasureNativeBridge: new ZksyncNativeBridgeAdapter(services, storages, ProtocolConfigs.treasureNativeBridge),
     cronoszkevmNativeBridge: new ZksyncNativeBridgeAdapter(services, storages, ProtocolConfigs.cronoszkevmNativeBridge),
+    inkNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.inkNativeBridge),
   };
 }

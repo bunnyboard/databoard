@@ -78,6 +78,7 @@ export const ChainNames = {
   zeronetwork: 'zeronetwork',
   cronoszkevm: 'cronoszkevm',
   treasure: 'treasure',
+  ink: 'ink',
 };
 
 export const ProtocolNames = {
@@ -243,4 +244,5 @@ export const ProtocolNames = {
   treasureNativeBridge: 'treasureNativeBridge',
   zeronetworkNativeBridge: 'zeronetworkNativeBridge',
   cronoszkevmNativeBridge: 'cronoszkevmNativeBridge',
+  inkNativeBridge: 'inkNativeBridge',
 };
