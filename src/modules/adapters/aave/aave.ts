@@ -5,7 +5,7 @@ import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/doma
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
 import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
-import { SolidityUnits, TimeUnits } from '../../../configs/constants';
+import { SolidityUnits } from '../../../configs/constants';
 import AaveCore from './core';
 import { Aavev1Events, Aavev2Events, Aavev3Events } from './abis';
 import { decodeEventLog } from 'viem';
@@ -115,11 +115,15 @@ export default class AaveAdapter extends AaveCore {
         const reserveData = reserve.data;
         const reserveConfigData = reserve.configData;
 
+        // cal fees by growth liquidityIndex
+        const [preReserveData] = await this.getReserveData(marketConfig, reserve.token.address, beginBlock);
+        const [postReserveData] = await this.getReserveData(marketConfig, reserve.token.address, endBlock);
+
         let totalDeposited = 0;
         let totalBorrowed = 0;
-        let borrowFees = 0;
-        let supplySideRevenue = 0;
-        let protocolRevenue = 0;
+        let reserveRate = 0;
+        let preLiquidityIndex = 0;
+        let postLiquidityIndex = 0;
         if (marketConfig.version === 1) {
           totalDeposited =
             formatBigNumberToNumber(reserveData[0].toString(), reserve.token.decimals) * reserve.priceUsd;
@@ -128,21 +132,10 @@ export default class AaveAdapter extends AaveCore {
             formatBigNumberToNumber(reserveData[2].toString(), reserve.token.decimals) * reserve.priceUsd;
           const totalVariableDebt =
             formatBigNumberToNumber(reserveData[3].toString(), reserve.token.decimals) * reserve.priceUsd;
-
-          const stableBorrowRate = formatBigNumberToNumber(reserveData[6].toString(), SolidityUnits.RayDecimals);
-          const variableBorrowRate = formatBigNumberToNumber(reserveData[5].toString(), SolidityUnits.RayDecimals);
-
           totalBorrowed = totalStableDebt + totalVariableDebt;
 
-          const borrowFeesStable = totalStableDebt * stableBorrowRate;
-          const borrowFeesVatiable = totalVariableDebt * variableBorrowRate;
-
-          // on aave v1, we calculate borrow fees by mul debt with rate
-          // daily borrow fees
-          borrowFees = (borrowFeesStable + borrowFeesVatiable) / TimeUnits.DaysPerYear;
-
-          // no reserve rate for v1, no revenue
-          supplySideRevenue = borrowFees;
+          preLiquidityIndex = formatBigNumberToNumber(preReserveData[9].toString(), SolidityUnits.RayDecimals);
+          postLiquidityIndex = formatBigNumberToNumber(postReserveData[9].toString(), SolidityUnits.RayDecimals);
         } else if (marketConfig.version === 2) {
           const availableLiquidity =
             formatBigNumberToNumber(reserveData[0].toString(), reserve.token.decimals) * reserve.priceUsd;
@@ -154,22 +147,9 @@ export default class AaveAdapter extends AaveCore {
           totalBorrowed = totalStableDebt + totalVariableDebt;
           totalDeposited = availableLiquidity + totalBorrowed;
 
-          const stableBorrowRate = formatBigNumberToNumber(reserveData[5].toString(), SolidityUnits.RayDecimals);
-          const variableBorrowRate = formatBigNumberToNumber(reserveData[4].toString(), SolidityUnits.RayDecimals);
-
-          totalBorrowed = totalStableDebt + totalVariableDebt;
-
-          const borrowFeesStable = totalStableDebt * stableBorrowRate;
-          const borrowFeesVatiable = totalVariableDebt * variableBorrowRate;
-
-          // daily borrow fees
-          borrowFees = (borrowFeesStable + borrowFeesVatiable) / TimeUnits.DaysPerYear;
-
-          // 4 decimal places
-          const reserveRate = formatBigNumberToNumber(reserveConfigData[4].toString(), 4);
-          protocolRevenue = borrowFees * reserveRate;
-
-          supplySideRevenue = borrowFees - protocolRevenue;
+          reserveRate = formatBigNumberToNumber(reserveConfigData[4].toString(), 4);
+          preLiquidityIndex = formatBigNumberToNumber(preReserveData[7].toString(), SolidityUnits.RayDecimals);
+          postLiquidityIndex = formatBigNumberToNumber(postReserveData[7].toString(), SolidityUnits.RayDecimals);
         } else if (marketConfig.version === 3) {
           totalDeposited =
             formatBigNumberToNumber(reserveData[2].toString(), reserve.token.decimals) * reserve.priceUsd;
@@ -178,24 +158,18 @@ export default class AaveAdapter extends AaveCore {
             formatBigNumberToNumber(reserveData[3].toString(), reserve.token.decimals) * reserve.priceUsd;
           const totalVariableDebt =
             formatBigNumberToNumber(reserveData[4].toString(), reserve.token.decimals) * reserve.priceUsd;
-
           totalBorrowed = totalStableDebt + totalVariableDebt;
 
-          const stableBorrowRate = formatBigNumberToNumber(reserveData[7].toString(), SolidityUnits.RayDecimals);
-          const variableBorrowRate = formatBigNumberToNumber(reserveData[6].toString(), SolidityUnits.RayDecimals);
-
-          const borrowFeesStable = totalStableDebt * stableBorrowRate;
-          const borrowFeesVatiable = totalVariableDebt * variableBorrowRate;
-
-          // daily borrow fees
-          borrowFees = (borrowFeesStable + borrowFeesVatiable) / TimeUnits.DaysPerYear;
-
-          // 4 decimal places
-          const reserveRate = formatBigNumberToNumber(reserveConfigData[4].toString(), 4);
-          protocolRevenue = borrowFees * reserveRate;
-
-          supplySideRevenue = borrowFees - protocolRevenue;
+          reserveRate = formatBigNumberToNumber(reserveConfigData[4].toString(), 4);
+          preLiquidityIndex = formatBigNumberToNumber(preReserveData[9].toString(), SolidityUnits.RayDecimals);
+          postLiquidityIndex = formatBigNumberToNumber(postReserveData[9].toString(), SolidityUnits.RayDecimals);
         }
+
+        const growthLiquidityIndexRate =
+          preLiquidityIndex > 0 ? (postLiquidityIndex - preLiquidityIndex) / preLiquidityIndex : 0;
+        const borrowFees = totalDeposited * growthLiquidityIndexRate;
+        const protocolRevenue = borrowFees * reserveRate;
+        const supplySideRevenue = borrowFees - protocolRevenue;
 
         // process contract logs
         for (const log of contractLogs) {

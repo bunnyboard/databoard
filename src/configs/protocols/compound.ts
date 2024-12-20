@@ -172,5 +172,10 @@ export const CompoundConfigs: CompoundProtocolConfig = {
       birthday: 1721088000, // Tue Jul 16 2024 00:00:00 GMT+0000
       comet: '0xe36a30d249f7761327fd973001a32010b521b6fd', // cWETHv3
     },
+    {
+      chain: ChainNames.mantle,
+      birthday: 1729728000, // Thu Oct 24 2024 00:00:00 GMT+0000
+      comet: '0x606174f62cd968d8e684c645080fa694c1D7786E', // cWETHv3
+    },
   ],
 };

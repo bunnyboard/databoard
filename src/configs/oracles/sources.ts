@@ -2486,4 +2486,16 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.DSYNC_WETH],
   },
+  USR: {
+    currency: 'usd',
+    sources: [OracleSourceCurveList.USR_USDC],
+  },
+  eBTC: {
+    currency: 'btc',
+    sources: [OracleSourceCurveList.eBTC_WBTC],
+  },
+  sUSDe: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.sUSDe_USDT],
+  },
 };
