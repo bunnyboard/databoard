@@ -34,6 +34,9 @@ export interface DatabaseCollectionConfig {
 
   // save liquidity pool2 (uniswap v2, v3) configs
   datasyncPool2: MongoCollectionConfig;
+
+  // save liquidity pools of Balancer.fi-like pools
+  datasyncPoolBalancer: MongoCollectionConfig;
 }
 
 export interface EnvConfig {

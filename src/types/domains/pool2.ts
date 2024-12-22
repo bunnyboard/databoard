@@ -19,3 +19,21 @@ export interface Pool2 {
   createdAtBlockNumber?: number;
   createdAtTimestamp?: number;
 }
+
+// Balancer.fi pools
+export const PoolBalancerTypes = {
+  balv2: 'balv2',
+  balv3: 'balv3',
+};
+const AllPoolBalancerTypes = Object.values(PoolBalancerTypes);
+export type PoolBalancerType = (typeof AllPoolBalancerTypes)[number];
+
+export interface PoolBalancer {
+  chain: string;
+  type: PoolBalancerType;
+  vault: string;
+  poolId: string;
+  address: string;
+  feeRate: number;
+  tokens: Array<Token>;
+}

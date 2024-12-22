@@ -9,6 +9,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0x08a1c30bbb26425c1031ee9e43fa0b9960742539': OracleSourceConfigs.LNDX,
     '0x657e8c867d8b37dcc18fa4caead9c45eb088c642': OracleSourceConfigs.eBTC,
     '0x0d86883faf4ffd7aeb116390af37746f45b6f378': OracleSourceConfigs.USDT,
     '0xec5a52c685cc3ad79a6a347abace330d69e0b1ed': OracleSourceConfigs.LBTC,
@@ -503,6 +504,12 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0xd8724322f44e5c58d7a815f542036fb17dbbf839': OracleSourceConfigs.OETH,
+    '0xe05a08226c49b636acf99c40da8dc6af83ce5bb3': OracleSourceConfigs.ankrETH,
+    '0xd9fba68d89178e3538e708939332c79efc540179': OracleSourceConfigs.GHO,
+    '0xb165a74407fe1e519d6bcbdec1ed3202b35a4140': OracleSourceConfigs.USDT,
+    '0x7cfadfd5645b50be87d546f42699d863648251ad': OracleSourceConfigs.USDC,
+    '0x27f485b62c4a7e635f561a87560adf5090239e93': OracleSourceConfigs.DFX,
     '0x3212dc0f8c834e4de893532d27cc9b6001684db0': OracleSourceConfigs.PEAR,
     '0x4e200fe2f3efb977d5fd9c430a41531fb04d97b8': OracleSourceConfigs.ORDER,
     '0xa1b91fe9fd52141ff8cac388ce3f10bfdc1de79d': OracleSourceConfigs.WIF,
@@ -1372,6 +1379,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
 
   // tokens on gnosis
   gnosis: {
+    '0x773cda0cade2a3d86e6d4e30699d40bb95174ff2': OracleSourceConfigs.stETH,
+    '0x57f664882f762fa37903fc864e2b633d384b411a': OracleSourceConfigs.ETH,
     '0x4b1e2c2762667331bc91648052f646d1b0d35984': OracleSourceConfigs.agEUR,
     '0x3a97704a1b25f08aa230ae53b352e2e72ef52843': OracleSourceConfigs.AGVE,
     '0xca5d8f8a8d49439357d3cf46ca2e720702f132b8': OracleSourceConfigs.GYD,
@@ -1659,6 +1668,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x4200000000000000000000000000000000000006': OracleSourceConfigs.ETH,
     '0xac485391eb2d7d88253a7f1ef18c37f4242d1a24': OracleSourceConfigs.LSK,
     '0x05d032ac25d322df992303dca074ee7392c117b9': OracleSourceConfigs.USDT,
+    '0x03c7054bcb39f7b2e5b2c7acb37583e32d70cfa3': OracleSourceConfigs.WBTC,
   },
 
   redstone: {

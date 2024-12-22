@@ -1,11 +1,13 @@
 import { ProtocolConfig } from '../../types/base';
+import { PoolBalancerType } from '../../types/domains/pool2';
 import { ChainNames, ProtocolNames } from '../names';
 
 export interface BalancerDexConfig {
   chain: string;
   vault: string;
-  version: 'balv2' | 'balv3';
+  version: PoolBalancerType;
   birthday: number;
+  protocolFeeRate: number;
   tokens: Array<string>;
 }
 
@@ -21,6 +23,7 @@ export const BalancerConfigs: BalancerProtocolConfig = {
       chain: ChainNames.ethereum,
       version: 'balv2',
       birthday: 1618876800, // Tue Apr 20 2021 00:00:00 GMT+0000
+      protocolFeeRate: 0.5, // 50% - https://forum.balancer.fi/t/bip-371-adjust-protocol-fee-split/4978
       vault: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       tokens: [
         '0x594daad7d77592a2b97b725a7ad59d7e188b5bfa',
@@ -86,6 +89,7 @@ export const BalancerConfigs: BalancerProtocolConfig = {
       chain: ChainNames.arbitrum,
       version: 'balv2',
       birthday: 1629849600, // Wed Aug 25 2021 00:00:00 GMT+0000
+      protocolFeeRate: 0.5, // 50% - https://forum.balancer.fi/t/bip-371-adjust-protocol-fee-split/4978
       vault: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       tokens: [
         '0x3082cc23568ea640225c2467653db90e9250aaa0',
@@ -125,6 +129,7 @@ export const BalancerConfigs: BalancerProtocolConfig = {
       chain: ChainNames.avalanche,
       version: 'balv2',
       birthday: 1676678400, // Sat Feb 18 2023 00:00:00 GMT+0000
+      protocolFeeRate: 0.5, // 50% - https://forum.balancer.fi/t/bip-371-adjust-protocol-fee-split/4978
       vault: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       tokens: [
         '0x2b2c81e08f1af8835a78bb2a90ae924ace0ea4be',
@@ -149,6 +154,7 @@ export const BalancerConfigs: BalancerProtocolConfig = {
       chain: ChainNames.base,
       version: 'balv2',
       birthday: 1689206400, // Thu Jul 13 2023 00:00:00 GMT+0000
+      protocolFeeRate: 0.5, // 50% - https://forum.balancer.fi/t/bip-371-adjust-protocol-fee-split/4978
       vault: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       tokens: [
         '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913',
@@ -173,6 +179,7 @@ export const BalancerConfigs: BalancerProtocolConfig = {
       chain: ChainNames.fraxtal,
       version: 'balv2',
       birthday: 1716249600, // Tue May 21 2024 00:00:00 GMT+0000
+      protocolFeeRate: 0.5, // 50% - https://forum.balancer.fi/t/bip-371-adjust-protocol-fee-split/4978
       vault: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       tokens: [
         '0xfc00000000000000000000000000000000000008',
@@ -190,6 +197,7 @@ export const BalancerConfigs: BalancerProtocolConfig = {
       chain: ChainNames.gnosis,
       version: 'balv2',
       birthday: 1667347200, // Wed Nov 02 2022 00:00:00 GMT+0000
+      protocolFeeRate: 0.5, // 50% - https://forum.balancer.fi/t/bip-371-adjust-protocol-fee-split/4978
       vault: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       tokens: [
         '0x6c76971f98945ae98dd7d4dfca8711ebea946ea6',
@@ -216,6 +224,7 @@ export const BalancerConfigs: BalancerProtocolConfig = {
       chain: ChainNames.mode,
       version: 'balv2',
       birthday: 1716422400, // Thu May 23 2024 00:00:00 GMT+0000
+      protocolFeeRate: 0.5, // 50% - https://forum.balancer.fi/t/bip-371-adjust-protocol-fee-split/4978
       vault: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       tokens: [
         '0xDfc7C877a950e49D2610114102175A06C2e3167a',
@@ -230,6 +239,7 @@ export const BalancerConfigs: BalancerProtocolConfig = {
       chain: ChainNames.polygon,
       version: 'balv2',
       birthday: 1623974400, // Fri Jun 18 2021 00:00:00 GMT+0000
+      protocolFeeRate: 0.5, // 50% - https://forum.balancer.fi/t/bip-371-adjust-protocol-fee-split/4978
       vault: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       tokens: [
         '0x385eeac5cb85a38a9a07a70c73e0a3271cfb54a7',
@@ -256,6 +266,7 @@ export const BalancerConfigs: BalancerProtocolConfig = {
       chain: ChainNames.polygonzkevm,
       version: 'balv2',
       birthday: 1683331200, // Sat May 06 2023 00:00:00 GMT+0000
+      protocolFeeRate: 0.5, // 50% - https://forum.balancer.fi/t/bip-371-adjust-protocol-fee-split/4978
       vault: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
       tokens: [
         '0xb23c20efce6e24acca0cef9b7b7aa196b84ec942',
@@ -271,6 +282,70 @@ export const BalancerConfigs: BalancerProtocolConfig = {
         '0x744c5860ba161b5316f7e80d9ec415e2727e5bd5',
         '0x83b874c1e09d316059d929da402dcb1a98e92082',
         '0xea034fb02eb1808c2cc3adbc15f447b93cbe08e1',
+      ],
+    },
+    {
+      chain: ChainNames.optimism,
+      version: 'balv2',
+      birthday: 1651622400, // Wed May 04 2022 00:00:00 GMT+0000
+      protocolFeeRate: 0.5, // 50% - https://forum.balancer.fi/t/bip-371-adjust-protocol-fee-split/4978
+      vault: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+      tokens: [
+        '0x484c2d6e3cdd945a8b2df735e079178c1036578c',
+        '0xfc2e6e6bcbd49ccf3a5f029c79984372dcbfe527',
+        '0x2e3d870790dc77a83dd1d18184acc7439a53f475',
+        '0x6806411765af15bddd26f8f544a34cc40cb9838b',
+        '0xda10009cbd5d07dd0cecc66161fc93d7c9000da1',
+        '0xfe8b128ba8c78aabc59d4c64cee7ff28e9379921',
+        '0x1509706a6c66CA549ff0cB464de88231DDBe213B',
+        '0x94b008aa00579c1307b0ef2c499ad98a8ce58e58',
+        '0xfdb794692724153d1488ccdbe0c56c252596735f',
+        '0x00a35fd824c717879bf370e70ac6868b95870dfb',
+        '0x0c5b4c92c948691EEBf185C17eeB9c230DC019E9',
+        '0x350a791bfc2c21f9ed5d10980dad2e2638ffa7f6',
+        '0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9',
+        '0x8ae125e8653821e851f12a49f7765db9a9ce7384',
+        '0x8700daec35af8ff88c16bdf0418774cb3d7599b4',
+        '0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb',
+        '0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b',
+        '0x217d47011b23bb961eb6d93ca9945b7501a5bb11',
+      ],
+    },
+
+    // v3
+    {
+      chain: ChainNames.ethereum,
+      version: 'balv3',
+      birthday: 1733356800, // Thu Dec 05 2024 00:00:00 GMT+0000
+      protocolFeeRate: 0.5, // 50% - https://etherscan.io/address/0xa731C23D7c95436Baaae9D52782f966E1ed07cc8#readContract
+      vault: '0xbA1333333333a1BA1108E8412f11850A5C319bA9',
+      tokens: [
+        '0xa1290d69c65a6fe4df752f95823fae25cb99e5a7',
+        '0xA35b1B31Ce002FBF2058D22F30f95D405200A15b',
+        '0xf1c9acdc66974dfb6decb12aa385b9cd01190e38',
+        '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+        '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        '0xdac17f958d2ee523a2206206994597c13d831ec7',
+      ],
+    },
+    {
+      chain: ChainNames.gnosis,
+      version: 'balv3',
+      birthday: 1733356800, // Thu Dec 05 2024 00:00:00 GMT+0000
+      protocolFeeRate: 0.5, // 50% - https://etherscan.io/address/0xa731C23D7c95436Baaae9D52782f966E1ed07cc8#readContract
+      vault: '0xbA1333333333a1BA1108E8412f11850A5C319bA9',
+      tokens: [
+        '0xaf204776c7245bf4147c2612bf6e5972ee483701',
+        '0x6a023ccd1ff6f2045c3309768ead9e68f978f6e1',
+        '0x6c76971f98945ae98dd7d4dfca8711ebea946ea6',
+        '0x2a22f9c3b484c3629090feed35f17ff8f88f76f0',
+        '0x9c58bacc331c9aa871afd802db6379a98e80cedb',
+        '0xe91d153e0b41518a2ce8dd3d7944fa863463a97d',
+        '0x1509706a6c66ca549ff0cb464de88231ddbe213b',
+        '0xcB444e90D8198415266c6a2724b7900fb12FC56E',
+        '0x4ecaba5870353805a9f068101a40e0f32ed605c6',
+        '0x177127622c4a00f3d409b75571e12cb3c8973d3c',
+        '0x4d18815d14fe5c3304e87b3fa18318baa5c23820',
       ],
     },
   ],

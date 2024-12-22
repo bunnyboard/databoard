@@ -1,11 +1,7 @@
-import { DefaultLocaldbDir, DefaultMemcacheTime, ProtocolConfigs } from '../configs';
-import BlockchainService from '../services/blockchains/blockchain';
-import { MemcacheService } from '../services/caching/memcache';
-import DatabaseService from '../services/database/database';
-import OracleService from '../services/oracle/oracle';
+import { ProtocolConfigs } from '../configs';
 import { BasicCommand } from './basic';
 import { getProtocolAdapters } from '../modules/adapters';
-import LeveldbService from '../services/localdb/level';
+import { ContextServices, ContextStorages } from '../types/namespaces';
 
 export class TestCommand extends BasicCommand {
   public readonly name: string = 'test';
@@ -16,26 +12,11 @@ export class TestCommand extends BasicCommand {
   }
 
   public async execute(argv: any) {
-    const blockchain = new BlockchainService();
-    const oracle = new OracleService(blockchain);
-    const memcache = new MemcacheService(DefaultMemcacheTime);
-    const localdb = new LeveldbService(DefaultLocaldbDir);
-    const database = new DatabaseService();
+    const services: ContextServices = await super.getServices();
+    const storages: ContextStorages = await super.getStorages();
 
     const protocol = argv.protocol;
-    const adapters = getProtocolAdapters(
-      {
-        blockchain: {
-          evm: blockchain,
-        },
-        oracle: oracle,
-      },
-      {
-        database: database,
-        memcache: memcache,
-        localdb: localdb,
-      },
-    );
+    const adapters = getProtocolAdapters(services, storages);
 
     if ((ProtocolConfigs as any)[protocol] && adapters[protocol]) {
       await adapters[protocol].runTest({

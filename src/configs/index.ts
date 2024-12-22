@@ -143,6 +143,7 @@ export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
 export const DefaultQueryChainLogsBlockRange = 100;
 export const CustomQueryChainLogsBlockRange: { [key: string]: number } = {
   ronin: 10,
+  base: 50,
   arbitrum: 1000,
   optimism: 1000,
 };

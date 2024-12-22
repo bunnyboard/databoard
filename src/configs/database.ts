@@ -60,4 +60,14 @@ export const DatabaseCollectionConfigs: DatabaseCollectionConfig = {
       },
     ],
   },
+  datasyncPoolBalancer: {
+    name: `${DatasyncPrefix}.poolBalancer`,
+    indies: [
+      {
+        chain: 1,
+        vault: 1,
+        poolId: 1,
+      },
+    ],
+  },
 };

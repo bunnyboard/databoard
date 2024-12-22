@@ -81,6 +81,7 @@ export const ChainNames = {
   ink: 'ink',
   hyperliquid: 'hyperliquid',
   sophon: 'sophon',
+  sonic: 'sonic',
 };
 
 export const ProtocolNames = {

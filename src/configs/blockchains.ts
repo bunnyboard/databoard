@@ -632,4 +632,28 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
       decimals: 18,
     },
   },
+  [ChainNames.sonic]: {
+    name: ChainNames.sonic,
+    family: 'evm',
+    chainId: 146,
+    nodeRpc: String(process.env.BLOCKCHAIN_SONIC_NODE),
+    nativeToken: {
+      chain: ChainNames.sonic,
+      address: AddressZero,
+      symbol: 'S',
+      decimals: 18,
+    },
+  },
+  [ChainNames.ink]: {
+    name: ChainNames.ink,
+    family: 'evm',
+    chainId: 57073,
+    nodeRpc: String(process.env.BLOCKCHAIN_INK_NODE),
+    nativeToken: {
+      chain: ChainNames.ink,
+      address: AddressZero,
+      symbol: 'ETH',
+      decimals: 18,
+    },
+  },
 };
