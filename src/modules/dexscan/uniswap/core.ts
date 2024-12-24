@@ -179,6 +179,8 @@ export default class UniswapCore {
           continue;
         }
       }
+
+      console.log(protocols);
     }
 
     if (Object.values(protocols).length > 0) {

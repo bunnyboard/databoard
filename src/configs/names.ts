@@ -250,4 +250,5 @@ export const ProtocolNames = {
   inkNativeBridge: 'inkNativeBridge',
   hyperliquidNativeBridge: 'hyperliquidNativeBridge',
   sophonNativeBridge: 'sophonNativeBridge',
+  chainlinkccip: 'chainlinkccip',
 };

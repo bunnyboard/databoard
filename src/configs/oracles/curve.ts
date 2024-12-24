@@ -164,4 +164,14 @@ export const OracleSourceCurveList: {
     quotaToken: TokensBook.ethereum['0x2260fac5e5542a773aa44fbcfedf7c193bc2c599'],
     quotaTokenIndex: 1,
   },
+  DLCBTC_WBTC: {
+    type: 'curveFactoryPool',
+    chain: 'arbitrum',
+    currency: 'btc',
+    address: '0xe957ce03ccdd88f02ed8b05c9a3a28abef38514a',
+    baseToken: TokensBook.arbitrum['0x050c24dbf1eec17babe5fc585f06116a259cc77a'],
+    baseTokenIndex: 1,
+    quotaToken: TokensBook.arbitrum['0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f'],
+    quotaTokenIndex: 2,
+  },
 };

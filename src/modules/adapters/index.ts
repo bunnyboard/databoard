@@ -12,6 +12,7 @@ import BenqiStakingAvaxAdapter from './benqi/savax';
 import BlastNativeBridgeAdapter from './blast/nativeBridge';
 import BungeeAdapter from './bungee/bungee';
 import CbridgeAdapter from './celer/cbridge';
+import ChainlinkCcipAdapter from './chainlink/ccip';
 import CircleCctpAdapter from './circle/circlecctp';
 import CbethAdapter from './coinbase/cbeth';
 import CompoundAdapter from './compound/compound';
@@ -222,5 +223,6 @@ export function getProtocolAdapters(
       storages,
       ProtocolConfigs.hyperliquidNativeBridge,
     ),
+    chainlinkccip: new ChainlinkCcipAdapter(services, storages, ProtocolConfigs.chainlinkccip),
   };
 }

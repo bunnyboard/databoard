@@ -2506,4 +2506,44 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'ftm',
     sources: [OracleSourceBalancerList.stS_WS],
   },
+  MVI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.MVI_WETH],
+  },
+  LDY: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.LDY_WETH],
+  },
+  WMTX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.WMTX_WETH],
+  },
+  DLCBTC: {
+    currency: 'btc',
+    sources: [OracleSourceCurveList.DLCBTC_WBTC],
+  },
+  mBTC: {
+    currency: 'btc',
+    sources: [OracleSourceUniswapv3List.mBTC_WBTC],
+  },
+  ALU: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ALU_WETH],
+  },
+  ZUN: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.ZUN_USDC],
+  },
+  EARNM: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.EARNM_WETH],
+  },
+  LAND: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.LAND_WBNB],
+  },
+  BMX: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.BMX_USDC],
+  },
 };

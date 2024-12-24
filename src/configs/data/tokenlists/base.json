@@ -1457,6 +1457,12 @@
     "decimals": 6,
     "address": "0x3e31966d4f81c72d2a55310a6365a56a4393e98d"
   },
+  "0x3e62fed35c97145e6b445704b8ce74b2544776a9": {
+    "chain": "base",
+    "symbol": "EARNM",
+    "decimals": 18,
+    "address": "0x3e62fed35c97145e6b445704b8ce74b2544776a9"
+  },
   "0x3e7ef8f50246f725885102e8238cbba33f276747": {
     "chain": "base",
     "symbol": "HANeP",
