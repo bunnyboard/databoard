@@ -31,6 +31,7 @@ import FluidAdapter from './fluid/fluid';
 import FraxEtherAdapter from './frax/fraxether';
 import FraxlendAdapter from './frax/fraxlend';
 import FuelNativeBridgeAdapter from './fuel/nativeBridge';
+import GearboxAdapter from './gearbox/gearbox';
 import GmxAdapter from './gmx/gmx';
 import GnosisNativeBridgeAdapter from './gnosis/nativeBridge';
 import HopAdapter from './hop/hop';
@@ -224,5 +225,6 @@ export function getProtocolAdapters(
       ProtocolConfigs.hyperliquidNativeBridge,
     ),
     chainlinkccip: new ChainlinkCcipAdapter(services, storages, ProtocolConfigs.chainlinkccip),
+    gearbox: new GearboxAdapter(services, storages, ProtocolConfigs.gearbox),
   };
 }

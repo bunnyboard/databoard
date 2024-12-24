@@ -128,6 +128,7 @@ import { InkNativeBridgeConfigs } from './protocols/ink';
 import { HyperLiquidNativeBridgeConfigs } from './protocols/hyperliquid';
 import { SophonNativeBridgeConfigs } from './protocols/sophon';
 import { ChainlinkCcipConfigs } from './protocols/chainlink';
+import { GearboxConfigs } from './protocols/gearbox';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -287,4 +288,5 @@ export const ProtocolConfigs = {
   hyperliquidNativeBridge: HyperLiquidNativeBridgeConfigs,
   sophonNativeBridge: SophonNativeBridgeConfigs,
   chainlinkccip: ChainlinkCcipConfigs,
+  gearbox: GearboxConfigs,
 };

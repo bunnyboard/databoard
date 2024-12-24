@@ -6,7 +6,7 @@
 import { TokenBookDexBase } from './data';
 import { SpookyConfigs } from './protocols/spooky';
 import { SushiConfigs } from './protocols/sushi';
-import { UniswapFactoryConfig } from './protocols/uniswap';
+import { UniswapConfigs, UniswapFactoryConfig } from './protocols/uniswap';
 
 export interface DexscanSupportedEvents {
   factory: {
@@ -92,6 +92,12 @@ export const DexscanConfigs: DexscanModuleConfig = {
     },
   },
   factories: [
+    ...UniswapConfigs.factories.map((factory) => {
+      return {
+        protocol: UniswapConfigs.protocol,
+        ...factory,
+      };
+    }),
     ...SushiConfigs.factories.map((factory) => {
       return {
         protocol: SushiConfigs.protocol,
