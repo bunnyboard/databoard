@@ -35,15 +35,20 @@ export const BeetsConfigs: BalancerProtocolConfig = {
         '0x841fad6eae12c286d1fd18d1d525dffa75c7effe',
       ],
     },
-    // {
-    //   chain: ChainNames.sonic,
-    //   version: 'balv2',
-    //   birthday: 1734134400, // Sat Dec 14 2024 00:00:00 GMT+0000
-    //   vault: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
-    //   protocolFeeRate: 0.25, // 25% - https://docs.beets.fi/ecosystem/protocol-fees
-    //   tokens: [
-    //   ],
-    // },
+    {
+      chain: ChainNames.sonic,
+      version: 'balv2',
+      birthday: 1734134400, // Sat Dec 14 2024 00:00:00 GMT+0000
+      vault: '0xBA12222222228d8Ba445958a75a0704d566BF2C8',
+      protocolFeeRate: 0.25, // 25% - https://docs.beets.fi/ecosystem/protocol-fees
+      tokens: [
+        '0x2d0e0814e62d80056181f5cd932274405966e4f0',
+        '0x29219dd400f2bf60e5a23d13be72b486d4038894',
+        '0xe5da20f15420ad15de0fa650600afc998bbe3955',
+        '0x309c92261178fa0cf748a855e90ae73fdb79ebc7',
+        '0x039e2fb66102314ce7b64ce5ce3e5183bc94ad38',
+      ],
+    },
 
     // {
     //   chain: ChainNames.sonic,

@@ -1294,6 +1294,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.FTM,
     [AddressE]: OracleSourceConfigs.FTM,
     [AddressF]: OracleSourceConfigs.FTM,
+    '0x44f7237df00e386af8e79b817d05ed9f6fe0f296': OracleSourceConfigs.SOL,
     '0x00a35fd824c717879bf370e70ac6868b95870dfb': OracleSourceConfigs.IB,
     '0xd361474bb19c8b98870bb67f5759cdf277dee7f9': OracleSourceConfigs.BAY,
     '0x511d35c52a3c244e7b8bd92c0c297755fbd89212': OracleSourceConfigs.AVAX,
@@ -1872,5 +1873,15 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   bsquared: {
     '0x3e904af0cf56b304d0d286c8fb6ea5a84e33eab5': OracleSourceConfigs.BTC,
     '0x4200000000000000000000000000000000000006': OracleSourceConfigs.WBTC,
+  },
+
+  sonic: {
+    '0x2d0e0814e62d80056181f5cd932274405966e4f0': OracleSourceConfigs.BEETS,
+    '0x29219dd400f2bf60e5a23d13be72b486d4038894': OracleSourceConfigs.USDC,
+    '0xe5da20f15420ad15de0fa650600afc998bbe3955': OracleSourceConfigs.sFTMx,
+    '0x039e2fb66102314ce7b64ce5ce3e5183bc94ad38': OracleSourceConfigs.FTM,
+    '0x309c92261178fa0cf748a855e90ae73fdb79ebc7': OracleSourceConfigs.ETH,
+    '0x9fdbc3f8abc05fa8f3ad3c17d2f806c1230c4564': OracleSourceConfigs.GOGLZ,
+    '0xe51ee9868c1f0d6cd968a8b8c8376dc2991bfe44': OracleSourceConfigs.BRUSH,
   },
 };

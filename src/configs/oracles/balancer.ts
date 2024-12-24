@@ -118,4 +118,26 @@ export const OracleSourceBalancerList: {
     quotaWeight: 0.5,
     quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
   },
+  stS_WS: {
+    type: 'balv2_Weight',
+    chain: 'sonic',
+    currency: 'ftm',
+    vault: '0xba12222222228d8ba445958a75a0704d566bf2c8',
+    address: '0x374641076b68371e69d03c417dac3e5f236c32fa',
+    poolId: '0x374641076b68371e69d03c417dac3e5f236c32fa000000000000000000000006',
+    baseWeight: 0.5,
+    baseToken: {
+      chain: 'sonic',
+      symbol: 'stS',
+      decimals: 18,
+      address: '0xe5da20f15420ad15de0fa650600afc998bbe3955',
+    },
+    quotaWeight: 0.5,
+    quotaToken: {
+      chain: 'sonic',
+      symbol: 'WS',
+      decimals: 18,
+      address: '0x039e2fb66102314ce7b64ce5ce3e5183bc94ad38',
+    },
+  },
 };

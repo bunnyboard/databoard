@@ -94,13 +94,13 @@ export default class HyperLiquidNativeBridgeAdapter extends ProtocolExtendedAdap
           data: log.data,
         });
 
-        if (compareAddress(event.from, hlConfigs.bridge2) || compareAddress(event.to, hlConfigs.bridge2)) {
+        if (compareAddress(event.args.from, hlConfigs.bridge2) || compareAddress(event.args.to, hlConfigs.bridge2)) {
           const amountUsd = formatBigNumberToNumber(event.args.value.toString(), hlConfigs.USDC.decimals);
 
           (protocolData.volumes.bridge as number) += amountUsd;
           (protocolData.breakdown[hlConfigs.USDC.chain][hlConfigs.USDC.address].volumes.bridge as number) += amountUsd;
 
-          if (compareAddress(event.to, hlConfigs.bridge2)) {
+          if (compareAddress(event.args.to, hlConfigs.bridge2)) {
             (protocolData.volumeBridgePaths as any)[hlConfigs.layer2Chain][hlConfigs.chain] += amountUsd;
           } else {
             (protocolData.volumeBridgePaths as any)[hlConfigs.chain][hlConfigs.layer2Chain] += amountUsd;

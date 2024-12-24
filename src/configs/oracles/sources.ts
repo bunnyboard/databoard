@@ -2502,4 +2502,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.LNDX_WETH],
   },
+  stS: {
+    currency: 'ftm',
+    sources: [OracleSourceBalancerList.stS_WS],
+  },
 };
