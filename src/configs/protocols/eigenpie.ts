@@ -4,7 +4,7 @@ import { ChainNames, ProtocolNames } from '../names';
 export interface EigenpieProtocolConfig extends ProtocolConfig {
   chain: string;
   staking: string;
-  withdraManager: string;
+  withdrawalManager: string;
   tokens: Array<string>;
 }
 
@@ -14,7 +14,7 @@ export const EigenpieConfigs: EigenpieProtocolConfig = {
 
   chain: ChainNames.ethereum,
   staking: '0x24db6717db1c75b9db6ea47164d8730b63875db7',
-  withdraManager: '0x98083e22d12497c1516d3c49e7cc6cd2cd9dcba4',
+  withdrawalManager: '0x98083e22d12497c1516d3c49e7cc6cd2cd9dcba4',
   tokens: [
     '0x18f313Fc6Afc9b5FD6f0908c1b3D476E3feA1DD9',
     '0x49446a0874197839d15395b908328a74ccc96bc0',

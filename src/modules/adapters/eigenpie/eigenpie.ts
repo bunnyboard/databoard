@@ -164,7 +164,7 @@ export default class EigenpieAdapter extends ProtocolAdapter {
 
     const withdrawLogs = await this.services.blockchain.evm.getContractLogs({
       chain: eigenpieConfig.chain,
-      address: eigenpieConfig.withdraManager,
+      address: eigenpieConfig.withdrawalManager,
       fromBlock: beginBlock,
       toBlock: endBlock,
     });

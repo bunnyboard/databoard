@@ -52,9 +52,9 @@ export default class BlockDater {
       return await this.getFromExplorerApi('https://seitrace.com/pacific-1/api/v1', timestamp);
     }
 
-    if (this.chain === ChainNames.mantle) {
-      return await this.getFromExplorerApi('https://api.mantlescan.xyz/api', timestamp);
-    }
+    // if (this.chain === ChainNames.mantle) {
+    //   return await this.getFromExplorerApi('https://api.mantlescan.xyz/api', timestamp);
+    // }
 
     if (this.firstBlock === undefined || this.latestBlock === undefined || this.blockTime === undefined || refresh) {
       await this.getBoundaries();
