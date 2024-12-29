@@ -3,6 +3,7 @@ import winston from 'winston';
 import EnvConfig from '../configs/envConfig';
 import { AxiosError } from 'axios';
 import { findLongestStringLength } from './utils';
+import util from 'util';
 
 const fgCyan = '\x1b[36m';
 const fgGrey = '\x1b[90m';
@@ -81,6 +82,10 @@ export function logAxiosError(error: AxiosError) {
   console.log(error.config ? error.config.url : '');
   console.log(error.response ? error.response.status : '', error.response ? error.response.statusText : '');
   console.log(error.response && error.response.data ? error.response.statusText : '');
+}
+
+export function logObjectFull(item: any) {
+  console.log(util.inspect(item, { showHidden: false, depth: null, colors: true }));
 }
 
 export default logger;

@@ -1,10 +1,12 @@
 import { AddressE, AddressF, AddressZero } from '../../configs/constants';
-import { compareAddress, formatBigNumberToNumber } from '../../lib/utils';
+import { compareAddress, formatBigNumberToNumber, normalizeAddress } from '../../lib/utils';
 import { ContractCall } from '../../services/blockchains/domains';
 import { ProtocolConfig, Token } from '../../types/base';
 import { ContextServices, ContextStorages } from '../../types/namespaces';
 import Erc20Abi from '../../configs/abi/ERC20.json';
 import ProtocolAdapter from './protocol';
+import envConfig from '../../configs/envConfig';
+import logger from '../../lib/logger';
 
 interface GetAddressBalanceUsdOptions {
   chain: string;
@@ -24,20 +26,12 @@ interface GetAddressBalanceUsdResult {
   };
 }
 
-// interface LogItem {
-//   chain: string;
-//   transactionHash: string;
-//   logIndex: number;
-//   blockNumber: number;
-//   topics: Array<string>;
-//   data: string;
-// }
-
-// interface GetChainLogsOptions {
-//   chain: string;
-//   fromBlock: number;
-//   toBlock: number;
-// }
+interface IndexContracLogsOptions {
+  chain: string;
+  address: string;
+  fromBlock: number;
+  toBlock: number;
+}
 
 export default class ProtocolExtendedAdapter extends ProtocolAdapter {
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {
@@ -127,34 +121,82 @@ export default class ProtocolExtendedAdapter extends ProtocolAdapter {
     return getResult;
   }
 
-  // when query events of protocol which have many contracts like Uniswap
-  // we got a problem of query events from a single contract, one-by-one
-  // it take too long
-  // this function provide a solution of query logs from blockchain blocks
-  // save them into database and will be reused by multiple protocols later
-  // public async indexChainLogs(options: GetChainLogsOptions): Promise<void> {
-  //   let syncFromBlock = options.fromBlock;
-  //   let syncToBlock = options.toBlock;
+  public async indexContractLogs(options: IndexContracLogsOptions): Promise<void> {
+    const cachingStateKey = `contractLogs-${options.chain}-${normalizeAddress(options.address)}`;
+    const cachingState = await this.storages.database.find({
+      collection: envConfig.mongodb.collections.caching.name,
+      query: {
+        name: cachingStateKey,
+      },
+    });
 
-  //   // first we check current database block state: oldest and latest block number
-  //   const oldestBlockSyncKey = `sync-chain-logs-${options.chain}-oldest`;
-  //   const latestBlockSyncKey = `sync-chain-logs-${options.chain}-latest`;
+    let startBlock = options.fromBlock;
+    if (cachingState) {
+      startBlock = cachingState.blockNumber;
+    }
 
-  //   const oldestSyncState = await this.storages.database.find({
-  //     collection: envConfig.mongodb.collections.caching.name,
-  //     query: {
-  //       name: oldestBlockSyncKey,
-  //     }
-  //   });
-  //   const latestSyncState = await this.storages.database.find({
-  //     collection: envConfig.mongodb.collections.caching.name,
-  //     query: {
-  //       name: latestBlockSyncKey,
-  //     }
-  //   });
+    logger.info('start to index contract logs', {
+      service: 'adapter.extended',
+      chain: options.chain,
+      address: options.address,
+      fromBlock: startBlock,
+      toBlock: options.toBlock,
+    });
 
-  //   if (oldestSyncState && latestSyncState) {
-  //     if ()
-  //   }
-  // }
+    const blockRange = 10000;
+    while (startBlock < options.toBlock) {
+      const toBlock = startBlock + blockRange > options.toBlock ? options.toBlock : startBlock + blockRange;
+
+      const logs = await this.services.blockchain.evm.getContractLogs({
+        chain: options.chain,
+        address: options.address,
+        fromBlock: startBlock,
+        toBlock: toBlock,
+      });
+
+      const operations: Array<any> = logs.map((log) => {
+        return {
+          updateOne: {
+            filter: {
+              chain: options.chain,
+              address: normalizeAddress(log.address),
+              transactionHash: log.transactionHash,
+              logIndex: Number(log.logIndex),
+            },
+            update: {
+              $set: {
+                chain: options.chain,
+                address: normalizeAddress(log.address),
+                transactionHash: log.transactionHash,
+                logIndex: Number(log.logIndex),
+                blockNumber: Number(log.blockNumber),
+                topics: log.topics,
+                data: log.data,
+              },
+            },
+            upsert: true,
+          },
+        };
+      });
+
+      await this.storages.database.bulkWrite({
+        collection: envConfig.mongodb.collections.contractLogs.name,
+        operations: operations,
+      });
+
+      startBlock = toBlock + 1;
+
+      await this.storages.database.update({
+        collection: envConfig.mongodb.collections.caching.name,
+        keys: {
+          name: cachingStateKey,
+        },
+        updates: {
+          name: cachingStateKey,
+          blockNumber: startBlock,
+        },
+        upsert: true,
+      });
+    }
+  }
 }

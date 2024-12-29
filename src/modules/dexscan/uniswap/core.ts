@@ -1,6 +1,6 @@
 import { DexscanFactoryConfig, DexscanModuleConfig, getDexscanModuleConfigChains } from '../../../configs/dexscan';
 import envConfig from '../../../configs/envConfig';
-import { compareAddress, consoleLogFull, formatBigNumberToNumber, normalizeAddress, sleep } from '../../../lib/utils';
+import { compareAddress, formatBigNumberToNumber, normalizeAddress, sleep } from '../../../lib/utils';
 import { Pool2, Pool2Types } from '../../../types/domains/pool2';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
@@ -12,7 +12,7 @@ import UniswapV3PoolAbi from '../../../configs/abi/uniswap/UniswapV3Pool.json';
 import { ContractCall } from '../../../services/blockchains/domains';
 import { Address } from 'viem';
 import { AddressMulticall3 } from '../../../configs/constants';
-import logger from '../../../lib/logger';
+import logger, { logObjectFull } from '../../../lib/logger';
 import BigNumber from 'bignumber.js';
 import { CustomQueryChainLogsBlockRange, DefaultQueryChainLogsBlockRange } from '../../../configs';
 import UniswapEventDecoder from './decoder';
@@ -184,7 +184,7 @@ export default class UniswapCore {
     }
 
     if (Object.values(protocols).length > 0) {
-      consoleLogFull(Object.values(protocols));
+      logObjectFull(Object.values(protocols));
       process.exit(0);
     }
 

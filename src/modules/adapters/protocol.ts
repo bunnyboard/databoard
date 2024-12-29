@@ -1,6 +1,6 @@
 import { TimeUnits } from '../../configs/constants';
 import envConfig from '../../configs/envConfig';
-import logger from '../../lib/logger';
+import logger, { logObjectFull } from '../../lib/logger';
 import { getDateString, getStartDayTimestamp, getTimestamp, getTodayUTCTimestamp } from '../../lib/utils';
 import ExecuteSession from '../../services/executeSession';
 import { ProtocolConfig } from '../../types/base';
@@ -180,7 +180,7 @@ export default class ProtocolAdapter implements IProtocolAdapter {
         ),
       );
     } else {
-      console.log(
+      logObjectFull(
         await this.getProtocolData({
           timestamp: fromTime,
           beginTime: fromTime,

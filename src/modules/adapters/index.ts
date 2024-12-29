@@ -24,6 +24,7 @@ import DodoexAdapter from './dodoex/dodoex';
 import Eclipsel2NativeBridgeAdapter from './eclipsel2/nativeBridge';
 import EigenLayerAdapter from './eigenlayer/eigenlayer';
 import EigenpieAdapter from './eigenpie/eigenpie';
+import EthenaAdapter from './ethena/ethena';
 import EthereumEcosystemAdapter from './ethereum/ecosystem';
 import EtherfiAdapter from './etherfi/etherfi';
 import EulerAdapter from './euler/euler';
@@ -226,5 +227,6 @@ export function getProtocolAdapters(
     ),
     chainlinkccip: new ChainlinkCcipAdapter(services, storages, ProtocolConfigs.chainlinkccip),
     gearbox: new GearboxAdapter(services, storages, ProtocolConfigs.gearbox),
+    ethena: new EthenaAdapter(services, storages, ProtocolConfigs.ethena),
   };
 }

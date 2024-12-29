@@ -24,7 +24,10 @@ const envConfig: EnvConfig = {
     etherscanApiKey: String(process.env.ETHERSCAN_API_KEY),
   },
   coingecko: {
-    coingeckoApiKey: process.env.COINGECKO_API_KEY ? String(process.env.COINGECKO_API_KEY) : null,
+    coingeckoApiKey:
+      process.env.COINGECKO_API_KEY && process.env.COINGECKO_API_KEY !== ''
+        ? String(process.env.COINGECKO_API_KEY)
+        : null,
   },
 };
 

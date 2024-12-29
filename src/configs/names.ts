@@ -251,4 +251,6 @@ export const ProtocolNames = {
   hyperliquidNativeBridge: 'hyperliquidNativeBridge',
   sophonNativeBridge: 'sophonNativeBridge',
   chainlinkccip: 'chainlinkccip',
+  ethena: 'ethena',
+  resolv: 'resolv',
 };
