@@ -1,9 +1,9 @@
 {
   "0x0000000000000000000000000000000000000000": {
     "chain": "scroll",
-    "address": "0x0000000000000000000000000000000000000000",
     "symbol": "ETH",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0x0000000000000000000000000000000000000000"
   },
   "0x01f0a31698c4d065659b9bdc21b3610292a1c506": {
     "chain": "scroll",
@@ -19,9 +19,9 @@
   },
   "0x15eefe5b297136b8712291b632404b66a8ef4d25": {
     "chain": "scroll",
-    "address": "0x15eefe5b297136b8712291b632404b66a8ef4d25",
     "symbol": "uniETH",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0x15eefe5b297136b8712291b632404b66a8ef4d25"
   },
   "0x3ba89d490ab1c0c9cc2313385b30710e838370a4": {
     "chain": "scroll",

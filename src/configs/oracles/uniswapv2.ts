@@ -2418,4 +2418,11 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.base['0x548f93779fbc992010c07467cbaf329dd5f059b7'],
     quotaToken: TokensBook.base['0x833589fcd6edb6e08f4c7c32d4f71b54bda02913'],
   },
+  DACKIE_WETH: {
+    type: 'univ2',
+    chain: 'base',
+    address: '0x7db1c9f51f2cb456f0c5d7e2f939fa7f6b360142',
+    baseToken: TokensBook.base['0xc2bc7a73613b9bd5f373fe10b55c59a69f4d617b'],
+    quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
+  },
 };

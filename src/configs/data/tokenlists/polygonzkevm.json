@@ -55,9 +55,9 @@
   },
   "0x4f9a0e7fd2bf6067db6994cf12e4495df938e6e9": {
     "chain": "polygonzkevm",
-    "address": "0x4f9a0e7fd2bf6067db6994cf12e4495df938e6e9",
     "symbol": "WETH",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0x4f9a0e7fd2bf6067db6994cf12e4495df938e6e9"
   },
   "0x5d8cff95d7a57c0bf50b30b43c7cc0d52825d4a9": {
     "chain": "polygonzkevm",

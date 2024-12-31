@@ -83,6 +83,12 @@
     "decimals": 18,
     "address": "0x244c238325fc1bdf6eded726ee1b47d55895d944"
   },
+  "0x27d0a2b5316b98088294378692f4eabfb3222e36": {
+    "chain": "zksync",
+    "symbol": "ZERO",
+    "decimals": 18,
+    "address": "0x27d0a2b5316b98088294378692f4eabfb3222e36"
+  },
   "0x28a487240e4d45cff4a2980d334cc933b7483842": {
     "chain": "zksync",
     "symbol": "MATIC",
@@ -233,6 +239,12 @@
     "decimals": 18,
     "address": "0x5aea5775959fbc2557cc8789bc1bf90a239d9a91"
   },
+  "0x5d0d7bca050e2e98fd4a5e8d3ba823b49f39868d": {
+    "chain": "zksync",
+    "symbol": "ZFI",
+    "decimals": 18,
+    "address": "0x5d0d7bca050e2e98fd4a5e8d3ba823b49f39868d"
+  },
   "0x5f7cbcb391d33988dad74d6fd683aadda1123e4d": {
     "chain": "zksync",
     "symbol": "RF",
@@ -271,9 +283,9 @@
   },
   "0x68a8b2dbce73a9221a8cd981ad6a70d2bae40668": {
     "chain": "zksync",
-    "address": "0x68a8b2dbce73a9221a8cd981ad6a70d2bae40668",
     "symbol": "PEPE",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0x68a8b2dbce73a9221a8cd981ad6a70d2bae40668"
   },
   "0x6a5279e99ca7786fb13f827fc1fb4f61684933d6": {
     "chain": "zksync",
@@ -310,6 +322,12 @@
     "symbol": "ZKGROK",
     "decimals": 18,
     "address": "0x75c568a970e54a075b2a5475264cfcff672d2b89"
+  },
+  "0x7715c206a14ac93cb1a6c0316a6e5f8ad7c9dc31": {
+    "chain": "zksync",
+    "symbol": "USDM",
+    "decimals": 18,
+    "address": "0x7715c206a14ac93cb1a6c0316a6e5f8ad7c9dc31"
   },
   "0x787c09494ec8bcb24dcaf8659e7d5d69979ee508": {
     "chain": "zksync",
@@ -419,11 +437,23 @@
     "decimals": 18,
     "address": "0x9e22d758629761fc5708c171d06c2fabb60b5159"
   },
+  "0xa900cbe7739c96d2b153a273953620a701d5442b": {
+    "chain": "zksync",
+    "symbol": "WUSDM",
+    "decimals": 18,
+    "address": "0xa900cbe7739c96d2b153a273953620a701d5442b"
+  },
   "0xa995ad25ce5eb76972ab356168f5e1d9257e4d05": {
     "chain": "zksync",
     "symbol": "KOI",
     "decimals": 18,
     "address": "0xa995ad25ce5eb76972ab356168f5e1d9257e4d05"
+  },
+  "0xabec5ecbe08b6c02f5c9a2ff82696e1e7db6f9bf": {
+    "chain": "zksync",
+    "symbol": "HEU",
+    "decimals": 18,
+    "address": "0xabec5ecbe08b6c02f5c9a2ff82696e1e7db6f9bf"
   },
   "0xaf08a9d918f16332f22cf8dc9abe9d9e14ddcbc2": {
     "chain": "zksync",
@@ -487,9 +517,9 @@
   },
   "0xbcadddad3f224115fc7efa8f0c5d3778a41d24dc": {
     "chain": "zksync",
-    "address": "0xbcadddad3f224115fc7efa8f0c5d3778a41d24dc",
     "symbol": "FLOKI",
-    "decimals": 9
+    "decimals": 9,
+    "address": "0xbcadddad3f224115fc7efa8f0c5d3778a41d24dc"
   },
   "0xbd4372e44c5ee654dd838304006e1f0f69983154": {
     "chain": "zksync",
@@ -605,11 +635,23 @@
     "decimals": 18,
     "address": "0xd78abd81a3d57712a3af080dc4185b698fe9ac5a"
   },
+  "0xda562340a395ba2f5d72a5ee1b1b60c578768578": {
+    "chain": "zksync",
+    "symbol": "GORILLA",
+    "decimals": 18,
+    "address": "0xda562340a395ba2f5d72a5ee1b1b60c578768578"
+  },
   "0xdb89d7b0dccd0c0e5ac3571133a9aa1a037945cb": {
     "chain": "zksync",
-    "address": "0xdb89d7b0dccd0c0e5ac3571133a9aa1a037945cb",
     "symbol": "USX",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0xdb89d7b0dccd0c0e5ac3571133a9aa1a037945cb"
+  },
+  "0xdbff7c6d368904680706804645cafa4defa3c224": {
+    "chain": "zksync",
+    "symbol": "TEVA",
+    "decimals": 18,
+    "address": "0xdbff7c6d368904680706804645cafa4defa3c224"
   },
   "0xdd9f72afed3631a6c85b5369d84875e6c42f1827": {
     "chain": "zksync",
@@ -629,11 +671,23 @@
     "decimals": 18,
     "address": "0xe027d939f7de6f521675907cf086f59e4d75b876"
   },
+  "0xe05c58344b78bbbde021e3782487e73bb332c1ef": {
+    "chain": "zksync",
+    "symbol": "APPA",
+    "decimals": 18,
+    "address": "0xe05c58344b78bbbde021e3782487e73bb332c1ef"
+  },
   "0xe593853b4d603d5b8f21036bb4ad0d1880097a6e": {
     "chain": "zksync",
     "symbol": "FUL",
     "decimals": 18,
     "address": "0xe593853b4d603d5b8f21036bb4ad0d1880097a6e"
+  },
+  "0xe757355edba7ced7b8c0271bba4efda184ad75ab": {
+    "chain": "zksync",
+    "symbol": "M-BTC",
+    "decimals": 18,
+    "address": "0xe757355edba7ced7b8c0271bba4efda184ad75ab"
   },
   "0xe75a17b4f5c4f844688d5670b684515d7c785e63": {
     "chain": "zksync",

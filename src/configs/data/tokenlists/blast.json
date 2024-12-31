@@ -1,9 +1,9 @@
 {
   "0x0000000000000000000000000000000000000000": {
     "chain": "blast",
-    "address": "0x0000000000000000000000000000000000000000",
     "symbol": "ETH",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0x0000000000000000000000000000000000000000"
   },
   "0x0000000000a1c217530f17948cbb487c743b9f63": {
     "chain": "blast",
@@ -61,9 +61,9 @@
   },
   "0x3194b0a295d87fdaa54df852c248f7a6baf6c6e0": {
     "chain": "blast",
-    "address": "0x3194b0a295d87fdaa54df852c248f7a6baf6c6e0",
     "symbol": "nUSD",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0x3194b0a295d87fdaa54df852c248f7a6baf6c6e0"
   },
   "0x34050224f9ea1859790b7cbbbe2264f1204771a6": {
     "chain": "blast",
@@ -145,9 +145,9 @@
   },
   "0x9592f08387134e218327e6e8423400eb845ede0e": {
     "chain": "blast",
-    "address": "0x9592f08387134e218327e6e8423400eb845ede0e",
     "symbol": "SYN",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0x9592f08387134e218327e6e8423400eb845ede0e"
   },
   "0x9aecedcd6a82d26f2f86d331b17a1c1676442a87": {
     "chain": "blast",
@@ -193,9 +193,9 @@
   },
   "0xce971282faac9fabcf121944956da7142cccc855": {
     "chain": "blast",
-    "address": "0xce971282faac9fabcf121944956da7142cccc855",
     "symbol": "nETH",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0xce971282faac9fabcf121944956da7142cccc855"
   },
   "0xd07379a755a8f11b57610154861d694b2a0f615a": {
     "chain": "blast",

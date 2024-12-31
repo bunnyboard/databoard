@@ -1,9 +1,9 @@
 {
   "0x0000000000000000000000000000000000000000": {
     "chain": "fantom",
-    "address": "0x0000000000000000000000000000000000000000",
     "symbol": "FTM",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0x0000000000000000000000000000000000000000"
   },
   "0x00a35fd824c717879bf370e70ac6868b95870dfb": {
     "chain": "fantom",
@@ -163,9 +163,9 @@
   },
   "0x153a59d48aceabedbdcf7a13f67ae52b434b810b": {
     "chain": "fantom",
-    "address": "0x153a59d48aceabedbdcf7a13f67ae52b434b810b",
     "symbol": "celrFXS",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0x153a59d48aceabedbdcf7a13f67ae52b434b810b"
   },
   "0x15b7c0c907e4c6b9adaaaabc300c08991d6cea05": {
     "chain": "fantom",
@@ -175,9 +175,9 @@
   },
   "0x16365b45eb269b5b5dacb34b4a15399ec79b95eb": {
     "chain": "fantom",
-    "address": "0x16365b45eb269b5b5dacb34b4a15399ec79b95eb",
     "symbol": "LUSD",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0x16365b45eb269b5b5dacb34b4a15399ec79b95eb"
   },
   "0x174c7106aeecdc11389f7dd21342f05f46ccb40f": {
     "chain": "fantom",
@@ -187,9 +187,9 @@
   },
   "0x1852f70512298d56e9c8fdd905e02581e04ddb2a": {
     "chain": "fantom",
-    "address": "0x1852f70512298d56e9c8fdd905e02581e04ddb2a",
     "symbol": "synFRAX",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0x1852f70512298d56e9c8fdd905e02581e04ddb2a"
   },
   "0x191c10aa4af7c30e871e70c95db0e4eb77237530": {
     "chain": "fantom",
@@ -377,6 +377,12 @@
     "decimals": 18,
     "address": "0x33333ee26a7d02e41c33828b42fb1e0889143477"
   },
+  "0x37f5dae6039c8ec4c32ad7d3e2a07acaa55c08f9": {
+    "chain": "fantom",
+    "symbol": "XBTC",
+    "decimals": 18,
+    "address": "0x37f5dae6039c8ec4c32ad7d3e2a07acaa55c08f9"
+  },
   "0x38540b4613d2e57ecf190d3486ae6f74591eb8a9": {
     "chain": "fantom",
     "symbol": "ALM",
@@ -388,6 +394,12 @@
     "symbol": "GWBTC",
     "decimals": 8,
     "address": "0x38aca5484b8603373acc6961ecd57a6a594510a3"
+  },
+  "0x39551b1c26ce03714e4661833b0fa730174bd7e9": {
+    "chain": "fantom",
+    "symbol": "PLUS",
+    "decimals": 18,
+    "address": "0x39551b1c26ce03714e4661833b0fa730174bd7e9"
   },
   "0x39b3bd37208cbade74d0fcbdbb12d606295b430a": {
     "chain": "fantom",
@@ -775,9 +787,9 @@
   },
   "0x67c10c397dd0ba417329543c1a40eb48aaa7cd00": {
     "chain": "fantom",
-    "address": "0x67c10c397dd0ba417329543c1a40eb48aaa7cd00",
     "symbol": "nETH",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0x67c10c397dd0ba417329543c1a40eb48aaa7cd00"
   },
   "0x695921034f0387eac4e11620ee91b1b15a6a09fe": {
     "chain": "fantom",
@@ -883,9 +895,15 @@
   },
   "0x78de9326792ce1d6eca0c978753c6953cdeedd73": {
     "chain": "fantom",
-    "address": "0x78de9326792ce1d6eca0c978753c6953cdeedd73",
     "symbol": "JUMP",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0x78de9326792ce1d6eca0c978753c6953cdeedd73"
+  },
+  "0x7a10f506e4c7658e6ad15fdf0443d450b7fa80d7": {
+    "chain": "fantom",
+    "symbol": "EYWA",
+    "decimals": 18,
+    "address": "0x7a10f506e4c7658e6ad15fdf0443d450b7fa80d7"
   },
   "0x7a3c802e8fb7f6ca7a5cb5c4293978a40d576b5c": {
     "chain": "fantom",
@@ -1075,9 +1093,9 @@
   },
   "0x92f97bea4aca122c6459889602ff4dd84e5fccd4": {
     "chain": "fantom",
-    "address": "0x92f97bea4aca122c6459889602ff4dd84e5fccd4",
     "symbol": "GNO",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0x92f97bea4aca122c6459889602ff4dd84e5fccd4"
   },
   "0x940f41f0ec9ba1a34cf001cc03347ac092f5f6b5": {
     "chain": "fantom",
@@ -1243,9 +1261,9 @@
   },
   "0xb0d8cf9560ef31b8fe6d9727708d19b31f7c90dc": {
     "chain": "fantom",
-    "address": "0xb0d8cf9560ef31b8fe6d9727708d19b31f7c90dc",
     "symbol": "celrFRAX",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0xb0d8cf9560ef31b8fe6d9727708d19b31f7c90dc"
   },
   "0xb1f795776cb9ddac6e7e162f31c7419dd3d48297": {
     "chain": "fantom",
@@ -1433,6 +1451,12 @@
     "decimals": 18,
     "address": "0xcfc785741dc0e98ad4c9f6394bb9d43cd1ef5179"
   },
+  "0xd0ba12a3a86ff87e61f08a18332acaa1dc3e166e": {
+    "chain": "fantom",
+    "symbol": "SODA",
+    "decimals": 18,
+    "address": "0xd0ba12a3a86ff87e61f08a18332acaa1dc3e166e"
+  },
   "0xd121c2d34ae2a5a415dc5fc4f898b084643dba78": {
     "chain": "fantom",
     "symbol": "GEN",
@@ -1523,6 +1547,12 @@
     "decimals": 18,
     "address": "0xddcb3ffd12750b45d32e084887fdf1aabab34239"
   },
+  "0xddf7d080c82b8048baae54e376a3406572429b4e": {
+    "chain": "fantom",
+    "symbol": "OOOOOO",
+    "decimals": 18,
+    "address": "0xddf7d080c82b8048baae54e376a3406572429b4e"
+  },
   "0xde55b113a27cc0c5893caa6ee1c020b6b46650c0": {
     "chain": "fantom",
     "symbol": "DEUS",
@@ -1597,9 +1627,9 @@
   },
   "0xe3c82a836ec85311a433fbd9486efaf4b1afbf48": {
     "chain": "fantom",
-    "address": "0xe3c82a836ec85311a433fbd9486efaf4b1afbf48",
     "symbol": "SDT",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0xe3c82a836ec85311a433fbd9486efaf4b1afbf48"
   },
   "0xe47d957f83f8887063150aaf7187411351643392": {
     "chain": "fantom",
@@ -1669,9 +1699,9 @@
   },
   "0xed2a7edd7413021d440b09d654f3b87712abab66": {
     "chain": "fantom",
-    "address": "0xed2a7edd7413021d440b09d654f3b87712abab66",
     "symbol": "nUSD",
-    "decimals": 18
+    "decimals": 18,
+    "address": "0xed2a7edd7413021d440b09d654f3b87712abab66"
   },
   "0xee9801669c6138e84bd50deb500827b776777d28": {
     "chain": "fantom",
