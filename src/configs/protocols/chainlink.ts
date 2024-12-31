@@ -16,11 +16,11 @@ export interface ChainlinkCcipProtocolConfig extends ProtocolConfig {
 
 export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
   protocol: ProtocolNames.chainlinkccip,
-  birthday: 1700611200, // Wed Nov 22 2023 00:00:00 GMT+0000
+  birthday: 1727913600, // Thu Oct 03 2024 00:00:00 GMT+0000
   configs: [
     {
       chain: ChainNames.ethereum,
-      birthday: 1700611200, // Wed Nov 22 2023 00:00:00 GMT+0000
+      birthday: 1727913600, // Thu Oct 03 2024 00:00:00 GMT+0000
       outbound: {
         [ChainNames.arbitrum]: '0x69eCC4E2D8ea56E2d0a05bF57f4Fd6aEE7f2c284',
         [ChainNames.avalanche]: '0xaFd31C0C78785aDF53E4c185670bfd5376249d8A',
@@ -43,7 +43,7 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
     },
     {
       chain: ChainNames.arbitrum,
-      birthday: 1700611200, // Wed Nov 22 2023 00:00:00 GMT+0000
+      birthday: 1727913600, // Thu Oct 03 2024 00:00:00 GMT+0000
       outbound: {
         [ChainNames.avalanche]: '0xe80cC83B895ada027b722b78949b296Bd1fC5639',
         [ChainNames.base]: '0xc1b6287A3292d6469F2D8545877E40A2f75CA9a6',
@@ -61,7 +61,7 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
     },
     {
       chain: ChainNames.avalanche,
-      birthday: 1700611200, // Wed Nov 22 2023 00:00:00 GMT+0000
+      birthday: 1727913600, // Thu Oct 03 2024 00:00:00 GMT+0000
       outbound: {
         [ChainNames.arbitrum]: '0x4e910c8Bbe88DaDF90baa6c1B7850DbeA32c5B29',
         [ChainNames.base]: '0x139D4108C23e66745Eda4ab47c25C83494b7C14d',
@@ -75,14 +75,14 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
     },
     {
       chain: ChainNames.bsquared,
-      birthday: 1731542400, // Thu Nov 14 2024 00:00:00 GMT+0000
+      birthday: 1727913600, // Thu Oct 03 2024 00:00:00 GMT+0000
       outbound: {
         [ChainNames.ethereum]: '0xB1C908A7CF6f5FB1ed18a73aD60ffF9CC8276eC1',
       },
     },
     {
       chain: ChainNames.base,
-      birthday: 1700611200, // Wed Nov 22 2023 00:00:00 GMT+0000
+      birthday: 1727913600, // Thu Oct 03 2024 00:00:00 GMT+0000
       outbound: {
         [ChainNames.arbitrum]: '0x9D0ffA76C7F82C34Be313b5bFc6d42A72dA8CA69',
         [ChainNames.avalanche]: '0x4be6E0F97EA849FF80773af7a317356E6c646FD7',
@@ -99,7 +99,7 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
     },
     {
       chain: ChainNames.blast,
-      birthday: 1717200000, // Wed Nov 22 2023 00:00:00 GMT+0000
+      birthday: 1727913600, // Thu Oct 03 2024 00:00:00 GMT+0000
       outbound: {
         [ChainNames.arbitrum]: '0x28f7E57cEE31241B4B8B72e6b710c4dC2e9bEb28',
         [ChainNames.base]: '0xAbBC1fC0C919ecFb0220e90749111e0619abf79A',
@@ -109,7 +109,7 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
     },
     {
       chain: ChainNames.bnbchain,
-      birthday: 1700611200, // Wed Nov 22 2023 00:00:00 GMT+0000
+      birthday: 1727913600, // Thu Oct 03 2024 00:00:00 GMT+0000
       outbound: {
         [ChainNames.arbitrum]: '0x5577c19bD183e39a007ce4CE236f1D91e9132D5c',
         [ChainNames.avalanche]: '0x43F00dBf0Aa61A099c674A74FBdCb93786564950',
@@ -125,14 +125,14 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
     },
     {
       chain: ChainNames.celo,
-      birthday: 1715040000, // Tue May 07 2024 00:00:00 GMT+0000
+      birthday: 1727913600, // Thu Oct 03 2024 00:00:00 GMT+0000
       outbound: {
         [ChainNames.ethereum]: '0xc319484eF6cdA3a7f4D470e660b343FB569e9A1e',
       },
     },
     {
       chain: ChainNames.gnosis,
-      birthday: 1710460800, // Fri Mar 15 2024 00:00:00 GMT+00000
+      birthday: 1727913600, // Thu Oct 03 2024 00:00:00 GMT+0000
       outbound: {
         [ChainNames.arbitrum]: '0x140E6D5ba903F684944Dd27369d767DdEf958c9B',
         [ChainNames.avalanche]: '0xB707a6D1d32CE99D5c669DeE71D30d25a066D32c',
@@ -145,7 +145,7 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
     },
     {
       chain: ChainNames.linea,
-      birthday: 1715040000, // Tue May 07 2024 00:00:00 GMT+0000
+      birthday: 1727913600, // Thu Oct 03 2024 00:00:00 GMT+0000
       outbound: {
         [ChainNames.arbitrum]: '0x6d297Db3471057D7d014D7100A073de2e2656b8F',
         [ChainNames.avalanche]: '0x03dD4319019435D8FD5aE5920B96f37989EA410e',
@@ -164,7 +164,7 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
     },
     {
       chain: ChainNames.metis,
-      birthday: 1718323200, // Fri Jun 14 2024 00:00:00 GMT+0000
+      birthday: 1727913600, // Thu Oct 03 2024 00:00:00 GMT+0000
       outbound: {
         [ChainNames.arbitrum]: '0x8d3039fE2400151c06Ae84a18CAf38dD9b6Ce58b',
         [ChainNames.ethereum]: '0xdF5394c57A0570ECe45DE0c0fA2e722A672B9198',
@@ -172,7 +172,7 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
     },
     {
       chain: ChainNames.mode,
-      birthday: 1716595200, // Sat May 25 2024 00:00:00 GMT+0000
+      birthday: 1727913600, // Thu Oct 03 2024 00:00:00 GMT+0000
       outbound: {
         [ChainNames.arbitrum]: '0xb2e694efcDa0aeB81700019c3047F92fC3bb520E',
         [ChainNames.base]: '0x347A070EA1B04bc2b4A8f14320688C277022C90e',
@@ -183,7 +183,7 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
     },
     {
       chain: ChainNames.optimism,
-      birthday: 1700611200, // Wed Nov 22 2023 00:00:00 GMT+0000
+      birthday: 1727913600, // Thu Oct 03 2024 00:00:00 GMT+0000
       outbound: {
         [ChainNames.arbitrum]: '0x6bA81b83091A23e8F2AA173B2b939fAf9E320DfB',
         [ChainNames.avalanche]: '0xB9D655Ad5ba80036725d6c753Fa6AF0454cBF630',
@@ -197,7 +197,7 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
     },
     {
       chain: ChainNames.polygon,
-      birthday: 1700611200, // Wed Nov 22 2023 00:00:00 GMT+0000
+      birthday: 1727913600, // Thu Oct 03 2024 00:00:00 GMT+0000
       outbound: {
         [ChainNames.arbitrum]: '0x13263aC754d1e29430930672E3C0019f2BC44Ba2',
         [ChainNames.avalanche]: '0x56cb9Cd82553Bd8157e6504020c38f6DA4971717',
@@ -218,7 +218,7 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
     },
     {
       chain: ChainNames.scroll,
-      birthday: 1725667200, // Sat Sep 07 2024 00:00:00 GMT+0000
+      birthday: 1727913600, // Thu Oct 03 2024 00:00:00 GMT+0000
       outbound: {
         [ChainNames.ethereum]: '0x28cCF73F7982c1786b84e243FFbD47F4fB8ae43d',
         [ChainNames.linea]: '0x05d472b114D57E6035089A58Fa997A7940D29a23',
@@ -226,7 +226,7 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
     },
     {
       chain: ChainNames.zksync,
-      birthday: 1720569600, // Wed Jul 10 2024 00:00:00 GMT+0000
+      birthday: 1727913600, // Thu Oct 03 2024 00:00:00 GMT+0000
       outbound: {
         [ChainNames.arbitrum]: '0x66EcB7c8c122d74f19Fc28b275f213Ef8991B7AB',
         [ChainNames.ethereum]: '0xD1B33FAd3fF7a793EE39473f865630e3b6371086',

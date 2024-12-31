@@ -174,4 +174,14 @@ export const OracleSourceCurveList: {
     quotaToken: TokensBook.arbitrum['0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f'],
     quotaTokenIndex: 0,
   },
+  RLP_USDC: {
+    type: 'curveFactoryPool',
+    chain: 'ethereum',
+    currency: 'usd',
+    address: '0x8e001d4bac0eae1eea348dfc22f9b8bda67dd211',
+    baseToken: TokensBook.ethereum['0x4956b52ae2ff65d74ca2d61207523288e4528f96'],
+    baseTokenIndex: 1,
+    quotaToken: TokensBook.ethereum['0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'],
+    quotaTokenIndex: 0,
+  },
 };

@@ -1311,7 +1311,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   },
   mETH: {
     currency: 'eth',
-    sources: [OracleSourceUniswapv3List.mETH_WETH],
+    sources: [OracleSourceUniswapv3List.mETH_WETH, OracleSourceCustomList.mETH],
   },
   WLD: {
     currency: 'eth',
@@ -2067,7 +2067,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   },
   CKP: {
     currency: 'bnb',
-    sources: [OracleSourceUniswapv2List.CKP_WBNB],
+    sources: [OracleSourceUniswapv3List.CKP_WBNB],
   },
   MASQ: {
     currency: 'eth',
@@ -2545,5 +2545,17 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   BMX: {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.BMX_USDC],
+  },
+  RLP: {
+    currency: 'usd',
+    sources: [OracleSourceCurveList.RLP_USDC],
+  },
+  USUAL: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.USUAL_WETH],
+  },
+  USUALx: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.USUALx_USDC],
   },
 };

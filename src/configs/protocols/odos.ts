@@ -14,7 +14,7 @@ export interface OdosProtocolConfig extends ProtocolConfig {
 
 export const OdosConfigs: OdosProtocolConfig = {
   protocol: ProtocolNames.odos,
-  birthday: 1662508800, // Wed Sep 07 2022 00:00:00 GMT+0000
+  birthday: 1689292800, // Fri Jul 14 2023 00:00:00 GMT+0000
   routers: [
     {
       chain: ChainNames.ethereum,

@@ -1271,6 +1271,12 @@
     "decimals": 18,
     "address": "0x06b884e60794ce02aafab13791b59a2e6a07442f"
   },
+  "0x06b964d96f5dcf7eae9d7c559b09edce244d4b8e": {
+    "chain": "ethereum",
+    "symbol": "USUALx",
+    "decimals": 18,
+    "address": "0x06b964d96f5dcf7eae9d7c559b09edce244d4b8e"
+  },
   "0x06d6f0dd6703a1cfe16025dcc55f36f017887627": {
     "chain": "ethereum",
     "symbol": "MTGX",
@@ -32044,6 +32050,12 @@
     "symbol": "ZAPI",
     "decimals": 9,
     "address": "0xc434268603ca8854e0be1a3ff15cad73bd6ec49a"
+  },
+  "0xc4441c2be5d8fa8126822b9929ca0b81ea0de38e": {
+    "chain": "ethereum",
+    "symbol": "USUAL",
+    "decimals": 18,
+    "address": "0xc4441c2be5d8fa8126822b9929ca0b81ea0de38e"
   },
   "0xc4506022fb8090774e8a628d5084eed61d9b99ee": {
     "chain": "ethereum",

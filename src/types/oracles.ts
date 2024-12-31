@@ -97,7 +97,7 @@ export interface OracleSourceCurvePool extends OracleSourceBase {
 
 export interface OracleSourceStakingTokenWrapper extends OracleSourceBase {
   type: 'stakingTokenWrapper';
-  method: 'balance' | 'erc4626';
+  method: 'balance' | 'erc4626' | 'mETH';
   underlyingToken: Token;
 }
 

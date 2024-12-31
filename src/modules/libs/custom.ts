@@ -2,10 +2,12 @@ import BigNumber from 'bignumber.js';
 
 import VatAbi from '../../configs/abi/maker/Vat.json';
 import SavingDaiAbi from '../../configs/abi/spark/SavingDai.json';
+import mETHAbi from '../../configs/abi/mantle/mETH.json';
+import mETHStakingContractAbi from '../../configs/abi/mantle/EthStaking.json';
 import { SolidityUnits } from '../../configs/constants';
 import { formatBigNumberToString } from '../../lib/utils';
 import BlockchainService from '../../services/blockchains/blockchain';
-import { OracleSourceMakerRwaPip, OracleSourceSavingDai } from '../../types/oracles';
+import { OracleSourceMakerRwaPip, OracleSourceSavingDai, OracleSourceStakingTokenWrapper } from '../../types/oracles';
 
 export default class OracleLibs {
   public static async getTokenPrice(
@@ -51,6 +53,39 @@ export default class OracleLibs {
         }
 
         break;
+      }
+    }
+
+    return null;
+  }
+
+  // get price of 0xd5f7838f5c461feff7fe49ea5ebaf7728bb0adfa in ETH
+  public static async getmETHPrice(
+    config: OracleSourceStakingTokenWrapper,
+    blockNumber: number,
+  ): Promise<string | null> {
+    const blockchain = new BlockchainService();
+    const stakingContract = await blockchain.readContract({
+      chain: config.chain,
+      abi: mETHAbi,
+      target: config.address,
+      method: 'stakingContract',
+      params: [],
+      blockNumber: blockNumber,
+    });
+
+    if (stakingContract) {
+      const mETHToETH = await blockchain.readContract({
+        chain: config.chain,
+        abi: mETHStakingContractAbi,
+        target: stakingContract,
+        method: 'mETHToETH',
+        params: [SolidityUnits.OneWad],
+        blockNumber: blockNumber,
+      });
+
+      if (mETHToETH) {
+        return formatBigNumberToString(mETHToETH.toString(), 18);
       }
     }
 

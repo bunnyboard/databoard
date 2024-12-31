@@ -127,4 +127,16 @@ export const OracleSourceCustomList: {
     address: '0xb45ad160634c528cc3d2926d9807104fa3157305',
     underlyingToken: TokensBook.ethereum['0x865377367054516e17014ccded1e7d814edc9ce4'],
   },
+  mETH: {
+    type: 'stakingTokenWrapper',
+    chain: 'ethereum',
+    method: 'mETH',
+    address: '0xd5f7838f5c461feff7fe49ea5ebaf7728bb0adfa',
+    underlyingToken: {
+      chain: 'ethereum',
+      symbol: 'ETH',
+      decimals: 18,
+      address: '0x0000000000000000000000000000000000000000',
+    },
+  },
 };

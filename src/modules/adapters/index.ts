@@ -66,6 +66,7 @@ import PolygonNativeBridgeAdapter from './polygon/nativeBridge';
 import PolygonZzkevmNativeBridgeAdapter from './polygon/zkevmNativeBridge';
 import PufferAdapter from './puffer/puffer';
 import RenzoAdapter from './renzo/renzo';
+import ResolvAdapter from './resolv/resolv';
 import RocketpoolAdapter from './rocketpool/rocketpool';
 import RubicAdapter from './rubic/rubic';
 import ScrollNativeBridgeAdapter from './scroll/nativeBridge';
@@ -228,5 +229,6 @@ export function getProtocolAdapters(
     chainlinkccip: new ChainlinkCcipAdapter(services, storages, ProtocolConfigs.chainlinkccip),
     gearbox: new GearboxAdapter(services, storages, ProtocolConfigs.gearbox),
     ethena: new EthenaAdapter(services, storages, ProtocolConfigs.ethena),
+    resolv: new ResolvAdapter(services, storages, ProtocolConfigs.resolv),
   };
 }

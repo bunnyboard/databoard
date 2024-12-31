@@ -192,6 +192,8 @@ export default class OracleService extends CachingService implements IOracleServ
           if (balance) {
             return formatBigNumberToString(balance.toString(10), config.underlyingToken.decimals);
           }
+        } else if (config.method === 'mETH') {
+          return await OracleLibs.getmETHPrice(config, blockNumber);
         }
 
         break;

@@ -1926,13 +1926,6 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.bnbchain['0xd06716e1ff2e492cc5034c2e81805562dd3b45fa'],
     quotaToken: TokensBook.bnbchain['0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c'],
   },
-  CKP_WBNB: {
-    type: 'univ2',
-    chain: 'bnbchain',
-    address: '0xdb92ad18ed18752a194b9d831413b09976b34ae1',
-    baseToken: TokensBook.bnbchain['0x2b5d9adea07b590b638ffc165792b2c610eda649'],
-    quotaToken: TokensBook.bnbchain['0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c'],
-  },
   MASQ_WETH: {
     type: 'univ2',
     chain: 'ethereum',
