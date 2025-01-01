@@ -371,6 +371,12 @@
     "decimals": 18,
     "address": "0x81e7186947fb59aaaaeb476a47daac60680cbbaf"
   },
+  "0x85d84c774cf8e9ff85342684b0e795df72a24908": {
+    "chain": "zksync",
+    "symbol": "VC",
+    "decimals": 18,
+    "address": "0x85d84c774cf8e9ff85342684b0e795df72a24908"
+  },
   "0x8e86e46278518efc1c5ced245cba2c7e3ef11557": {
     "chain": "zksync",
     "symbol": "USD+",

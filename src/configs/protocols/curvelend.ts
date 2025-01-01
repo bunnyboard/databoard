@@ -35,5 +35,10 @@ export const CurvelendConfigs: CurvelendProtocolConfig = {
         '0xc8248953429d707c6a2815653eca89846ffaa63b',
       ],
     },
+    {
+      chain: ChainNames.fraxtal,
+      birthday: 1725753600, // Sun Sep 08 2024 00:00:00 GMT+0000
+      factory: '0xf3c9bdAB17B7016fBE3B77D17b1602A7db93ac66',
+    },
   ],
 };

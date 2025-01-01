@@ -2566,4 +2566,28 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.DACKIE_WETH],
   },
+  VC: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.VC_WETH],
+  },
+  ZF: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ZF_WETH],
+  },
+  SDEX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SDEX_WETH],
+  },
+  VS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.VS_WETH],
+  },
+  ALB: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ALB_WETH],
+  },
+  LVL: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.LVL_WBNB],
+  },
 };

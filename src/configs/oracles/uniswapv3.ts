@@ -1111,7 +1111,7 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
   wTAO_WETH: {
     type: 'univ3',
     chain: 'ethereum',
-    address: '0x2982d3295a0e1a99e6e88ece0e93ffdfc5c761ae',
+    address: '0x433a00819c771b33fa7223a5b3499b24fbcd1bbc',
     baseToken: TokensBook.ethereum['0x77e06c9eccf2e797fd462a92b6d7642ef85b0a44'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
