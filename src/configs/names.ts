@@ -253,4 +253,5 @@ export const ProtocolNames = {
   chainlinkccip: 'chainlinkccip',
   ethena: 'ethena',
   resolv: 'resolv',
+  usual: 'usual',
 };

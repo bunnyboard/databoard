@@ -78,6 +78,7 @@ import SwellAdapter from './swell/swell';
 import SymbioticAdapter from './symbiotic/symbiotic';
 import SynapseAdapter from './synapse/synapse';
 import TaikoNativeBridgeAdapter from './taiko/nativeBridge';
+import UsualAdapter from './usual/usual';
 import VenusAdapter from './venus/venus';
 import WbethAdapter from './wbeth/wbeth';
 import WoofiAdapter from './woofi/woofi';
@@ -230,5 +231,6 @@ export function getProtocolAdapters(
     gearbox: new GearboxAdapter(services, storages, ProtocolConfigs.gearbox),
     ethena: new EthenaAdapter(services, storages, ProtocolConfigs.ethena),
     resolv: new ResolvAdapter(services, storages, ProtocolConfigs.resolv),
+    usual: new UsualAdapter(services, storages, ProtocolConfigs.usual),
   };
 }

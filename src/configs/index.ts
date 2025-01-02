@@ -131,6 +131,7 @@ import { ChainlinkCcipConfigs } from './protocols/chainlink';
 import { GearboxConfigs } from './protocols/gearbox';
 import { EthenaConfigs } from './protocols/ethena';
 import { ResolvConfigs } from './protocols/resolv';
+import { UsualConfigs } from './protocols/usual';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -293,4 +294,5 @@ export const ProtocolConfigs = {
   gearbox: GearboxConfigs,
   ethena: EthenaConfigs,
   resolv: ResolvConfigs,
+  usual: UsualConfigs,
 };
