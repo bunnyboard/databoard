@@ -397,11 +397,11 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   },
   ankrBNB: {
     currency: 'bnb',
-    sources: [OracleSourceUniswapv3List.ankrBNB_WBNB],
+    sources: [OracleSourceUniswapv2List.ankrBNB_WBNB],
   },
   BNBx: {
     currency: 'bnb',
-    sources: [OracleSourceUniswapv2List.BNBx_WBNB],
+    sources: [OracleSourceUniswapv3List.BNBx_WBNB],
   },
   TRX: {
     currency: 'usd',
@@ -424,8 +424,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv2List.HAY_BUSD],
   },
   ALPACA: {
-    currency: 'usd',
-    sources: [OracleSourceUniswapv2List.ALPACA_BUSD],
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.ALPACA_WBNB],
   },
   RACA: {
     currency: 'usd',
@@ -2589,5 +2589,41 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   LVL: {
     currency: 'bnb',
     sources: [OracleSourceUniswapv2List.LVL_WBNB],
+  },
+  amphrETH: {
+    currency: 'wstETH',
+    sources: [OracleSourceUniswapv3List.amphrETH_wstETH],
+  },
+  ROOT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ROOT_WETH],
+  },
+  SUDO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SUDO_WETH],
+  },
+  BASE: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.BASE_USDC],
+  },
+  Re7LRT: {
+    currency: 'wstETH',
+    sources: [OracleSourceUniswapv3List.Re7LRT_wstETH],
+  },
+  fBOMB: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.fBOMB_WETH],
+  },
+  CPOOL: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.CPOOL_USDC],
+  },
+  MUBI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.MUBI_WETH],
+  },
+  RBX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.RBX_WETH],
   },
 };

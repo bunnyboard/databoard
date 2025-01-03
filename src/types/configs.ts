@@ -37,6 +37,12 @@ export interface DatabaseCollectionConfig {
 
   // save liquidity pools of Balancer.fi-like pools
   datasyncPoolBalancer: MongoCollectionConfig;
+
+  // save decoded dex pool2
+  decodeDexPool2: MongoCollectionConfig;
+
+  // save decoded dex events
+  decodeDexEvents: MongoCollectionConfig;
 }
 
 export interface EnvConfig {

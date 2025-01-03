@@ -12,6 +12,7 @@ import CreditFacadeV3Abi from '../../../configs/abi/gearbox/CreditFacadeV3.json'
 import { ContractCall } from '../../../services/blockchains/domains';
 import { decodeEventLog } from 'viem';
 import { SolidityUnits } from '../../../configs/constants';
+import envConfig from '../../../configs/envConfig';
 
 const PoolV3Events = {
   Deposit: '0xdcbc1c05240f31ff3ad067ef1ee35ce4997762752e3a095284754544f4c709d7',
@@ -55,6 +56,40 @@ export default class GearboxAdapter extends ProtocolExtendedAdapter {
 
     if (gearboxConfig.birthday > options.timestamp) {
       return null;
+    }
+
+    // to counting all collaterals deposited in gearbox
+    // we need to query historical collateral deposit/withdraw logs
+    for (const poolConfig of gearboxConfig.pools) {
+      const poolBirthBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        poolConfig.chain,
+        this.protocolConfig.birthday,
+      );
+      const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        poolConfig.chain,
+        options.endTime,
+      );
+
+      const getCreditFacadeResults = await this.services.blockchain.evm.multicall({
+        chain: poolConfig.chain,
+        calls: poolConfig.v3Configs.creditManagers.map((address) => {
+          return {
+            abi: CreditManagerV3Abi,
+            target: address,
+            method: 'creditFacade',
+            params: [],
+          };
+        }),
+      });
+
+      for (const creditFacade of getCreditFacadeResults) {
+        await this.indexContractLogs({
+          chain: poolConfig.chain,
+          address: creditFacade,
+          fromBlock: poolBirthBlock,
+          toBlock: endBlock,
+        });
+      }
     }
 
     for (const poolConfig of gearboxConfig.pools) {
@@ -188,6 +223,7 @@ export default class GearboxAdapter extends ProtocolExtendedAdapter {
         }
       }
 
+      // query liquidity pool logs
       for (const poolAddress of poolConfig.v3Configs.liquidityPools) {
         const logs = await this.services.blockchain.evm.getContractLogs({
           chain: poolConfig.chain,
@@ -253,6 +289,7 @@ export default class GearboxAdapter extends ProtocolExtendedAdapter {
         }
       }
 
+      // query creditFacade logs
       const getCreditFacadeResults = await this.services.blockchain.evm.multicall({
         chain: poolConfig.chain,
         blockNumber: blockNumber,
@@ -268,6 +305,119 @@ export default class GearboxAdapter extends ProtocolExtendedAdapter {
       for (let i = 0; i < poolConfig.v3Configs.creditManagers.length; i++) {
         const creditManager = poolConfig.v3Configs.creditManagers[i];
         const creditFacade = getCreditFacadeResults[i];
+
+        const historicalLogs = await this.storages.database.query({
+          collection: envConfig.mongodb.collections.contractLogs.name,
+          query: {
+            chain: poolConfig.chain,
+            address: normalizeAddress(creditFacade),
+            blockNumber: {
+              $lte: blockNumber,
+            },
+          },
+        });
+        for (const log of historicalLogs) {
+          const signature = log.topics[0];
+
+          if (Object.values(CreditV3Events).includes(signature)) {
+            const event: any = decodeEventLog({
+              abi: CreditFacadeV3Abi,
+              topics: log.topics,
+              data: log.data,
+            });
+
+            const block = await this.services.blockchain.evm.getBlock(poolConfig.chain, Number(log.blockNumber));
+            const blockTime = Number(block.timestamp);
+
+            switch (signature) {
+              case CreditV3Events.AddCollateral:
+              case CreditV3Events.WithdrawCollateral: {
+                const token = await this.services.blockchain.evm.getTokenInfo({
+                  chain: poolConfig.chain,
+                  address: event.args.token,
+                });
+                if (token) {
+                  if (!protocolData.breakdown[token.chain][token.address]) {
+                    protocolData.breakdown[token.chain][token.address] = {
+                      ...getInitialProtocolCoreMetrics(),
+                      totalSupplied: 0,
+                      totalBorrowed: 0,
+                      volumes: {
+                        deposit: 0,
+                        withdraw: 0,
+                        borrow: 0,
+                        repay: 0,
+                        liquidation: 0,
+                      },
+                    };
+                  }
+
+                  const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+                    chain: token.chain,
+                    address: token.address,
+                    timestamp: blockTime,
+                  });
+
+                  const amountUsd =
+                    formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPriceUsd;
+
+                  if (signature === CreditV3Events.AddCollateral) {
+                    protocolData.totalAssetDeposited += amountUsd;
+                    protocolData.totalValueLocked += amountUsd;
+                    protocolData.breakdown[token.chain][token.address].totalAssetDeposited += amountUsd;
+                    protocolData.breakdown[token.chain][token.address].totalValueLocked += amountUsd;
+                  } else {
+                    protocolData.totalAssetDeposited -= amountUsd;
+                    protocolData.totalValueLocked -= amountUsd;
+                    protocolData.breakdown[token.chain][token.address].totalAssetDeposited -= amountUsd;
+                    protocolData.breakdown[token.chain][token.address].totalValueLocked -= amountUsd;
+                  }
+                }
+
+                break;
+              }
+
+              case CreditV3Events.LiquidateCreditAccount: {
+                const creditAccountInfo = await this.services.blockchain.evm.multicall({
+                  chain: poolConfig.chain,
+                  blockNumber: Number(log.blockNumber) - 1,
+                  calls: [
+                    {
+                      abi: CreditManagerV3Abi,
+                      target: creditManager,
+                      method: 'creditAccountInfo',
+                      params: [event.args.creditAccount],
+                    },
+                    {
+                      abi: CreditManagerV3Abi,
+                      target: creditManager,
+                      method: 'pool',
+                      params: [],
+                    },
+                  ],
+                });
+
+                const debtToken = poolAssets[normalizeAddress(creditAccountInfo[1])];
+                if (debtToken) {
+                  const debtTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+                    chain: debtToken.chain,
+                    address: debtToken.address,
+                    timestamp: blockTime,
+                  });
+
+                  const debtAmountUsd =
+                    formatBigNumberToNumber(creditAccountInfo[0][0].toString(), debtToken.decimals) * debtTokenPriceUsd;
+
+                  protocolData.totalAssetDeposited -= debtAmountUsd;
+                  protocolData.totalValueLocked -= debtAmountUsd;
+                }
+
+                break;
+              }
+            }
+          }
+        }
+
         const logs = await this.services.blockchain.evm.getContractLogs({
           chain: poolConfig.chain,
           address: creditFacade,

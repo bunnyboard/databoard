@@ -26,3 +26,17 @@ export interface GetProtocolDataOptions {
   beginTime: number;
   endTime: number;
 }
+
+export interface RunDecoderOptions {
+  chain: string;
+
+  // get and decode logs from given fromBlock
+  fromBlock?: number;
+
+  // force to get and decode logs from given fromBlock
+  // do not save state
+  force?: boolean;
+
+  // get and decode event logs from given contract only
+  contract?: string;
+}

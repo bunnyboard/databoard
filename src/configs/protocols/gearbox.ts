@@ -35,9 +35,9 @@ export const GearboxConfigs: GearboxProtocolConfig = {
           '0x8EF73f036fEEC873D0B2fd20892215Df5B8Bdd72',
         ],
         creditManagers: [
-          '0x3eb95430fdb99439a86d3c6d7d01c3c561393556',
-          '0xea7c28428d3916dbe2f113b8a6e6dd0f3819c050',
-          '0x4e94cd228ef386ebc32900ec745d1865934688a3',
+          // '0x3eb95430fdb99439a86d3c6d7d01c3c561393556',
+          // '0xea7c28428d3916dbe2f113b8a6e6dd0f3819c050',
+          // '0x4e94cd228ef386ebc32900ec745d1865934688a3',
           '0xefc134755aaf89fe84476946251680bece41246e',
           '0x46709ca16b1ffea5d6c6bb6b7e77dd9e3b4908ed',
           '0xcac3e41b9bad20e2aa35e150de96eefb2d043735',

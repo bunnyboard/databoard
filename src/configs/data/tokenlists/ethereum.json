@@ -16661,6 +16661,12 @@
     "decimals": 18,
     "address": "0x5fc429110a64bc51b57ca86dce1714fd0fbec303"
   },
+  "0x5fd13359ba15a84b76f7f87568309040176167cd": {
+    "chain": "ethereum",
+    "symbol": "amphrETH",
+    "decimals": 18,
+    "address": "0x5fd13359ba15a84b76f7f87568309040176167cd"
+  },
   "0x5fd48ca1212a409ca1020ea43b49f7ec40010435": {
     "chain": "ethereum",
     "symbol": "ADEX",
@@ -23230,6 +23236,12 @@
     "symbol": "SATOZ",
     "decimals": 8,
     "address": "0x845e2e8b42dced7dedcdba9bde32c9e338224f97"
+  },
+  "0x84631c0d0081fde56deb72f6de77abbbf6a9f93a": {
+    "chain": "ethereum",
+    "symbol": "Re7LRT",
+    "decimals": 18,
+    "address": "0x84631c0d0081fde56deb72f6de77abbbf6a9f93a"
   },
   "0x84682d3b5f187e23f94c9c55833b793b358210c7": {
     "chain": "ethereum",
