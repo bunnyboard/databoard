@@ -48,6 +48,8 @@ export const BungeeKnownBridgeNames: { [key: string]: string } = {
   '0xddc44bae4cec4168e76c8f60940ee0abbae677cacb55590a890235614317ef6b': ProtocolNames.zoraNativeBridge,
   '0xc3bc0f52caacc5a87db3ce955e12a8538950098a0012cbacd0e6ff87c0606d33': ProtocolNames.mantleNativeBridge,
   '0x52d0275a020a4c7ae62ec6f7d7fa9498ef80508501ba5033139ff2cf4d0f631a': ProtocolNames.modeNativeBridge,
+  '0x3b654adad78ea2ded387f2c5bed3f31dcb9c3e6ab79a28e9dab60dbacbf7c72a': ProtocolNames.mantleNativeBridge,
+  '0x8381ed10ba5922afc2e18270f9785c89117d41af9b60c4950b6f1b84e197e702': ProtocolNames.inkNativeBridge,
 };
 
 export default class BungeeAdapter extends ProtocolAdapter {
@@ -122,9 +124,17 @@ export default class BungeeAdapter extends ProtocolAdapter {
               // bungee identity bridge name by unique bytes32 hash
               // to know which bytes32 mapped to which bridge
               // check the Bungee bridge implementation contract
-              const bridgeName = BungeeKnownBridgeNames[event.args.bridgeName]
-                ? BungeeKnownBridgeNames[event.args.bridgeName]
-                : event.args.bridgeName;
+              let bridgeName = BungeeKnownBridgeNames[event.args.bridgeName];
+              if (!bridgeName) {
+                bridgeName = event.args.bridgeName;
+                logger.warn('failed to get bridge name from bridge txn', {
+                  service: this.name,
+                  protocol: this.protocolConfig.protocol,
+                  chain: gatewayConfig.chain,
+                  txn: log.transactionHash,
+                  logIndex: log.logIndex,
+                });
+              }
 
               const toChainId = Number(event.args.toChainId);
               let toChainName: string | null = null;

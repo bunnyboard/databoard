@@ -24395,6 +24395,12 @@
     "decimals": 18,
     "address": "0x8a9c67fee641579deba04928c4bc45f66e26343a"
   },
+  "0x8aa9381b2544b48c26f3b850f6e07e2c5161eb3e": {
+    "chain": "ethereum",
+    "symbol": "WDOGE",
+    "decimals": 8,
+    "address": "0x8aa9381b2544b48c26f3b850f6e07e2c5161eb3e"
+  },
   "0x8ab2ff0116a279a99950c66a12298962d152b83c": {
     "chain": "ethereum",
     "symbol": "ORDS",

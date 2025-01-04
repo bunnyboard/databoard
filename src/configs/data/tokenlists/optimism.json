@@ -1043,6 +1043,12 @@
     "decimals": 18,
     "address": "0xc55e93c62874d8100dbd2dfe307edc1036ad5434"
   },
+  "0xc5b001dc33727f8f26880b184090d3e252470d45": {
+    "chain": "optimism",
+    "symbol": "ERN",
+    "decimals": 18,
+    "address": "0xc5b001dc33727f8f26880b184090d3e252470d45"
+  },
   "0xc5b3ac2df8d8d7ac851f763a5b3ff23b4a696d59": {
     "chain": "optimism",
     "symbol": "APT",

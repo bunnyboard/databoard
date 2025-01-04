@@ -82,6 +82,7 @@ export const ChainNames = {
   hyperliquid: 'hyperliquid',
   sophon: 'sophon',
   sonic: 'sonic',
+  alephzero: 'alephzero',
 };
 
 export const ProtocolNames = {
@@ -254,4 +255,5 @@ export const ProtocolNames = {
   ethena: 'ethena',
   resolv: 'resolv',
   usual: 'usual',
+  axelar: 'axelar',
 };

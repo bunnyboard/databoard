@@ -656,4 +656,16 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
       decimals: 18,
     },
   },
+  [ChainNames.alephzero]: {
+    name: ChainNames.alephzero,
+    family: 'evm',
+    chainId: 41455,
+    nodeRpc: String(process.env.BLOCKCHAIN_ALEPHZERO_NODE),
+    nativeToken: {
+      chain: ChainNames.alephzero,
+      address: AddressZero,
+      symbol: 'AZERO',
+      decimals: 18,
+    },
+  },
 };

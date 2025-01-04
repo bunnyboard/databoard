@@ -2626,4 +2626,120 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.RBX_WETH],
   },
+  ZENT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ZENT_WETH],
+  },
+  BRIUN: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.BRIUN_WETH],
+  },
+  CJ: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.CJ_WETH],
+  },
+  BENJI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BENJI_WETH],
+  },
+  BOOP: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BOOP_WETH],
+  },
+  SMOL: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SMOL_WETH],
+  },
+  FrenBet: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.FrenBet_WETH],
+  },
+  HIGHER: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.HIGHER_WETH],
+  },
+  WDOGE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.WDOGE_WETH],
+  },
+  POLS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.POLS_WETH],
+  },
+  ORBS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ORBS_WETH],
+  },
+  VELA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.VELA_WETH],
+  },
+  ARX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ARX_WETH],
+  },
+  OneRING: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.OneRING_WFTM],
+  },
+  ERN: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.ERN_USDC],
+  },
+  OVN: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.OVN_WETH],
+  },
+  METAL: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.METAL_USDT],
+  },
+  MEE: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.MEE_USDT],
+  },
+  KTC: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.KTC_USDT],
+  },
+  LAVA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.LAVA_WETH],
+  },
+  PHA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.PHA_WETH],
+  },
+  PRQ: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.PRQ_WETH],
+  },
+  SMT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.SMT_WETH],
+  },
+  EAI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.EAI_WETH],
+  },
+  ARC: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ARC_WETH],
+  },
+  KEKIUS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.KEKIUS_WETH],
+  },
+  MASA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.MASA_WETH],
+  },
+  ShibDoge: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ShibDoge_WETH],
+  },
+  KUJI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.KUJI_WETH],
+  },
 };

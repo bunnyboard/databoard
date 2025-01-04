@@ -281,6 +281,12 @@
     "decimals": 18,
     "address": "0x1d734a02ef1e1f5886e66b0673b71af5b53ffa94"
   },
+  "0x200c234721b5e549c3693ccc93cf191f90dc2af9": {
+    "chain": "polygon",
+    "symbol": "METAL",
+    "decimals": 18,
+    "address": "0x200c234721b5e549c3693ccc93cf191f90dc2af9"
+  },
   "0x20e2374058bbbf14d9f7bc7e0985c1a22324ef12": {
     "chain": "polygon",
     "symbol": "TBTC2",
@@ -1996,6 +2002,12 @@
     "symbol": "pZUG",
     "decimals": 18,
     "address": "0xeb45921fedadf41df0bfcf5c33453acedda32441"
+  },
+  "0xeb7eab87837f4dad1bb80856db9e4506fc441f3d": {
+    "chain": "polygon",
+    "symbol": "MEE",
+    "decimals": 18,
+    "address": "0xeb7eab87837f4dad1bb80856db9e4506fc441f3d"
   },
   "0xedc79782f42fd1ba3f2faf9570866ea83ed93413": {
     "chain": "polygon",

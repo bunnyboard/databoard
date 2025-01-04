@@ -5,6 +5,7 @@ import AcrossAdapter from './across/across';
 import AnkrAdapter from './ankr/ankr';
 import ArbitrumNativeBridgeAdapter from './arbitrum/nativeBridge';
 import AvalonAdapter from './avalon/avalon';
+import AxelarAdapter from './axelar/axelar';
 import BalancerAdapter from './balancer/balancer';
 import BedrockAdapter from './bedrock/bedrock';
 import BenqiAdapter from './benqi/benqi';
@@ -52,6 +53,7 @@ import SlisbnbAdapter from './listadao/slisbnb';
 import LoopringNativeBridgeAdapter from './loopring/nativeBridge';
 import MakerAdapter from './maker/maker';
 import MethAdapter from './mantle/meth';
+import MantleNativeBridgeAdapter from './mantle/nativeBridge';
 import MellowAdapter from './mellow/mellow';
 import MetisNativeBridgeAdapter from './metis/nativeBridge';
 import MoonwellAdapter from './moonwell/moonwell';
@@ -176,7 +178,7 @@ export function getProtocolAdapters(
     kromaNativeBridge: new OptimismNativeBridgeLegacyAdapter(services, storages, ProtocolConfigs.kromaNativeBridge),
     mintNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.mintNativeBridge),
     metisNativeBridge: new MetisNativeBridgeAdapter(services, storages, ProtocolConfigs.metisNativeBridge),
-    mantleNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.mantleNativeBridge),
+    mantleNativeBridge: new MantleNativeBridgeAdapter(services, storages, ProtocolConfigs.mantleNativeBridge),
     paraswap: new ParaswapAdapter(services, storages, ProtocolConfigs.paraswap),
     kyberswap: new KyberswapAdapter(services, storages, ProtocolConfigs.kyberswap),
     zerox: new ZeroxAdapter(services, storages, ProtocolConfigs.zerox),
@@ -232,5 +234,6 @@ export function getProtocolAdapters(
     ethena: new EthenaAdapter(services, storages, ProtocolConfigs.ethena),
     resolv: new ResolvAdapter(services, storages, ProtocolConfigs.resolv),
     usual: new UsualAdapter(services, storages, ProtocolConfigs.usual),
+    axelar: new AxelarAdapter(services, storages, ProtocolConfigs.axelar),
   };
 }

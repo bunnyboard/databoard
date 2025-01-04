@@ -227,6 +227,12 @@
     "decimals": 18,
     "address": "0x11cdb42b0eb46d95f990bedd4695a6e3fa034978"
   },
+  "0x11e969e9b3f89cb16d686a03cd8508c9fc0361af": {
+    "chain": "arbitrum",
+    "symbol": "LAVA",
+    "decimals": 6,
+    "address": "0x11e969e9b3f89cb16d686a03cd8508c9fc0361af"
+  },
   "0x1215107d442d70d43dc5ead1bfd2268525015c4f": {
     "chain": "arbitrum",
     "symbol": "celrFXS",
@@ -2236,6 +2242,12 @@
     "symbol": "TIA.n",
     "decimals": 6,
     "address": "0xd56734d7f9979dd94fae3d67c7e928234e71cd4c"
+  },
+  "0xd5954c3084a1ccd70b4da011e67760b8e78aee84": {
+    "chain": "arbitrum",
+    "symbol": "ARX",
+    "decimals": 18,
+    "address": "0xd5954c3084a1ccd70b4da011e67760b8e78aee84"
   },
   "0xd74f5255d557944cf7dd0e45ff521520002d5748": {
     "chain": "arbitrum",
