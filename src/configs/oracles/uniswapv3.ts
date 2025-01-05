@@ -1580,13 +1580,6 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.base['0x0578d8a44db98b23bf096a382e016e29a5ce0ffe'],
     quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
   },
-  WDOGE_WETH: {
-    type: 'univ3',
-    chain: 'ethereum',
-    address: '0x09c2395f31257b922bfd9d3ca9ee6c5f308bee70',
-    baseToken: TokensBook.ethereum['0x8aa9381b2544b48c26f3b850f6e07e2c5161eb3e'],
-    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
-  },
   ERN_USDC: {
     type: 'univ3',
     chain: 'optimism',
@@ -1594,12 +1587,12 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.optimism['0xc5b001dc33727f8f26880b184090d3e252470d45'],
     quotaToken: TokensBook.optimism['0x7f5c764cbc14f9669b88837ca1490cca17c31607'],
   },
-  OVN_WETH: {
+  OVN_USDT: {
     type: 'univ3',
-    chain: 'base',
-    address: '0x0bf0755c5b1429bf36ac793a593eaa1b3f4fdb9c',
-    baseToken: TokensBook.base['0xa3d1a8deb97b111454b294e2324efad13a9d8396'],
-    quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
+    chain: 'bnbchain',
+    address: '0xb624fe83dfc393aab921ebbc2bf38fdd238f2380',
+    baseToken: TokensBook.bnbchain['0x259b30c916e440fb79747cd559207ffdabbae057'],
+    quotaToken: TokensBook.bnbchain['0x55d398326f99059ff775485246999027b3197955'],
   },
   METAL_USDT: {
     type: 'univ3',
@@ -1648,6 +1641,13 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     chain: 'ethereum',
     address: '0x541d846ddfa1efc15ca612bd76e2b595056edc8c',
     baseToken: TokensBook.ethereum['0x944824290cc12f31ae18ef51216a223ba4063092'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
+  AXL_WETH: {
+    type: 'univ3',
+    chain: 'ethereum',
+    address: '0xe7f6720c1f546217081667a5ab7febb688036856',
+    baseToken: TokensBook.ethereum['0x467719ad09025fcc6cf6f8311755809d45a5e5f3'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
 };

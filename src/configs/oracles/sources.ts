@@ -2334,8 +2334,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv2List.GOGLZ_WFTM],
   },
   DEUS: {
-    currency: 'ftm',
-    sources: [OracleSourceUniswapv2List.DEUS_WFTM],
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.DEUS_WETH],
   },
   BAY: {
     currency: 'ftm',
@@ -2658,10 +2658,6 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.HIGHER_WETH],
   },
-  WDOGE: {
-    currency: 'eth',
-    sources: [OracleSourceUniswapv3List.WDOGE_WETH],
-  },
   POLS: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.POLS_WETH],
@@ -2687,8 +2683,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv3List.ERN_USDC],
   },
   OVN: {
-    currency: 'eth',
-    sources: [OracleSourceUniswapv3List.OVN_WETH],
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.OVN_USDT],
   },
   METAL: {
     currency: 'usd',
@@ -2741,5 +2737,9 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   KUJI: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.KUJI_WETH],
+  },
+  AXL: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.AXL_WETH],
   },
 };

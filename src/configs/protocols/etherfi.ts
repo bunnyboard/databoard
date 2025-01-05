@@ -58,5 +58,13 @@ export const EtherfiConfigs: EtherfiProtocolConfig = {
       boringVault: '0x08c6F91e2B681FaF5e17227F2a44C307b3C1364C',
       accountant: '0xc315D6e14DDCDC7407784e2Caf815d131Bc1D3E7',
     },
+    {
+      boringVault: '0x83599937c2C9bEA0E0E8ac096c6f32e86486b410',
+      accountant: '0x04B8136820598A4e50bEe21b8b6a23fE25Df9Bd8',
+    },
+    {
+      boringVault: '0xC673ef7791724f0dcca38adB47Fbb3AEF3DB6C80',
+      accountant: '0xF44BD12956a0a87c2C20113DdFe1537A442526B5',
+    },
   ],
 };
