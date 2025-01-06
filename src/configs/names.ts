@@ -83,6 +83,7 @@ export const ChainNames = {
   sophon: 'sophon',
   sonic: 'sonic',
   alephzero: 'alephzero',
+  swellchain: 'swellchain',
 };
 
 export const ProtocolNames = {
@@ -256,4 +257,6 @@ export const ProtocolNames = {
   resolv: 'resolv',
   usual: 'usual',
   axelar: 'axelar',
+  lombard: 'lombard',
+  swellchainNativeBridge: 'swellchainNativeBridge',
 };

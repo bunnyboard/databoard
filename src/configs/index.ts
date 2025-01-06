@@ -87,7 +87,7 @@ import { PellNetworkConfigs } from './protocols/pellnetwork';
 import { RubicConfigs } from './protocols/rubic';
 import { ZircuitNativeBridgeConfigs } from './protocols/zircuit';
 import { DodoexConfigs } from './protocols/dodoex';
-import { SwellConfigs } from './protocols/swell';
+import { SwellchainNativeBridgeConfigs, SwellConfigs } from './protocols/swell';
 import { OdosConfigs } from './protocols/odos';
 import { RenzoConfigs } from './protocols/renzo';
 import { EigenpieConfigs } from './protocols/eigenpie';
@@ -133,6 +133,7 @@ import { EthenaConfigs } from './protocols/ethena';
 import { ResolvConfigs } from './protocols/resolv';
 import { UsualConfigs } from './protocols/usual';
 import { AxelarConfigs } from './protocols/axelar';
+import { LombardConfigs } from './protocols/lombard';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -297,4 +298,6 @@ export const ProtocolConfigs = {
   resolv: ResolvConfigs,
   usual: UsualConfigs,
   axelar: AxelarConfigs,
+  lombard: LombardConfigs,
+  swellchainNativeBridge: SwellchainNativeBridgeConfigs,
 };

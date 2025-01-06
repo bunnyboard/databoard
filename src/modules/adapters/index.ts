@@ -50,6 +50,7 @@ import LineaNativeBridgeAdapter from './linea/nativeBridge';
 import LiquidCollectiveAdapter from './liquidcollective/lseth';
 import LiquityAdapter from './liquity/liquity';
 import SlisbnbAdapter from './listadao/slisbnb';
+import LombardAdapter from './lombard/lombard';
 import LoopringNativeBridgeAdapter from './loopring/nativeBridge';
 import MakerAdapter from './maker/maker';
 import MethAdapter from './mantle/meth';
@@ -235,5 +236,7 @@ export function getProtocolAdapters(
     resolv: new ResolvAdapter(services, storages, ProtocolConfigs.resolv),
     usual: new UsualAdapter(services, storages, ProtocolConfigs.usual),
     axelar: new AxelarAdapter(services, storages, ProtocolConfigs.axelar),
+    lombard: new LombardAdapter(services, storages, ProtocolConfigs.lombard),
+    swellchainNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.swellchainNativeBridge),
   };
 }

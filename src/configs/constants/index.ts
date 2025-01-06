@@ -31,6 +31,8 @@ export const Erc20TransferEventSignature = '0xddf252ad1be2c89b69c2b068fc378daa95
 
 export const EthereumBeaconDepositContract = '0x00000000219ab540356cbb839cbe05303d7705fa';
 
+export const MockBitcoinAddress = 'bitcoin';
+
 // chain => number of second per block confirmation
 export const ChainBlockPeriods: { [key: string]: number } = {
   ethereum: 13, // 13 seconds

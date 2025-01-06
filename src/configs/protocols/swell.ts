@@ -1,6 +1,7 @@
 import { ProtocolConfig } from '../../types/base';
 import { AddressZero } from '../constants';
 import { ChainNames, ProtocolNames } from '../names';
+import { OptimismBridgeProtocolConfig } from './optimism';
 
 export interface SwellLiquidStakingConfig {
   chain: string;
@@ -61,4 +62,14 @@ export const SwellConfigs: SwellProtocolConfig = {
       protocolFeeRate: 0,
     },
   ],
+};
+
+export const SwellchainNativeBridgeConfigs: OptimismBridgeProtocolConfig = {
+  protocol: ProtocolNames.swellchainNativeBridge,
+  birthday: 1732752000, // Thu Nov 28 2024 00:00:00 GMT+0000
+  chain: ChainNames.ethereum,
+  layer2Chain: ChainNames.swellchain,
+  optimismPortal: '0x758E0EE66102816F5C3Ec9ECc1188860fbb87812',
+  optimismGateway: '0x7aA4960908B13D104bf056B23E2C76B43c5AACc8',
+  supportedTokens: [],
 };
