@@ -2129,14 +2129,14 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: {
       chain: 'mantle',
       symbol: 'MOE',
-      decimals: 6,
-      address: '0x201eba5cc46d216ce6dc03f6a759e8e766e956ae',
+      decimals: 18,
+      address: '0x4515a45337f461a11ff0fe8abf3c606ae5dc00c9',
     },
     quotaToken: {
       chain: 'mantle',
-      symbol: 'WMNT',
-      decimals: 18,
-      address: '0x78c1b0c915c4faa5fffa6cabf0219da63d7f4cb8',
+      symbol: 'USDT',
+      decimals: 6,
+      address: '0x201eba5cc46d216ce6dc03f6a759e8e766e956ae',
     },
   },
   MODE_WETH: {
@@ -2627,5 +2627,19 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     address: '0x763c9dc392b6befe79fa227056dd9279babb4e14',
     baseToken: TokensBook.optimism['0x3a18dcc9745edcd1ef33ecb93b0b6eba5671e7ca'],
     quotaToken: TokensBook.optimism['0x4200000000000000000000000000000000000006'],
+  },
+  PUFF_mETH: {
+    type: 'univ2',
+    chain: 'mantle',
+    address: '0x23d31b3d4a283fd8e39d64feeebc64f6b1eef874',
+    baseToken: TokensBook.mantle['0x26a6b0dcdcfb981362afa56d581e4a7dba3be140'],
+    quotaToken: TokensBook.mantle['0xcda86a272531e8640cd7f1a92c01839911b90bb0'],
+  },
+  MIGGLES_WETH: {
+    type: 'univ2',
+    chain: 'base',
+    address: '0x17a3ad8c74c4947005afeda9965305ae2eb2518a',
+    baseToken: TokensBook.base['0xb1a03eda10342529bbf8eb700a06c60441fef25d'],
+    quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
   },
 };

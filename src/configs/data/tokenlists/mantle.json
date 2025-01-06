@@ -11,6 +11,12 @@
     "decimals": 6,
     "address": "0x201eba5cc46d216ce6dc03f6a759e8e766e956ae"
   },
+  "0x26a6b0dcdcfb981362afa56d581e4a7dba3be140": {
+    "chain": "mantle",
+    "symbol": "PUFF",
+    "decimals": 18,
+    "address": "0x26a6b0dcdcfb981362afa56d581e4a7dba3be140"
+  },
   "0x4515a45337f461a11ff0fe8abf3c606ae5dc00c9": {
     "chain": "mantle",
     "symbol": "MOE",
@@ -22,6 +28,18 @@
     "symbol": "WMNT",
     "decimals": 18,
     "address": "0x78c1b0c915c4faa5fffa6cabf0219da63d7f4cb8"
+  },
+  "0xc1e0c8c30f251a07a894609616580ad2ceb547f2": {
+    "chain": "mantle",
+    "symbol": "CLEO",
+    "decimals": 18,
+    "address": "0xc1e0c8c30f251a07a894609616580ad2ceb547f2"
+  },
+  "0xcda86a272531e8640cd7f1a92c01839911b90bb0": {
+    "chain": "mantle",
+    "symbol": "mETH",
+    "decimals": 18,
+    "address": "0xcda86a272531e8640cd7f1a92c01839911b90bb0"
   },
   "0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000": {
     "chain": "mantle",

@@ -2747,4 +2747,12 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     stablecoin: true,
     sources: [OracleSourceUniswapv3List.USDz_USDC],
   },
+  PUFF: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.PUFF_mETH],
+  },
+  MIGGLES: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.MIGGLES_WETH],
+  },
 };

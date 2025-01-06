@@ -101,7 +101,7 @@ export default class AnzenAdapter extends ProtocolAdapter {
         ],
       });
 
-      const totalUSDzSupply = formatBigNumberToNumber(totalSupply.toString(), 18) * USDzPriceUsd;
+      const totalUSDzSupply = formatBigNumberToNumber(totalSupply ? totalSupply.toString() : '0', 18) * USDzPriceUsd;
       const totalUSDzStaked = formatBigNumberToNumber(totalAssets ? totalAssets.toString() : '0', 18) * USDzPriceUsd;
 
       // we can not track on-chain collaterals
@@ -167,7 +167,7 @@ export default class AnzenAdapter extends ProtocolAdapter {
           fromBlock: beginBlock,
           toBlock: endBlock,
         });
-  
+
         for (const log of logs
           .filter((item) => item.topics[0] === Erc20TransferEventSignature)
           .map((item) =>

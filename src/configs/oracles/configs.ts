@@ -542,6 +542,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0x47c337bd5b9344a6f3d6f58c474d9d8cd419d8ca': OracleSourceConfigs.DACKIE,
     '0x5018609ab477cc502e170a5accf5312b86a4b94f': OracleSourceConfigs.USDz,
     '0x9cfb13e6c11054ac9fcb92ba89644f30775436e4': OracleSourceConfigs.wstETH,
     '0x7f5373ae26c3e8ffc4c77b7255df7ec1a9af52a6': OracleSourceConfigs.USDT,
@@ -892,6 +893,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0xb1a03eda10342529bbf8eb700a06c60441fef25d': OracleSourceConfigs.MIGGLES,
     '0xf3602c5a7f625181659445c8dddde73da15c22e3': OracleSourceConfigs.sFRAX,
     '0xecac9c5f704e954931349da37f60e39f515c11c1': OracleSourceConfigs.LBTC,
     '0x23ee2343b892b1bb63503a4fabc840e0e2c6810f': OracleSourceConfigs.AXL,
@@ -1609,6 +1611,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
 
   // tokens on scroll
   scroll: {
+    '0x60d01ec2d5e98ac51c8b4cf84dfcce98d527c747': OracleSourceConfigs.IZI,
+    '0x434cda25e8a2ca5d9c1c449a8cb6bcbf719233e8': OracleSourceConfigs.UNI,
     '0x23ee2343b892b1bb63503a4fabc840e0e2c6810f': OracleSourceConfigs.AXL,
     '0x78ab77f7d590fb101aa18affc238cbfea31ead5b': OracleSourceConfigs.IBEX,
     '0xf301805be1df81102c957f6d4ce29d2b8c056b2a': OracleSourceConfigs.wstETH,
@@ -1698,6 +1702,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   },
 
   mantle: {
+    '0x26a6b0dcdcfb981362afa56d581e4a7dba3be140': OracleSourceConfigs.PUFF,
     '0x23ee2343b892b1bb63503a4fabc840e0e2c6810f': OracleSourceConfigs.AXL,
     '0xd681c5574b7f4e387b608ed9af5f5fc88662b37c': OracleSourceConfigs.BTC,
     '0xeb466342c4d449bc9f53a865d5cb90586f405215': OracleSourceConfigs.USDC,
