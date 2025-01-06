@@ -21,6 +21,8 @@ const Events = {
 
   // withdraw
   OperatorSharesDecreased: '0x6909600037b75d7b4733aedd815442b5ec018a827751c832aaff64eba5d6d2dd',
+
+  PodDeployed: '0x21c99d0db02213c32fff5b05cf0a718ab5f858802b91498f80d82270289d856a',
 };
 
 export default class EigenLayerAdapter extends EigenLayerIndexer {
@@ -172,7 +174,7 @@ export default class EigenLayerAdapter extends EigenLayerIndexer {
         pods.push(normalizeAddress(event.args.eigenPod));
       }
 
-      const callSize = 100;
+      const callSize = 500;
       for (let startIndex = 0; startIndex < pods.length; startIndex += callSize) {
         const queryPods = pods.slice(startIndex, startIndex + callSize);
 
