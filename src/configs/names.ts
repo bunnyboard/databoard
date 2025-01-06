@@ -259,4 +259,5 @@ export const ProtocolNames = {
   axelar: 'axelar',
   lombard: 'lombard',
   swellchainNativeBridge: 'swellchainNativeBridge',
+  anzen: 'anzen',
 };

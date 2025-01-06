@@ -3,6 +3,7 @@ import { ContextServices, ContextStorages, IProtocolAdapter } from '../../types/
 import AaveAdapter from './aave/aave';
 import AcrossAdapter from './across/across';
 import AnkrAdapter from './ankr/ankr';
+import AnzenAdapter from './anzen/anzen';
 import ArbitrumNativeBridgeAdapter from './arbitrum/nativeBridge';
 import AvalonAdapter from './avalon/avalon';
 import AxelarAdapter from './axelar/axelar';
@@ -238,5 +239,6 @@ export function getProtocolAdapters(
     axelar: new AxelarAdapter(services, storages, ProtocolConfigs.axelar),
     lombard: new LombardAdapter(services, storages, ProtocolConfigs.lombard),
     swellchainNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.swellchainNativeBridge),
+    anzen: new AnzenAdapter(services, storages, ProtocolConfigs.anzen),
   };
 }

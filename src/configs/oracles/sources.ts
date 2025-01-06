@@ -2742,4 +2742,9 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.AXL_WETH],
   },
+  USDz: {
+    currency: 'usd',
+    stablecoin: true,
+    sources: [OracleSourceUniswapv3List.USDz_USDC],
+  },
 };
