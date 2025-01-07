@@ -187,7 +187,7 @@ export default class LombardAdapter extends ProtocolExtendedAdapter {
               .deposit as number) += amountUsd;
           }
         } else if (compareAddress(event.args.to, AddressZero)) {
-          // burn LBTC - withdraw BTC - change 0.0001 BTC
+          // burn LBTC - withdraw BTC - charge fee 0.0001 BTC
           // https://docs.lombard.finance/technical-documentation/protocol-fees#unstaking-fees
 
           (protocolData.volumes.repay as number) += amountUsd;

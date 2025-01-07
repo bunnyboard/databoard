@@ -12,7 +12,7 @@ export const OracleTokenBlacklists: { [key: string]: Array<string> } = {
     '0x5f7827fdeb7c20b443265fc2f40845b715385ff2',
     '0x05770332d4410b6d7f07fd497e4c00f8f7bfb74a',
   ],
-  arbitrum: ['0x2f27118e3d2332afb7d165140cf1bb127ea6975d'],
+  arbitrum: ['0x2f27118e3d2332afb7d165140cf1bb127ea6975d', '0xb829b68f57cc546da7e5806a929e53be32a4625d'],
   base: [
     '0xc982b228c7b1c49a7187216ce885f396904024f0',
     '0x59aaf835d34b1e3df2170e4872b785f11e2a964b',
