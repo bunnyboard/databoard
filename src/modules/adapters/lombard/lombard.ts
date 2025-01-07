@@ -190,8 +190,8 @@ export default class LombardAdapter extends ProtocolExtendedAdapter {
           // burn LBTC - withdraw BTC - change 0.0001 BTC
           // https://docs.lombard.finance/technical-documentation/protocol-fees#unstaking-fees
 
-          (protocolData.volumes.borrow as number) += amountUsd;
-          (protocolData.volumes.deposit as number) += amountUsd;
+          (protocolData.volumes.repay as number) += amountUsd;
+          (protocolData.volumes.withdraw as number) += amountUsd;
 
           (protocolData.breakdown[lbtcToken.chain][lbtcToken.address].volumes.repay as number) += amountUsd;
           if (poolConfig.native) {
