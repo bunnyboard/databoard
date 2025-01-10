@@ -74,6 +74,7 @@ import ResolvAdapter from './resolv/resolv';
 import RocketpoolAdapter from './rocketpool/rocketpool';
 import RubicAdapter from './rubic/rubic';
 import ScrollNativeBridgeAdapter from './scroll/nativeBridge';
+import SonicNativeBridgeAdapter from './sonic/nativeBridge';
 import StaderAdapter from './stader/stader';
 import StakewiseAdapter from './stakewise/stakewise';
 import StargateAdapter from './stargate/stargate';
@@ -240,5 +241,6 @@ export function getProtocolAdapters(
     lombard: new LombardAdapter(services, storages, ProtocolConfigs.lombard),
     swellchainNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.swellchainNativeBridge),
     anzen: new AnzenAdapter(services, storages, ProtocolConfigs.anzen),
+    sonicNativeBridge: new SonicNativeBridgeAdapter(services, storages, ProtocolConfigs.sonicNativeBridge),
   };
 }
