@@ -505,7 +505,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xc975342a95ccb75378ddc646b8620fa3cd5bc051': OracleSourceConfigs.wstETH,
     '0xc272b96bccdaf1bf98f2197d355066da3c15982a': OracleSourceConfigs.wstETH,
     '0x5c5b196abe0d54485975d1ec29617d42d9198326': OracleSourceConfigs.USDT,
-    '0x35d8949372d46b7a3d5a56006ae77b215fc69bc0': OracleSourceConfigs.USDT,
+    '0x35d8949372d46b7a3d5a56006ae77b215fc69bc0': OracleSourceConfigs.USD0PlusPLus,
 
     // ironbank fixed forex
     '0x69681f8fde45345c3870bcd5eaf4a05a60e7d227': OracleSourceConfigs.GBP,
@@ -542,6 +542,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0x2b65f9d2e4b84a2df6ff0525741b75d1276a9c2f': OracleSourceConfigs.USD0PlusPLus,
     '0x4aa81d7ab59c775fe6f9f45e6941a0fb8cd692a6': OracleSourceConfigs.TIA,
     '0x41b94c5867f7f6217c9a30520cb3e793b1ee1b97': OracleSourceConfigs.TIA,
     '0xb448ec505c924944ca8b2c55ef05c299ee0781df': OracleSourceConfigs.KNC,
