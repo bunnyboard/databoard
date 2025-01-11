@@ -4,7 +4,7 @@ import logger from '../../../lib/logger';
 import { normalizeAddress } from '../../../lib/utils';
 import { ProtocolConfig } from '../../../types/base';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
-import ProtocolAdapter from '../protocol';
+import ProtocolExtendedAdapter from '../extended';
 
 const Events = {
   PodDeployed: '0x21c99d0db02213c32fff5b05cf0a718ab5f858802b91498f80d82270289d856a',
@@ -12,7 +12,7 @@ const Events = {
 
 const SyncKeyName = 'EigenLayerPodDeployedEventsSync';
 
-export default class EigenLayerIndexer extends ProtocolAdapter {
+export default class EigenLayerIndexer extends ProtocolExtendedAdapter {
   public readonly name: string = 'adapter.eigenlayer';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

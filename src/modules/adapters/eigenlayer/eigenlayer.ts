@@ -86,7 +86,7 @@ export default class EigenLayerAdapter extends EigenLayerIndexer {
       };
     });
 
-    const balances = await this.services.blockchain.evm.multicall({
+    const balances = await this.multicall({
       chain: eigenConfig.chain,
       blockNumber: blockNumber,
       calls: calls,
@@ -163,18 +163,17 @@ export default class EigenLayerAdapter extends EigenLayerIndexer {
         },
       });
 
-      const pods: Array<string> = [];
-      for (const log of podDeployedLogs) {
-        const event: any = decodeEventLog({
-          abi: PodManagerAbi,
-          topics: log.topics,
-          data: log.data,
-        });
+      const pods: Array<string> = podDeployedLogs
+        .map((log) =>
+          decodeEventLog({
+            abi: PodManagerAbi,
+            topics: log.topics,
+            data: log.data,
+          }),
+        )
+        .map((event: any) => normalizeAddress(event.args.eigenPod));
 
-        pods.push(normalizeAddress(event.args.eigenPod));
-      }
-
-      const callSize = 500;
+      const callSize = 100;
       for (let startIndex = 0; startIndex < pods.length; startIndex += callSize) {
         const queryPods = pods.slice(startIndex, startIndex + callSize);
 
@@ -187,7 +186,7 @@ export default class EigenLayerAdapter extends EigenLayerIndexer {
           };
         });
 
-        const results = await this.services.blockchain.evm.multicall({
+        const results = await this.multicall({
           chain: eigenConfig.chain,
           blockNumber: blockNumber,
           calls: calls,

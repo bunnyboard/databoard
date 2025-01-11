@@ -2642,4 +2642,18 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.base['0xb1a03eda10342529bbf8eb700a06c60441fef25d'],
     quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
   },
+  ID_WBNB: {
+    type: 'univ2',
+    chain: 'bnbchain',
+    address: '0x5a5766fd90209609e6d4dab009b24f4f37529eb4',
+    baseToken: TokensBook.bnbchain['0x2dff88a56767223a5529ea5960da7a3f5f766406'],
+    quotaToken: TokensBook.bnbchain['0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c'],
+  },
+  PNP_USDC: {
+    type: 'univ2',
+    chain: 'arbitrum',
+    address: '0xf9976c787b6a5822e91dcc63383b2bb16d28c05f',
+    baseToken: TokensBook.arbitrum['0x2ac2b254bc18cd4999f64773a966e4f4869c34ee'],
+    quotaToken: TokensBook.arbitrum['0xaf88d065e77c8cc2239327c5edb3a432268e5831'],
+  },
 };

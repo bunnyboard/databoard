@@ -1318,8 +1318,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv3List.WLD_WETH],
   },
   ID: {
-    currency: 'usd',
-    sources: [OracleSourceUniswapv3List.ID_USDC],
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.ID_WBNB],
   },
   BRLA: {
     currency: 'usd',
@@ -1998,8 +1998,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv2List.FTT_WETH],
   },
   PNP: {
-    currency: 'eth',
-    sources: [OracleSourceUniswapv3List.PNP_WETH],
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.PNP_USDC],
   },
   RBC: {
     currency: 'eth',

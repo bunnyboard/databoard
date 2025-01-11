@@ -1,6 +1,6 @@
 import { AddressE, AddressF, AddressZero } from '../../configs/constants';
 import { compareAddress, formatBigNumberToNumber, normalizeAddress } from '../../lib/utils';
-import { ContractCall } from '../../services/blockchains/domains';
+import { ContractCall, MulticallOptions } from '../../services/blockchains/domains';
 import { ProtocolConfig, Token } from '../../types/base';
 import { ContextServices, ContextStorages } from '../../types/namespaces';
 import Erc20Abi from '../../configs/abi/ERC20.json';
@@ -198,5 +198,28 @@ export default class ProtocolExtendedAdapter extends ProtocolAdapter {
         upsert: true,
       });
     }
+  }
+
+  // the same as blockchain multicall but with a execution-time counting
+  public async multicall(options: MulticallOptions): Promise<any> {
+    const startCallTime = new Date().getTime();
+
+    const result = await this.services.blockchain.evm.multicall(options);
+
+    const endCallTime = new Date().getTime();
+    const elapsed = endCallTime - startCallTime;
+
+    // > 30s
+    if (elapsed > 30000) {
+      logger.warn('blockchain multicall took too long', {
+        service: this.name,
+        chain: options.chain,
+        calls: options.calls.length,
+        blockNumber: options.blockNumber,
+        took: `${Number(elapsed / 1000).toFixed(2)}s`,
+      });
+    }
+
+    return result;
   }
 }
