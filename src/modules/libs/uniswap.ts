@@ -74,12 +74,14 @@ export default class UniswapLibs {
         const sqrtPriceX96 = new BigNumber(slot0[0].toString());
         const buyOneOfToken0 = sqrtPriceX96.dividedBy(2 ** 96).pow(2);
 
-        if (compareAddress(source.baseToken.address, token0)) {
-          const decimals = 10 ** source.quotaToken.decimals / 10 ** source.baseToken.decimals;
-          return buyOneOfToken0.dividedBy(decimals).toString(10);
-        } else if (compareAddress(source.baseToken.address, token1)) {
-          const decimals = 10 ** source.baseToken.decimals / 10 ** source.quotaToken.decimals;
-          return new BigNumber(1).dividedBy(buyOneOfToken0.dividedBy(decimals)).toString(10);
+        if (buyOneOfToken0.gt(0)) {
+          if (compareAddress(source.baseToken.address, token0)) {
+            const decimals = 10 ** source.quotaToken.decimals / 10 ** source.baseToken.decimals;
+            return buyOneOfToken0.dividedBy(decimals).toString(10);
+          } else if (compareAddress(source.baseToken.address, token1)) {
+            const decimals = 10 ** source.baseToken.decimals / 10 ** source.quotaToken.decimals;
+            return new BigNumber(1).dividedBy(buyOneOfToken0.dividedBy(decimals)).toString(10);
+          }
         }
       }
     }

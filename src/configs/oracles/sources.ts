@@ -2759,4 +2759,12 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv3List.USD0PlusPLus_USDT],
   },
+  IQ: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.IQ_WETH],
+  },
+  FPIS: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.FPIS_FRAX],
+  },
 };
