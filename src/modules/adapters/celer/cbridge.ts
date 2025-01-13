@@ -16,7 +16,7 @@ import ProtocolExtendedAdapter from '../extended';
 const SendEvent = '0x89d8051e597ab4178a863a5190407b98abfeff406aa8db90c59af76612e58f01';
 
 // on vault contract
-const DepositedV1 = '0x89d8051e597ab4178a863a5190407b98abfeff406aa8db90c59af76612e58f01';
+const DepositedV1 = '0x15d2eeefbe4963b5b2178f239ddcc730dda55f1c23c22efb79ded0eb854ac789';
 
 // on vault v2 contract
 const DepositedV2 = '0x28d226819e371600e26624ebc4a9a3947117ee2760209f816c789d3a99bf481b';

@@ -1,15 +1,15 @@
-import { ProtocolConfig } from '../../../types/base';
+import { ProtocolConfig, Token } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
-import ProtocolAdapter from '../protocol';
 import SpokePoolAbi from '../../../configs/abi/across/SpokePool.json';
-import Erc20Abi from '../../../configs/abi/ERC20.json';
 import { decodeEventLog } from 'viem';
 import { formatBigNumberToNumber } from '../../../lib/utils';
 import { AcrossProtocolConfig } from '../../../configs/protocols/across';
 import { BlockchainConfigs } from '../../../configs/blockchains';
 import AdapterDataHelper from '../helpers';
+import { ChainNames } from '../../../configs/names';
+import ProtocolExtendedAdapter from '../extended';
 
 // v2
 const FundsDeposited = '0xafc4df6845a4ab948b492800d3d8a25d538a102a2bc07cd01f1cfa097fddcff6';
@@ -17,7 +17,9 @@ const FundsDeposited = '0xafc4df6845a4ab948b492800d3d8a25d538a102a2bc07cd01f1cfa
 // v3
 const V3FundsDeposited = '0xa123dc29aebf7d0c3322c8eeb5b999e859f39937950ed31056532713d0de396f';
 
-export default class AcrossAdapter extends ProtocolAdapter {
+// count total assets locked in spokePool as totalValueLocked
+// count total assets locked in hubPool (ethereum) as totalSupplied (liquidity)
+export default class AcrossAdapter extends ProtocolExtendedAdapter {
   public readonly name: string = 'adapter.across';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {
@@ -65,7 +67,45 @@ export default class AcrossAdapter extends ProtocolAdapter {
         options.endTime,
       );
 
-      if (spokePoolConfig.tokens) {
+      const tokens: Array<Token> = [];
+      for (const address of spokePoolConfig.tokens) {
+        const token = await this.services.blockchain.evm.getTokenInfo({
+          chain: spokePoolConfig.chain,
+          address: address,
+        });
+        if (token) {
+          tokens.push(token);
+        }
+      }
+
+      const getBalanceResult = await this.getAddressBalanceUsd({
+        chain: spokePoolConfig.chain,
+        ownerAddress: spokePoolConfig.address,
+        tokens: tokens,
+        timestamp: options.timestamp,
+        blockNumber: blockNumber,
+      });
+
+      protocolData.totalAssetDeposited += getBalanceResult.totalBalanceUsd;
+      protocolData.totalValueLocked += getBalanceResult.totalBalanceUsd;
+
+      for (const [address, balance] of Object.entries(getBalanceResult.tokenBalanceUsds)) {
+        if (balance.balanceUsd > 0) {
+          if (!protocolData.breakdown[spokePoolConfig.chain][address]) {
+            protocolData.breakdown[spokePoolConfig.chain][address] = {
+              ...getInitialProtocolCoreMetrics(),
+              totalSupplied: 0,
+              volumes: {
+                bridge: 0,
+              },
+            };
+          }
+          protocolData.breakdown[spokePoolConfig.chain][address].totalAssetDeposited += balance.balanceUsd;
+          protocolData.breakdown[spokePoolConfig.chain][address].totalValueLocked += balance.balanceUsd;
+        }
+      }
+
+      if (spokePoolConfig.chain === ChainNames.ethereum) {
         const hubPool = await this.services.blockchain.evm.readContract({
           chain: spokePoolConfig.chain,
           abi: SpokePoolAbi,
@@ -75,48 +115,27 @@ export default class AcrossAdapter extends ProtocolAdapter {
           blockNumber: blockNumber,
         });
 
-        if (hubPool) {
-          for (const tokenAddress of spokePoolConfig.tokens) {
-            const token = await this.services.blockchain.evm.getTokenInfo({
-              chain: spokePoolConfig.chain,
-              address: tokenAddress,
-            });
-            if (token) {
-              const tokenBalance = await this.services.blockchain.evm.readContract({
-                chain: token.chain,
-                abi: Erc20Abi,
-                target: token.address,
-                method: 'balanceOf',
-                params: [hubPool],
-                blockNumber: blockNumber,
-              });
-              if (tokenBalance && tokenBalance.toString() !== '0') {
-                const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-                  chain: token.chain,
-                  address: token.address,
-                  timestamp: options.timestamp,
-                });
+        const hubPoolBalance = await this.getAddressBalanceUsd({
+          chain: spokePoolConfig.chain,
+          ownerAddress: hubPool,
+          tokens: tokens,
+          timestamp: options.timestamp,
+          blockNumber: blockNumber,
+        });
 
-                const amountUsd = formatBigNumberToNumber(tokenBalance.toString(), token.decimals) * tokenPriceUsd;
-
-                protocolData.totalAssetDeposited += amountUsd;
-                protocolData.totalValueLocked += amountUsd;
-                (protocolData.totalSupplied as number) += amountUsd;
-
-                if (!protocolData.breakdown[token.chain][token.address]) {
-                  protocolData.breakdown[token.chain][token.address] = {
-                    ...getInitialProtocolCoreMetrics(),
-                    volumes: {
-                      bridge: 0,
-                    },
-                  };
-                }
-
-                protocolData.breakdown[token.chain][token.address].totalAssetDeposited += amountUsd;
-                protocolData.breakdown[token.chain][token.address].totalValueLocked += amountUsd;
-                (protocolData.breakdown[token.chain][token.address].totalSupplied as number) += amountUsd;
-              }
+        (protocolData.totalSupplied as number) += hubPoolBalance.totalBalanceUsd;
+        for (const [address, balance] of Object.entries(hubPoolBalance.tokenBalanceUsds)) {
+          if (balance.balanceUsd > 0) {
+            if (!protocolData.breakdown[spokePoolConfig.chain][address]) {
+              protocolData.breakdown[spokePoolConfig.chain][address] = {
+                ...getInitialProtocolCoreMetrics(),
+                totalSupplied: 0,
+                volumes: {
+                  bridge: 0,
+                },
+              };
             }
+            (protocolData.breakdown[spokePoolConfig.chain][address].totalSupplied as number) += balance.balanceUsd;
           }
         }
       }
