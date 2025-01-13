@@ -83,6 +83,7 @@ import SwellAdapter from './swell/swell';
 import SymbioticAdapter from './symbiotic/symbiotic';
 import SynapseAdapter from './synapse/synapse';
 import TaikoNativeBridgeAdapter from './taiko/nativeBridge';
+import ThresholdbtcAdapter from './threshold/thresholdbtc';
 import UsualAdapter from './usual/usual';
 import VenusAdapter from './venus/venus';
 import WbethAdapter from './wbeth/wbeth';
@@ -242,5 +243,6 @@ export function getProtocolAdapters(
     swellchainNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.swellchainNativeBridge),
     anzen: new AnzenAdapter(services, storages, ProtocolConfigs.anzen),
     sonicNativeBridge: new SonicNativeBridgeAdapter(services, storages, ProtocolConfigs.sonicNativeBridge),
+    thresholdbtc: new ThresholdbtcAdapter(services, storages, ProtocolConfigs.thresholdbtc),
   };
 }

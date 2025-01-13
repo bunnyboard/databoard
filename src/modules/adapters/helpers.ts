@@ -1,27 +1,35 @@
 import { ProtocolData } from '../../types/domains/protocol';
 
+interface FillupOptions {
+  // if true, treat borrow as money outflow, repay as money inflow
+  uncountBorrowRepayAsMoneyFlow: boolean;
+}
+
 export default class AdapterDataHelper {
-  public static fillupAndFormatProtocolData(protocolData: ProtocolData): ProtocolData {
+  public static fillupAndFormatProtocolData(protocolData: ProtocolData, options?: FillupOptions): ProtocolData {
     // count money in
     if (protocolData.volumes.deposit) {
       protocolData.moneyFlowIn += protocolData.volumes.deposit;
-    }
-    if (protocolData.volumes.repay) {
-      protocolData.moneyFlowIn += protocolData.volumes.repay;
     }
 
     // count money out
     if (protocolData.volumes.withdraw) {
       protocolData.moneyFlowOut += protocolData.volumes.withdraw;
     }
-    if (protocolData.volumes.borrow) {
-      protocolData.moneyFlowOut += protocolData.volumes.borrow;
-    }
     if (protocolData.volumes.liquidation) {
       protocolData.moneyFlowOut += protocolData.volumes.liquidation;
     }
     if (protocolData.volumes.redeemtion) {
       protocolData.moneyFlowOut += protocolData.volumes.redeemtion;
+    }
+
+    if (!options || !options.uncountBorrowRepayAsMoneyFlow) {
+      if (protocolData.volumes.borrow) {
+        protocolData.moneyFlowOut += protocolData.volumes.borrow;
+      }
+      if (protocolData.volumes.repay) {
+        protocolData.moneyFlowIn += protocolData.volumes.repay;
+      }
     }
 
     // count net deposit
@@ -38,13 +46,7 @@ export default class AdapterDataHelper {
         if (token.volumes.deposit) {
           protocolData.breakdown[chain][address].moneyFlowIn += token.volumes.deposit;
         }
-        if (token.volumes.repay) {
-          protocolData.breakdown[chain][address].moneyFlowIn += token.volumes.repay;
-        }
 
-        if (token.volumes.borrow) {
-          protocolData.breakdown[chain][address].moneyFlowOut += token.volumes.borrow;
-        }
         if (token.volumes.withdraw) {
           protocolData.breakdown[chain][address].moneyFlowOut += token.volumes.withdraw;
         }
@@ -53,6 +55,15 @@ export default class AdapterDataHelper {
         }
         if (token.volumes.redeemtion) {
           protocolData.breakdown[chain][address].moneyFlowOut += token.volumes.redeemtion;
+        }
+
+        if (!options || !options.uncountBorrowRepayAsMoneyFlow) {
+          if (token.volumes.borrow) {
+            protocolData.breakdown[chain][address].moneyFlowOut += token.volumes.borrow;
+          }
+          if (token.volumes.repay) {
+            protocolData.breakdown[chain][address].moneyFlowIn += token.volumes.repay;
+          }
         }
 
         protocolData.breakdown[chain][address].moneyFlowNet =
@@ -70,13 +81,7 @@ export default class AdapterDataHelper {
         if (chainData.volumes.deposit) {
           protocolData.breakdownChains[chain].moneyFlowIn += chainData.volumes.deposit;
         }
-        if (chainData.volumes.repay) {
-          protocolData.breakdownChains[chain].moneyFlowIn += chainData.volumes.repay;
-        }
 
-        if (chainData.volumes.borrow) {
-          protocolData.breakdownChains[chain].moneyFlowOut += chainData.volumes.borrow;
-        }
         if (chainData.volumes.withdraw) {
           protocolData.breakdownChains[chain].moneyFlowOut += chainData.volumes.withdraw;
         }
@@ -85,6 +90,15 @@ export default class AdapterDataHelper {
         }
         if (chainData.volumes.redeemtion) {
           protocolData.breakdownChains[chain].moneyFlowOut += chainData.volumes.redeemtion;
+        }
+
+        if (!options || !options.uncountBorrowRepayAsMoneyFlow) {
+          if (chainData.volumes.borrow) {
+            protocolData.breakdownChains[chain].moneyFlowOut += chainData.volumes.borrow;
+          }
+          if (chainData.volumes.repay) {
+            protocolData.breakdownChains[chain].moneyFlowIn += chainData.volumes.repay;
+          }
         }
 
         protocolData.breakdownChains[chain].moneyFlowNet =

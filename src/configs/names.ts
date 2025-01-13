@@ -261,4 +261,5 @@ export const ProtocolNames = {
   swellchainNativeBridge: 'swellchainNativeBridge',
   anzen: 'anzen',
   sonicNativeBridge: 'sonicNativeBridge',
+  thresholdbtc: 'thresholdbtc',
 };

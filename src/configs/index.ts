@@ -136,6 +136,7 @@ import { AxelarConfigs } from './protocols/axelar';
 import { LombardConfigs } from './protocols/lombard';
 import { AnzenConfigs } from './protocols/anzen';
 import { SonicNativeBridgeConfigs } from './protocols/sonic';
+import { ThresholdBtcConfigs } from './protocols/threshold';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -304,4 +305,5 @@ export const ProtocolConfigs = {
   swellchainNativeBridge: SwellchainNativeBridgeConfigs,
   anzen: AnzenConfigs,
   sonicNativeBridge: SonicNativeBridgeConfigs,
+  thresholdbtc: ThresholdBtcConfigs,
 };

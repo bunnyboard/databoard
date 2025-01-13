@@ -1026,8 +1026,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv3List.osETH_USDC],
   },
   tBTCv2: {
-    currency: 'btc',
-    sources: [OracleSourceUniswapv3List.tBTC_WBTC],
+    currency: 'usd',
+    sources: [OracleSourceChainlinkList.BTC_USD],
   },
   BADGER: {
     currency: 'btc',
@@ -2766,5 +2766,9 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   FPIS: {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.FPIS_FRAX],
+  },
+  HAI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.HAI_WETH],
   },
 };
