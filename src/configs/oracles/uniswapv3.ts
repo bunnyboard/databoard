@@ -1657,4 +1657,11 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.optimism['0x10398abc267496e49106b07dd6be13364d10dc71'],
     quotaToken: TokensBook.optimism['0x4200000000000000000000000000000000000006'],
   },
+  hyUSD_USDC: {
+    type: 'univ3',
+    chain: 'base',
+    address: '0x8f81b80d950e5996346530b76aba2962da5c9edb',
+    baseToken: TokensBook.base['0xcc7ff230365bd730ee4b352cc2492cedac49383e'],
+    quotaToken: TokensBook.base['0x833589fcd6edb6e08f4c7c32d4f71b54bda02913'],
+  },
 };
