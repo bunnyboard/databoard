@@ -2779,4 +2779,40 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv3List.hyUSD_USDC],
   },
+  MTLX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.MTLX_WETH],
+  },
+  ROKO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ROKO_WETH],
+  },
+  basedAI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.basedAI_WETH],
+  },
+  reployRAI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.reployRAI_WETH],
+  },
+  PAAL: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.PAAL_WETH],
+  },
+  MQT: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.MQT_USDT],
+  },
+  SEKOIA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.SEKOIA_WETH],
+  },
+  COOKIE: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.COOKIE_USDT],
+  },
+  CGPT: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.CGPT_USDT],
+  },
 };

@@ -1664,4 +1664,32 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.base['0xcc7ff230365bd730ee4b352cc2492cedac49383e'],
     quotaToken: TokensBook.base['0x833589fcd6edb6e08f4c7c32d4f71b54bda02913'],
   },
+  MQT_USDT: {
+    type: 'univ3',
+    chain: 'avalanche',
+    address: '0x98240fef612ecfd84830b210a544e9a906c48199',
+    baseToken: TokensBook.avalanche['0xef0cdae2ffeeefa539a244a16b3f46ba75b8c810'],
+    quotaToken: TokensBook.avalanche['0x9702230a8ea53601f5cd2dc00fdbc13d4df4a8c7'],
+  },
+  SEKOIA_WETH: {
+    type: 'univ3',
+    chain: 'base',
+    address: '0x2c114787d52e9f080464dbed8e285e07ec4e120f',
+    baseToken: TokensBook.base['0x1185cb5122edad199bdbc0cbd7a0457e448f23c7'],
+    quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
+  },
+  COOKIE_USDT: {
+    type: 'univ3',
+    chain: 'bnbchain',
+    address: '0xd4fb9d253739c5db6aad90ad2409757d224ccc0c',
+    baseToken: TokensBook.bnbchain['0xc0041ef357b183448b235a8ea73ce4e4ec8c265f'],
+    quotaToken: TokensBook.bnbchain['0x55d398326f99059ff775485246999027b3197955'],
+  },
+  CGPT_USDT: {
+    type: 'univ3',
+    chain: 'bnbchain',
+    address: '0x1e8d7ab96323953fac85ab687f5d38b45344e62d',
+    baseToken: TokensBook.bnbchain['0x9840652dc04fb9db2c43853633f0f62be6f00f98'],
+    quotaToken: TokensBook.bnbchain['0x55d398326f99059ff775485246999027b3197955'],
+  },
 };

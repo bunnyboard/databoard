@@ -79,6 +79,7 @@ export default class ZeroxAdapter extends ProtocolAdapter {
           });
 
           let tradeAmountUsd = 0;
+          let feeAmountUsd = 0;
 
           switch (signature) {
             case Events.TransformedERC20: {
@@ -125,6 +126,9 @@ export default class ZeroxAdapter extends ProtocolAdapter {
                   tradeAmountUsd = sellAmount * sellTokenPriceUsd;
                 }
               }
+
+              // charge 0.15% volume per swap
+              feeAmountUsd = tradeAmountUsd * 0.0015;
 
               break;
             }
@@ -180,12 +184,21 @@ export default class ZeroxAdapter extends ProtocolAdapter {
                 }
               }
 
+              if (signature === Events.RfqOrderFilled) {
+                // charge 0.15% volume per swap
+                feeAmountUsd = tradeAmountUsd * 0.0015;
+              }
+
               break;
             }
           }
 
+          protocolData.totalFees += feeAmountUsd;
+          protocolData.protocolRevenue += feeAmountUsd;
           (protocolData.volumes.trade as number) += tradeAmountUsd;
           ((protocolData.breakdownChains as any)[exchangeConfig.chain].volumes.trade as number) += tradeAmountUsd;
+          (protocolData.breakdownChains as any)[exchangeConfig.chain].totalFees += feeAmountUsd;
+          (protocolData.breakdownChains as any)[exchangeConfig.chain].protocolRevenue += feeAmountUsd;
         }
       }
     }

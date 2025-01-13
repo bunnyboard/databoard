@@ -2903,6 +2903,12 @@
     "decimals": 18,
     "address": "0xeeeeeb57642040be42185f49c52f7e9b38f8eeee"
   },
+  "0xef0cdae2ffeeefa539a244a16b3f46ba75b8c810": {
+    "chain": "avalanche",
+    "symbol": "MQT",
+    "decimals": 18,
+    "address": "0xef0cdae2ffeeefa539a244a16b3f46ba75b8c810"
+  },
   "0xefd6aa06eb95e0ab23de9ac0977d870888b89a71": {
     "chain": "avalanche",
     "symbol": "MICRO",
