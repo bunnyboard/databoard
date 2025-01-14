@@ -49,6 +49,10 @@ export default class EulerAdapter extends ProtocolAdapter {
 
     const eulerConfig = this.protocolConfig as EulerProtocolConfig;
     for (const factoryConfig of eulerConfig.factories) {
+      if (factoryConfig.birthday > options.timestamp) {
+        continue;
+      }
+
       const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
         factoryConfig.chain,
         options.timestamp,
