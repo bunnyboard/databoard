@@ -83,6 +83,12 @@
     "decimals": 9,
     "address": "0x057e0bd9b797f9eeeb8307b35dbc8c12e534c41e"
   },
+  "0x06085328d96b1e95c13a07fc67a0401109eb1d38": {
+    "chain": "polygon",
+    "symbol": "KTC",
+    "decimals": 18,
+    "address": "0x06085328d96b1e95c13a07fc67a0401109eb1d38"
+  },
   "0x0621d647cecbfb64b79e44302c1933cb4f27054d": {
     "chain": "polygon",
     "symbol": "AMP",
@@ -1234,6 +1240,12 @@
     "symbol": "GFI",
     "decimals": 18,
     "address": "0x874e178a2f3f3f9d34db862453cd756e7eab0381"
+  },
+  "0x87fcfbd3eae94524d5ef0c42d01f3dfc96142451": {
+    "chain": "polygon",
+    "symbol": "CPLE",
+    "decimals": 18,
+    "address": "0x87fcfbd3eae94524d5ef0c42d01f3dfc96142451"
   },
   "0x89c296be2f904f3e99a6125815b4b78f5388d2dd": {
     "chain": "polygon",

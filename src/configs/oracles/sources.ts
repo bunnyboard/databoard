@@ -2815,4 +2815,32 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv3List.CGPT_USDT],
   },
+  GATSBY: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.GATSBY_WETH],
+  },
+  ABT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ABT_WETH],
+  },
+  bXEN: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.bXEN_WBNB],
+  },
+  KTCCoin: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.KTCCoin_USDT],
+  },
+  CPLE: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.CPLE_USDT],
+  },
+  AIXBT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.AIXBT_WETH],
+  },
+  XEN: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.XEN_WETH],
+  },
 };

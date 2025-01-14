@@ -62,6 +62,7 @@ import MoonwellAdapter from './moonwell/moonwell';
 import MorphL2NativeBridgeAdapter from './morphl2/nativeBridge';
 import MorphoAdapter from './morpho/morpho';
 import OdosAdapter from './odos/odos';
+import Okxweb3Adapter from './okx/okxweb3';
 import OptimismNativeBridgeAdapter from './optimism/nativeBridge';
 import OptimismNativeBridgeLegacyAdapter from './optimism/nativeBridgeLegacy';
 import ParaswapAdapter from './paraswap/paraswap';
@@ -244,5 +245,7 @@ export function getProtocolAdapters(
     anzen: new AnzenAdapter(services, storages, ProtocolConfigs.anzen),
     sonicNativeBridge: new SonicNativeBridgeAdapter(services, storages, ProtocolConfigs.sonicNativeBridge),
     thresholdbtc: new ThresholdbtcAdapter(services, storages, ProtocolConfigs.thresholdbtc),
+    okxweb3: new Okxweb3Adapter(services, storages, ProtocolConfigs.okxweb3),
+    soneiumNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.soneiumNativeBridge),
   };
 }

@@ -137,6 +137,8 @@ import { LombardConfigs } from './protocols/lombard';
 import { AnzenConfigs } from './protocols/anzen';
 import { SonicNativeBridgeConfigs } from './protocols/sonic';
 import { ThresholdBtcConfigs } from './protocols/threshold';
+import { Okxweb3Configs } from './protocols/okxweb3';
+import { SoneiumNativeBridgeConfigs } from './protocols/soneium';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -306,4 +308,6 @@ export const ProtocolConfigs = {
   anzen: AnzenConfigs,
   sonicNativeBridge: SonicNativeBridgeConfigs,
   thresholdbtc: ThresholdBtcConfigs,
+  okxweb3: Okxweb3Configs,
+  soneiumNativeBridge: SoneiumNativeBridgeConfigs,
 };

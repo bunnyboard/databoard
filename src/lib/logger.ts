@@ -33,7 +33,7 @@ function formatService(service: string): string {
 }
 
 function formatMessage(message: string): string {
-  return message.padEnd(40);
+  return message.padEnd(60);
 }
 
 const customFormat = winston.format.printf((entry: any) => {

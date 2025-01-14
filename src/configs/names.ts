@@ -84,6 +84,7 @@ export const ChainNames = {
   sonic: 'sonic',
   alephzero: 'alephzero',
   swellchain: 'swellchain',
+  soneium: 'soneium',
 };
 
 export const ProtocolNames = {
@@ -262,4 +263,6 @@ export const ProtocolNames = {
   anzen: 'anzen',
   sonicNativeBridge: 'sonicNativeBridge',
   thresholdbtc: 'thresholdbtc',
+  okxweb3: 'okxweb3',
+  soneiumNativeBridge: 'soneiumNativeBridge',
 };
