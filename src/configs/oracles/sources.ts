@@ -2630,6 +2630,10 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.ZENT_WETH],
   },
+  stZENT: {
+    currency: 'eth',
+    sources: [OracleSourceCustomList.stZENT],
+  },
   BRIUN: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.BRIUN_WETH],
@@ -2842,5 +2846,9 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   XEN: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.XEN_WETH],
+  },
+  IOTX: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.IOTX_WBNB],
   },
 };

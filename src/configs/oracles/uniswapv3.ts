@@ -739,10 +739,10 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
   },
   ATH_WETH: {
     type: 'univ3',
-    chain: 'arbitrum',
-    address: '0x93b4da79158da2efd00acc26f16e49ca1a704978',
-    baseToken: TokensBook.arbitrum['0xc87b37a581ec3257b734886d9d3a581f5a9d056c'],
-    quotaToken: TokensBook.arbitrum['0x82af49447d8a07e3bd95bd0d56f35241523fbab1'],
+    chain: 'ethereum',
+    address: '0xd31d41dffa3589bb0c0183e46a1eed983a5e5978',
+    baseToken: TokensBook.ethereum['0xbe0ed4138121ecfc5c0e56b40517da27e6c5226b'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
   APEX_WETH: {
     type: 'univ3',

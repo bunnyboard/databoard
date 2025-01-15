@@ -3,7 +3,7 @@ import { OptimismBridgeProtocolConfig, OptimismSuperchainTokens } from './optimi
 
 export const SoneiumNativeBridgeConfigs: OptimismBridgeProtocolConfig = {
   protocol: ProtocolNames.soneiumNativeBridge,
-  birthday: 1700092800, // Thu Nov 16 2023 00:00:00 GMT+0000
+  birthday: 1733184000, // Tue Dec 03 2024 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
   layer2Chain: ChainNames.soneium,
   optimismPortal: '0x88e529a6ccd302c948689cd5156c83d4614fae92',
