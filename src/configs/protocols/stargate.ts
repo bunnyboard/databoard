@@ -3,6 +3,7 @@ import { AddressZero } from '../constants';
 import { ChainNames, ProtocolNames } from '../names';
 
 // https://stargateprotocol.gitbook.io/stargate/developers/chain-ids
+// https://docs.layerzero.network/v2/developers/evm/technical-reference/deployed-contracts
 export const StargateChainIds: { [key: number]: string } = {
   101: ChainNames.ethereum,
   30101: ChainNames.ethereum,
@@ -37,6 +38,7 @@ export const StargateChainIds: { [key: number]: string } = {
   30280: ChainNames.seievm,
   30295: ChainNames.flare,
   30294: ChainNames.gravity,
+  30339: ChainNames.ink,
 };
 
 export interface StargateBridgeConfig {

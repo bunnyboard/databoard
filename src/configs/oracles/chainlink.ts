@@ -291,4 +291,27 @@ export const OracleSourceChainlinkList: { [key: string]: OracleSourceChainlink }
     address: '0x27Cc356A5891A3Fe6f84D0457dE4d108C6078888',
     decimals: 8,
   },
+
+  // custom list
+  midasTBILL_USD: {
+    type: 'chainlink',
+    chain: 'ethereum',
+    currency: 'usd',
+    address: '0x056339C044055819E8Db84E71f5f2E1F536b2E5b',
+    decimals: 8,
+  },
+  midasBASIS_USD: {
+    type: 'chainlink',
+    chain: 'ethereum',
+    currency: 'usd',
+    address: '0xE4f2AE539442e1D3Fb40F03ceEbF4A372a390d24',
+    decimals: 8,
+  },
+  midasBTC_BTC: {
+    type: 'chainlink',
+    chain: 'ethereum',
+    currency: 'btc',
+    address: '0xA537EF0343e83761ED42B8E017a1e495c9a189Ee',
+    decimals: 8,
+  },
 };

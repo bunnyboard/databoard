@@ -23,7 +23,7 @@ import {
 import BlockchainService from '../blockchains/blockchain';
 import { CachingService } from '../caching/caching';
 import { getTokenPriceFromBinance } from './binance';
-import { GetTokenPriceOptions, IOracleService } from './domains';
+import { getCurrencyPriceOptions, GetTokenPriceOptions, IOracleService } from './domains';
 import { IBlockchainService } from '../blockchains/domains';
 import Erc20Abi from '../../configs/abi/ERC20.json';
 import Erc4626Abi from '../../configs/abi/ERC4626.json';
@@ -377,6 +377,16 @@ export default class OracleService extends CachingService implements IOracleServ
     }
 
     return null;
+  }
+
+  public async getCurrencyPriceUsd(options: getCurrencyPriceOptions): Promise<number> {
+    if (options.currency === 'usd') {
+      return 1;
+    }
+
+    const priceUsd = await this.getTokenCurrencyBasePriceUsd(options.currency, options.timestamp);
+
+    return priceUsd ? Number(priceUsd) : 0;
   }
 
   public async getTokenPriceUsdRounded(options: GetTokenPriceOptions): Promise<number> {

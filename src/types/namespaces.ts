@@ -1,4 +1,4 @@
-import { IBlockchainService } from '../services/blockchains/domains';
+import { IBitcoreService, IBlockchainService } from '../services/blockchains/domains';
 import { IMemcacheService } from '../services/caching/domains';
 import { IDatabaseService } from '../services/database/domains';
 import { ILocaldbService } from '../services/localdb/domains';
@@ -15,8 +15,11 @@ export interface ContextStorages {
 
 export interface ContextServices {
   blockchain: {
-    // setrvice for evm chains
+    // service for evm chains
     evm: IBlockchainService;
+
+    // service for bitcore like chains: bitcoin, litecoin, ...
+    bitcore: IBitcoreService;
   };
   oracle: IOracleService;
 }

@@ -265,4 +265,6 @@ export const ProtocolNames = {
   thresholdbtc: 'thresholdbtc',
   okxweb3: 'okxweb3',
   soneiumNativeBridge: 'soneiumNativeBridge',
+  midas: 'midas', // https://midas.app
+  usdt0: 'usdt0', // https://usdt0.to
 };

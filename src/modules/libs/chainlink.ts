@@ -18,6 +18,19 @@ export default class ChainlinkLibs {
       blockNumber,
     });
 
-    return latestAnswer ? formatBigNumberToString(latestAnswer.toString(), config.decimals) : null;
+    if (latestAnswer) {
+      return formatBigNumberToString(latestAnswer.toString(), config.decimals);
+    }
+
+    const [, answer, , ,] = await blockchain.readContract({
+      chain: config.chain,
+      abi: AggregatorAbi,
+      target: config.address,
+      method: 'latestRoundData',
+      params: [],
+      blockNumber,
+    });
+
+    return answer ? formatBigNumberToString(answer.toString(), config.decimals) : null;
   }
 }

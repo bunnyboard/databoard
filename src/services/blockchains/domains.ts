@@ -97,3 +97,12 @@ export interface IBlockchainService {
   // loop until get block number success
   tryGetBlockNumberAtTimestamp: (chain: string, timestamp: number) => Promise<number>;
 }
+
+// provider for bitcoin, litecoin, ...
+// using mempool.space APIs
+export interface IBitcoreService {
+  name: string;
+
+  // return confirmed balance of a given address
+  getAddressBalance: (chain: string, address: string, timestamp: number) => Promise<string>;
+}

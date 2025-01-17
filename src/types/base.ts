@@ -1,5 +1,6 @@
 export const ChainFamilies = {
   evm: 'evm',
+  bitcore: 'bitcore',
 };
 const AllChainFamilies = Object.values(ChainFamilies);
 export type ChainFamily = (typeof AllChainFamilies)[number];

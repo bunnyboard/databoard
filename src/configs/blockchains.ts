@@ -1,13 +1,25 @@
 import dotenv from 'dotenv';
 
 import { Blockchain } from '../types/configs';
-import { AddressZero } from './constants';
+import { AddressZero, MockBitcoinAddress } from './constants';
 import { ChainNames } from './names';
 
 // global env and configurations
 dotenv.config();
 
 export const BlockchainConfigs: { [key: string]: Blockchain } = {
+  [ChainNames.bitcoin]: {
+    name: ChainNames.bitcoin,
+    family: 'bitcore',
+    chainId: 0, // don't care
+    nodeRpc: String(process.env.BLOCKCHAIN_BITCOIN_NODE),
+    nativeToken: {
+      chain: ChainNames.bitcoin,
+      address: MockBitcoinAddress,
+      symbol: 'BTC',
+      decimals: 8,
+    },
+  },
   [ChainNames.ethereum]: {
     name: ChainNames.ethereum,
     family: 'evm',

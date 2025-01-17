@@ -1,5 +1,6 @@
 import { DefaultLocaldbDir, DefaultMemcacheTime } from '../configs';
 import envConfig from '../configs/envConfig';
+import BitcoreService from '../services/blockchains/bitcore';
 import BlockchainService from '../services/blockchains/blockchain';
 import { MemcacheService } from '../services/caching/memcache';
 import DatabaseService from '../services/database/database';
@@ -15,11 +16,13 @@ export class BasicCommand {
 
   public async getServices(): Promise<ContextServices> {
     const blockchain = new BlockchainService();
+    const bitcore = new BitcoreService();
     const oracle = new OracleService(blockchain);
 
     return {
       blockchain: {
         evm: blockchain,
+        bitcore: bitcore,
       },
       oracle: oracle,
     };

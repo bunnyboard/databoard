@@ -2851,4 +2851,16 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'bnb',
     sources: [OracleSourceUniswapv2List.IOTX_WBNB],
   },
+  midasTBILL: {
+    currency: 'usd',
+    sources: [OracleSourceChainlinkList.midasTBILL_USD],
+  },
+  midasBASIS: {
+    currency: 'usd',
+    sources: [OracleSourceChainlinkList.midasBASIS_USD],
+  },
+  midasBTC: {
+    currency: 'btc',
+    sources: [OracleSourceChainlinkList.midasBTC_BTC],
+  },
 };

@@ -1,3 +1,4 @@
+import { OracleCurrencyBase } from '../../types/oracles';
 import { IBlockchainService } from '../blockchains/domains';
 
 export interface GetTokenPriceOptions {
@@ -17,10 +18,18 @@ export interface GetTokenPriceOptions {
   enableAutoSearching?: boolean;
 }
 
+export interface getCurrencyPriceOptions {
+  currency: OracleCurrencyBase;
+  timestamp: number;
+}
+
 export interface IOracleService {
   name: string;
 
   blockchain: IBlockchainService | null | undefined;
+
+  // get currency price in usd
+  getCurrencyPriceUsd: (options: getCurrencyPriceOptions) => Promise<number>;
 
   // same as getTokenPriceUsd but return number type
   getTokenPriceUsdRounded: (options: GetTokenPriceOptions) => Promise<number>;

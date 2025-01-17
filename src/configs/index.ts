@@ -139,6 +139,9 @@ import { SonicNativeBridgeConfigs } from './protocols/sonic';
 import { ThresholdBtcConfigs } from './protocols/threshold';
 import { Okxweb3Configs } from './protocols/okxweb3';
 import { SoneiumNativeBridgeConfigs } from './protocols/soneium';
+import { MidasConfigs } from './protocols/midas';
+import { SolvConfigs } from './protocols/solv';
+import { Usdt0Configs } from './protocols/usdt0';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -310,4 +313,7 @@ export const ProtocolConfigs = {
   thresholdbtc: ThresholdBtcConfigs,
   okxweb3: Okxweb3Configs,
   soneiumNativeBridge: SoneiumNativeBridgeConfigs,
+  midas: MidasConfigs,
+  solv: SolvConfigs,
+  usdt0: Usdt0Configs,
 };

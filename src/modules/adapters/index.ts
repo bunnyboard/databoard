@@ -75,6 +75,7 @@ import ResolvAdapter from './resolv/resolv';
 import RocketpoolAdapter from './rocketpool/rocketpool';
 import RubicAdapter from './rubic/rubic';
 import ScrollNativeBridgeAdapter from './scroll/nativeBridge';
+import SolvAdapter from './solv/solv';
 import SonicNativeBridgeAdapter from './sonic/nativeBridge';
 import StaderAdapter from './stader/stader';
 import StakewiseAdapter from './stakewise/stakewise';
@@ -85,6 +86,7 @@ import SymbioticAdapter from './symbiotic/symbiotic';
 import SynapseAdapter from './synapse/synapse';
 import TaikoNativeBridgeAdapter from './taiko/nativeBridge';
 import ThresholdbtcAdapter from './threshold/thresholdbtc';
+import Usdt0Adapter from './usdt0/usdt0';
 import UsualAdapter from './usual/usual';
 import VenusAdapter from './venus/venus';
 import WbethAdapter from './wbeth/wbeth';
@@ -247,5 +249,7 @@ export function getProtocolAdapters(
     thresholdbtc: new ThresholdbtcAdapter(services, storages, ProtocolConfigs.thresholdbtc),
     okxweb3: new Okxweb3Adapter(services, storages, ProtocolConfigs.okxweb3),
     soneiumNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.soneiumNativeBridge),
+    solv: new SolvAdapter(services, storages, ProtocolConfigs.solv),
+    usdt0: new Usdt0Adapter(services, storages, ProtocolConfigs.usdt0),
   };
 }
