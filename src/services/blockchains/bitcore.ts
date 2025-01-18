@@ -61,9 +61,12 @@ export default class BitcoreService extends CachingService implements IBitcoreSe
       if (blockTime <= timestamp) {
         // count vin - balance decrease
         for (const vin of transaction.vin) {
-          const scriptpubkey_address = vin.prevout.scriptpubkey_address;
-          if (scriptpubkey_address === address) {
-            balance = balance.minus(new BigNumber(vin.prevout.value.toString()));
+          if (vin.prevout) {
+            // existing prevout
+            const scriptpubkey_address = vin.prevout.scriptpubkey_address;
+            if (scriptpubkey_address === address) {
+              balance = balance.minus(new BigNumber(vin.prevout.value.toString()));
+            }
           }
         }
 

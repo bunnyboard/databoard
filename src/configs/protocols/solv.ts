@@ -10,6 +10,9 @@ export interface SolvPoolConfig {
     token: string;
     vault: string;
   }>;
+
+  // liquid staking token of SolvBTC if any
+  stakingAssets: Array<string>;
 }
 
 export interface SolvProtocolConfig extends ProtocolConfig {
@@ -45,6 +48,10 @@ export const SolvConfigs: SolvProtocolConfig = {
           token: '0xC96dE26018A54D51c097160568752c4E3BD6C364',
         },
       ],
+      stakingAssets: [
+        '0x325DC9EBceC31940C658aCACa45f8293418d811E', // SolvBTC.ENA
+        '0xd9D920AA40f578ab794426F5C90F6C731D159DEf', // SolvBTC.BBN
+      ],
     },
     {
       chain: ChainNames.bnbchain,
@@ -55,6 +62,12 @@ export const SolvConfigs: SolvProtocolConfig = {
           vault: '0x9537bc0546506785bd1ebd19fd67d1f06800d185',
           token: '0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c',
         },
+      ],
+      stakingAssets: [
+        '0x53E63a31fD1077f949204b94F431bCaB98F72BCE', // SolvBTC.ENA
+        '0x1346b618dC92810EC74163e4c27004c921D446a5', // SolvBTC.BBN
+        '0xb9f59cAB0d6AA9D711acE5c3640003Bc09C15Faf', // SolvBTC.CORE
+        '0x38a001e57430f781404ffF7a81DE4Bd67d1f6117', // SolvBTC.JUP
       ],
     },
     {
@@ -67,6 +80,10 @@ export const SolvConfigs: SolvProtocolConfig = {
           token: '0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f',
         },
       ],
+      stakingAssets: [
+        '0xaFAfd68AFe3fe65d376eEC9Eab1802616cFacCb8', // SolvBTC.ENA
+        '0x346c574C56e1A4aAa8dc88Cda8F7EB12b39947aB', // SolvBTC.BBN
+      ],
     },
     {
       chain: ChainNames.base,
@@ -77,6 +94,9 @@ export const SolvConfigs: SolvProtocolConfig = {
           vault: '0xf2416c264aa4068ff4d1949383366458f295f205',
           token: '0x236aa50979d5f3de3bd1eeb40e81137f22ab794b',
         },
+      ],
+      stakingAssets: [
+        '0xC26C9099BD3789107888c35bb41178079B282561', // SolvBTC.BBN
       ],
     },
     {
@@ -89,6 +109,10 @@ export const SolvConfigs: SolvProtocolConfig = {
           token: '0xB880fd278198bd590252621d4CD071b1842E9Bcd',
         },
       ],
+      stakingAssets: [
+        '0x88c618B2396C1A11A6Aabd1bf89228a08462f2d2', // SolvBTC.ENA
+        '0x1760900aCA15B90Fa2ECa70CE4b4EC441c2CF6c5', // SolvBTC.BBN
+      ],
     },
     {
       chain: ChainNames.mantle,
@@ -99,6 +123,9 @@ export const SolvConfigs: SolvProtocolConfig = {
           vault: '0x33b7a7a164b77433a61d4b49bd780a2718812e6e',
           token: '0xc96de26018a54d51c097160568752c4e3bd6c364',
         },
+      ],
+      stakingAssets: [
+        '0x1d40baFC49c37CdA49F2a5427E2FB95E1e3FCf20', // SolvBTC.BBN
       ],
     },
     {
@@ -111,6 +138,9 @@ export const SolvConfigs: SolvProtocolConfig = {
           token: '0x152b9d0FdC40C096757F570A51E494bd4b943E50',
         },
       ],
+      stakingAssets: [
+        '0xCC0966D8418d412c599A6421b760a847eB169A8c', // SolvBTC.BBN
+      ],
     },
     {
       chain: ChainNames.bob,
@@ -121,6 +151,9 @@ export const SolvConfigs: SolvProtocolConfig = {
           vault: '0x33b7a7a164b77433a61d4b49bd780a2718812e6e',
           token: '0x03C7054BCB39f7b2e5B2c7AcB37583e32D70Cfa3',
         },
+      ],
+      stakingAssets: [
+        '0xCC0966D8418d412c599A6421b760a847eB169A8c', // SolvBTC.BBN
       ],
     },
     {
@@ -133,30 +166,41 @@ export const SolvConfigs: SolvProtocolConfig = {
           token: '0x3aab2285ddcddad8edf438c1bab47e1a9d05a9b4',
         },
       ],
+      stakingAssets: [
+        '0xCC0966D8418d412c599A6421b760a847eB169A8c', // SolvBTC.BBN
+      ],
     },
-    {
-      chain: ChainNames.core,
-      birthday: 1727308800, // Thu Sep 26 2024 00:00:00 GMT+0000
-      solvBTC: '0x9410e8052Bc661041e5cB27fDf7d9e9e842af2aa',
-      vaults: [],
-    },
+    // {
+    //   chain: ChainNames.core,
+    //   birthday: 1727308800, // Thu Sep 26 2024 00:00:00 GMT+0000
+    //   solvBTC: '0x9410e8052Bc661041e5cB27fDf7d9e9e842af2aa',
+    //   vaults: [],
+    //   stakingAssets: [
+    //     '0x9410e8052Bc661041e5cB27fDf7d9e9e842af2aa',
+    //   ]
+    // },
     {
       chain: ChainNames.taiko,
       birthday: 1728950400, // Tue Oct 15 2024 00:00:00 GMT+0000
       solvBTC: '0x541FD749419CA806a8bc7da8ac23D346f2dF8B77',
       vaults: [],
+      stakingAssets: [
+        '0xCC0966D8418d412c599A6421b760a847eB169A8c', // SolvBTC.BBN
+      ],
     },
     {
       chain: ChainNames.bitlayer,
       birthday: 1732924800, // Sat Nov 30 2024 00:00:00 GMT+0000
       solvBTC: '0x541fd749419ca806a8bc7da8ac23d346f2df8b77',
       vaults: [],
+      stakingAssets: [],
     },
     {
       chain: ChainNames.mode,
       birthday: 1730592000, // Sun Nov 03 2024 00:00:00 GMT+0000
       solvBTC: '0x541FD749419CA806a8bc7da8ac23D346f2dF8B77',
       vaults: [],
+      stakingAssets: [],
     },
   ],
 };

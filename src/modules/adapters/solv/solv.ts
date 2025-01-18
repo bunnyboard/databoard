@@ -34,7 +34,8 @@ export default class SolvAdapter extends ProtocolAdapter {
         },
       },
       ...getInitialProtocolCoreMetrics(),
-      totalSupplied: 0,
+      totalSupplied: 0, // total SolvBTC staked in LSTs: .ENA, .BBN, .CORE, .JUP
+      totalBorrowed: 0, // total outstanding SolvBTC supply
       volumes: {
         // mint/burn SolvBTC
         borrow: 0,
@@ -96,19 +97,35 @@ export default class SolvAdapter extends ProtocolAdapter {
 
       const balanceUsd = formatBigNumberToNumber(totalSupply ? totalSupply.toString() : '0', 18) * solvBtcPriceUsd;
 
-      (protocolData.totalSupplied as number) += balanceUsd;
+      (protocolData.totalBorrowed as number) += balanceUsd;
 
       if (!protocolData.breakdown[pool.chain][solvBTC]) {
         protocolData.breakdown[pool.chain][solvBTC] = {
           ...getInitialProtocolCoreMetrics(),
-          totalSupplied: 0,
+          totalBorrowed: 0,
           volumes: {
             borrow: 0,
             repay: 0,
           },
         };
       }
-      (protocolData.breakdown[pool.chain][solvBTC].totalSupplied as number) += balanceUsd;
+      (protocolData.breakdown[pool.chain][solvBTC].totalBorrowed as number) += balanceUsd;
+
+      for (const stakingAddress of pool.stakingAssets) {
+        const totalStaked = await this.services.blockchain.evm.readContract({
+          chain: pool.chain,
+          abi: Erc20Abi,
+          target: stakingAddress,
+          method: 'totalSupply',
+          params: [],
+          blockNumber: blockNumber,
+        });
+        const totalStakedUsd =
+          formatBigNumberToNumber(totalStaked ? totalStaked.toString() : '0', 18) * solvBtcPriceUsd;
+
+        (protocolData.totalSupplied as number) += totalStakedUsd;
+        (protocolData.breakdown[pool.chain][solvBTC].totalSupplied as number) += totalStakedUsd;
+      }
 
       for (const vault of pool.vaults) {
         const token = await this.services.blockchain.evm.getTokenInfo({
