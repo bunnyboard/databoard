@@ -1283,6 +1283,12 @@
     "decimals": 18,
     "address": "0x8c92e38eca8210f4fcbf17f0951b198dd7668292"
   },
+  "0x8de5b80a0c1b02fe4976851d030b36122dbb8624": {
+    "chain": "polygon",
+    "symbol": "VANRY",
+    "decimals": 18,
+    "address": "0x8de5b80a0c1b02fe4976851d030b36122dbb8624"
+  },
   "0x8df26a1bd9bd98e2ec506fc9d8009954716a05dc": {
     "chain": "polygon",
     "symbol": "COLLAR",

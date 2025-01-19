@@ -473,6 +473,12 @@
     "decimals": 18,
     "address": "0x01c16da6e041cf203959624ade1f39652973d0eb"
   },
+  "0x01ca78a2b5f1a9152d8a3a625bd7df5765eee1d8": {
+    "chain": "bnbchain",
+    "symbol": "ANDY",
+    "decimals": 18,
+    "address": "0x01ca78a2b5f1a9152d8a3a625bd7df5765eee1d8"
+  },
   "0x01cdec00557c39e43ac24898be9878925b8f49d3": {
     "chain": "bnbchain",
     "symbol": "MoonWay",
@@ -19883,6 +19889,12 @@
     "decimals": 9,
     "address": "0x4ad006e61d77453ce99f6e24ba45d59e1c194644"
   },
+  "0x4ad663403df2f0e7987bc9c74561687472e1611c": {
+    "chain": "bnbchain",
+    "symbol": "FROG",
+    "decimals": 18,
+    "address": "0x4ad663403df2f0e7987bc9c74561687472e1611c"
+  },
   "0x4ad7078208e465fac0c90dacb4d58e2901314a63": {
     "chain": "bnbchain",
     "symbol": "XLT",
@@ -23140,6 +23152,12 @@
     "symbol": "BiHODL",
     "decimals": 18,
     "address": "0x56ea3a560086d7961cfa29b4ede10eb2300f53e4"
+  },
+  "0x56fa5f7bf457454be33d8b978c86a5f5b9dd84c2": {
+    "chain": "bnbchain",
+    "symbol": "LTP",
+    "decimals": 18,
+    "address": "0x56fa5f7bf457454be33d8b978c86a5f5b9dd84c2"
   },
   "0x56ff5cf8965ef961311448244fc7b5a5e2aaf69c": {
     "chain": "bnbchain",
@@ -44969,6 +44987,12 @@
     "decimals": 18,
     "address": "0xabe6efdefa75c18bd0f6b65abddcd8dda3992caf"
   },
+  "0xabe8e5cabe24cb36df9540088fd7ce1175b9bc52": {
+    "chain": "bnbchain",
+    "symbol": "SOLV",
+    "decimals": 18,
+    "address": "0xabe8e5cabe24cb36df9540088fd7ce1175b9bc52"
+  },
   "0xabf14398786295ee4638368d2004eca9d780097e": {
     "chain": "bnbchain",
     "symbol": "MPT",
@@ -64402,6 +64426,12 @@
     "symbol": "CCF",
     "decimals": 18,
     "address": "0xf823f18d13df1ffdced206708d389dd455bb802b"
+  },
+  "0xf8252c05ec4cb2fdf1e0398bae049d454ddba3ad": {
+    "chain": "bnbchain",
+    "symbol": "JAM",
+    "decimals": 18,
+    "address": "0xf8252c05ec4cb2fdf1e0398bae049d454ddba3ad"
   },
   "0xf82aa46120314904cd8119dac84f6bcc7d90ed2e": {
     "chain": "bnbchain",

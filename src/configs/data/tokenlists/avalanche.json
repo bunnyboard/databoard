@@ -5,6 +5,12 @@
     "decimals": 18,
     "address": "0x0000000000000000000000000000000000000000"
   },
+  "0x000000000000012def132e61759048be5b5c6033": {
+    "chain": "avalanche",
+    "symbol": "CX",
+    "decimals": 18,
+    "address": "0x000000000000012def132e61759048be5b5c6033"
+  },
   "0x00000000efe302beaa2b3e6e1b18d08d69a9012a": {
     "chain": "avalanche",
     "symbol": "AUSD",
@@ -88,6 +94,12 @@
     "symbol": "XPTP",
     "decimals": 18,
     "address": "0x060556209e507d30f2167a101bfc6d256ed2f3e1"
+  },
+  "0x06d47f3fb376649c3a9dafe069b3d6e35572219e": {
+    "chain": "avalanche",
+    "symbol": "SAVUSD",
+    "decimals": 18,
+    "address": "0x06d47f3fb376649c3a9dafe069b3d6e35572219e"
   },
   "0x078f358208685046a11c85e8ad32895ded33a249": {
     "chain": "avalanche",
@@ -232,6 +244,12 @@
     "symbol": "B4FWX",
     "decimals": 18,
     "address": "0x13b1f0579bc895b2ffb835f295fd9b63fef36da0"
+  },
+  "0x14a5f2872396802c3cc8942a39ab3e4118ee5038": {
+    "chain": "avalanche",
+    "symbol": "BTSLA",
+    "decimals": 18,
+    "address": "0x14a5f2872396802c3cc8942a39ab3e4118ee5038"
   },
   "0x14eb40fb7900185c01adc6a5b8ac506d8a600e3c": {
     "chain": "avalanche",
@@ -418,6 +436,12 @@
     "symbol": "wsOHM",
     "decimals": 18,
     "address": "0x240e332cd26aae10622b24160d23425a17256f5d"
+  },
+  "0x24de8771bc5ddb3362db529fc3358f2df3a0e346": {
+    "chain": "avalanche",
+    "symbol": "AVUSD",
+    "decimals": 18,
+    "address": "0x24de8771bc5ddb3362db529fc3358f2df3a0e346"
   },
   "0x2598c30330d5771ae9f983979209486ae26de875": {
     "chain": "avalanche",
@@ -611,6 +635,12 @@
     "decimals": 18,
     "address": "0x3709e8615e02c15b096f8a9b460ccb8ca8194e86"
   },
+  "0x374a457967ba24fd3ae66294cab08244185574b0": {
+    "chain": "avalanche",
+    "symbol": "BMSFT",
+    "decimals": 18,
+    "address": "0x374a457967ba24fd3ae66294cab08244185574b0"
+  },
   "0x37b608519f91f70f2eeb0e5ed9af4061722e4f76": {
     "chain": "avalanche",
     "symbol": "SUSHI.e",
@@ -677,6 +707,12 @@
     "decimals": 18,
     "address": "0x3c780f5cbf94de3efcec964af928d08c4508eebe"
   },
+  "0x3cc96f3cb4f45b5b5cdbce61faee8ae80d805c65": {
+    "chain": "avalanche",
+    "symbol": "AVAXMINERAI",
+    "decimals": 18,
+    "address": "0x3cc96f3cb4f45b5b5cdbce61faee8ae80d805c65"
+  },
   "0x3cd790449cf7d187a143d4bd7f4654d4f2403e02": {
     "chain": "avalanche",
     "symbol": "BOBA",
@@ -724,6 +760,12 @@
     "symbol": "EVO",
     "decimals": 18,
     "address": "0x42006ab57701251b580bdfc24778c43c9ff589a1"
+  },
+  "0x42069000770c482fed048e1da03a5f82773abd69": {
+    "chain": "avalanche",
+    "symbol": "BRO",
+    "decimals": 18,
+    "address": "0x42069000770c482fed048e1da03a5f82773abd69"
   },
   "0x420fca0121dc28039145009570975747295f2329": {
     "chain": "avalanche",
@@ -1199,6 +1241,12 @@
     "decimals": 18,
     "address": "0x65378b697853568da9ff8eab60c13e1ee9f4a654"
   },
+  "0x65fda84473084ba2cca8452883e6ea3561092234": {
+    "chain": "avalanche",
+    "symbol": "RKFI",
+    "decimals": 18,
+    "address": "0x65fda84473084ba2cca8452883e6ea3561092234"
+  },
   "0x66b7cd2046c633196cfd061db21ca6a23ab9ba3a": {
     "chain": "avalanche",
     "symbol": "SWORD",
@@ -1348,6 +1396,12 @@
     "symbol": "ABG",
     "decimals": 18,
     "address": "0x71f99bdbe8e6b958016ea399e3dba0790f82ca88"
+  },
+  "0x7212088a11b4d8f6fc90fbb3dfe793b45dd72323": {
+    "chain": "avalanche",
+    "symbol": "BGME",
+    "decimals": 18,
+    "address": "0x7212088a11b4d8f6fc90fbb3dfe793b45dd72323"
   },
   "0x721c299e6bf7d6a430d9bea3364ea197314bce09": {
     "chain": "avalanche",
@@ -1955,6 +2009,12 @@
     "decimals": 18,
     "address": "0xa32608e873f9ddef944b24798db69d80bbb4d1ed"
   },
+  "0xa34c5e0abe843e10461e2c9586ea03e55dbcc495": {
+    "chain": "avalanche",
+    "symbol": "BNVDA",
+    "decimals": 18,
+    "address": "0xa34c5e0abe843e10461e2c9586ea03e55dbcc495"
+  },
   "0xa384bc7cdc0a93e686da9e7b8c0807cd040f4e0b": {
     "chain": "avalanche",
     "symbol": "WOW",
@@ -2062,6 +2122,12 @@
     "symbol": "WOO",
     "decimals": 18,
     "address": "0xabc9547b534519ff73921b1fba6e672b5f58d083"
+  },
+  "0xac28c9178acc8ba4a11a29e013a3a2627086e422": {
+    "chain": "avalanche",
+    "symbol": "BMSTR",
+    "decimals": 18,
+    "address": "0xac28c9178acc8ba4a11a29e013a3a2627086e422"
   },
   "0xacfb898cff266e53278cc0124fc2c7c94c8cb9a5": {
     "chain": "avalanche",
@@ -2441,6 +2507,12 @@
     "decimals": 18,
     "address": "0xc5fa5669e326da8b2c35540257cd48811f40a36b"
   },
+  "0xc654721fbf1f374fd9ffa3385bba2f4932a6af55": {
+    "chain": "avalanche",
+    "symbol": "JUICY",
+    "decimals": 18,
+    "address": "0xc654721fbf1f374fd9ffa3385bba2f4932a6af55"
+  },
   "0xc685e8eddc9f078666794cbfcd8d8351bac404ef": {
     "chain": "avalanche",
     "symbol": "ULX",
@@ -2506,6 +2578,12 @@
     "symbol": "CROW",
     "decimals": 18,
     "address": "0xc99092c66d92dddaced9fcdd488b246923d098ef"
+  },
+  "0xca30c93b02514f86d5c86a6e375e3a330b435fb5": {
+    "chain": "avalanche",
+    "symbol": "BIB01",
+    "decimals": 18,
+    "address": "0xca30c93b02514f86d5c86a6e375e3a330b435fb5"
   },
   "0xca5d8f8a8d49439357d3cf46ca2e720702f132b8": {
     "chain": "avalanche",
@@ -2687,6 +2765,12 @@
     "decimals": 18,
     "address": "0xd7c295e399ca928a3a14b01d760e794f1adf8990"
   },
+  "0xd8b95b1987741849ca7e71e976aeb535fd2e55a2": {
+    "chain": "avalanche",
+    "symbol": "BCSBGC3",
+    "decimals": 18,
+    "address": "0xd8b95b1987741849ca7e71e976aeb535fd2e55a2"
+  },
   "0xd9d90f882cddd6063959a9d837b05cb748718a05": {
     "chain": "avalanche",
     "symbol": "MORE",
@@ -2746,6 +2830,12 @@
     "symbol": "ANKR",
     "decimals": 18,
     "address": "0xdf474b7109b73b7d57926d43598d5934131136b2"
+  },
+  "0xdf788ad40181894da035b827cdf55c523bf52f67": {
+    "chain": "avalanche",
+    "symbol": "RSAVAX",
+    "decimals": 18,
+    "address": "0xdf788ad40181894da035b827cdf55c523bf52f67"
   },
   "0xe06fba763c2104db5027f57f6a5be0a0d86308af": {
     "chain": "avalanche",
@@ -2831,6 +2921,12 @@
     "decimals": 18,
     "address": "0xe5caef4af8780e59df925470b050fb23c43ca68c"
   },
+  "0xe7d69acbc00d0ec5d9c02162310ee21daa77f69c": {
+    "chain": "avalanche",
+    "symbol": "COQAI",
+    "decimals": 18,
+    "address": "0xe7d69acbc00d0ec5d9c02162310ee21daa77f69c"
+  },
   "0xe8385cecb013561b69beb63ff59f4d10734881f3": {
     "chain": "avalanche",
     "symbol": "GEC",
@@ -2866,6 +2962,12 @@
     "symbol": "KONG",
     "decimals": 18,
     "address": "0xebb5d4959b2fba6318fbda7d03cd44ae771fc999"
+  },
+  "0xebee37aaf2905b7bda7e3b928043862e982e8f32": {
+    "chain": "avalanche",
+    "symbol": "BGOOGL",
+    "decimals": 18,
+    "address": "0xebee37aaf2905b7bda7e3b928043862e982e8f32"
   },
   "0xec3492a2508ddf4fdc0cd76f31f340b30d1793e6": {
     "chain": "avalanche",

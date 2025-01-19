@@ -2863,4 +2863,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'btc',
     sources: [OracleSourceChainlinkList.midasBTC_BTC],
   },
+  SOLV: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv3List.SOLV_WBNB],
+  },
 };

@@ -89,6 +89,12 @@
     "decimals": 18,
     "address": "0x05d35769a222affd6185e20f3f3676abde56c25f"
   },
+  "0x07715ee7219b07b8e01cc7d2787f4e5e75860383": {
+    "chain": "arbitrum",
+    "symbol": "SDT",
+    "decimals": 18,
+    "address": "0x07715ee7219b07b8e01cc7d2787f4e5e75860383"
+  },
   "0x079504b86d38119f859c4194765029f692b7b7aa": {
     "chain": "arbitrum",
     "symbol": "LYRA",
@@ -185,6 +191,12 @@
     "decimals": 18,
     "address": "0x0c880f6761f1af8d9aa9c466984b80dab9a8c9e8"
   },
+  "0x0d111e482146fe9ac9ca3a65d92e65610bbc1ba6": {
+    "chain": "arbitrum",
+    "symbol": "plsSPA",
+    "decimals": 18,
+    "address": "0x0d111e482146fe9ac9ca3a65d92e65610bbc1ba6"
+  },
   "0x0e15258734300290a651fdbae8deb039a8e7a2fa": {
     "chain": "arbitrum",
     "symbol": "ALCH",
@@ -268,6 +280,12 @@
     "symbol": "BOOP",
     "decimals": 18,
     "address": "0x13a7dedb7169a17be92b0e3c7c2315b46f4772b3"
+  },
+  "0x13ad3f1150db0e1e05fd32bdeeb7c110ee023de6": {
+    "chain": "arbitrum",
+    "symbol": "DeFAI",
+    "decimals": 18,
+    "address": "0x13ad3f1150db0e1e05fd32bdeeb7c110ee023de6"
   },
   "0x13ad51ed4f1b7e9dc168d8a00cb3f4ddd85efa60": {
     "chain": "arbitrum",
@@ -1751,6 +1769,12 @@
     "decimals": 18,
     "address": "0x9e64d3b9e8ec387a9a58ced80b71ed815f8d82b5"
   },
+  "0x9e6b748d25ed2600aa0ce7cbb42267adcf21fd9b": {
+    "chain": "arbitrum",
+    "symbol": "plsGRAIL",
+    "decimals": 18,
+    "address": "0x9e6b748d25ed2600aa0ce7cbb42267adcf21fd9b"
+  },
   "0x9e758b8a98a42d612b3d38b66a22074dc03d7370": {
     "chain": "arbitrum",
     "symbol": "SIS",
@@ -1780,6 +1804,12 @@
     "symbol": "GNO",
     "decimals": 18,
     "address": "0xa0b862f60edef4452f25b4160f177db44deb6cf1"
+  },
+  "0xa0c8d91b6dce36f6deeadf716ab02bc539d9bebf": {
+    "chain": "arbitrum",
+    "symbol": "GMB",
+    "decimals": 18,
+    "address": "0xa0c8d91b6dce36f6deeadf716ab02bc539d9bebf"
   },
   "0xa1150db5105987cec5fd092273d1e3cbb22b378b": {
     "chain": "arbitrum",
@@ -2057,6 +2087,12 @@
     "decimals": 18,
     "address": "0xbfd5206962267c7b4b4a8b3d76ac2e1b2a5c4d5e"
   },
+  "0xc08cd26474722ce93f4d0c34d16201461c10aa8c": {
+    "chain": "arbitrum",
+    "symbol": "CARV",
+    "decimals": 18,
+    "address": "0xc08cd26474722ce93f4d0c34d16201461c10aa8c"
+  },
   "0xc11158c5da9db1d553ed28f0c2ba1cbedd42cfcb": {
     "chain": "arbitrum",
     "symbol": "wPAW",
@@ -2141,11 +2177,23 @@
     "decimals": 8,
     "address": "0xc96de26018a54d51c097160568752c4e3bd6c364"
   },
+  "0xc9bd1c1e65ebfb36cf4b3d9fc8e2b844248deee8": {
+    "chain": "arbitrum",
+    "symbol": "KUDAI",
+    "decimals": 18,
+    "address": "0xc9bd1c1e65ebfb36cf4b3d9fc8e2b844248deee8"
+  },
   "0xca4e51f6ad4afd9d1068e5899de9dd7d73f3463d": {
     "chain": "arbitrum",
     "symbol": "AARK",
     "decimals": 18,
     "address": "0xca4e51f6ad4afd9d1068e5899de9dd7d73f3463d"
+  },
+  "0xca5ca9083702c56b481d1eec86f1776fdbd2e594": {
+    "chain": "arbitrum",
+    "symbol": "RSR",
+    "decimals": 18,
+    "address": "0xca5ca9083702c56b481d1eec86f1776fdbd2e594"
   },
   "0xca5d8f8a8d49439357d3cf46ca2e720702f132b8": {
     "chain": "arbitrum",
@@ -2279,11 +2327,23 @@
     "decimals": 18,
     "address": "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1"
   },
+  "0xdb8c67e6ca293f43c75e106c70b97033cc2909e3": {
+    "chain": "arbitrum",
+    "symbol": "EAI",
+    "decimals": 18,
+    "address": "0xdb8c67e6ca293f43c75e106c70b97033cc2909e3"
+  },
   "0xdb96f8efd6865644993505318cc08ff9c42fb9ac": {
     "chain": "arbitrum",
     "symbol": "Z2O",
     "decimals": 9,
     "address": "0xdb96f8efd6865644993505318cc08ff9c42fb9ac"
+  },
+  "0xdd89a4d3362828e601df52208302a741f08e46c5": {
+    "chain": "arbitrum",
+    "symbol": "O3",
+    "decimals": 18,
+    "address": "0xdd89a4d3362828e601df52208302a741f08e46c5"
   },
   "0xddbfbd5dc3ba0feb96cb513b689966b2176d4c09": {
     "chain": "arbitrum",
@@ -2536,6 +2596,12 @@
     "symbol": "pGOLD",
     "decimals": 18,
     "address": "0xf602a45812040d90b202355bdc05438918cd3fe3"
+  },
+  "0xf6eb7a9799f6680c320e79d0fb35e842d54d38ce": {
+    "chain": "arbitrum",
+    "symbol": "OVER",
+    "decimals": 18,
+    "address": "0xf6eb7a9799f6680c320e79d0fb35e842d54d38ce"
   },
   "0xf7428ffcb2581a2804998efbb036a43255c8a8d3": {
     "chain": "arbitrum",

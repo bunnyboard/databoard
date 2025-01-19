@@ -167,6 +167,12 @@
     "decimals": 18,
     "address": "0x3beff5cc75f04e3717676dae3eeac8f57a8ca493"
   },
+  "0x3e9c747db47602210ea7513c9d00abf356b53880": {
+    "chain": "zksync",
+    "symbol": "AIWS",
+    "decimals": 18,
+    "address": "0x3e9c747db47602210ea7513c9d00abf356b53880"
+  },
   "0x45656c02aae856443717c34159870b90d1288203": {
     "chain": "zksync",
     "symbol": "HYCO",

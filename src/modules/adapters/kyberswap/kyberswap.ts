@@ -1,4 +1,4 @@
-import { ProtocolConfig } from '../../../types/base';
+import { ProtocolConfig, Token } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
@@ -75,55 +75,61 @@ export default class KyberswapAdapter extends ProtocolAdapter {
             data: log.data,
           });
 
-          const sellToken = await this.services.blockchain.evm.getTokenInfo({
-            chain: routerConfig.chain,
-            address: event.args.srcToken,
-          });
-          const buyToken = await this.services.blockchain.evm.getTokenInfo({
-            chain: routerConfig.chain,
-            address: event.args.dstToken,
-          });
+          let sellToken: Token | null = null;
+          let buyToken: Token | null = null;
+          let sellTokenPriceUsd = 0;
+          let buyTokenPriceUsd = 0;
+          let volumeUsd = 0;
 
-          if (sellToken && buyToken) {
-            const sellAmount = formatBigNumberToNumber(event.args.spentAmount.toString(), sellToken.decimals);
-            const buyAmount = formatBigNumberToNumber(event.args.returnAmount.toString(), buyToken.decimals);
-
-            let tradeAmountUsd = 0;
-
-            let sellTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-              chain: sellToken.chain,
-              address: sellToken.address,
-              timestamp: options.timestamp,
-              disableWarning: true,
+          // kyberswap log max uint256 value if spender spend all token in their wallet
+          if (event.args.spentAmount.toString() !== SolidityUnits.Uint256MaxValue) {
+            sellToken = await this.services.blockchain.evm.getTokenInfo({
+              chain: routerConfig.chain,
+              address: event.args.srcToken,
             });
 
-            // kyberswap log max uint256 value if spender spend all token in their wallet
-            if (sellTokenPriceUsd === 0 || event.args.spentAmount.toString() === SolidityUnits.Uint256MaxValue) {
-              const buyTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+            if (sellToken) {
+              sellTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+                chain: sellToken.chain,
+                address: sellToken.address,
+                timestamp: options.timestamp,
+                disableWarning: true,
+              });
+              volumeUsd =
+                formatBigNumberToNumber(event.args.spentAmount.toString(), sellToken.decimals) * sellTokenPriceUsd;
+            }
+          }
+
+          if (volumeUsd === 0) {
+            buyToken = await this.services.blockchain.evm.getTokenInfo({
+              chain: routerConfig.chain,
+              address: event.args.dstToken,
+            });
+            if (buyToken) {
+              buyTokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
                 chain: buyToken.chain,
                 address: buyToken.address,
                 timestamp: options.timestamp,
                 disableWarning: true,
               });
-              tradeAmountUsd = buyAmount * buyTokenPriceUsd;
-            } else {
-              tradeAmountUsd = sellAmount * sellTokenPriceUsd;
-            }
-
-            if (tradeAmountUsd === 0) {
-              logger.warn('failed to get token prices for trade', {
-                service: this.name,
-                protocol: this.protocolConfig.protocol,
-                chain: routerConfig.chain,
-                logIndex: log.logIndex,
-                token: `${sellToken.symbol}-${buyToken.symbol}`,
-                txn: log.transactionHash,
-              });
-            } else {
-              (protocolData.volumes.trade as number) += tradeAmountUsd;
-              ((protocolData.breakdownChains as any)[routerConfig.chain].volumes.trade as number) += tradeAmountUsd;
+              volumeUsd =
+                formatBigNumberToNumber(event.args.returnAmount.toString(), buyToken.decimals) * buyTokenPriceUsd;
             }
           }
+
+          if (sellTokenPriceUsd === 0 && buyTokenPriceUsd === 0) {
+            logger.warn('failed to get token prices for trade', {
+              service: this.name,
+              protocol: this.protocolConfig.protocol,
+              chain: routerConfig.chain,
+              logIndex: log.logIndex,
+              token: `${sellToken?.symbol}-${buyToken?.symbol}`,
+              txn: log.transactionHash,
+            });
+          }
+
+          (protocolData.volumes.trade as number) += volumeUsd;
+          ((protocolData.breakdownChains as any)[routerConfig.chain].volumes.trade as number) += volumeUsd;
         } else if (signature === Fee) {
           const event: any = decodeEventLog({
             abi: MetaAggregatorAbi,
