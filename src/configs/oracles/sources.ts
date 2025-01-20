@@ -344,8 +344,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv2List.LUNA_WBNB],
   },
   SXP: {
-    currency: 'usd',
-    sources: [OracleSourceChainlinkList.SXP_USD],
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.SXP_WBNB],
   },
   wBETH: {
     currency: 'eth',

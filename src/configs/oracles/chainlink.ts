@@ -165,13 +165,6 @@ export const OracleSourceChainlinkList: { [key: string]: OracleSourceChainlink }
     address: '0x4ffc43a60e009b551865a93d232e33fce9f01507',
     decimals: 8,
   },
-  SXP_USD: {
-    type: 'chainlink',
-    chain: 'ethereum',
-    currency: 'usd',
-    address: '0xfb0cfd6c19e25db4a08d8a204a387cea48cc138f',
-    decimals: 8,
-  },
   XVS_USD: {
     type: 'chainlink',
     chain: 'bnbchain',

@@ -7,6 +7,7 @@ import Erc20Abi from '../../configs/abi/ERC20.json';
 import ProtocolAdapter from './protocol';
 import envConfig from '../../configs/envConfig';
 import logger from '../../lib/logger';
+import { CustomQueryChainLogsBlockRange, DefaultQueryChainLogsBlockRange } from '../../configs';
 
 interface GetAddressBalanceUsdOptions {
   chain: string;
@@ -29,6 +30,13 @@ interface GetAddressBalanceUsdResult {
 interface IndexContracLogsOptions {
   chain: string;
   address: string;
+  fromBlock: number;
+  toBlock: number;
+}
+
+interface IndexChainLogsOptions {
+  chain: string;
+  signatures: Array<string>;
   fromBlock: number;
   toBlock: number;
 }
@@ -121,6 +129,34 @@ export default class ProtocolExtendedAdapter extends ProtocolAdapter {
     return getResult;
   }
 
+  // the same as blockchain multicall but with a execution-time counting
+  public async multicall(options: MulticallOptions): Promise<any> {
+    const startCallTime = new Date().getTime();
+
+    const result = await this.services.blockchain.evm.multicall(options);
+
+    const endCallTime = new Date().getTime();
+    const elapsed = endCallTime - startCallTime;
+
+    // > 30s
+    if (elapsed > 30000) {
+      logger.warn('blockchain multicall took too long', {
+        service: this.name,
+        chain: options.chain,
+        calls: options.calls.length,
+        blockNumber: options.blockNumber,
+        took: `${Number(elapsed / 1000).toFixed(2)}s`,
+      });
+    }
+
+    return result;
+  }
+
+  /**
+   * Index logs by given contract address
+   *
+   * @param options the contract options to index
+   */
   public async indexContractLogs(options: IndexContracLogsOptions): Promise<void> {
     const cachingStateKey = `contractLogs-${options.chain}-${normalizeAddress(options.address)}`;
     const cachingState = await this.storages.database.find({
@@ -200,26 +236,90 @@ export default class ProtocolExtendedAdapter extends ProtocolAdapter {
     }
   }
 
-  // the same as blockchain multicall but with a execution-time counting
-  public async multicall(options: MulticallOptions): Promise<any> {
-    const startCallTime = new Date().getTime();
+  /**
+   * Index logs by chain and event signatures (topics[0])
+   *
+   * @param options the options to logs index
+   */
+  public async indexChainLogs(options: IndexChainLogsOptions): Promise<void> {
+    const cachingStateKey = `chainLogs-${options.chain}`;
+    const cachingState = await this.storages.database.find({
+      collection: envConfig.mongodb.collections.caching.name,
+      query: {
+        name: cachingStateKey,
+      },
+    });
 
-    const result = await this.services.blockchain.evm.multicall(options);
-
-    const endCallTime = new Date().getTime();
-    const elapsed = endCallTime - startCallTime;
-
-    // > 30s
-    if (elapsed > 30000) {
-      logger.warn('blockchain multicall took too long', {
-        service: this.name,
-        chain: options.chain,
-        calls: options.calls.length,
-        blockNumber: options.blockNumber,
-        took: `${Number(elapsed / 1000).toFixed(2)}s`,
-      });
+    let startBlock = options.fromBlock;
+    if (cachingState) {
+      startBlock = cachingState.blockNumber;
     }
 
-    return result;
+    logger.info('start to index chain logs', {
+      service: 'adapter.extended',
+      chain: options.chain,
+      signatures: options.signatures.length,
+      fromBlock: startBlock,
+      toBlock: options.toBlock,
+    });
+
+    const client = this.services.blockchain.evm.getPublicClient(options.chain);
+    const blockRange = CustomQueryChainLogsBlockRange[options.chain]
+      ? CustomQueryChainLogsBlockRange[options.chain]
+      : DefaultQueryChainLogsBlockRange;
+    while (startBlock < options.toBlock) {
+      const toBlock = startBlock + blockRange > options.toBlock ? options.toBlock : startBlock + blockRange;
+
+      const logs = await client.getLogs({
+        fromBlock: BigInt(Number(startBlock)),
+        toBlock: BigInt(Number(toBlock)),
+      });
+
+      const operations: Array<any> = logs
+        .filter((log) => log.topics[0] && options.signatures.includes(log.topics[0].toString()))
+        .map((log) => {
+          return {
+            updateOne: {
+              filter: {
+                chain: options.chain,
+                address: normalizeAddress(log.address),
+                transactionHash: log.transactionHash,
+                logIndex: Number(log.logIndex),
+              },
+              update: {
+                $set: {
+                  chain: options.chain,
+                  address: normalizeAddress(log.address),
+                  transactionHash: log.transactionHash,
+                  logIndex: Number(log.logIndex),
+                  blockNumber: Number(log.blockNumber),
+                  topics: log.topics,
+                  data: log.data,
+                },
+              },
+              upsert: true,
+            },
+          };
+        });
+
+      await this.storages.database.bulkWrite({
+        collection: envConfig.mongodb.collections.contractLogs.name,
+        operations: operations,
+      });
+
+      startBlock = toBlock + 1;
+
+      await this.storages.database.update({
+        collection: envConfig.mongodb.collections.caching.name,
+        keys: {
+          name: cachingStateKey,
+        },
+        updates: {
+          name: cachingStateKey,
+          blockNumber: startBlock,
+        },
+        upsert: true,
+      });
+    }
   }
 }

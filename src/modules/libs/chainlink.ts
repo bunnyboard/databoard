@@ -19,7 +19,7 @@ export default class ChainlinkLibs {
     });
 
     if (latestAnswer) {
-      return formatBigNumberToString(latestAnswer.toString(), config.decimals);
+      return formatBigNumberToString(latestAnswer ? latestAnswer.toString() : '0', config.decimals);
     }
 
     const [, answer, , ,] = await blockchain.readContract({
@@ -31,6 +31,6 @@ export default class ChainlinkLibs {
       blockNumber,
     });
 
-    return answer ? formatBigNumberToString(answer.toString(), config.decimals) : null;
+    return answer ? formatBigNumberToString(answer ? answer.toString() : '0', config.decimals) : null;
   }
 }
