@@ -267,4 +267,5 @@ export const ProtocolNames = {
   soneiumNativeBridge: 'soneiumNativeBridge',
   midas: 'midas', // https://midas.app
   usdt0: 'usdt0', // https://usdt0.to
+  zerion: 'zerion', // https://zerion.io
 };

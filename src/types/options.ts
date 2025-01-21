@@ -40,3 +40,19 @@ export interface RunDecoderOptions {
   // get and decode event logs from given contract only
   contract?: string;
 }
+
+export interface RunIndexlogOptions {
+  chain: string;
+
+  // get and decode logs from given fromBlock
+  fromBlock?: number;
+
+  // force to get and decode logs from given fromBlock
+  // do not save state
+  force?: boolean;
+
+  // index event logs from given contract only
+  // if this option is given, index all event logs from this contract
+  // and save to database
+  contract?: string;
+}

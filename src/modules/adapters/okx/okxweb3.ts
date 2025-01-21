@@ -11,6 +11,7 @@ import xBridgeAbi from '../../../configs/abi/okx/xBridge.json';
 import { formatBigNumberToNumber } from '../../../lib/utils';
 // import logger from '../../../lib/logger';
 import { getChainNameById } from '../../../lib/helpers';
+import logger from '../../../lib/logger';
 
 const Events = {
   LogBridgeTo: '0xf6481cbc1da19356c5cb6b884be507da735b89f21dc4bbb7c9b7cc0968b03b7a',
@@ -93,8 +94,6 @@ export default class Okxweb3Adapter extends ProtocolAdapter {
         switch (event.eventName) {
           case 'OrderRecord':
           case 'LogSwapAndBridgeTo': {
-            console.log(log.transactionHash);
-
             let fromToken: Token | null = null;
             let toToken: Token | null = null;
             let fromTokenPriceUsd = 0;
@@ -136,14 +135,14 @@ export default class Okxweb3Adapter extends ProtocolAdapter {
             }
 
             if (fromTokenPriceUsd === 0 && toTokenPriceUsd === 0) {
-              // logger.warn('failed to get token prices for trade', {
-              //   service: this.name,
-              //   protocol: this.protocolConfig.protocol,
-              //   chain: chainConfig.chain,
-              //   token: `${fromToken?.symbol}-${toToken?.symbol}`,
-              //   logIndex: log.logIndex,
-              //   txn: log.transactionHash,
-              // });
+              logger.warn('failed to get token prices for trade', {
+                service: this.name,
+                protocol: this.protocolConfig.protocol,
+                chain: chainConfig.chain,
+                token: `${fromToken?.symbol}-${toToken?.symbol}`,
+                logIndex: log.logIndex,
+                txn: log.transactionHash,
+              });
             }
 
             if (volumeUsd > 0) {

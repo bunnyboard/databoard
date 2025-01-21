@@ -91,6 +91,7 @@ import UsualAdapter from './usual/usual';
 import VenusAdapter from './venus/venus';
 import WbethAdapter from './wbeth/wbeth';
 import WoofiAdapter from './woofi/woofi';
+import ZerionAdapter from './zerion/zerion';
 import ZeroxAdapter from './zerox/zerox';
 import ZksyncNativeBridgeAdapter from './zksync/nativeBridge';
 
@@ -251,5 +252,6 @@ export function getProtocolAdapters(
     soneiumNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.soneiumNativeBridge),
     solv: new SolvAdapter(services, storages, ProtocolConfigs.solv),
     usdt0: new Usdt0Adapter(services, storages, ProtocolConfigs.usdt0),
+    zerion: new ZerionAdapter(services, storages, ProtocolConfigs.zerion),
   };
 }

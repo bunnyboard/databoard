@@ -10,6 +10,7 @@ import { DecodeCommand } from './cmd/decode';
 import { ClearProtocolDataCommand } from './cmd/clearProtocolData';
 import { GetTokenPriceCommand } from './cmd/getTokenPrice';
 import { GetDatabaseReportCommand } from './cmd/getDatabaseReport';
+import { IndexlogCommand } from './cmd/indexlog';
 
 (async function () {
   dotenv.config();
@@ -18,6 +19,7 @@ import { GetDatabaseReportCommand } from './cmd/getDatabaseReport';
   const runCommand = new RunCommand();
   const dexscanCommand = new DexscanCommand();
   const decodeCommand = new DecodeCommand();
+  const indexlogCommand = new IndexlogCommand();
   const clearProtocolDataCommand = new ClearProtocolDataCommand();
   const getTokenPriceCommand = new GetTokenPriceCommand();
   const getDatabaseReportCommand = new GetDatabaseReportCommand();
@@ -26,6 +28,7 @@ import { GetDatabaseReportCommand } from './cmd/getDatabaseReport';
     .scriptName('bunny')
     .command(testCommand.name, testCommand.describe, testCommand.setOptions, testCommand.execute)
     .command(runCommand.name, runCommand.describe, runCommand.setOptions, runCommand.execute)
+    .command(indexlogCommand.name, indexlogCommand.describe, indexlogCommand.setOptions, indexlogCommand.execute)
     .command(dexscanCommand.name, dexscanCommand.describe, dexscanCommand.setOptions, dexscanCommand.execute)
     .command(decodeCommand.name, decodeCommand.describe, decodeCommand.setOptions, decodeCommand.execute)
     .command(

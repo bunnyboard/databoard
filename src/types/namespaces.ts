@@ -1,3 +1,4 @@
+import { IndexlogConfig } from '../configs/indexlog';
 import { IBitcoreService, IBlockchainService } from '../services/blockchains/domains';
 import { IMemcacheService } from '../services/caching/domains';
 import { IDatabaseService } from '../services/database/domains';
@@ -22,6 +23,17 @@ export interface ContextServices {
     bitcore: IBitcoreService;
   };
   oracle: IOracleService;
+}
+
+// help to index event logs
+// and save to database
+export interface IIndexlogAdapter {
+  name: string;
+
+  services: ContextServices;
+  storages: ContextStorages;
+
+  indexlogConfig: IndexlogConfig;
 }
 
 // protocol adapter get on-chain data for
