@@ -70,14 +70,15 @@ export default class HyperLiquidNativeBridgeAdapter extends ProtocolExtendedAdap
       blockNumber: blockNumber,
     });
 
-    protocolData.totalAssetDeposited += formatBigNumberToNumber(
+    const usdcBalanceUsd = formatBigNumberToNumber(
       usdcBalanceRaw ? usdcBalanceRaw.toString() : '0',
       hlConfigs.USDC.decimals,
     );
-    protocolData.totalValueLocked += formatBigNumberToNumber(
-      usdcBalanceRaw ? usdcBalanceRaw.toString() : '0',
-      hlConfigs.USDC.decimals,
-    );
+
+    protocolData.totalAssetDeposited += usdcBalanceUsd;
+    protocolData.totalValueLocked += usdcBalanceUsd;
+    protocolData.breakdown[hlConfigs.USDC.chain][hlConfigs.USDC.address].totalAssetDeposited += usdcBalanceUsd;
+    protocolData.breakdown[hlConfigs.USDC.chain][hlConfigs.USDC.address].totalValueLocked += usdcBalanceUsd;
 
     const usdcLogs = await this.services.blockchain.evm.getContractLogs({
       chain: hlConfigs.chain,

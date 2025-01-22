@@ -161,6 +161,11 @@ export default class MantleNativeBridgeAdapter extends ProtocolExtendedAdapter {
     }
 
     // count MNT deposit/withdraw
+    const mntPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+      chain: TokenMNT.chain,
+      address: TokenMNT.address,
+      timestamp: options.timestamp,
+    });
     for (const log of logs.filter(
       (item) =>
         item.topics[0] === this.abiConfigs.events.MNTDepositInitiated ||
@@ -171,7 +176,6 @@ export default class MantleNativeBridgeAdapter extends ProtocolExtendedAdapter {
         topics: log.topics,
         data: log.data,
       });
-      const mntPriceUsd = mntBalance.tokenBalanceUsds[TokenMNT.address].priceUsd;
       const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), 18) * mntPriceUsd;
 
       (protocolData.volumes.bridge as number) += amountUsd;
