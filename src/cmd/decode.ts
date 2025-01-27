@@ -1,6 +1,6 @@
 import { DecoderConfigs } from '../configs/decoder';
 import envConfig from '../configs/envConfig';
-import logger, { logBreakLine } from '../lib/logger';
+import logger from '../lib/logger';
 import { sleep } from '../lib/utils';
 import DecoderModule from '../modules/decoder/decoder';
 import { ContextServices, ContextStorages } from '../types/namespaces';
@@ -55,7 +55,7 @@ export class DecodeCommand extends BasicCommand {
       configs: cmdConfigs,
     });
 
-    logBreakLine();
+    logger.seperator();
 
     logger.info('loaded mongo database configs', {
       service: 'configs',
@@ -75,7 +75,7 @@ export class DecodeCommand extends BasicCommand {
       configs: chainConfigs,
     });
 
-    logBreakLine();
+    logger.seperator();
 
     await sleep(2);
 

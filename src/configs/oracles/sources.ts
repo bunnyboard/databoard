@@ -2867,4 +2867,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'bnb',
     sources: [OracleSourceUniswapv3List.SOLV_WBNB],
   },
+  BOLD: {
+    currency: 'usd',
+    sources: [OracleSourceCurveList.BOLD_USDC],
+  },
 };

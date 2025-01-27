@@ -50,6 +50,7 @@ import LifiAdapter from './lifi/lifi';
 import LineaNativeBridgeAdapter from './linea/nativeBridge';
 import LiquidCollectiveAdapter from './liquidcollective/lseth';
 import LiquityAdapter from './liquity/liquity';
+import Liquityv2Adapter from './liquity/liquityv2';
 import SlisbnbAdapter from './listadao/slisbnb';
 import LombardAdapter from './lombard/lombard';
 import LoopringNativeBridgeAdapter from './loopring/nativeBridge';
@@ -134,6 +135,7 @@ export function getProtocolAdapters(
     zerolend: new AaveAdapter(services, storages, ProtocolConfigs.zerolend),
     euler: new EulerAdapter(services, storages, ProtocolConfigs.euler),
     liquity: new LiquityAdapter(services, storages, ProtocolConfigs.liquity),
+    liquityv2: new Liquityv2Adapter(services, storages, ProtocolConfigs.liquityv2),
     fluid: new FluidAdapter(services, storages, ProtocolConfigs.fluid),
     fraxlend: new FraxlendAdapter(services, storages, ProtocolConfigs.fraxlend),
     fraxether: new FraxEtherAdapter(services, storages, ProtocolConfigs.fraxether),

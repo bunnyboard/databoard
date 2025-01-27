@@ -12,10 +12,10 @@ import UniswapV3PoolAbi from '../../../configs/abi/uniswap/UniswapV3Pool.json';
 import { ContractCall } from '../../../services/blockchains/domains';
 import { Address } from 'viem';
 import { AddressMulticall3 } from '../../../configs/constants';
-import logger, { logObjectFull } from '../../../lib/logger';
 import BigNumber from 'bignumber.js';
 import { CustomQueryChainLogsBlockRange, DefaultQueryChainLogsBlockRange } from '../../../configs';
 import UniswapEventDecoder from './decoder';
+import logger from '../../../lib/logger';
 
 // query data of 200 pools per time
 const callSize = 200;
@@ -184,7 +184,7 @@ export default class UniswapCore {
     }
 
     if (Object.values(protocols).length > 0) {
-      logObjectFull(Object.values(protocols));
+      logger.inspect(Object.values(protocols));
       process.exit(0);
     }
 

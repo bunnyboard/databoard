@@ -1,9 +1,58 @@
-import winston from 'winston';
+import winston, { Logger as WinstonLogger } from 'winston';
 
 import EnvConfig from '../configs/envConfig';
 import { AxiosError } from 'axios';
 import { findLongestStringLength } from './utils';
 import util from 'util';
+
+class LibLogger {
+  public readonly winston: WinstonLogger;
+
+  constructor() {
+    this.winston = winston.createLogger({
+      level: EnvConfig.env.debug ? 'debug' : 'info',
+      format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+        customFormat,
+      ),
+      transports: [new winston.transports.Console({})],
+    });
+  }
+
+  public info(message: string, props: any) {
+    this.winston.info(message, props);
+  }
+
+  public warn(message: string, props: any) {
+    this.winston.warn(message, props);
+  }
+
+  public error(message: string, props: any) {
+    this.winston.error(message, props);
+  }
+
+  public debug(message: string, props: any) {
+    this.winston.debug(message, props);
+  }
+
+  public seperator() {
+    console.log(
+      '---------------------------------------------------------------------------------------------------------',
+    );
+  }
+
+  public axiosError(error: AxiosError) {
+    console.log('axios request error');
+    console.log(error.config ? error.config.url : '');
+    console.log(error.response ? error.response.status : '', error.response ? error.response.statusText : '');
+    console.log(error.response && error.response.data ? error.response.statusText : '');
+  }
+
+  public inspect(item: any) {
+    console.log(util.inspect(item, { showHidden: false, depth: null, colors: true }));
+  }
+}
 
 const fgCyan = '\x1b[36m';
 const fgGrey = '\x1b[90m';
@@ -60,32 +109,6 @@ const customFormat = winston.format.printf((entry: any) => {
   return logLine;
 });
 
-const logger = winston.createLogger({
-  level: EnvConfig.env.debug ? 'debug' : 'info',
-  format: winston.format.combine(
-    winston.format.colorize(),
-    winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
-    customFormat,
-  ),
-  transports: [new winston.transports.Console({})],
-});
-
-export function logBreakLine() {
-  console.log(
-    '---------------------------------------------------------------------------------------------------------',
-  );
-}
-
-// extension
-export function logAxiosError(error: AxiosError) {
-  console.log('axios request error');
-  console.log(error.config ? error.config.url : '');
-  console.log(error.response ? error.response.status : '', error.response ? error.response.statusText : '');
-  console.log(error.response && error.response.data ? error.response.statusText : '');
-}
-
-export function logObjectFull(item: any) {
-  console.log(util.inspect(item, { showHidden: false, depth: null, colors: true }));
-}
+const logger = new LibLogger();
 
 export default logger;

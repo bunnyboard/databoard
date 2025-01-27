@@ -9,6 +9,12 @@ export interface LiquityProtocolConfig extends ProtocolConfig {
   troveManager: string;
 }
 
+export interface Liquityv2ProtocolConfig extends ProtocolConfig {
+  chain: string;
+  stablecoin: Token;
+  collateralRegistry: string;
+}
+
 export const LiquityConfigs: LiquityProtocolConfig = {
   protocol: ProtocolNames.liquity,
   birthday: 1617667200, // Tue Apr 06 2021 00:00:00 GMT+0000
@@ -27,4 +33,17 @@ export const LiquityConfigs: LiquityProtocolConfig = {
     decimals: 18,
     address: AddressZero,
   },
+};
+
+export const Liquityv2Configs: Liquityv2ProtocolConfig = {
+  protocol: ProtocolNames.liquityv2,
+  birthday: 1737676800, // Fri Jan 24 2025 00:00:00 GMT+0000
+  chain: ChainNames.ethereum,
+  stablecoin: {
+    chain: 'ethereum',
+    symbol: 'BOLD',
+    decimals: 18,
+    address: '0xb01dd87b29d187f3e3a4bf6cdaebfb97f3d9ab98',
+  },
+  collateralRegistry: '0xd99de73b95236f69a559117ecd6f519af780f3f7',
 };

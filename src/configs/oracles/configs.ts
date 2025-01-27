@@ -9,6 +9,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0xb01dd87b29d187f3e3a4bf6cdaebfb97f3d9ab98': OracleSourceConfigs.BOLD,
     '0x007115416ab6c266329a03b09a8aa39ac2ef7d9d': OracleSourceConfigs.midasBTC,
     '0x2a8c22e3b10036f3aef5875d04f8441d4188b656': OracleSourceConfigs.midasBASIS,
     '0xdd629e5241cbc5919847783e6c96b2de4754e438': OracleSourceConfigs.midasTBILL,
@@ -569,6 +570,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0x087C440F251Ff6Cfe62B86DdE1bE558B95b4bb9b': OracleSourceConfigs.BOLD,
     '0x28d5116b52ef0668aa75caf51f79840999dccddd': OracleSourceConfigs.AUSD,
     '0xd09acb80c1e8f2291862c4978a008791c9167003': OracleSourceConfigs.tETH,
     '0xbfa641051ba0a0ad1b0acf549a89536a0d76472e': OracleSourceConfigs.BADGER,
@@ -807,6 +809,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0x087C440F251Ff6Cfe62B86DdE1bE558B95b4bb9b': OracleSourceConfigs.BOLD,
     '0x2218a117083f5b482b0bb821d27056ba9c04b1d3': OracleSourceConfigs.sDAI,
     '0x10398abc267496e49106b07dd6be13364d10dc71': OracleSourceConfigs.HAI,
     '0x513c7e3a9c69ca3e22550ef58ac1c0088e918fff': OracleSourceConfigs.OP,
@@ -938,6 +941,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0x087c440f251ff6cfe62b86dde1be558b95b4bb9b': OracleSourceConfigs.BOLD,
     '0x1c2757c1fef1038428b5bef062495ce94bbe92b2': OracleSourceConfigs.midasBASIS,
     '0xdd629e5241cbc5919847783e6c96b2de4754e438': OracleSourceConfigs.midasTBILL,
     '0x4f9fd6be4a90f2620860d680c0d4d5fb53d1a825': OracleSourceConfigs.AIXBT,
@@ -1450,6 +1454,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.AVAX,
     [AddressE]: OracleSourceConfigs.AVAX,
     [AddressF]: OracleSourceConfigs.AVAX,
+    '0x087C440F251Ff6Cfe62B86DdE1bE558B95b4bb9b': OracleSourceConfigs.BOLD,
     '0xc0c5aa69dbe4d6dddfbc89c0957686ec60f24389': OracleSourceConfigs.XEN,
     '0xef0cdae2ffeeefa539a244a16b3f46ba75b8c810': OracleSourceConfigs.MQT,
     '0xad090976ce846935dcff1ded852668beed912916': OracleSourceConfigs.OATH,
@@ -1680,6 +1685,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
 
   // tokens on scroll
   scroll: {
+    '0x087C440F251Ff6Cfe62B86DdE1bE558B95b4bb9b': OracleSourceConfigs.BOLD,
     '0x60d01ec2d5e98ac51c8b4cf84dfcce98d527c747': OracleSourceConfigs.IZI,
     '0x434cda25e8a2ca5d9c1c449a8cb6bcbf719233e8': OracleSourceConfigs.UNI,
     '0x23ee2343b892b1bb63503a4fabc840e0e2c6810f': OracleSourceConfigs.AXL,

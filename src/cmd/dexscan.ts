@@ -1,6 +1,6 @@
 import { DexscanConfigs } from '../configs/dexscan';
 import envConfig from '../configs/envConfig';
-import logger, { logBreakLine } from '../lib/logger';
+import logger from '../lib/logger';
 import { sleep } from '../lib/utils';
 import DexscanModule from '../modules/dexscan/dexscan';
 import { ContextServices, ContextStorages } from '../types/namespaces';
@@ -56,7 +56,7 @@ export class DexscanCommand extends BasicCommand {
       configs: cmdConfigs,
     });
 
-    logBreakLine();
+    logger.seperator();
 
     logger.info('loaded mongo database configs', {
       service: 'configs',
@@ -97,7 +97,7 @@ export class DexscanCommand extends BasicCommand {
       configs: {},
     });
 
-    logBreakLine();
+    logger.seperator();
 
     await sleep(2);
 

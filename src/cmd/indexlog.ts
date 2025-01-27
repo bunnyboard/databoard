@@ -1,6 +1,6 @@
 import envConfig from '../configs/envConfig';
 import { IndexlogConfigs } from '../configs/indexlog';
-import logger, { logBreakLine } from '../lib/logger';
+import logger from '../lib/logger';
 import { normalizeAddress, sleep } from '../lib/utils';
 import IndexlogAdapter from '../modules/indexlog/indexlog';
 import { ContextServices, ContextStorages } from '../types/namespaces';
@@ -65,7 +65,7 @@ export class IndexlogCommand extends BasicCommand {
       configs: cmdConfigs,
     });
 
-    logBreakLine();
+    logger.seperator();
 
     logger.info('loaded mongo database configs', {
       service: 'configs',
@@ -83,7 +83,7 @@ export class IndexlogCommand extends BasicCommand {
       configs: chainConfigs,
     });
 
-    logBreakLine();
+    logger.seperator();
 
     await sleep(2);
 

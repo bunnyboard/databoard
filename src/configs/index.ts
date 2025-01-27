@@ -22,7 +22,7 @@ import { KinzaConfigs } from './protocols/kinza';
 import { LendleConfigs } from './protocols/lendle';
 import { LidoConfigs } from './protocols/lido';
 import { LifiConfigs } from './protocols/lifi';
-import { LiquityConfigs } from './protocols/liquity';
+import { LiquityConfigs, Liquityv2Configs } from './protocols/liquity';
 import { MakerConfigs } from './protocols/maker';
 import { MendiConfigs } from './protocols/mendi';
 import { MoonwellConfigs } from './protocols/moonwell';
@@ -205,6 +205,7 @@ export const ProtocolConfigs = {
   zerolend: ZerolendConfigs,
   euler: EulerConfigs,
   liquity: LiquityConfigs,
+  liquityv2: Liquityv2Configs,
   fluid: FluidConfigs,
   fraxlend: FraxlendConfigs,
   curveusd: CurveusdConfigs,

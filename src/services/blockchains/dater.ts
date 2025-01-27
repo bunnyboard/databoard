@@ -6,8 +6,8 @@ import { PublicClient, createPublicClient, http } from 'viem';
 import envConfig from '../../configs/envConfig';
 import { ChainNames } from '../../configs/names';
 import axios, { RawAxiosRequestHeaders } from 'axios';
-import { logAxiosError } from '../../lib/logger';
 import { getTimestamp, sleep } from '../../lib/utils';
+import logger from '../../lib/logger';
 
 export default class BlockDater {
   private chain: string;
@@ -189,7 +189,7 @@ export default class BlockDater {
         }
       }
     } catch (e: any) {
-      logAxiosError(e);
+      logger.axiosError(e);
     }
 
     return 0;
