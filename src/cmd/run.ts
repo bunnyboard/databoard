@@ -71,12 +71,9 @@ export class RunCommand extends BasicCommand {
       configs: cmdConfigs,
     });
 
-    logger.seperator();
-
     logger.info('loaded mongo database configs', {
       service: 'configs',
       configs: {
-        'database mongo uri': envConfig.mongodb.connectionUri,
         'database mongo name': envConfig.mongodb.databaseName,
       },
     });
@@ -87,7 +84,6 @@ export class RunCommand extends BasicCommand {
     }
     logger.info(`loaded blockchain rpc configs (${Object.keys(chainConfigs).length})`, {
       service: 'configs',
-      configs: chainConfigs,
     });
 
     logger.seperator();
