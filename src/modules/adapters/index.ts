@@ -255,5 +255,6 @@ export function getProtocolAdapters(
     solv: new SolvAdapter(services, storages, ProtocolConfigs.solv),
     usdt0: new Usdt0Adapter(services, storages, ProtocolConfigs.usdt0),
     zerion: new ZerionAdapter(services, storages, ProtocolConfigs.zerion),
+    abstractNativeBridge: new ZksyncNativeBridgeAdapter(services, storages, ProtocolConfigs.abstractNativeBridge),
   };
 }

@@ -143,6 +143,7 @@ import { MidasConfigs } from './protocols/midas';
 import { SolvConfigs } from './protocols/solv';
 import { Usdt0Configs } from './protocols/usdt0';
 import { ZerionConfigs } from './protocols/zerion';
+import { AbstractNativeBridgeConfigs } from './protocols/abstract';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -319,4 +320,5 @@ export const ProtocolConfigs = {
   solv: SolvConfigs,
   usdt0: Usdt0Configs,
   zerion: ZerionConfigs,
+  abstractNativeBridge: AbstractNativeBridgeConfigs,
 };

@@ -85,6 +85,7 @@ export const ChainNames = {
   alephzero: 'alephzero',
   swellchain: 'swellchain',
   soneium: 'soneium',
+  abstract: 'abstract',
 };
 
 export const ProtocolNames = {
@@ -269,4 +270,5 @@ export const ProtocolNames = {
   midas: 'midas', // https://midas.app
   usdt0: 'usdt0', // https://usdt0.to
   zerion: 'zerion', // https://zerion.io
+  abstractNativeBridge: 'abstractNativeBridge',
 };
