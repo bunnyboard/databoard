@@ -14,6 +14,8 @@ import envConfig from '../../../configs/envConfig';
 import { decodeEventLog } from 'viem';
 import MorphoOptimizerAdapter from './optimizer';
 import AdapterDataHelper from '../helpers';
+import { ChainNames } from '../../../configs/names';
+import { CustomQueryChainLogsBlockRange } from '../../../configs';
 
 export const MorphoBlueEvents = {
   // MorphoBlue contract
@@ -428,6 +430,7 @@ export default class MorphoAdapter extends MorphoIndexerAdapter {
         address: morphoBlue.morphoBlue,
         fromBlock: beginBlock,
         toBlock: endBlock,
+        blockRange: morphoBlue.chain === ChainNames.base ? 500 : CustomQueryChainLogsBlockRange[morphoBlue.chain],
       });
       logger.debug('processing morpho new contract logs', {
         service: this.name,
