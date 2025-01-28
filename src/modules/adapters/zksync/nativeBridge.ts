@@ -182,8 +182,6 @@ export default class ZksyncNativeBridgeAdapter extends ProtocolExtendedAdapter {
             }
             (protocolData.breakdown[l1Token.chain][l1Token.address].volumes.bridge as number) += amountUsd;
           }
-        } else {
-          console.log(chainId);
         }
       }
     }
