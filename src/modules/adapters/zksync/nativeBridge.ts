@@ -113,19 +113,21 @@ export default class ZksyncNativeBridgeAdapter extends ProtocolExtendedAdapter {
           formatBigNumberToNumber(getBalanceResults[i] ? getBalanceResults[i].toString() : '0', token.decimals) *
           tokenPriceUsd;
 
-        protocolData.totalAssetDeposited += balanceUsd;
-        protocolData.totalValueLocked += balanceUsd;
+        if (balanceUsd > 0) {
+          protocolData.totalAssetDeposited += balanceUsd;
+          protocolData.totalValueLocked += balanceUsd;
 
-        if (!protocolData.breakdown[token.chain][token.address]) {
-          protocolData.breakdown[token.chain][token.address] = {
-            ...getInitialProtocolCoreMetrics(),
-            volumes: {
-              bridge: 0,
-            },
-          };
+          if (!protocolData.breakdown[token.chain][token.address]) {
+            protocolData.breakdown[token.chain][token.address] = {
+              ...getInitialProtocolCoreMetrics(),
+              volumes: {
+                bridge: 0,
+              },
+            };
+          }
+          protocolData.breakdown[token.chain][token.address].totalAssetDeposited += balanceUsd;
+          protocolData.breakdown[token.chain][token.address].totalValueLocked += balanceUsd;
         }
-        protocolData.breakdown[token.chain][token.address].totalAssetDeposited += balanceUsd;
-        protocolData.breakdown[token.chain][token.address].totalValueLocked += balanceUsd;
       }
     }
 
@@ -161,23 +163,27 @@ export default class ZksyncNativeBridgeAdapter extends ProtocolExtendedAdapter {
 
           const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), l1Token.decimals) * tokenPriceUsd;
 
-          if (log.topics[0] === Events.BridgehubDepositInitiated) {
-            (protocolData.volumes.bridge as number) += amountUsd;
-            (protocolData.volumeBridgePaths as any)[zksyncConfig.chain][zksyncConfig.layer2Chain] += amountUsd;
-          } else {
-            (protocolData.volumes.bridge as number) += amountUsd;
-            (protocolData.volumeBridgePaths as any)[zksyncConfig.layer2Chain][zksyncConfig.chain] += amountUsd;
-          }
+          if (amountUsd > 0) {
+            if (log.topics[0] === Events.BridgehubDepositInitiated) {
+              (protocolData.volumes.bridge as number) += amountUsd;
+              (protocolData.volumeBridgePaths as any)[zksyncConfig.chain][zksyncConfig.layer2Chain] += amountUsd;
+            } else {
+              (protocolData.volumes.bridge as number) += amountUsd;
+              (protocolData.volumeBridgePaths as any)[zksyncConfig.layer2Chain][zksyncConfig.chain] += amountUsd;
+            }
 
-          if (!protocolData.breakdown[l1Token.chain][l1Token.address]) {
-            protocolData.breakdown[l1Token.chain][l1Token.address] = {
-              ...getInitialProtocolCoreMetrics(),
-              volumes: {
-                bridge: 0,
-              },
-            };
+            if (!protocolData.breakdown[l1Token.chain][l1Token.address]) {
+              protocolData.breakdown[l1Token.chain][l1Token.address] = {
+                ...getInitialProtocolCoreMetrics(),
+                volumes: {
+                  bridge: 0,
+                },
+              };
+            }
+            (protocolData.breakdown[l1Token.chain][l1Token.address].volumes.bridge as number) += amountUsd;
           }
-          (protocolData.breakdown[l1Token.chain][l1Token.address].volumes.bridge as number) += amountUsd;
+        } else {
+          console.log(chainId);
         }
       }
     }
