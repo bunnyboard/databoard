@@ -36,6 +36,7 @@ export const BungeeKnownBridgeNames: { [key: string]: string } = {
   '0x0d2fea28d1562e741fbdf63c210c9b730d85f6504e95650096acf21f93afe549': ProtocolNames.bungeerefuel,
   '0x2ab0b866d21ac9b7200cb612980a6bede5fc41279d81375c7fe2efd9fa4d9073': ProtocolNames.oneinch,
   '0x861b086cbd3ddee2b0b12c8ce3b43e1c111ac87dcabda086e02f18095da12f20': ProtocolNames.zerox,
+  '0xe9936f0ec4354ed5e05fe939bfc04444115d879c284276c89567806a9a5fa275': ProtocolNames.mayan,
 
   // native bridges
   '0xf1c09a354cd800a13f6f260a3a96a0e33db28b0b53528072473336977bba34f4': ProtocolNames.polygonNativeBridge,
