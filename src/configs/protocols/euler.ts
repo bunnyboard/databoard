@@ -130,5 +130,19 @@ export const EulerConfigs: EulerProtocolConfig = {
         '0x8b70a855B057cA85F38Ebb2a7399D9FE0BDC1046',
       ],
     },
+    {
+      chain: ChainNames.swellchain,
+      birthday: 1737504000, // Wed Jan 22 2025 00:00:00 GMT+0000
+      factory: '0x238bF86bb451ec3CA69BB855f91BDA001aB118b9',
+      vaults: [
+        '0x49C077B74292aA8F589d39034Bf9C1Ed1825a608',
+        '0x4a5C95a0e3FCA4148F91cEb637fBA0E1080BE40e',
+        '0x10D0D11A8B693F4E3e33d09BBab7D4aFc3C03ef3',
+        '0x46e3c018798d6de4517A3c98358E4BD8D334B79C',
+        '0x1773002742A2bCc7666e38454F761CE8fe613DE5',
+        '0x3C12AA52b014Acf7957308808362909b5757cca8',
+        '0xf34253Ec3Dd0cb39C29cF5eeb62161FB350A9d14',
+      ],
+    },
   ],
 };

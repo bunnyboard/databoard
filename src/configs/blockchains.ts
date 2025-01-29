@@ -680,4 +680,16 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
       decimals: 18,
     },
   },
+  [ChainNames.swellchain]: {
+    name: ChainNames.swellchain,
+    family: 'evm',
+    chainId: 1923,
+    nodeRpc: String(process.env.BLOCKCHAIN_SWELLCHAIN_NODE),
+    nativeToken: {
+      chain: ChainNames.swellchain,
+      address: AddressZero,
+      symbol: 'ETH',
+      decimals: 18,
+    },
+  },
 };

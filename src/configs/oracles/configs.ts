@@ -941,6 +941,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0x5d746848005507da0b1717c137a10c30ad9ee307': OracleSourceConfigs.LBTC,
     '0x087c440f251ff6cfe62b86dde1be558b95b4bb9b': OracleSourceConfigs.BOLD,
     '0x1c2757c1fef1038428b5bef062495ce94bbe92b2': OracleSourceConfigs.midasBASIS,
     '0xdd629e5241cbc5919847783e6c96b2de4754e438': OracleSourceConfigs.midasTBILL,
@@ -2192,6 +2193,17 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   ink: {
     '0x4200000000000000000000000000000000000006': OracleSourceConfigs.ETH,
     '0xf1815bd50389c46847f0bda824ec8da914045d14': OracleSourceConfigs.USDC,
+  },
+
+  swellchain: {
+    [AddressZero]: OracleSourceConfigs.ETH,
+    '0x4200000000000000000000000000000000000006': OracleSourceConfigs.ETH,
+    '0x2416092f143378750bb29b79ed961ab195cceea5': OracleSourceConfigs.ezETH,
+    '0xa6cb988942610f6731e664379d15ffcfbf282b44': OracleSourceConfigs.weETH,
+    '0xc3eacf0612346366db554c991d7858716db09f58': OracleSourceConfigs.rsETH,
+    '0x18d33689ae5d02649a859a1cf16c9f0563975258': OracleSourceConfigs.rswETH,
+    '0x7c98e0779eb5924b3ba8ce3b17648539ed5b0ecc': OracleSourceConfigs.wstETH,
+    '0x09341022ea237a4db1644de7ccf8fa0e489d85b7': OracleSourceConfigs.swETH,
   },
 
   alephzero: {
