@@ -146,4 +146,11 @@ export const OracleSourceCustomList: {
     address: '0x996d67aa9b37df96428ad3608cb21352bf1fdb90',
     underlyingToken: TokensBook.ethereum['0xdbb7a34bf10169d6d2d0d02a6cbb436cf4381bfa'],
   },
+  wstUSR: {
+    type: 'stakingTokenWrapper',
+    chain: 'ethereum',
+    method: 'erc4626',
+    address: '0x1202f5c7b4b9e47a1a484e8b270be34dbbc75055',
+    underlyingToken: TokensBook.ethereum['0x66a1e37c9b0eaddca17d3662d6c05f4decf3e110'],
+  },
 };

@@ -791,6 +791,12 @@
     "decimals": 18,
     "address": "0x371c7ec6d8039ff7933a2aa28eb827ffe1f52f07"
   },
+  "0x37a645648df29205c6261289983fb04ecd70b4b3": {
+    "chain": "arbitrum",
+    "symbol": "ANIME",
+    "decimals": 18,
+    "address": "0x37a645648df29205c6261289983fb04ecd70b4b3"
+  },
   "0x3a18dcc9745edcd1ef33ecb93b0b6eba5671e7ca": {
     "chain": "arbitrum",
     "symbol": "KUJI",
@@ -1402,6 +1408,12 @@
     "symbol": "PPEGG",
     "decimals": 18,
     "address": "0x78055daa07035aa5ebc3e5139c281ce6312e1b22"
+  },
+  "0x79bbf4508b1391af3a0f4b30bb5fc4aa9ab0e07c": {
+    "chain": "arbitrum",
+    "symbol": "Anon",
+    "decimals": 18,
+    "address": "0x79bbf4508b1391af3a0f4b30bb5fc4aa9ab0e07c"
   },
   "0x79ead7a012d97ed8deece279f9bc39e264d7eef9": {
     "chain": "arbitrum",
@@ -2242,6 +2254,12 @@
     "symbol": "USX",
     "decimals": 18,
     "address": "0xcd14c3a2ba27819b352aae73414a26e2b366dc50"
+  },
+  "0xcf78572a8fe97b2b9a4b9709f6a7d9a863c1b8e0": {
+    "chain": "arbitrum",
+    "symbol": "RARI",
+    "decimals": 18,
+    "address": "0xcf78572a8fe97b2b9a4b9709f6a7d9a863c1b8e0"
   },
   "0xcf985aba4647a432e60efceeb8054bbd64244305": {
     "chain": "arbitrum",

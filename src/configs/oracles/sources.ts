@@ -2871,4 +2871,12 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceCurveList.BOLD_USDC],
   },
+  ANIME: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ANIME_WETH],
+  },
+  wstUSR: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.wstUSR],
+  },
 };

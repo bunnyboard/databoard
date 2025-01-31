@@ -5,6 +5,12 @@
     "decimals": 18,
     "address": "0x0000000000000000000000000000000000000000"
   },
+  "0x0469d9d1de0ee58fa1153ef00836b9bbcb84c0b6": {
+    "chain": "zksync",
+    "symbol": "USN",
+    "decimals": 18,
+    "address": "0x0469d9d1de0ee58fa1153ef00836b9bbcb84c0b6"
+  },
   "0x06662147240414cc0dc25e6414100750d346bc44": {
     "chain": "zksync",
     "symbol": "FLASHDASH",

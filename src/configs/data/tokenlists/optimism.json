@@ -425,6 +425,12 @@
     "decimals": 18,
     "address": "0x5e70affe232e2919792f77eb94e566db0320fa88"
   },
+  "0x5eaa326fb2fc97facce6a79a304876dad0f2e96c": {
+    "chain": "optimism",
+    "symbol": "DIMO",
+    "decimals": 18,
+    "address": "0x5eaa326fb2fc97facce6a79a304876dad0f2e96c"
+  },
   "0x61baadcf22d2565b0f471b291c475db5555e0b76": {
     "chain": "optimism",
     "symbol": "AELIN",

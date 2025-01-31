@@ -32279,6 +32279,12 @@
     "decimals": 18,
     "address": "0x79baa660348ffebff17bb0ac9eb6ee5febb10473"
   },
+  "0x79bbf4508b1391af3a0f4b30bb5fc4aa9ab0e07c": {
+    "chain": "bnbchain",
+    "symbol": "Anon",
+    "decimals": 18,
+    "address": "0x79bbf4508b1391af3a0f4b30bb5fc4aa9ab0e07c"
+  },
   "0x79c1e9bbd694d166abb1d03429fc90904dd0e7b7": {
     "chain": "bnbchain",
     "symbol": "NAZAR",
@@ -63017,6 +63023,12 @@
     "decimals": 18,
     "address": "0xf2ba89a6f9670459ed5aeefbd8db52be912228b8"
   },
+  "0xf2c88757f8d03634671208935974b60a2a28bdb3": {
+    "chain": "bnbchain",
+    "symbol": "SHELL",
+    "decimals": 18,
+    "address": "0xf2c88757f8d03634671208935974b60a2a28bdb3"
+  },
   "0xf2c96e402c9199682d5ded26d3771c6b192c01af": {
     "chain": "bnbchain",
     "symbol": "SCLP",
@@ -64414,6 +64426,12 @@
     "symbol": "Doge-1",
     "decimals": 9,
     "address": "0xf81733eae028656fe2b85625d27051f5f6910936"
+  },
+  "0xf81ac2e1a0373dde1bce01e2fe694a9b7e3bfcb9": {
+    "chain": "bnbchain",
+    "symbol": "XUSD",
+    "decimals": 6,
+    "address": "0xf81ac2e1a0373dde1bce01e2fe694a9b7e3bfcb9"
   },
   "0xf81f3ff200abd5451e78105eaa7ee9f8e8dd20f8": {
     "chain": "bnbchain",

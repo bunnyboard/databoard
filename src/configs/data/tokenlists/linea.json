@@ -251,6 +251,12 @@
     "decimals": 18,
     "address": "0x5cc5e64ab764a0f1e97f23984e20fd4528356a6a"
   },
+  "0x5e15e8afc627397075ebe0a7c9dc14177429bbff": {
+    "chain": "linea",
+    "symbol": "SLN",
+    "decimals": 18,
+    "address": "0x5e15e8afc627397075ebe0a7c9dc14177429bbff"
+  },
   "0x5fbdf89403270a1846f5ae7d113a989f850d1566": {
     "chain": "linea",
     "symbol": "FOXY",
