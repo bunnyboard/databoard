@@ -123,6 +123,8 @@ export default class AcrossAdapter extends ProtocolExtendedAdapter {
           blockNumber: blockNumber,
         });
 
+        protocolData.totalAssetDeposited += hubPoolBalance.totalBalanceUsd;
+        protocolData.totalValueLocked += hubPoolBalance.totalBalanceUsd;
         (protocolData.totalSupplied as number) += hubPoolBalance.totalBalanceUsd;
         for (const [address, balance] of Object.entries(hubPoolBalance.tokenBalanceUsds)) {
           if (balance.balanceUsd > 0) {
