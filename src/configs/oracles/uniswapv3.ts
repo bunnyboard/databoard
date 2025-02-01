@@ -1748,4 +1748,11 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.arbitrum['0x37a645648df29205c6261289983fb04ecd70b4b3'],
     quotaToken: TokensBook.arbitrum['0x82af49447d8a07e3bd95bd0d56f35241523fbab1'],
   },
+  hyETH_WETH: {
+    type: 'univ3',
+    chain: 'arbitrum',
+    address: '0x470d0d72c975a7f328bd63808bfffd28194b3eb6',
+    baseToken: TokensBook.arbitrum['0x8b5d1d8b3466ec21f8ee33ce63f319642c026142'],
+    quotaToken: TokensBook.arbitrum['0x82af49447d8a07e3bd95bd0d56f35241523fbab1'],
+  },
 };

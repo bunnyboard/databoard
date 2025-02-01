@@ -2883,4 +2883,28 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceCustomList.sUSDz],
   },
+  XYRO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.XYRO_WETH],
+  },
+  XSWAP: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.XSWAP_WETH],
+  },
+  PHIL: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.PHIL_WETH],
+  },
+  DIP: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.DIP_WETH],
+  },
+  VRTX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.VRTX_WETH],
+  },
+  hyETH: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.hyETH_WETH],
+  },
 };

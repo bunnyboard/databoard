@@ -29,6 +29,12 @@
     "decimals": 6,
     "address": "0x000f1720a263f96532d1ac2bb9cdc12b72c6f386"
   },
+  "0x8b5d1d8b3466ec21f8ee33ce63f319642c026142": {
+    "chain": "arbitrum",
+    "symbol": "hyETH",
+    "decimals": 18,
+    "address": "0x8b5d1d8b3466ec21f8ee33ce63f319642c026142"
+  },
   "0x004626a008b1acdc4c74ab51644093b155e59a23": {
     "chain": "arbitrum",
     "symbol": "stEUR",
