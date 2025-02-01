@@ -692,4 +692,16 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
       decimals: 18,
     },
   },
+  [ChainNames.soneium]: {
+    name: ChainNames.soneium,
+    family: 'evm',
+    chainId: 1868,
+    nodeRpc: String(process.env.BLOCKCHAIN_SONEIUM_NODE),
+    nativeToken: {
+      chain: ChainNames.soneium,
+      address: AddressZero,
+      symbol: 'ETH',
+      decimals: 18,
+    },
+  },
 };

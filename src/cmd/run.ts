@@ -6,7 +6,6 @@ import { getProtocolAdapters } from '../modules/adapters';
 import { ContextServices, ContextStorages } from '../types/namespaces';
 import { BasicCommand } from './basic';
 import * as Sentry from '@sentry/node';
-import { nodeProfilingIntegration } from '@sentry/profiling-node';
 
 const DefaultServiceSleepSeconds = 30 * 60; // 30 minutes
 
@@ -33,27 +32,6 @@ export class RunCommand extends BasicCommand {
       }
     }
 
-    // setup sentry in if any
-    if (envConfig.sentry.dsn) {
-      // Ensure to call this before importing any other modules!
-      Sentry.init({
-        dsn: envConfig.sentry.dsn,
-
-        integrations: [nodeProfilingIntegration()],
-
-        // Add Tracing by setting tracesSampleRate
-        // We recommend adjusting this value in production
-        tracesSampleRate: 1.0,
-
-        // Set profilesSampleRate to 1.0 to profile every transaction.
-        // Since profilesSampleRate is relative to tracesSampleRate,
-        // the final profiling rate can be computed as tracesSampleRate * profilesSampleRate
-        // For example, a tracesSampleRate of 0.5 and profilesSampleRate of 0.5 would
-        // result in 25% of transactions being profiled (0.5*0.5=0.25)
-        profilesSampleRate: 1.0,
-      });
-    }
-
     const cmdConfigs: any = {
       type: 'protocol',
       protocol: protocols.toString(),
@@ -77,6 +55,20 @@ export class RunCommand extends BasicCommand {
         'database mongo name': envConfig.mongodb.databaseName,
       },
     });
+
+    if (envConfig.sentry.dsn) {
+      logger.info('loaded sentry configs', {
+        service: 'configs',
+        configs: {
+          dsn: envConfig.sentry.dsn,
+        },
+      });
+
+      // ensure to call this before importing any other modules!
+      Sentry.init({
+        dsn: envConfig.sentry.dsn,
+      });
+    }
 
     const chainConfigs: any = {};
     for (const blockchainConfig of Object.values(envConfig.blockchains)) {
@@ -107,10 +99,15 @@ export class RunCommand extends BasicCommand {
             });
           } catch (e: any) {
             // send to Sentry
+            Sentry.captureMessage(`failed to run adapter ${protocol}`);
             Sentry.captureException(e);
 
-            // exit
-            throw e;
+            // log error and continue
+            logger.error('failed to run adapter', {
+              service: 'command',
+              protocol: protocol,
+            });
+            console.log(e);
           }
         }
       }

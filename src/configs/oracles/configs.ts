@@ -2213,6 +2213,12 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   },
 
   alephzero: {
+    '0xb3f0ee446723f4258862d949b4c9688e7e7d35d3': OracleSourceConfigs.ETH,
     '0xd648529d4803d3467ba8850577bed4e4b8ae583c': OracleSourceConfigs.USDT,
+  },
+
+  soneium: {
+    '0x4200000000000000000000000000000000000006': OracleSourceConfigs.ETH,
+    '0xba9986d2381edf1da03b0b9c1f8b00dc4aacc369': OracleSourceConfigs.USDC,
   },
 };

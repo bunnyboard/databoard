@@ -199,5 +199,11 @@ export const AcrossConfigs: AcrossProtocolConfig = {
       address: '0x13fDac9F9b4777705db45291bbFF3c972c6d1d97',
       tokens: ['0xD648529D4803d3467bA8850577BEd4e4b8Ae583C'],
     },
+    {
+      chain: ChainNames.soneium,
+      birthday: 1736640000, // Sun Jan 12 2025 00:00:00 GMT+0000
+      address: '0x3baD7AD0728f9917d1Bf08af5782dCbD516cDd96',
+      tokens: ['0x4200000000000000000000000000000000000006', '0xbA9986D2381edf1DA03B0B9c1f8b00dc4AacC369'],
+    },
   ],
 };
