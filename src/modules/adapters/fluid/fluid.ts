@@ -8,6 +8,8 @@ import LiquidityResolverAbi from '../../../configs/abi/fluid/LiquidityResolver.j
 import VaultResolverAbi from '../../../configs/abi/fluid/VaultResolver.json';
 import UserMudoleAbi from '../../../configs/abi/fluid/UserModule.json';
 import VaultAbi from '../../../configs/abi/fluid/FluidVaultT1.json';
+import DexAbi from '../../../configs/abi/fluid/FluidDexT1.json';
+import DexResolverAbi from '../../../configs/abi/fluid/FluidDexResolver.json';
 import { compareAddress, formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
 import { AddressE, AddressZero, TimeUnits } from '../../../configs/constants';
 import { decodeEventLog } from 'viem';
@@ -20,6 +22,9 @@ export const FluidVaultEvents = {
 
   // events on vault contracts
   LogLiquidate: '0x80fd9cc6b1821f4a510e45ffce6852ea3404807b5d3d833ffa85664408afcb66',
+
+  // dex swap
+  Swap: '0xdc004dbca4ef9c966218431ee5d9133d337ad018dd5b5c5493722803f75c64f7',
 };
 
 export default class FluidAdapter extends ProtocolAdapter {
@@ -42,14 +47,16 @@ export default class FluidAdapter extends ProtocolAdapter {
     });
 
     if (allVaultAddresses) {
-      const calls: Array<ContractCall> = allVaultAddresses.map((vaultAddress: string) => {
-        return {
-          target: marketConfig.vaultResolverV2,
-          abi: VaultResolverAbi,
-          method: 'getVaultEntireData',
-          params: [vaultAddress],
-        };
-      });
+      const calls: Array<ContractCall> = allVaultAddresses
+        .filter((address: string) => !compareAddress(address, AddressZero))
+        .map((vaultAddress: string) => {
+          return {
+            target: marketConfig.vaultResolverV2,
+            abi: VaultResolverAbi,
+            method: 'getVaultEntireData',
+            params: [vaultAddress],
+          };
+        });
 
       vaults = await this.services.blockchain.evm.multicall({
         chain: marketConfig.chain,
@@ -70,6 +77,60 @@ export default class FluidAdapter extends ProtocolAdapter {
     return vaults;
   }
 
+  private async getAllDexes(marketConfig: FluidMarketConfig, blockNumber: number): Promise<Array<any>> {
+    let dexes: Array<any> = [];
+
+    if (marketConfig.dexResolver) {
+      const allDexAddresses = await this.services.blockchain.evm.readContract({
+        chain: marketConfig.chain,
+        target: marketConfig.dexResolver,
+        abi: DexResolverAbi,
+        method: 'getAllDexAddresses',
+        params: [],
+        blockNumber: blockNumber,
+      });
+      if (allDexAddresses) {
+        const calls: Array<ContractCall> = allDexAddresses.map((dexAddress: string) => {
+          return {
+            target: marketConfig.dexResolver,
+            abi: DexResolverAbi,
+            method: 'getDexTokens',
+            params: [dexAddress],
+          };
+        });
+
+        const dexTokens: Array<any> = await this.services.blockchain.evm.multicall({
+          chain: marketConfig.chain,
+          blockNumber: blockNumber,
+          calls: calls,
+        });
+
+        for (let i = 0; i < allDexAddresses.length; i++) {
+          const [token0_, token1_] = dexTokens[i];
+          const [token0, token1] = await Promise.all([
+            this.services.blockchain.evm.getTokenInfo({
+              chain: marketConfig.chain,
+              address: token0_,
+            }),
+            this.services.blockchain.evm.getTokenInfo({
+              chain: marketConfig.chain,
+              address: token1_,
+            }),
+          ]);
+          if (token0 && token1) {
+            dexes.push({
+              address: allDexAddresses[i],
+              token0,
+              token1,
+            });
+          }
+        }
+      }
+    }
+
+    return dexes;
+  }
+
   public async getProtocolData(options: GetProtocolDataOptions): Promise<ProtocolData | null> {
     const protocolData: ProtocolData = {
       protocol: this.protocolConfig.protocol,
@@ -86,6 +147,7 @@ export default class FluidAdapter extends ProtocolAdapter {
         borrow: 0,
         repay: 0,
         liquidation: 0,
+        swap: 0,
       },
     };
 
@@ -111,6 +173,49 @@ export default class FluidAdapter extends ProtocolAdapter {
         marketConfig.chain,
         options.endTime,
       );
+
+      const allDexes = await this.getAllDexes(marketConfig, blockNumber);
+      for (const dex of allDexes) {
+        const logs = await this.services.blockchain.evm.getContractLogs({
+          chain: marketConfig.chain,
+          address: dex.address,
+          fromBlock: beginBlock,
+          toBlock: endBlock,
+        });
+        const events: Array<any> = logs
+          .filter((log) => log.topics[0] === FluidVaultEvents.Swap)
+          .map((log) =>
+            decodeEventLog({
+              abi: DexAbi,
+              topics: log.topics,
+              data: log.data,
+            }),
+          );
+        for (const event of events) {
+          let volumeUsd = 0;
+
+          const swap0to1 = event.args.swap0to1;
+          if (swap0to1) {
+            const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+              chain: marketConfig.chain,
+              address: dex.token0.address,
+              timestamp: options.timestamp,
+            });
+            volumeUsd = formatBigNumberToNumber(event.args.amountIn.toString(), dex.token0.decimals) * tokenPriceUsd;
+          } else {
+            const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+              chain: marketConfig.chain,
+              address: dex.token1.address,
+              timestamp: options.timestamp,
+            });
+            volumeUsd = formatBigNumberToNumber(event.args.amountIn.toString(), dex.token1.decimals) * tokenPriceUsd;
+          }
+
+          (protocolData.volumes.swap as number) += volumeUsd;
+        }
+      }
+
+      console.log(protocolData.volumes.swap);
 
       let [listedTokens, getAllOverallTokensData] = await this.services.blockchain.evm.multicall({
         chain: marketConfig.chain,

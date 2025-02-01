@@ -166,6 +166,10 @@ export default class OptimismNativeBridgeAdapter extends ProtocolAdapter {
         });
         const balanceUsd = formatBigNumberToNumber(results[i].toString(), token.decimals) * tokenPriceUsd;
 
+        if (balanceUsd > 1000000000) {
+          console.log(token, tokenPriceUsd);
+        }
+
         protocolData.totalAssetDeposited += balanceUsd;
         protocolData.totalValueLocked += balanceUsd;
         protocolData.breakdown[optimismConfig.chain][token.address] = {

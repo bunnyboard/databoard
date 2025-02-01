@@ -2879,4 +2879,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceCustomList.wstUSR],
   },
+  sUSDz: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.sUSDz],
+  },
 };

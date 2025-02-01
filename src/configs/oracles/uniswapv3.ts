@@ -180,8 +180,8 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
   lsETH_ETH: {
     type: 'univ3',
     chain: 'ethereum',
-    address: '0x9f4d00ece56c0f062f11afa506b09e7e48f7d5b0',
-    baseToken: TokensBook.ethereum['0x628ebc64a38269e031afbdd3c5ba857483b5d048'],
+    address: '0x5d811a9d059ddab0c18b385ad3b752f734f011cb',
+    baseToken: TokensBook.ethereum['0x8c1bed5b9a0928467c9b1341da1d7bd5e10b6549'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
   RDNT_WETH: {
