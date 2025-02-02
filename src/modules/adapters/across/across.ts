@@ -8,7 +8,6 @@ import { formatBigNumberToNumber } from '../../../lib/utils';
 import { AcrossProtocolConfig } from '../../../configs/protocols/across';
 import { BlockchainConfigs } from '../../../configs/blockchains';
 import AdapterDataHelper from '../helpers';
-import { ChainNames } from '../../../configs/names';
 import ProtocolExtendedAdapter from '../extended';
 
 // v2
@@ -33,6 +32,8 @@ export default class AcrossAdapter extends ProtocolExtendedAdapter {
       timestamp: options.timestamp,
       breakdown: {},
       ...getInitialProtocolCoreMetrics(),
+
+      // total asets are locked in hubPool
       totalSupplied: 0,
       volumes: {
         bridge: 0,
@@ -105,19 +106,10 @@ export default class AcrossAdapter extends ProtocolExtendedAdapter {
         }
       }
 
-      if (spokePoolConfig.chain === ChainNames.ethereum) {
-        const hubPool = await this.services.blockchain.evm.readContract({
-          chain: spokePoolConfig.chain,
-          abi: SpokePoolAbi,
-          target: spokePoolConfig.address,
-          method: 'hubPool',
-          params: [],
-          blockNumber: blockNumber,
-        });
-
+      if (spokePoolConfig.hubPool) {
         const hubPoolBalance = await this.getAddressBalanceUsd({
           chain: spokePoolConfig.chain,
-          ownerAddress: hubPool,
+          ownerAddress: spokePoolConfig.hubPool,
           tokens: tokens,
           timestamp: options.timestamp,
           blockNumber: blockNumber,
@@ -137,6 +129,8 @@ export default class AcrossAdapter extends ProtocolExtendedAdapter {
                 },
               };
             }
+            protocolData.breakdown[spokePoolConfig.chain][address].totalAssetDeposited += balance.balanceUsd;
+            protocolData.breakdown[spokePoolConfig.chain][address].totalValueLocked += balance.balanceUsd;
             (protocolData.breakdown[spokePoolConfig.chain][address].totalSupplied as number) += balance.balanceUsd;
           }
         }

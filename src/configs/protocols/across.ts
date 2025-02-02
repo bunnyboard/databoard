@@ -4,6 +4,7 @@ import { ChainNames, ProtocolNames } from '../names';
 export interface AcrossSpokePoolConfig {
   chain: string;
   address: string;
+  hubPool?: string;
   birthday: number;
   tokens: Array<string>;
 }
@@ -20,6 +21,7 @@ export const AcrossConfigs: AcrossProtocolConfig = {
       chain: ChainNames.ethereum,
       birthday: 1682380800, // Tue Apr 25 2023 00:00:00 GMT+0000
       address: '0x5c7BCd6E7De5423a257D81B442095A1a6ced35C5',
+      hubPool: '0xc186fA914353c44b2E33eBE05f21846F1048bEda',
       tokens: [
         '0x6033f7f88332b8db6ad452b7c6d5bb643990ae3f',
         '0x0cec1a9154ff802e7934fc916ed7ca50bde6844e',
