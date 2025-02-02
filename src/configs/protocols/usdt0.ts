@@ -43,7 +43,7 @@ export const Usdt0Configs: Usdt0ProtocolConfig = {
       birthday: 1737072000, // Fri Jan 17 2025 00:00:00 GMT+0000
       adapter: '0x14E4A1B13bf7F943c8ff7C51fb60FA964A298D92',
       token: {
-        chain: ChainNames.ink,
+        chain: ChainNames.arbitrum,
         symbol: 'USDT',
         decimals: 6,
         address: '0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9',
