@@ -84,12 +84,12 @@ export const AxelarConfigs: AxelarProtocolConfig = {
       birthday: 1689984000, // Sat Jul 22 2023 00:00:00 GMT+0000
       gateway: '0xe432150cce91c13a887f7D836923d5597adD8E31',
     },
-    // {
-    //   chain: ChainNames.mantle,
-    //   axelarChainId: 'mantle',
-    //   birthday: 1693526400, // Fri Sep 01 2023 00:00:00 GMT+0000
-    //   gateway: '0xe432150cce91c13a887f7D836923d5597adD8E31',
-    // },
+    {
+      chain: ChainNames.mantle,
+      axelarChainId: 'mantle',
+      birthday: 1693526400, // Fri Sep 01 2023 00:00:00 GMT+0000
+      gateway: '0xe432150cce91c13a887f7D836923d5597adD8E31',
+    },
     {
       chain: ChainNames.moonbeam,
       axelarChainId: 'moonbeam',

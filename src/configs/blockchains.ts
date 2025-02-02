@@ -704,4 +704,16 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
       decimals: 18,
     },
   },
+  [ChainNames.abstract]: {
+    name: ChainNames.abstract,
+    family: 'evm',
+    chainId: 2741,
+    nodeRpc: String(process.env.BLOCKCHAIN_ABSTRACT_NODE),
+    nativeToken: {
+      chain: ChainNames.abstract,
+      address: AddressZero,
+      symbol: 'ETH',
+      decimals: 18,
+    },
+  },
 };

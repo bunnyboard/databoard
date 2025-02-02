@@ -39,6 +39,7 @@ export const StargateChainIds: { [key: number]: string } = {
   30295: ChainNames.flare,
   30294: ChainNames.gravity,
   30339: ChainNames.ink,
+  30324: ChainNames.abstract,
 };
 
 export interface StargateBridgeConfig {
@@ -534,6 +535,25 @@ export const StargateConfigs: StargateProtocolConfig = {
         {
           address: '0x3Fc69CC4A842838bCDC9499178740226062b14E4',
           token: '0x06efdbff2a14a7c8e15944d1f4a48f9f95f663a4',
+        },
+      ],
+    },
+    {
+      chain: ChainNames.abstract,
+      version: 2,
+      birthday: 1736899200, // Wed Jan 15 2025 00:00:00 GMT+0000
+      pools: [
+        {
+          address: '0x221F0E1280Ec657503ca55c708105F1e1529527D',
+          token: AddressZero,
+        },
+        {
+          address: '0x91a5Fe991ccB876d22847967CEd24dCd7A426e0E',
+          token: '0x84a71ccd554cc1b02749b35d22f684cc8ec987e1',
+        },
+        {
+          address: '0x943C484278b8bE05D119DfC73CfAa4c9D8f11A76',
+          token: '0x0709f39376deee2a2dfc94a58edeb2eb9df012bd',
         },
       ],
     },

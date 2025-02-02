@@ -2238,4 +2238,11 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x4200000000000000000000000000000000000006': OracleSourceConfigs.ETH,
     '0xba9986d2381edf1da03b0b9c1f8b00dc4aacc369': OracleSourceConfigs.USDC,
   },
+
+  abstract: {
+    '0x0709f39376deee2a2dfc94a58edeb2eb9df012bd': OracleSourceConfigs.USDT,
+    '0x84a71ccd554cc1b02749b35d22f684cc8ec987e1': OracleSourceConfigs.USDC,
+    '0x4200000000000000000000000000000000000006': OracleSourceConfigs.ETH,
+    '0x0000000000000000000000000000000000000000': OracleSourceConfigs.ETH,
+  },
 };
