@@ -68,11 +68,16 @@ export interface EnvConfig {
 
   // etherscan api keys
   etherscan: {
-    etherscanApiKey: string;
+    etherscanApiKey: string | null;
   };
 
   // coingecko api keys
   coingecko: {
     coingeckoApiKey: string | null;
+  };
+
+  // thegraph
+  thegraph: {
+    thegraphApiKey: string | null;
   };
 }

@@ -115,5 +115,29 @@ export const ZerolendConfigs: AaveProtocolConfig = {
         address: '0xF49Ee3EA9C56D90627881d88004aaBDFc44Fd82c',
       },
     },
+    {
+      chain: ChainNames.zircuit,
+      marketName: 'Main Market',
+      version: 3,
+      birthday: 1725494400, // Thu Sep 05 2024 00:00:00 GMT+0000
+      lendingPool: '0x2774C8B95CaB474D0d21943d83b9322Fb1cE9cF5',
+      dataProvider: '0xA754b2f1535287957933db6e2AEE2b2FE6f38588',
+      oracle: {
+        currency: 'usd',
+        address: '0x2e43BC528F422fa9c7FFD25799B7424f8D5b1e67',
+      },
+    },
+    {
+      chain: ChainNames.xlayer,
+      marketName: 'Main Market',
+      version: 3,
+      birthday: 1714089600, // Fri Apr 26 2024 00:00:00 GMT+0000
+      lendingPool: '0xffd79d05d5dc37e221ed7d3971e75ed5930c6580',
+      dataProvider: '0x97e59722318f1324008484aca9c343863792cbf6',
+      oracle: {
+        currency: 'usd',
+        address: '0x78ad3d53045b6582841e2a1a688c52be2ca2a7a7',
+      },
+    },
   ],
 };

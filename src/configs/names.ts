@@ -86,6 +86,7 @@ export const ChainNames = {
   swellchain: 'swellchain',
   soneium: 'soneium',
   abstract: 'abstract',
+  xlayer: 'xlayer',
 };
 
 export const ProtocolNames = {

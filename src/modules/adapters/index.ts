@@ -87,6 +87,7 @@ import SymbioticAdapter from './symbiotic/symbiotic';
 import SynapseAdapter from './synapse/synapse';
 import TaikoNativeBridgeAdapter from './taiko/nativeBridge';
 import ThresholdbtcAdapter from './threshold/thresholdbtc';
+import UniswapAdapter from './uniswap/uniswap';
 import Usdt0Adapter from './usdt0/usdt0';
 import UsualAdapter from './usual/usual';
 import VenusAdapter from './venus/venus';
@@ -256,5 +257,7 @@ export function getProtocolAdapters(
     usdt0: new Usdt0Adapter(services, storages, ProtocolConfigs.usdt0),
     zerion: new ZerionAdapter(services, storages, ProtocolConfigs.zerion),
     abstractNativeBridge: new ZksyncNativeBridgeAdapter(services, storages, ProtocolConfigs.abstractNativeBridge),
+    uniswap: new UniswapAdapter(services, storages, ProtocolConfigs.uniswap),
+    sushi: new UniswapAdapter(services, storages, ProtocolConfigs.sushi),
   };
 }

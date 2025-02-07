@@ -21,13 +21,20 @@ const envConfig: EnvConfig = {
     dsn: process.env.SENTRY_DSN && process.env.SENTRY_DSN !== '' ? String(process.env.SENTRY_DSN) : null,
   },
   etherscan: {
-    etherscanApiKey: String(process.env.ETHERSCAN_API_KEY),
+    etherscanApiKey:
+      process.env.ETHERSCAN_API_KEY && process.env.ETHERSCAN_API_KEY !== ''
+        ? String(process.env.ETHERSCAN_API_KEY)
+        : null,
   },
   coingecko: {
     coingeckoApiKey:
       process.env.COINGECKO_API_KEY && process.env.COINGECKO_API_KEY !== ''
         ? String(process.env.COINGECKO_API_KEY)
         : null,
+  },
+  thegraph: {
+    thegraphApiKey:
+      process.env.THEGRAPH_API_KEY && process.env.THEGRAPH_API_KEY !== '' ? String(process.env.THEGRAPH_API_KEY) : null,
   },
 };
 

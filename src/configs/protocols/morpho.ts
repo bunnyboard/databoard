@@ -80,6 +80,11 @@ export const MorphoConfigs: MorphoProtocolConfig = {
       morphoBlue: '0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb',
       morphoFactory: '0xa9c3d3a366466fa809d1ae982fb2c46e5fc41101',
       whitelistedMarketIds: [
+        '0x19ab5f7fa9a014d6e5c07384ac34f56e517f449c75f3c9cdc1e0ccd06313419b',
+        '0x407d8c123443d362ffdfe73208068ef158a21d1a44a988c9acc23a51bade7905',
+        '0x20c488469064c8e2f892dab33e8c7a631260817f0db57f7425d4ef1d126efccb',
+        '0x5c8a6157f109ab2af0d3be0b82134e67ee19dbd0c35f96ba8b89bb173faefb10',
+        '0xa59b6c3c6d1df322195bfb48ddcdcca1a4c0890540e8ee75815765096c1e8971',
         '0x5e3e6b1e01c5708055548d82d01db741e37d03b948a7ef9f3d4b962648bcbfa7', // PT-sUSDE-24OCT2024 / DAI
         '0xe37784e5ff9c2795395c5a41a0cb7ae1da4a93d67bfdd8654b9ff86b3065941c', // PT-sUSDE-24OCT2024 / DAI
         '0x8f46cd82c4c44a090c3d72bd7a84baf4e69ee50331d5deae514f86fe062b0748', // PT-sUSDE-24OCT2024 / DAI
@@ -253,6 +258,7 @@ export const MorphoConfigs: MorphoProtocolConfig = {
       morphoBlue: '0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb',
       morphoFactory: '0xa9c3d3a366466fa809d1ae982fb2c46e5fc41101',
       whitelistedMarketIds: [
+        '0x4944a1169bc07b441473b830308ffe5bb535c10a9f824e33988b60738120c48e',
         '0x3a4048c64ba1b375330d376b1ce40e4047d03b47ab4d48af484edec9fec801ba',
         '0x1c21c59df9db44bf6f645d854ee710a8ca17b479451447e9f56758aee10a2fad',
         '0x8793cf302b8ffd655ab97bd1c695dbd967807e8367a65cb2f4edaf1380ba1bda',

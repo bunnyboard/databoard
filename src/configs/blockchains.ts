@@ -716,4 +716,16 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
       decimals: 18,
     },
   },
+  [ChainNames.xlayer]: {
+    name: ChainNames.xlayer,
+    family: 'evm',
+    chainId: 196,
+    nodeRpc: String(process.env.BLOCKCHAIN_XLAYER_NODE),
+    nativeToken: {
+      chain: ChainNames.xlayer,
+      address: AddressZero,
+      symbol: 'OKB',
+      decimals: 18,
+    },
+  },
 };

@@ -144,6 +144,8 @@ import { SolvConfigs } from './protocols/solv';
 import { Usdt0Configs } from './protocols/usdt0';
 import { ZerionConfigs } from './protocols/zerion';
 import { AbstractNativeBridgeConfigs } from './protocols/abstract';
+import { SushiConfigs } from './protocols/sushi';
+import { UniswapConfigs } from './protocols/uniswap';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -155,6 +157,7 @@ export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
   arbitrum: 5000,
   optimism: 1000,
   base: 1000,
+  xlayer: 100,
 };
 
 export const DefaultQueryChainLogsBlockRange = 100;
@@ -321,4 +324,6 @@ export const ProtocolConfigs = {
   usdt0: Usdt0Configs,
   zerion: ZerionConfigs,
   abstractNativeBridge: AbstractNativeBridgeConfigs,
+  uniswap: UniswapConfigs,
+  sushi: SushiConfigs,
 };

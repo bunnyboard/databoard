@@ -18,3 +18,10 @@ export interface ProtocolConfig {
   // timestamp when protocol was deployed
   birthday: number;
 }
+
+export interface SubgraphConfig {
+  provider: 'thegraph' | 'custom';
+  subgraphIdOrEndpoint: string;
+  requestHeaders?: any;
+  customParams?: any;
+}
