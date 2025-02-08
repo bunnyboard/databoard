@@ -52,6 +52,7 @@ export const TokenBookDexBase = {
     '0x82af49447d8a07e3bd95bd0d56f35241523fbab1', // WETH
     '0xaf88d065e77c8cc2239327c5edb3a432268e5831', // USDC
     '0xff970a61a04b1ca14834a43f5de4533ebddb5cc8', // USDC.e
+    '0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9', // USDT
   ],
   optimism: [
     '0x4200000000000000000000000000000000000006', // WETH

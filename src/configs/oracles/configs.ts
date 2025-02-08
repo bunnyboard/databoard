@@ -9,6 +9,10 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0xc83e27f270cce0a3a3a29521173a83f402c1768b': OracleSourceConfigs.USDQ,
+    '0x68749665ff8d2d112fa859aa293f07a622782f38': OracleSourceConfigs.XAU,
+    '0x2103e845c5e135493bb6c2a4f0b8651956ea8682': OracleSourceConfigs.XAU,
+    '0xbeefc011e94f43b8b7b455ebab290c7ab4e216f1': OracleSourceConfigs.USDL,
     '0x1ce7d9942ff78c328a4181b9f3826fee6d845a97': OracleSourceConfigs.USDT,
     '0x4f8e1426a9d10bddc11d26042ad270f16ccb95f2': OracleSourceConfigs.USDT,
     '0x69000195d5e3201cf73c9ae4a1559244df38d47c': OracleSourceConfigs.USDT,
@@ -966,6 +970,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0xc0d3700000987c99b3c9009069e4f8413fd22330': OracleSourceConfigs.USDT,
+    '0x0a27e060c0406f8ab7b64e3bee036a37e5a62853': OracleSourceConfigs.USDT,
     '0xfb0c734fc3008683c5eff45bcf8128836c4d97d0': OracleSourceConfigs.VRTX,
     '0x8fe815417913a93ea99049fc0718ee1647a2a07c': OracleSourceConfigs.XSWAP,
     '0x69000dfd5025e82f48eb28325a2b88a241182ced': OracleSourceConfigs.USDT, // ZAI
@@ -2246,6 +2252,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   },
 
   soneium: {
+    '0x0000000000000000000000000000000000000000': OracleSourceConfigs.ETH,
     '0x4200000000000000000000000000000000000006': OracleSourceConfigs.ETH,
     '0xba9986d2381edf1da03b0b9c1f8b00dc4aacc369': OracleSourceConfigs.USDC,
   },

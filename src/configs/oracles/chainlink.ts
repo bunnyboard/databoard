@@ -307,4 +307,11 @@ export const OracleSourceChainlinkList: { [key: string]: OracleSourceChainlink }
     address: '0xA537EF0343e83761ED42B8E017a1e495c9a189Ee',
     decimals: 8,
   },
+  XAU_USD: {
+    type: 'chainlink',
+    chain: 'ethereum',
+    currency: 'usd',
+    address: '0x214eD9Da11D2fbe465a6fc601a91E62EbEc1a0D6',
+    decimals: 8,
+  },
 };

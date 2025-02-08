@@ -40,6 +40,7 @@ export const SushiConfigs: UniswapProtocolConfig = {
         provider: 'thegraph',
         subgraphIdOrEndpoint: '8yBXBTMfdhsoE5QCf7KnoPmQb7QAWtRzESfYjiCjGEM9',
       },
+      blacklistEventIds: ['0xe1d9d504bccd91c26b3afcd0172c043bef2d957d3b9c1205503bb61a68d5f00c00000000'],
     },
     {
       chain: ChainNames.arbitrum,

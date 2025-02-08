@@ -24,6 +24,9 @@ export interface UniswapFactoryConfig {
   // ignore these ppols
   blacklistPools?: Array<string>;
 
+  // ignore these events
+  blacklistEventIds?: Array<string>;
+
   // subgraph if any
   subgraph?: SubgraphConfig;
 }

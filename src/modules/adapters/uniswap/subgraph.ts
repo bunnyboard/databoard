@@ -206,6 +206,10 @@ export async function querySubgraphUniv2(options: SubgraphQueryOptions): Promise
         } while (true);
 
         for (const event of mintEvents.concat(burnEvents)) {
+          if (factoryConfig.blacklistEventIds && factoryConfig.blacklistEventIds.includes(event.id)) {
+            continue;
+          }
+
           if (event.amount0 && event.amount1) {
             const token0Address = normalizeAddress(event.pair.token0.id);
             const token1Address = normalizeAddress(event.pair.token1.id);
@@ -427,8 +431,6 @@ export async function querySubgraphUniv3(options: SubgraphQueryOptions): Promise
             } else {
               startPoolId = normalizeAddress(pools[pools.length - 1].id);
             }
-
-            console.log(startPoolId, result.liquidityUsd);
           } while (true);
         }
 
@@ -522,6 +524,10 @@ export async function querySubgraphUniv3(options: SubgraphQueryOptions): Promise
         } while (true);
 
         for (const event of mintEvents.concat(burnEvents)) {
+          if (factoryConfig.blacklistEventIds && factoryConfig.blacklistEventIds.includes(event.id)) {
+            continue;
+          }
+
           const token0Address = normalizeAddress(event.token0.id);
           const token1Address = normalizeAddress(event.token1.id);
 
