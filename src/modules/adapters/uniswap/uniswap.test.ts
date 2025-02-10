@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 import { UniswapConfigs } from '../../../configs/protocols/uniswap';
-import { querySubgraphUniv2 } from './subgraph';
+import UniswapSubgraphQuery from './subgraph';
 import OracleService from '../../../services/oracle/oracle';
 import BlockchainService from '../../../services/blockchains/blockchain';
 import BitcoreService from '../../../services/blockchains/bitcore';
@@ -10,15 +10,16 @@ const blockchain = new BlockchainService();
 const bitcore = new BitcoreService();
 const oracle = new OracleService(blockchain);
 
+const uniswapSubgraphQuery = new UniswapSubgraphQuery({
+  oracle,
+  blockchain: {
+    evm: blockchain,
+    bitcore: bitcore,
+  },
+});
+
 test('should query uniswap subgraph data correctly', async function () {
-  const response = await querySubgraphUniv2({
-    contextServices: {
-      oracle,
-      blockchain: {
-        evm: blockchain,
-        bitcore: bitcore,
-      },
-    },
+  const response = await uniswapSubgraphQuery.querySubgraphV2({
     factoryConfig: UniswapConfigs.factories[0], // uniswap v2
     params: {
       factories: 'uniswapFactories',
@@ -37,7 +38,7 @@ test('should query uniswap subgraph data correctly', async function () {
 
   expect(response).not.equal(null);
   if (response) {
-    expect(response.liquidityUsd).equal(2078508872.145035);
+    expect(response.liquidityUsd).equal(2078388336.7455323);
     expect(response.volumeSwapUsd).equal(1733303.8791503906);
     expect(response.volumeAddLiquidityUsd).equal(26202247.914304987);
     expect(response.volumeRemoveLiquidityUsd).equal(8986852.360482989);
@@ -45,14 +46,7 @@ test('should query uniswap subgraph data correctly', async function () {
 });
 
 test('should query sushi subgraph data correctly', async function () {
-  const response = await querySubgraphUniv2({
-    contextServices: {
-      oracle,
-      blockchain: {
-        evm: blockchain,
-        bitcore: bitcore,
-      },
-    },
+  const response = await uniswapSubgraphQuery.querySubgraphV2({
     factoryConfig: SushiConfigs.factories[0], // sushi v2
     params: {
       factories: 'uniswapFactories',

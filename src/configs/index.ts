@@ -68,7 +68,7 @@ import { ZksyncNativeBridgeConfigs } from './protocols/zksync';
 import { PolygonNativeBridgeConfigs, PolygonZkevmNativeBridgeConfigs } from './protocols/polygon';
 import { HopConfigs } from './protocols/hop';
 import { GnosisNativeBridgeConfigs } from './protocols/gnosis';
-import { LfjlendConfigs } from './protocols/lfj';
+import { LfjConfigs, LfjlendConfigs } from './protocols/lfj';
 import { EigenLayerConfigs } from './protocols/eigenlayer';
 import { SymbioticConfigs } from './protocols/symbiotic';
 import { KarakConfigs, Karakk2NativeBridgeConfigs } from './protocols/karak';
@@ -248,6 +248,7 @@ export const ProtocolConfigs = {
   polygonzkevmNativeBridge: PolygonZkevmNativeBridgeConfigs,
   hop: HopConfigs,
   gnosisNativeBridge: GnosisNativeBridgeConfigs,
+  lfj: LfjConfigs,
   lfjlend: LfjlendConfigs,
   eigenlayer: EigenLayerConfigs,
   symbiotic: SymbioticConfigs,

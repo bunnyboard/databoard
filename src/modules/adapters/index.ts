@@ -179,6 +179,7 @@ export function getProtocolAdapters(
     cbridge: new CbridgeAdapter(services, storages, ProtocolConfigs.cbridge),
     hop: new HopAdapter(services, storages, ProtocolConfigs.hop),
     gnosisNativeBridge: new GnosisNativeBridgeAdapter(services, storages, ProtocolConfigs.gnosisNativeBridge),
+    lfj: new UniswapAdapter(services, storages, ProtocolConfigs.lfj),
     lfjlend: new LfjlendAdapter(services, storages, ProtocolConfigs.lfjlend),
     eigenlayer: new EigenLayerAdapter(services, storages, ProtocolConfigs.eigenlayer),
     symbiotic: new SymbioticAdapter(services, storages, ProtocolConfigs.symbiotic),

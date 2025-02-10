@@ -5,7 +5,7 @@ import { GetProtocolDataOptions } from '../../../types/options';
 import AdapterDataHelper from '../helpers';
 import ProtocolExtendedAdapter from '../extended';
 import { UniswapProtocolConfig } from '../../../configs/protocols/uniswap';
-import { querySubgraphUniv2, querySubgraphUniv3, SubgraphQueryParams, SubgraphQueryResult } from './subgraph';
+import UniswapSubgraphQuery, { SubgraphQueryParams, SubgraphQueryResult } from './subgraph';
 import { Pool2Types } from '../../../types/domains/pool2';
 import logger from '../../../lib/logger';
 
@@ -14,6 +14,7 @@ export default class UniswapAdapter extends ProtocolExtendedAdapter {
 
   public readonly subgraphV2QueryParams: SubgraphQueryParams;
   public readonly subgraphV3QueryParams: SubgraphQueryParams;
+  public readonly subgraphQuery: UniswapSubgraphQuery;
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {
     super(services, storages, protocolConfig);
@@ -30,6 +31,8 @@ export default class UniswapAdapter extends ProtocolExtendedAdapter {
       totalFeesUSD: 'totalFeesUSD',
       totalLiquidityUSD: 'totalValueLockedUSD',
     };
+
+    this.subgraphQuery = new UniswapSubgraphQuery(services);
   }
 
   public async getProtocolData(options: GetProtocolDataOptions): Promise<ProtocolData | null> {
@@ -91,8 +94,7 @@ export default class UniswapAdapter extends ProtocolExtendedAdapter {
 
         let response: SubgraphQueryResult | null = null;
         if (factoryConfig.version === Pool2Types.univ2) {
-          response = await querySubgraphUniv2({
-            contextServices: this.services,
+          response = await this.subgraphQuery.querySubgraphV2({
             factoryConfig: factoryConfig,
             params: this.subgraphV2QueryParams,
 
@@ -105,8 +107,7 @@ export default class UniswapAdapter extends ProtocolExtendedAdapter {
             toTime: options.endTime,
           });
         } else if (factoryConfig.version === Pool2Types.univ3) {
-          response = await querySubgraphUniv3({
-            contextServices: this.services,
+          response = await this.subgraphQuery.querySubgraphV3({
             factoryConfig: factoryConfig,
             params: this.subgraphV3QueryParams,
 
