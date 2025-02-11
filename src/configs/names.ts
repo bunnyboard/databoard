@@ -87,6 +87,7 @@ export const ChainNames = {
   soneium: 'soneium',
   abstract: 'abstract',
   xlayer: 'xlayer',
+  b3: 'b3',
 };
 
 export const ProtocolNames = {
@@ -272,4 +273,6 @@ export const ProtocolNames = {
   usdt0: 'usdt0', // https://usdt0.to
   zerion: 'zerion', // https://zerion.io
   abstractNativeBridge: 'abstractNativeBridge',
+  b3NativeBridge: 'b3NativeBridge',
+  socket: 'socket',
 };

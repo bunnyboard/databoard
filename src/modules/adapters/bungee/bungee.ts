@@ -37,6 +37,7 @@ export const BungeeKnownBridgeNames: { [key: string]: string } = {
   '0x2ab0b866d21ac9b7200cb612980a6bede5fc41279d81375c7fe2efd9fa4d9073': ProtocolNames.oneinch,
   '0x861b086cbd3ddee2b0b12c8ce3b43e1c111ac87dcabda086e02f18095da12f20': ProtocolNames.zerox,
   '0xe9936f0ec4354ed5e05fe939bfc04444115d879c284276c89567806a9a5fa275': ProtocolNames.mayan,
+  '0xe801d98cf086007d1dc15b963caef6a26670a71101830ff60755bb48fb6edcce': ProtocolNames.socket,
 
   // native bridges
   '0xf1c09a354cd800a13f6f260a3a96a0e33db28b0b53528072473336977bba34f4': ProtocolNames.polygonNativeBridge,
@@ -51,6 +52,7 @@ export const BungeeKnownBridgeNames: { [key: string]: string } = {
   '0x52d0275a020a4c7ae62ec6f7d7fa9498ef80508501ba5033139ff2cf4d0f631a': ProtocolNames.modeNativeBridge,
   '0x3b654adad78ea2ded387f2c5bed3f31dcb9c3e6ab79a28e9dab60dbacbf7c72a': ProtocolNames.mantleNativeBridge,
   '0x8381ed10ba5922afc2e18270f9785c89117d41af9b60c4950b6f1b84e197e702': ProtocolNames.inkNativeBridge,
+  '0x1feb8fbec6c202db9a494db39f73dcf083724e598dfce7049177ef4ed3d36ccd': ProtocolNames.b3NativeBridge,
 };
 
 export default class BungeeAdapter extends ProtocolAdapter {
@@ -135,6 +137,9 @@ export default class BungeeAdapter extends ProtocolAdapter {
                   txn: log.transactionHash,
                   logIndex: log.logIndex,
                 });
+
+                console.log(bridgeName);
+                process.exit(0);
               }
 
               const toChainId = Number(event.args.toChainId);
@@ -168,28 +173,30 @@ export default class BungeeAdapter extends ProtocolAdapter {
               });
               const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPriceUsd;
 
-              (protocolData.volumes.bridge as number) += amountUsd;
+              if (amountUsd > 0) {
+                (protocolData.volumes.bridge as number) += amountUsd;
 
-              if (!protocolData.breakdown[token.chain][token.address]) {
-                protocolData.breakdown[token.chain][token.address] = {
-                  ...getInitialProtocolCoreMetrics(),
-                  volumes: {
-                    bridge: 0,
-                    trade: 0,
-                  },
-                };
-              }
-              (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += amountUsd;
+                if (!protocolData.breakdown[token.chain][token.address]) {
+                  protocolData.breakdown[token.chain][token.address] = {
+                    ...getInitialProtocolCoreMetrics(),
+                    volumes: {
+                      bridge: 0,
+                      trade: 0,
+                    },
+                  };
+                }
+                (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += amountUsd;
 
-              if (!bungeeExtendedData.volumeBridges[bridgeName]) {
-                bungeeExtendedData.volumeBridges[bridgeName] = 0;
-              }
-              bungeeExtendedData.volumeBridges[bridgeName] += amountUsd;
+                if (!bungeeExtendedData.volumeBridges[bridgeName]) {
+                  bungeeExtendedData.volumeBridges[bridgeName] = 0;
+                }
+                bungeeExtendedData.volumeBridges[bridgeName] += amountUsd;
 
-              if (!(protocolData.volumeBridgePaths as any)[gatewayConfig.chain][toChainName]) {
-                (protocolData.volumeBridgePaths as any)[gatewayConfig.chain][toChainName] = 0;
+                if (!(protocolData.volumeBridgePaths as any)[gatewayConfig.chain][toChainName]) {
+                  (protocolData.volumeBridgePaths as any)[gatewayConfig.chain][toChainName] = 0;
+                }
+                (protocolData.volumeBridgePaths as any)[gatewayConfig.chain][toChainName] += amountUsd;
               }
-              (protocolData.volumeBridgePaths as any)[gatewayConfig.chain][toChainName] += amountUsd;
             }
           } else if (log.topics[0] === BungeeSocketEvents.SocketFeesDeducted) {
             const token = await this.services.blockchain.evm.getTokenInfo({
