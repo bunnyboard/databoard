@@ -88,6 +88,7 @@ export const ChainNames = {
   abstract: 'abstract',
   xlayer: 'xlayer',
   b3: 'b3',
+  unichain: 'unichain',
 };
 
 export const ProtocolNames = {
@@ -274,5 +275,6 @@ export const ProtocolNames = {
   zerion: 'zerion', // https://zerion.io
   abstractNativeBridge: 'abstractNativeBridge',
   b3NativeBridge: 'b3NativeBridge',
+  unichainNativeBridge: 'unichainNativeBridge',
   socket: 'socket',
 };

@@ -260,5 +260,6 @@ export function getProtocolAdapters(
     abstractNativeBridge: new ZksyncNativeBridgeAdapter(services, storages, ProtocolConfigs.abstractNativeBridge),
     uniswap: new UniswapAdapter(services, storages, ProtocolConfigs.uniswap),
     sushi: new UniswapAdapter(services, storages, ProtocolConfigs.sushi),
+    unichainNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.unichainNativeBridge),
   };
 }

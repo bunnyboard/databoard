@@ -3,7 +3,8 @@ import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/doma
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
 import SpokePoolAbi from '../../../configs/abi/across/SpokePool.json';
-import { decodeEventLog } from 'viem';
+import SpokePoolV2Abi from '../../../configs/abi/across/SpokePoolV2.json';
+import { decodeAbiParameters, decodeEventLog } from 'viem';
 import { formatBigNumberToNumber } from '../../../lib/utils';
 import { AcrossProtocolConfig } from '../../../configs/protocols/across';
 import { BlockchainConfigs } from '../../../configs/blockchains';
@@ -15,6 +16,7 @@ const FundsDeposited = '0xafc4df6845a4ab948b492800d3d8a25d538a102a2bc07cd01f1cfa
 
 // v3
 const V3FundsDeposited = '0xa123dc29aebf7d0c3322c8eeb5b999e859f39937950ed31056532713d0de396f';
+const V3FundsDepositedV2 = '0x32ed1a409ef04c7b0227189c3a103dc5ac10e775a15b785dcc510201f7c25ad3';
 
 // count total assets locked in spokePool as totalValueLocked
 // count total assets locked in hubPool (ethereum) as totalSupplied (liquidity)
@@ -144,9 +146,13 @@ export default class AcrossAdapter extends ProtocolExtendedAdapter {
       });
 
       for (const log of logs) {
-        if (log.topics[0] === FundsDeposited || log.topics[0] === V3FundsDeposited) {
+        if (
+          log.topics[0] === FundsDeposited ||
+          log.topics[0] === V3FundsDeposited ||
+          log.topics[0] === V3FundsDepositedV2
+        ) {
           const event: any = decodeEventLog({
-            abi: SpokePoolAbi,
+            abi: log.topics[0] === V3FundsDepositedV2 ? SpokePoolV2Abi : SpokePoolAbi,
             topics: log.topics,
             data: log.data,
           });
@@ -164,7 +170,11 @@ export default class AcrossAdapter extends ProtocolExtendedAdapter {
             continue;
           }
 
-          const tokenAddress = event.args.inputToken ? event.args.inputToken : event.args.originToken;
+          let tokenAddress = event.args.inputToken ? event.args.inputToken : event.args.originToken;
+          if (log.topics[0] === V3FundsDepositedV2) {
+            tokenAddress = decodeAbiParameters([{ type: 'address' }], tokenAddress)[0];
+          }
+
           const inputToken = await this.services.blockchain.evm.getTokenInfo({
             chain: spokePoolConfig.chain,
             address: tokenAddress,

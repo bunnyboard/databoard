@@ -291,5 +291,18 @@ export const AaveConfigs: AaveProtocolConfig = {
         address: '0xC7F58Fca663a8d377B6D0c9703C697f56dC40088',
       },
     },
+    // {
+    //   chain: ChainNames.linea,
+    //   marketName: 'Main Market',
+    //   version: 3,
+    //   birthday: 1732406400, // Sun Nov 24 2024 00:00:00 GMT+0000
+    //   lendingPool: '0xc47b8C00b0f69a36fa203Ffeac0334874574a8Ac',
+    //   dataProvider: '0x2D97F8FA96886Fd923c065F5457F9DDd494e3877',
+    //   dataProvider2: '0x2D97F8FA96886Fd923c065F5457F9DDd494e3877',
+    //   oracle: {
+    //     currency: 'usd',
+    //     address: '0xCFDAdA7DCd2e785cF706BaDBC2B8Af5084d595e9',
+    //   },
+    // },
   ],
 };
