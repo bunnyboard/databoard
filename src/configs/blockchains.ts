@@ -740,4 +740,16 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
       decimals: 18,
     },
   },
+  [ChainNames.unichain]: {
+    name: ChainNames.unichain,
+    family: 'evm',
+    chainId: 130,
+    nodeRpc: String(process.env.BLOCKCHAIN_UNICHAIN_NODE),
+    nativeToken: {
+      chain: ChainNames.unichain,
+      address: AddressZero,
+      symbol: 'ETH',
+      decimals: 18,
+    },
+  },
 };
