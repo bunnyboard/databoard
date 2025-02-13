@@ -160,4 +160,11 @@ export const OracleSourceCustomList: {
     address: '0x547213367cfb08ab418e7b54d7883b2c2aa27fd7',
     underlyingToken: TokensBook.ethereum['0xa469b7ee9ee773642b3e93e842e5d9b5baa10067'],
   },
+  yETHx: {
+    type: 'stakingTokenWrapper',
+    chain: 'ethereum',
+    method: 'erc4626',
+    address: '0x657d9aba1dbb59e53f9f3ecaa878447dcfc96dcb',
+    underlyingToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
 };

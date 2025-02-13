@@ -9,6 +9,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0xb7de5dfcb74d25c2f21841fbd6230355c50d9308': OracleSourceConfigs.sUSDe,
+    '0x657d9aba1dbb59e53f9f3ecaa878447dcfc96dcb': OracleSourceConfigs.yETHx,
     '0xc83e27f270cce0a3a3a29521173a83f402c1768b': OracleSourceConfigs.USDQ,
     '0x68749665ff8d2d112fa859aa293f07a622782f38': OracleSourceConfigs.XAU,
     '0x2103e845c5e135493bb6c2a4f0b8651956ea8682': OracleSourceConfigs.XAU,
@@ -970,6 +972,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0xec443e7e0e745348e500084892c89218b3ba4683': OracleSourceConfigs.USR,
     '0xbdef0e9ef12e689f366fe494a7a7d0dad25d9286': OracleSourceConfigs.sUSDS,
     '0x5875eee11cf8398102fdad704c9e96607675467a': OracleSourceConfigs.sUSDS,
     '0x820c137fa70c8691f0e44dc420a5e53c168921dc': OracleSourceConfigs.USDS,
@@ -2242,6 +2245,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
 
   swellchain: {
     [AddressZero]: OracleSourceConfigs.ETH,
+    '0x9cb41cd74d01ae4b4f640ec40f7a60ca1bcf83e7': OracleSourceConfigs.pzETH,
     '0x4200000000000000000000000000000000000006': OracleSourceConfigs.ETH,
     '0x2416092f143378750bb29b79ed961ab195cceea5': OracleSourceConfigs.ezETH,
     '0xa6cb988942610f6731e664379d15ffcfbf282b44': OracleSourceConfigs.weETH,
