@@ -41,6 +41,7 @@ export const StargateChainIds: { [key: number]: string } = {
   30339: ChainNames.ink,
   30324: ChainNames.abstract,
   30340: ChainNames.soneium,
+  30362: ChainNames.berachain,
 };
 
 export interface StargateBridgeConfig {

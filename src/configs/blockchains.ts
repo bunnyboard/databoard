@@ -752,4 +752,16 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
       decimals: 18,
     },
   },
+  [ChainNames.berachain]: {
+    name: ChainNames.berachain,
+    family: 'evm',
+    chainId: 80094,
+    nodeRpc: String(process.env.BLOCKCHAIN_BERACHAIN_NODE),
+    nativeToken: {
+      chain: ChainNames.berachain,
+      address: AddressZero,
+      symbol: 'BERA',
+      decimals: 18,
+    },
+  },
 };

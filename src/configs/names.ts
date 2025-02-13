@@ -89,6 +89,7 @@ export const ChainNames = {
   xlayer: 'xlayer',
   b3: 'b3',
   unichain: 'unichain',
+  berachain: 'berachain',
 };
 
 export const ProtocolNames = {

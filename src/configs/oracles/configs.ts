@@ -2273,4 +2273,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x4200000000000000000000000000000000000006': OracleSourceConfigs.ETH,
     '0x0000000000000000000000000000000000000000': OracleSourceConfigs.ETH,
   },
+
+  berachain: {
+    '0x779ded0c9e1022225f8e0630b35a9b54be713736': OracleSourceConfigs.USDT,
+  },
 };

@@ -215,8 +215,6 @@ export default class FluidAdapter extends ProtocolAdapter {
         }
       }
 
-      console.log(protocolData.volumes.swap);
-
       let [listedTokens, getAllOverallTokensData] = await this.services.blockchain.evm.multicall({
         chain: marketConfig.chain,
         blockNumber: blockNumber,

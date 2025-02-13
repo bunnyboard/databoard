@@ -49,5 +49,16 @@ export const Usdt0Configs: Usdt0ProtocolConfig = {
         address: '0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9',
       },
     },
+    {
+      chain: ChainNames.berachain,
+      birthday: 1737504000, // Wed Jan 22 2025 00:00:00 GMT+0000
+      adapter: '0x3Dc96399109df5ceb2C226664A086140bD0379cB',
+      token: {
+        chain: ChainNames.berachain,
+        symbol: 'USDT',
+        decimals: 6,
+        address: '0x779ded0c9e1022225f8e0630b35a9b54be713736',
+      },
+    },
   ],
 };
