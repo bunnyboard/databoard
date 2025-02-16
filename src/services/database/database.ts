@@ -5,6 +5,7 @@ import logger from '../../lib/logger';
 import { sleep } from '../../lib/utils';
 import {
   DatabaseBulkWriteOptions,
+  DatabaseDeleteOptions,
   DatabaseInsertOptions,
   DatabaseQueryOptions,
   DatabaseUpdateOptions,
@@ -165,6 +166,11 @@ export default class DatabaseService implements IDatabaseService {
         upsert: options.upsert,
       },
     );
+  }
+
+  public async delete(options: DatabaseDeleteOptions): Promise<void> {
+    const collection = await this.getCollection(options.collection);
+    await collection.deleteMany(options.keys);
   }
 
   public async countDocuments(options: DatabaseQueryOptions): Promise<number> {

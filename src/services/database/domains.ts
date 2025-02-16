@@ -29,6 +29,11 @@ export interface DatabaseInsertOptions {
   document: any;
 }
 
+export interface DatabaseDeleteOptions {
+  collection: string;
+  keys: any;
+}
+
 export interface DatabaseBulkWriteOptions {
   collection: string;
   operations: Array<any>;
@@ -64,6 +69,9 @@ export interface IDatabaseService {
 
   // request to update documents
   update: (options: DatabaseUpdateOptions) => Promise<void>;
+
+  // request to delete many docs
+  delete: (options: DatabaseDeleteOptions) => Promise<void>;
 
   // return number of documents were found
   countDocuments: (options: DatabaseQueryOptions) => Promise<number>;

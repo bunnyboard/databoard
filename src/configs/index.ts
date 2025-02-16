@@ -169,6 +169,11 @@ export const CustomQueryChainLogsBlockRange: { [key: string]: number } = {
   optimism: 1000,
 };
 
+export const DefaultChainIndexWorkers = 3;
+export const CustomChainIndexWorkers: { [key: string]: number } = {
+  arbitrum: 5,
+};
+
 export const DefaultMemcacheTime = 300; // 5 minutes
 export const DefaultLocaldbDir = '.localdb';
 

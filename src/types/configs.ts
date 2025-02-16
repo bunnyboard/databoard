@@ -32,11 +32,20 @@ export interface DatabaseCollectionConfig {
   // save protocol data historical/snapshots
   protocolDataSnapshots: MongoCollectionConfig;
 
+  // save blockchain current data state
+  blockchainDataStates: MongoCollectionConfig;
+
+  // save blockchain data historical/snapshots
+  blockchainDataSnapshots: MongoCollectionConfig;
+
   // save liquidity pool2 (uniswap v2, v3) configs
   datasyncPool2: MongoCollectionConfig;
 
   // save liquidity pools of Balancer.fi-like pools
   datasyncPoolBalancer: MongoCollectionConfig;
+
+  // save blockchain block data
+  datasyncChainBlocks: MongoCollectionConfig;
 
   // save decoded dex pool2
   decodeDexPool2: MongoCollectionConfig;

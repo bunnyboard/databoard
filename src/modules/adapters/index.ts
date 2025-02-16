@@ -27,7 +27,7 @@ import Eclipsel2NativeBridgeAdapter from './eclipsel2/nativeBridge';
 import EigenLayerAdapter from './eigenlayer/eigenlayer';
 import EigenpieAdapter from './eigenpie/eigenpie';
 import EthenaAdapter from './ethena/ethena';
-import EthereumEcosystemAdapter from './ethereum/ecosystem';
+import EthereumAdapter from './ethereum/ethereum';
 import EtherfiAdapter from './etherfi/etherfi';
 import EulerAdapter from './euler/euler';
 import FluidAdapter from './fluid/fluid';
@@ -102,7 +102,7 @@ export function getProtocolAdapters(
   storages: ContextStorages,
 ): { [key: string]: IProtocolAdapter } {
   return {
-    ethereum: new EthereumEcosystemAdapter(services, storages, ProtocolConfigs.ethereum),
+    ethereum: new EthereumAdapter(services, storages, ProtocolConfigs.ethereum),
     aave: new AaveAdapter(services, storages, ProtocolConfigs.aave),
     // ajna: new AjnaAdapter(services, storages, ProtocolConfigs.ajna),
     avalon: new AvalonAdapter(services, storages, ProtocolConfigs.avalon),

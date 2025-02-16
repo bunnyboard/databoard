@@ -45,6 +45,23 @@ export const DatabaseCollectionConfigs: DatabaseCollectionConfig = {
       },
     ],
   },
+  blockchainDataStates: {
+    name: `${CollectionPrefix}.blockchainDataStates`,
+    indies: [
+      {
+        chain: 1,
+      },
+    ],
+  },
+  blockchainDataSnapshots: {
+    name: `${CollectionPrefix}.blockchainDataSnapshots`,
+    indies: [
+      {
+        chain: 1,
+        timestamp: 1,
+      },
+    ],
+  },
 
   // datasync
   datasyncPool2: {
@@ -68,6 +85,15 @@ export const DatabaseCollectionConfigs: DatabaseCollectionConfig = {
         chain: 1,
         vault: 1,
         poolId: 1,
+      },
+    ],
+  },
+  datasyncChainBlocks: {
+    name: `${DatasyncPrefix}.chainBlocks`,
+    indies: [
+      {
+        chain: 1,
+        number: 1,
       },
     ],
   },

@@ -57,8 +57,25 @@ export default class Usdt0Adapter extends ProtocolAdapter {
         (protocolData.volumeBridgePaths as any)[pool.chain] = {};
       }
 
+      const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        pool.chain,
+        options.timestamp,
+      );
       const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(pool.chain, options.beginTime);
       const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(pool.chain, options.endTime);
+
+      const tokenBalance = await this.services.blockchain.evm.getTokenBalance({
+        chain: pool.chain,
+        address: pool.token.address,
+        owner: pool.adapter,
+        blockNumber: blockNumber,
+      });
+
+      const amountUsd = formatBigNumberToNumber(tokenBalance ? tokenBalance.toString() : '0', pool.token.decimals);
+      protocolData.totalAssetDeposited += amountUsd;
+      protocolData.totalValueLocked += amountUsd;
+      protocolData.breakdown[token.chain][token.address].totalAssetDeposited += amountUsd;
+      protocolData.breakdown[token.chain][token.address].totalValueLocked += amountUsd;
 
       const logs = await this.services.blockchain.evm.getContractLogs({
         chain: pool.chain,

@@ -1,20 +1,20 @@
 import { ProtocolConfig } from '../../types/base';
 import { EthereumBeaconDepositContract } from '../constants';
-import { ChainNames, ProtocolNames } from '../names';
+import { ChainNames } from '../names';
 
-export interface EthereumProtocolConfig extends ProtocolConfig {
-  chain: string;
-  beaconDepositContract: string;
-  beaconDepositContractBirthhday: number;
-
+export interface EvmChainProtocolConfig extends ProtocolConfig {
   // these rpcs must support eth_getBlockReceipts method
   publicRpcs: Array<string>;
 }
 
+export interface EthereumProtocolConfig extends EvmChainProtocolConfig {
+  beaconDepositContract: string;
+  beaconDepositContractBirthhday: number;
+}
+
 export const EthereumConfigs: EthereumProtocolConfig = {
-  protocol: ProtocolNames.ethereum,
-  chain: ChainNames.ethereum,
-  birthday: 1438387200, // Sat Aug 01 2015 00:00:00 GMT+0000
+  protocol: ChainNames.ethereum,
+  birthday: 1735689600, // Wed Jan 01 2025 00:00:00 GMT+0000
   beaconDepositContract: EthereumBeaconDepositContract,
   beaconDepositContractBirthhday: 1602633600, // Wed Oct 14 2020 00:00:00 GMT+0000
   publicRpcs: [
