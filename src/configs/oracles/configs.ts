@@ -2247,6 +2247,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
 
   sonic: {
     [AddressZero]: OracleSourceConfigs.FTM,
+    '0xd3dce716f3ef535c5ff8d041c1a41c3bd89b97ae': OracleSourceConfigs.USDT,
+    '0x3bce5cb273f0f148010bbea2470e7b5df84c7812': OracleSourceConfigs.ETH,
     '0x50c42deacd8fc9773493ed674b675be577f2634b': OracleSourceConfigs.ETH,
     '0x2d0e0814e62d80056181f5cd932274405966e4f0': OracleSourceConfigs.BEETS,
     '0x29219dd400f2bf60e5a23d13be72b486d4038894': OracleSourceConfigs.USDC,

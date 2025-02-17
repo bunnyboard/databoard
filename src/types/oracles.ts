@@ -9,6 +9,7 @@ export type OracleCurrencyBase =
   | 'avax'
   | 'matic'
   | 'ftm'
+  | 's'
   | 'wstETH'
   | 'core'
   | 'oas'

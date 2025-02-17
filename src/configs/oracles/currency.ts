@@ -58,4 +58,8 @@ export const OracleCurrencyBaseConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.CELO_mCUSD],
   },
+  s: {
+    currency: 'usd',
+    sources: [OracleSourceChainlinkList.S_USD],
+  },
 };

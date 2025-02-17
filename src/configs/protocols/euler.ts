@@ -161,5 +161,22 @@ export const EulerConfigs: EulerProtocolConfig = {
         '0x29c85c752e854b0Cf2372e6B6c56f260755f5120',
       ],
     },
+    {
+      chain: ChainNames.sonic,
+      birthday: 1738368000, // Sat Feb 01 2025 00:00:00 GMT+0000
+      factory: '0xf075cc8660b51d0b8a4474e3f47edac5fa034cfb',
+      vaults: [
+        '0x4c0AF5d6Bcb10B3C05FB5F3a846999a3d87534C7',
+        '0x0806af1762Bdd85B167825ab1a64E31CF9497038',
+        '0xB38D431e932fEa77d1dF0AE0dFE4400c97e597B8',
+        '0x196F3C7443E940911EE2Bb88e019Fd71400349D9',
+        '0x3D9e5462A940684073EED7e4a13d19AE0Dcd13bc',
+        '0xeEb1DC1Ca7ffC5b54aD1cc4c1088Db4E5657Cb6c',
+        '0x2De851E60e428106fC98fE94017466F8D71793d1',
+        '0xEeb63D2d370C5318ef174D366A41507F9380f093',
+        '0x9144C0F0614dD0acE859C61CC37e5386d2Ada43A',
+        '0xa5cd24d9792F4F131f5976Af935A505D19c8Db2b',
+      ],
+    },
   ],
 };

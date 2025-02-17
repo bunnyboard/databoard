@@ -314,4 +314,11 @@ export const OracleSourceChainlinkList: { [key: string]: OracleSourceChainlink }
     address: '0x214eD9Da11D2fbe465a6fc601a91E62EbEc1a0D6',
     decimals: 8,
   },
+  S_USD: {
+    type: 'chainlink',
+    chain: 'sonic',
+    currency: 'usd',
+    address: '0xc76dFb89fF298145b417d221B2c747d84952e01d',
+    decimals: 8,
+  },
 };

@@ -16,6 +16,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   MATIC: OracleCurrencyBaseConfigs.matic,
   AVAX: OracleCurrencyBaseConfigs.avax,
   FTM: OracleCurrencyBaseConfigs.ftm,
+  S: OracleCurrencyBaseConfigs.s,
   GLMR: OracleCurrencyBaseConfigs.glmr,
   CELO: OracleCurrencyBaseConfigs.celo,
   DAI: {
