@@ -2761,4 +2761,25 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.ethereum['0xc719d010b63e5bbf2c0551872cd5316ed26acd83'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
+  TOBY_WETH: {
+    type: 'univ2',
+    chain: 'base',
+    address: '0xfe83058f06869da5d70a1355dca64c873480ab1d',
+    baseToken: TokensBook.base['0xb8d98a102b0079b69ffbc760c8d857a31653e56e'],
+    quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
+  },
+  SYMM_WETH: {
+    type: 'univ2',
+    chain: 'base',
+    address: '0x3eb2a8015de1419a5089dab37b0056f0fc24f821',
+    baseToken: TokensBook.base['0x800822d361335b4d5f352dac293ca4128b5b605f'],
+    quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
+  },
+  ANON_USDC: {
+    type: 'univ2',
+    chain: 'base',
+    address: '0x3667af77ff1481aca513d2c97a32c0ac31ba813d',
+    baseToken: TokensBook.base['0x79bbf4508b1391af3a0f4b30bb5fc4aa9ab0e07c'],
+    quotaToken: TokensBook.base['0x833589fcd6edb6e08f4c7c32d4f71b54bda02913'],
+  },
 };

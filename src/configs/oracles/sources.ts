@@ -2919,4 +2919,24 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceCustomList.yETHx],
   },
+  USDX: {
+    currency: 'usd',
+    sources: [OracleSourceCurveList.USDX_USDT],
+  },
+  sUSDX: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.sUSDX],
+  },
+  TOBY: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.TOBY_WETH],
+  },
+  SYMM: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SYMM_WETH],
+  },
+  ANON: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.ANON_USDC],
+  },
 };

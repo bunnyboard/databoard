@@ -167,4 +167,11 @@ export const OracleSourceCustomList: {
     address: '0x657d9aba1dbb59e53f9f3ecaa878447dcfc96dcb',
     underlyingToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
+  sUSDX: {
+    type: 'stakingTokenWrapper',
+    chain: 'arbitrum',
+    method: 'erc4626',
+    address: '0x7788a3538c5fc7f9c7c8a74eac4c898fc8d87d92',
+    underlyingToken: TokensBook.arbitrum['0xf3527ef8de265eaa3716fb312c12847bfba66cef'],
+  },
 };

@@ -347,7 +347,7 @@ export const BalancerConfigs: BalancerProtocolConfig = {
       chain: ChainNames.gnosis,
       version: 'balv3',
       birthday: 1733356800, // Thu Dec 05 2024 00:00:00 GMT+0000
-      protocolFeeRate: 0.5, // 50% - https://etherscan.io/address/0xa731C23D7c95436Baaae9D52782f966E1ed07cc8#readContract
+      protocolFeeRate: 0.5, // 50% - https://gnosisscan.io/address/0xce88686553686DA562CE7Cea497CE749DA109f9F
       vault: '0xbA1333333333a1BA1108E8412f11850A5C319bA9',
       tokens: [
         '0xaf204776c7245bf4147c2612bf6e5972ee483701',
@@ -361,6 +361,42 @@ export const BalancerConfigs: BalancerProtocolConfig = {
         '0x4ecaba5870353805a9f068101a40e0f32ed605c6',
         '0x177127622c4a00f3d409b75571e12cb3c8973d3c',
         '0x4d18815d14fe5c3304e87b3fa18318baa5c23820',
+      ],
+    },
+    {
+      chain: ChainNames.arbitrum,
+      version: 'balv3',
+      birthday: 1737504000, // Wed Jan 22 2025 00:00:00 GMT+0000
+      protocolFeeRate: 0.5, // 50% - https://arbiscan.io/address/0xce88686553686DA562CE7Cea497CE749DA109f9F
+      vault: '0xbA1333333333a1BA1108E8412f11850A5C319bA9',
+      tokens: [
+        '0x7788a3538c5fc7f9c7c8a74eac4c898fc8d87d92',
+        '0xf3527ef8de265eaa3716fb312c12847bfba66cef',
+        '0x82af49447d8a07e3bd95bd0d56f35241523fbab1',
+        '0xaf88d065e77c8cc2239327c5edb3a432268e5831',
+        '0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f',
+        '0x5979D7b546E38E414F7E9822514be443A4800529',
+        '0x2416092f143378750bb29b79ed961ab195cceea5',
+        '0x35751007a407ca6feffe80b3cb397736d2cf4dbe',
+        '0x7dff72693f6a4149b17e7c6314655f6a9f7c8b33',
+        '0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9',
+        '0xf97f4df75117a78c1a5a0dbb814af92458539fb4',
+      ],
+    },
+    {
+      chain: ChainNames.base,
+      version: 'balv3',
+      birthday: 1737504000, // Wed Jan 22 2025 00:00:00 GMT+0000
+      protocolFeeRate: 0.5, // 50% - https://basescan.org/address/0xce88686553686DA562CE7Cea497CE749DA109f9F
+      vault: '0xbA1333333333a1BA1108E8412f11850A5C319bA9',
+      tokens: [
+        '0x4200000000000000000000000000000000000006',
+        '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913',
+        '0xb8D98a102b0079B69FFbc760C8d857A31653e56e',
+        '0xc1cba3fcea344f92d9239c08c0568f6f2f0ee452',
+        '0x2416092f143378750bb29b79ed961ab195cceea5',
+        '0x800822d361335b4d5F352Dac293cA4128b5B605f',
+        '0x5875eee11cf8398102fdad704c9e96607675467a',
       ],
     },
   ],
