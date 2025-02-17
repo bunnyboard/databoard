@@ -975,7 +975,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0xec443e7e0e745348e500084892c89218b3ba4683': OracleSourceConfigs.USR,
     '0xbdef0e9ef12e689f366fe494a7a7d0dad25d9286': OracleSourceConfigs.sUSDS,
     '0x5875eee11cf8398102fdad704c9e96607675467a': OracleSourceConfigs.sUSDS,
-    '0x820c137fa70c8691f0e44dc420a5e53c168921dc': OracleSourceConfigs.USDS,
+    '0x820c137fa70c8691f0e44dc420a5e53c168921dc': OracleSourceConfigs.DAI, // USDS
     '0x74cb668d23e6e54524e2e1e4d1c392f5fd611783': OracleSourceConfigs.AVAIL,
     '0xc0d3700000987c99b3c9009069e4f8413fd22330': OracleSourceConfigs.USDT,
     '0x0a27e060c0406f8ab7b64e3bee036a37e5a62853': OracleSourceConfigs.USDT,

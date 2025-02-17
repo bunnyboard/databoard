@@ -143,6 +143,7 @@ export const EulerConfigs: EulerProtocolConfig = {
         '0x3F8236C62f84e3E3528e35bd039e0F912CedbB7F',
         '0xFa493E76fe20B77deA83d2F3A049fCf7DAF0e3d9',
         '0x0A36D06bc4111690a1fCaE1981a18Cc6614DBe35',
+        '0x65cFEF3Efbc5586f0c05299343b8BeFb3fF5d81a',
       ],
     },
     {
