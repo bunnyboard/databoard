@@ -74,7 +74,7 @@ export const AvalonConfigs: AaveProtocolConfig = {
     // core
     {
       chain: ChainNames.core,
-      marketName: 'Main Market',
+      marketName: 'Solv Market',
       version: 3,
       birthday: 1716336000, // Wed May 22 2024 00:00:00 GMT+0000
       lendingPool: '0x67197de79b2a8fc301bab591c78ae5430b9704fd',
@@ -84,11 +84,23 @@ export const AvalonConfigs: AaveProtocolConfig = {
         address: '0x5ca296a74278bfc0fe3ee86abf7f536afef520f8',
       },
     },
+    {
+      chain: ChainNames.core,
+      marketName: 'oBTC Market',
+      version: 3,
+      birthday: 1731628800, // Fri Nov 15 2024 00:00:00 GMT+0000
+      lendingPool: '0x2f3552CE2F071B642Deeae5c84eD2EEe3Ed08D43',
+      dataProvider: '0x5c78EbB34cC5b52146D107365A66E37a677Fcf50',
+      oracle: {
+        currency: 'usd',
+        address: '0x3a6D7E3442772B84dfD8cA053cEF3cDcE8772Ba3',
+      },
+    },
 
     // bnbchain
     {
       chain: ChainNames.bnbchain,
-      marketName: 'Main Market',
+      marketName: 'Solv Market',
       version: 3,
       birthday: 1714953600, // Mon May 06 2024 00:00:00 GMT+0000
       lendingPool: '0xf9278c7c4aefac4ddfd0d496f7a1c39ca6bca6d4',
@@ -96,6 +108,18 @@ export const AvalonConfigs: AaveProtocolConfig = {
       oracle: {
         currency: 'usd',
         address: '0xc204f75f22ec427869abf80b1b8cf98e028f7fc1',
+      },
+    },
+    {
+      chain: ChainNames.bnbchain,
+      marketName: 'USDX Market',
+      version: 3,
+      birthday: 1735862400, // Fri Jan 03 2025 00:00:00 GMT+0000
+      lendingPool: '0x77fF9B0cdbb6039b9D42d92d7289110E6CCD3890',
+      dataProvider: '0x9515dC23bBE46f9C9885D24Fa276745A11b7f9D8',
+      oracle: {
+        currency: 'usd',
+        address: '0x3D678B30a3c39bEcE8ffCC3A8B3D524680Bf4d2F',
       },
     },
 
@@ -118,6 +142,18 @@ export const AvalonConfigs: AaveProtocolConfig = {
       chain: ChainNames.taiko,
       marketName: 'Main Market',
       version: 3,
+      birthday: 1737158400, // Sat Jan 18 2025 00:00:00 GMT+0000
+      lendingPool: '0xA7f1c55530B1651665C15d8104663B3f03E3386f',
+      dataProvider: '0x43248dF19B9B55f7b488CF68A1224308Af2D81eC',
+      oracle: {
+        currency: 'usd',
+        address: '0xBFe57A4cF34DD87c5476aD5A8f520f603eC46F16',
+      },
+    },
+    {
+      chain: ChainNames.taiko,
+      marketName: 'Solv Market',
+      version: 3,
       birthday: 1730246400, // Wed Oct 30 2024 00:00:00 GMT+0000
       lendingPool: '0x9dd29AA2BD662E6b569524ba00C55be39e7B00fB',
       dataProvider: '0xF6Aa54a5b60c324602C9359E8221423793e5205d',
@@ -130,7 +166,7 @@ export const AvalonConfigs: AaveProtocolConfig = {
     // bob
     {
       chain: ChainNames.bob,
-      marketName: 'Main Market',
+      marketName: 'Solv Market',
       version: 3,
       birthday: 1722297600, // Tue Jul 30 2024 00:00:00 GMT+0000
       lendingPool: '0x35B3F1BFe7cbE1e95A3DC2Ad054eB6f0D4c879b6',
@@ -138,6 +174,88 @@ export const AvalonConfigs: AaveProtocolConfig = {
       oracle: {
         currency: 'usd',
         address: '0x1Ad709515052E51057553187624DEa464bc00dd2',
+      },
+    },
+
+    // sonic
+    {
+      chain: ChainNames.sonic,
+      marketName: 'BeetSonic Market',
+      version: 3,
+      birthday: 1735689600, // Wed Jan 01 2025 00:00:00 GMT+0000
+      lendingPool: '0x6CCE1BC3fe54C9B1915e5f01ee076E4c4C3Cdd19',
+      dataProvider: '0x28350E38f241d7F24106CE5eaB1684D6ebEB4700',
+      oracle: {
+        currency: 'usd',
+        address: '0x480d69f24Efb404353669ef5aa848c009b0EB2C8',
+      },
+    },
+    {
+      chain: ChainNames.sonic,
+      marketName: 'Solv Market',
+      version: 3,
+      birthday: 1735689600, // Wed Jan 01 2025 00:00:00 GMT+0000
+      lendingPool: '0x974E2B16ddbF0ae6F78b4534353c2871213f2Dc9',
+      dataProvider: '0x23f02C2eeFe2010298Ab74059393326d3df59a02',
+      oracle: {
+        currency: 'usd',
+        address: '0x8B838ea8572c57dF644bAA71B3aEb454251056a4',
+      },
+    },
+
+    // mode
+    {
+      chain: ChainNames.mode,
+      marketName: 'Main Market',
+      version: 3,
+      birthday: 1731369600, // Tue Nov 12 2024 00:00:00 GMT+0000
+      lendingPool: '0x7454E4ACC4B7294F740e33B81224f50C28C29301',
+      dataProvider: '0xC5b05b7092257Ee3eEAf013198d30F1E8179B6C9',
+      oracle: {
+        currency: 'usd',
+        address: '0x90Ad8dCAD1455cD7FacE0f72De8eB5AB5ea1E6E6',
+      },
+    },
+
+    // ethereum
+    {
+      chain: ChainNames.ethereum,
+      marketName: 'Main Market',
+      version: 3,
+      birthday: 1721174400, // Wed Jul 17 2024 00:00:00 GMT+0000
+      lendingPool: '0x35B3F1BFe7cbE1e95A3DC2Ad054eB6f0D4c879b6',
+      dataProvider: '0xfabb0fDca4348d5A40EB1BB74AEa86A1C4eAd7E2',
+      oracle: {
+        currency: 'usd',
+        address: '0x1Ad709515052E51057553187624DEa464bc00dd2',
+      },
+    },
+
+    // bsquared
+    {
+      chain: ChainNames.bsquared,
+      marketName: 'Main Market',
+      version: 3,
+      birthday: 1730419200, // Fri Nov 01 2024 00:00:00 GMT+0000
+      lendingPool: '0xC0843a5A8527FD7221256893D4a4305145937E8c',
+      dataProvider: '0x4Ea93E846b8C6E7b3D5a5BEDF4fe6B8AED58FCEe',
+      oracle: {
+        currency: 'usd',
+        address: '0xd14dA3828e206dD421172F3BaCc9ae78745eC61B',
+      },
+    },
+
+    // base
+    {
+      chain: ChainNames.bsquared,
+      marketName: 'Main Market',
+      version: 3,
+      birthday: 1726790400, // Fri Sep 20 2024 00:00:00 GMT+0000
+      lendingPool: '0x6374a1F384737bcCCcD8fAE13064C18F7C8392e5',
+      dataProvider: '0xA9D15C669940a757Ab76C6604f2f8f1e198f7D50',
+      oracle: {
+        currency: 'usd',
+        address: '0x1e013aCD4540A2b7803405eb0433386A5aaD9D80',
       },
     },
   ],
