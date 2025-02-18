@@ -2940,4 +2940,20 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.ANON_USDC],
   },
+  SiloXAI: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.SiloXAI_USDC],
+  },
+  QNT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.QNT_WETH],
+  },
+  PEAS: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.PEAS_DAI],
+  },
+  mooBIFI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.mooBIFI_WETH],
+  },
 };

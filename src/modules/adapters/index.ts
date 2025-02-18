@@ -76,6 +76,7 @@ import ResolvAdapter from './resolv/resolv';
 import RocketpoolAdapter from './rocketpool/rocketpool';
 import RubicAdapter from './rubic/rubic';
 import ScrollNativeBridgeAdapter from './scroll/nativeBridge';
+import SilofinanceAdapter from './silofinance/silofinance';
 import SolvAdapter from './solv/solv';
 import SonicNativeBridgeAdapter from './sonic/nativeBridge';
 import StaderAdapter from './stader/stader';
@@ -261,5 +262,6 @@ export function getProtocolAdapters(
     uniswap: new UniswapAdapter(services, storages, ProtocolConfigs.uniswap),
     sushi: new UniswapAdapter(services, storages, ProtocolConfigs.sushi),
     unichainNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.unichainNativeBridge),
+    silofinance: new SilofinanceAdapter(services, storages, ProtocolConfigs.silofinance),
   };
 }

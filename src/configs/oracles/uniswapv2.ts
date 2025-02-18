@@ -2782,4 +2782,18 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.base['0x79bbf4508b1391af3a0f4b30bb5fc4aa9ab0e07c'],
     quotaToken: TokensBook.base['0x833589fcd6edb6e08f4c7c32d4f71b54bda02913'],
   },
+  QNT_WETH: {
+    type: 'univ2',
+    chain: 'ethereum',
+    address: '0x0c4a68cf6857cc76fe946d04fe85fac5fae9625e',
+    baseToken: TokensBook.ethereum['0x4a220e6096b25eadb88358cb44068a3248254675'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
+  mooBIFI_WETH: {
+    type: 'univ2',
+    chain: 'optimism',
+    address: '0x6ed6df1c23c51cb7cc67a348cc8d9e6108ea3bfe',
+    baseToken: TokensBook.optimism['0xc55e93c62874d8100dbd2dfe307edc1036ad5434'],
+    quotaToken: TokensBook.optimism['0x4200000000000000000000000000000000000006'],
+  },
 };

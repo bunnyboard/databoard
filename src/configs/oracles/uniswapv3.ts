@@ -1762,4 +1762,18 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.ethereum['0xc83e27f270cce0a3a3a29521173a83f402c1768b'],
     quotaToken: TokensBook.ethereum['0xdac17f958d2ee523a2206206994597c13d831ec7'],
   },
+  SiloXAI_USDC: {
+    type: 'univ3',
+    chain: 'ethereum',
+    address: '0x55bb9904df17f3b07551aa117841b3bbfc66646d',
+    baseToken: TokensBook.ethereum['0xd7c9f0e536dc865ae858b0c0453fe76d13c3beac'],
+    quotaToken: TokensBook.ethereum['0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'],
+  },
+  PEAS_DAI: {
+    type: 'univ3',
+    chain: 'ethereum',
+    address: '0xae750560b09ad1f5246f3b279b3767afd1d79160',
+    baseToken: TokensBook.ethereum['0x02f92800f57bcd74066f5709f1daa1a4302df875'],
+    quotaToken: TokensBook.ethereum['0x6b175474e89094c44da98b954eedeac495271d0f'],
+  },
 };

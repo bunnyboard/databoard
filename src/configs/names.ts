@@ -278,4 +278,5 @@ export const ProtocolNames = {
   b3NativeBridge: 'b3NativeBridge',
   unichainNativeBridge: 'unichainNativeBridge',
   socket: 'socket',
+  silofinance: 'silofinance',
 };

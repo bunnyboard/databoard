@@ -147,6 +147,7 @@ import { AbstractNativeBridgeConfigs } from './protocols/abstract';
 import { SushiConfigs } from './protocols/sushi';
 import { UniswapConfigs } from './protocols/uniswap';
 import { UnichainNativeBridgeConfigs } from './protocols/unichain';
+import { SilofinanceConfigs } from './protocols/silofinance';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -334,4 +335,5 @@ export const ProtocolConfigs = {
   uniswap: UniswapConfigs,
   sushi: SushiConfigs,
   unichainNativeBridge: UnichainNativeBridgeConfigs,
+  silofinance: SilofinanceConfigs,
 };

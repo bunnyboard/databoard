@@ -1,0 +1,176 @@
+import { ProtocolConfig } from '../../types/base';
+import { ChainNames, ProtocolNames } from '../names';
+
+export interface SiloRepositoryConfig {
+  chain: string;
+  birthday: number;
+  version: 1 | 2;
+  repository: string;
+  lens: string;
+  silos: Array<string>;
+}
+
+export interface SilofinanceProtocolConfig extends ProtocolConfig {
+  repositories: Array<SiloRepositoryConfig>;
+}
+
+export const SilofinanceConfigs: SilofinanceProtocolConfig = {
+  protocol: ProtocolNames.silofinance,
+  birthday: 1682985600, // Tue May 02 2023 00:00:00 GMT+0000
+  repositories: [
+    // v1
+    {
+      chain: ChainNames.ethereum,
+      version: 1,
+      birthday: 1660089600, // Wed Aug 10 2022 00:00:00 GMT+0000
+      repository: '0xbACBBefda6fD1FbF5a2d6A79916F4B6124eD2D49',
+      lens: '0x331243a425F7EE2468f0FddCe5cD83f58733Cc1C',
+      silos: [
+        '0x1cdbde50F9D122CCE8fe8D08d0D482b0161fFD15',
+        '0x992298cb9a6aafaDBc038dC85f1a1C012F45b67d',
+        '0x884725A8dd9E8591E851C88Eb665735f8D86da8C',
+        '0xE6c6Bb43D1cA6bcf2320D4c472Ad51aA747C15b1',
+        '0x3cD47F09D176d7a0998E23D41caF6bC516d519B6',
+        '0xa2AED60DbDd09c91C2e686E948592dc1c1Cd0cc6',
+        '0xF94f40873e662086666bdA3eC58801AC35B2921a',
+        '0xD48043A0f99501A057CE1De4C09d982BB433aBAC',
+      ],
+    },
+    {
+      chain: ChainNames.ethereum,
+      version: 1,
+      birthday: 1682985600, // Tue May 02 2023 00:00:00 GMT+0000
+      repository: '0xd998C35B7900b344bbBe6555cc11576942Cf309d',
+      lens: '0x0e466FC22386997daC23D1f89A43ecb2CB1e76E9',
+      silos: [
+        '0xCD7ae3373F7e76A817238261b8303FA17D2AF585',
+        '0xB5077F7561400b01106D151718099B22c4616FBF',
+        '0x4f5717f1EfDec78a960f08871903B394e7Ea95Ed',
+        '0xFCCc27AABd0AB7a0B2Ad2B7760037B1eAb61616b',
+        '0x31F3b3B86a074e2ffc4fd75D8Eb9721a75ee04DC',
+        '0xcd888c9Bd53c1CA49b9251F74Cc93C73E22963fa',
+        '0xbC6594df90ddeADA7CDd70dBc08E221a77512Deb',
+        '0xf39f64D85AD89200e3b06C67F679c45798bF6a5b',
+        '0xB1590d554dC7d66F710369983b46a5905AD34c8c',
+        '0x2eaf84b425822edF450fC5FdeEc085f2e5aDa98b',
+        '0x92E7E77163FFed918421E3CB6e0A22F2Fe8B37FA',
+        '0xac3333401e69574d433307b31f43a7826eB6f8FD',
+        '0x63E5D6cc84ed2A6336b2A06FB5b4318F70F14b45',
+        '0x67b2D089c39c59a49F8FBDea43F5878B3A3F65C3',
+        '0x03E543365cb2C762c31D5BE4555E871d17155Ac7',
+        '0xC47429cba84F8128559958c970Df5BC6CA2B9c89',
+      ],
+    },
+    {
+      chain: ChainNames.ethereum,
+      version: 1,
+      birthday: 1690502400, // Fri Jul 28 2023 00:00:00 GMT+0000
+      repository: '0xbcd67f35c7a2f212db0ad7f68fc773b5ac15377c',
+      lens: '0x32a4Bcd8DEa5E18a12a50584682f8E4B77fFF2DF',
+      silos: [
+        '0x96eFdF95Cc47fe90e8f63D2f5Ef9FB8B180dAeB9',
+        '0xb0823c25cDF531a58e581eE14f160c290fef5722',
+        '0xDc4c07CDCb0fc4A6D6446c789f9B734e22A7391a',
+        '0x6cE02337e26164aF01D049A1E7FE9215De9DF31D',
+        '0xA56D5162a4E3Bc6Ed6395b05765e18EdAa3ceDFe',
+        '0x2c2A3aBBa45BF2D52CeB0Eb3A55A4E354F986901',
+      ],
+    },
+    {
+      chain: ChainNames.arbitrum,
+      version: 1,
+      birthday: 1682985600, // Tue May 02 2023 00:00:00 GMT+0000
+      repository: '0x8658047e48CC09161f4152c79155Dac1d710Ff0a',
+      lens: '0xBDb843c7a7e48Dc543424474d7Aa63b61B5D9536',
+      silos: [
+        '0xae1Eb69e880670Ca47C50C9CE712eC2B48FaC3b6',
+        '0x7bec832FF8060cD396645Ccd51E9E9B0E5d8c6e4',
+        '0x4a2bd8dcc2539e19cb97DF98EF5afC4d069d9e4C',
+        '0x0696E6808EE11a5750733a3d821F9bB847E584FB',
+        '0xEa9961280b48fe521ece83f6cD8a7E9B2C4ffc2e',
+        '0x69eC552BE56E6505703f0C861c40039e5702037A',
+        '0xB9D098E61eC165D3c530Dd67CE77B18BE426ea91',
+        '0xfc6778a6955e1ceCAc448051de967f9b5Ff4D647',
+        '0xA8897b4552c075e884BDB8e7b704eB10DB29BF0D',
+        '0x1182559e5cf2247e4DdB7a38e28a88ec3825f2BA',
+        '0xf3FC3812360390f95dd4A57C6BC36498fB44d518',
+        '0x1E5B48F3130502FFD1DFb6d24AC3C42269e41538',
+        '0xc49b9CB9CCe1448e2E5ceF86b844980d74CeFC64',
+        '0x6036bEb05ff71215d1257fC1Db1586c87746464F',
+        '0x170A90981843461295a6CE0e0a631eE440222E29',
+        '0x9f4D6f98F29c1D482bCF0F85683155E0B3e015f5',
+        '0xA1cada48eB6bE2247e35b3a0F152C255D015F256',
+        '0xDe998E5EeF06dD09fF467086610B175F179A66A0',
+        '0x601B76d37a2e06E971d3D63Cf16f41A44E306013',
+        '0x7E38a9d2C99CaEf533E5D692ED8a2Ce4b478E585',
+        '0x00b7BBDd582Ef58445aA87Ac6Beb61F5fA36e71b',
+        '0x334B2aCfc56433Bdb3Bd8BB0D66e37e5615109Ae',
+        '0xE5741B993dBee7B433c1cfd0c885BAB901DD406d',
+      ],
+    },
+    {
+      chain: ChainNames.optimism,
+      version: 1,
+      birthday: 1716595200, // Sat May 25 2024 00:00:00 GMT+0000
+      repository: '0xD2767dAdED5910bbc205811FdbD2eEFd460AcBe9',
+      lens: '0xd3De080436b9d38DC315944c16d89C050C414Fed',
+      silos: [
+        '0x12ee4BE944b993C81b6840e088bA1dCc57F07B1D',
+        '0x8ED1609D796345661d36291B411992e85DE7B224',
+        '0xB369B1748b8d970F77213D71b474b2Fd6F9A6c1E',
+        '0x03d0b417b7Bcd0C399f1db3321985353a515B2b8',
+        '0x1eBF59146ccdc4650044fc70CAfac298A6083F5f',
+        '0x26Dd60f1B3B6c784e1e2bd767D1F31ABFEb2f04E',
+        '0xE5056228706F295E0F38774B263b4E56e0770fd5',
+        '0xd9b605F0b9e64328ae50d1b44EC14d38c009a702',
+        '0xa0Cf0085F3DF7d44EAa7AB7EFF41D7867210dB62',
+        '0x2Dc1292B9b26dBEb6d2b59E708f9356027F4E3Cc',
+        '0xa6FF502259e5cC2e5bD6ce02EA2AcbFee13858B6',
+        '0x6E74F45ce5ab06594aE799e8E8e012866a294A8F',
+        '0x5f1e2a5952446F0E231C839Dace4fEfbFc478614',
+      ],
+    },
+    {
+      chain: ChainNames.base,
+      version: 1,
+      birthday: 1719360000, // Wed Jun 26 2024 00:00:00 GMT+0000
+      repository: '0xa42001D6d2237d2c74108FE360403C4b796B7170',
+      lens: '0x196D312fd81412B6443620Ca81B41103b4E123FD',
+      silos: [
+        '0xb82a644a112AD609B89C684Ce2B73757f00D9C3D',
+        '0xDa79416990e7FA79E310Ab938B01ED75CBB64a90',
+        '0xEB42de7d17dfAFfD03AF48c2A51c3FB7274d3396',
+        '0xcaC9d4DF6c98dA614639f71400145f163B5F77c5',
+        '0x8095806d8753C0443C118D1C5e5eEC472e30BFeC',
+        '0x839Aa8B0641b77db2C9eFFEC724DD2dF46290FA2',
+        '0xBa37De7624944487791E2F11Bf16d2E7f2644Ad6',
+        '0xd54A83D47934D889364Dd5Af2d6855Dcf05745C3',
+        '0x190e5C6AabB2BeC4eB0B9b2274e9b62cdaEDF356',
+        '0x63617EF707843cde49ccb2dec7ad62B8e7976F5C',
+        '0x459B353dA108851eA3779C5399F3148a45E1Bb90',
+      ],
+    },
+
+    // v2
+    {
+      chain: ChainNames.sonic,
+      version: 2,
+      birthday: 1735862400, // Fri Jan 03 2025 00:00:00 GMT+0000
+      repository: '0xa42001D6d2237d2c74108FE360403C4b796B7170', // SiloFactory
+      lens: '0xB6AdBb29f2D8ae731C7C72036A7FD5A7E970B198',
+      silos: [
+        '0x4915F6d3C9a7B20CedFc5d3854f2802f30311d13',
+        '0x78C246f67c8A6cE03a1d894d4Cf68004Bd55Deea',
+        '0x062A36Bbe0306c2Fd7aecdf25843291fBAB96AD2',
+        '0x9603Af53dC37F4BB6386f358A51a04fA8f599101',
+        '0xFe514E71F0933F63B374056557AED3dBB381C646',
+        '0xbC24c0F594ECA381956895957c771437D61400D3',
+        '0xaaF2F78f5eA77bF4EA150E869C54eEb73185a3BF',
+        '0x1A030F39a8cf9f0b2649e97cF6d0C7853AeaCf78',
+        '0xefA367570B11f8745B403c0D458b9D2EAf424686',
+        '0xC1F3d4F5f734d6Dc9E7D4f639EbE489Acd4542ab',
+        '0x6BdF0D12d4B534d5F46c53a90ddDFBe6C0e85dC7',
+      ],
+    },
+  ],
+};
