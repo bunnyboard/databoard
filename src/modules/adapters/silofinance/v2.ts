@@ -1,10 +1,12 @@
 import { ContextServices } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
 import SiloV2Abi from '../../../configs/abi/silofinance/SiloV2.json';
+import SiloLensV2Abi from '../../../configs/abi/silofinance/SiloLensV2.json';
 import SiloConfigV2Abi from '../../../configs/abi/silofinance/SiloConfigV2.json';
 import { formatBigNumberToNumber } from '../../../lib/utils';
 import { GetSiloInfoResult } from './v1';
 import { decodeEventLog } from 'viem';
+import { TimeUnits } from '../../../configs/constants';
 
 interface GetSiloInfoV2Options extends GetProtocolDataOptions {
   services: ContextServices;
@@ -36,14 +38,14 @@ export async function getSiloInfoV2(options: GetSiloInfoV2Options): Promise<any>
     options.params.chain,
     options.timestamp,
   );
-  const beginBlock = await options.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-    options.params.chain,
-    options.beginTime,
-  );
-  const endBlock = await options.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-    options.params.chain,
-    options.endTime,
-  );
+  // const beginBlock = await options.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+  //   options.params.chain,
+  //   options.beginTime,
+  // );
+  // const endBlock = await options.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+  //   options.params.chain,
+  //   options.endTime,
+  // );
 
   const siloAddresses: Array<string> = await await options.services.blockchain.evm.readContract({
     chain: options.params.chain,
@@ -70,6 +72,15 @@ export async function getSiloInfoV2(options: GetSiloInfoV2Options): Promise<any>
       params: [siloAddress],
     });
     const daoFeerate = formatBigNumberToNumber(daoFee ? daoFee.toString() : '0', 18);
+
+    const getBorrowAPR = await options.services.blockchain.evm.readContract({
+      chain: options.params.chain,
+      abi: SiloLensV2Abi,
+      target: options.params.lens,
+      method: 'getBorrowAPR',
+      params: [siloAddress],
+    });
+    const borrowRate = formatBigNumberToNumber(getBorrowAPR ? getBorrowAPR.toString() : '0', 18);
 
     const token = await options.services.blockchain.evm.getTokenInfo({
       chain: options.params.chain,
@@ -104,13 +115,16 @@ export async function getSiloInfoV2(options: GetSiloInfoV2Options): Promise<any>
       const totalBorrowUsd =
         formatBigNumberToNumber(debtAssets ? debtAssets.toString() : '0', token.decimals) * tokenPriceUsd;
 
+      const totalFeeUsd = (totalBorrowUsd * borrowRate) / TimeUnits.DaysPerYear;
+      const protocolFeeUsd = totalFeeUsd * daoFeerate;
+
       const tokenInfo = {
         token: token,
         tokenPriceUsd: tokenPriceUsd,
         totalDepositUsd: totalDepositUsd,
         totalBorrowUsd: totalBorrowUsd,
-        totalFeeUsd: 0,
-        protocolFeeUsd: 0,
+        totalFeeUsd: totalFeeUsd,
+        protocolFeeUsd: protocolFeeUsd,
         volumes: {
           deposit: 0,
           withdraw: 0,
@@ -121,12 +135,14 @@ export async function getSiloInfoV2(options: GetSiloInfoV2Options): Promise<any>
         },
       };
 
-      const logs = await options.services.blockchain.evm.getContractLogs({
-        chain: options.params.chain,
-        address: siloAddress,
-        fromBlock: beginBlock,
-        toBlock: endBlock,
-      });
+      // const logs = await options.services.blockchain.evm.getContractLogs({
+      //   chain: options.params.chain,
+      //   address: siloAddress,
+      //   fromBlock: beginBlock,
+      //   toBlock: endBlock,
+      // });
+
+      const logs: Array<any> = [];
       const events: Array<any> = logs
         .filter((log) => Object.values(SiloV2Events).includes(log.topics[0]))
         .map((log) =>

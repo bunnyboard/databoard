@@ -55,14 +55,14 @@ export async function getSiloInfoV1(options: GetSiloInfoV1Options): Promise<any>
     options.params.chain,
     options.timestamp,
   );
-  const beginBlock = await options.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-    options.params.chain,
-    options.beginTime,
-  );
-  const endBlock = await options.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-    options.params.chain,
-    options.endTime,
-  );
+  // const beginBlock = await options.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+  //   options.params.chain,
+  //   options.beginTime,
+  // );
+  // const endBlock = await options.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+  //   options.params.chain,
+  //   options.endTime,
+  // );
 
   // get assets
   const siloAssets: Array<string> = await options.services.blockchain.evm.readContract({
@@ -179,12 +179,16 @@ export async function getSiloInfoV1(options: GetSiloInfoV1Options): Promise<any>
     }
   }
 
-  const logs = await options.services.blockchain.evm.getContractLogs({
-    chain: options.params.chain,
-    address: options.params.siloAddress,
-    fromBlock: beginBlock,
-    toBlock: endBlock,
-  });
+  // const logs = await options.services.blockchain.evm.getContractLogs({
+  //   chain: options.params.chain,
+  //   address: options.params.siloAddress,
+  //   fromBlock: beginBlock,
+  //   toBlock: endBlock,
+  // });
+
+  // disable query volumes
+  const logs: Array<any> = [];
+
   const events: Array<any> = logs
     .filter((log) => Object.values(SiloV1Events).includes(log.topics[0]))
     .map((log) =>
