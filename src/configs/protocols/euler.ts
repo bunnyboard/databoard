@@ -21,6 +21,7 @@ export const EulerConfigs: EulerProtocolConfig = {
       birthday: 1724025600, // Mon Aug 19 2024 00:00:00 GMT+0000
       factory: '0x29a56a1b8214D9Cf7c5561811750D5cBDb45CC8e',
       vaults: [
+        '0xF037eeEBA7729c39114B9711c75FbccCa4A343C8',
         '0x797DD80692c3b2dAdabCe8e30C07fDE5307D48a9',
         '0xD8b27CF359b7D15710a5BE299AF6e7Bf904984C2',
         '0xF6E2EfDF175e7a91c8847dade42f2d39A9aE57D4',
