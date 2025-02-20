@@ -46,12 +46,6 @@ export interface DatabaseCollectionConfig {
 
   // save blockchain block data
   datasyncChainBlocks: MongoCollectionConfig;
-
-  // save decoded dex pool2
-  decodeDexPool2: MongoCollectionConfig;
-
-  // save decoded dex events
-  decodeDexEvents: MongoCollectionConfig;
 }
 
 export interface EnvConfig {

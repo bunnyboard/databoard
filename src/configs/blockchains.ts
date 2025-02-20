@@ -764,4 +764,16 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
       decimals: 18,
     },
   },
+  [ChainNames.immutablezkevm]: {
+    name: ChainNames.immutablezkevm,
+    family: 'evm',
+    chainId: 13371,
+    nodeRpc: String(process.env.BLOCKCHAIN_IMMUTABLEZKEVM_NODE),
+    nativeToken: {
+      chain: ChainNames.immutablezkevm,
+      address: AddressZero,
+      symbol: 'IMX',
+      decimals: 18,
+    },
+  },
 };

@@ -6,7 +6,7 @@ import { compareAddress, normalizeAddress } from '../lib/utils';
 // import updateTokenInfo from './helpers/updateTokenInfo';
 import { BlockchainConfigs } from '../configs/blockchains';
 import { Token } from '../types/base';
-import { OracleConfigs } from '../configs/oracles/configs';
+// import { OracleConfigs } from '../configs/oracles/configs';
 import { AddressE, AddressZero } from '../configs/constants';
 
 // help to get supported tokens on li.fi
@@ -32,10 +32,10 @@ import { AddressE, AddressZero } from '../configs/constants';
               address: tokenAddress,
             };
 
-            if (!OracleConfigs[token.chain] || !OracleConfigs[token.chain][token.address]) {
-              console.log('oracle not found for token', token.address, token.chain, token.symbol);
-              continue;
-            }
+            // if (!OracleConfigs[token.chain] || !OracleConfigs[token.chain][token.address]) {
+            //   console.log('oracle not found for token', token.address, token.chain, token.symbol);
+            //   continue;
+            // }
 
             tokens.push(token);
           }

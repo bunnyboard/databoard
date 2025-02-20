@@ -7,7 +7,6 @@ dotenv.config();
 
 const CollectionPrefix = 'databoard';
 const DatasyncPrefix = 'datasync';
-const DecodePrefix = 'decoded';
 export const DatabaseCollectionConfigs: DatabaseCollectionConfig = {
   caching: {
     name: `${CollectionPrefix}.caching`,
@@ -94,33 +93,6 @@ export const DatabaseCollectionConfigs: DatabaseCollectionConfig = {
       {
         chain: 1,
         number: 1,
-      },
-    ],
-  },
-
-  decodeDexPool2: {
-    name: `${DecodePrefix}.dexPool2`,
-    indies: [
-      {
-        chain: 1,
-        address: 1,
-        token0: 1,
-        token1: 1,
-      },
-    ],
-  },
-  decodeDexEvents: {
-    name: `${DecodePrefix}.dexEvents`,
-    indies: [
-      {
-        chain: 1,
-        transactionHash: 1,
-        logIndex: 1,
-      },
-      {
-        chain: 1,
-        factory: 1,
-        blockNumber: 1,
       },
     ],
   },
