@@ -1634,6 +1634,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.FTM,
     [AddressE]: OracleSourceConfigs.FTM,
     [AddressF]: OracleSourceConfigs.FTM,
+    '0x593ae1d34c8bd7587c11d539e4f42bff242c82af': OracleSourceConfigs.LUNA,
+    '0x846e4d51d7e2043c1a87e0ab7490b93fb940357b': OracleSourceConfigs.UST,
     '0xd67de0e0a0fd7b15dc8348bb9be742f3c5850454': OracleSourceConfigs.BNB,
     '0x40df1ae6074c35047bff66675488aa2f9f6384f3': OracleSourceConfigs.MATIC,
     '0xfe7eda5f2c56160d406869a8aa4b2f365d544c7b': OracleSourceConfigs.ETH,

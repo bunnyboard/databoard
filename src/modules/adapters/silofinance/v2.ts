@@ -93,7 +93,7 @@ export async function getSiloInfoV2(options: GetSiloInfoV2Options): Promise<any>
         timestamp: options.timestamp,
       });
 
-      const [, , protectedAssets, collateralAssets, debtAssets] = await options.services.blockchain.evm.readContract({
+      const siloStorage = await options.services.blockchain.evm.readContract({
         chain: options.params.chain,
         abi: SiloV2Abi,
         target: siloAddress,
@@ -102,6 +102,11 @@ export async function getSiloInfoV2(options: GetSiloInfoV2Options): Promise<any>
         blockNumber: blockNumber,
       });
 
+      if (!siloStorage) {
+        continue;
+      }
+
+      const [, , protectedAssets, collateralAssets, debtAssets] = siloStorage;
       const protectedAssetsValue = formatBigNumberToNumber(
         protectedAssets ? protectedAssets.toString() : '0',
         token.decimals,
