@@ -90,7 +90,7 @@ export default class FluidAdapter extends ProtocolAdapter {
         blockNumber: blockNumber,
       });
       if (allDexAddresses) {
-        const calls: Array<ContractCall> = allDexAddresses.map((dexAddress: string) => {
+        const getDexTokensCalls: Array<ContractCall> = allDexAddresses.map((dexAddress: string) => {
           return {
             target: marketConfig.dexResolver,
             abi: DexResolverAbi,
@@ -99,29 +99,49 @@ export default class FluidAdapter extends ProtocolAdapter {
           };
         });
 
+        const getDexConfigsCalls: Array<ContractCall> = allDexAddresses.map((dexAddress: string) => {
+          return {
+            target: marketConfig.dexResolver,
+            abi: DexResolverAbi,
+            method: 'getDexConfigs',
+            params: [dexAddress],
+          };
+        });
+
         const dexTokens: Array<any> = await this.services.blockchain.evm.multicall({
           chain: marketConfig.chain,
           blockNumber: blockNumber,
-          calls: calls,
+          calls: getDexTokensCalls,
+        });
+        const dexConfigs: Array<any> = await this.services.blockchain.evm.multicall({
+          chain: marketConfig.chain,
+          blockNumber: blockNumber,
+          calls: getDexConfigsCalls,
         });
 
         for (let i = 0; i < allDexAddresses.length; i++) {
-          const [token0_, token1_] = dexTokens[i];
           const [token0, token1] = await Promise.all([
             this.services.blockchain.evm.getTokenInfo({
               chain: marketConfig.chain,
-              address: token0_,
+              address: dexTokens[i][0],
             }),
             this.services.blockchain.evm.getTokenInfo({
               chain: marketConfig.chain,
-              address: token1_,
+              address: dexTokens[i][1],
             }),
           ]);
           if (token0 && token1) {
+            const fee = formatBigNumberToNumber(dexConfigs[i].fee ? dexConfigs[i].fee.toString() : '0', 4);
+            const revenueCut = formatBigNumberToNumber(
+              dexConfigs[i].revenueCut ? dexConfigs[i].revenueCut.toString() : '0',
+              6,
+            );
             dexes.push({
               address: allDexAddresses[i],
               token0,
               token1,
+              fee,
+              revenueCut,
             });
           }
         }
@@ -211,6 +231,13 @@ export default class FluidAdapter extends ProtocolAdapter {
             volumeUsd = formatBigNumberToNumber(event.args.amountIn.toString(), dex.token1.decimals) * tokenPriceUsd;
           }
 
+          const swapFeeusd = volumeUsd * dex.fee;
+          const protocolRevenue = swapFeeusd * dex.revenueCut;
+          const supplySideRevenue = swapFeeusd - protocolRevenue;
+
+          protocolData.totalFees += swapFeeusd;
+          protocolData.protocolRevenue += protocolRevenue;
+          protocolData.supplySideRevenue += supplySideRevenue;
           (protocolData.volumes.swap as number) += volumeUsd;
         }
       }
