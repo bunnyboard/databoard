@@ -2,25 +2,18 @@ import { TimeUnits } from '../../configs/constants';
 import envConfig from '../../configs/envConfig';
 import logger from '../../lib/logger';
 import { getDateString, getStartDayTimestamp, getTimestamp, getTodayUTCTimestamp } from '../../lib/utils';
-import ExecuteSession from '../../services/executeSession';
 import { ProtocolConfig } from '../../types/base';
 import { ContextServices, ContextStorages, IProtocolAdapter } from '../../types/namespaces';
 import { GetProtocolDataOptions, RunAdapterOptions, TestAdapterOptions } from '../../types/options';
+import ProtocolAdapter from './protocol';
 
-export default class BlockchainAdapter implements IProtocolAdapter {
+// the same with ProtocolAdapter
+// but data will be saved to blockchains collections
+export default class BlockchainAdapter extends ProtocolAdapter implements IProtocolAdapter {
   public readonly name: string = 'adapter';
-  public readonly services: ContextServices;
-  public readonly storages: ContextStorages;
-
-  public protocolConfig: ProtocolConfig;
-
-  public executeSession: ExecuteSession;
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {
-    this.services = services;
-    this.storages = storages;
-    this.protocolConfig = protocolConfig;
-    this.executeSession = new ExecuteSession();
+    super(services, storages, protocolConfig);
   }
 
   public async getProtocolData(options: GetProtocolDataOptions): Promise<any | null> {

@@ -1776,4 +1776,21 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.ethereum['0x02f92800f57bcd74066f5709f1daa1a4302df875'],
     quotaToken: TokensBook.ethereum['0x6b175474e89094c44da98b954eedeac495271d0f'],
   },
+  EGGS_USDC: {
+    type: 'univ3',
+    chain: 'sonic',
+    address: '0x66a8289bdd968d1157eb1a608f60a87759632cd6',
+    baseToken: {
+      chain: 'sonic',
+      symbol: 'EGGS',
+      decimals: 18,
+      address: '0xf26ff70573ddc8a90bd7865af8d7d70b8ff019bc',
+    },
+    quotaToken: {
+      chain: 'sonic',
+      symbol: 'USDC',
+      decimals: 6,
+      address: '0x29219dd400f2bf60e5a23d13be72b486d4038894',
+    },
+  },
 };

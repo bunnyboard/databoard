@@ -7,11 +7,11 @@ import AdapterDataHelper from '../helpers';
 import Erc20Abi from '../../../configs/abi/ERC20.json';
 import { AddressZero, Erc20TransferEventSignature, MockBitcoinAddress } from '../../../configs/constants';
 import { decodeEventLog } from 'viem';
-import ProtocolExtendedAdapter from '../extended';
 import { ThresholdBtcProtocolConfig } from '../../../configs/protocols/threshold';
 import { ChainNames } from '../../../configs/names';
+import ProtocolAdapter from '../protocol';
 
-export default class ThresholdbtcAdapter extends ProtocolExtendedAdapter {
+export default class ThresholdbtcAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.thresholdbtc';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

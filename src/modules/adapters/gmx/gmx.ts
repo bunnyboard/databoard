@@ -3,7 +3,6 @@ import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/doma
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
 import AdapterDataHelper from '../helpers';
-import ProtocolExtendedAdapter from '../extended';
 import { GmxProtocolConfig } from '../../../configs/protocols/gmx';
 import GmxVaultV1Abi from '../../../configs/abi/gmx/Vault.json';
 import { ContractCall } from '../../../services/blockchains/domains';
@@ -12,6 +11,7 @@ import { compareAddress, formatBigNumberToNumber, normalizeAddress } from '../..
 import Erc20Abi from '../../../configs/abi/ERC20.json';
 import EventEmitterAbi from '../../../configs/abi/gmx/EventEmitter.json';
 import GmxUtils from './utils';
+import ProtocolAdapter from '../protocol';
 
 const Events = {
   // add/remove liquidity
@@ -34,7 +34,7 @@ const Events = {
   Event1: '0x137a44067c8961cd7e1d876f4754a5a3a75989b4552f1843fc69c3b372def160',
 };
 
-export default class GmxAdapter extends ProtocolExtendedAdapter {
+export default class GmxAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.gmx';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

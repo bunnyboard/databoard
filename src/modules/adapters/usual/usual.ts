@@ -5,17 +5,17 @@ import { GetProtocolDataOptions } from '../../../types/options';
 import { compareAddress, formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
 import AdapterDataHelper from '../helpers';
 import Erc20Abi from '../../../configs/abi/ERC20.json';
-import ProtocolExtendedAdapter from '../extended';
 import { UsualProtocolConfig } from '../../../configs/protocols/usual';
 import { decodeEventLog } from 'viem';
 import UsualDistributionAbi from '../../../configs/abi/usual/DistributionModule.json';
 import { AddressZero, Erc20TransferEventSignature } from '../../../configs/constants';
+import ProtocolAdapter from '../protocol';
 
 const Events = {
   OffChainDistributionClaimed: '0xade91347622244e95f2d575f1011c6c0d78757d5ed8b7b5ff9e5c35d4d834ab0',
 };
 
-export default class UsualAdapter extends ProtocolExtendedAdapter {
+export default class UsualAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.usual';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

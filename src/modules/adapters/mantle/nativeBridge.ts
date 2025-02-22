@@ -10,7 +10,7 @@ import { AddressZero } from '../../../configs/constants';
 import { OptimismBridgeProtocolConfig } from '../../../configs/protocols/optimism';
 import { ContractCall } from '../../../services/blockchains/domains';
 import L1StandardBridgeAbi from '../../../configs/abi/mantle/L1StandardBridge.json';
-import ProtocolExtendedAdapter from '../extended';
+import ProtocolAdapter from '../protocol';
 
 const TokenMNT: Token = {
   chain: 'ethereum',
@@ -19,7 +19,7 @@ const TokenMNT: Token = {
   address: normalizeAddress('0x3c3a81e81dc49a522a592e7622a7e711c06bf354'),
 };
 
-export default class MantleNativeBridgeAdapter extends ProtocolExtendedAdapter {
+export default class MantleNativeBridgeAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.mantle';
 
   protected readonly abiConfigs: any;

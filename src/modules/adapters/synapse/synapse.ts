@@ -9,14 +9,14 @@ import { SynapseProtocolConfig } from '../../../configs/protocols/synapse';
 import SynapseBridgeAbi from '../../../configs/abi/synapse/SynapseBridge.json';
 import FastBridgeRfqAbi from '../../../configs/abi/synapse/FastBridge.json';
 import { getChainNameById } from '../../../lib/helpers';
-import ProtocolExtendedAdapter from '../extended';
+import ProtocolAdapter from '../protocol';
 
 const TokenDeposit = '0xda5273705dbef4bf1b902a131c2eac086b7e1476a8ab0cb4da08af1fe1bd8e3b';
 const TokenDepositAndSwap = '0x79c15604b92ef54d3f61f0c40caab8857927ca3d5092367163b4562c1699eb5f';
 const TokenRedeemAndSwap = '0x91f25e9be0134ec851830e0e76dc71e06f9dade75a9b84e9524071dbbc319425';
 const BridgeRequested = '0x120ea0364f36cdac7983bcfdd55270ca09d7f9b314a2ebc425a3b01ab1d6403a';
 
-export default class SynapseAdapter extends ProtocolExtendedAdapter {
+export default class SynapseAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.synapse';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

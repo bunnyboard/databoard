@@ -4,15 +4,15 @@ import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
 import AdapterDataHelper from '../helpers';
 import { decodeEventLog } from 'viem';
-import ProtocolExtendedAdapter from '../extended';
 import { ChainlinkCcipProtocolConfig } from '../../../configs/protocols/chainlink';
 import EVM2EVMOnRampAbi from '../../../configs/abi/chainlink/EVM2EVMOnRamp.json';
 import { formatBigNumberToNumber } from '../../../lib/utils';
+import ProtocolAdapter from '../protocol';
 
 // on Outbound lanes contracts
 const CCIPSendRequested = '0xd0c3c799bf9e2639de44391e7f524d229b2b55f5b1ea94b2bf7da42f7243dddd';
 
-export default class ChainlinkCcipAdapter extends ProtocolExtendedAdapter {
+export default class ChainlinkCcipAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.chainlink';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

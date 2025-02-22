@@ -62,9 +62,17 @@ export const TokenBookDexBase = {
   ],
   avalanche: [
     '0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7', // WAVAX
+    '0x9702230a8ea53601f5cd2dc00fdbc13d4df4a8c7', // USDt
+    '0xc7198437980c041c805a1edcba50c1ce5db95118', // USDT.e
+    '0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664', // USDC.e
+    '0x49d5c2bdffac6ce2bfdb6640f4f80f226bc10bab', // WETH.e
+    '0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e', // USDC
+    '0x130966628846bfd36ff31a822705796e8cb8c18d', // MIM
+    '0x37b608519f91f70f2eeb0e5ed9af4061722e4f76', // SUSHI
   ],
   base: [
     '0x4200000000000000000000000000000000000006', // WETH
+    '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913', // USDC
   ],
   polygon: [
     '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270', // WMATIC

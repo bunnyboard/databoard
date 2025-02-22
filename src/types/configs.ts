@@ -26,6 +26,9 @@ export interface DatabaseCollectionConfig {
   // save contract logs
   contractLogs: MongoCollectionConfig;
 
+  // save blockchain logs for block
+  blockLogs: MongoCollectionConfig;
+
   // save protocol current data state
   protocolDataStates: MongoCollectionConfig;
 

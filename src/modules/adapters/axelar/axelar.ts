@@ -5,16 +5,16 @@ import { GetProtocolDataOptions } from '../../../types/options';
 import AdapterDataHelper from '../helpers';
 import { AxelarProtocolConfig } from '../../../configs/protocols/axelar';
 import axios from 'axios';
-import ProtocolExtendedAdapter from '../extended';
 import GatewayAbi from '../../../configs/abi/axelar/AxelarGateway.json';
 import { decodeEventLog } from 'viem';
 import { formatBigNumberToNumber } from '../../../lib/utils';
+import ProtocolAdapter from '../protocol';
 
 const Events = {
   ContractCallWithToken: '0x7e50569d26be643bda7757722291ec66b1be66d8283474ae3fab5a98f878a7a2',
 };
 
-export default class AxelarAdapter extends ProtocolExtendedAdapter {
+export default class AxelarAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.axelar';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

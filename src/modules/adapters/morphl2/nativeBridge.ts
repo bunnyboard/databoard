@@ -9,7 +9,7 @@ import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
 import { MorphL2BridgeProtocolConfig } from '../../../configs/protocols/morphl2';
 import EthGatewayAbi from '../../../configs/abi/morphl2/L1ETHGateway.json';
 import Erc20GatewayAbi from '../../../configs/abi/morphl2/L1StandardERC20Gateway.json';
-import ProtocolExtendedAdapter from '../extended';
+import ProtocolAdapter from '../protocol';
 
 const Events = {
   DepositETH: '0xa900620ce06f0a525c07f9b89600c2297c6da3322a0cd2f034fbded0c1148eda',
@@ -19,7 +19,7 @@ const Events = {
   FinalizeWithdrawERC20: '0xc6f985873b37805705f6bce756dce3d1ff4b603e298d506288cce499926846a7',
 };
 
-export default class MorphL2NativeBridgeAdapter extends ProtocolExtendedAdapter {
+export default class MorphL2NativeBridgeAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.morphl2 🐨';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

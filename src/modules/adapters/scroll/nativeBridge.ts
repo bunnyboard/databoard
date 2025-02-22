@@ -9,7 +9,7 @@ import { AddressZero } from '../../../configs/constants';
 import EthGatewayAbi from '../../../configs/abi/scroll/L1ETHGateway.json';
 import Erc20GatewayAbi from '../../../configs/abi/scroll/L1StandardERC20Gateway.json';
 import { ScrollBridgeProtocolConfig } from '../../../configs/protocols/scroll';
-import ProtocolExtendedAdapter from '../extended';
+import ProtocolAdapter from '../protocol';
 
 const Events = {
   // ERC20 deposit
@@ -21,7 +21,7 @@ const Events = {
   FinalizeWithdrawETH: '0x96db5d1cee1dd2760826bb56fabd9c9f6e978083e0a8b88559c741a29e9746e7',
 };
 
-export default class ScrollNativeBridgeAdapter extends ProtocolExtendedAdapter {
+export default class ScrollNativeBridgeAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.scroll 📜';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

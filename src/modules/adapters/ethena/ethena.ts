@@ -11,8 +11,8 @@ import { SolidityUnits } from '../../../configs/constants';
 import MintingV1Abi from '../../../configs/abi/ethena/EthenaMinting.json';
 import MintingV2Abi from '../../../configs/abi/ethena/EthenaMintingV2.json';
 import { decodeEventLog } from 'viem';
-import ProtocolExtendedAdapter from '../extended';
 import envConfig from '../../../configs/envConfig';
+import ProtocolAdapter from '../protocol';
 
 const MintingV1Events = {
   Mint: '0xf114ca9eb82947af39f957fa726280fd3d5d81c3d7635a4aeb5c302962856eba',
@@ -24,7 +24,7 @@ const MintingV2Events = {
   Redeem: '0x0ea36c5b7b274f8fe58654fe884bb9307dec1899e0312f40ae10d9b3d100cc0c',
 };
 
-export default class EthenaAdapter extends ProtocolExtendedAdapter {
+export default class EthenaAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.ethena';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

@@ -2956,4 +2956,16 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.mooBIFI_WETH],
   },
+  Rootkit: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.Rootkit_WETH],
+  },
+  TOWER: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.TOWER_WETH],
+  },
+  EGGS: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.EGGS_USDC],
+  },
 };

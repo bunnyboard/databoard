@@ -6,12 +6,12 @@ import { compareAddress, formatBigNumberToNumber, normalizeAddress } from '../..
 import AdapterDataHelper from '../helpers';
 import Erc20Abi from '../../../configs/abi/ERC20.json';
 import { AddressZero, Erc20TransferEventSignature, MockBitcoinAddress } from '../../../configs/constants';
-import ProtocolExtendedAdapter from '../extended';
 import { LombardProtocolConfig } from '../../../configs/protocols/lombard';
 import { ChainNames } from '../../../configs/names';
 import { decodeEventLog } from 'viem';
+import ProtocolAdapter from '../protocol';
 
-export default class LombardAdapter extends ProtocolExtendedAdapter {
+export default class LombardAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.lombard';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

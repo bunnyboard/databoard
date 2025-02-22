@@ -6,16 +6,16 @@ import AdapterDataHelper from '../helpers';
 import { AddressZero } from '../../../configs/constants';
 import { decodeEventLog } from 'viem';
 import { formatBigNumberToNumber } from '../../../lib/utils';
-import ProtocolExtendedAdapter from '../extended';
 import { LoopringBridgeProtocolConfig } from '../../../configs/protocols/loopring';
 import LoopringExchangeAbi from '../../../configs/abi/loopring/ExchangeV3.json';
+import ProtocolAdapter from '../protocol';
 
 const Events = {
   DepositRequested: '0x73ff7b101bcdc22f199e8e1dd9893170a683d6897be4f1086ca05705abb886ae',
   WithdrawalCompleted: '0x0d22d7344fc6871a839149fd89f9fd88a6c29cf797a67114772a9d4df5f8c96b',
 };
 
-export default class LoopringNativeBridgeAdapter extends ProtocolExtendedAdapter {
+export default class LoopringNativeBridgeAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.loopring';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

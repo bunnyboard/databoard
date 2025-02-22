@@ -4,13 +4,13 @@ import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
 import AdapterDataHelper from '../helpers';
 import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
-import ProtocolExtendedAdapter from '../extended';
 import { HyperLiquidBridgeProtocolConfig } from '../../../configs/protocols/hyperliquid';
 import Erc20Abi from '../../../configs/abi/ERC20.json';
 import { decodeEventLog } from 'viem';
 import { Erc20TransferEventSignature } from '../../../configs/constants';
+import ProtocolAdapter from '../protocol';
 
-export default class HyperLiquidNativeBridgeAdapter extends ProtocolExtendedAdapter {
+export default class HyperLiquidNativeBridgeAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.hyperliquid';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

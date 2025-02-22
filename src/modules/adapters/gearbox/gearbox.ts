@@ -4,7 +4,6 @@ import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
 import AdapterDataHelper from '../helpers';
 import { formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
-import ProtocolExtendedAdapter from '../extended';
 import { GearboxProtocolConfig } from '../../../configs/protocols/gearbox';
 import PoolV3Abi from '../../../configs/abi/gearbox/PoolV3.json';
 import CreditManagerV3Abi from '../../../configs/abi/gearbox/CreditManagerV3.json';
@@ -13,6 +12,7 @@ import { ContractCall } from '../../../services/blockchains/domains';
 import { decodeEventLog } from 'viem';
 import { SolidityUnits } from '../../../configs/constants';
 import envConfig from '../../../configs/envConfig';
+import ProtocolAdapter from '../protocol';
 
 const PoolV3Events = {
   Deposit: '0xdcbc1c05240f31ff3ad067ef1ee35ce4997762752e3a095284754544f4c709d7',
@@ -27,7 +27,7 @@ const CreditV3Events = {
   LiquidateCreditAccount: '0x7dfecd8419723a9d3954585a30c2a270165d70aafa146c11c1e1b88ae1439064',
 };
 
-export default class GearboxAdapter extends ProtocolExtendedAdapter {
+export default class GearboxAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.gearbox';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

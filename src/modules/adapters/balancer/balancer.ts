@@ -11,9 +11,9 @@ import WeightPoolAbi from '../../../configs/abi/balancer/WeightedPool.json';
 import StablePoolV3Abi from '../../../configs/abi/balancer/StablePoolV3.json';
 import { formatBigNumberToNumber, getTimestamp, normalizeAddress } from '../../../lib/utils';
 import logger from '../../../lib/logger';
-import ProtocolExtendedAdapter from '../extended';
 import envConfig from '../../../configs/envConfig';
 import { PoolBalancer, PoolBalancerTypes } from '../../../types/domains/pool2';
+import ProtocolAdapter from '../protocol';
 
 const Events = {
   FlashLoan: '0x0d7d75e01ab95780d3cd1c8ec0dd6c2ce19e3a20427eec8bf53283b6fb8e95f0',
@@ -27,7 +27,7 @@ const V3Events = {
   Swap: '0x0874b2d545cb271cdbda4e093020c452328b24af12382ed62c4d00f5c26709db',
 };
 
-export default class BalancerAdapter extends ProtocolExtendedAdapter {
+export default class BalancerAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.balancer';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

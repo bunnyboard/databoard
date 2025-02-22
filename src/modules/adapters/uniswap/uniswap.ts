@@ -1,38 +1,19 @@
+import { UniswapProtocolConfig } from '../../../configs/protocols/uniswap';
+import logger from '../../../lib/logger';
+import { getTimestamp } from '../../../lib/utils';
 import { ProtocolConfig } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
-import { GetProtocolDataOptions } from '../../../types/options';
+import { GetProtocolDataOptions, TestAdapterOptions } from '../../../types/options';
 import AdapterDataHelper from '../helpers';
-import ProtocolExtendedAdapter from '../extended';
-import { UniswapProtocolConfig } from '../../../configs/protocols/uniswap';
-import UniswapSubgraphQuery, { SubgraphQueryParams, SubgraphQueryResult } from './subgraph';
-import { Pool2Types } from '../../../types/domains/pool2';
-import logger from '../../../lib/logger';
+import UniswapCore from './core';
+import UniswapDatasync from './datasync';
 
-export default class UniswapAdapter extends ProtocolExtendedAdapter {
+export default class UniswapAdapter extends UniswapDatasync {
   public readonly name: string = 'adapter.uniswap 🦄';
-
-  public readonly subgraphV2QueryParams: SubgraphQueryParams;
-  public readonly subgraphV3QueryParams: SubgraphQueryParams;
-  public readonly subgraphQuery: UniswapSubgraphQuery;
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {
     super(services, storages, protocolConfig);
-
-    this.subgraphV2QueryParams = {
-      factories: 'uniswapFactories',
-      totalVolumeUSD: 'totalVolumeUSD',
-      totalLiquidityUSD: 'totalLiquidityUSD',
-    };
-
-    this.subgraphV3QueryParams = {
-      factories: 'factories',
-      totalVolumeUSD: 'totalVolumeUSD',
-      totalFeesUSD: 'totalFeesUSD',
-      totalLiquidityUSD: 'totalValueLockedUSD',
-    };
-
-    this.subgraphQuery = new UniswapSubgraphQuery(services);
   }
 
   public async getProtocolData(options: GetProtocolDataOptions): Promise<ProtocolData | null> {
@@ -51,108 +32,104 @@ export default class UniswapAdapter extends ProtocolExtendedAdapter {
       breakdownChains: {},
     };
 
-    const uniswapConfig = this.protocolConfig as UniswapProtocolConfig;
-    for (const factoryConfig of uniswapConfig.factories) {
-      if (factoryConfig.birthday > options.timestamp) {
-        continue;
+    // sync pools from factory logs
+    await this.indexPool2();
+
+    const config = this.protocolConfig as UniswapProtocolConfig;
+    for (const factoryConfig of config.factories) {
+      const totalLiquidityUsd = await UniswapCore.getLiquidityUsd({
+        storages: this.storages,
+        services: this.services,
+        factoryConfig: factoryConfig,
+        timestamp: options.timestamp,
+      });
+
+      protocolData.totalAssetDeposited += totalLiquidityUsd;
+      protocolData.totalValueLocked += totalLiquidityUsd;
+      (protocolData.totalSupplied as number) += totalLiquidityUsd;
+
+      if (!(protocolData.breakdownChains as any)[factoryConfig.chain]) {
+        (protocolData.breakdownChains as any)[factoryConfig.chain] = {
+          ...getInitialProtocolCoreMetrics(),
+          totalSupplied: 0,
+          volumes: {
+            deposit: 0,
+            withdraw: 0,
+            swap: 0,
+          },
+        };
       }
+      (protocolData.breakdownChains as any)[factoryConfig.chain].totalAssetDeposited += totalLiquidityUsd;
+      (protocolData.breakdownChains as any)[factoryConfig.chain].totalValueLocked += totalLiquidityUsd;
+      (protocolData.breakdownChains as any)[factoryConfig.chain].totalSupplied += totalLiquidityUsd;
 
-      if (factoryConfig.subgraph) {
-        if (!(protocolData.breakdownChains as any)[factoryConfig.chain]) {
-          (protocolData.breakdownChains as any)[factoryConfig.chain] = {
-            ...getInitialProtocolCoreMetrics(),
-            totalSupplied: 0,
-            volumes: {
-              deposit: 0,
-              withdraw: 0,
-              swap: 0,
-            },
-          };
-        }
+      const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        factoryConfig.chain,
+        options.beginTime,
+      );
+      const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        factoryConfig.chain,
+        options.endTime,
+      );
 
-        const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-          factoryConfig.chain,
-          options.timestamp,
-        );
-        const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-          factoryConfig.chain,
-          options.beginTime,
-        );
-        const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-          factoryConfig.chain,
-          options.endTime,
-        );
+      // sync logs to query volumes
+      await this.indexChainLogs({
+        chain: factoryConfig.chain,
+        fromBlock: beginBlock,
+        toBlock: endBlock,
+      });
 
-        logger.debug('getting data from subgraph', {
-          service: this.name,
-          chain: factoryConfig.chain,
-          factory: factoryConfig.factory,
-          version: factoryConfig.version,
-          fromBlock: beginBlock,
-          toBlock: endBlock,
-        });
+      const logsData = await UniswapCore.getLogsDataUsd({
+        storages: this.storages,
+        services: this.services,
+        factoryConfig: factoryConfig,
+        timestamp: options.timestamp,
+        fromBlock: beginBlock,
+        toBlock: endBlock,
+      });
 
-        let response: SubgraphQueryResult | null = null;
-        if (factoryConfig.version === Pool2Types.univ2) {
-          response = await this.subgraphQuery.querySubgraphV2({
-            factoryConfig: factoryConfig,
-            params: this.subgraphV2QueryParams,
+      protocolData.totalFees += logsData.protocolRevenueUsd + logsData.supplySideRevenueUsd;
+      protocolData.protocolRevenue += logsData.protocolRevenueUsd;
+      protocolData.supplySideRevenue += logsData.supplySideRevenueUsd;
+      (protocolData.volumes.swap as number) += logsData.swapVolumeUsd;
+      (protocolData.volumes.deposit as number) += logsData.depositVolumeUsd;
+      (protocolData.volumes.withdraw as number) += logsData.withdrawVolumeUsd;
 
-            blockNumber: blockNumber,
-            fromBlock: beginBlock,
-            toBlock: endBlock,
-
-            timestamp: options.timestamp,
-            fromTime: options.beginTime,
-            toTime: options.endTime,
-          });
-        } else if (factoryConfig.version === Pool2Types.univ3) {
-          response = await this.subgraphQuery.querySubgraphV3({
-            factoryConfig: factoryConfig,
-            params: this.subgraphV3QueryParams,
-
-            blockNumber: blockNumber,
-            fromBlock: beginBlock,
-            toBlock: endBlock,
-
-            timestamp: options.timestamp,
-            fromTime: options.beginTime,
-            toTime: options.endTime,
-
-            countPools:
-              factoryConfig.subgraph &&
-              factoryConfig.subgraph.customParams &&
-              factoryConfig.subgraph.customParams.countTvlByPools,
-          });
-        }
-
-        if (response) {
-          protocolData.totalFees += response.totalFeesUsd;
-          protocolData.supplySideRevenue += response.totalLpFeesUsd;
-          protocolData.protocolRevenue += response.totalProtocolFeesUsd;
-          protocolData.totalAssetDeposited += response.liquidityUsd;
-          protocolData.totalValueLocked += response.liquidityUsd;
-          (protocolData.totalSupplied as number) += response.liquidityUsd;
-          (protocolData.volumes.swap as number) += response.volumeSwapUsd;
-          (protocolData.volumes.deposit as number) += response.volumeAddLiquidityUsd;
-          (protocolData.volumes.withdraw as number) += response.volumeRemoveLiquidityUsd;
-
-          // add to chain breakdown
-          (protocolData.breakdownChains as any)[factoryConfig.chain].totalFees += response.totalFeesUsd;
-          (protocolData.breakdownChains as any)[factoryConfig.chain].supplySideRevenue += response.totalLpFeesUsd;
-          (protocolData.breakdownChains as any)[factoryConfig.chain].protocolRevenue += response.totalProtocolFeesUsd;
-          (protocolData.breakdownChains as any)[factoryConfig.chain].totalAssetDeposited += response.liquidityUsd;
-          (protocolData.breakdownChains as any)[factoryConfig.chain].totalValueLocked += response.liquidityUsd;
-          ((protocolData.breakdownChains as any)[factoryConfig.chain].totalSupplied as number) += response.liquidityUsd;
-          ((protocolData.breakdownChains as any)[factoryConfig.chain].volumes.swap as number) += response.volumeSwapUsd;
-          ((protocolData.breakdownChains as any)[factoryConfig.chain].volumes.deposit as number) +=
-            response.volumeAddLiquidityUsd;
-          ((protocolData.breakdownChains as any)[factoryConfig.chain].volumes.withdraw as number) +=
-            response.volumeRemoveLiquidityUsd;
-        }
-      }
+      (protocolData.breakdownChains as any)[factoryConfig.chain].totalFees +=
+        logsData.protocolRevenueUsd + logsData.supplySideRevenueUsd;
+      (protocolData.breakdownChains as any)[factoryConfig.chain].protocolRevenue += logsData.protocolRevenueUsd;
+      (protocolData.breakdownChains as any)[factoryConfig.chain].supplySideRevenue += logsData.supplySideRevenueUsd;
+      (protocolData.breakdownChains as any)[factoryConfig.chain].volumes.swap += logsData.swapVolumeUsd;
+      (protocolData.breakdownChains as any)[factoryConfig.chain].volumes.deposit += logsData.depositVolumeUsd;
+      (protocolData.breakdownChains as any)[factoryConfig.chain].volumes.withdraw += logsData.withdrawVolumeUsd;
     }
 
     return AdapterDataHelper.fillupAndFormatProtocolData(protocolData);
+  }
+
+  public async runTest(options: TestAdapterOptions): Promise<void> {
+    const current = getTimestamp();
+    const fromTime = options.timestamp ? options.timestamp : current - 3600;
+    const toTime = options.timestamp ? options.timestamp + 3600 : current;
+
+    if (options.output === 'json') {
+      console.log(
+        JSON.stringify(
+          await this.getProtocolData({
+            timestamp: fromTime,
+            beginTime: fromTime,
+            endTime: toTime,
+          }),
+        ),
+      );
+    } else {
+      logger.inspect(
+        await this.getProtocolData({
+          timestamp: fromTime,
+          beginTime: fromTime,
+          endTime: toTime,
+        }),
+      );
+    }
   }
 }

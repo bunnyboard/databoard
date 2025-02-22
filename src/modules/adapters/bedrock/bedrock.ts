@@ -10,13 +10,13 @@ import BedrockEthStakingAbi from '../../../configs/abi/bedrock/EthStaking.json';
 import BedrockBtcVaultAbi from '../../../configs/abi/bedrock/VaultWithoutNative.json';
 import Erc20Abi from '../../../configs/abi/ERC20.json';
 import { decodeEventLog } from 'viem';
-import ProtocolExtendedAdapter from '../extended';
+import ProtocolAdapter from '../protocol';
 
 const Events = {
   Minted: '0x30385c845b448a36257a6a1716e6ad2e1bc2cbe333cde1e69fe849ad6511adfe',
 };
 
-export default class BedrockAdapter extends ProtocolExtendedAdapter {
+export default class BedrockAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.bedrock';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

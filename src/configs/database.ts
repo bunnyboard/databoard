@@ -27,6 +27,15 @@ export const DatabaseCollectionConfigs: DatabaseCollectionConfig = {
       },
     ],
   },
+  blockLogs: {
+    name: `${CollectionPrefix}.caching.blockLogs`,
+    indies: [
+      {
+        chain: 1,
+        number: 1,
+      },
+    ],
+  },
   protocolDataStates: {
     name: `${CollectionPrefix}.protocolDataStates`,
     indies: [

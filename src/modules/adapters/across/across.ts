@@ -9,7 +9,7 @@ import { formatBigNumberToNumber } from '../../../lib/utils';
 import { AcrossProtocolConfig } from '../../../configs/protocols/across';
 import { BlockchainConfigs } from '../../../configs/blockchains';
 import AdapterDataHelper from '../helpers';
-import ProtocolExtendedAdapter from '../extended';
+import ProtocolAdapter from '../protocol';
 
 // v2
 const FundsDeposited = '0xafc4df6845a4ab948b492800d3d8a25d538a102a2bc07cd01f1cfa097fddcff6';
@@ -20,7 +20,7 @@ const V3FundsDepositedV2 = '0x32ed1a409ef04c7b0227189c3a103dc5ac10e775a15b785dcc
 
 // count total assets locked in spokePool as totalValueLocked
 // count total assets locked in hubPool (ethereum) as totalSupplied (liquidity)
-export default class AcrossAdapter extends ProtocolExtendedAdapter {
+export default class AcrossAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.across';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

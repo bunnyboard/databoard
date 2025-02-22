@@ -9,7 +9,7 @@ import { AddressZero } from '../../../configs/constants';
 import { LineaNativeBridgeProtocolConfig } from '../../../configs/protocols/linea';
 import MessageServiceAbi from '../../../configs/abi/linea/MessageService.json';
 import TokenBridgeAbi from '../../../configs/abi/linea/TokenBridge.json';
-import ProtocolExtendedAdapter from '../extended';
+import ProtocolAdapter from '../protocol';
 
 const Events = {
   // ERC20 deposit/withdraw
@@ -22,7 +22,7 @@ const Events = {
   MessageSent: '0xe856c2b8bd4eb0027ce32eeaf595c21b0b6b4644b326e5b7bd80a1cf8db72e6c',
 };
 
-export default class LineaNativeBridgeAdapter extends ProtocolExtendedAdapter {
+export default class LineaNativeBridgeAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.linea';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

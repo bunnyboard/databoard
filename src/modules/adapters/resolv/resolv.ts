@@ -9,9 +9,9 @@ import { SolidityUnits } from '../../../configs/constants';
 import RequestManagerAbi from '../../../configs/abi/resolv/ExternalRequestsManager.json';
 import stUSRAbi from '../../../configs/abi/resolv/StUSR.json';
 import { decodeEventLog } from 'viem';
-import ProtocolExtendedAdapter from '../extended';
 import envConfig from '../../../configs/envConfig';
 import { ResolvProtocolConfig } from '../../../configs/protocols/resolv';
+import ProtocolAdapter from '../protocol';
 
 const Events = {
   MintRequestCreated: '0x7f382249e1e2d2be5b5e769bbd3abd8e092fc5932a37d3819055e2c88c8540f8',
@@ -20,7 +20,7 @@ const Events = {
   BurnRequestCompleted: '0xbf79ce6ffda2b262d7c1d31cde3fbde100c49885be80ba25764dc18e0256b54f',
 };
 
-export default class ResolvAdapter extends ProtocolExtendedAdapter {
+export default class ResolvAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.resolv';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

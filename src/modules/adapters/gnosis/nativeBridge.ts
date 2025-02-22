@@ -8,7 +8,7 @@ import { GnosisBridgeProtocolConfig } from '../../../configs/protocols/gnosis';
 import xdaiBridgeAbi from '../../../configs/abi/gnosis/XDaiForeignBridge.json';
 import omniBridgeAbi from '../../../configs/abi/gnosis/ForeignOmnibridge.json';
 import { decodeEventLog } from 'viem';
-import ProtocolExtendedAdapter from '../extended';
+import ProtocolAdapter from '../protocol';
 
 const Events = {
   // DAI deposit from ethereum -> gnosis
@@ -24,7 +24,7 @@ const Events = {
   TokensBridged: '0x9afd47907e25028cdaca89d193518c302bbb128617d5a992c5abd45815526593',
 };
 
-export default class GnosisNativeBridgeAdapter extends ProtocolExtendedAdapter {
+export default class GnosisNativeBridgeAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.gnosis';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

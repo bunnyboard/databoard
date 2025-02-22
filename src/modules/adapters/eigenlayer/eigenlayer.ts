@@ -86,7 +86,7 @@ export default class EigenLayerAdapter extends EigenLayerIndexer {
       };
     });
 
-    const balances = await this.multicall({
+    const balances = await this.services.blockchain.evm.multicall({
       chain: eigenConfig.chain,
       blockNumber: blockNumber,
       calls: calls,
@@ -186,7 +186,7 @@ export default class EigenLayerAdapter extends EigenLayerIndexer {
           };
         });
 
-        const results = await this.multicall({
+        const results = await this.services.blockchain.evm.multicall({
           chain: eigenConfig.chain,
           blockNumber: blockNumber,
           calls: calls,

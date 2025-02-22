@@ -8,7 +8,7 @@ import BridgeAbi from '../../../configs/abi/polygon/PolygonZkEVMBridgeV2.json';
 import { AddressZero } from '../../../configs/constants';
 import { formatBigNumberToNumber } from '../../../lib/utils';
 import { decodeEventLog } from 'viem';
-import ProtocolExtendedAdapter from '../extended';
+import ProtocolAdapter from '../protocol';
 
 const Events = {
   // withdraw
@@ -18,7 +18,7 @@ const Events = {
   BridgeEvent: '0x501781209a1f8899323b96b4ef08b168df93e0a90c673d1e4cce39366cb62f9b',
 };
 
-export default class PolygonZzkevmNativeBridgeAdapter extends ProtocolExtendedAdapter {
+export default class PolygonZzkevmNativeBridgeAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.polygonzkevm';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

@@ -9,7 +9,7 @@ import { decodeEventLog } from 'viem';
 import LiquidityPoolAbi from '../../../configs/abi/hyphen/LiquidityPool.json';
 import LiquidityProvidersAbi from '../../../configs/abi/hyphen/LiquidityProviders.json';
 import { getChainNameById } from '../../../lib/helpers';
-import ProtocolExtendedAdapter from '../extended';
+import ProtocolAdapter from '../protocol';
 
 const LiquidityPoolEvents: any = {
   LiquidityAdded: '0xa21288bdd948f634bcd5a8bfc9825db1b01914f370ef82149e123b7c8dc3b65b',
@@ -23,7 +23,7 @@ const LiquidityPoolEvents: any = {
   DepositAndSwap: '0xe0c1647854700a22165488c301138e1e29036e60ec14c1e78653b1e0c918f874',
 };
 
-export default class HyphenAdapter extends ProtocolExtendedAdapter {
+export default class HyphenAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.hphen';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

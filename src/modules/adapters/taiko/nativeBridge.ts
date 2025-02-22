@@ -9,7 +9,7 @@ import TaikoErc20VaultAbi from '../../../configs/abi/taiko/TaikoErc20Vault.json'
 import { decodeEventLog } from 'viem';
 import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
 import { TaikoBridgeProtocolConfig } from '../../../configs/protocols/taiko';
-import ProtocolExtendedAdapter from '../extended';
+import ProtocolAdapter from '../protocol';
 
 const Events = {
   MessageSent: '0xe33fd33b4f45b95b1c196242240c5b5233129d724b578f95b66ce8d8aae93517',
@@ -19,7 +19,7 @@ const Events = {
   TokenReceived: '0x75a051823424fc80e92556c41cb0ad977ae1dcb09c68a9c38acab86b11a69f89',
 };
 
-export default class TaikoNativeBridgeAdapter extends ProtocolExtendedAdapter {
+export default class TaikoNativeBridgeAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.taiko 🥁';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {

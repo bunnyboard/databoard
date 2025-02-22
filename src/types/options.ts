@@ -1,3 +1,5 @@
+import { Token } from './base';
+
 export interface RunAdapterOptions {
   service?: string;
 
@@ -25,4 +27,36 @@ export interface GetProtocolDataOptions {
   // if beginTime or endTime === 0, ignore to query timeframe data
   beginTime: number;
   endTime: number;
+}
+
+export interface GetAddressBalanceUsdOptions {
+  chain: string;
+  ownerAddress: string;
+  tokens: Array<Token>;
+  timestamp: number;
+  blockNumber?: number;
+}
+
+export interface GetAddressBalanceUsdResult {
+  totalBalanceUsd: number;
+  tokenBalanceUsds: {
+    [key: string]: {
+      priceUsd: number;
+      balanceUsd: number;
+    };
+  };
+}
+
+export interface IndexContracLogsOptions {
+  chain: string;
+  address: string;
+  fromBlock: number;
+  toBlock: number;
+}
+
+export interface GetChainLogsOptions {
+  chain: string;
+  fromBlock: number;
+  toBlock: number;
+  signatures?: Array<string>;
 }
