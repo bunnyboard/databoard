@@ -18,6 +18,7 @@ export const CircleCctpDomainChains: { [key: number]: string } = {
   3: ChainNames.arbitrum,
   6: ChainNames.base,
   7: ChainNames.polygon,
+  11: ChainNames.unichain,
 };
 
 export const CircleCctpConfigs: CircleCctpProtocolConfig = {
@@ -53,6 +54,11 @@ export const CircleCctpConfigs: CircleCctpProtocolConfig = {
       chain: ChainNames.polygon,
       birthday: 1698796800, // Wed Nov 01 2023 00:00:00 GMT+0000
       tokenMessenger: '0x9daf8c91aefae50b9c0e69629d3f6ca40ca3b3fe',
+    },
+    {
+      chain: ChainNames.unichain,
+      birthday: 1733443200, // Fri Dec 06 2024 00:00:00 GMT+0000
+      tokenMessenger: '0x4e744b28E787c3aD0e810eD65A24461D4ac5a762',
     },
   ],
 };

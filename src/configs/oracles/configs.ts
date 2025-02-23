@@ -2338,4 +2338,12 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   berachain: {
     '0x779ded0c9e1022225f8e0630b35a9b54be713736': OracleSourceConfigs.USDT,
   },
+
+  unichain: {
+    '0x0000000000000000000000000000000000000000': OracleSourceConfigs.ETH,
+    '0x4200000000000000000000000000000000000006': OracleSourceConfigs.ETH,
+    '0x8f187aa05619a017077f5308904739877ce9ea21': OracleSourceConfigs.UNI,
+    '0x078d782b760474a361dda0af3839290b0ef57ad6': OracleSourceConfigs.USDC,
+    '0x20cab320a855b39f724131c69424240519573f81': OracleSourceConfigs.DAI,
+  },
 };
