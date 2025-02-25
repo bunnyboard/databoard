@@ -90,6 +90,7 @@ export const ChainNames = {
   b3: 'b3',
   unichain: 'unichain',
   berachain: 'berachain',
+  neonevm: 'neonevm',
 };
 
 export const ProtocolNames = {
@@ -282,4 +283,5 @@ export const ProtocolNames = {
   sakefinance: 'sakefinance',
   dolomite: 'dolomite',
   berachaindex: 'berachaindex',
+  debridge: 'debridge',
 };

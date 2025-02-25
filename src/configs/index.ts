@@ -151,6 +151,7 @@ import { SilofinanceConfigs } from './protocols/silofinance';
 import { SakefinanceConfigs } from './protocols/sakefinance';
 import { DolomiteConfigs } from './protocols/dolomite';
 import { BerachaindexConfigs } from './protocols/berachain';
+import { DebridgeConfigs } from './protocols/debridge';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -342,4 +343,5 @@ export const ProtocolConfigs = {
   sakefinance: SakefinanceConfigs,
   dolomite: DolomiteConfigs,
   berachaindex: BerachaindexConfigs,
+  debridge: DebridgeConfigs,
 };

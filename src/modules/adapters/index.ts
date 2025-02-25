@@ -21,6 +21,7 @@ import CompoundAdapter from './compound/compound';
 import CowswapAdapter from './cowswap/cowswap';
 import CurvelendAdapter from './curve/curvelend';
 import CurveusdAdapter from './curve/curveusd';
+import DebridgeAdapter from './debridge/debridge';
 import DineroAdapter from './dinero/dinero';
 import DodoexAdapter from './dodoex/dodoex';
 import DolomiteAdapter from './dolomite/dolomite';
@@ -267,5 +268,6 @@ export function getProtocolAdapters(
     sakefinance: new AaveAdapter(services, storages, ProtocolConfigs.sakefinance),
     dolomite: new DolomiteAdapter(services, storages, ProtocolConfigs.dolomite),
     berachaindex: new BalancerAdapter(services, storages, ProtocolConfigs.berachaindex),
+    debridge: new DebridgeAdapter(services, storages, ProtocolConfigs.debridge),
   };
 }
