@@ -23,6 +23,7 @@ import CurvelendAdapter from './curve/curvelend';
 import CurveusdAdapter from './curve/curveusd';
 import DineroAdapter from './dinero/dinero';
 import DodoexAdapter from './dodoex/dodoex';
+import DolomiteAdapter from './dolomite/dolomite';
 import Eclipsel2NativeBridgeAdapter from './eclipsel2/nativeBridge';
 import EigenLayerAdapter from './eigenlayer/eigenlayer';
 import EigenpieAdapter from './eigenpie/eigenpie';
@@ -263,5 +264,7 @@ export function getProtocolAdapters(
     sushi: new UniswapAdapter(services, storages, ProtocolConfigs.sushi),
     unichainNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.unichainNativeBridge),
     silofinance: new SilofinanceAdapter(services, storages, ProtocolConfigs.silofinance),
+    sakefinance: new AaveAdapter(services, storages, ProtocolConfigs.sakefinance),
+    dolomite: new DolomiteAdapter(services, storages, ProtocolConfigs.dolomite),
   };
 }

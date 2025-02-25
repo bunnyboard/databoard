@@ -279,4 +279,6 @@ export const ProtocolNames = {
   unichainNativeBridge: 'unichainNativeBridge',
   socket: 'socket',
   silofinance: 'silofinance',
+  sakefinance: 'sakefinance',
+  dolomite: 'dolomite',
 };

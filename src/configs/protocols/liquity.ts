@@ -1,18 +1,19 @@
 import { ProtocolConfig, Token } from '../../types/base';
 import { AddressZero } from '../constants';
 import { ChainNames, ProtocolNames } from '../names';
+
+export interface Liquityv2ProtocolConfig extends ProtocolConfig {
+  chain: string;
+  stablecoin: Token;
+  collateralRegistry: string;
+}
+
 export interface LiquityProtocolConfig extends ProtocolConfig {
   chain: string;
   stablecoin: Token;
   collateral: Token;
   borrowOperations: string;
   troveManager: string;
-}
-
-export interface Liquityv2ProtocolConfig extends ProtocolConfig {
-  chain: string;
-  stablecoin: Token;
-  collateralRegistry: string;
 }
 
 export const LiquityConfigs: LiquityProtocolConfig = {

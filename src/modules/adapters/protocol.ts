@@ -479,7 +479,7 @@ export default class ProtocolAdapter implements IProtocolAdapter {
       console.log(
         JSON.stringify(
           await this.getProtocolData({
-            timestamp: fromTime,
+            timestamp: current,
             beginTime: fromTime,
             endTime: toTime,
           }),
@@ -488,7 +488,7 @@ export default class ProtocolAdapter implements IProtocolAdapter {
     } else {
       logger.inspect(
         await this.getProtocolData({
-          timestamp: fromTime,
+          timestamp: current,
           beginTime: fromTime,
           endTime: toTime,
         }),
