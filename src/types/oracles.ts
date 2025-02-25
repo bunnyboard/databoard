@@ -13,12 +13,16 @@ export type OracleCurrencyBase =
   | 'wstETH'
   | 'core'
   | 'oas'
+  | 'bera'
   | 'klay';
 
 export const OracleTypes = {
   // ChainLink price feed
   // https://docs.chain.link/data-feeds
   chainlink: 'chainlink',
+
+  // https://www.pyth.network/
+  pyth: 'pyth',
 
   // uniswap pool2 version 2
   uniswapv2: 'univ2',
@@ -62,6 +66,10 @@ interface OracleSourceBase {
 export interface OracleSourceChainlink extends OracleSourceBase {
   // aggregator data decimals places
   decimals: number;
+}
+
+export interface OracleSourcePyth extends OracleSourceBase {
+  assetId: string;
 }
 
 export interface OracleSourcePool2 extends OracleSourceBase {
@@ -120,6 +128,7 @@ export interface OracleConfig {
   // a list of on-chain sources where we can get the token price
   sources: Array<
     | OracleSourceChainlink
+    | OracleSourcePyth
     | OracleSourcePool2
     | OracleSourceSavingDai
     | OracleSourceMakerRwaPip

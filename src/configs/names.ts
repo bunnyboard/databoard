@@ -281,4 +281,5 @@ export const ProtocolNames = {
   silofinance: 'silofinance',
   sakefinance: 'sakefinance',
   dolomite: 'dolomite',
+  berachaindex: 'berachaindex',
 };

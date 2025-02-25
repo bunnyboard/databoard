@@ -150,6 +150,7 @@ import { UnichainNativeBridgeConfigs } from './protocols/unichain';
 import { SilofinanceConfigs } from './protocols/silofinance';
 import { SakefinanceConfigs } from './protocols/sakefinance';
 import { DolomiteConfigs } from './protocols/dolomite';
+import { BerachaindexConfigs } from './protocols/berachain';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -340,4 +341,5 @@ export const ProtocolConfigs = {
   silofinance: SilofinanceConfigs,
   sakefinance: SakefinanceConfigs,
   dolomite: DolomiteConfigs,
+  berachaindex: BerachaindexConfigs,
 };

@@ -266,5 +266,6 @@ export function getProtocolAdapters(
     silofinance: new SilofinanceAdapter(services, storages, ProtocolConfigs.silofinance),
     sakefinance: new AaveAdapter(services, storages, ProtocolConfigs.sakefinance),
     dolomite: new DolomiteAdapter(services, storages, ProtocolConfigs.dolomite),
+    berachaindex: new BalancerAdapter(services, storages, ProtocolConfigs.berachaindex),
   };
 }

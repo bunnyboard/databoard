@@ -16,6 +16,7 @@ import {
   OracleSourceMakerRwaPip,
   OracleSourceOffchain,
   OracleSourcePool2,
+  OracleSourcePyth,
   OracleSourceSavingDai,
   OracleSourceStakingTokenWrapper,
   OracleTypes,
@@ -36,6 +37,7 @@ import { Token } from '../../types/base';
 import BalancerLibs from '../../modules/libs/balancer';
 import { getTokenPriceFromCoingecko } from './coingecko';
 import envConfig from '../../configs/envConfig';
+import PythLibs from '../../modules/libs/pyth';
 
 export default class OracleService extends CachingService implements IOracleService {
   public readonly name: string = 'oracle';
@@ -58,6 +60,7 @@ export default class OracleService extends CachingService implements IOracleServ
   private async getTokenPriceSource(
     source:
       | OracleSourceChainlink
+      | OracleSourcePyth
       | OracleSourcePool2
       | OracleSourceSavingDai
       | OracleSourceMakerRwaPip
@@ -80,6 +83,15 @@ export default class OracleService extends CachingService implements IOracleServ
     switch (source.type) {
       case 'chainlink': {
         const answer = await ChainlinkLibs.getPriceFromAggregator(source as OracleSourceChainlink, blockNumber);
+        if (answer) {
+          await this.setCachingData(sourceCachingKey, answer);
+          return answer;
+        }
+
+        break;
+      }
+      case 'pyth': {
+        const answer = await PythLibs.getPriceFromFeed(source as OracleSourcePyth, blockNumber);
         if (answer) {
           await this.setCachingData(sourceCachingKey, answer);
           return answer;

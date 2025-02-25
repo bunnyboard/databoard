@@ -165,7 +165,8 @@ export default class DolomiteAdapter extends ProtocolAdapter {
                 };
               }
               protocolData.breakdown[token.chain][token.address].totalAssetDeposited += totalSuppliedUsd;
-              protocolData.breakdown[token.chain][token.address].totalValueLocked += totalSuppliedUsd - totalBorrowedUsd;
+              protocolData.breakdown[token.chain][token.address].totalValueLocked +=
+                totalSuppliedUsd - totalBorrowedUsd;
               protocolData.breakdown[token.chain][token.address].totalFees += totalFeesUsd;
               protocolData.breakdown[token.chain][token.address].supplySideRevenue += totalFeesUsd;
               (protocolData.breakdown[token.chain][token.address].totalSupplied as number) += totalSuppliedUsd;

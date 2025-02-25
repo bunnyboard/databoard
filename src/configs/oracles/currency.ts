@@ -1,6 +1,7 @@
 import { OracleConfig } from '../../types/oracles';
 import { OffchainOracleSourcesFromBinance } from './binance';
 import { OracleSourceChainlinkList } from './chainlink';
+import { OracleSourcePythList } from './pyth';
 import { OracleSourceUniswapv2List } from './uniswapv2';
 import { OracleSourceUniswapv3List } from './uniswapv3';
 
@@ -61,5 +62,9 @@ export const OracleCurrencyBaseConfigs: { [key: string]: OracleConfig } = {
   s: {
     currency: 'usd',
     sources: [OracleSourceChainlinkList.S_USD],
+  },
+  bera: {
+    currency: 'usd',
+    sources: [OracleSourcePythList.BERA_USD],
   },
 };

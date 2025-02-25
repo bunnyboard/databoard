@@ -19,6 +19,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   S: OracleCurrencyBaseConfigs.s,
   GLMR: OracleCurrencyBaseConfigs.glmr,
   CELO: OracleCurrencyBaseConfigs.celo,
+  BERA: OracleCurrencyBaseConfigs.bera,
   DAI: {
     currency: 'usd',
     sources: [OracleSourceChainlinkList.DAI_USD],
@@ -2967,5 +2968,17 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   EGGS: {
     currency: 'usd',
     sources: [OracleSourceUniswapv3List.EGGS_USDC],
+  },
+  HONEY: {
+    currency: 'bera',
+    sources: [OracleSourceBalancerList.HONEY_WBERA],
+  },
+  stBGT: {
+    currency: 'bera',
+    sources: [OracleSourceBalancerList.stBGT_WBERA],
+  },
+  iBGT: {
+    currency: 'bera',
+    sources: [OracleSourceBalancerList.iBGT_WBERA],
   },
 };
