@@ -7,7 +7,7 @@ import AdapterDataHelper from '../helpers';
 import ProtocolAdapter from '../protocol';
 import { DebridgeInternalChanIds, DebridgeProtocolConfig } from '../../../configs/protocols/debridge';
 import DlnSourceAbi from '../../../configs/abi/debridge/DlnSource.json';
-import { formatBigNumberToNumber } from '../../../lib/utils';
+import { compareAddress, formatBigNumberToNumber } from '../../../lib/utils';
 import { getChainNameById } from '../../../lib/helpers';
 
 const Events = {
@@ -121,9 +121,6 @@ export default class DebridgeAdapter extends ProtocolAdapter {
         address: networkConfig.feeToken,
         timestamp: options.timestamp,
       });
-      const feeAmountUsd = feeTokenPriceUsd * networkConfig.feeFlatAmount * events.length;
-      protocolData.totalFees += feeAmountUsd;
-      protocolData.protocolRevenue += feeAmountUsd;
 
       for (const event of events) {
         if (event) {
@@ -131,7 +128,17 @@ export default class DebridgeAdapter extends ProtocolAdapter {
             chain: networkConfig.chain,
             address: event.args.order.giveTokenAddress,
           });
+
           if (token) {
+            const feeAmountUsd = feeTokenPriceUsd * networkConfig.feeFlatAmount;
+
+            if (
+              networkConfig.blacklistTokens &&
+              networkConfig.blacklistTokens.find((item) => compareAddress(item, token.address))
+            ) {
+              continue;
+            }
+
             const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
               chain: token.chain,
               address: token.address,
@@ -140,6 +147,8 @@ export default class DebridgeAdapter extends ProtocolAdapter {
             const tokenAmountUsd =
               formatBigNumberToNumber(event.args.order.giveAmount.toString(), token.decimals) * tokenPriceUsd;
 
+            protocolData.totalFees += feeAmountUsd;
+            protocolData.protocolRevenue += feeAmountUsd;
             (protocolData.volumes.bridge as number) += tokenAmountUsd;
 
             if (!protocolData.breakdown[token.chain][token.address]) {
@@ -151,6 +160,8 @@ export default class DebridgeAdapter extends ProtocolAdapter {
                 },
               };
             }
+            protocolData.breakdown[token.chain][token.address].totalFees += feeAmountUsd;
+            protocolData.breakdown[token.chain][token.address].protocolRevenue += feeAmountUsd;
             (protocolData.breakdown[token.chain][token.address].volumes.bridge as number) += tokenAmountUsd;
 
             const takeChainId = Number(event.args.order.takeChainId);

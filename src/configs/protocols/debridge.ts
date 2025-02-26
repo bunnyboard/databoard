@@ -9,6 +9,7 @@ export interface DebridgeNetowrkConfig {
   feeToken: string;
   feeFlatAmount: number;
   tokens: Array<string>;
+  blacklistTokens?: Array<string>;
 }
 
 export interface DebridgeProtocolConfig extends ProtocolConfig {
@@ -42,6 +43,7 @@ export const DebridgeConfigs: DebridgeProtocolConfig = {
         '0xdac17f958d2ee523a2206206994597c13d831ec7',
         '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
       ],
+      blacklistTokens: ['0x9d3d07439069c9bbc8d626397cf98cb343ac0a72'],
     },
     {
       chain: ChainNames.arbitrum,
@@ -94,6 +96,7 @@ export const DebridgeConfigs: DebridgeProtocolConfig = {
         '0xdce07662ca8ebc241316a15b611c89711414dd1a',
         '0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3',
       ],
+      blacklistTokens: ['0x5b330fd7ea69d8a6d78722a0297a2c8cdd424352'],
     },
     {
       chain: ChainNames.polygon,
@@ -110,6 +113,7 @@ export const DebridgeConfigs: DebridgeProtocolConfig = {
         '0xd93f7e271cb87c23aaa73edc008a79646d1f9912',
         '0x45c32fa6df82ead1e2ef74d17b76547eddfaff89',
       ],
+      blacklistTokens: ['0xe57594f829b3d514ee12c41e81df3861b19c26e3', '0x71e3071e5561ddee34273f1c5e66daa5f6d0b0b3'],
     },
     {
       chain: ChainNames.linea,

@@ -683,6 +683,12 @@
     "decimals": 18,
     "address": "0x46d502fac9aea7c5bc7b13c8ec9d02378c33d36f"
   },
+  "0x483dd3425278c1f79f377f1034d9d2cae55648b6": {
+    "chain": "polygon",
+    "symbol": "CROWD",
+    "decimals": 18,
+    "address": "0x483dd3425278c1f79f377f1034d9d2cae55648b6"
+  },
   "0x492fa53b88614923937b7197c87e0f7f8eeb7b20": {
     "chain": "polygon",
     "symbol": "NFTE",

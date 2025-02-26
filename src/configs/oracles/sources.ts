@@ -2981,4 +2981,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'bera',
     sources: [OracleSourceBalancerList.iBGT_WBERA],
   },
+  CROWD: {
+    currency: 'matic',
+    sources: [OracleSourceUniswapv2List.CROWD_WPOL],
+  },
 };
