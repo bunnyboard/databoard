@@ -21,6 +21,13 @@ export const VenusConfigs: CompoundProtocolConfig = {
       oracleSource: 'oracleUsd',
     },
     {
+      chain: ChainNames.arbitrum,
+      marketName: 'Liquid Staked ETH Pool',
+      birthday: 1724457600, // Sat Aug 24 2024 00:00:00 GMT+0000
+      comptroller: '0x52bAB1aF7Ff770551BD05b9FC2329a0Bf5E23F16',
+      oracleSource: 'oracleUsd',
+    },
+    {
       chain: ChainNames.opbnb,
       marketName: 'Core Market',
       birthday: 1708041600, // Fri Feb 16 2024 00:00:00 GMT+0000
@@ -39,6 +46,27 @@ export const VenusConfigs: CompoundProtocolConfig = {
       marketName: 'Core Market',
       birthday: 1704844800, // Wed Jan 10 2024 00:00:00 GMT+0000
       comptroller: '0x687a01ecF6d3907658f7A7c714749fAC32336D1B',
+      oracleSource: 'oracleUsd',
+    },
+    {
+      chain: ChainNames.unichain,
+      marketName: 'Core Market',
+      birthday: 1738972800, // Sat Feb 08 2025 00:00:00 GMT+0000
+      comptroller: '0xe22af1e6b78318e1Fe1053Edbd7209b8Fc62c4Fe',
+      oracleSource: 'oracleUsd',
+    },
+    {
+      chain: ChainNames.base,
+      marketName: 'Core Market',
+      birthday: 1733529600, // Sat Dec 07 2024 00:00:00 GMT+0000
+      comptroller: '0x0C7973F9598AA62f9e03B94E92C967fD5437426C',
+      oracleSource: 'oracleUsd',
+    },
+    {
+      chain: ChainNames.optimism,
+      marketName: 'Core Market',
+      birthday: 1727740800, // Tue Oct 01 2024 00:00:00 GMT+0000
+      comptroller: '0x5593FF68bE84C966821eEf5F0a988C285D5B7CeC',
       oracleSource: 'oracleUsd',
     },
     // {
