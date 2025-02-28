@@ -153,6 +153,7 @@ import { DolomiteConfigs } from './protocols/dolomite';
 import { BerachaindexConfigs } from './protocols/berachain';
 import { DebridgeConfigs } from './protocols/debridge';
 import { YearnConfigs } from './protocols/yearn';
+import { SuperseedNativeBridgeConfigs } from './protocols/superseed';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -346,4 +347,5 @@ export const ProtocolConfigs = {
   berachaindex: BerachaindexConfigs,
   debridge: DebridgeConfigs,
   yearn: YearnConfigs,
+  superseedNativeBridge: SuperseedNativeBridgeConfigs,
 };

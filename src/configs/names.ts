@@ -91,6 +91,7 @@ export const ChainNames = {
   unichain: 'unichain',
   berachain: 'berachain',
   neonevm: 'neonevm',
+  superseed: 'superseed',
 };
 
 export const ProtocolNames = {
@@ -285,4 +286,5 @@ export const ProtocolNames = {
   berachaindex: 'berachaindex',
   debridge: 'debridge',
   yearn: 'yearn',
+  superseedNativeBridge: 'superseedNativeBridge',
 };

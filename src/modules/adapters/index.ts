@@ -271,5 +271,6 @@ export function getProtocolAdapters(
     berachaindex: new BalancerAdapter(services, storages, ProtocolConfigs.berachaindex),
     debridge: new DebridgeAdapter(services, storages, ProtocolConfigs.debridge),
     yearn: new YearnAdapter(services, storages, ProtocolConfigs.yearn),
+    superseedNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.superseedNativeBridge),
   };
 }
