@@ -548,6 +548,7 @@ export default class GmxAdapter extends ProtocolAdapter {
         toBlock: endBlock,
         blockRange: 2000,
       });
+      console.log(logs.length);
       for (const log of logs) {
         if (log.topics[0] === Events.Event1) {
           const event: any = decodeEventLog({

@@ -206,4 +206,26 @@ export const OracleSourceBalancerList: {
       address: '0x6969696969696969696969696969696969696969',
     },
   },
+  LBGT_WBERA: {
+    type: 'balv2_Weight',
+    chain: 'berachain',
+    currency: 'bera',
+    vault: '0x4Be03f781C497A489E3cB0287833452cA9B9E80B',
+    address: '0x705fc16ba5a1eb67051934f2fb17eacae660f6c7',
+    poolId: '0x705fc16ba5a1eb67051934f2fb17eacae660f6c70002000000000000000000d5',
+    baseWeight: 0.5,
+    baseToken: {
+      chain: 'berachain',
+      symbol: 'LBGT',
+      decimals: 18,
+      address: '0xbaadcc2962417c01af99fb2b7c75706b9bd6babe',
+    },
+    quotaWeight: 0.5,
+    quotaToken: {
+      chain: 'berachain',
+      symbol: 'WBERA',
+      decimals: 18,
+      address: '0x6969696969696969696969696969696969696969',
+    },
+  },
 };

@@ -1793,4 +1793,11 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
       address: '0x29219dd400f2bf60e5a23d13be72b486d4038894',
     },
   },
+  GRAIN_WETH: {
+    type: 'univ3',
+    chain: 'optimism',
+    address: '0x4237a1a033b6a82694c299d683590d28c030ff9a',
+    baseToken: TokensBook.optimism['0xfd389dc9533717239856190f42475d3f263a270d'],
+    quotaToken: TokensBook.optimism['0x4200000000000000000000000000000000000006'],
+  },
 };

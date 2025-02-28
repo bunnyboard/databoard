@@ -2817,4 +2817,25 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.polygon['0x483dd3425278c1f79f377f1034d9d2cae55648b6'],
     quotaToken: TokensBook.polygon['0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270'],
   },
+  MTA_USDC: {
+    type: 'univ2',
+    chain: 'optimism',
+    address: '0x3aebe5b4b47a8a71ceb66cc0989fc0c81b2c66cd',
+    baseToken: TokensBook.optimism['0x929b939f8524c3be977af57a4a0ad3fb1e374b50'],
+    quotaToken: TokensBook.optimism['0x0b2c639c533813f4aa9d7837caf62653d097ff85'],
+  },
+  EXA_WETH: {
+    type: 'univ2',
+    chain: 'optimism',
+    address: '0xf3c45b45223df6071a478851b9c17e0630fdf535',
+    baseToken: TokensBook.optimism['0x1e925de1c68ef83bd98ee3e130ef14a50309c01b'],
+    quotaToken: TokensBook.optimism['0x4200000000000000000000000000000000000006'],
+  },
+  WBLT_USDC: {
+    type: 'univ2',
+    chain: 'base',
+    address: '0x4299f2004c4ee942dc7a70356c112ae507597268',
+    baseToken: TokensBook.base['0x4e74d4db6c0726ccded4656d0bce448876bb4c7a'],
+    quotaToken: TokensBook.base['0x833589fcd6edb6e08f4c7c32d4f71b54bda02913'],
+  },
 };

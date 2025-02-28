@@ -96,6 +96,7 @@ import UsualAdapter from './usual/usual';
 import VenusAdapter from './venus/venus';
 import WbethAdapter from './wbeth/wbeth';
 import WoofiAdapter from './woofi/woofi';
+import YearnAdapter from './yearn/yearn';
 import ZerionAdapter from './zerion/zerion';
 import ZeroxAdapter from './zerox/zerox';
 import ZksyncNativeBridgeAdapter from './zksync/nativeBridge';
@@ -269,5 +270,6 @@ export function getProtocolAdapters(
     dolomite: new DolomiteAdapter(services, storages, ProtocolConfigs.dolomite),
     berachaindex: new BalancerAdapter(services, storages, ProtocolConfigs.berachaindex),
     debridge: new DebridgeAdapter(services, storages, ProtocolConfigs.debridge),
+    yearn: new YearnAdapter(services, storages, ProtocolConfigs.yearn),
   };
 }

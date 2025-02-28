@@ -284,4 +284,5 @@ export const ProtocolNames = {
   dolomite: 'dolomite',
   berachaindex: 'berachaindex',
   debridge: 'debridge',
+  yearn: 'yearn',
 };

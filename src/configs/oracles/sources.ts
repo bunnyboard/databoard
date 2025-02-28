@@ -2981,8 +2981,28 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'bera',
     sources: [OracleSourceBalancerList.iBGT_WBERA],
   },
+  LBGT: {
+    currency: 'bera',
+    sources: [OracleSourceBalancerList.LBGT_WBERA],
+  },
   CROWD: {
     currency: 'matic',
     sources: [OracleSourceUniswapv2List.CROWD_WPOL],
+  },
+  MTA: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.MTA_USDC],
+  },
+  EXA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.EXA_WETH],
+  },
+  GRAIN: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.GRAIN_WETH],
+  },
+  WBLT: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.WBLT_USDC],
   },
 };
