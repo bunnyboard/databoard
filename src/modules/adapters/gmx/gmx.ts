@@ -548,7 +548,6 @@ export default class GmxAdapter extends ProtocolAdapter {
         toBlock: endBlock,
         blockRange: 2000,
       });
-      console.log(logs.length);
       for (const log of logs) {
         if (log.topics[0] === Events.Event1) {
           const event: any = decodeEventLog({
@@ -700,7 +699,6 @@ export default class GmxAdapter extends ProtocolAdapter {
                 protocolData.protocolRevenue += protocolRevenue;
 
                 if (!protocolData.breakdown[token.chain][token.address]) {
-                  console.log(token);
                   process.exit(0);
                 }
 
@@ -728,7 +726,6 @@ export default class GmxAdapter extends ProtocolAdapter {
               protocolData.protocolRevenue += protocolRevenue;
 
               if (!protocolData.breakdown[vaultConfig.chain][collateralAddress]) {
-                console.log(collateralAddress);
                 process.exit(0);
               }
 
