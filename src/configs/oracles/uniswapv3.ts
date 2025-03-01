@@ -1800,4 +1800,11 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.optimism['0xfd389dc9533717239856190f42475d3f263a270d'],
     quotaToken: TokensBook.optimism['0x4200000000000000000000000000000000000006'],
   },
+  PINTO_USDC: {
+    type: 'univ3',
+    chain: 'base',
+    address: '0x324578beb58f63a99871406dbc97917042bb8717',
+    baseToken: TokensBook.base['0xb170000aeefa790fa61d6e837d1035906839a3c8'],
+    quotaToken: TokensBook.base['0x833589fcd6edb6e08f4c7c32d4f71b54bda02913'],
+  },
 };

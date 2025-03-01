@@ -3006,4 +3006,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.WBLT_USDC],
   },
+  PINTO: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.PINTO_USDC],
+  },
 };
