@@ -2274,6 +2274,9 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   },
 
   bob: {
+    '0xcc0966d8418d412c599a6421b760a847eb169a8c': OracleSourceConfigs.SolvBTC,
+    '0x9998e05030aee3af9ad3df35a34f5c51e1628779': OracleSourceConfigs.BTC,
+    '0xa45d4121b3d47719ff57a947a9d961539ba33204': OracleSourceConfigs.LBTC,
     '0x541fd749419ca806a8bc7da8ac23d346f2df8b77': OracleSourceConfigs.SolvBTC,
     '0xee03e367bcb59a9b4c1c0ea495a2e9cac36372c8': OracleSourceConfigs.BTC,
     '0x03c7054bcb39f7b2e5b2c7acb37583e32d70cfa3': OracleSourceConfigs.WBTC,
