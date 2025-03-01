@@ -25,6 +25,7 @@ export const DebridgeInternalChanIds: { [key: number]: string } = {
   100000010: ChainNames.cronoszkevm,
   100000017: ChainNames.abstract,
   100000020: ChainNames.berachain,
+  100000013: ChainNames.story,
 };
 
 export const DebridgeConfigs: DebridgeProtocolConfig = {
@@ -182,6 +183,14 @@ export const DebridgeConfigs: DebridgeProtocolConfig = {
       feeToken: AddressZero,
       feeFlatAmount: 0.02,
       tokens: [AddressZero, '0x549943e04f40284185054145c6e4e9568c1d3241'],
+    },
+    {
+      chain: ChainNames.story,
+      birthday: 1739059200, // Sun Feb 09 2025 00:00:00 GMT+0000
+      dlnSource: '0xeF4fB24aD0916217251F553c0596F8Edc630EB66',
+      feeToken: AddressZero,
+      feeFlatAmount: 0.01, // IP
+      tokens: [AddressZero, '0xf1815bd50389c46847f0bda824ec8da914045d14'],
     },
   ],
 };

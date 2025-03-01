@@ -14,6 +14,7 @@ export type OracleCurrencyBase =
   | 'core'
   | 'oas'
   | 'bera'
+  | 'ip'
   | 'klay';
 
 export const OracleTypes = {

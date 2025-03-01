@@ -2405,4 +2405,9 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     '0x078d782b760474a361dda0af3839290b0ef57ad6': OracleSourceConfigs.USDC,
     '0x20cab320a855b39f724131c69424240519573f81': OracleSourceConfigs.DAI,
   },
+
+  story: {
+    '0xf1815bd50389c46847f0bda824ec8da914045d14': OracleSourceConfigs.USDC,
+    '0x0000000000000000000000000000000000000000': OracleSourceConfigs.IP,
+  },
 };

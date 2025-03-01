@@ -92,6 +92,7 @@ export const ChainNames = {
   berachain: 'berachain',
   neonevm: 'neonevm',
   superseed: 'superseed',
+  story: 'story',
 };
 
 export const ProtocolNames = {

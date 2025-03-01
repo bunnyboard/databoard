@@ -67,4 +67,8 @@ export const OracleCurrencyBaseConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourcePythList.BERA_USD],
   },
+  ip: {
+    currency: 'usd',
+    sources: [OracleSourcePythList.IP_USD],
+  },
 };

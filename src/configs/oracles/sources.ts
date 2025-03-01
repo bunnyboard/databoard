@@ -20,6 +20,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   GLMR: OracleCurrencyBaseConfigs.glmr,
   CELO: OracleCurrencyBaseConfigs.celo,
   BERA: OracleCurrencyBaseConfigs.bera,
+  IP: OracleCurrencyBaseConfigs.ip,
   DAI: {
     currency: 'usd',
     sources: [OracleSourceChainlinkList.DAI_USD],
