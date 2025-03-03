@@ -154,6 +154,7 @@ import { BerachaindexConfigs } from './protocols/berachain';
 import { DebridgeConfigs } from './protocols/debridge';
 import { YearnConfigs } from './protocols/yearn';
 import { SuperseedNativeBridgeConfigs } from './protocols/superseed';
+import { RangoConfigs } from './protocols/rango';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -348,4 +349,5 @@ export const ProtocolConfigs = {
   debridge: DebridgeConfigs,
   yearn: YearnConfigs,
   superseedNativeBridge: SuperseedNativeBridgeConfigs,
+  rango: RangoConfigs,
 };

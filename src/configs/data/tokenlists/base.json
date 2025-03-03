@@ -5543,6 +5543,12 @@
     "decimals": 18,
     "address": "0x988a17d9ef5683dc125de54ae4cd217c4c26454f"
   },
+  "0x98d0baa52b2d063e780de12f615f963fe8537553": {
+    "chain": "base",
+    "symbol": "KAITO",
+    "decimals": 18,
+    "address": "0x98d0baa52b2d063e780de12f615f963fe8537553"
+  },
   "0x98d59767cd1335071a4e9b9d3482685c915131e8": {
     "chain": "base",
     "symbol": "DREAM",
@@ -6436,6 +6442,12 @@
     "symbol": "WOOF",
     "decimals": 18,
     "address": "0xb3a9bd4861454ba94931ebff410c3d828525dce2"
+  },
+  "0xb3b32f9f8827d4634fe7d973fa1034ec9fddb3b3": {
+    "chain": "base",
+    "symbol": "B3",
+    "decimals": 18,
+    "address": "0xb3b32f9f8827d4634fe7d973fa1034ec9fddb3b3"
   },
   "0xb3e3c89b8d9c88b1fe96856e382959ee6291ebba": {
     "chain": "base",

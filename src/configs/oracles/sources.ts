@@ -3010,4 +3010,64 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv3List.PINTO_USDC],
   },
+  CHI: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.CHI_DAI],
+  },
+  CHZ: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.CHZ_WETH],
+  },
+  VGX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.VGX_WETH],
+  },
+  MYRIA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.MYRIA_WETH],
+  },
+  LCX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.LCX_WETH],
+  },
+  GLM: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.GLM_WETH],
+  },
+  XCN: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.XCN_WETH],
+  },
+  SHELL: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.SHELL_WBNB],
+  },
+  YFII: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.YFII_WETH],
+  },
+  VET: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.VET_WBNB],
+  },
+  B3: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.B3_WETH],
+  },
+  KAITO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.KAITO_WETH],
+  },
+  JMPT: {
+    currency: 'celo',
+    sources: [OracleSourceUniswapv3List.JMPT_CELO],
+  },
+  VR: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.VR_USDT],
+  },
+  SDAO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SDAO_WETH],
+  },
 };

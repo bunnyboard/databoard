@@ -73,6 +73,7 @@ import PellNetworkAdapter from './pellnetwork/pellnetwork';
 import PolygonNativeBridgeAdapter from './polygon/nativeBridge';
 import PolygonZzkevmNativeBridgeAdapter from './polygon/zkevmNativeBridge';
 import PufferAdapter from './puffer/puffer';
+import RangoAdapter from './rango/rango';
 import RenzoAdapter from './renzo/renzo';
 import ResolvAdapter from './resolv/resolv';
 import RocketpoolAdapter from './rocketpool/rocketpool';
@@ -272,5 +273,6 @@ export function getProtocolAdapters(
     debridge: new DebridgeAdapter(services, storages, ProtocolConfigs.debridge),
     yearn: new YearnAdapter(services, storages, ProtocolConfigs.yearn),
     superseedNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.superseedNativeBridge),
+    rango: new RangoAdapter(services, storages, ProtocolConfigs.rango),
   };
 }

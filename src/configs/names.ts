@@ -288,4 +288,5 @@ export const ProtocolNames = {
   debridge: 'debridge',
   yearn: 'yearn',
   superseedNativeBridge: 'superseedNativeBridge',
+  rango: 'rango',
 };
