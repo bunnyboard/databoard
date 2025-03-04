@@ -84,6 +84,7 @@ export default class ProtocolAdapter implements IProtocolAdapter {
           getResult.totalBalanceUsd += balanceUsd;
           if (!getResult.tokenBalanceUsds[token.address]) {
             getResult.tokenBalanceUsds[token.address] = {
+              token: token,
               priceUsd: tokenPriceUsd,
               balanceUsd: 0,
             };
@@ -116,6 +117,7 @@ export default class ProtocolAdapter implements IProtocolAdapter {
         getResult.totalBalanceUsd += balanceUsd;
         if (!getResult.tokenBalanceUsds[token.address]) {
           getResult.tokenBalanceUsds[token.address] = {
+            token: token,
             priceUsd: nativeTokenPriceUsd,
             balanceUsd: 0,
           };
@@ -471,7 +473,7 @@ export default class ProtocolAdapter implements IProtocolAdapter {
   }
 
   public async runTest(options: TestAdapterOptions): Promise<void> {
-    const current = getTimestamp();
+    const current = options.timestamp ? options.timestamp : getTimestamp();
     const fromTime = options.timestamp ? options.timestamp : current - TimeUnits.SecondsPerDay;
     const toTime = options.timestamp ? options.timestamp + TimeUnits.SecondsPerDay : current;
 

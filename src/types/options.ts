@@ -41,6 +41,7 @@ export interface GetAddressBalanceUsdResult {
   totalBalanceUsd: number;
   tokenBalanceUsds: {
     [key: string]: {
+      token: Token;
       priceUsd: number;
       balanceUsd: number;
     };

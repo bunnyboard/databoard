@@ -22337,6 +22337,12 @@
     "decimals": 9,
     "address": "0x7b32e70e8d73ac87c1b342e063528b2930b15ceb"
   },
+  "0x7b35ce522cb72e4077baeb96cb923a5529764a00": {
+    "chain": "ethereum",
+    "symbol": "IMX",
+    "decimals": 18,
+    "address": "0x7b35ce522cb72e4077baeb96cb923a5529764a00"
+  },
   "0x7b37a55ffb30c11d95f943672ae98f28cfb7b087": {
     "chain": "ethereum",
     "symbol": "FUFU",
@@ -43288,6 +43294,12 @@
     "symbol": "FCL",
     "decimals": 18,
     "address": "0xf4d861575ecc9493420a3f5a14f85b13f0b50eb3"
+  },
+  "0xf4dc48d260c93ad6a96c5ce563e70ca578987c74": {
+    "chain": "ethereum",
+    "symbol": "BABL",
+    "decimals": 18,
+    "address": "0xf4dc48d260c93ad6a96c5ce563e70ca578987c74"
   },
   "0xf4ecea12afac243bac17942f1c9766ef4438de46": {
     "chain": "ethereum",

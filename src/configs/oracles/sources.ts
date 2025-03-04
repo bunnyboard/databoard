@@ -2990,10 +2990,6 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'matic',
     sources: [OracleSourceUniswapv2List.CROWD_WPOL],
   },
-  MTA: {
-    currency: 'usd',
-    sources: [OracleSourceUniswapv2List.MTA_USDC],
-  },
   EXA: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.EXA_WETH],
@@ -3069,5 +3065,153 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   SDAO: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.SDAO_WETH],
+  },
+  renDOGE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.renDOGE_WETH],
+  },
+  floatBANK: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.floatBANK_WETH],
+  },
+  FLX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.FLX_WETH],
+  },
+  IDLE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.IDLE_WETH],
+  },
+  RAD: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.RAD_USDC],
+  },
+  eXRD: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.eXRD_USDC],
+  },
+  SOS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SOS_WETH],
+  },
+  FLOAT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.FLOAT_WETH],
+  },
+  UBI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.UBI_WETH],
+  },
+  oSQTH: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.oSQTH_WETH],
+  },
+  GAMMA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.GAMMA_WETH],
+  },
+  wNXM: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.wNXM_WETH],
+  },
+  FNT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.FNT_WETH],
+  },
+  MTA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.MTA_WETH],
+  },
+  REQ: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.REQ_WETH],
+  },
+  TRDL: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.TRDL_WETH],
+  },
+  BED: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.BED_WETH],
+  },
+  ETH2xFLI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ETH2xFLI_WETH],
+  },
+  BABL: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.BABL_WETH],
+  },
+  CARD: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.CARD_WETH],
+  },
+  INDEX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.INDEX_WETH],
+  },
+  OGN: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.OGN_WETH],
+  },
+  EUL: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.EUL_WETH],
+  },
+  CTX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.CTX_WETH],
+  },
+  VEGA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.VEGA_WETH],
+  },
+  impermaxIMX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.impermaxIMX_WETH],
+  },
+  GFI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.GFI_WETH],
+  },
+  sETH2: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.sETH2_WETH],
+  },
+  SSV: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.SSV_WETH],
+  },
+  XMON: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.XMON_WETH],
+  },
+  MILADY: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.MILADY_WETH],
+  },
+  SOCKS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SOCKS_WETH],
+  },
+  SDL: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SDL_WETH],
+  },
+  compoundETH: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.compoundETH_WETH],
+  },
+  cvxCRV: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.cvxCRV_WETH],
+  },
+  NEXO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.NEXO_WETH],
+  },
+  DFI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.DFI_WETH],
   },
 };

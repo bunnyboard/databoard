@@ -1,14 +1,17 @@
 import { EulerProtocolConfig } from '../../../configs/protocols/euler';
-import { ProtocolConfig } from '../../../types/base';
+import { ProtocolConfig, Token } from '../../../types/base';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
 import ProtocolAdapter from '../protocol';
 import EVaultAbi from '../../../configs/abi/euler/EVault.json';
-import { formatBigNumberToNumber } from '../../../lib/utils';
+import { formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
 import { SolidityUnits, TimeUnits } from '../../../configs/constants';
 import { decodeEventLog } from 'viem';
 import AdapterDataHelper from '../helpers';
+import EulerMarketsAbi from '../../../configs/abi/euler/Markets.json';
+import Erc20Abi from '../../../configs/abi/ERC20.json';
+import { ContractCall } from '../../../services/blockchains/domains';
 
 const EulerEvents = {
   Deposit: '0xdcbc1c05240f31ff3ad067ef1ee35ce4997762752e3a095284754544f4c709d7',
@@ -16,6 +19,14 @@ const EulerEvents = {
   Borrow: '0xcbc04eca7e9da35cb1393a6135a199ca52e450d5e9251cbd99f7847d33a36750',
   Repay: '0x5c16de4f8b59bd9caf0f49a545f25819a895ed223294290b408242e72a594231',
   Liquidate: '0x8246cc71ab01533b5bebc672a636df812f10637ad720797319d5741d5ebb3962',
+};
+
+const EulerV1Events = {
+  Deposit: '0x5548c837ab068cf56a2c2479df0882a4922fd203edb7517321831d95078c5f62',
+  Withdraw: '0x9b1bfa7fa9ee420a16e124f794c35ac9f90472acc99140eb2f6447c714cad8eb',
+  Borrow: '0x312a5e5e1079f5dda4e95dbbd0b908b291fd5b992ef22073643ab691572c5b52',
+  Repay: '0x05f2eeda0e08e4b437f487c8d7d29b14537d15e3488170dc3de5dbdf8dac4684',
+  Liquidation: '0xbba0f1d6fb8b9abe2bbc543b7c13d43faba91c6f78da4700381c94041ac7267d',
 };
 
 const FixedRate: { [key: string]: number } = {
@@ -48,6 +59,272 @@ export default class EulerAdapter extends ProtocolAdapter {
     };
 
     const eulerConfig = this.protocolConfig as EulerProtocolConfig;
+
+    if (eulerConfig.v1Config.birthday > options.timestamp) {
+      return null;
+    }
+
+    // get v1 data
+    const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+      eulerConfig.v1Config.chain,
+      options.timestamp,
+    );
+    const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+      eulerConfig.v1Config.chain,
+      options.beginTime,
+    );
+    const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+      eulerConfig.v1Config.chain,
+      options.endTime,
+    );
+    const anchorBlock = eulerConfig.v1Config.anchorBlock > blockNumber ? blockNumber : eulerConfig.v1Config.anchorBlock;
+
+    protocolData.breakdown[eulerConfig.v1Config.chain] = {};
+
+    // get metadata of all tokens - underlying assets
+    const getDTokensCalls: Array<ContractCall> = eulerConfig.v1Config.tokens.map((tokenAddress) => {
+      return {
+        abi: EulerMarketsAbi,
+        target: eulerConfig.v1Config.marketProxy,
+        method: 'underlyingToDToken',
+        params: [tokenAddress],
+      };
+    });
+    const getDTokensResults: Array<string> = await this.services.blockchain.evm.multicall({
+      chain: eulerConfig.v1Config.chain,
+      blockNumber: anchorBlock,
+      calls: getDTokensCalls,
+    });
+
+    // get reserve fee
+    const getReserveFeesCalls: Array<ContractCall> = eulerConfig.v1Config.tokens.map((tokenAddress) => {
+      return {
+        abi: EulerMarketsAbi,
+        target: eulerConfig.v1Config.marketProxy,
+        method: 'reserveFee',
+        params: [tokenAddress],
+      };
+    });
+    const getReserveFeesResults: Array<string> = await this.services.blockchain.evm.multicall({
+      chain: eulerConfig.v1Config.chain,
+      blockNumber: anchorBlock,
+      calls: getReserveFeesCalls,
+    });
+
+    // get total supply of DTokens
+    const getDTokensSupplyCalls: Array<ContractCall> = getDTokensResults.map((dTokenAddress) => {
+      return {
+        abi: Erc20Abi,
+        target: dTokenAddress,
+        method: 'totalSupply',
+        params: [],
+      };
+    });
+    const getDTokensSupplyResults: Array<string> = await this.services.blockchain.evm.multicall({
+      chain: eulerConfig.v1Config.chain,
+      blockNumber: blockNumber,
+      calls: getDTokensSupplyCalls,
+    });
+
+    // get interest rates
+    // before - beginBlock
+    const before_getInterestAccumulatorCalls: Array<ContractCall> = eulerConfig.v1Config.tokens.map((tokenAddress) => {
+      return {
+        abi: EulerMarketsAbi,
+        target: eulerConfig.v1Config.marketProxy,
+        method: 'interestAccumulator',
+        params: [tokenAddress],
+      };
+    });
+    const before_getInterestAccumulatorResults: Array<string> = await this.services.blockchain.evm.multicall({
+      chain: eulerConfig.v1Config.chain,
+      blockNumber: beginBlock,
+      calls: before_getInterestAccumulatorCalls,
+    });
+    // after - endBlock
+    const after_getInterestAccumulatorCalls: Array<ContractCall> = eulerConfig.v1Config.tokens.map((tokenAddress) => {
+      return {
+        abi: EulerMarketsAbi,
+        target: eulerConfig.v1Config.marketProxy,
+        method: 'interestAccumulator',
+        params: [tokenAddress],
+      };
+    });
+    const after_getInterestAccumulatorResults: Array<string> = await this.services.blockchain.evm.multicall({
+      chain: eulerConfig.v1Config.chain,
+      blockNumber: endBlock,
+      calls: after_getInterestAccumulatorCalls,
+    });
+
+    const tokens: Array<Token> = [];
+    for (const tokenAddress of eulerConfig.v1Config.tokens) {
+      const token = await this.services.blockchain.evm.getTokenInfo({
+        chain: eulerConfig.v1Config.chain,
+        address: tokenAddress,
+      });
+      if (token) {
+        tokens.push(token);
+      }
+    }
+    const getTokenBalances = await this.getAddressBalanceUsd({
+      chain: eulerConfig.v1Config.chain,
+      ownerAddress: eulerConfig.v1Config.protocolProxy,
+      tokens: tokens,
+      blockNumber: blockNumber,
+      timestamp: options.timestamp,
+    });
+
+    for (let i = 0; i < eulerConfig.v1Config.tokens.length; i++) {
+      const tokenAddress = normalizeAddress(eulerConfig.v1Config.tokens[i]);
+      if (getTokenBalances.tokenBalanceUsds[tokenAddress]) {
+        const token = getTokenBalances.tokenBalanceUsds[tokenAddress].token;
+        const tokenPriceUsd = getTokenBalances.tokenBalanceUsds[tokenAddress].priceUsd;
+
+        // default 23%
+        // https://etherscan.io/address/0xE5d0A7A3ad358792Ba037cB6eE375FfDe7Ba2Cd1#code#F2#L220
+        // https://etherscan.io/address/0xE5d0A7A3ad358792Ba037cB6eE375FfDe7Ba2Cd1#code#F14#L21
+        const reserveFee = getReserveFeesResults[i]
+          ? formatBigNumberToNumber(getReserveFeesResults[i].toString(), 0)
+          : 920000000;
+        const reserveFeeRate = reserveFee / 4000000000;
+
+        // use 27 decimals
+        // https://etherscan.io/address/0xE5d0A7A3ad358792Ba037cB6eE375FfDe7Ba2Cd1#code#F2#L213
+        // https://etherscan.io/address/0xE5d0A7A3ad358792Ba037cB6eE375FfDe7Ba2Cd1#code#F14#L22
+        const before_interestIndexRate = before_getInterestAccumulatorResults[i]
+          ? formatBigNumberToNumber(before_getInterestAccumulatorResults[i].toString(), 27)
+          : 1;
+        const after_interestIndexRate = after_getInterestAccumulatorResults[i]
+          ? formatBigNumberToNumber(after_getInterestAccumulatorResults[i].toString(), 27)
+          : 1;
+        const interestIndexRateDiff =
+          after_interestIndexRate > before_interestIndexRate ? after_interestIndexRate - before_interestIndexRate : 0;
+
+        // all dTokens have 18 decimals
+        // WETH 18 decimals | dToken: 0x62e28f054efc24b26A794F5C1249B6349454352C - 18 decimals
+        // USDC 6 decimals | dToken: 0x84721A3dB22EB852233AEAE74f9bC8477F8bcc42 - 18 decimals
+        // WBTC 8 decimals | dToken: 0x36c4A49F624342225bA45fcfc2e1A4BcBCDcE557 - 18 decimals
+        const totalBorrowedUsd =
+          formatBigNumberToNumber(getDTokensSupplyResults[i] ? getDTokensSupplyResults[i].toString() : '0', 18) *
+          tokenPriceUsd;
+
+        const totalInterestUsd = interestIndexRateDiff * totalBorrowedUsd;
+        const protocolRevenue = totalInterestUsd * reserveFeeRate;
+
+        (protocolData.totalBorrowed as number) += totalBorrowedUsd;
+        protocolData.totalFees += totalInterestUsd;
+        protocolData.protocolRevenue += protocolRevenue;
+        protocolData.supplySideRevenue += totalInterestUsd - protocolRevenue;
+        if (!protocolData.breakdown[token.chain][token.address]) {
+          protocolData.breakdown[token.chain][token.address] = {
+            ...getInitialProtocolCoreMetrics(),
+            totalSupplied: 0,
+            totalBorrowed: 0,
+            volumes: {
+              deposit: 0,
+              withdraw: 0,
+              borrow: 0,
+              repay: 0,
+              liquidation: 0,
+            },
+          };
+        }
+        protocolData.breakdown[token.chain][token.address].totalAssetDeposited +=
+          getTokenBalances.tokenBalanceUsds[tokenAddress].balanceUsd;
+        protocolData.breakdown[token.chain][token.address].totalValueLocked +=
+          getTokenBalances.tokenBalanceUsds[tokenAddress].balanceUsd - totalBorrowedUsd;
+        (protocolData.breakdown[token.chain][token.address].totalSupplied as number) +=
+          getTokenBalances.tokenBalanceUsds[tokenAddress].balanceUsd;
+        (protocolData.breakdown[token.chain][token.address].totalBorrowed as number) += totalBorrowedUsd;
+        protocolData.breakdown[token.chain][token.address].totalFees += totalInterestUsd;
+        protocolData.breakdown[token.chain][token.address].protocolRevenue += protocolRevenue;
+        protocolData.breakdown[token.chain][token.address].supplySideRevenue += totalInterestUsd - protocolRevenue;
+      }
+    }
+
+    protocolData.totalAssetDeposited += getTokenBalances.totalBalanceUsd;
+    protocolData.totalValueLocked += protocolData.totalAssetDeposited - (protocolData.totalBorrowed as number);
+    (protocolData.totalSupplied as number) += getTokenBalances.totalBalanceUsd;
+
+    const v1Logs = await this.services.blockchain.evm.getContractLogs({
+      chain: eulerConfig.v1Config.chain,
+      address: eulerConfig.v1Config.protocolProxy,
+      fromBlock: beginBlock,
+      toBlock: endBlock,
+    });
+    const events: Array<any> = v1Logs
+      .filter((log) => Object.values(EulerV1Events).includes(log.topics[0]))
+      .map((log) =>
+        decodeEventLog({
+          abi: EulerMarketsAbi,
+          topics: log.topics,
+          data: log.data,
+        }),
+      );
+    for (const event of events) {
+      const underlying = normalizeAddress(event.args.underlying);
+      const token = getTokenBalances.tokenBalanceUsds[underlying]
+        ? getTokenBalances.tokenBalanceUsds[underlying].token
+        : null;
+      if (token) {
+        const tokenPriceUsd = getTokenBalances.tokenBalanceUsds[underlying].priceUsd;
+
+        // the same as dTokens, all eTokens have 18 decimals
+        const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), 18) * tokenPriceUsd;
+
+        switch (event.eventName) {
+          case 'Deposit': {
+            (protocolData.volumes.deposit as number) += amountUsd;
+
+            if (protocolData.breakdown[token.chain][token.address]) {
+              (protocolData.breakdown[token.chain][token.address].volumes.deposit as number) += amountUsd;
+            }
+            break;
+          }
+          case 'Withdraw': {
+            (protocolData.volumes.withdraw as number) += amountUsd;
+
+            if (protocolData.breakdown[token.chain][token.address]) {
+              (protocolData.breakdown[token.chain][token.address].volumes.withdraw as number) += amountUsd;
+            }
+            break;
+          }
+          case 'Borrow': {
+            (protocolData.volumes.borrow as number) += amountUsd;
+
+            if (protocolData.breakdown[token.chain][token.address]) {
+              (protocolData.breakdown[token.chain][token.address].volumes.borrow as number) += amountUsd;
+            }
+            break;
+          }
+          case 'Repay': {
+            (protocolData.volumes.repay as number) += amountUsd;
+
+            if (protocolData.breakdown[token.chain][token.address]) {
+              (protocolData.breakdown[token.chain][token.address].volumes.repay as number) += amountUsd;
+            }
+            break;
+          }
+          case 'Liquidation': {
+            (protocolData.volumes.liquidation as number) += amountUsd;
+
+            const collateral = normalizeAddress(event.args.collateral);
+            const collateralToken = getTokenBalances.tokenBalanceUsds[collateral]
+              ? getTokenBalances.tokenBalanceUsds[underlying].token
+              : null;
+            if (collateralToken) {
+              if (protocolData.breakdown[collateralToken.chain][collateralToken.address]) {
+                (protocolData.breakdown[collateralToken.chain][collateralToken.address].volumes
+                  .liquidation as number) += amountUsd;
+              }
+            }
+            break;
+          }
+        }
+      }
+    }
+
+    // get vaults data - euler v2
     for (const factoryConfig of eulerConfig.factories) {
       if (factoryConfig.birthday > options.timestamp) {
         continue;
