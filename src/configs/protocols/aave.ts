@@ -304,5 +304,18 @@ export const AaveConfigs: AaveProtocolConfig = {
         address: '0xCFDAdA7DCd2e785cF706BaDBC2B8Af5084d595e9',
       },
     },
+    {
+      chain: ChainNames.sonic,
+      marketName: 'Main Market',
+      version: 3,
+      birthday: 1740873600, // Sun Mar 02 2025 00:00:00 GMT+0000
+      lendingPool: '0x5362dBb1e601abF3a4c14c22ffEdA64042E5eAA3',
+      dataProvider: '0x306c124fFba5f2Bc0BcAf40D249cf19D492440b9',
+      dataProvider2: '0x306c124fFba5f2Bc0BcAf40D249cf19D492440b9',
+      oracle: {
+        currency: 'usd',
+        address: '0xD63f7658C66B2934Bd234D79D06aEF5290734B30',
+      },
+    },
   ],
 };

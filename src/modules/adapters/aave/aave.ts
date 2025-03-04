@@ -160,9 +160,15 @@ export default class AaveAdapter extends AaveCore {
             formatBigNumberToNumber(reserveData[4].toString(), reserve.token.decimals) * reserve.priceUsd;
           totalBorrowed = totalStableDebt + totalVariableDebt;
 
-          reserveRate = formatBigNumberToNumber(reserveConfigData[4].toString(), 4);
-          preLiquidityIndex = formatBigNumberToNumber(preReserveData[9].toString(), SolidityUnits.RayDecimals);
-          postLiquidityIndex = formatBigNumberToNumber(postReserveData[9].toString(), SolidityUnits.RayDecimals);
+          reserveRate = formatBigNumberToNumber(reserveConfigData ? reserveConfigData[4].toString() : '0', 4);
+          preLiquidityIndex = formatBigNumberToNumber(
+            preReserveData ? preReserveData[9].toString() : '0',
+            SolidityUnits.RayDecimals,
+          );
+          postLiquidityIndex = formatBigNumberToNumber(
+            postReserveData ? postReserveData[9].toString() : '0',
+            SolidityUnits.RayDecimals,
+          );
         }
 
         const growthLiquidityIndexRate =
