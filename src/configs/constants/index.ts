@@ -52,6 +52,8 @@ export const ChainBlockPeriods: { [key: string]: number } = {
   zksync: 1, // 1 seconds
   fraxtal: 1, // 2 seconds
   lisk: 2, // 2 seconds
+  unichain: 1, // 1 second
+  opbnb: 1, // 1 second
 };
 
 export const EventSignatures = {
