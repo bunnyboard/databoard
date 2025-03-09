@@ -162,6 +162,7 @@ export const ProtocolNames = {
   yldr: 'yldr',
   zerolend: 'zerolend',
   euler: 'euler',
+  eulerdao: 'eulerdao',
   hop: 'hop',
   cbridge: 'cbridge',
   hyphen: 'hyphen',
@@ -289,4 +290,18 @@ export const ProtocolNames = {
   yearn: 'yearn',
   superseedNativeBridge: 'superseedNativeBridge',
   rango: 'rango',
+  gauntlet: 'gauntlet', // https://www.gauntlet.xyz/
+  sparkdao: 'sparkdao', // spark.fi lending vaults
+  mevcapital: 'mevcapital', // https://mevcapital.com
+  steakhouse: 'steakhouse', // https://www.steakhouse.financial
+  bprotocol: 'bprotocol', // https://www.bprotocol.org
+  relendnetwork: 'relendnetwork', // https://relend.network
+  hakutora: 'hakutora', // https://hakutora.xyz
+  re7capital: 're7capital', // https://re7.capital
+  apostro: 'apostro', // https://apostro.xyz
+  ninesummits: 'ninesummits', // https://9summits.io
+  blockanalitica: 'blockanalitica', // https://blockanalitica.com
+  llamarisk: 'llamarisk', // https://www.llamarisk.com
+  tulipacapital: 'tulipacapital', // https://www.tulipa.capital
+  k3capital: 'k3capital', // https://k3.capital
 };

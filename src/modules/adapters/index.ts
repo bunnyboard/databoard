@@ -39,6 +39,7 @@ import FuelNativeBridgeAdapter from './fuel/nativeBridge';
 import GearboxAdapter from './gearbox/gearbox';
 import GmxAdapter from './gmx/gmx';
 import GnosisNativeBridgeAdapter from './gnosis/nativeBridge';
+import GauntletAdapter from './guntlet/gauntlet';
 import HopAdapter from './hop/hop';
 import HyperLiquidNativeBridgeAdapter from './hyperliquid/nativeBridge';
 import HyphenAdapter from './hyphen/hyphen';
@@ -274,5 +275,20 @@ export function getProtocolAdapters(
     yearn: new YearnAdapter(services, storages, ProtocolConfigs.yearn),
     superseedNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.superseedNativeBridge),
     rango: new RangoAdapter(services, storages, ProtocolConfigs.rango),
+    gauntlet: new GauntletAdapter(services, storages, ProtocolConfigs.gauntlet),
+    sparkdao: new GauntletAdapter(services, storages, ProtocolConfigs.sparkdao),
+    mevcapital: new GauntletAdapter(services, storages, ProtocolConfigs.mevcapital),
+    steakhouse: new GauntletAdapter(services, storages, ProtocolConfigs.steakhouse),
+    bprotocol: new GauntletAdapter(services, storages, ProtocolConfigs.bprotocol),
+    relendnetwork: new GauntletAdapter(services, storages, ProtocolConfigs.relendnetwork),
+    hakutora: new GauntletAdapter(services, storages, ProtocolConfigs.hakutora),
+    re7capital: new GauntletAdapter(services, storages, ProtocolConfigs.re7capital),
+    apostro: new GauntletAdapter(services, storages, ProtocolConfigs.apostro),
+    ninesummits: new GauntletAdapter(services, storages, ProtocolConfigs.ninesummits),
+    blockanalitica: new GauntletAdapter(services, storages, ProtocolConfigs.blockanalitica),
+    llamarisk: new GauntletAdapter(services, storages, ProtocolConfigs.llamarisk),
+    tulipacapital: new GauntletAdapter(services, storages, ProtocolConfigs.tulipacapital),
+    eulerdao: new GauntletAdapter(services, storages, ProtocolConfigs.eulerdao),
+    k3capital: new GauntletAdapter(services, storages, ProtocolConfigs.k3capital),
   };
 }

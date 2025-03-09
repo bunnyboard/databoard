@@ -420,7 +420,9 @@ export default class EulerAdapter extends ProtocolAdapter {
 
             const borrowRate =
               formatBigNumberToNumber(interestRate.toString(), SolidityUnits.RayDecimals) * TimeUnits.SecondsPerYear;
-            const protocolFeeRate = formatBigNumberToNumber(protocolFeeShare.toString(), 6);
+
+            // https://etherscan.io/address/0x8ff1c814719096b61abf00bb46ead0c9a529dd7d#code#F10#L26
+            const protocolFeeRate = formatBigNumberToNumber(protocolFeeShare.toString(), 4);
 
             const borrowFees = (borrowRate * totalBorrowUsd) / TimeUnits.DaysPerYear;
             const protocolRevenue = borrowFees * protocolFeeRate;

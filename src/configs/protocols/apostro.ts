@@ -1,0 +1,44 @@
+import { ChainNames, ProtocolNames } from '../names';
+import { GauntletProtocolConfig } from './gauntlet';
+
+export const ApostroConfigs: GauntletProtocolConfig = {
+  protocol: ProtocolNames.apostro,
+  birthday: 1732838400, // Fri Nov 29 2024 00:00:00 GMT+0000
+  curators: [
+    {
+      chain: ChainNames.ethereum,
+      birthday: 1732838400, // Fri Nov 29 2024 00:00:00 GMT+0000
+      morphoVaults: ['0x214B47C50057eFaa7adc1B1C2608C3751Cd77D78', '0x5085Dd6FAd07c12e38fae01bc2a4938d2C08B1Bc'],
+      eulerVaults: [
+        '0x3A8992754E2EF51D8F90620d2766278af5C59b90',
+        '0xcBC9B61177444A793B85442D3a953B90f6170b7D',
+        '0x81fa50cBe6C7Ed61961fE601B7c5AC334c2c84bB',
+        '0x7f1d29e70C644c387ded640B28E106e29E349074',
+        '0x9f12d29c7CC72bb3d237E2D042A6D890421f9899',
+        '0x396fD980c0463Ccb285d3ec6830978D5D97976EC',
+        '0xA2038a5B7Ce1C195F0C52b77134c5369CCfe0148',
+        '0xBc99605074737d36266f45E0d192dDe6CFDFd72a',
+        '0x82D2CE1f71cbe391c05E21132811e5172d51A6EE',
+        '0x29A9E5A004002Ff9E960bb8BB536E076F53cbDF1',
+        '0xe11a462235A39C90921C4a59D4E8B2707330BCf2',
+        '0xC605471aE09e0b7daA9e8813707d0DDbf9429Ad2',
+        '0xD7B67cF0e7EDA8268b0f42de82dF87DfCC9a8537',
+        '0xf9a23b059858CdD0e3ED0DDE89864BB82B88aa19',
+      ],
+    },
+    {
+      chain: ChainNames.base,
+      birthday: 1736380800, // Thu Jan 09 2025 00:00:00 GMT+0000
+      morphoVaults: ['0xcdDCDd18A16ED441F6CB10c3909e5e7ec2B9e8f3', '0xC484D83F667b779cc9907248101214235642258B'],
+      eulerVaults: [
+        '0xEdCc195Ca09c9FCC1DD30b152C0b82045Ff2F91f',
+        '0x29Dbce367F5157B924Af5093617bb128477D7A5C',
+        '0xC063C3b3625DF5F362F60f35B0bcd98e0fa650fb',
+        '0x5ce15fC058E762A6F9722fC6521A0c0F5eECD9BA',
+        '0x1E2F1e8A97E96a2FDD6A8Da427603Ed1c8b3847F',
+        '0x3F131Ac9D408926a8B36C1e03ce105f44DCD26Af',
+        '0x34ABB4501419b1E5f836567C58300c861164101A',
+      ],
+    },
+  ],
+};

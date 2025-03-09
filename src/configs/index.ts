@@ -11,7 +11,7 @@ import { CompoundConfigs } from './protocols/compound';
 import { CowswapConfigs } from './protocols/cowswap';
 import { CurvelendConfigs } from './protocols/curvelend';
 import { CurveusdConfigs } from './protocols/curveusd';
-import { EulerConfigs } from './protocols/euler';
+import { EulerConfigs, EulerdaoConfigs } from './protocols/euler';
 import { FluidConfigs } from './protocols/fluid';
 import { FraxlendConfigs } from './protocols/fraxlend';
 import { HanaConfigs } from './protocols/hana';
@@ -35,7 +35,7 @@ import { RhoConfigs } from './protocols/rho';
 import { RocketpoolConfigs } from './protocols/rocketpool';
 import { SeamlessConfigs } from './protocols/seamless';
 import { SonneConfigs } from './protocols/sonne';
-import { SparkConfigs } from './protocols/spark';
+import { SparkConfigs, SparkdaoConfigs } from './protocols/spark';
 import { TectonicConfigs } from './protocols/tectonic';
 import { UwulendConfigs } from './protocols/uwulend';
 import { VenusConfigs } from './protocols/venus';
@@ -155,6 +155,19 @@ import { DebridgeConfigs } from './protocols/debridge';
 import { YearnConfigs } from './protocols/yearn';
 import { SuperseedNativeBridgeConfigs } from './protocols/superseed';
 import { RangoConfigs } from './protocols/rango';
+import { GauntletConfigs } from './protocols/gauntlet';
+import { MevcapitalConfigs } from './protocols/mevcapital';
+import { SteakhouseConfigs } from './protocols/steakhouse';
+import { BprotocolConfigs } from './protocols/bprotocol';
+import { RelendnetworkConfigs } from './protocols/relendnetwork';
+import { HakutoraConfigs } from './protocols/hakutora';
+import { Re7capitalConfigs } from './protocols/re7capital';
+import { ApostroConfigs } from './protocols/apostro';
+import { NinesummitsConfigs } from './protocols/ninesummits';
+import { BlockanaliticaConfigs } from './protocols/blockanalitica';
+import { LlamariskConfigs } from './protocols/llamarisk';
+import { TulipacapitalConfigs } from './protocols/tulipacapital';
+import { K3capitalConfigs } from './protocols/k3capital';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -358,4 +371,19 @@ export const ProtocolConfigs = {
   yearn: YearnConfigs,
   superseedNativeBridge: SuperseedNativeBridgeConfigs,
   rango: RangoConfigs,
+  gauntlet: GauntletConfigs,
+  sparkdao: SparkdaoConfigs,
+  mevcapital: MevcapitalConfigs,
+  steakhouse: SteakhouseConfigs,
+  bprotocol: BprotocolConfigs,
+  relendnetwork: RelendnetworkConfigs,
+  hakutora: HakutoraConfigs,
+  re7capital: Re7capitalConfigs,
+  apostro: ApostroConfigs,
+  ninesummits: NinesummitsConfigs,
+  blockanalitica: BlockanaliticaConfigs,
+  llamarisk: LlamariskConfigs,
+  tulipacapital: TulipacapitalConfigs,
+  eulerdao: EulerdaoConfigs,
+  k3capital: K3capitalConfigs,
 };

@@ -1,5 +1,6 @@
 import { ChainNames, ProtocolNames } from '../names';
 import { AaveProtocolConfig } from './aave';
+import { GauntletProtocolConfig } from './gauntlet';
 
 // https://www.spark.fi/
 // forked from Aave v3
@@ -30,6 +31,25 @@ export const SparkConfigs: AaveProtocolConfig = {
         currency: 'usd',
         address: '0x8105f69d9c41644c6a0803fda7d03aa70996cfd9',
       },
+    },
+  ],
+};
+
+export const SparkdaoConfigs: GauntletProtocolConfig = {
+  protocol: ProtocolNames.sparkdao,
+  birthday: 1710547200, // Sat Mar 16 2024 00:00:00 GMT+0000
+  curators: [
+    {
+      chain: ChainNames.ethereum,
+      birthday: 1710547200, // Sat Mar 16 2024 00:00:00 GMT+0000
+      morphoVaults: ['0x73e65DBD630f90604062f6E02fAb9138e713edD9'],
+      eulerVaults: [],
+    },
+    {
+      chain: ChainNames.base,
+      birthday: 1735603200, // Tue Dec 31 2024 00:00:00 GMT+0000
+      morphoVaults: ['0x7BfA7C4f149E7415b73bdeDfe609237e29CBF34A'],
+      eulerVaults: [],
     },
   ],
 };

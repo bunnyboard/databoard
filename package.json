@@ -8,7 +8,6 @@
   },
   "scripts": {
     "build": "rm -rf ./build && tsc",
-    "test": "vitest",
     "pretty": "node scripts/pretty.js && biome format --write .",
     "start": "node build/index.js"
   },
