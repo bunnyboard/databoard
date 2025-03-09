@@ -9,6 +9,7 @@ import UniswapV2PairAbi from '../../../configs/abi/uniswap/UniswapV2Pair.json';
 import UniswapV3PoolAbi from '../../../configs/abi/uniswap/UniswapV3Pool.json';
 import { Address, decodeEventLog } from 'viem';
 import { AddressMulticall3 } from '../../../configs/constants';
+import EtherscanLibs, { EtherscanLogItem } from '../../libs/etherscan';
 
 interface GetLiquidityDataOptions {
   storages: ContextStorages;
@@ -305,123 +306,109 @@ export default class UniswapCore {
       withdrawVolumeUsd: 0,
     };
 
-    const collection = await options.storages.database.getCollection(envConfig.mongodb.collections.blockLogs.name);
-    const cursor = collection.find({
-      chain: options.factoryConfig.chain,
-      number: {
-        $gte: options.fromBlock,
-        $lte: options.toBlock,
-      },
-    });
+    const logs = await UniswapCore.getLogsFromEtherscan(options);
+    for (const log of logs) {
+      const pool2: Pool2 = await options.storages.database.find({
+        collection: envConfig.mongodb.collections.datasyncPool2.name,
+        query: {
+          chain: options.factoryConfig.chain,
+          factory: normalizeAddress(options.factoryConfig.factory),
+          address: normalizeAddress(log.address),
+        },
+      });
 
-    while (await cursor.hasNext()) {
-      const blockLogs: any = await cursor.next();
-
-      const logs: Array<any> = blockLogs.logs.filter((log: any) =>
-        Object.values(UniswapV2Events).includes(log.topics[0]),
-      );
-      for (const log of logs) {
-        const pool2: Pool2 = await options.storages.database.find({
-          collection: envConfig.mongodb.collections.datasyncPool2.name,
-          query: {
-            chain: options.factoryConfig.chain,
-            factory: normalizeAddress(options.factoryConfig.factory),
-            address: normalizeAddress(log.address),
-          },
+      if (pool2) {
+        const event: any = decodeEventLog({
+          abi: UniswapV2PairAbi,
+          topics: log.topics as any,
+          data: log.data as any,
         });
-        if (pool2) {
-          const event: any = decodeEventLog({
-            abi: UniswapV2PairAbi,
-            topics: log.topics,
-            data: log.data,
-          });
 
-          switch (event.eventName) {
-            case 'Swap': {
-              let feeRate = 0.003; // default univ2
-              let feeRateProtocol = 0;
-              let feeRateSupplySide = 0;
-              if (options.factoryConfig.feeRateForProtocol && options.factoryConfig.feeRateForLiquidityProviders) {
-                feeRate = options.factoryConfig.feeRateForProtocol + options.factoryConfig.feeRateForLiquidityProviders;
-                feeRateProtocol = options.factoryConfig.feeRateForProtocol;
-                feeRateSupplySide = options.factoryConfig.feeRateForLiquidityProviders;
+        switch (event.eventName) {
+          case 'Swap': {
+            let feeRate = 0.003; // default univ2
+            let feeRateProtocol = 0;
+            let feeRateSupplySide = 0;
+            if (options.factoryConfig.feeRateForProtocol && options.factoryConfig.feeRateForLiquidityProviders) {
+              feeRate = options.factoryConfig.feeRateForProtocol + options.factoryConfig.feeRateForLiquidityProviders;
+              feeRateProtocol = options.factoryConfig.feeRateForProtocol;
+              feeRateSupplySide = options.factoryConfig.feeRateForLiquidityProviders;
+            }
+
+            let swapVolumeUsd = 0;
+
+            const amount0In = formatBigNumberToNumber(event.args.amount0In.toString(), pool2.token0.decimals);
+            const amount1In = formatBigNumberToNumber(event.args.amount1In.toString(), pool2.token1.decimals);
+            const amount0Out = formatBigNumberToNumber(event.args.amount0Out.toString(), pool2.token0.decimals);
+            const amount1Out = formatBigNumberToNumber(event.args.amount1Out.toString(), pool2.token1.decimals);
+
+            const token0PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
+              chain: pool2.token0.chain,
+              address: pool2.token0.address,
+              timestamp: options.timestamp,
+              disableWarning: true,
+            });
+            if (token0PriceUsd > 0) {
+              if (amount0In > 0) {
+                swapVolumeUsd = amount0In * token0PriceUsd;
+              } else {
+                swapVolumeUsd = (amount0Out * token0PriceUsd) / (1 - feeRate);
               }
-
-              let swapVolumeUsd = 0;
-
-              const amount0In = formatBigNumberToNumber(event.args.amount0In.toString(), pool2.token0.decimals);
-              const amount1In = formatBigNumberToNumber(event.args.amount1In.toString(), pool2.token1.decimals);
-              const amount0Out = formatBigNumberToNumber(event.args.amount0Out.toString(), pool2.token0.decimals);
-              const amount1Out = formatBigNumberToNumber(event.args.amount1Out.toString(), pool2.token1.decimals);
-
-              const token0PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
-                chain: pool2.token0.chain,
-                address: pool2.token0.address,
+            } else {
+              const token1PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
+                chain: pool2.token1.chain,
+                address: pool2.token1.address,
                 timestamp: options.timestamp,
                 disableWarning: true,
               });
-              if (token0PriceUsd > 0) {
-                if (amount0In > 0) {
-                  swapVolumeUsd = amount0In * token0PriceUsd;
+              if (token1PriceUsd) {
+                if (amount1In > 0) {
+                  swapVolumeUsd = amount1In * token1PriceUsd;
                 } else {
-                  swapVolumeUsd = (amount0Out * token0PriceUsd) / (1 - feeRate);
-                }
-              } else {
-                const token1PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
-                  chain: pool2.token1.chain,
-                  address: pool2.token1.address,
-                  timestamp: options.timestamp,
-                  disableWarning: true,
-                });
-                if (token1PriceUsd) {
-                  if (amount1In > 0) {
-                    swapVolumeUsd = amount1In * token1PriceUsd;
-                  } else {
-                    swapVolumeUsd = (amount1Out * token1PriceUsd) / (1 - feeRate);
-                  }
+                  swapVolumeUsd = (amount1Out * token1PriceUsd) / (1 - feeRate);
                 }
               }
-
-              result.swapVolumeUsd += swapVolumeUsd;
-              result.protocolRevenueUsd += swapVolumeUsd * feeRateProtocol;
-              result.supplySideRevenueUsd += swapVolumeUsd * feeRateSupplySide;
-
-              break;
             }
 
-            case 'Mint':
-            case 'Burn': {
-              let volumeUsd = 0;
+            result.swapVolumeUsd += swapVolumeUsd;
+            result.protocolRevenueUsd += swapVolumeUsd * feeRateProtocol;
+            result.supplySideRevenueUsd += swapVolumeUsd * feeRateSupplySide;
 
-              const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals);
-              const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), pool2.token1.decimals);
+            break;
+          }
 
-              const token0PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
-                chain: pool2.token0.chain,
-                address: pool2.token0.address,
+          case 'Mint':
+          case 'Burn': {
+            let volumeUsd = 0;
+
+            const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals);
+            const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), pool2.token1.decimals);
+
+            const token0PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
+              chain: pool2.token0.chain,
+              address: pool2.token0.address,
+              timestamp: options.timestamp,
+              disableWarning: true,
+            });
+            if (token0PriceUsd > 0) {
+              volumeUsd = amount0 * token0PriceUsd * 2;
+            } else {
+              const token1PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
+                chain: pool2.token1.chain,
+                address: pool2.token1.address,
                 timestamp: options.timestamp,
                 disableWarning: true,
               });
-              if (token0PriceUsd > 0) {
-                volumeUsd = amount0 * token0PriceUsd * 2;
-              } else {
-                const token1PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
-                  chain: pool2.token1.chain,
-                  address: pool2.token1.address,
-                  timestamp: options.timestamp,
-                  disableWarning: true,
-                });
-                volumeUsd = amount1 * token1PriceUsd * 2;
-              }
-
-              if (event.eventName === 'Mint') {
-                result.depositVolumeUsd += volumeUsd;
-              } else {
-                result.withdrawVolumeUsd += volumeUsd;
-              }
-
-              break;
+              volumeUsd = amount1 * token1PriceUsd * 2;
             }
+
+            if (event.eventName === 'Mint') {
+              result.depositVolumeUsd += volumeUsd;
+            } else {
+              result.withdrawVolumeUsd += volumeUsd;
+            }
+
+            break;
           }
         }
       }
@@ -439,109 +426,36 @@ export default class UniswapCore {
       withdrawVolumeUsd: 0,
     };
 
-    const collection = await options.storages.database.getCollection(envConfig.mongodb.collections.blockLogs.name);
-    const cursor = collection.find({
-      chain: options.factoryConfig.chain,
-      number: {
-        $gte: options.fromBlock,
-        $lte: options.toBlock,
-      },
-    });
-
-    while (await cursor.hasNext()) {
-      const blockLogs: any = await cursor.next();
-
-      const logs: Array<any> = blockLogs.logs.filter((log: any) =>
-        Object.values(UniswapV3Events).includes(log.topics[0]),
-      );
-      for (const log of logs) {
-        const pool2: Pool2 = await options.storages.database.find({
-          collection: envConfig.mongodb.collections.datasyncPool2.name,
-          query: {
-            chain: options.factoryConfig.chain,
-            factory: normalizeAddress(options.factoryConfig.factory),
-            address: normalizeAddress(log.address),
-          },
+    const logs = await UniswapCore.getLogsFromEtherscan(options);
+    for (const log of logs) {
+      const pool2: Pool2 = await options.storages.database.find({
+        collection: envConfig.mongodb.collections.datasyncPool2.name,
+        query: {
+          chain: options.factoryConfig.chain,
+          factory: normalizeAddress(options.factoryConfig.factory),
+          address: normalizeAddress(log.address),
+        },
+      });
+      if (pool2) {
+        const event: any = decodeEventLog({
+          abi: UniswapV3PoolAbi,
+          topics: log.topics as any,
+          data: log.data as any,
         });
-        if (pool2) {
-          const event: any = decodeEventLog({
-            abi: UniswapV3PoolAbi,
-            topics: log.topics,
-            data: log.data,
-          });
 
-          switch (event.eventName) {
-            case 'Swap': {
-              let feeRateProtocol = options.factoryConfig.feeRateForProtocol
-                ? options.factoryConfig.feeRateForProtocol
-                : 0;
+        switch (event.eventName) {
+          case 'Swap': {
+            let feeRateProtocol = options.factoryConfig.feeRateForProtocol
+              ? options.factoryConfig.feeRateForProtocol
+              : 0;
 
-              let swapVolumeUsd = 0;
+            let swapVolumeUsd = 0;
 
-              const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals);
-              const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), pool2.token1.decimals);
+            const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals);
+            const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), pool2.token1.decimals);
 
-              if (amount0 > 0) {
-                // swap amount0 -> amount1
-                const token0PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
-                  chain: pool2.token0.chain,
-                  address: pool2.token0.address,
-                  timestamp: options.timestamp,
-                  disableWarning: true,
-                });
-                if (token0PriceUsd > 0) {
-                  swapVolumeUsd = Math.abs(amount0) * token0PriceUsd;
-                } else {
-                  const token1PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
-                    chain: pool2.token1.chain,
-                    address: pool2.token1.address,
-                    timestamp: options.timestamp,
-                    disableWarning: true,
-                  });
-                  if (token1PriceUsd > 0) {
-                    swapVolumeUsd = (Math.abs(amount1) * token1PriceUsd) / (1 - pool2.feeRate);
-                  }
-                }
-              } else {
-                // swap amount1 -> amount0
-                const token1PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
-                  chain: pool2.token1.chain,
-                  address: pool2.token1.address,
-                  timestamp: options.timestamp,
-                  disableWarning: true,
-                });
-                if (token1PriceUsd) {
-                  swapVolumeUsd = Math.abs(amount1) * token1PriceUsd;
-                } else {
-                  const token0PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
-                    chain: pool2.token0.chain,
-                    address: pool2.token0.address,
-                    timestamp: options.timestamp,
-                    disableWarning: true,
-                  });
-                  if (token0PriceUsd > 0) {
-                    swapVolumeUsd = (Math.abs(amount0) * token0PriceUsd) / (1 - pool2.feeRate);
-                  }
-                }
-              }
-
-              const swapFeeUsd = swapVolumeUsd * pool2.feeRate;
-              const protocolFeeUsd = swapFeeUsd * feeRateProtocol;
-
-              result.swapVolumeUsd += swapVolumeUsd;
-              result.protocolRevenueUsd += protocolFeeUsd;
-              result.supplySideRevenueUsd += swapFeeUsd - protocolFeeUsd;
-
-              break;
-            }
-
-            case 'Mint':
-            case 'Burn': {
-              let volumeUsd = 0;
-
-              const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals);
-              const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), pool2.token1.decimals);
-
+            if (amount0 > 0) {
+              // swap amount0 -> amount1
               const token0PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
                 chain: pool2.token0.chain,
                 address: pool2.token0.address,
@@ -549,7 +463,7 @@ export default class UniswapCore {
                 disableWarning: true,
               });
               if (token0PriceUsd > 0) {
-                volumeUsd = amount0 * token0PriceUsd * 2;
+                swapVolumeUsd = Math.abs(amount0) * token0PriceUsd;
               } else {
                 const token1PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
                   chain: pool2.token1.chain,
@@ -557,22 +471,102 @@ export default class UniswapCore {
                   timestamp: options.timestamp,
                   disableWarning: true,
                 });
-                volumeUsd = amount1 * token1PriceUsd * 2;
+                if (token1PriceUsd > 0) {
+                  swapVolumeUsd = (Math.abs(amount1) * token1PriceUsd) / (1 - pool2.feeRate);
+                }
               }
-
-              if (event.eventName === 'Mint') {
-                result.depositVolumeUsd += volumeUsd;
+            } else {
+              // swap amount1 -> amount0
+              const token1PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
+                chain: pool2.token1.chain,
+                address: pool2.token1.address,
+                timestamp: options.timestamp,
+                disableWarning: true,
+              });
+              if (token1PriceUsd) {
+                swapVolumeUsd = Math.abs(amount1) * token1PriceUsd;
               } else {
-                result.withdrawVolumeUsd += volumeUsd;
+                const token0PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
+                  chain: pool2.token0.chain,
+                  address: pool2.token0.address,
+                  timestamp: options.timestamp,
+                  disableWarning: true,
+                });
+                if (token0PriceUsd > 0) {
+                  swapVolumeUsd = (Math.abs(amount0) * token0PriceUsd) / (1 - pool2.feeRate);
+                }
               }
-
-              break;
             }
+
+            const swapFeeUsd = swapVolumeUsd * pool2.feeRate;
+            const protocolFeeUsd = swapFeeUsd * feeRateProtocol;
+
+            result.swapVolumeUsd += swapVolumeUsd;
+            result.protocolRevenueUsd += protocolFeeUsd;
+            result.supplySideRevenueUsd += swapFeeUsd - protocolFeeUsd;
+
+            break;
+          }
+
+          case 'Mint':
+          case 'Burn': {
+            let volumeUsd = 0;
+
+            const amount0 = formatBigNumberToNumber(event.args.amount0.toString(), pool2.token0.decimals);
+            const amount1 = formatBigNumberToNumber(event.args.amount1.toString(), pool2.token1.decimals);
+
+            const token0PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
+              chain: pool2.token0.chain,
+              address: pool2.token0.address,
+              timestamp: options.timestamp,
+              disableWarning: true,
+            });
+            if (token0PriceUsd > 0) {
+              volumeUsd = amount0 * token0PriceUsd * 2;
+            } else {
+              const token1PriceUsd = await options.services.oracle.getTokenPriceUsdRounded({
+                chain: pool2.token1.chain,
+                address: pool2.token1.address,
+                timestamp: options.timestamp,
+                disableWarning: true,
+              });
+              volumeUsd = amount1 * token1PriceUsd * 2;
+            }
+
+            if (event.eventName === 'Mint') {
+              result.depositVolumeUsd += volumeUsd;
+            } else {
+              result.withdrawVolumeUsd += volumeUsd;
+            }
+
+            break;
           }
         }
       }
     }
 
     return result;
+  }
+
+  protected static async getLogsFromEtherscan(options: GetLogsDataOptions): Promise<Array<EtherscanLogItem>> {
+    let logs: Array<EtherscanLogItem> = [];
+
+    const topics =
+      options.factoryConfig.version === Pool2Types.univ2
+        ? Object.values(UniswapV2Events)
+        : Object.values(UniswapV3Events);
+
+    for (const topic of topics) {
+      const etherscanLogs = await EtherscanLibs.getLogsByTopic0AutoPaging({
+        chain: options.factoryConfig.chain,
+        fromBlock: options.fromBlock,
+        toBlock: options.toBlock,
+        topic0: topic,
+      });
+
+      logs = logs.concat(etherscanLogs);
+    }
+
+    return logs;
   }
 }

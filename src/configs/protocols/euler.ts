@@ -30,7 +30,7 @@ export interface EulerProtocolConfig extends ProtocolConfig {
 
 export const EulerConfigs: EulerProtocolConfig = {
   protocol: ProtocolNames.euler,
-  birthday: 1637971200, // Sat Nov 27 2021 00:00:00 GMT+0000
+  birthday: 1639267200, // Sun Dec 12 2021 00:00:00 GMT+0000
   v1Config: {
     chain: ChainNames.ethereum,
     birthday: 1637971200, // Sat Nov 27 2021 00:00:00 GMT+0000
@@ -257,6 +257,8 @@ export const EulerConfigs: EulerProtocolConfig = {
         '0x6d18F74AAD8494B789aE34b5455816F79664d209',
         '0x45c3B59d53e2e148Aaa6a857521059676D5c0489',
         '0xb7FC5ECF8E9F1DdBd8e039e189c7BBC575be23Ea',
+        '0x0F81E34a5AD7929eB863F97F4217A182923FCEfb',
+        '0xEF1d264dDcF1ebc0485d31daEbE5C5698942F55F',
       ],
     },
     {

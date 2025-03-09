@@ -72,13 +72,6 @@ export default class UniswapAdapter extends UniswapDatasync {
         options.endTime,
       );
 
-      // sync logs to query volumes
-      await this.indexChainLogs({
-        chain: factoryConfig.chain,
-        fromBlock: beginBlock,
-        toBlock: endBlock,
-      });
-
       const logsData = await UniswapCore.getLogsDataUsd({
         storages: this.storages,
         services: this.services,
@@ -108,9 +101,11 @@ export default class UniswapAdapter extends UniswapDatasync {
   }
 
   public async runTest(options: TestAdapterOptions): Promise<void> {
+    const timeframe = 600;
+
     const current = getTimestamp();
-    const fromTime = options.timestamp ? options.timestamp : current - 3600;
-    const toTime = options.timestamp ? options.timestamp + 3600 : current;
+    const fromTime = options.timestamp ? options.timestamp : current - timeframe;
+    const toTime = options.timestamp ? options.timestamp + timeframe : current;
 
     if (options.output === 'json') {
       console.log(

@@ -77,6 +77,7 @@ export const CompoundConfigs: CompoundProtocolConfig = {
     },
   ],
   comets: [
+    // ethereum
     {
       chain: ChainNames.ethereum,
       birthday: 1660435200, // Sun Aug 14 2022 00:00:00 GMT+0000
@@ -103,6 +104,13 @@ export const CompoundConfigs: CompoundProtocolConfig = {
       comet: '0x5D409e56D886231aDAf00c8775665AD0f9897b56',
     },
     {
+      chain: ChainNames.ethereum,
+      birthday: 1739318400, // Wed Feb 12 2025 00:00:00 GMT+0000
+      comet: '0xe85Dc543813B8c2CFEaAc371517b925a166a9293',
+    },
+
+    // polygon
+    {
       chain: ChainNames.polygon,
       birthday: 1676764800, // Sun Feb 19 2023 00:00:00 GMT+0000
       comet: '0xF25212E676D1F7F89Cd72fFEe66158f541246445',
@@ -112,6 +120,8 @@ export const CompoundConfigs: CompoundProtocolConfig = {
       birthday: 1719100800, // Sun Jun 23 2024 00:00:00 GMT+0000
       comet: '0xaeb318360f27748acb200ce616e389a6c9409a07',
     },
+
+    // arbitrum
     {
       chain: ChainNames.arbitrum,
       birthday: 1683244800, // Fri May 05 2023 00:00:00 GMT+0000
@@ -132,6 +142,8 @@ export const CompoundConfigs: CompoundProtocolConfig = {
       birthday: 1718928000, // Fri Jun 21 2024 00:00:00 GMT+0000
       comet: '0xd98be00b5d27fc98112bde293e487f8d4ca57d07',
     },
+
+    // base
     {
       chain: ChainNames.base,
       birthday: 1691193600, // Sat Aug 05 2023 00:00:00 GMT+0000
@@ -153,10 +165,19 @@ export const CompoundConfigs: CompoundProtocolConfig = {
       comet: '0x784efeB622244d2348d4F2522f8860B96fbEcE89',
     },
     {
+      chain: ChainNames.base,
+      birthday: 1738886400, // Fri Feb 07 2025 00:00:00 GMT+0000
+      comet: '0x2c776041CCFe903071AF44aa147368a9c8EEA518',
+    },
+
+    // scroll
+    {
       chain: ChainNames.scroll,
       birthday: 1708128000, // Sat Feb 17 2024 00:00:00 GMT+0000
       comet: '0xB2f97c1Bd3bf02f5e74d13f02E3e26F93D77CE44',
     },
+
+    // optimism
     {
       chain: ChainNames.optimism,
       birthday: 1712448000, // Sun Apr 07 2024 00:00:00 GMT+0000
@@ -172,10 +193,26 @@ export const CompoundConfigs: CompoundProtocolConfig = {
       birthday: 1721088000, // Tue Jul 16 2024 00:00:00 GMT+0000
       comet: '0xe36a30d249f7761327fd973001a32010b521b6fd', // cWETHv3
     },
+
+    // mantle
     {
       chain: ChainNames.mantle,
       birthday: 1729728000, // Thu Oct 24 2024 00:00:00 GMT+0000
       comet: '0x606174f62cd968d8e684c645080fa694c1D7786E', // cUSDev3
+    },
+
+    // unichain
+    {
+      chain: ChainNames.unichain,
+      birthday: 1739923200, // Wed Feb 19 2025 00:00:00 GMT+0000
+      comet: '0x2c7118c4C88B9841FCF839074c26Ae8f035f2921',
+    },
+
+    // linea
+    {
+      chain: ChainNames.linea,
+      birthday: 1738195200, // Thu Jan 30 2025 00:00:00 GMT+0000
+      comet: '0x8D38A3d6B3c3B7d96D6536DA7Eef94A9d7dbC991',
     },
   ],
 };

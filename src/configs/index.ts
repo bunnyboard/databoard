@@ -177,6 +177,14 @@ export const CustomQueryChainLogsBlockRange: { [key: string]: number } = {
   optimism: 1000,
 };
 
+// use multiple workers to index blocks data
+// for example
+// when use 3 workers to index block from 0 -> 2
+// worker 1 get block 0
+// worker 2 get block 1
+// worker 3 get block 2
+// at the same time, reduce index blocks time 3 times
+// this should be considered to config per blockchain
 export const DefaultChainIndexWorkers = 3;
 export const CustomChainIndexWorkers: { [key: string]: number } = {
   arbitrum: 5,

@@ -9,3 +9,13 @@ export function getChainNameById(chainId: number): string | null {
 
   return null;
 }
+
+export function getChainIdByName(name: string): number | null {
+  for (const chainConfig of Object.values(BlockchainConfigs)) {
+    if (chainConfig.name === name) {
+      return chainConfig.chainId;
+    }
+  }
+
+  return null;
+}
