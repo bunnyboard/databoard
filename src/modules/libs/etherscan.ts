@@ -31,6 +31,27 @@ export interface EtherscanLogItem {
 }
 
 export default class EtherscanLibs {
+  public static name: string = 'etherscan';
+
+  public static async makeRequest(requestUrl: string): Promise<any> {
+    let doIt = 0;
+
+    do {
+      try {
+        const response = await axios.get(requestUrl);
+        return response.data;
+      } catch (e: any) {
+        logger.warn('failed to make request to etherscan, retrying', {
+          service: EtherscanLibs.name,
+          error: e.message,
+        });
+      }
+      await sleep(2);
+    } while (doIt < 5);
+
+    return null;
+  }
+
   public static async getLogsByTopic0(options: GetLogsByTopic0Options): Promise<Array<EtherscanLogItem>> {
     const chainId = getChainIdByName(options.chain);
 
@@ -38,11 +59,15 @@ export default class EtherscanLibs {
     let logs: Array<EtherscanLogItem> = [];
     do {
       const requestUrl = `https://api.etherscan.io/v2/api?chainId=${chainId}&module=logs&action=getLogs&fromBlock=${options.fromBlock}&toBlock=${options.toBlock}&topic0=${options.topic0}&page=${pageIndex}&offset=1000&apiKey=${envConfig.etherscan.etherscanApiKey}`;
-      const response = await axios.get(requestUrl);
+      const responseData = await EtherscanLibs.makeRequest(requestUrl);
+      if (!responseData) {
+        await sleep(2);
+        continue;
+      }
 
-      if (response.data.result) {
+      if (responseData.result) {
         logs = logs.concat(
-          response.data.result.map((item: any) => {
+          responseData.result.map((item: any) => {
             return {
               address: normalizeAddress(item.address),
               topics: item.topics,
@@ -54,7 +79,7 @@ export default class EtherscanLibs {
           }),
         );
 
-        if (response.data.result.length === 0) {
+        if (responseData.result.length === 0) {
           break;
         }
       } else {
@@ -63,7 +88,7 @@ export default class EtherscanLibs {
 
       pageIndex += 1;
 
-      await sleep(1);
+      await sleep(0.2);
     } while (true);
 
     return logs;
@@ -77,7 +102,7 @@ export default class EtherscanLibs {
       : EtherscanQueryConfigs.defaultBlockrange;
 
     logger.debug('getting contract logs from etherscan', {
-      service: this.name,
+      service: EtherscanLibs.name,
       chain: options.chain,
       fromBlock: options.fromBlock,
       toBlock: options.toBlock,

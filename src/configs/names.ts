@@ -128,7 +128,6 @@ export const ProtocolNames = {
   lido: 'lido',
   liquidcollective: 'liquidcollective',
   liquity: 'liquity',
-  liquityv2: 'liquityv2',
   maker: 'maker',
   mendi: 'mendi',
   moonwell: 'moonwell',

@@ -48,6 +48,7 @@ export default class MorphoLibs {
     });
     const getAssetsResults = await blockchain.multicall({
       chain: options.chain,
+      blockNumber: blockNumber,
       calls: getAssetsCalls,
     });
 

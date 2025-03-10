@@ -43,6 +43,7 @@ export default class EulerLibs {
     });
     const getAssetsResults = await blockchain.multicall({
       chain: options.chain,
+      blockNumber: blockNumber,
       calls: getAssetsCalls,
     });
 
@@ -97,31 +98,33 @@ export default class EulerLibs {
         const interestRate = getVaultDataResults[i * 4 + 2];
         const protocolFeeRate = getVaultDataResults[i * 4 + 3];
 
-        const totalAssetDepositedUsd =
-          formatBigNumberToNumber(totalAssets ? totalAssets.toString() : '0', token.decimals) * tokenPriceUsd;
-        const totalBorrowedUsd =
-          formatBigNumberToNumber(totalBorrowed ? totalBorrowed.toString() : '0', token.decimals) * tokenPriceUsd;
+        if (totalAssets && totalBorrowed && interestRate && protocolFeeRate) {
+          const totalAssetDepositedUsd =
+            formatBigNumberToNumber(totalAssets ? totalAssets.toString() : '0', token.decimals) * tokenPriceUsd;
+          const totalBorrowedUsd =
+            formatBigNumberToNumber(totalBorrowed ? totalBorrowed.toString() : '0', token.decimals) * tokenPriceUsd;
 
-        if (totalAssetDepositedUsd > 1000000000) {
-          console.log(token.address, tokenPriceUsd, totalAssets);
+          if (totalAssetDepositedUsd > 1000000000) {
+            console.log(token.address, tokenPriceUsd, totalAssets);
+          }
+
+          const borrowRate =
+            formatBigNumberToNumber(interestRate.toString(), SolidityUnits.RayDecimals) * TimeUnits.SecondsPerYear;
+
+          const totalFees = (borrowRate * totalBorrowedUsd) / TimeUnits.DaysPerYear;
+          const protocolFee = formatBigNumberToNumber(protocolFeeRate ? protocolFeeRate.toString() : '0', 4);
+
+          const protocolRevenueUsd = totalFees * protocolFee;
+
+          vaults.push({
+            type: 'eulerVault',
+            token: token,
+            tokenPriceUsd: tokenPriceUsd,
+            totalDepositedUsd: totalAssetDepositedUsd,
+            totalFeesUsd: totalFees,
+            protocolRevenueUsd: protocolRevenueUsd,
+          });
         }
-
-        const borrowRate =
-          formatBigNumberToNumber(interestRate.toString(), SolidityUnits.RayDecimals) * TimeUnits.SecondsPerYear;
-
-        const totalFees = (borrowRate * totalBorrowedUsd) / TimeUnits.DaysPerYear;
-        const protocolFee = formatBigNumberToNumber(protocolFeeRate ? protocolFeeRate.toString() : '0', 4);
-
-        const protocolRevenueUsd = totalFees * protocolFee;
-
-        vaults.push({
-          type: 'eulerVault',
-          token: token,
-          tokenPriceUsd: tokenPriceUsd,
-          totalDepositedUsd: totalAssetDepositedUsd,
-          totalFeesUsd: totalFees,
-          protocolRevenueUsd: protocolRevenueUsd,
-        });
       }
     }
 

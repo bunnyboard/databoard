@@ -3214,4 +3214,20 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.DFI_WETH],
   },
+  C98: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.C98_WBNB],
+  },
+  VVV: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.VVV_WETH],
+  },
+  OBT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.OBT_WETH],
+  },
+  USDtb: {
+    currency: 'usd',
+    sources: [OracleSourceCurveList.USDtb_USDC],
+  },
 };

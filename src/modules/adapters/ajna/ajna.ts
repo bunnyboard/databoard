@@ -25,7 +25,7 @@ export const AjnaPoolEvents = {
 };
 
 export default class AjnaAdapter extends ProtocolAdapter {
-  public readonly name: string = 'adapter.ajna 👁';
+  public readonly name: string = 'adapter.ajna';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {
     super(services, storages, protocolConfig);
