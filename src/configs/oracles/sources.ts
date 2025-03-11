@@ -3230,4 +3230,168 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceCurveList.USDtb_USDC],
   },
+  WALLET: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.WALLET_USDT],
+  },
+  ABR: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.ABR_USDT],
+  },
+  WHITE: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.WHITE_USDC],
+  },
+  LPT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.LPT_WETH],
+  },
+  OMI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.OMI_WETH],
+  },
+  ELA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ELA_WETH],
+  },
+  STRDY: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.STRDY_WETH],
+  },
+  AURORA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.AURORA_WETH],
+  },
+  RARE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.RARE_WETH],
+  },
+  MULTI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.MULTI_WETH],
+  },
+  LITH: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.LITH_WETH],
+  },
+  ProtonXRP: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ProtonXRP_WETH],
+  },
+  PLUME: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.PLUME_USDC],
+  },
+  GURU: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.GURU_WETH],
+  },
+  compoundUSDC: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.compoundUSDC_WETH],
+  },
+  PRE: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.PRE_USDT],
+  },
+  WXM: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.WXM_WETH],
+  },
+  LILAI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.LILAI_WETH],
+  },
+  UXLINK: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.UXLINK_WETH],
+  },
+  DeFAI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.DeFAI_WETH],
+  },
+  ARBY: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ARBY_WETH],
+  },
+  RUSSELL: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.RUSSELL_WETH],
+  },
+  NATIVE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.NATIVE_WETH],
+  },
+  FAI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.FAI_WETH],
+  },
+  MOXIE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.MOXIE_WETH],
+  },
+  MYST: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.MYST_WETH],
+  },
+  UNO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.UNO_WETH],
+  },
+  DepartmentDOGE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.DepartmentDOGE_WETH],
+  },
+  Pin: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.Pin_WETH],
+  },
+  QF: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.QF_WETH],
+  },
+  BIO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.BIO_WETH],
+  },
+  ElectronicEUSD: {
+    currency: 'usd',
+    sources: [OracleSourceCurveList.ElectronicEUSD_USDC],
+  },
+  lvlUSD: {
+    currency: 'usd',
+    sources: [OracleSourceCurveList.lvlUSD_USDC],
+  },
+  frxUSD: {
+    currency: 'usd',
+    sources: [OracleSourceCurveList.frxUSD_USDe],
+  },
+  gUSDC: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.gUSDC],
+  },
+  sfrxUSD: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.sfrxUSD],
+  },
+  slvlUSD: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.slvlUSD],
+  },
+  HENLO: {
+    currency: 'bera',
+    sources: [OracleSourceUniswapv2List.HENLO_WBERA],
+  },
+  YEET: {
+    currency: 'bera',
+    sources: [OracleSourceUniswapv3List.YEET_WBERA],
+  },
+  NILE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.NILE_WETH],
+  },
+  doginme: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.doginme_WETH],
+  },
 };

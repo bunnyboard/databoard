@@ -174,4 +174,25 @@ export const OracleSourceCustomList: {
     address: '0x7788a3538c5fc7f9c7c8a74eac4c898fc8d87d92',
     underlyingToken: TokensBook.arbitrum['0xf3527ef8de265eaa3716fb312c12847bfba66cef'],
   },
+  gUSDC: {
+    type: 'stakingTokenWrapper',
+    chain: 'arbitrum',
+    method: 'erc4626',
+    address: '0xd3443ee1e91af28e5fb858fbd0d72a63ba8046e0',
+    underlyingToken: TokensBook.arbitrum['0xaf88d065e77c8cc2239327c5edb3a432268e5831'],
+  },
+  sfrxUSD: {
+    type: 'stakingTokenWrapper',
+    chain: 'ethereum',
+    method: 'erc4626',
+    address: '0xcf62f905562626cfcdd2261162a51fd02fc9c5b6',
+    underlyingToken: TokensBook.ethereum['0xcacd6fd266af91b8aed52accc382b4e165586e29'],
+  },
+  slvlUSD: {
+    type: 'stakingTokenWrapper',
+    chain: 'ethereum',
+    method: 'erc4626',
+    address: '0x4737d9b4592b40d51e110b94c9c043c6654067ae',
+    underlyingToken: TokensBook.ethereum['0x7c1156e515aa1a2e851674120074968c905aaf37'],
+  },
 };

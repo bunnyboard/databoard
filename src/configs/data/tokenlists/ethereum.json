@@ -12659,6 +12659,12 @@
     "decimals": 9,
     "address": "0x460372866fe1448de1549cebdb0539f4075a2aa8"
   },
+  "0x4604151d4c98d1eea200b0d6bffb79a2613182aa": {
+    "chain": "ethereum",
+    "symbol": "UNO",
+    "decimals": 18,
+    "address": "0x4604151d4c98d1eea200b0d6bffb79a2613182aa"
+  },
   "0x461b71cff4d4334bba09489ace4b5dc1a1813445": {
     "chain": "ethereum",
     "symbol": "HRD",

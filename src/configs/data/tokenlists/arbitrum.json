@@ -395,6 +395,12 @@
     "decimals": 18,
     "address": "0x1a5b0aaf478bf1fda7b934c76e7692d722982a6d"
   },
+  "0x1a6b3a62391eccaaa992ade44cd4afe6bec8cff1": {
+    "chain": "arbitrum",
+    "symbol": "UXLINK",
+    "decimals": 18,
+    "address": "0x1a6b3a62391eccaaa992ade44cd4afe6bec8cff1"
+  },
   "0x1a7bd9edc36fb2b3c0852bcd7438c2a957fd7ad5": {
     "chain": "arbitrum",
     "symbol": "AMOON",
@@ -1204,6 +1210,12 @@
     "symbol": "EUROs",
     "decimals": 18,
     "address": "0x643b34980e635719c15a2d4ce69571a258f940e9"
+  },
+  "0x655a6beebf2361a19549a99486ff65f709bd2646": {
+    "chain": "arbitrum",
+    "symbol": "LILAI",
+    "decimals": 18,
+    "address": "0x655a6beebf2361a19549a99486ff65f709bd2646"
   },
   "0x65c936f008bc34fe819bce9fa5afd9dc2d49977f": {
     "chain": "arbitrum",
@@ -2020,6 +2032,12 @@
     "symbol": "TORQ",
     "decimals": 18,
     "address": "0xb56c29413af8778977093b9b4947efeea7136c36"
+  },
+  "0xb6093b61544572ab42a0e43af08abafd41bf25a6": {
+    "chain": "arbitrum",
+    "symbol": "WMX",
+    "decimals": 18,
+    "address": "0xb6093b61544572ab42a0e43af08abafd41bf25a6"
   },
   "0xb6212b633c941e9be168c4b9c2d9e785f1cd42fb": {
     "chain": "arbitrum",
