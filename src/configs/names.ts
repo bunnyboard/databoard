@@ -93,6 +93,9 @@ export const ChainNames = {
   neonevm: 'neonevm',
   superseed: 'superseed',
   story: 'story',
+  noble: 'noble',
+  sui: 'sui',
+  aptos: 'aptos',
 };
 
 export const ProtocolNames = {

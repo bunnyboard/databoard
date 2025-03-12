@@ -514,9 +514,15 @@ export default class GmxAdapter extends ProtocolAdapter {
           ]);
 
           const longTokenBalanceUsd =
-            formatBigNumberToNumber(getBalanceResults[i * 2] ? getBalanceResults[i * 2].toString() : '0', longToken.decimals) * longTokenPriceUsd;
+            formatBigNumberToNumber(
+              getBalanceResults[i * 2] ? getBalanceResults[i * 2].toString() : '0',
+              longToken.decimals,
+            ) * longTokenPriceUsd;
           const shortTokenBalanceUsd =
-            formatBigNumberToNumber(getBalanceResults[i * 2 + 1] ? getBalanceResults[i * 2 + 1].toString() : '0', shortToken.decimals) * shortTokenPriceUsd;
+            formatBigNumberToNumber(
+              getBalanceResults[i * 2 + 1] ? getBalanceResults[i * 2 + 1].toString() : '0',
+              shortToken.decimals,
+            ) * shortTokenPriceUsd;
 
           let balanceUsd = longTokenBalanceUsd;
           if (!compareAddress(longToken.address, shortToken.address)) {

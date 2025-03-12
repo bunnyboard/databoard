@@ -350,12 +350,17 @@ export default class LiquityAdapter extends ProtocolAdapter {
 
     if (liquityConfig.v2Pools) {
       for (const v2Config of liquityConfig.v2Pools) {
+        if (v2Config.birthday > options.timestamp) {
+          continue;
+        }
+
         if (!protocolData.breakdown[v2Config.chain]) {
           protocolData.breakdown[v2Config.chain] = {};
         }
         if (!protocolData.breakdown[v2Config.chain][normalizeAddress(v2Config.stablecoin.address)]) {
           protocolData.breakdown[v2Config.chain][normalizeAddress(v2Config.stablecoin.address)] = {
             ...getInitialProtocolCoreMetrics(),
+            totalSupplied: 0,
             totalBorrowed: 0,
             volumes: {
               deposit: 0,

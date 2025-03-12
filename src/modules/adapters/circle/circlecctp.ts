@@ -7,9 +7,11 @@ import { decodeEventLog } from 'viem';
 import { formatBigNumberToNumber } from '../../../lib/utils';
 import { CircleCctpDomainChains, CircleCctpProtocolConfig } from '../../../configs/protocols/circle';
 import TokenMessengerAbi from '../../../configs/abi/circle/TokenMessenger.json';
+import TokenMessengerV2Abi from '../../../configs/abi/circle/TokenMessengerV2.json';
 import AdapterDataHelper from '../helpers';
 
 const DepositForBurn = '0x2fa9ca894982930190727e75500a97d8dc500233a5065e0f3126c48fbe0343c0';
+const DepositForBurnV2 = '0x0c8c1cbdc5190613ebd485511d4e2812cfa45eecb79d845893331fedad5130a5';
 
 export default class CircleCctpAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.circlecctp';
@@ -58,9 +60,9 @@ export default class CircleCctpAdapter extends ProtocolAdapter {
       });
 
       for (const log of logs) {
-        if (log.topics[0] === DepositForBurn) {
+        if (log.topics[0] === DepositForBurn || log.topics[0] === DepositForBurnV2) {
           const event: any = decodeEventLog({
-            abi: TokenMessengerAbi,
+            abi: messengerConfig.version === 1 ? TokenMessengerAbi : TokenMessengerV2Abi,
             topics: log.topics,
             data: log.data,
           });

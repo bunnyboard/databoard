@@ -13,6 +13,7 @@ export interface LiquityV1Config {
 
 export interface LiquityV2Config {
   chain: string;
+  birthday: number;
   stablecoin: Token;
   collateralRegistry: string;
 }
@@ -48,6 +49,7 @@ export const LiquityConfigs: LiquityProtocolConfig = {
   v2Pools: [
     {
       chain: ChainNames.ethereum,
+      birthday: 1737072000, // Fri Jan 17 2025 00:00:00 GMT+0000
       stablecoin: {
         chain: 'ethereum',
         symbol: 'BOLD',
