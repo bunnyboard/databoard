@@ -77,6 +77,12 @@ export interface ProtocolCoreMetrics {
     perpetualCollateralLiquidateShort: number;
   };
 
+  // for NFT marketplaces
+  volumeMarketplace?: {
+    // volume of NFT are traded
+    sale: number;
+  };
+
   // for bridge protocols
   volumeBridgePaths?: {
     // source chain -> dest chain -> volume usd
