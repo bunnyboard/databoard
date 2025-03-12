@@ -2044,4 +2044,18 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.base['0x6921b130d297cc43754afba22e5eac0fbf8db75b'],
     quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
   },
+  FIRE_USDT: {
+    type: 'univ3',
+    chain: 'polygon',
+    address: '0x60ea32a35f64628328f578c872dd6c6d81626aba',
+    baseToken: TokensBook.polygon['0x838c9634de6590b96aeadc4bc6db5c28fd17e3c2'],
+    quotaToken: TokensBook.polygon['0xc2132d05d31c914a87c6611c10748aeb04b58e8f'],
+  },
+  ZED_WETH: {
+    type: 'univ3',
+    chain: 'base',
+    address: '0x46f87bc6e3c568fd4fb8745e0af3b351eee4ed24',
+    baseToken: TokensBook.base['0xa7921e4c3dc8e38069061a07c08fc0d2a35b9e6f'],
+    quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
+  },
 };

@@ -43,6 +43,7 @@ import GauntletAdapter from './guntlet/gauntlet';
 import HopAdapter from './hop/hop';
 import HyperLiquidNativeBridgeAdapter from './hyperliquid/nativeBridge';
 import HyphenAdapter from './hyphen/hyphen';
+import JoepegsAdapter from './joepegs/joepegs';
 import KarakAdapter from './karak/karak';
 import KelpdaoAdapter from './kelpdao/kelpdao';
 import KyberswapAdapter from './kyberswap/kyberswap';
@@ -88,6 +89,7 @@ import StaderAdapter from './stader/stader';
 import StakewiseAdapter from './stakewise/stakewise';
 import StargateAdapter from './stargate/stargate';
 import StarknetNativeBridgeAdapter from './starknet/starknetBridge';
+import SuperrareAdapter from './superrare/superrare';
 import SwellAdapter from './swell/swell';
 import SymbioticAdapter from './symbiotic/symbiotic';
 import SynapseAdapter from './synapse/synapse';
@@ -99,6 +101,7 @@ import UsualAdapter from './usual/usual';
 import VenusAdapter from './venus/venus';
 import WbethAdapter from './wbeth/wbeth';
 import WoofiAdapter from './woofi/woofi';
+import X2y2Adapter from './x2y2/x2y2';
 import YearnAdapter from './yearn/yearn';
 import ZerionAdapter from './zerion/zerion';
 import ZeroxAdapter from './zerox/zerox';
@@ -292,5 +295,8 @@ export function getProtocolAdapters(
     k3capital: new GauntletAdapter(services, storages, ProtocolConfigs.k3capital),
     opensea: new OpenseaAdapter(services, storages, ProtocolConfigs.opensea),
     magiceden: new MagicedenAdapter(services, storages, ProtocolConfigs.magiceden),
+    joepegs: new JoepegsAdapter(services, storages, ProtocolConfigs.joepegs),
+    superrare: new SuperrareAdapter(services, storages, ProtocolConfigs.superrare),
+    x2y2: new X2y2Adapter(services, storages, ProtocolConfigs.x2y2),
   };
 }

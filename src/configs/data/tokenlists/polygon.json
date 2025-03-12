@@ -665,6 +665,12 @@
     "decimals": 18,
     "address": "0x433ce9a15a740cd9fa65fe40daf95cba34e32910"
   },
+  "0x4455ef8b4b4a007a93daa12de63a47eeac700d9d": {
+    "chain": "polygon",
+    "symbol": "KNIGHT",
+    "decimals": 18,
+    "address": "0x4455ef8b4b4a007a93daa12de63a47eeac700d9d"
+  },
   "0x44acd96620b708162af4a90524f29a6839675533": {
     "chain": "polygon",
     "symbol": "TCGC",
@@ -1192,6 +1198,12 @@
     "symbol": "MTEST3",
     "decimals": 18,
     "address": "0x832ed1461ae5661739ba74999936ee72e3bbcda7"
+  },
+  "0x838c9634de6590b96aeadc4bc6db5c28fd17e3c2": {
+    "chain": "polygon",
+    "symbol": "FIRE",
+    "decimals": 18,
+    "address": "0x838c9634de6590b96aeadc4bc6db5c28fd17e3c2"
   },
   "0x839f1a22a59eaaf26c85958712ab32f80fea23d9": {
     "chain": "polygon",

@@ -2479,7 +2479,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   },
   GALA: {
     currency: 'eth',
-    sources: [OracleSourceUniswapv3List.GALA_WETH],
+    sources: [OracleSourceUniswapv2List.GALA_WETH, OracleSourceUniswapv3List.GALA_WETH],
   },
   SLAP: {
     currency: 'eth',
@@ -3393,5 +3393,21 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   doginme: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.doginme_WETH],
+  },
+  KNIGHT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.KNIGHT_WETH],
+  },
+  FIRE: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.FIRE_USDT],
+  },
+  ZED: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ZED_WETH],
+  },
+  ASH: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ASH_WETH],
   },
 };

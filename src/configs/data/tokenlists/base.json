@@ -5999,6 +5999,12 @@
     "decimals": 18,
     "address": "0xa7296cefae8477a81e23230ca5d3a3d6f49d3764"
   },
+  "0xa7921e4c3dc8e38069061a07c08fc0d2a35b9e6f": {
+    "chain": "base",
+    "symbol": "ZED",
+    "decimals": 18,
+    "address": "0xa7921e4c3dc8e38069061a07c08fc0d2a35b9e6f"
+  },
   "0xa7d68d155d17cb30e311367c2ef1e82ab6022b67": {
     "chain": "base",
     "symbol": "BTRST",

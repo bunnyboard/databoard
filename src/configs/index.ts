@@ -170,6 +170,9 @@ import { TulipacapitalConfigs } from './protocols/tulipacapital';
 import { K3capitalConfigs } from './protocols/k3capital';
 import { OpenseaConfigs } from './protocols/opensea';
 import { MagicedenConfigs } from './protocols/magiceden';
+import { JoepegsConfigs } from './protocols/joepegs';
+import { SuperrareConfigs } from './protocols/superrare';
+import { X2y2Configs } from './protocols/x2y2';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -389,4 +392,7 @@ export const ProtocolConfigs = {
   k3capital: K3capitalConfigs,
   opensea: OpenseaConfigs,
   magiceden: MagicedenConfigs,
+  joepegs: JoepegsConfigs,
+  superrare: SuperrareConfigs,
+  x2y2: X2y2Configs,
 };

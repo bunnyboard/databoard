@@ -307,4 +307,7 @@ export const ProtocolNames = {
   tulipacapital: 'tulipacapital', // https://www.tulipa.capital
   k3capital: 'k3capital', // https://k3.capital
   magiceden: 'magiceden', // https://magiceden.io
+  joepegs: 'joepegs', // https://joepegs.com
+  superrare: 'superrare', // https://rare.xyz
+  x2y2: 'x2y2', // https://x2y2.io
 };
