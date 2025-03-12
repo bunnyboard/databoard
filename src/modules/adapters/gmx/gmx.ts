@@ -514,9 +514,9 @@ export default class GmxAdapter extends ProtocolAdapter {
           ]);
 
           const longTokenBalanceUsd =
-            formatBigNumberToNumber(getBalanceResults[i * 2].toString(), longToken.decimals) * longTokenPriceUsd;
+            formatBigNumberToNumber(getBalanceResults[i * 2] ? getBalanceResults[i * 2].toString() : '0', longToken.decimals) * longTokenPriceUsd;
           const shortTokenBalanceUsd =
-            formatBigNumberToNumber(getBalanceResults[i * 2 + 1].toString(), shortToken.decimals) * shortTokenPriceUsd;
+            formatBigNumberToNumber(getBalanceResults[i * 2 + 1] ? getBalanceResults[i * 2 + 1].toString() : '0', shortToken.decimals) * shortTokenPriceUsd;
 
           let balanceUsd = longTokenBalanceUsd;
           if (!compareAddress(longToken.address, shortToken.address)) {
@@ -532,7 +532,7 @@ export default class GmxAdapter extends ProtocolAdapter {
           protocolData.breakdown[longToken.chain][longToken.address].totalValueLocked += longTokenBalanceUsd;
           (protocolData.breakdown[longToken.chain][longToken.address].totalSupplied as number) += longTokenBalanceUsd;
 
-          // add shortToke balance
+          // add shortToken balance
           protocolData.breakdown[shortToken.chain][shortToken.address].totalAssetDeposited += shortTokenBalanceUsd;
           protocolData.breakdown[shortToken.chain][shortToken.address].totalValueLocked += shortTokenBalanceUsd;
           (protocolData.breakdown[shortToken.chain][shortToken.address].totalSupplied as number) +=
