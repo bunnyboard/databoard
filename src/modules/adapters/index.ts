@@ -56,6 +56,7 @@ import LiquityAdapter from './liquity/liquity';
 import SlisbnbAdapter from './listadao/slisbnb';
 import LombardAdapter from './lombard/lombard';
 import LoopringNativeBridgeAdapter from './loopring/nativeBridge';
+import MagicedenAdapter from './magiceden/magiceden';
 import MakerAdapter from './maker/maker';
 import MethAdapter from './mantle/meth';
 import MantleNativeBridgeAdapter from './mantle/nativeBridge';
@@ -290,5 +291,6 @@ export function getProtocolAdapters(
     eulerdao: new GauntletAdapter(services, storages, ProtocolConfigs.eulerdao),
     k3capital: new GauntletAdapter(services, storages, ProtocolConfigs.k3capital),
     opensea: new OpenseaAdapter(services, storages, ProtocolConfigs.opensea),
+    magiceden: new MagicedenAdapter(services, storages, ProtocolConfigs.magiceden),
   };
 }

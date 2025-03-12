@@ -169,6 +169,7 @@ import { LlamariskConfigs } from './protocols/llamarisk';
 import { TulipacapitalConfigs } from './protocols/tulipacapital';
 import { K3capitalConfigs } from './protocols/k3capital';
 import { OpenseaConfigs } from './protocols/opensea';
+import { MagicedenConfigs } from './protocols/magiceden';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -387,4 +388,5 @@ export const ProtocolConfigs = {
   eulerdao: EulerdaoConfigs,
   k3capital: K3capitalConfigs,
   opensea: OpenseaConfigs,
+  magiceden: MagicedenConfigs,
 };

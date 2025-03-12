@@ -306,4 +306,5 @@ export const ProtocolNames = {
   llamarisk: 'llamarisk', // https://www.llamarisk.com
   tulipacapital: 'tulipacapital', // https://www.tulipa.capital
   k3capital: 'k3capital', // https://k3.capital
+  magiceden: 'magiceden', // https://magiceden.io
 };
