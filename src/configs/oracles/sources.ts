@@ -3410,4 +3410,16 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.ASH_WETH],
   },
+  KP3R: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.KP3R_WETH],
+  },
+  TSUKA: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.TSUKA_USDC],
+  },
+  OS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.OS_WETH],
+  },
 };

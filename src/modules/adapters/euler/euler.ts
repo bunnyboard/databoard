@@ -34,7 +34,7 @@ const FixedRate: { [key: string]: number } = {
 };
 
 export default class EulerAdapter extends ProtocolAdapter {
-  public readonly name: string = 'adapter.euler 📐';
+  public readonly name: string = 'adapter.euler';
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {
     super(services, storages, protocolConfig);

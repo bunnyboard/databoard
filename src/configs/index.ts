@@ -173,6 +173,9 @@ import { MagicedenConfigs } from './protocols/magiceden';
 import { JoepegsConfigs } from './protocols/joepegs';
 import { SuperrareConfigs } from './protocols/superrare';
 import { X2y2Configs } from './protocols/x2y2';
+import { LooksrareConfigs } from './protocols/looksrare';
+import { BlurConfigs } from './protocols/blur';
+import { PancakenftConfigs } from './protocols/pancake';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -395,4 +398,7 @@ export const ProtocolConfigs = {
   joepegs: JoepegsConfigs,
   superrare: SuperrareConfigs,
   x2y2: X2y2Configs,
+  looksrare: LooksrareConfigs,
+  blur: BlurConfigs,
+  pancakenft: PancakenftConfigs,
 };

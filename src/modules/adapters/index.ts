@@ -12,6 +12,7 @@ import BedrockAdapter from './bedrock/bedrock';
 import BenqiAdapter from './benqi/benqi';
 import BenqiStakingAvaxAdapter from './benqi/savax';
 import BlastNativeBridgeAdapter from './blast/nativeBridge';
+import BlurAdapter from './blur/blur';
 import BungeeAdapter from './bungee/bungee';
 import CbridgeAdapter from './celer/cbridge';
 import ChainlinkCcipAdapter from './chainlink/ccip';
@@ -43,7 +44,6 @@ import GauntletAdapter from './guntlet/gauntlet';
 import HopAdapter from './hop/hop';
 import HyperLiquidNativeBridgeAdapter from './hyperliquid/nativeBridge';
 import HyphenAdapter from './hyphen/hyphen';
-import JoepegsAdapter from './joepegs/joepegs';
 import KarakAdapter from './karak/karak';
 import KelpdaoAdapter from './kelpdao/kelpdao';
 import KyberswapAdapter from './kyberswap/kyberswap';
@@ -57,7 +57,6 @@ import LiquityAdapter from './liquity/liquity';
 import SlisbnbAdapter from './listadao/slisbnb';
 import LombardAdapter from './lombard/lombard';
 import LoopringNativeBridgeAdapter from './loopring/nativeBridge';
-import MagicedenAdapter from './magiceden/magiceden';
 import MakerAdapter from './maker/maker';
 import MethAdapter from './mantle/meth';
 import MantleNativeBridgeAdapter from './mantle/nativeBridge';
@@ -68,7 +67,6 @@ import MorphL2NativeBridgeAdapter from './morphl2/nativeBridge';
 import MorphoAdapter from './morpho/morpho';
 import OdosAdapter from './odos/odos';
 import Okxweb3Adapter from './okx/okxweb3';
-import OpenseaAdapter from './opensea/opensea';
 import OptimismNativeBridgeAdapter from './optimism/nativeBridge';
 import OptimismNativeBridgeLegacyAdapter from './optimism/nativeBridgeLegacy';
 import ParaswapAdapter from './paraswap/paraswap';
@@ -89,7 +87,6 @@ import StaderAdapter from './stader/stader';
 import StakewiseAdapter from './stakewise/stakewise';
 import StargateAdapter from './stargate/stargate';
 import StarknetNativeBridgeAdapter from './starknet/starknetBridge';
-import SuperrareAdapter from './superrare/superrare';
 import SwellAdapter from './swell/swell';
 import SymbioticAdapter from './symbiotic/symbiotic';
 import SynapseAdapter from './synapse/synapse';
@@ -101,7 +98,6 @@ import UsualAdapter from './usual/usual';
 import VenusAdapter from './venus/venus';
 import WbethAdapter from './wbeth/wbeth';
 import WoofiAdapter from './woofi/woofi';
-import X2y2Adapter from './x2y2/x2y2';
 import YearnAdapter from './yearn/yearn';
 import ZerionAdapter from './zerion/zerion';
 import ZeroxAdapter from './zerox/zerox';
@@ -293,10 +289,12 @@ export function getProtocolAdapters(
     tulipacapital: new GauntletAdapter(services, storages, ProtocolConfigs.tulipacapital),
     eulerdao: new GauntletAdapter(services, storages, ProtocolConfigs.eulerdao),
     k3capital: new GauntletAdapter(services, storages, ProtocolConfigs.k3capital),
-    opensea: new OpenseaAdapter(services, storages, ProtocolConfigs.opensea),
-    magiceden: new MagicedenAdapter(services, storages, ProtocolConfigs.magiceden),
-    joepegs: new JoepegsAdapter(services, storages, ProtocolConfigs.joepegs),
-    superrare: new SuperrareAdapter(services, storages, ProtocolConfigs.superrare),
-    x2y2: new X2y2Adapter(services, storages, ProtocolConfigs.x2y2),
+    // opensea: new OpenseaAdapter(services, storages, ProtocolConfigs.opensea),
+    // magiceden: new MagicedenAdapter(services, storages, ProtocolConfigs.magiceden),
+    // joepegs: new JoepegsAdapter(services, storages, ProtocolConfigs.joepegs),
+    // superrare: new SuperrareAdapter(services, storages, ProtocolConfigs.superrare),
+    // x2y2: new X2y2Adapter(services, storages, ProtocolConfigs.x2y2),
+    // looksrare: new LooksrareAdapter(services, storages, ProtocolConfigs.looksrare),
+    blur: new BlurAdapter(services, storages, ProtocolConfigs.blur),
   };
 }

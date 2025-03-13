@@ -1,4 +1,5 @@
-import { ProtocolNames } from '../names';
+import { ProtocolConfig } from '../../types/base';
+import { ChainNames, ProtocolNames } from '../names';
 import { UniswapProtocolConfig } from './uniswap';
 
 export const PancakeConfigs: UniswapProtocolConfig = {
@@ -126,4 +127,16 @@ export const PancakeConfigs: UniswapProtocolConfig = {
     //   feeRateForProtocol: 0.32, // 32% -> CAKE
     // },
   ],
+};
+
+export interface PancakenftProtocolConfig extends ProtocolConfig {
+  chain: string;
+  marketplace: string;
+}
+
+export const PancakenftConfigs: PancakenftProtocolConfig = {
+  protocol: ProtocolNames.pancakenft,
+  birthday: 1644019200, // Sat Feb 05 2022 00:00:00 GMT+0000
+  chain: ChainNames.bnbchain,
+  marketplace: '0x17539cca21c7933df5c980172d22659b8c345c5a',
 };

@@ -67,5 +67,15 @@ export const GauntletConfigs: GauntletProtocolConfig = {
       ],
       eulerVaults: [],
     },
+    {
+      chain: ChainNames.polygon,
+      birthday: 1741824000, // Thu Mar 13 2025 00:00:00 GMT+0000
+      morphoVaults: [
+        '0xF5C81d25ee174d83f1FD202cA94AE6070d073cCF',
+        '0x781FB7F6d845E3bE129289833b04d43Aa8558c42',
+        '0xfD06859A671C21497a2EB8C5E3fEA48De924D6c8',
+      ],
+      eulerVaults: [],
+    },
   ],
 };

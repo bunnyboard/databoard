@@ -140,6 +140,7 @@ export const ProtocolNames = {
   originether: 'originether',
   pac: 'pac',
   pancake: 'pancake',
+  pancakenft: 'pancakenft', // https://pancakeswap.finance/nfts
   polter: 'polter',
   prisma: 'prisma',
   radiant: 'radiant',
@@ -310,4 +311,6 @@ export const ProtocolNames = {
   joepegs: 'joepegs', // https://joepegs.com
   superrare: 'superrare', // https://rare.xyz
   x2y2: 'x2y2', // https://x2y2.io
+  looksrare: 'looksrare', // https://looksrare.org
+  blur: 'blur', // https://blur.io
 };

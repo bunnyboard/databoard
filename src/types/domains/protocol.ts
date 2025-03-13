@@ -20,6 +20,9 @@ export interface ProtocolCoreMetrics {
   // total revenue were collected by protocol
   protocolRevenue: number;
 
+  // NFT marketplace fee paid to collector creators
+  royaltyRevenue?: number;
+
   // value of money flow - in
   moneyFlowIn: number;
 
@@ -77,10 +80,9 @@ export interface ProtocolCoreMetrics {
     perpetualCollateralLiquidateShort: number;
   };
 
-  // for NFT marketplaces
   volumeMarketplace?: {
-    // volume of NFT are traded
-    sale: number;
+    // buy/sell NFT
+    trade: number;
   };
 
   // for bridge protocols
@@ -93,6 +95,13 @@ export interface ProtocolCoreMetrics {
 
   // for liquid staking protocol, we can have staking APR
   liquidStakingApr?: number;
+}
+
+export interface NftCollectionMetrics {
+  volumeTrade: number;
+  totalFees: number;
+  protocolFee: number;
+  royaltyFee: number;
 }
 
 export interface ProtocolData extends ProtocolCoreMetrics {
@@ -113,6 +122,13 @@ export interface ProtocolData extends ProtocolCoreMetrics {
   // chain => ProtocolCoreMetrics
   breakdownChains?: {
     [key: string]: ProtocolCoreMetrics;
+  };
+
+  // chain => nftCollectionAddress => NftCollectionMetrics
+  breakdownNftCollections?: {
+    [key: string]: {
+      [key: string]: NftCollectionMetrics;
+    };
   };
 }
 
