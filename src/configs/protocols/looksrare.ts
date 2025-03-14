@@ -4,7 +4,7 @@ import { ChainNames, ProtocolNames } from '../names';
 export interface LooksrareProtocolConfig extends ProtocolConfig {
   chain: string;
   exchangeV1: string;
-  exchangeV2: string;
+  exchangeV2?: string;
 }
 
 export const LooksrareConfigs: LooksrareProtocolConfig = {

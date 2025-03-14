@@ -60,7 +60,7 @@
       {
         "indexed": true,
         "internalType": "address",
-        "name": "_contractAddress",
+        "name": "_originContract",
         "type": "address"
       },
       {
@@ -115,7 +115,7 @@
       {
         "indexed": true,
         "internalType": "address",
-        "name": "_contractAddress",
+        "name": "_originContract",
         "type": "address"
       },
       {

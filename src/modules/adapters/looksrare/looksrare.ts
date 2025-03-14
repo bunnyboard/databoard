@@ -14,6 +14,7 @@ import ExchangeV1StrategyAbi from '../../../configs/abi/looksrare/Strategy.json'
 const v1Events = {
   TakerAsk: '0x68cd251d4d267c6e2034ff0088b990352b97b2002c0476587d0c4da889c11330',
   TakerBid: '0x95fb6205e23ff6bda16a2d1dba56b9ad7c783f67c96fa149785052f47696f2be',
+  RoyaltyPayment: '0x27c4f0403323142b599832f26acd21c74a9e5b809f2215726e244a4ac588cd7d',
 };
 
 const v2Events = {
@@ -67,13 +68,6 @@ export default class LooksrareAdapter extends ProtocolAdapter {
       fromBlock: beginBlock,
       toBlock: endBlock,
     });
-    const v2Logs = await this.services.blockchain.evm.getContractLogs({
-      chain: looksrareConfig.chain,
-      address: looksrareConfig.exchangeV2,
-      fromBlock: beginBlock,
-      toBlock: endBlock,
-    });
-
     const strategyFeeCaching: { [key: string]: number } = {};
     for (const log of v1Logs.filter((log) => Object.values(v1Events).includes(log.topics[0]))) {
       const event: any = decodeEventLog({
@@ -87,33 +81,6 @@ export default class LooksrareAdapter extends ProtocolAdapter {
         address: event.args.currency,
       });
       if (token) {
-        const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-          chain: token.chain,
-          address: token.address,
-          timestamp: options.timestamp,
-        });
-
-        let feeRate = 0;
-        if (strategyFeeCaching[normalizeAddress(event.args.strategy)] !== undefined) {
-          feeRate = strategyFeeCaching[normalizeAddress(event.args.strategy)];
-        } else {
-          const protocolFee = await this.services.blockchain.evm.readContract({
-            chain: looksrareConfig.chain,
-            abi: ExchangeV1StrategyAbi,
-            target: event.args.strategy,
-            method: 'viewProtocolFee',
-            params: [],
-          });
-          feeRate = formatBigNumberToNumber(protocolFee ? protocolFee.toString() : '0', 6);
-          strategyFeeCaching[normalizeAddress(event.args.strategy)] = feeRate;
-        }
-
-        const priceUsd = formatBigNumberToNumber(event.args.price.toString(), token.decimals) * tokenPriceUsd;
-        const protocolFeeUsd = priceUsd * feeRate;
-
-        protocolData.totalFees += protocolFeeUsd;
-        protocolData.protocolRevenue += protocolFeeUsd;
-        (protocolData.volumes.marketplace as number) += priceUsd;
         if (!protocolData.breakdown[token.chain][token.address]) {
           protocolData.breakdown[token.chain][token.address] = {
             ...getInitialProtocolCoreMetrics(),
@@ -123,12 +90,9 @@ export default class LooksrareAdapter extends ProtocolAdapter {
             },
           };
         }
-        protocolData.breakdown[token.chain][token.address].totalFees += protocolFeeUsd;
-        protocolData.breakdown[token.chain][token.address].protocolRevenue += protocolFeeUsd;
-        (protocolData.breakdown[token.chain][token.address].volumes.marketplace as number) += priceUsd;
 
+        const collection = normalizeAddress(event.args.collection);
         if (protocolData.breakdownCollectibles) {
-          const collection = normalizeAddress(event.args.collection);
           if (!protocolData.breakdownCollectibles[looksrareConfig.chain][collection]) {
             protocolData.breakdownCollectibles[looksrareConfig.chain][collection] = {
               volumeTrade: 0,
@@ -137,80 +101,138 @@ export default class LooksrareAdapter extends ProtocolAdapter {
               royaltyFee: 0,
             };
           }
-          protocolData.breakdownCollectibles[looksrareConfig.chain][collection].volumeTrade += priceUsd;
-          protocolData.breakdownCollectibles[looksrareConfig.chain][collection].totalFees += protocolFeeUsd;
-          protocolData.breakdownCollectibles[looksrareConfig.chain][collection].protocolFee += protocolFeeUsd;
+        }
+
+        const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+          chain: token.chain,
+          address: token.address,
+          timestamp: options.timestamp,
+        });
+
+        if (event.eventName === 'RoyaltyPayment') {
+          const royaltyFeeUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPriceUsd;
+          protocolData.totalFees += royaltyFeeUsd;
+          (protocolData.royaltyRevenue as number) += royaltyFeeUsd;
+          protocolData.breakdown[token.chain][token.address].totalFees += royaltyFeeUsd;
+          (protocolData.breakdown[token.chain][token.address].royaltyRevenue as number) += royaltyFeeUsd;
+          if (protocolData.breakdownCollectibles) {
+            protocolData.breakdownCollectibles[looksrareConfig.chain][collection].totalFees += royaltyFeeUsd;
+            protocolData.breakdownCollectibles[looksrareConfig.chain][collection].royaltyFee += royaltyFeeUsd;
+          }
+        } else {
+          let feeRate = 0;
+          if (strategyFeeCaching[normalizeAddress(event.args.strategy)] !== undefined) {
+            feeRate = strategyFeeCaching[normalizeAddress(event.args.strategy)];
+          } else {
+            const protocolFee = await this.services.blockchain.evm.readContract({
+              chain: looksrareConfig.chain,
+              abi: ExchangeV1StrategyAbi,
+              target: event.args.strategy,
+              method: 'viewProtocolFee',
+              params: [],
+            });
+            // https://etherscan.io/address/0x59728544b08ab483533076417fbbb2fd0b17ce3a#code#F1#L552
+            feeRate = formatBigNumberToNumber(protocolFee ? protocolFee.toString() : '250', 4);
+            strategyFeeCaching[normalizeAddress(event.args.strategy)] = feeRate;
+          }
+
+          const priceUsd = formatBigNumberToNumber(event.args.price.toString(), token.decimals) * tokenPriceUsd;
+          const protocolFeeUsd = priceUsd * feeRate;
+
+          protocolData.totalFees += protocolFeeUsd;
+          protocolData.protocolRevenue += protocolFeeUsd;
+          (protocolData.volumes.marketplace as number) += priceUsd;
+
+          // breakdown token
+          protocolData.breakdown[token.chain][token.address].totalFees += protocolFeeUsd;
+          protocolData.breakdown[token.chain][token.address].protocolRevenue += protocolFeeUsd;
+          (protocolData.breakdown[token.chain][token.address].volumes.marketplace as number) += priceUsd;
+
+          // breakdown collection
+          if (protocolData.breakdownCollectibles) {
+            protocolData.breakdownCollectibles[looksrareConfig.chain][collection].volumeTrade += priceUsd;
+            protocolData.breakdownCollectibles[looksrareConfig.chain][collection].totalFees += protocolFeeUsd;
+            protocolData.breakdownCollectibles[looksrareConfig.chain][collection].protocolFee += protocolFeeUsd;
+          }
         }
       }
     }
 
-    for (const log of v2Logs.filter((log) => Object.values(v2Events).includes(log.topics[0]))) {
-      const event: any = decodeEventLog({
-        abi: ExchangeV2Abi,
-        topics: log.topics,
-        data: log.data,
-      });
-      const token = await this.services.blockchain.evm.getTokenInfo({
+    if (looksrareConfig.exchangeV2) {
+      const v2Logs = await this.services.blockchain.evm.getContractLogs({
         chain: looksrareConfig.chain,
-        address: event.args.currency,
+        address: looksrareConfig.exchangeV2,
+        fromBlock: beginBlock,
+        toBlock: endBlock,
       });
-      if (token) {
-        const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-          chain: token.chain,
-          address: token.address,
-          timestamp: options.timestamp,
+      for (const log of v2Logs.filter((log) => Object.values(v2Events).includes(log.topics[0]))) {
+        const event: any = decodeEventLog({
+          abi: ExchangeV2Abi,
+          topics: log.topics,
+          data: log.data,
         });
+        const token = await this.services.blockchain.evm.getTokenInfo({
+          chain: looksrareConfig.chain,
+          address: event.args.currency,
+        });
+        if (token) {
+          const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+            chain: token.chain,
+            address: token.address,
+            timestamp: options.timestamp,
+          });
 
-        let saleVolumeUsd = 0;
-        for (const feeItem of event.args.feeAmounts) {
-          saleVolumeUsd += formatBigNumberToNumber(feeItem.toString(), token.decimals) * tokenPriceUsd;
-        }
+          let saleVolumeUsd = 0;
+          for (const feeItem of event.args.feeAmounts) {
+            saleVolumeUsd += formatBigNumberToNumber(feeItem.toString(), token.decimals) * tokenPriceUsd;
+          }
 
-        // https://etherscan.io/address/0x0000000000e655fae4d56241588680f86e3b2377#code#F5#L264
-        const protocolFeeUsd =
-          formatBigNumberToNumber(
-            event.args.feeAmounts[2] ? event.args.feeAmounts[2].toString() : '0',
-            token.decimals,
-          ) * tokenPriceUsd;
-        const royaltyFeeUsd =
-          formatBigNumberToNumber(
-            event.args.feeAmounts[1] ? event.args.feeAmounts[1].toString() : '0',
-            token.decimals,
-          ) * tokenPriceUsd;
+          // https://etherscan.io/address/0x0000000000e655fae4d56241588680f86e3b2377#code#F5#L264
+          const protocolFeeUsd =
+            formatBigNumberToNumber(
+              event.args.feeAmounts[2] ? event.args.feeAmounts[2].toString() : '0',
+              token.decimals,
+            ) * tokenPriceUsd;
+          const royaltyFeeUsd =
+            formatBigNumberToNumber(
+              event.args.feeAmounts[1] ? event.args.feeAmounts[1].toString() : '0',
+              token.decimals,
+            ) * tokenPriceUsd;
 
-        protocolData.totalFees += protocolFeeUsd;
-        protocolData.protocolRevenue += protocolFeeUsd;
-        (protocolData.royaltyRevenue as number) += royaltyFeeUsd;
-        (protocolData.volumes.marketplace as number) += saleVolumeUsd;
-        if (!protocolData.breakdown[token.chain][token.address]) {
-          protocolData.breakdown[token.chain][token.address] = {
-            ...getInitialProtocolCoreMetrics(),
-            royaltyRevenue: 0,
-            volumes: {
-              marketplace: 0,
-            },
-          };
-        }
-        protocolData.breakdown[token.chain][token.address].totalFees += protocolFeeUsd;
-        protocolData.breakdown[token.chain][token.address].protocolRevenue += protocolFeeUsd;
-        (protocolData.breakdown[token.chain][token.address].royaltyRevenue as number) += royaltyFeeUsd;
-        (protocolData.breakdown[token.chain][token.address].volumes.marketplace as number) += saleVolumeUsd;
-
-        if (protocolData.breakdownCollectibles) {
-          const collection = normalizeAddress(event.args.collection);
-          if (!protocolData.breakdownCollectibles[looksrareConfig.chain][collection]) {
-            protocolData.breakdownCollectibles[looksrareConfig.chain][collection] = {
-              volumeTrade: 0,
-              totalFees: 0,
-              protocolFee: 0,
-              royaltyFee: 0,
+          protocolData.totalFees += protocolFeeUsd;
+          protocolData.protocolRevenue += protocolFeeUsd;
+          (protocolData.royaltyRevenue as number) += royaltyFeeUsd;
+          (protocolData.volumes.marketplace as number) += saleVolumeUsd;
+          if (!protocolData.breakdown[token.chain][token.address]) {
+            protocolData.breakdown[token.chain][token.address] = {
+              ...getInitialProtocolCoreMetrics(),
+              royaltyRevenue: 0,
+              volumes: {
+                marketplace: 0,
+              },
             };
           }
-          protocolData.breakdownCollectibles[looksrareConfig.chain][collection].volumeTrade += saleVolumeUsd;
-          protocolData.breakdownCollectibles[looksrareConfig.chain][collection].totalFees +=
-            protocolFeeUsd + royaltyFeeUsd;
-          protocolData.breakdownCollectibles[looksrareConfig.chain][collection].protocolFee += protocolFeeUsd;
-          protocolData.breakdownCollectibles[looksrareConfig.chain][collection].royaltyFee += royaltyFeeUsd;
+          protocolData.breakdown[token.chain][token.address].totalFees += protocolFeeUsd;
+          protocolData.breakdown[token.chain][token.address].protocolRevenue += protocolFeeUsd;
+          (protocolData.breakdown[token.chain][token.address].royaltyRevenue as number) += royaltyFeeUsd;
+          (protocolData.breakdown[token.chain][token.address].volumes.marketplace as number) += saleVolumeUsd;
+
+          if (protocolData.breakdownCollectibles) {
+            const collection = normalizeAddress(event.args.collection);
+            if (!protocolData.breakdownCollectibles[looksrareConfig.chain][collection]) {
+              protocolData.breakdownCollectibles[looksrareConfig.chain][collection] = {
+                volumeTrade: 0,
+                totalFees: 0,
+                protocolFee: 0,
+                royaltyFee: 0,
+              };
+            }
+            protocolData.breakdownCollectibles[looksrareConfig.chain][collection].volumeTrade += saleVolumeUsd;
+            protocolData.breakdownCollectibles[looksrareConfig.chain][collection].totalFees +=
+              protocolFeeUsd + royaltyFeeUsd;
+            protocolData.breakdownCollectibles[looksrareConfig.chain][collection].protocolFee += protocolFeeUsd;
+            protocolData.breakdownCollectibles[looksrareConfig.chain][collection].royaltyFee += royaltyFeeUsd;
+          }
         }
       }
     }

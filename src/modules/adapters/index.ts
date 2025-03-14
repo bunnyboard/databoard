@@ -58,6 +58,7 @@ import SlisbnbAdapter from './listadao/slisbnb';
 import LombardAdapter from './lombard/lombard';
 import LooksrareAdapter from './looksrare/looksrare';
 import LoopringNativeBridgeAdapter from './loopring/nativeBridge';
+import MagicedenAdapter from './magiceden/magiceden';
 import MakerAdapter from './maker/maker';
 import MethAdapter from './mantle/meth';
 import MantleNativeBridgeAdapter from './mantle/nativeBridge';
@@ -89,6 +90,7 @@ import StaderAdapter from './stader/stader';
 import StakewiseAdapter from './stakewise/stakewise';
 import StargateAdapter from './stargate/stargate';
 import StarknetNativeBridgeAdapter from './starknet/starknetBridge';
+import SuperrareAdapter from './superrare/superrare';
 import SwellAdapter from './swell/swell';
 import SymbioticAdapter from './symbiotic/symbiotic';
 import SynapseAdapter from './synapse/synapse';
@@ -100,6 +102,7 @@ import UsualAdapter from './usual/usual';
 import VenusAdapter from './venus/venus';
 import WbethAdapter from './wbeth/wbeth';
 import WoofiAdapter from './woofi/woofi';
+import X2y2Adapter from './x2y2/x2y2';
 import YearnAdapter from './yearn/yearn';
 import ZerionAdapter from './zerion/zerion';
 import ZeroxAdapter from './zerox/zerox';
@@ -292,10 +295,10 @@ export function getProtocolAdapters(
     eulerdao: new GauntletAdapter(services, storages, ProtocolConfigs.eulerdao),
     k3capital: new GauntletAdapter(services, storages, ProtocolConfigs.k3capital),
     opensea: new OpenseaAdapter(services, storages, ProtocolConfigs.opensea),
-    // magiceden: new MagicedenAdapter(services, storages, ProtocolConfigs.magiceden),
-    // joepegs: new JoepegsAdapter(services, storages, ProtocolConfigs.joepegs),
-    // superrare: new SuperrareAdapter(services, storages, ProtocolConfigs.superrare),
-    // x2y2: new X2y2Adapter(services, storages, ProtocolConfigs.x2y2),
+    magiceden: new MagicedenAdapter(services, storages, ProtocolConfigs.magiceden),
+    joepegs: new LooksrareAdapter(services, storages, ProtocolConfigs.joepegs),
+    superrare: new SuperrareAdapter(services, storages, ProtocolConfigs.superrare),
+    x2y2: new X2y2Adapter(services, storages, ProtocolConfigs.x2y2),
     looksrare: new LooksrareAdapter(services, storages, ProtocolConfigs.looksrare),
     blur: new BlurAdapter(services, storages, ProtocolConfigs.blur),
   };
