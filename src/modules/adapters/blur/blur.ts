@@ -43,8 +43,8 @@ export default class BlurAdapter extends ProtocolAdapter {
           [AddressZero]: {
             ...getInitialProtocolCoreMetrics(),
             royaltyRevenue: 0,
-            volumeMarketplace: {
-              trade: 0,
+            volumes: {
+              marketplace: 0,
             },
           },
         },
@@ -52,18 +52,18 @@ export default class BlurAdapter extends ProtocolAdapter {
           [AddressZero]: {
             ...getInitialProtocolCoreMetrics(),
             royaltyRevenue: 0,
-            volumeMarketplace: {
-              trade: 0,
+            volumes: {
+              marketplace: 0,
             },
           },
         },
       },
       ...getInitialProtocolCoreMetrics(),
       royaltyRevenue: 0,
-      volumeMarketplace: {
-        trade: 0,
+      volumes: {
+        marketplace: 0,
       },
-      breakdownNftCollections: {
+      breakdownCollectibles: {
         [ChainNames.ethereum]: {},
         [ChainNames.blast]: {},
       },
@@ -132,24 +132,24 @@ export default class BlurAdapter extends ProtocolAdapter {
       // no marketplace protocol fee
       protocolData.totalFees += royalFeeUsd;
       (protocolData.royaltyRevenue as number) += royalFeeUsd;
-      (protocolData.volumeMarketplace as any).trade += priceUsd;
-      (protocolData.breakdown[blurConfig.chain][AddressZero].volumeMarketplace as any).totalFees += royalFeeUsd;
-      (protocolData.breakdown[blurConfig.chain][AddressZero].volumeMarketplace as any).royaltyRevenue += royalFeeUsd;
-      (protocolData.breakdown[blurConfig.chain][AddressZero].volumeMarketplace as any).trade += priceUsd;
+      (protocolData.volumes.marketplace as number) += priceUsd;
+      protocolData.breakdown[blurConfig.chain][AddressZero].totalFees += royalFeeUsd;
+      (protocolData.breakdown[blurConfig.chain][AddressZero].royaltyRevenue as number) += royalFeeUsd;
+      (protocolData.breakdown[blurConfig.chain][AddressZero].volumes.marketplace as number) += priceUsd;
 
       const collection = normalizeAddress(event.args.sell.collection);
-      if (protocolData.breakdownNftCollections) {
-        if (!protocolData.breakdownNftCollections[blurConfig.chain][collection]) {
-          protocolData.breakdownNftCollections[blurConfig.chain][collection] = {
+      if (protocolData.breakdownCollectibles) {
+        if (!protocolData.breakdownCollectibles[blurConfig.chain][collection]) {
+          protocolData.breakdownCollectibles[blurConfig.chain][collection] = {
             volumeTrade: 0,
             totalFees: 0,
             protocolFee: 0,
             royaltyFee: 0,
           };
         }
-        protocolData.breakdownNftCollections[blurConfig.chain][collection].volumeTrade += priceUsd;
-        protocolData.breakdownNftCollections[blurConfig.chain][collection].totalFees += royalFeeUsd;
-        protocolData.breakdownNftCollections[blurConfig.chain][collection].royaltyFee += royalFeeUsd;
+        protocolData.breakdownCollectibles[blurConfig.chain][collection].volumeTrade += priceUsd;
+        protocolData.breakdownCollectibles[blurConfig.chain][collection].totalFees += royalFeeUsd;
+        protocolData.breakdownCollectibles[blurConfig.chain][collection].royaltyFee += royalFeeUsd;
       }
     }
 
@@ -186,30 +186,30 @@ export default class BlurAdapter extends ProtocolAdapter {
 
             protocolData.totalFees += result.totalRoyalFeeEth * ethPriceUsd;
             (protocolData.royaltyRevenue as number) += result.totalRoyalFeeEth * ethPriceUsd;
-            (protocolData.volumeMarketplace as any).trade += result.totalVolumeEth * ethPriceUsd;
+            (protocolData.volumes.marketplace as number) += result.totalVolumeEth * ethPriceUsd;
 
             protocolData.breakdown[v2Config.chain][AddressZero].totalFees += result.totalRoyalFeeEth * ethPriceUsd;
             (protocolData.breakdown[v2Config.chain][AddressZero].royaltyRevenue as number) +=
               result.totalRoyalFeeEth * ethPriceUsd;
-            (protocolData.breakdown[v2Config.chain][AddressZero].volumeMarketplace as any).trade +=
+            (protocolData.breakdown[v2Config.chain][AddressZero].volumes.marketplace as number) +=
               result.totalVolumeEth * ethPriceUsd;
 
             // breakdown by collections
-            if (protocolData.breakdownNftCollections) {
+            if (protocolData.breakdownCollectibles) {
               for (const [collection, metrics] of Object.entries(result.collections)) {
-                if (!protocolData.breakdownNftCollections[v2Config.chain][collection]) {
-                  protocolData.breakdownNftCollections[v2Config.chain][collection] = {
+                if (!protocolData.breakdownCollectibles[v2Config.chain][collection]) {
+                  protocolData.breakdownCollectibles[v2Config.chain][collection] = {
                     volumeTrade: 0,
                     totalFees: 0,
                     protocolFee: 0,
                     royaltyFee: 0,
                   };
                 }
-                protocolData.breakdownNftCollections[v2Config.chain][collection].volumeTrade +=
+                protocolData.breakdownCollectibles[v2Config.chain][collection].volumeTrade +=
                   metrics.voumeEth * ethPriceUsd;
-                protocolData.breakdownNftCollections[v2Config.chain][collection].totalFees +=
+                protocolData.breakdownCollectibles[v2Config.chain][collection].totalFees +=
                   metrics.royalFeeEth * ethPriceUsd;
-                protocolData.breakdownNftCollections[v2Config.chain][collection].royaltyFee +=
+                protocolData.breakdownCollectibles[v2Config.chain][collection].royaltyFee +=
                   metrics.royalFeeEth * ethPriceUsd;
               }
             }

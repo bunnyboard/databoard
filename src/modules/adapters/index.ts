@@ -56,6 +56,7 @@ import LiquidCollectiveAdapter from './liquidcollective/lseth';
 import LiquityAdapter from './liquity/liquity';
 import SlisbnbAdapter from './listadao/slisbnb';
 import LombardAdapter from './lombard/lombard';
+import LooksrareAdapter from './looksrare/looksrare';
 import LoopringNativeBridgeAdapter from './loopring/nativeBridge';
 import MakerAdapter from './maker/maker';
 import MethAdapter from './mantle/meth';
@@ -295,7 +296,7 @@ export function getProtocolAdapters(
     // joepegs: new JoepegsAdapter(services, storages, ProtocolConfigs.joepegs),
     // superrare: new SuperrareAdapter(services, storages, ProtocolConfigs.superrare),
     // x2y2: new X2y2Adapter(services, storages, ProtocolConfigs.x2y2),
-    // looksrare: new LooksrareAdapter(services, storages, ProtocolConfigs.looksrare),
+    looksrare: new LooksrareAdapter(services, storages, ProtocolConfigs.looksrare),
     blur: new BlurAdapter(services, storages, ProtocolConfigs.blur),
   };
 }

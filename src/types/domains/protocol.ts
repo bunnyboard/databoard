@@ -58,6 +58,9 @@ export interface ProtocolCoreMetrics {
 
     // volume of token was bridged from to other chains
     bridge?: number;
+
+    // marketplace NFT trade
+    marketplace?: number;
   };
 
   // for perpetual trading
@@ -80,11 +83,6 @@ export interface ProtocolCoreMetrics {
     perpetualCollateralLiquidateShort: number;
   };
 
-  volumeMarketplace?: {
-    // buy/sell NFT
-    trade: number;
-  };
-
   // for bridge protocols
   volumeBridgePaths?: {
     // source chain -> dest chain -> volume usd
@@ -97,7 +95,7 @@ export interface ProtocolCoreMetrics {
   liquidStakingApr?: number;
 }
 
-export interface NftCollectionMetrics {
+export interface CollectibleMetrics {
   volumeTrade: number;
   totalFees: number;
   protocolFee: number;
@@ -124,10 +122,10 @@ export interface ProtocolData extends ProtocolCoreMetrics {
     [key: string]: ProtocolCoreMetrics;
   };
 
-  // chain => nftCollectionAddress => NftCollectionMetrics
-  breakdownNftCollections?: {
+  // chain => nftCollectibleAddress => CollectibleMetrics
+  breakdownCollectibles?: {
     [key: string]: {
-      [key: string]: NftCollectionMetrics;
+      [key: string]: CollectibleMetrics;
     };
   };
 }

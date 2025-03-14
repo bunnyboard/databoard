@@ -28,10 +28,10 @@ export default class OpenseaAdapter extends ProtocolAdapter {
       breakdown: {},
       royaltyRevenue: 0,
       ...getInitialProtocolCoreMetrics(),
-      volumeMarketplace: {
-        trade: 0,
+      volumes: {
+        marketplace: 0,
       },
-      breakdownNftCollections: {},
+      breakdownCollectibles: {},
     };
 
     const openseaConfig = this.protocolConfig as OpenseaProtocolConfig;
@@ -43,9 +43,9 @@ export default class OpenseaAdapter extends ProtocolAdapter {
       if (!protocolData.breakdown[seaportConfig.chain]) {
         protocolData.breakdown[seaportConfig.chain] = {};
       }
-      if (protocolData.breakdownNftCollections) {
-        if (!protocolData.breakdownNftCollections[seaportConfig.chain]) {
-          protocolData.breakdownNftCollections[seaportConfig.chain] = {};
+      if (protocolData.breakdownCollectibles) {
+        if (!protocolData.breakdownCollectibles[seaportConfig.chain]) {
+          protocolData.breakdownCollectibles[seaportConfig.chain] = {};
         }
       }
 
@@ -119,15 +119,15 @@ export default class OpenseaAdapter extends ProtocolAdapter {
                 protocolData.breakdown[token.chain][token.address] = {
                   royaltyRevenue: 0,
                   ...getInitialProtocolCoreMetrics(),
-                  volumeMarketplace: {
-                    trade: 0,
+                  volumes: {
+                    marketplace: 0,
                   },
                 };
               }
               protocolData.breakdown[token.chain][token.address].totalFees += protocolFeeUsd + royaltyFeeUsd;
               protocolData.breakdown[token.chain][token.address].protocolRevenue += protocolFeeUsd;
               (protocolData.breakdown[token.chain][token.address].royaltyRevenue as number) += royaltyFeeUsd;
-              (protocolData.breakdown[token.chain][token.address].volumeMarketplace as any).trade += tokenAmountUsd;
+              (protocolData.breakdown[token.chain][token.address].volumes.marketplace as number) += tokenAmountUsd;
             }
           } else {
             collection = normalizeAddress(conduitItem.token);
@@ -137,22 +137,22 @@ export default class OpenseaAdapter extends ProtocolAdapter {
         protocolData.totalFees += totalProtocolFeeUsd + totalRoyaltyFeeUsd;
         protocolData.protocolRevenue += totalProtocolFeeUsd;
         (protocolData.royaltyRevenue as number) += totalRoyaltyFeeUsd;
-        (protocolData.volumeMarketplace as any).trade += totalVolumeUsd;
+        (protocolData.volumes.marketplace as number) += totalVolumeUsd;
 
-        if (protocolData.breakdownNftCollections && collection && totalVolumeUsd > 0) {
-          if (!protocolData.breakdownNftCollections[seaportConfig.chain][collection]) {
-            protocolData.breakdownNftCollections[seaportConfig.chain][collection] = {
+        if (protocolData.breakdownCollectibles && collection && totalVolumeUsd > 0) {
+          if (!protocolData.breakdownCollectibles[seaportConfig.chain][collection]) {
+            protocolData.breakdownCollectibles[seaportConfig.chain][collection] = {
               volumeTrade: 0,
               totalFees: 0,
               protocolFee: 0,
               royaltyFee: 0,
             };
           }
-          protocolData.breakdownNftCollections[seaportConfig.chain][collection].volumeTrade += totalVolumeUsd;
-          protocolData.breakdownNftCollections[seaportConfig.chain][collection].totalFees +=
+          protocolData.breakdownCollectibles[seaportConfig.chain][collection].volumeTrade += totalVolumeUsd;
+          protocolData.breakdownCollectibles[seaportConfig.chain][collection].totalFees +=
             totalProtocolFeeUsd + totalRoyaltyFeeUsd;
-          protocolData.breakdownNftCollections[seaportConfig.chain][collection].protocolFee += totalProtocolFeeUsd;
-          protocolData.breakdownNftCollections[seaportConfig.chain][collection].royaltyFee += totalRoyaltyFeeUsd;
+          protocolData.breakdownCollectibles[seaportConfig.chain][collection].protocolFee += totalProtocolFeeUsd;
+          protocolData.breakdownCollectibles[seaportConfig.chain][collection].royaltyFee += totalRoyaltyFeeUsd;
         }
       }
     }
