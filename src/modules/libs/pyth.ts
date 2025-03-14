@@ -18,6 +18,21 @@ export default class PythLibs {
 
     if (result) {
       return formatBigNumberToString(result.price ? result.price.toString() : '0', Math.abs(Number(result.expo)));
+    } else {
+      const unsafePrice = await blockchain.readContract({
+        chain: config.chain,
+        abi: PriceFeedAbi,
+        target: config.address,
+        method: 'getPriceUnsafe',
+        params: [config.assetId],
+        blockNumber,
+      });
+      if (unsafePrice) {
+        return formatBigNumberToString(
+          unsafePrice.price ? unsafePrice.price.toString() : '0',
+          Math.abs(Number(unsafePrice.expo)),
+        );
+      }
     }
 
     return null;

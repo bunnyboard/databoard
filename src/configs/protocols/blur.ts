@@ -9,6 +9,7 @@ export interface BlurMarketplaceConfig {
 
 export interface BlurProtocolConfig extends ProtocolConfig {
   chain: string;
+  bidPool: string;
   marketplaceV1: string;
   marketplaceV2: Array<BlurMarketplaceConfig>;
 }
@@ -17,6 +18,7 @@ export const BlurConfigs: BlurProtocolConfig = {
   protocol: ProtocolNames.blur,
   birthday: 1666224000, // Thu Oct 20 2022 00:00:00 GMT+0000
   chain: ChainNames.ethereum,
+  bidPool: '0x0000000000a39bb272e79075ade125fd351887ac',
   marketplaceV1: '0x000000000000ad05ccc4f10045630fb830b95127',
   marketplaceV2: [
     {

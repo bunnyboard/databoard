@@ -67,6 +67,7 @@ import MorphL2NativeBridgeAdapter from './morphl2/nativeBridge';
 import MorphoAdapter from './morpho/morpho';
 import OdosAdapter from './odos/odos';
 import Okxweb3Adapter from './okx/okxweb3';
+import OpenseaAdapter from './opensea/opensea';
 import OptimismNativeBridgeAdapter from './optimism/nativeBridge';
 import OptimismNativeBridgeLegacyAdapter from './optimism/nativeBridgeLegacy';
 import ParaswapAdapter from './paraswap/paraswap';
@@ -289,7 +290,7 @@ export function getProtocolAdapters(
     tulipacapital: new GauntletAdapter(services, storages, ProtocolConfigs.tulipacapital),
     eulerdao: new GauntletAdapter(services, storages, ProtocolConfigs.eulerdao),
     k3capital: new GauntletAdapter(services, storages, ProtocolConfigs.k3capital),
-    // opensea: new OpenseaAdapter(services, storages, ProtocolConfigs.opensea),
+    opensea: new OpenseaAdapter(services, storages, ProtocolConfigs.opensea),
     // magiceden: new MagicedenAdapter(services, storages, ProtocolConfigs.magiceden),
     // joepegs: new JoepegsAdapter(services, storages, ProtocolConfigs.joepegs),
     // superrare: new SuperrareAdapter(services, storages, ProtocolConfigs.superrare),

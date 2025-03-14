@@ -13,4 +13,10 @@ export const OracleSourcePythList: { [key: string]: OracleSourcePyth } = {
     address: '0xD458261E832415CFd3BAE5E416FdF3230ce6F134',
     assetId: '0xb620ba83044577029da7e4ded7a2abccf8e6afc2a0d4d26d89ccdd39ec109025',
   },
+  SUI_USD: {
+    type: 'pyth',
+    chain: 'ethereum',
+    address: '0x4305fb66699c3b2702d4d05cf36551390a4c69c6',
+    assetId: '0x23d7315113f5b1d3ba7a83604c44b94d79f4fd69af77f804fc7f920a6dc65744',
+  },
 };

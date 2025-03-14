@@ -81,15 +81,32 @@ export default class BlurAdapter extends ProtocolAdapter {
     //
     // marketplace v1 on ethereum
     //
+    const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+      blurConfig.chain,
+      options.timestamp,
+    );
     const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
       blurConfig.chain,
       options.beginTime,
     );
-    // const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(blurConfig.chain, options.endTime);
-    const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-      blurConfig.chain,
-      options.beginTime,
-    );
+    const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(blurConfig.chain, options.endTime);
+
+    const getBidPoolBalance = await this.getAddressBalanceUsd({
+      chain: blurConfig.chain,
+      ownerAddress: blurConfig.bidPool,
+      tokens: [
+        {
+          chain: blurConfig.chain,
+          symbol: 'ETH',
+          decimals: 18,
+          address: AddressZero,
+        },
+      ],
+      blockNumber: blockNumber,
+      timestamp: options.timestamp,
+    });
+    protocolData.totalAssetDeposited += getBidPoolBalance.totalBalanceUsd;
+    protocolData.totalValueLocked += getBidPoolBalance.totalBalanceUsd;
 
     const v1Logs = await this.services.blockchain.evm.getContractLogs({
       chain: blurConfig.chain,

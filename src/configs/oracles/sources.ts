@@ -5,6 +5,7 @@ import { OffchainOracleSourcesFromCoingecko } from './coingecko';
 import { OracleCurrencyBaseConfigs } from './currency';
 import { OracleSourceCurveList } from './curve';
 import { OracleSourceCustomList } from './custom';
+import { OracleSourcePythList } from './pyth';
 import { OracleSourceUniswapv2List } from './uniswapv2';
 import { OracleSourceUniswapv3List } from './uniswapv3';
 
@@ -21,6 +22,10 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   CELO: OracleCurrencyBaseConfigs.celo,
   BERA: OracleCurrencyBaseConfigs.bera,
   IP: OracleCurrencyBaseConfigs.ip,
+  SUI: {
+    currency: 'usd',
+    sources: [OracleSourcePythList.SUI_USD],
+  },
   DAI: {
     currency: 'usd',
     sources: [OracleSourceChainlinkList.DAI_USD],
