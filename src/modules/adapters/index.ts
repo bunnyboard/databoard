@@ -72,6 +72,7 @@ import Okxweb3Adapter from './okx/okxweb3';
 import OpenseaAdapter from './opensea/opensea';
 import OptimismNativeBridgeAdapter from './optimism/nativeBridge';
 import OptimismNativeBridgeLegacyAdapter from './optimism/nativeBridgeLegacy';
+import PancakenftAdapter from './pancake/marketplace';
 import ParaswapAdapter from './paraswap/paraswap';
 import PellNetworkAdapter from './pellnetwork/pellnetwork';
 import PolygonNativeBridgeAdapter from './polygon/nativeBridge';
@@ -301,5 +302,6 @@ export function getProtocolAdapters(
     x2y2: new X2y2Adapter(services, storages, ProtocolConfigs.x2y2),
     looksrare: new LooksrareAdapter(services, storages, ProtocolConfigs.looksrare),
     blur: new BlurAdapter(services, storages, ProtocolConfigs.blur),
+    pancakenft: new PancakenftAdapter(services, storages, ProtocolConfigs.pancakenft),
   };
 }

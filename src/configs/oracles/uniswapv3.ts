@@ -1468,13 +1468,6 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.arbitrum['0x2172fad929e857ddfd7ddc31e24904438434cb0b'],
     quotaToken: TokensBook.arbitrum['0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f'],
   },
-  ALU_WETH: {
-    type: 'univ3',
-    chain: 'base',
-    address: '0x51899907407407e2a74e4a9c9c37e65e6bf70b8b',
-    baseToken: TokensBook.base['0x91ad1b44913cd1b8241a4ff1e2eaa198da6bf4c9'],
-    quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
-  },
   EARNM_WETH: {
     type: 'univ3',
     chain: 'base',
@@ -2063,6 +2056,13 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     chain: 'ethereum',
     address: '0xccc42cf5d6a2f3ed8f948541455950ed6ce14707',
     baseToken: TokensBook.ethereum['0x6100dd79fcaa88420750dcee3f735d168abcb771'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
+  VOLTAGE_WETH: {
+    type: 'univ3',
+    chain: 'ethereum',
+    address: '0x9d77a98501902047612030e114b61b0252b27985',
+    baseToken: TokensBook.ethereum['0xffbf315f70e458e49229654dea4ce192d26f9b25'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
 };

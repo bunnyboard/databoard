@@ -136,7 +136,7 @@ export interface PancakenftProtocolConfig extends ProtocolConfig {
 
 export const PancakenftConfigs: PancakenftProtocolConfig = {
   protocol: ProtocolNames.pancakenft,
-  birthday: 1644019200, // Sat Feb 05 2022 00:00:00 GMT+0000
+  birthday: 1633046400, // Fri Oct 01 2021 00:00:00 GMT+0000
   chain: ChainNames.bnbchain,
   marketplace: '0x17539cca21c7933df5c980172d22659b8c345c5a',
 };

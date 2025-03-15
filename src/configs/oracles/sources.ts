@@ -2536,7 +2536,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   },
   ALU: {
     currency: 'eth',
-    sources: [OracleSourceUniswapv3List.ALU_WETH],
+    sources: [OracleSourceUniswapv2List.ALU_WBNB],
   },
   ZUN: {
     currency: 'usd',
@@ -3426,5 +3426,21 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   OS: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.OS_WETH],
+  },
+  REVV: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.REVV_WETH],
+  },
+  VOLTAGE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.VOLTAGE_WETH],
+  },
+  MHUNT: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.MHUNT_WBNB],
+  },
+  CUBE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.CUBE_WETH],
   },
 };
