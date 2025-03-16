@@ -131,7 +131,7 @@ export default class FluidAdapter extends ProtocolAdapter {
             }),
           ]);
           if (token0 && token1) {
-            const fee = formatBigNumberToNumber(dexConfigs[i].fee ? dexConfigs[i].fee.toString() : '0', 4);
+            const fee = formatBigNumberToNumber(dexConfigs[i].fee ? dexConfigs[i].fee.toString() : '0', 6);
             const revenueCut = formatBigNumberToNumber(
               dexConfigs[i].revenueCut ? dexConfigs[i].revenueCut.toString() : '0',
               6,

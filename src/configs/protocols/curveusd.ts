@@ -84,5 +84,41 @@ export const CurveusdConfigs: CurveusdProtocolConfig = {
       controller: '0xec0820efafc41d8943ee8de495fc9ba8495b15cf',
       amm: '0xfa96ad0a9e64261db86950e2da362f5572c5c6fd',
     },
+    {
+      chain: ChainNames.ethereum,
+      birthday: 1741651200, // Tue Mar 11 2025 00:00:00 GMT+0000
+      collateral: {
+        chain: ChainNames.ethereum,
+        symbol: 'cbBTC',
+        decimals: 8,
+        address: '0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf',
+      },
+      controller: '0xf8C786b1064889fFd3c8A08B48D5e0c159F4cBe3',
+      amm: '0xB6E62Aa178a5421d0A51D17E720A05de78D3137A',
+    },
+    {
+      chain: ChainNames.ethereum,
+      birthday: 1741651200, // Tue Mar 11 2025 00:00:00 GMT+0000
+      collateral: {
+        chain: ChainNames.ethereum,
+        symbol: 'LBTC',
+        decimals: 8,
+        address: '0x8236a87084f8b84306f72007f36f2618a5634494',
+      },
+      controller: '0x8aca5A776a878Ea1F8967e70a23b8563008f58Ef',
+      amm: '0x9a2e6bb3114B1EEB5492D97188A3ECB09E39fac8',
+    },
+    {
+      chain: ChainNames.ethereum,
+      birthday: 1741651200, // Tue Mar 11 2025 00:00:00 GMT+0000
+      collateral: {
+        chain: ChainNames.ethereum,
+        symbol: 'weETH',
+        decimals: 18,
+        address: '0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee',
+      },
+      controller: '0x652aEa6B22310C89DCc506710CaD24d2Dba56B11',
+      amm: '0xEd325262f54b2987e74436f4556a27f748146da1',
+    },
   ],
 };
