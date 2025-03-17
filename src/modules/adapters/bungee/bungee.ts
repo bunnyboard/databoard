@@ -137,9 +137,6 @@ export default class BungeeAdapter extends ProtocolAdapter {
                   txn: log.transactionHash,
                   logIndex: log.logIndex,
                 });
-
-                console.log(bridgeName);
-                process.exit(0);
               }
 
               const toChainId = Number(event.args.toChainId);
