@@ -44,5 +44,13 @@ export const FluidConfigs: FluidProtocolConfig = {
       vaultResolverV2: '0x94695A9d0429aD5eFec0106a467aDEaDf71762F9',
       dexResolver: '0x93f587618A5380f40329E652f8D26CB16dAE3a47',
     },
+    {
+      chain: ChainNames.polygon,
+      birthday: 1740873600, // Sun Mar 02 2025 00:00:00 GMT+0000
+      liquidity: '0x52Aa899454998Be5b000Ad077a46Bbe360F4e497',
+      liquidityResolver: '0x98d900e25AAf345A4B23f454751EC5083443Fa83',
+      vaultResolverV2: '0x3c64Ec468D7f0998cB6dea05d4D8AB847573fE4D',
+      dexResolver: '0xa17798d03bB563c618b9C44cAd937340Bad99138',
+    },
   ],
 };
