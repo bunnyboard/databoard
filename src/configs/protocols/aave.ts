@@ -317,5 +317,18 @@ export const AaveConfigs: AaveProtocolConfig = {
         address: '0xD63f7658C66B2934Bd234D79D06aEF5290734B30',
       },
     },
+    {
+      chain: ChainNames.celo,
+      marketName: 'Main Market',
+      version: 3,
+      birthday: 1742256000, // Tue Mar 18 2025 00:00:00 GMT+0000
+      lendingPool: '0x3E59A31363E2ad014dcbc521c4a0d5757d9f3402',
+      dataProvider: '0x33b7d355613110b4E842f5f7057Ccd36fb4cee28',
+      dataProvider2: '0x33b7d355613110b4E842f5f7057Ccd36fb4cee28',
+      oracle: {
+        currency: 'usd',
+        address: '0x1e693D088ceFD1E95ba4c4a5F7EeA41a1Ec37e8b',
+      },
+    },
   ],
 };
