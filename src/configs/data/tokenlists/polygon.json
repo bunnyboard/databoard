@@ -791,6 +791,12 @@
     "decimals": 18,
     "address": "0x4eac4c4e9050464067d673102f8e24b2fcceb350"
   },
+  "0x4f800ba0dff2980c5006c6816f7aa3de63ce8087": {
+    "chain": "polygon",
+    "symbol": "BRIL",
+    "decimals": 18,
+    "address": "0x4f800ba0dff2980c5006c6816f7aa3de63ce8087"
+  },
   "0x50a4a434247089848991dd8f09b889d4e2870ab6": {
     "chain": "polygon",
     "symbol": "TBTC",
@@ -1822,6 +1828,12 @@
     "symbol": "fxSAIL",
     "decimals": 18,
     "address": "0xd1a718f77ab5d22e3955050658d7f65ae857a85e"
+  },
+  "0xd1f9c58e33933a993a3891f8acfe05a68e1afc05": {
+    "chain": "polygon",
+    "symbol": "SFL",
+    "decimals": 18,
+    "address": "0xd1f9c58e33933a993a3891f8acfe05a68e1afc05"
   },
   "0xd3690ad3f9a44c6648933c89b8eec3c3a6a48bee": {
     "chain": "polygon",

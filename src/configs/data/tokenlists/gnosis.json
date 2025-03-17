@@ -101,6 +101,12 @@
     "decimals": 18,
     "address": "0x712b3d230f3c1c19db860d80619288b1f0bdd0bd"
   },
+  "0x71850b7e9ee3f13ab46d67167341e4bdc905eef9": {
+    "chain": "gnosis",
+    "symbol": "HNY",
+    "decimals": 18,
+    "address": "0x71850b7e9ee3f13ab46d67167341e4bdc905eef9"
+  },
   "0x82dfe19164729949fd66da1a37bc70dd6c4746ce": {
     "chain": "gnosis",
     "symbol": "BAO",

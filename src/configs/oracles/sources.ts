@@ -1674,8 +1674,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv3List.BUMP_WETH],
   },
   GEAR: {
-    currency: 'usd',
-    sources: [OracleSourceUniswapv3List.GEAR_USDT],
+    currency: 'eth',
+    sources: [OracleSourceCurveList.GEAR_WETH],
   },
   KOI: {
     currency: 'eth',
@@ -3454,5 +3454,97 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   MOVE: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.MOVE_WETH],
+  },
+  REKT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.REKT_WETH],
+  },
+  CRTS: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.CRTS_WBNB],
+  },
+  GMT: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.GMT_WBNB],
+  },
+  BLU: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.BLU_USDC],
+  },
+  BOBR: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BOBR_WETH],
+  },
+  HNY: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.HNY_WETH],
+  },
+  HEX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.HEX_WETH],
+  },
+  ZEDRUN: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ZEDRUN_WETH],
+  },
+  DEVVE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.DEVVE_WETH],
+  },
+  XI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.XI_WETH],
+  },
+  ASTO: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.ASTO_USDC],
+  },
+  BRIL: {
+    currency: 'matic',
+    sources: [OracleSourceUniswapv2List.BRIL_WPOL],
+  },
+  SFL: {
+    currency: 'matic',
+    sources: [OracleSourceUniswapv2List.SFL_WPOL],
+  },
+  BFT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BFT_WETH],
+  },
+  PLR: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.PLR_WETH],
+  },
+  SVM: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SVM_WETH],
+  },
+  RED: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.RED_WETH],
+  },
+  stBTC: {
+    currency: 'btc',
+    sources: [OracleSourceUniswapv3List.stBTC_BTCB],
+  },
+  FARTCOIN: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.FARTCOIN_WETH],
+  },
+  BNKR: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.BNKR_WETH],
+  },
+  StandardUSD: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.StandardUSD_USDC],
+  },
+  LON: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.LON_USDT],
+  },
+  PUFFER: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.PUFFER_WETH],
   },
 };

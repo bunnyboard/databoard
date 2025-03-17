@@ -869,6 +869,12 @@
     "decimals": 18,
     "address": "0xa219b43c6e5935085bcaf7fd590c83abe62dcd77"
   },
+  "0xa50b23cdfb2ec7c590e84f403256f67ce6dffb84": {
+    "chain": "optimism",
+    "symbol": "BLU",
+    "decimals": 18,
+    "address": "0xa50b23cdfb2ec7c590e84f403256f67ce6dffb84"
+  },
   "0xa6521c950b0ab5215337dab84d65f4ffa7f6df55": {
     "chain": "optimism",
     "symbol": "Silo",

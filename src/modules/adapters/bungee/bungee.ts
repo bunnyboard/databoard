@@ -30,6 +30,7 @@ export const BungeeKnownBridgeNames: { [key: string]: string } = {
   '0xfb124487a9ad253606517a08816473db34d3f4319cda7e548f718d1bd7aec4f3': ProtocolNames.anyswap,
   '0x520b7e0fa71292fc3580658e9fcf097987149f9bab7aa0a213933370b9f02218': ProtocolNames.rainbow,
   '0xf8455f3379434a3ef6559858314c8f61d36412da9937cd3f1de59562deb078e6': ProtocolNames.circlecctp,
+  '0xf902d88747f99d9d727ec886787b85f54753de026065d14f26a61e357d1c13ff': ProtocolNames.circlecctp,
   '0x47443678ca5bb8034d5e764a6f20d6e5cfcbb4a3912e12f8bae660cd0face530': ProtocolNames.synapse,
   '0x6e6ef0d56d65c2193ef8da79bb1e0bac59c8ac17fdd0b3cc6122f82f7d42cc9d': ProtocolNames.connext,
   '0xea698b477c99ea804835b684c4c3009f282df52a6bf660d4006c72a3b60fd670': ProtocolNames.symbiosis,
@@ -127,7 +128,7 @@ export default class BungeeAdapter extends ProtocolAdapter {
               // bungee identity bridge name by unique bytes32 hash
               // to know which bytes32 mapped to which bridge
               // check the Bungee bridge implementation contract
-              let bridgeName = BungeeKnownBridgeNames[event.args.bridgeName];
+              let bridgeName = BungeeKnownBridgeNames[String(event.args.bridgeName).toLowerCase()];
               if (!bridgeName) {
                 bridgeName = event.args.bridgeName;
                 logger.warn('failed to get bridge name from bridge txn', {

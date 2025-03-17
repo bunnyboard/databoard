@@ -35057,6 +35057,12 @@
     "decimals": 9,
     "address": "0xc434268603ca8854e0be1a3ff15cad73bd6ec49a"
   },
+  "0xc43c6bfeda065fe2c4c11765bf838789bd0bb5de": {
+    "chain": "ethereum",
+    "symbol": "RED",
+    "decimals": 18,
+    "address": "0xc43c6bfeda065fe2c4c11765bf838789bd0bb5de"
+  },
   "0xc4441c2be5d8fa8126822b9929ca0b81ea0de38e": {
     "chain": "ethereum",
     "symbol": "USUAL",
@@ -43600,6 +43606,12 @@
     "symbol": "COREDAO",
     "decimals": 18,
     "address": "0xf66cd2f8755a21d3c8683a10269f795c0532dd58"
+  },
+  "0xf6718b2701d4a6498ef77d7c152b2137ab28b8a3": {
+    "chain": "ethereum",
+    "symbol": "stBTC",
+    "decimals": 18,
+    "address": "0xf6718b2701d4a6498ef77d7c152b2137ab28b8a3"
   },
   "0xf6719e1a8fcbb1b9c290019e37e004966a8916c9": {
     "chain": "ethereum",

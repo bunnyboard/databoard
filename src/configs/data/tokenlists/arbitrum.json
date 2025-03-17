@@ -635,6 +635,12 @@
     "decimals": 18,
     "address": "0x2e9a6df78e42a30712c10a9dc4b1c8656f8f2879"
   },
+  "0x2ea0be86990e8dac0d09e4316bb92086f304622d": {
+    "chain": "arbitrum",
+    "symbol": "USDs",
+    "decimals": 18,
+    "address": "0x2ea0be86990e8dac0d09e4316bb92086f304622d"
+  },
   "0x2ef354c71caab6dc7469bb3c99642878ccd1143f": {
     "chain": "arbitrum",
     "symbol": "iGRAIL",
