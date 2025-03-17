@@ -3317,4 +3317,11 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.bnbchain['0x2c717059b366714d267039af8f59125cadce6d8c'],
     quotaToken: TokensBook.bnbchain['0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c'],
   },
+  CONE_WETH: {
+    type: 'univ2',
+    chain: 'polygon',
+    address: '0xc3266f3ce2433e0fb83d3ae8be49a155f6230a6f',
+    baseToken: TokensBook.polygon['0xba777ae3a3c91fcd83ef85bfe65410592bdd0f7c'],
+    quotaToken: TokensBook.polygon['0x7ceb23fd6bc0add59e62ac25578270cff1b9f619'],
+  },
 };

@@ -67,6 +67,7 @@ import MetisNativeBridgeAdapter from './metis/nativeBridge';
 import MoonwellAdapter from './moonwell/moonwell';
 import MorphL2NativeBridgeAdapter from './morphl2/nativeBridge';
 import MorphoAdapter from './morpho/morpho';
+import MovementNativeBridgeAdapter from './movement/nativeBridge';
 import OdosAdapter from './odos/odos';
 import Okxweb3Adapter from './okx/okxweb3';
 import OpenseaAdapter from './opensea/opensea';
@@ -303,5 +304,6 @@ export function getProtocolAdapters(
     looksrare: new LooksrareAdapter(services, storages, ProtocolConfigs.looksrare),
     blur: new BlurAdapter(services, storages, ProtocolConfigs.blur),
     pancakenft: new PancakenftAdapter(services, storages, ProtocolConfigs.pancakenft),
+    movementNativeBridge: new MovementNativeBridgeAdapter(services, storages, ProtocolConfigs.movementNativeBridge),
   };
 }

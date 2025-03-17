@@ -1277,6 +1277,12 @@
     "decimals": 18,
     "address": "0x8a0e8b4b0903929f47c3ea30973940d4a9702067"
   },
+  "0x8a16d4bf8a0a716017e8d2262c4ac32927797a2f": {
+    "chain": "polygon",
+    "symbol": "VCNT",
+    "decimals": 18,
+    "address": "0x8a16d4bf8a0a716017e8d2262c4ac32927797a2f"
+  },
   "0x8a2870fb69a90000d6439b7adfb01d4ba383a415": {
     "chain": "polygon",
     "symbol": "DEGEN",
@@ -1612,6 +1618,12 @@
     "symbol": "PTR",
     "decimals": 18,
     "address": "0xba073ee3fdeb0fe00fda35e58f7cd75563aec607"
+  },
+  "0xba777ae3a3c91fcd83ef85bfe65410592bdd0f7c": {
+    "chain": "polygon",
+    "symbol": "CONE",
+    "decimals": 18,
+    "address": "0xba777ae3a3c91fcd83ef85bfe65410592bdd0f7c"
   },
   "0xbb287e6017d3deb0e2e65061e8684eab21060123": {
     "chain": "polygon",

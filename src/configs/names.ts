@@ -96,6 +96,7 @@ export const ChainNames = {
   noble: 'noble',
   sui: 'sui',
   aptos: 'aptos',
+  movement: 'movement',
 };
 
 export const ProtocolNames = {
@@ -313,4 +314,5 @@ export const ProtocolNames = {
   x2y2: 'x2y2', // https://x2y2.io
   looksrare: 'looksrare', // https://looksrare.org
   blur: 'blur', // https://blur.io
+  movementNativeBridge: 'movementNativeBridge', // https://docs.movementnetwork.xyz/general/UsingMovement/bridge
 };

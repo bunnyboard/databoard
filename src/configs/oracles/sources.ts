@@ -3443,4 +3443,16 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.CUBE_WETH],
   },
+  VCNT: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.VCNT_USDC],
+  },
+  CONE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.CONE_WETH],
+  },
+  MOVE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.MOVE_WETH],
+  },
 };

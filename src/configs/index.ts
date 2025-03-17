@@ -176,6 +176,7 @@ import { X2y2Configs } from './protocols/x2y2';
 import { LooksrareConfigs } from './protocols/looksrare';
 import { BlurConfigs } from './protocols/blur';
 import { PancakenftConfigs } from './protocols/pancake';
+import { MovementNativeBridgeConfigs } from './protocols/movement';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -401,4 +402,5 @@ export const ProtocolConfigs = {
   looksrare: LooksrareConfigs,
   blur: BlurConfigs,
   pancakenft: PancakenftConfigs,
+  movementNativeBridge: MovementNativeBridgeConfigs,
 };
