@@ -3547,4 +3547,12 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.PUFFER_WETH],
   },
+  USN: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.USN_USDT],
+  },
+  sUSN: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.sUSN],
+  },
 };
