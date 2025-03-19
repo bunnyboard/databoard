@@ -1,0 +1,186 @@
+import { OracleSourceDexLpToken, OracleTypes } from '../../types/oracles';
+
+export const OracleSourceDexLpTokenList: {
+  [key: string]: OracleSourceDexLpToken;
+} = {
+  Balv2_LP_AURA_WETH: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0xcfca23ca9ca720b6e98e3eb9b6aa0ffc4a5c08b9',
+  },
+  Balv2_LP_rETH_STABLE: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0x1e19cf2d73a72ef1332c882f20534b6519be0276',
+  },
+  Balv2_LP_rETH_weETH: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0x05ff47afada98a98982113758878f9a8b9fdda0a',
+  },
+  Balv2_LP_ezETH_WETH: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0x596192bb6e41802428ac943d2f1476c1af25cc0e',
+  },
+  Balv2_LP_svETH_wstETH: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0xdedb11a6a23263469567c2881a9b9f8629ee0041',
+  },
+  Balv2_LP_VCX_WETH: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0x577a7f7ee659aa14dc16fd384b3f8078e23f1920',
+  },
+  Balv2_LP_auraBAL_STABLE: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0x3dd0843a028c86e0b760b1a76929d1c5ef93a2dd',
+  },
+  Balv2_LP_MIMO_WETH: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0xee3959fd00a0b996d801fc34b7ce566bd037f5f5',
+  },
+  Balv2_LP_wstETH_ACX: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0x36be1e97ea98ab43b4debf92742517266f5731a3',
+  },
+  Balv2_LP_STG_USDC: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0x3ff3a210e57cfe679d9ad1e9ba6453a716c56a2e',
+  },
+  Balv2_LP_ezETH_weETH_rswETH: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0x848a5564158d84b8a8fb68ab5d004fae11619a54',
+  },
+  Balv2_LP_BAL_WETH: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0x5c6ee304399dbdb9c8ef030ab642b10820db8f56',
+  },
+  Balv2_LP_GOLD_WETH_USDC: {
+    chain: 'base',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0x433f09ca08623e48bac7128b7105de678e37d988',
+  },
+  Balv2_LP_ECLP_AURA_USDC: {
+    chain: 'base',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0x5f62fd24941b585b91eb059e0ea1a7e729357511',
+  },
+  Balv2_LP_ankrETh_wstETH: {
+    chain: 'arbitrum',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0x3fd4954a851ead144c2ff72b1f5a38ea5976bd54',
+  },
+  Balv2_LP_wstETH_WETH: {
+    chain: 'arbitrum',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0x7967fa58b9501600d96bd843173b9334983ee6e6',
+  },
+  Balv2_LP_wstETH_WETH_BPT: {
+    chain: 'arbitrum',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0x9791d590788598535278552eecd4b211bfc790cb',
+  },
+  Balv2_LP_bpt_ethtri: {
+    chain: 'optimism',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0x5f8893506ddc4c271837187d14a9c87964a074dc',
+  },
+  Curve_LP_cvxCRV_CRV: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'curve',
+    address: '0x971add32ea87f10bd192671630be3be8a11b8623',
+  },
+  Curve_LP_stETH_ETH: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'curve',
+    address: '0x21e27a5e5513d6e65c4f830167390997aa84843a',
+  },
+  Curve_LP_MIM_3Crv: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'curve',
+    address: '0x5a6a4d54456819380173272a5e8e9b9904bdf41b',
+  },
+  Pendle_market_stETH: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'pendle',
+    address: '0xc374f7ec85f8c7de3207a10bb1978ba104bda3b2',
+  },
+  Pendle_market_weETH: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'pendle',
+    address: '0x7d372819240d14fb477f17b964f95f33beb4c704',
+  },
+  Univ2_LP_BSX_WETH: {
+    chain: 'base',
+    type: OracleTypes.dexLpToken,
+    method: 'univ2',
+    address: '0x7fea0384f38ef6ae79bb12295a9e10c464204f52',
+  },
+  Univ2_LP_WELL_WETH: {
+    chain: 'base',
+    type: OracleTypes.dexLpToken,
+    method: 'univ2',
+    address: '0x89d0f320ac73dd7d9513ffc5bc58d1161452a657',
+  },
+  Univ2_LP_KLIMA_WETH: {
+    chain: 'base',
+    type: OracleTypes.dexLpToken,
+    method: 'univ2',
+    address: '0xb37642e87613d8569fd8ec80888ea6c63684e79e',
+  },
+  Univ2_LP_VIRTUAL_cbBTC: {
+    chain: 'base',
+    type: OracleTypes.dexLpToken,
+    method: 'univ2',
+    address: '0xb909f567c5c2bb1a4271349708cc4637d7318b4a',
+  },
+  Univ2_LP_VELO_USDC: {
+    chain: 'optimism',
+    type: OracleTypes.dexLpToken,
+    method: 'univ2',
+    address: '0x8134a2fdc127549480865fb8e5a9e8a8a95a54c5',
+  },
+  Univ2_LP_wstETH_WETH: {
+    chain: 'optimism',
+    type: OracleTypes.dexLpToken,
+    method: 'univ2',
+    address: '0x6da98bde0068d10ddd11b468b197ea97d96f96bc',
+  },
+  Univ2_LP_HBR_WBNB: {
+    chain: 'optimism',
+    type: OracleTypes.dexLpToken,
+    method: 'univ2',
+    address: '0x5134729cd5a5b40336bc3ca71349f2c108718428',
+  },
+};

@@ -315,4 +315,5 @@ export const ProtocolNames = {
   looksrare: 'looksrare', // https://looksrare.org
   blur: 'blur', // https://blur.io
   movementNativeBridge: 'movementNativeBridge', // https://docs.movementnetwork.xyz/general/UsingMovement/bridge
+  superform: 'superform', // https://superform.xyz
 };

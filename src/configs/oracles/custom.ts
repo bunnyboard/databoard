@@ -202,4 +202,32 @@ export const OracleSourceCustomList: {
     address: '0xe24a3dc889621612422a64e6388927901608b91d',
     underlyingToken: TokensBook.ethereum['0xda67b4284609d2d48e5d10cfac411572727dc1ed'],
   },
+  yAjnaDAI: {
+    type: 'stakingTokenWrapper',
+    chain: 'ethereum',
+    method: 'erc4626',
+    address: '0xe24ba27551abe96ca401d39761ca2319ea14e3cb',
+    underlyingToken: TokensBook.ethereum['0x6b175474e89094c44da98b954eedeac495271d0f'],
+  },
+  moonwellUSDC: {
+    type: 'stakingTokenWrapper',
+    chain: 'base',
+    method: 'cToken',
+    address: '0xedc817a28e8b93b03976fbd4a3ddbc9f7d176c22',
+    underlyingToken: TokensBook.base['0x833589fcd6edb6e08f4c7c32d4f71b54bda02913'],
+  },
+  gDAI: {
+    type: 'stakingTokenWrapper',
+    chain: 'arbitrum',
+    method: 'cToken',
+    address: '0xd85e038593d7a098614721eae955ec2022b9b91b',
+    underlyingToken: TokensBook.arbitrum['0xda10009cbd5d07dd0cecc66161fc93d7c9000da1'],
+  },
+  venusBNB: {
+    type: 'stakingTokenWrapper',
+    chain: 'bnbchain',
+    method: 'cToken',
+    address: '0xa07c5b74c9b40447a954e1466938b865b6bbea36',
+    underlyingToken: TokensBook.bnbchain['0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c'],
+  },
 };

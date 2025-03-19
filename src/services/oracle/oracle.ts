@@ -13,6 +13,7 @@ import {
   OracleSourceBalancerPool,
   OracleSourceChainlink,
   OracleSourceCurvePool,
+  OracleSourceDexLpToken,
   OracleSourceMakerRwaPip,
   OracleSourceOffchain,
   OracleSourcePool2,
@@ -38,6 +39,8 @@ import BalancerLibs from '../../modules/libs/balancer';
 import { getTokenPriceFromCoingecko } from './coingecko';
 import envConfig from '../../configs/envConfig';
 import PythLibs from '../../modules/libs/pyth';
+import CompoundLibs from '../../modules/libs/compound';
+import PendleLibs from '../../modules/libs/pendle';
 
 export default class OracleService extends CachingService implements IOracleService {
   public readonly name: string = 'oracle';
@@ -66,7 +69,8 @@ export default class OracleService extends CachingService implements IOracleServ
       | OracleSourceMakerRwaPip
       | OracleSourceCurvePool
       | OracleSourceBalancerPool
-      | OracleSourceStakingTokenWrapper,
+      | OracleSourceStakingTokenWrapper
+      | OracleSourceDexLpToken,
     timestamp: number,
   ): Promise<string | null> {
     const sourceCachingKey = `source:${source.type}:${source.chain}:${source.address}:${
@@ -161,7 +165,42 @@ export default class OracleService extends CachingService implements IOracleServ
 
         break;
       }
-      case 'stakingTokenWrapper': {
+      case OracleTypes.dexLpToken: {
+        const config = source as OracleSourceDexLpToken;
+
+        if (config.method === 'balv2') {
+          return await BalancerLibs.getPoolLpTokenPriceUsd({
+            chain: config.chain,
+            address: config.address,
+            blockNumber: blockNumber,
+            timestamp: timestamp,
+          });
+        } else if (config.method === 'curve') {
+          return await CurveLibs.getPoolLpTokenPriceUsd({
+            chain: config.chain,
+            address: config.address,
+            blockNumber: blockNumber,
+            timestamp: timestamp,
+          });
+        } else if (config.method === 'pendle') {
+          return await PendleLibs.getPoolLpTokenPriceUsd({
+            chain: config.chain,
+            address: config.address,
+            blockNumber: blockNumber,
+            timestamp: timestamp,
+          });
+        } else if (config.method === 'univ2') {
+          return await UniswapLibs.getUniv2LpTokenPriceUsd({
+            chain: config.chain,
+            address: config.address,
+            blockNumber: blockNumber,
+            timestamp: timestamp,
+          });
+        }
+
+        return null;
+      }
+      case OracleTypes.stakingTokenWrapper: {
         const config = source as OracleSourceStakingTokenWrapper;
 
         if (config.method === 'balance') {
@@ -204,6 +243,13 @@ export default class OracleService extends CachingService implements IOracleServ
           if (balance) {
             return formatBigNumberToString(balance.toString(10), config.underlyingToken.decimals);
           }
+        } else if (config.method === 'cToken') {
+          return await CompoundLibs.getCTokenPriceVsUnderlying({
+            chain: source.chain,
+            cToken: source.address,
+            underlying: (source as OracleSourceStakingTokenWrapper).underlyingToken,
+            blockNumber: blockNumber,
+          });
         } else if (config.method === 'mETH') {
           return await OracleLibs.getmETHPrice(config, blockNumber);
         }

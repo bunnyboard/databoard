@@ -92,6 +92,7 @@ import StaderAdapter from './stader/stader';
 import StakewiseAdapter from './stakewise/stakewise';
 import StargateAdapter from './stargate/stargate';
 import StarknetNativeBridgeAdapter from './starknet/starknetBridge';
+import SuperformAdapter from './superform/superform';
 import SuperrareAdapter from './superrare/superrare';
 import SwellAdapter from './swell/swell';
 import SymbioticAdapter from './symbiotic/symbiotic';
@@ -305,5 +306,6 @@ export function getProtocolAdapters(
     blur: new BlurAdapter(services, storages, ProtocolConfigs.blur),
     pancakenft: new PancakenftAdapter(services, storages, ProtocolConfigs.pancakenft),
     movementNativeBridge: new MovementNativeBridgeAdapter(services, storages, ProtocolConfigs.movementNativeBridge),
+    superform: new SuperformAdapter(services, storages, ProtocolConfigs.superform),
   };
 }

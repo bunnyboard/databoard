@@ -51,6 +51,9 @@ export const OracleTypes = {
 
   // balancer.fi
   balv2: 'balv2',
+
+  // dex liquidity token
+  dexLpToken: 'dexLpToken',
 };
 const AllOracleTypes = Object.values(OracleTypes);
 export type OracleType = (typeof AllOracleTypes)[number];
@@ -108,7 +111,7 @@ export interface OracleSourceCurvePool extends OracleSourceBase {
 
 export interface OracleSourceStakingTokenWrapper extends OracleSourceBase {
   type: 'stakingTokenWrapper';
-  method: 'balance' | 'erc4626' | 'mETH';
+  method: 'balance' | 'erc4626' | 'mETH' | 'cToken';
   underlyingToken: Token;
 }
 
@@ -120,6 +123,10 @@ export interface OracleSourceBalancerPool extends OracleSourceBase {
   baseToken: Token;
   quotaWeight?: number;
   quotaToken: Token;
+}
+
+export interface OracleSourceDexLpToken extends OracleSourceBase {
+  method: 'balv2' | 'curve' | 'pendle' | 'univ2';
 }
 
 export interface OracleConfig {
@@ -137,6 +144,7 @@ export interface OracleConfig {
     | OracleSourceCurvePool
     | OracleSourceBalancerPool
     | OracleSourceStakingTokenWrapper
+    | OracleSourceDexLpToken
   >;
 
   // if is stablecoin, return 1 when we can not fetch the price from any source

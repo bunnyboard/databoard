@@ -1,14 +1,24 @@
 import BigNumber from 'bignumber.js';
 import CurveMetaPoolAbi from '../../configs/abi/curve/MetaPool.json';
+import Erc20Abi from '../../configs/abi/ERC20.json';
 import CurveStablePoolAbi from '../../configs/abi/curve/CurveStableSwapNG.json';
-import { formatBigNumberToString } from '../../lib/utils';
+import { formatBigNumberToNumber, formatBigNumberToString } from '../../lib/utils';
 import BlockchainService from '../../services/blockchains/blockchain';
 import { OracleSourceCurvePool } from '../../types/oracles';
-// import CurvePoolNativeAbi from '../../configs/abi/curve/CurvePoolNative.json';
+import OracleService from '../../services/oracle/oracle';
+import { ContractCall } from '../../services/blockchains/domains';
+import { Token } from '../../types/base';
 
 interface GetMetaPoolPriceOptions {
   config: OracleSourceCurvePool;
   blockNumber: number;
+}
+
+interface GetPoolLpTokenPriceUsdOptions {
+  chain: string;
+  address: string;
+  blockNumber: number;
+  timestamp: number;
 }
 
 export default class CurveLibs {
@@ -74,6 +84,73 @@ export default class CurveLibs {
     } else {
       return null;
     }
+  }
+
+  public static async getPoolLpTokenPriceUsd(options: GetPoolLpTokenPriceUsdOptions): Promise<string | null> {
+    const blockchain = new BlockchainService();
+    const oracle = new OracleService(blockchain);
+
+    const totalSupply = await blockchain.readContract({
+      chain: options.chain,
+      abi: Erc20Abi,
+      target: options.address,
+      method: 'totalSupply',
+      params: [],
+      blockNumber: options.blockNumber,
+    });
+
+    const lpTokenSupply = formatBigNumberToNumber(totalSupply ? totalSupply.toString() : '0', 18);
+    if (lpTokenSupply === 0) {
+      return null;
+    }
+
+    const getCoinsCalls: Array<ContractCall> = [];
+    for (let i = 0; i < 10; i++) {
+      getCoinsCalls.push({
+        abi: CurveStablePoolAbi,
+        target: options.address,
+        method: 'coins',
+        params: [i],
+      });
+    }
+    const getCoinsResults = await blockchain.multicall({
+      chain: options.chain,
+      calls: getCoinsCalls,
+    });
+
+    const tokens: Array<Token> = [];
+    for (const coinAddress of getCoinsResults) {
+      if (coinAddress) {
+        const token = await blockchain.getTokenInfo({
+          chain: options.chain,
+          address: coinAddress,
+        });
+        if (token) {
+          tokens.push(token);
+        }
+      }
+    }
+
+    let totalBalanceUsd = 0;
+    for (const token of tokens) {
+      const tokenPriceUsd = await oracle.getTokenPriceUsdRounded({
+        chain: token.chain,
+        address: token.address,
+        timestamp: options.timestamp,
+      });
+
+      const getBalanceResult = await blockchain.getTokenBalance({
+        chain: token.chain,
+        address: token.address,
+        owner: options.address,
+        blockNumber: options.blockNumber,
+      });
+
+      totalBalanceUsd +=
+        formatBigNumberToNumber(getBalanceResult ? getBalanceResult.toString() : '0', token.decimals) * tokenPriceUsd;
+    }
+
+    return (totalBalanceUsd / lpTokenSupply).toString();
   }
 
   // private async getPoolNativePrice(options: GetMetaPoolPriceOptions): Promise<string | null> {

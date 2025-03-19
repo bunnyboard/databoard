@@ -234,7 +234,7 @@ export default class YearnAdapter extends ProtocolAdapter {
         if (tokenPriceMap[tokenAddress] === 0) {
           tokenPriceMap[tokenAddress] = await UniswapLibs.getPool2LpPriceUsd({
             chain: v2Config.chain,
-            lpAddress: tokenAddress,
+            address: tokenAddress,
             blockNumber: blockNumber,
             timestamp: options.timestamp,
           });

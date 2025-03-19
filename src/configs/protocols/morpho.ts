@@ -396,5 +396,17 @@ export const MorphoConfigs: MorphoProtocolConfig = {
         '0x267f344f5af0d85e95f253a2f250985a9fb9fca34a3342299e20c83b6906fc80',
       ],
     },
+    {
+      chain: ChainNames.optimism,
+      birthday: 1740009600, // Thu Feb 20 2025 00:00:00 GMT+0000
+      birthblock: 131332012,
+      morphoBlue: '0xce95AfbB8EA029495c66020883F87aaE8864AF92',
+      morphoFactory: '0x3Bb6A6A0Bc85b367EFE0A5bAc81c5E52C892839a',
+      whitelistedMarketIds: [
+        '0xc7ae57c1998c67a4c21804df606db1309b68a518ba5acc8b1dc3ffcb1b26b071',
+        '0x173b66359f0741b1c7f1963075cd271c739b6dc73b658e108a54ce6febeb279b',
+        '0xff239fbfcc8fc3b579ee12496554a51f0187e2fa04e44d6439dca4ed79c167c8',
+      ],
+    },
   ],
 };

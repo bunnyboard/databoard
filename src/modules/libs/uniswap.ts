@@ -15,7 +15,7 @@ export interface LiquidityPoolConfig extends Token {
 
 export interface GetPool2LpPriceUsdOptions {
   chain: string;
-  lpAddress: string;
+  address: string;
   blockNumber: number;
   timestamp: number;
 }
@@ -109,13 +109,13 @@ export default class UniswapLibs {
         calls: [
           {
             abi: UniswapV2PairAbi,
-            target: options.lpAddress,
+            target: options.address,
             method: 'token0',
             params: [],
           },
           {
             abi: UniswapV2PairAbi,
-            target: options.lpAddress,
+            target: options.address,
             method: 'token1',
             params: [],
           },
@@ -140,17 +140,17 @@ export default class UniswapLibs {
               abi: ERC20Abi,
               target: token0.address,
               method: 'balanceOf',
-              params: [options.lpAddress],
+              params: [options.address],
             },
             {
               abi: ERC20Abi,
               target: token1.address,
               method: 'balanceOf',
-              params: [options.lpAddress],
+              params: [options.address],
             },
             {
               abi: ERC20Abi,
-              target: options.lpAddress,
+              target: options.address,
               method: 'totalSupply',
               params: [],
             },
@@ -183,5 +183,94 @@ export default class UniswapLibs {
     } catch (e: any) {}
 
     return 0;
+  }
+
+  public static async getUniv2LpTokenPriceUsd(options: GetPool2LpPriceUsdOptions): Promise<string | null> {
+    const blockchain = new BlockchainService();
+    const oracle = new OracleService(blockchain);
+
+    const [token0Address, token1Address] = await blockchain.multicall({
+      chain: options.chain,
+      blockNumber: options.blockNumber,
+      calls: [
+        {
+          abi: UniswapV2PairAbi,
+          target: options.address,
+          method: 'token0',
+          params: [],
+        },
+        {
+          abi: UniswapV2PairAbi,
+          target: options.address,
+          method: 'token1',
+          params: [],
+        },
+      ],
+    });
+
+    const token0 = await blockchain.getTokenInfo({
+      chain: options.chain,
+      address: token0Address,
+    });
+    const token1 = await blockchain.getTokenInfo({
+      chain: options.chain,
+      address: token1Address,
+    });
+
+    if (token0 && token1) {
+      const [balance0, balance1, totalSupply] = await blockchain.multicall({
+        chain: options.chain,
+        blockNumber: options.blockNumber,
+        calls: [
+          {
+            abi: ERC20Abi,
+            target: token0.address,
+            method: 'balanceOf',
+            params: [options.address],
+          },
+          {
+            abi: ERC20Abi,
+            target: token1.address,
+            method: 'balanceOf',
+            params: [options.address],
+          },
+          {
+            abi: ERC20Abi,
+            target: options.address,
+            method: 'totalSupply',
+            params: [],
+          },
+        ],
+      });
+      const supply = formatBigNumberToNumber(totalSupply ? totalSupply.toString() : '0', 18);
+      if (supply > 0) {
+        const token0PriceUsd = await oracle.getTokenPriceUsdRounded({
+          chain: token0.chain,
+          address: token0.address,
+          timestamp: options.timestamp,
+        });
+
+        if (token0PriceUsd > 0) {
+          return (
+            (formatBigNumberToNumber(balance0 ? balance0.toString() : '0', token0.decimals) * token0PriceUsd * 2) /
+            supply
+          ).toString();
+        } else {
+          const token1PriceUsd = await oracle.getTokenPriceUsdRounded({
+            chain: token1.chain,
+            address: token1.address,
+            timestamp: options.timestamp,
+          });
+          if (token1PriceUsd > 0) {
+            return (
+              (formatBigNumberToNumber(balance1 ? balance1.toString() : '0', token1.decimals) * token1PriceUsd * 2) /
+              supply
+            ).toString();
+          }
+        }
+      }
+    }
+
+    return null;
   }
 }
