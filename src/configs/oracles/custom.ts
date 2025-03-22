@@ -230,4 +230,60 @@ export const OracleSourceCustomList: {
     address: '0xa07c5b74c9b40447a954e1466938b865b6bbea36',
     underlyingToken: TokensBook.bnbchain['0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c'],
   },
+  stakehouseLRT: {
+    type: 'stakingTokenWrapper',
+    chain: 'ethereum',
+    method: 'erc4626',
+    address: '0xbeef69ac7870777598a04b2bd4771c71212e6abc',
+    underlyingToken: TokensBook.ethereum['0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0'],
+  },
+  amphrLRT: {
+    type: 'stakingTokenWrapper',
+    chain: 'ethereum',
+    method: 'erc4626',
+    address: '0x06824c27c8a0dbde5f72f770ec82e3c0fd4dcec3',
+    underlyingToken: TokensBook.ethereum['0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0'],
+  },
+  ysyDAIyvDAi: {
+    type: 'stakingTokenWrapper',
+    chain: 'ethereum',
+    method: 'erc4626',
+    address: '0x28b2dc219c047b10f353caa2934ad8803e089a88',
+    underlyingToken: TokensBook.ethereum['0x6b175474e89094c44da98b954eedeac495271d0f'],
+  },
+  nUSDC: {
+    type: 'stakingTokenWrapper',
+    chain: 'ethereum',
+    method: 'erc4626',
+    address: '0x2920f9fc667e780c0cb5a78a104d21413377f97e',
+    underlyingToken: TokensBook.ethereum['0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'],
+  },
+  polygonYearnUSDC: {
+    type: 'stakingTokenWrapper',
+    chain: 'polygon',
+    method: 'erc4626',
+    address: '0xf54a15f6da443041bb075959ea66ee47655ddfca',
+    underlyingToken: TokensBook.polygon['0x2791bca1f2de4661ed88a30c99a7a9449aa84174'],
+  },
+  gmxGLP_Arbitrum: {
+    type: 'stakingTokenWrapper',
+    chain: 'arbitrum',
+    method: 'gmxGLP',
+    address: '0x4277f8f2c384827b5273592ff7cebd9f2c1ac258',
+    underlyingToken: TokensBook.arbitrum['0xaf88d065e77c8cc2239327c5edb3a432268e5831'], // USDC
+  },
+  gmxGLP_Avalanche: {
+    type: 'stakingTokenWrapper',
+    chain: 'avalanche',
+    method: 'gmxGLP',
+    address: '0x01234181085565ed162a948b6a5e88758cd7c7b8',
+    underlyingToken: TokensBook.avalanche['0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e'], // USDC
+  },
+  hmlHLP_Arbitrum: {
+    type: 'stakingTokenWrapper',
+    chain: 'arbitrum',
+    method: 'gmxGLP',
+    address: '0x4307fbdcd9ec7aea5a1c2958decaa6f316952bab',
+    underlyingToken: TokensBook.arbitrum['0xaf88d065e77c8cc2239327c5edb3a432268e5831'], // USDC
+  },
 };

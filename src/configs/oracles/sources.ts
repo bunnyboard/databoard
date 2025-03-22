@@ -3740,4 +3740,312 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'bnb',
     sources: [OracleSourceCustomList.venusBNB],
   },
+  Curve_LP_FRAX_USDC: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Curve_LP_FRAX_USDC],
+  },
+  Balv2_LP_stETH_STABLE: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Balv2_LP_stETH_STABLE],
+  },
+  Balv2_LP_ankrETH_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Balv2_LP_ankrETH_WETH],
+  },
+  Balv2_LP_stafiETH_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Balv2_LP_stafiETH_WETH],
+  },
+  Balv2_LP_swETH_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Balv2_LP_swETH_WETH],
+  },
+  Balv2_LP_swETH_aWETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Balv2_LP_swETH_aWETH],
+  },
+  Balv2_LP_ankrETH_wstETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Balv2_LP_ankrETH_wstETH],
+  },
+  Balv2_LP_ETHx_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Balv2_LP_ETHx_WETH],
+  },
+  Balv2_LP_vETH_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Balv2_LP_vETH_WETH],
+  },
+  Balv2_LP_a_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Balv2_LP_a_WETH],
+  },
+  Balv2_LP_a_WETH2: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Balv2_LP_a_WETH2],
+  },
+  lybraUSD: {
+    currency: 'usd',
+    sources: [OracleSourceCurveList.lybraUSD_METAPOOL],
+  },
+  stafiETH: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.stafiETH_WETH],
+  },
+  stakehouseLRT: {
+    currency: 'wstETH',
+    sources: [OracleSourceCustomList.stakehouseLRT],
+  },
+  amphrLRT: {
+    currency: 'wstETH',
+    sources: [OracleSourceCustomList.amphrLRT],
+  },
+  weETHk: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.weETHk_WETH],
+  },
+  liquidBeraBTC: {
+    currency: 'btc',
+    sources: [OracleSourceUniswapv3List.liquidBeraBTC_WBTC],
+  },
+  USDa: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.USDa_USDT],
+  },
+  Univ2_LP_PENDLE_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_PENDLE_WETH],
+  },
+  Univ2_LP_ARB_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_ARB_WETH],
+  },
+  Univ2_LP_GRAIL_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_GRAIL_WETH],
+  },
+  Univ2_LP_frxETH_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_frxETH_WETH],
+  },
+  Curve_LP_GHO_USR: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Curve_LP_GHO_USR],
+  },
+  ysyDAIyvDAi: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.ysyDAIyvDAi],
+  },
+  Univ2_LP_iFARM_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_iFARM_WETH],
+  },
+  Univ2_LP_GNOME_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_GNOME_WETH],
+  },
+  Univ2_LP_GENE_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_GENE_WETH],
+  },
+  Univ2_LP_DeltaSwap_USDC_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_DeltaSwap_USDC_WETH],
+  },
+  nUSDC: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.nUSDC],
+  },
+  BSX: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BSX_WETH],
+  },
+  gmxGLP_Arbitrum: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.gmxGLP_Arbitrum],
+  },
+  gmxGLP_Avalanche: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.gmxGLP_Avalanche],
+  },
+  hmlHLP_Arbitrum: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.hmlHLP_Arbitrum],
+  },
+  GNOME: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.GNOME_WETH],
+  },
+  GENE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.GENE_WETH],
+  },
+  Balv2_LP_wstETH_sfrxETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Balv2_LP_wstETH_sfrxETH],
+  },
+  Univ2_LP_DOLA_USDC: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_DOLA_USDC],
+  },
+  Univ2_LP_wstETH_OP: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_wstETH_OP],
+  },
+  Univ2_LP_USDC_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_USDC_WETH],
+  },
+  Univ2_LP_DOLA_USDC2: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_DOLA_USDC2],
+  },
+  Univ2_LP_USDC_LUSD: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_USDC_LUSD],
+  },
+  Univ2_LP_mooBIFI_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_mooBIFI_WETH],
+  },
+  Univ2_LP_POOL_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_POOL_WETH],
+  },
+  Curve_LP_2BTC: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Curve_LP_2BTC],
+  },
+  Univ2_LP_USDC_WETH2: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_USDC_WETH2],
+  },
+  TYBG: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.TYBG_WETH],
+  },
+  WARPIE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.WARPIE_WETH],
+  },
+  Univ2_LP_tBTC_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_tBTC_WETH],
+  },
+  Univ2_LP_VELO_USDC2: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_VELO_USDC2],
+  },
+  Univ2_LP_SNX_USDC: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_SNX_USDC],
+  },
+  Balv2_LP_OATH_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Balv2_LP_OATH_WETH],
+  },
+  Balv2_LP_instETH_wstETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Balv2_LP_instETH_wstETH],
+  },
+  Balv2_LP_rETH_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Balv2_LP_rETH_WETH],
+  },
+  Univ2_LP_USDR_USDC: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_USDR_USDC],
+  },
+  Univ2_LP_RNT_USDT: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_RNT_USDT],
+  },
+  Balv2_LP_MaticX_WMATIC: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Balv2_LP_MaticX_WMATIC],
+  },
+  Univ2_LP_WBTC_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_WBTC_WETH],
+  },
+  Balv2_LP_sAVAX_WAVAX: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Balv2_LP_sAVAX_WAVAX],
+  },
+  bWOOL: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.bWOOL_WETH],
+  },
+  bPEPE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.bPEPE_WETH],
+  },
+  YOLO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.YOLO_WETH],
+  },
+  ANDY: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ANDY_WETH],
+  },
+  JUICE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.JUICE_WETH],
+  },
+  PAC: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.PAC_WETH],
+  },
+  YES: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.YES_WETH],
+  },
+  KAP: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.KAP_WETH],
+  },
+  DJENNCoin: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.DJENNCoin_WETH],
+  },
+  PTC: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.PTC_WETH],
+  },
+  ORBIT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ORBIT_WETH],
+  },
+  YIELD: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.YIELD_WETH],
+  },
+  MFER: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.MFER_WETH],
+  },
+  HBR: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.HBR_WBNB],
+  },
+  RNT: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.RNT_USDT],
+  },
+  polygonYearnUSDC: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.polygonYearnUSDC],
+  },
+  STAR: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.STAR_USDC],
+  },
+  rTBL: {
+    currency: 'usd',
+    sources: [OracleSourceCurveList.rTBL_USDC],
+  },
+  WILD: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.WILD_WETH],
+  },
 };

@@ -41,6 +41,7 @@ import envConfig from '../../configs/envConfig';
 import PythLibs from '../../modules/libs/pyth';
 import CompoundLibs from '../../modules/libs/compound';
 import PendleLibs from '../../modules/libs/pendle';
+import GmxLibs from '../../modules/libs/gmx';
 
 export default class OracleService extends CachingService implements IOracleService {
   public readonly name: string = 'oracle';
@@ -249,6 +250,13 @@ export default class OracleService extends CachingService implements IOracleServ
             cToken: source.address,
             underlying: (source as OracleSourceStakingTokenWrapper).underlyingToken,
             blockNumber: blockNumber,
+          });
+        } else if (config.method === 'gmxGLP') {
+          return await GmxLibs.getGlpTokenPriceUsd({
+            chain: source.chain,
+            address: source.address,
+            blockNumber,
+            timestamp,
           });
         } else if (config.method === 'mETH') {
           return await OracleLibs.getmETHPrice(config, blockNumber);

@@ -20747,6 +20747,12 @@
     "decimals": 18,
     "address": "0x721a1b990699ee9d90b6327faad0a3e840ae8335"
   },
+  "0x7223442cad8e9ca474fc40109ab981608f8c4273": {
+    "chain": "ethereum",
+    "symbol": "weETHk",
+    "decimals": 18,
+    "address": "0x7223442cad8e9ca474fc40109ab981608f8c4273"
+  },
   "0x722383e1e8994cb8a55cbc1621dc068b62403b1e": {
     "chain": "ethereum",
     "symbol": "RBOT",
@@ -35470,6 +35476,12 @@
     "symbol": "BPT",
     "decimals": 18,
     "address": "0xc66e7288f2c330e36279cd720b6945e21ba7f8e5"
+  },
+  "0xc673ef7791724f0dcca38adb47fbb3aef3db6c80": {
+    "chain": "ethereum",
+    "symbol": "liquidBeraBTC",
+    "decimals": 8,
+    "address": "0xc673ef7791724f0dcca38adb47fbb3aef3db6c80"
   },
   "0xc67b12049c2d0cf6e476bc64c7f82fc6c63cffc5": {
     "chain": "ethereum",

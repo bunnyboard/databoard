@@ -29,6 +29,12 @@
     "decimals": 18,
     "address": "0x00ee200df31b869a321b10400da10b561f3ee60d"
   },
+  "0x01234181085565ed162a948b6a5e88758cd7c7b8": {
+    "chain": "avalanche",
+    "symbol": "GLP",
+    "decimals": 18,
+    "address": "0x01234181085565ed162a948b6a5e88758cd7c7b8"
+  },
   "0x01c2086facfd7aa38f69a6bd8c91bef3bb5adfca": {
     "chain": "avalanche",
     "symbol": "YAY",

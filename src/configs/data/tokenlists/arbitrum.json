@@ -917,6 +917,12 @@
     "decimals": 6,
     "address": "0x41b94c5867f7f6217c9a30520cb3e793b1ee1b97"
   },
+  "0x4277f8f2c384827b5273592ff7cebd9f2c1ac258": {
+    "chain": "arbitrum",
+    "symbol": "GLP",
+    "decimals": 18,
+    "address": "0x4277f8f2c384827b5273592ff7cebd9f2c1ac258"
+  },
   "0x43333771e8d5fd74e5491d10aeac2bfdc23d19c8": {
     "chain": "arbitrum",
     "symbol": "GME.dw",
@@ -1138,6 +1144,12 @@
     "symbol": "NPM",
     "decimals": 18,
     "address": "0x57f12fe6a4e5fe819eec699fadf9db2d06606bb4"
+  },
+  "0x57f5e098cad7a3d1eed53991d4d66c45c9af7812": {
+    "chain": "arbitrum",
+    "symbol": "wUSDM",
+    "decimals": 18,
+    "address": "0x57f5e098cad7a3d1eed53991d4d66c45c9af7812"
   },
   "0x58cb98a966f62aa6f2190eb3aa03132a0c3de3d5": {
     "chain": "arbitrum",
@@ -2003,6 +2015,12 @@
     "decimals": 18,
     "address": "0xb261104a83887ae92392fb5ce5899fcfe5481456"
   },
+  "0xb299751b088336e165da313c33e3195b8c6663a6": {
+    "chain": "arbitrum",
+    "symbol": "STAR",
+    "decimals": 18,
+    "address": "0xb299751b088336e165da313c33e3195b8c6663a6"
+  },
   "0xb2f30a7c980f052f02563fb518dcc39e6bf38175": {
     "chain": "arbitrum",
     "symbol": "USDX",
@@ -2452,6 +2470,12 @@
     "symbol": "wxUSDT",
     "decimals": 6,
     "address": "0xe4728f3e48e94c6da2b53610e677cc241dafb134"
+  },
+  "0xe4d5c6ae46adfaf04313081e8c0052a30b6dd724": {
+    "chain": "arbitrum",
+    "symbol": "PYTH",
+    "decimals": 18,
+    "address": "0xe4d5c6ae46adfaf04313081e8c0052a30b6dd724"
   },
   "0xe656165d39419c03d588515c835d109e19221e1e": {
     "chain": "arbitrum",

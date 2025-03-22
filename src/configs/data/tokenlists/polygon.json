@@ -389,6 +389,12 @@
     "decimals": 6,
     "address": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174"
   },
+  "0x27ab6e82f3458edbc0703db2756391b899ce6324": {
+    "chain": "polygon",
+    "symbol": "RNT",
+    "decimals": 18,
+    "address": "0x27ab6e82f3458edbc0703db2756391b899ce6324"
+  },
   "0x28288970ddaa774aee955f4973f87d3b64ed5674": {
     "chain": "polygon",
     "symbol": "WIETH",

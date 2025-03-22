@@ -1,5 +1,6 @@
 import BigNumber from 'bignumber.js';
 import CurveMetaPoolAbi from '../../configs/abi/curve/MetaPool.json';
+import CurveSwapPoolAbi from '../../configs/abi/curve/SwapPool.json';
 import Erc20Abi from '../../configs/abi/ERC20.json';
 import CurveStablePoolAbi from '../../configs/abi/curve/CurveStableSwapNG.json';
 import { formatBigNumberToNumber, formatBigNumberToString } from '../../lib/utils';
@@ -90,10 +91,18 @@ export default class CurveLibs {
     const blockchain = new BlockchainService();
     const oracle = new OracleService(blockchain);
 
+    const lp_token = await await blockchain.readContract({
+      chain: options.chain,
+      abi: CurveSwapPoolAbi,
+      target: options.address,
+      method: 'lp_token',
+      params: [],
+    });
+
     const totalSupply = await blockchain.readContract({
       chain: options.chain,
       abi: Erc20Abi,
-      target: options.address,
+      target: lp_token ? lp_token : options.address,
       method: 'totalSupply',
       params: [],
       blockNumber: options.blockNumber,

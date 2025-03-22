@@ -76,6 +76,7 @@ import OptimismNativeBridgeLegacyAdapter from './optimism/nativeBridgeLegacy';
 import PancakenftAdapter from './pancake/marketplace';
 import ParaswapAdapter from './paraswap/paraswap';
 import PellNetworkAdapter from './pellnetwork/pellnetwork';
+import PendleAdapter from './pendle/pendle';
 import PolygonNativeBridgeAdapter from './polygon/nativeBridge';
 import PolygonZzkevmNativeBridgeAdapter from './polygon/zkevmNativeBridge';
 import PufferAdapter from './puffer/puffer';
@@ -307,5 +308,6 @@ export function getProtocolAdapters(
     pancakenft: new PancakenftAdapter(services, storages, ProtocolConfigs.pancakenft),
     movementNativeBridge: new MovementNativeBridgeAdapter(services, storages, ProtocolConfigs.movementNativeBridge),
     superform: new SuperformAdapter(services, storages, ProtocolConfigs.superform),
+    pendle: new PendleAdapter(services, storages, ProtocolConfigs.pendle),
   };
 }
