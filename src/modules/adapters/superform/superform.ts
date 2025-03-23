@@ -10,7 +10,12 @@ import SuperformAbi from '../../../configs/abi/superform/ERC4626Form.json';
 import Erc4624Abi from '../../../configs/abi/ERC4626.json';
 import { ContractCall } from '../../../services/blockchains/domains';
 import { getChainNameById } from '../../../lib/helpers';
-import { formatBigNumberToNumber } from '../../../lib/utils';
+import { formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
+
+const blacklistVaults: Array<string> = [
+  '0xcc7bb162e24e7ebc4b617ab1b8d16ee4d7e1bd53',
+  '0x9160922b08c6953ce17547bb62f6f38ad0a1615e',
+];
 
 // no fees from superform
 // https://help.superform.xyz/en/articles/8689310-does-superform-have-fees
@@ -90,7 +95,7 @@ export default class SuperformAdapter extends ProtocolAdapter {
       const superformAddresses = getSuperformResults
         .filter((item: any) => {
           const chainName = getChainNameById(Number(item[2]));
-          return chainName === factoryConfig.chain;
+          return chainName === factoryConfig.chain && !blacklistVaults.includes(normalizeAddress(item[0]));
         })
         .map((item: any) => item[0]);
 
