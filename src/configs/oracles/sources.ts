@@ -4048,4 +4048,12 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.WILD_WETH],
   },
+  Univ2_LP_axlwstETH_wstETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_axlwstETH_wstETH],
+  },
+  Univ2_LP_axlUSDC_USDC: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_axlUSDC_USDC],
+  },
 };

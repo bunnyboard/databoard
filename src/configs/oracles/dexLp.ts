@@ -441,4 +441,16 @@ export const OracleSourceDexLpTokenList: {
     method: 'balv2',
     address: '0xfd2620c9cfcec7d152467633b3b0ca338d3d78cc',
   },
+  Univ2_LP_axlwstETH_wstETH: {
+    chain: 'arbitrum',
+    type: OracleTypes.dexLpToken,
+    method: 'univ2',
+    address: '0x83fe9065ed68506a0d2ece59cd71c43bbff6e450',
+  },
+  Univ2_LP_axlUSDC_USDC: {
+    chain: 'arbitrum',
+    type: OracleTypes.dexLpToken,
+    method: 'univ2',
+    address: '0x3ae5285e7fc52d7a09457784eece8ecb40d461b7',
+  },
 };

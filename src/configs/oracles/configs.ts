@@ -795,6 +795,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0x3ae5285e7fc52d7a09457784eece8ecb40d461b7': OracleSourceConfigs.Univ2_LP_axlUSDC_USDC,
+    '0x83fe9065ed68506a0d2ece59cd71c43bbff6e450': OracleSourceConfigs.Univ2_LP_alwstETH_wstETH,
     '0xb299751b088336e165da313c33e3195b8c6663a6': OracleSourceConfigs.STAR,
     '0x7d353420b3eb3cd9e7c819b4fea369686fd26b32': OracleSourceConfigs.Silo,
     '0x2b5fa2c7cb4b0f51ea7250f66ca3ed369253addf': OracleSourceConfigs.PENDLE,
@@ -2712,6 +2714,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
 
   sonic: {
     [AddressZero]: OracleSourceConfigs.FTM,
+    '0x0c4e186eae8acaa7f7de1315d5ad174be39ec987': OracleSourceConfigs.S,
+    '0xb1e25689d55734fd3fffc939c4c3eb52dff8a794': OracleSourceConfigs.OS,
     '0x455d5f11fea33a8fa9d3e285930b478b6bf85265': OracleSourceConfigs.ETH,
     '0x4d85ba8c3918359c78ed09581e5bc7578ba932ba': OracleSourceConfigs.USDT,
     '0x7a0c53f7eb34c5bc8b01691723669ada9d6cb384': OracleSourceConfigs.BOO,

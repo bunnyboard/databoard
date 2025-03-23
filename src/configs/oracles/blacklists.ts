@@ -37,6 +37,7 @@ export const OracleTokenBlacklists: { [key: string]: Array<string> } = {
     '0xb829b68f57cc546da7e5806a929e53be32a4625d',
   ],
   base: [
+    '0xaebd26ed0c9f9715076d16315f0430e6597f95ea',
     '0x5b5dee44552546ecea05edea01dcd7be7aa6144a',
     '0xc982b228c7b1c49a7187216ce885f396904024f0',
     '0x59aaf835d34b1e3df2170e4872b785f11e2a964b',
@@ -60,4 +61,6 @@ export const OracleTokenBlacklists: { [key: string]: Array<string> } = {
     '0x88a838e792931e303a986508d072c14ffa9e4f8c',
   ],
   fantom: ['0x66eed5ff1701e6ed8470dc391f05e27b1d0657eb'],
+  sonic: ['0xb5b781b61814bd32d1b2bf8864e8992a8037f8bc'],
+  berachain: ['0xb6168f597cd37a232cb7cb94cd1786be20ead156'],
 };
