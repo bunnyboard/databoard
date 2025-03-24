@@ -78,5 +78,15 @@ export const Re7capitalConfigs: GauntletProtocolConfig = {
         '0xB615D3123410EE89542b027DC71e87b4Fc05EA80',
       ],
     },
+    {
+      chain: ChainNames.berachain,
+      birthday: 1739318400, // Wed Feb 12 2025 00:00:00 GMT+0000
+      morphoVaults: [],
+      eulerVaults: [
+        '0x89FD57175EcEEC45992e07c206e5A864Fa6aF433',
+        '0x66f233ac844C3948A516857CA769872E5941f91c',
+        '0xe318d262290ABab80FC6e217c514801e2c0EF999',
+      ],
+    },
   ],
 };

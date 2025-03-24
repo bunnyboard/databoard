@@ -1289,6 +1289,12 @@
     "decimals": 18,
     "address": "0x68e92a82e2fb7b7539f51ae2fcfb98e775f463b9"
   },
+  "0x69420f9e38a4e60a62224c489be4bf7a94402496": {
+    "chain": "arbitrum",
+    "symbol": "MONEY",
+    "decimals": 18,
+    "address": "0x69420f9e38a4e60a62224c489be4bf7a94402496"
+  },
   "0x6985884c4392d348587b19cb9eaaf157f13271cd": {
     "chain": "arbitrum",
     "symbol": "ZRO",

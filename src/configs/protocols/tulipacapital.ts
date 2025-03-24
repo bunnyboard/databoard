@@ -21,5 +21,19 @@ export const TulipacapitalConfigs: GauntletProtocolConfig = {
         '0xa61837d6745De6198456165191298075Eca0b9a0',
       ],
     },
+    {
+      chain: ChainNames.berachain,
+      birthday: 1739318400, // Wed Feb 12 2025 00:00:00 GMT+0000
+      morphoVaults: [],
+      eulerVaults: [
+        '0x16C7169421CfB2C78b2D447b9274c61B8b2E846a',
+        '0x027DcAfB223f69d41Bd413C50854017718419585',
+        '0xE932da5A4d00536c224f8153f299cDcD8054c444',
+        '0x4f652B92a8CD9e251Db4d43b2073F689E94B4Dba',
+        '0xac0476A04c567EBcd49Db0A5b8b294A119d7849D',
+        '0x542B1ffd33C239C7AFc6511FB8855390Aa9c8aC2',
+        '0xCaa70d2aa873Ef057980844e18D9a9560bdfFcC0',
+      ],
+    },
   ],
 };

@@ -4056,4 +4056,52 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceDexLpTokenList.Univ2_LP_axlUSDC_USDC],
   },
+  Balv2_LP_APW_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Balv2_LP_APW_WETH],
+  },
+  Curve_LP_IBTC_WBTC: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Curve_LP_IBTC_WBTC],
+  },
+  Pendle_market_agETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Pendle_market_agETH],
+  },
+  Balv2_LP_paUSD_GYD: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Balv2_LP_paUSD_GYD],
+  },
+  Univ2_LP_GENOME_WETH: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_GENOME_WETH],
+  },
+  Univ2_LP_STAR_USDC: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_STAR_USDC],
+  },
+  Univ2_LP_OVN_USD: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_OVN_USD],
+  },
+  Univ2_LP_DOLA_USDbC: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_DOLA_USDbC],
+  },
+  Univ2_LP_SPOT_USDC: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Univ2_LP_SPOT_USDC],
+  },
+  USDN: {
+    currency: 'usd',
+    sources: [OracleSourceCurveList.USDN_USDT],
+  },
+  MONEY: {
+    currency: 'usd',
+    sources: [OracleSourceCurveList.MONEY_DAI],
+  },
+  SPECTRA: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.SPECTRA_USDC],
+  },
 };

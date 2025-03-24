@@ -89,6 +89,7 @@ import ScrollNativeBridgeAdapter from './scroll/nativeBridge';
 import SilofinanceAdapter from './silofinance/silofinance';
 import SolvAdapter from './solv/solv';
 import SonicNativeBridgeAdapter from './sonic/nativeBridge';
+import SpectraAdapter from './spectra/spectra';
 import StaderAdapter from './stader/stader';
 import StakewiseAdapter from './stakewise/stakewise';
 import StargateAdapter from './stargate/stargate';
@@ -309,5 +310,6 @@ export function getProtocolAdapters(
     movementNativeBridge: new MovementNativeBridgeAdapter(services, storages, ProtocolConfigs.movementNativeBridge),
     superform: new SuperformAdapter(services, storages, ProtocolConfigs.superform),
     pendle: new PendleAdapter(services, storages, ProtocolConfigs.pendle),
+    spectra: new SpectraAdapter(services, storages, ProtocolConfigs.spectra),
   };
 }

@@ -179,6 +179,7 @@ import { PancakenftConfigs } from './protocols/pancake';
 import { MovementNativeBridgeConfigs } from './protocols/movement';
 import { SuperformConfigs } from './protocols/superform';
 import { PendleConfigs } from './protocols/pendle';
+import { SpectraConfigs } from './protocols/spectra';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -407,4 +408,5 @@ export const ProtocolConfigs = {
   movementNativeBridge: MovementNativeBridgeConfigs,
   superform: SuperformConfigs,
   pendle: PendleConfigs,
+  spectra: SpectraConfigs,
 };

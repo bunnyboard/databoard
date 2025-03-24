@@ -11,6 +11,7 @@ import Erc4624Abi from '../../../configs/abi/ERC4626.json';
 import { ContractCall } from '../../../services/blockchains/domains';
 import { getChainNameById } from '../../../lib/helpers';
 import { formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
+import { SolidityUnits } from '../../../configs/constants';
 
 const blacklistVaults: Array<string> = [
   '0xcc7bb162e24e7ebc4b617ab1b8d16ee4d7e1bd53',
@@ -53,6 +54,14 @@ export default class SuperformAdapter extends ProtocolAdapter {
       const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
         factoryConfig.chain,
         options.timestamp,
+      );
+      const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        factoryConfig.chain,
+        options.beginTime,
+      );
+      const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        factoryConfig.chain,
+        options.endTime,
       );
 
       const getSuperformCount = await this.services.blockchain.evm.readContract({
@@ -100,6 +109,7 @@ export default class SuperformAdapter extends ProtocolAdapter {
         .map((item: any) => item[0]);
 
       const getSuperformInfoCalls: Array<ContractCall> = [];
+      const getSuperformPricePerShareCalls: Array<ContractCall> = [];
       for (const address of superformAddresses) {
         getSuperformInfoCalls.push({
           abi: SuperformAbi,
@@ -125,6 +135,13 @@ export default class SuperformAdapter extends ProtocolAdapter {
           method: 'getPricePerVaultShare',
           params: [],
         });
+
+        getSuperformPricePerShareCalls.push({
+          abi: SuperformAbi,
+          target: address,
+          method: 'getPricePerVaultShare',
+          params: [],
+        });
       }
       const getSuperformInfoResults = await this.services.blockchain.evm.multicall({
         chain: factoryConfig.chain,
@@ -132,11 +149,36 @@ export default class SuperformAdapter extends ProtocolAdapter {
         blockNumber: blockNumber,
       });
 
+      const before_getSuperformPricePerShareResults = await this.services.blockchain.evm.multicall({
+        chain: factoryConfig.chain,
+        calls: getSuperformPricePerShareCalls,
+        blockNumber: beginBlock,
+      });
+      const after_getSuperformPricePerShareResults = await this.services.blockchain.evm.multicall({
+        chain: factoryConfig.chain,
+        calls: getSuperformPricePerShareCalls,
+        blockNumber: endBlock,
+      });
+
       for (let i = 0; i < superformAddresses.length; i++) {
         const asset = getSuperformInfoResults[i * 4];
         const getVaultDecimals = Number(getSuperformInfoResults[i * 4 + 1]);
         const getVaultShareBalance = getSuperformInfoResults[i * 4 + 2];
         const getPricePerVaultShare = getSuperformInfoResults[i * 4 + 3];
+
+        const priceShareBefore = formatBigNumberToNumber(
+          before_getSuperformPricePerShareResults[i]
+            ? before_getSuperformPricePerShareResults[i].toString()
+            : SolidityUnits.OneWad,
+          18,
+        );
+        const priceShareAfter = formatBigNumberToNumber(
+          after_getSuperformPricePerShareResults[i]
+            ? after_getSuperformPricePerShareResults[i].toString()
+            : SolidityUnits.OneWad,
+          18,
+        );
+        const priceShareDiff = priceShareAfter > priceShareBefore ? priceShareAfter - priceShareBefore : 0;
 
         const token = await this.services.blockchain.evm.getTokenInfo({
           chain: factoryConfig.chain,
@@ -157,10 +199,13 @@ export default class SuperformAdapter extends ProtocolAdapter {
             vaultShareBalance *
             formatBigNumberToNumber(getPricePerVaultShare ? getPricePerVaultShare.toString() : '0', token.decimals);
           const totalDepositUsd = vaultBalance * tokenPriceUsd;
+          const totalFees = totalDepositUsd * priceShareDiff;
 
           if (totalDepositUsd > 0) {
             protocolData.totalAssetDeposited += totalDepositUsd;
             protocolData.totalValueLocked += totalDepositUsd;
+            protocolData.totalFees += totalFees;
+            protocolData.supplySideRevenue += totalFees;
             (protocolData.totalSupplied as number) += totalDepositUsd;
             if (!protocolData.breakdown[token.chain][token.address]) {
               protocolData.breakdown[token.chain][token.address] = {
@@ -170,6 +215,8 @@ export default class SuperformAdapter extends ProtocolAdapter {
             }
             protocolData.breakdown[token.chain][token.address].totalAssetDeposited += totalDepositUsd;
             protocolData.breakdown[token.chain][token.address].totalValueLocked += totalDepositUsd;
+            protocolData.breakdown[token.chain][token.address].totalFees += totalFees;
+            protocolData.breakdown[token.chain][token.address].supplySideRevenue += totalFees;
             (protocolData.breakdown[token.chain][token.address].totalSupplied as number) += totalDepositUsd;
           }
         }
@@ -188,6 +235,14 @@ export default class SuperformAdapter extends ProtocolAdapter {
       const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
         superVaultConfig.chain,
         options.timestamp,
+      );
+      const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        superVaultConfig.chain,
+        options.beginTime,
+      );
+      const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        superVaultConfig.chain,
+        options.endTime,
       );
 
       const asset = await this.services.blockchain.evm.readContract({
@@ -217,12 +272,46 @@ export default class SuperformAdapter extends ProtocolAdapter {
           blockNumber: blockNumber,
         });
 
+        const before_priceShare = await this.services.blockchain.evm.readContract({
+          chain: superVaultConfig.chain,
+          abi: Erc4624Abi,
+          target: superVaultConfig.vault,
+          method: 'convertToAssets',
+          params: [SolidityUnits.OneWad],
+          blockNumber: beginBlock,
+        });
+        const after_priceShare = await this.services.blockchain.evm.readContract({
+          chain: superVaultConfig.chain,
+          abi: Erc4624Abi,
+          target: superVaultConfig.vault,
+          method: 'convertToAssets',
+          params: [SolidityUnits.OneWad],
+          blockNumber: endBlock,
+        });
+
         const totalDepositUsd =
           formatBigNumberToNumber(totalAssets ? totalAssets.toString() : '0', token.decimals) * tokenPriceUsd;
+
         if (totalDepositUsd > 0) {
+          const priceShareBefore = formatBigNumberToNumber(
+            before_priceShare ? before_priceShare.toString() : SolidityUnits.OneWad,
+            18,
+          );
+          const priceShareAfter = formatBigNumberToNumber(
+            after_priceShare ? after_priceShare.toString() : SolidityUnits.OneWad,
+            18,
+          );
+          const priceShareDiff = priceShareAfter > priceShareBefore ? priceShareAfter - priceShareBefore : 0;
+
+          // superform charge 0% performance fees
+          const totalFees = totalDepositUsd * priceShareDiff;
+
           protocolData.totalAssetDeposited += totalDepositUsd;
           protocolData.totalValueLocked += totalDepositUsd;
+          protocolData.totalFees += totalFees;
+          protocolData.supplySideRevenue += totalFees;
           (protocolData.totalSupplied as number) += totalDepositUsd;
+
           if (!protocolData.breakdown[token.chain][token.address]) {
             protocolData.breakdown[token.chain][token.address] = {
               ...getInitialProtocolCoreMetrics(),
@@ -231,6 +320,8 @@ export default class SuperformAdapter extends ProtocolAdapter {
           }
           protocolData.breakdown[token.chain][token.address].totalAssetDeposited += totalDepositUsd;
           protocolData.breakdown[token.chain][token.address].totalValueLocked += totalDepositUsd;
+          protocolData.breakdown[token.chain][token.address].totalFees += totalFees;
+          protocolData.breakdown[token.chain][token.address].supplySideRevenue += totalFees;
           (protocolData.breakdown[token.chain][token.address].totalSupplied as number) += totalDepositUsd;
         }
       }

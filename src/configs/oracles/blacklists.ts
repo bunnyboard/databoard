@@ -2,6 +2,10 @@
 
 export const OracleTokenBlacklists: { [key: string]: Array<string> } = {
   ethereum: [
+    '0x0bb9ab78aaf7179b7515e6753d89822b91e670c4',
+    '0xf02c96dbbb92dc0325ad52b3f9f2b951f972bf00',
+    '0x513d27c94c0d81eed9dc2a88b4531a69993187cf',
+    '0xa8258dee2a677874a48f5320670a869d74f0cbc1',
     '0x9cb8c5136ad079d3311f5b766d6fc370bf29e76b',
     '0x64dc55d76d1541e0853cbd7cf6586615e9e6f4c7',
     '0x29ee8c3fb7ea0b52261b18782f1a060c2e210afa',
@@ -27,6 +31,7 @@ export const OracleTokenBlacklists: { [key: string]: Array<string> } = {
     '0x05770332d4410b6d7f07fd497e4c00f8f7bfb74a',
   ],
   optimism: [
+    '0x64831f82e3543006413897c03f59518cecae02b4',
     '0x7eccbbd05830edf593d30005b8f69e965af4d59f',
     '0x2a5139cd86c041aa3467e649f5ee0880a5de2f2f',
     '0x67cde7af920682a29fcfea1a179ef0f30f48df3e',
@@ -37,6 +42,7 @@ export const OracleTokenBlacklists: { [key: string]: Array<string> } = {
     '0xb829b68f57cc546da7e5806a929e53be32a4625d',
   ],
   base: [
+    '0x48320a6345713f82df4d4c3a440736d5ac7c9331',
     '0xaebd26ed0c9f9715076d16315f0430e6597f95ea',
     '0x5b5dee44552546ecea05edea01dcd7be7aa6144a',
     '0xc982b228c7b1c49a7187216ce885f396904024f0',

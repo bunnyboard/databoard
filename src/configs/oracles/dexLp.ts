@@ -141,6 +141,12 @@ export const OracleSourceDexLpTokenList: {
     method: 'pendle',
     address: '0x7d372819240d14fb477f17b964f95f33beb4c704',
   },
+  Pendle_market_agETH: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'pendle',
+    address: '0x6010676bc2534652ad1ef5fa8073dcf9ad7ebfbe',
+  },
   Univ2_LP_BSX_WETH: {
     chain: 'base',
     type: OracleTypes.dexLpToken,
@@ -452,5 +458,53 @@ export const OracleSourceDexLpTokenList: {
     type: OracleTypes.dexLpToken,
     method: 'univ2',
     address: '0x3ae5285e7fc52d7a09457784eece8ecb40d461b7',
+  },
+  Univ2_LP_GENOME_WETH: {
+    chain: 'base',
+    type: OracleTypes.dexLpToken,
+    method: 'univ2',
+    address: '0x963ceee215e5b0b1dcb221c3ba398de66abc73d9',
+  },
+  Univ2_LP_STAR_USDC: {
+    chain: 'base',
+    type: OracleTypes.dexLpToken,
+    method: 'univ2',
+    address: '0xf45f6cdbcd0d2d4bf4d9758b032a66a2cf4e55c8',
+  },
+  Univ2_LP_OVN_USD: {
+    chain: 'base',
+    type: OracleTypes.dexLpToken,
+    method: 'univ2',
+    address: '0x61366a4e6b1db1b85dd701f2f4bfa275ef271197',
+  },
+  Univ2_LP_DOLA_USDbC: {
+    chain: 'base',
+    type: OracleTypes.dexLpToken,
+    method: 'univ2',
+    address: '0x0b25c51637c43decd6cc1c1e3da4518d54ddb528',
+  },
+  Univ2_LP_SPOT_USDC: {
+    chain: 'base',
+    type: OracleTypes.dexLpToken,
+    method: 'univ2',
+    address: '0xa43455d99eb63473cfa186b388c1bc2ea1b63924',
+  },
+  Balv2_LP_APW_WETH: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0x093254005743b7af89e24f645730ba2dd8441333',
+  },
+  Balv2_LP_paUSD_GYD: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'balv2',
+    address: '0xae2d97cbbc13b67988eced2aba0f6939655ed3de',
+  },
+  Curve_LP_IBTC_WBTC: {
+    chain: 'arbitrum',
+    type: OracleTypes.dexLpToken,
+    method: 'curve',
+    address: '0xe957ce03ccdd88f02ed8b05c9a3a28abef38514a',
   },
 };
