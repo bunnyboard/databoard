@@ -317,5 +317,6 @@ export const ProtocolNames = {
   movementNativeBridge: 'movementNativeBridge', // https://docs.movementnetwork.xyz/general/UsingMovement/bridge
   superform: 'superform', // https://superform.xyz
   pendle: 'pendle', // https://pendle.finance
-  spectra: 'spectra', // https://www.spectra.finance/
+  spectra: 'spectra', // https://www.spectra.finance
+  levelusd: 'levelusd', // https://www.level.money
 };

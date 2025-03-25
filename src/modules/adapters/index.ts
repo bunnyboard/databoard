@@ -48,6 +48,7 @@ import KarakAdapter from './karak/karak';
 import KelpdaoAdapter from './kelpdao/kelpdao';
 import KyberswapAdapter from './kyberswap/kyberswap';
 import LayerbankAdapter from './layerbank/layerbank';
+import LevelusdAdapter from './levelusd/levelusd';
 import LfjlendAdapter from './lfj/lfjlend';
 import LidoAdapter from './lido/lido';
 import LifiAdapter from './lifi/lifi';
@@ -311,5 +312,6 @@ export function getProtocolAdapters(
     superform: new SuperformAdapter(services, storages, ProtocolConfigs.superform),
     pendle: new PendleAdapter(services, storages, ProtocolConfigs.pendle),
     spectra: new SpectraAdapter(services, storages, ProtocolConfigs.spectra),
+    levelusd: new LevelusdAdapter(services, storages, ProtocolConfigs.levelusd),
   };
 }

@@ -77,10 +77,8 @@ export default class BlurMarketplaceLibs {
       // Convert to address format (hex string with 0x prefix)
       const collectionHex = collectionBigInt.toString(16).padStart(40, '0');
       collection = normalizeAddress('0x' + collectionHex.slice(-40));
-      
-      if (
-        options.log.topics[0] === Events.Execution721MakerFeePacked
-      ) {
+
+      if (options.log.topics[0] === Events.Execution721MakerFeePacked) {
         const feePacked = BigInt(
           event.args.makerFeeRecipientRate
             ? event.args.makerFeeRecipientRate.toString()
