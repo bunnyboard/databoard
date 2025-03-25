@@ -7223,6 +7223,12 @@
     "decimals": 18,
     "address": "0xc5fecc3a29fb57b5024eec8a2239d4621e111cbe"
   },
+  "0xc63529297de076eb15fcbe873ae9136e446cfbb9": {
+    "chain": "base",
+    "symbol": "GYFI",
+    "decimals": 18,
+    "address": "0xc63529297de076eb15fcbe873ae9136e446cfbb9"
+  },
   "0xc655c331d1aa7f96c252f1f40ce13d80eac53504": {
     "chain": "base",
     "symbol": "MUSIC",

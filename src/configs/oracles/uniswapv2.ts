@@ -3590,4 +3590,11 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.base['0x1db0c569ebb4a8b57ac01833b9792f526305e062'],
     quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
   },
+  SKI_WETH: {
+    type: 'univ2',
+    chain: 'base',
+    address: '0x6d6391b9bd02eefa00fa711fb1cb828a6471d283',
+    baseToken: TokensBook.base['0x768be13e1680b5ebe0024c42c896e3db59ec0149'],
+    quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
+  },
 };
