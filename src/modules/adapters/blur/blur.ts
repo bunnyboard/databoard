@@ -21,7 +21,7 @@ const v2Events = {
   Execution: '0xf2f66294df6fae7ac681cbe2f6d91c6904485929679dce263e8f6539b7d5c559',
   Execution721Packed: '0x1d5e12b51dee5e4d34434576c3fb99714a85f57b0fd546ada4b0bddd736d12b2',
   Execution721MakerFeePacked: '0x7dc5c0699ac8dd5250cbe368a2fc3b4a2daadb120ad07f6cccea29f83482686e',
-  Execution721TakerFeePacked: '0x0fcf17fac114131b10f37b183c6a60f905911e52802caeeb3e6ea210398b81ab',
+  // Execution721TakerFeePacked: '0x0fcf17fac114131b10f37b183c6a60f905911e52802caeeb3e6ea210398b81ab',
 };
 
 export default class BlurAdapter extends ProtocolAdapter {
@@ -170,59 +170,47 @@ export default class BlurAdapter extends ProtocolAdapter {
         toBlock: endBlock,
       });
 
-      const processedTxns: { [key: string]: boolean } = {};
-      const client = this.services.blockchain.evm.getPublicClient(v2Config.chain);
       for (const log of v2Logs.filter((log) => Object.values(v2Events).includes(log.topics[0]))) {
-        if (!processedTxns[log.transactionHash]) {
-          const transaction = await client.getTransaction({
-            hash: log.transactionHash,
+        try {
+          const result = BlurMarketplaceLibs.decodeEventPacked({
+            log: log,
           });
 
-          try {
-            const result = BlurMarketplaceLibs.decodeTxnInput({
-              transactionHash: log.transactionHash,
-              input: transaction.input,
-            });
+          protocolData.totalFees += result.totalRoyalFeeEth * ethPriceUsd;
+          (protocolData.royaltyRevenue as number) += result.totalRoyalFeeEth * ethPriceUsd;
+          (protocolData.volumes.marketplace as number) += result.totalVolumeEth * ethPriceUsd;
 
-            protocolData.totalFees += result.totalRoyalFeeEth * ethPriceUsd;
-            (protocolData.royaltyRevenue as number) += result.totalRoyalFeeEth * ethPriceUsd;
-            (protocolData.volumes.marketplace as number) += result.totalVolumeEth * ethPriceUsd;
+          protocolData.breakdown[v2Config.chain][AddressZero].totalFees += result.totalRoyalFeeEth * ethPriceUsd;
+          (protocolData.breakdown[v2Config.chain][AddressZero].royaltyRevenue as number) +=
+            result.totalRoyalFeeEth * ethPriceUsd;
+          (protocolData.breakdown[v2Config.chain][AddressZero].volumes.marketplace as number) +=
+            result.totalVolumeEth * ethPriceUsd;
 
-            protocolData.breakdown[v2Config.chain][AddressZero].totalFees += result.totalRoyalFeeEth * ethPriceUsd;
-            (protocolData.breakdown[v2Config.chain][AddressZero].royaltyRevenue as number) +=
-              result.totalRoyalFeeEth * ethPriceUsd;
-            (protocolData.breakdown[v2Config.chain][AddressZero].volumes.marketplace as number) +=
-              result.totalVolumeEth * ethPriceUsd;
-
-            // breakdown by collections
-            if (protocolData.breakdownCollectibles) {
-              for (const [collection, metrics] of Object.entries(result.collections)) {
-                if (!protocolData.breakdownCollectibles[v2Config.chain][collection]) {
-                  protocolData.breakdownCollectibles[v2Config.chain][collection] = {
-                    volumeTrade: 0,
-                    totalFees: 0,
-                    protocolFee: 0,
-                    royaltyFee: 0,
-                  };
-                }
-                protocolData.breakdownCollectibles[v2Config.chain][collection].volumeTrade +=
-                  metrics.voumeEth * ethPriceUsd;
-                protocolData.breakdownCollectibles[v2Config.chain][collection].totalFees +=
-                  metrics.royalFeeEth * ethPriceUsd;
-                protocolData.breakdownCollectibles[v2Config.chain][collection].royaltyFee +=
-                  metrics.royalFeeEth * ethPriceUsd;
+          // breakdown by collections
+          if (protocolData.breakdownCollectibles) {
+            for (const [collection, metrics] of Object.entries(result.collections)) {
+              if (!protocolData.breakdownCollectibles[v2Config.chain][collection]) {
+                protocolData.breakdownCollectibles[v2Config.chain][collection] = {
+                  volumeTrade: 0,
+                  totalFees: 0,
+                  protocolFee: 0,
+                  royaltyFee: 0,
+                };
               }
+              protocolData.breakdownCollectibles[v2Config.chain][collection].volumeTrade +=
+                metrics.voumeEth * ethPriceUsd;
+              protocolData.breakdownCollectibles[v2Config.chain][collection].totalFees +=
+                metrics.royalFeeEth * ethPriceUsd;
+              protocolData.breakdownCollectibles[v2Config.chain][collection].royaltyFee +=
+                metrics.royalFeeEth * ethPriceUsd;
             }
-          } catch (e: any) {
-            logger.warn('failed to decode blur trade txn', {
-              service: this.name,
-              chain: v2Config.chain,
-              txn: log.transactionHash,
-            });
           }
-
-          // do not process txn again
-          processedTxns[log.transactionHash] = true;
+        } catch (e: any) {
+          logger.warn('failed to decode blur trade txn', {
+            service: this.name,
+            chain: v2Config.chain,
+            txn: log.transactionHash,
+          });
         }
       }
     }

@@ -4104,4 +4104,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceUniswapv2List.SPECTRA_USDC],
   },
+  GENOME: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.GENOME_WETH],
+  },
 };

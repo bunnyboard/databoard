@@ -3583,4 +3583,11 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.base['0x64fcc3a02eeeba05ef701b7eed066c6ebd5d4e51'],
     quotaToken: TokensBook.base['0x833589fcd6edb6e08f4c7c32d4f71b54bda02913'],
   },
+  GENOME_WETH: {
+    type: 'univ2',
+    chain: 'base',
+    address: '0x963ceee215e5b0b1dcb221c3ba398de66abc73d9',
+    baseToken: TokensBook.base['0x1db0c569ebb4a8b57ac01833b9792f526305e062'],
+    quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
+  },
 };

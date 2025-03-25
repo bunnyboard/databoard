@@ -9,6 +9,7 @@ import RegistryAbi from '../../../configs/abi/spectra/Registry.json';
 import PrincialTokenAbi from '../../../configs/abi/spectra/PrincipalToken.json';
 import { ContractCall } from '../../../services/blockchains/domains';
 import { formatBigNumberToNumber } from '../../../lib/utils';
+import { SolidityUnits } from '../../../configs/constants';
 
 export default class SpectraAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.spectra';
@@ -45,6 +46,14 @@ export default class SpectraAdapter extends ProtocolAdapter {
         registryConfig.chain,
         options.timestamp,
       );
+      const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        registryConfig.chain,
+        options.beginTime,
+      );
+      const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        registryConfig.chain,
+        options.endTime,
+      );
 
       const ptTokensCount = await this.services.blockchain.evm.readContract({
         chain: registryConfig.chain,
@@ -71,6 +80,7 @@ export default class SpectraAdapter extends ProtocolAdapter {
       });
 
       const getPtTokensInfoCalls: Array<ContractCall> = [];
+      const getPriceShareCalls: Array<ContractCall> = [];
       for (const ptTokenAddress of getPtResults) {
         getPtTokensInfoCalls.push({
           abi: PrincialTokenAbi,
@@ -84,11 +94,29 @@ export default class SpectraAdapter extends ProtocolAdapter {
           method: 'totalAssets',
           params: [],
         });
+
+        getPriceShareCalls.push({
+          abi: PrincialTokenAbi,
+          target: ptTokenAddress,
+          method: 'convertToUnderlying',
+          params: [SolidityUnits.OneWad],
+        });
       }
       const getPtTokensInfoResults = await this.services.blockchain.evm.multicall({
         chain: registryConfig.chain,
         blockNumber: blockNumber,
         calls: getPtTokensInfoCalls,
+      });
+
+      const before_getPriceShareResults = await this.services.blockchain.evm.multicall({
+        chain: registryConfig.chain,
+        blockNumber: beginBlock,
+        calls: getPriceShareCalls,
+      });
+      const after_getPriceShareResults = await this.services.blockchain.evm.multicall({
+        chain: registryConfig.chain,
+        blockNumber: endBlock,
+        calls: getPriceShareCalls,
       });
 
       for (let i = 0; i < Number(ptTokensCount); i++) {
@@ -109,9 +137,44 @@ export default class SpectraAdapter extends ProtocolAdapter {
           const totalDepositedUsd =
             formatBigNumberToNumber(totalAssets ? totalAssets.toString() : '0', token.decimals) * tokenPriceUsd;
 
-          protocolData.totalAssetDeposited += totalDepositedUsd;
-          protocolData.totalValueLocked += totalDepositedUsd;
-          (protocolData.totalSupplied as number) += totalDepositedUsd;
+          if (totalDepositedUsd > 0) {
+            const priceShareBefore = formatBigNumberToNumber(
+              before_getPriceShareResults[i] ? before_getPriceShareResults[i].toString() : SolidityUnits.OneWad,
+              18,
+            );
+            const priceShareAfter = formatBigNumberToNumber(
+              after_getPriceShareResults[i] ? after_getPriceShareResults[i].toString() : SolidityUnits.OneWad,
+              18,
+            );
+            const priceShareDiff = priceShareAfter > priceShareBefore ? priceShareAfter - priceShareBefore : 0;
+
+            // Spectra get 3% yeild from all ptTokens
+            // https://docs.spectra.finance/tokenomics/fees
+            const totalYieldDistributed = totalDepositedUsd * priceShareDiff;
+            const totalFees = totalYieldDistributed / 0.97;
+            const protocolRevenue = totalFees * 0.03;
+            const supplySideRevenue = totalFees - protocolRevenue;
+
+            protocolData.totalAssetDeposited += totalDepositedUsd;
+            protocolData.totalValueLocked += totalDepositedUsd;
+            (protocolData.totalSupplied as number) += totalDepositedUsd;
+            protocolData.totalFees += totalFees;
+            protocolData.protocolRevenue += protocolRevenue;
+            protocolData.supplySideRevenue += supplySideRevenue;
+
+            if (!protocolData.breakdown[token.chain][token.address]) {
+              protocolData.breakdown[token.chain][token.address] = {
+                ...getInitialProtocolCoreMetrics(),
+                totalSupplied: 0,
+              };
+            }
+            protocolData.breakdown[token.chain][token.address].totalAssetDeposited += totalDepositedUsd;
+            protocolData.breakdown[token.chain][token.address].totalValueLocked += totalDepositedUsd;
+            (protocolData.breakdown[token.chain][token.address].totalSupplied as number) += totalDepositedUsd;
+            protocolData.breakdown[token.chain][token.address].totalFees += totalFees;
+            protocolData.breakdown[token.chain][token.address].protocolRevenue += protocolRevenue;
+            protocolData.breakdown[token.chain][token.address].supplySideRevenue += supplySideRevenue;
+          }
         }
       }
     }
