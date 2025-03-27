@@ -11,6 +11,7 @@ import BalancerAdapter from './balancer/balancer';
 import BedrockAdapter from './bedrock/bedrock';
 import BenqiAdapter from './benqi/benqi';
 import BenqiStakingAvaxAdapter from './benqi/savax';
+import BlackrockusdAdapter from './blackrock/build';
 import BlastNativeBridgeAdapter from './blast/nativeBridge';
 import BlurAdapter from './blur/blur';
 import BungeeAdapter from './bungee/bungee';
@@ -91,6 +92,7 @@ import SilofinanceAdapter from './silofinance/silofinance';
 import SolvAdapter from './solv/solv';
 import SonicNativeBridgeAdapter from './sonic/nativeBridge';
 import SpectraAdapter from './spectra/spectra';
+import StablecoinAdapter from './stablecoin/stablecoin';
 import StaderAdapter from './stader/stader';
 import StakewiseAdapter from './stakewise/stakewise';
 import StargateAdapter from './stargate/stargate';
@@ -315,5 +317,7 @@ export function getProtocolAdapters(
     levelusd: new LevelusdAdapter(services, storages, ProtocolConfigs.levelusd),
     celoNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.celoNativeBridge),
     valasfinance: new AaveAdapter(services, storages, ProtocolConfigs.valasfinance),
+    blackrockusd: new BlackrockusdAdapter(services, storages, ProtocolConfigs.blackrockusd),
+    stablecoin: new StablecoinAdapter(services, storages, ProtocolConfigs.stablecoin),
   };
 }

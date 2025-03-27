@@ -41,6 +41,10 @@ export interface DatabaseCollectionConfig {
   // save blockchain data historical/snapshots
   blockchainDataSnapshots: MongoCollectionConfig;
 
+  // save data for specify board
+  boardDataStates: MongoCollectionConfig;
+  boardDataSnapshots: MongoCollectionConfig;
+
   // save liquidity pool2 (uniswap v2, v3) configs
   datasyncPool2: MongoCollectionConfig;
 

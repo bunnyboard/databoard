@@ -100,6 +100,10 @@ export const ChainNames = {
 };
 
 export const ProtocolNames = {
+  // boards
+  stablecoin: 'stablecoin',
+
+  // protocols
   aave: 'aave',
   abracadabra: 'abracadabra',
   ajna: 'ajna',
@@ -321,4 +325,5 @@ export const ProtocolNames = {
   levelusd: 'levelusd', // https://www.level.money
   celoNativeBridge: 'celoNativeBridge',
   valasfinance: 'valasfinance',
+  blackrockusd: 'blackrockusd', // https://securitize.io
 };

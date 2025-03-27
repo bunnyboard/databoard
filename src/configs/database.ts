@@ -70,6 +70,23 @@ export const DatabaseCollectionConfigs: DatabaseCollectionConfig = {
       },
     ],
   },
+  boardDataStates: {
+    name: `${CollectionPrefix}.boardDataStates`,
+    indies: [
+      {
+        board: 1,
+      },
+    ],
+  },
+  boardDataSnapshots: {
+    name: `${CollectionPrefix}.boardDataSnapshots`,
+    indies: [
+      {
+        board: 1,
+        timestamp: 1,
+      },
+    ],
+  },
 
   // datasync
   datasyncPool2: {

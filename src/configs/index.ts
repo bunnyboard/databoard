@@ -184,6 +184,8 @@ import { LevelusdConfigs } from './protocols/levelusd';
 import { EulerdaoConfigs } from './protocols/eulerdao';
 import { CeloNativeBridgeConfigs } from './protocols/celo';
 import { ValasfinanceConfigs } from './protocols/valasfinance';
+import { BlackrockusdConfigs } from './protocols/blackrock';
+import { StablecoinConfigs } from './protocols/stablecoin';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -226,6 +228,10 @@ export const TokenList: { [key: string]: { [key: string]: Token } } = TokensBook
 export const TokenDexBase: { [key: string]: Array<string> } = TokenBookDexBase;
 
 export const ProtocolConfigs = {
+  // for boards
+  stablecoin: StablecoinConfigs,
+
+  // for protocols
   ethereum: EthereumConfigs,
   aave: AaveConfigs,
   ajna: AjnaConfigs,
@@ -416,4 +422,5 @@ export const ProtocolConfigs = {
   levelusd: LevelusdConfigs,
   celoNativeBridge: CeloNativeBridgeConfigs,
   valasfinance: ValasfinanceConfigs,
+  blackrockusd: BlackrockusdConfigs,
 };
