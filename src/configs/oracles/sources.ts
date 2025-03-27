@@ -4112,4 +4112,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.SKI_WETH],
   },
+  OUSG: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.OUSG],
+  },
 };

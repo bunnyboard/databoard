@@ -8,6 +8,7 @@ import { SolidityUnits } from '../../configs/constants';
 import { formatBigNumberToString } from '../../lib/utils';
 import BlockchainService from '../../services/blockchains/blockchain';
 import { OracleSourceMakerRwaPip, OracleSourceSavingDai, OracleSourceStakingTokenWrapper } from '../../types/oracles';
+import OusgOracleAbi from '../../configs/abi/ondofinance/OUSGOracle.json';
 
 export default class OracleLibs {
   public static async getTokenPrice(
@@ -87,6 +88,27 @@ export default class OracleLibs {
       if (mETHToETH) {
         return formatBigNumberToString(mETHToETH.toString(), 18);
       }
+    }
+
+    return null;
+  }
+
+  // get price of 0x1B19C19393e2d034D8Ff31ff34c81252FcBbee92 on ethereum
+  public static async getOusgPrice(
+    config: OracleSourceStakingTokenWrapper,
+    blockNumber: number,
+  ): Promise<string | null> {
+    const blockchain = new BlockchainService();
+    const priceData = await blockchain.readContract({
+      chain: config.chain,
+      abi: OusgOracleAbi,
+      target: config.address,
+      method: 'getPriceData',
+      params: [],
+      blockNumber: blockNumber,
+    });
+    if (priceData) {
+      return formatBigNumberToString(priceData[0].toString(), 18);
     }
 
     return null;

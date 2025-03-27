@@ -260,6 +260,8 @@ export default class OracleService extends CachingService implements IOracleServ
           });
         } else if (config.method === 'mETH') {
           return await OracleLibs.getmETHPrice(config, blockNumber);
+        } else if (config.method === 'ousg') {
+          return await OracleLibs.getOusgPrice(config, blockNumber);
         }
 
         break;

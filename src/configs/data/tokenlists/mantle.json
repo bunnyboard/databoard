@@ -23,6 +23,12 @@
     "decimals": 18,
     "address": "0x4515a45337f461a11ff0fe8abf3c606ae5dc00c9"
   },
+  "0x5be26527e817998a7206475496fde1e68957c5a6": {
+    "chain": "mantle",
+    "symbol": "USDY",
+    "decimals": 18,
+    "address": "0x5be26527e817998a7206475496fde1e68957c5a6"
+  },
   "0x78c1b0c915c4faa5fffa6cabf0219da63d7f4cb8": {
     "chain": "mantle",
     "symbol": "WMNT",

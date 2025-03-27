@@ -326,4 +326,6 @@ export const ProtocolNames = {
   celoNativeBridge: 'celoNativeBridge',
   valasfinance: 'valasfinance',
   blackrockusd: 'blackrockusd', // https://securitize.io
+  ondofinance: 'ondofinance', // https://ondo.finance
+  usdtb: 'usdtb', // https://usdtb.money
 };

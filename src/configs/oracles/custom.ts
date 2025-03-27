@@ -139,6 +139,18 @@ export const OracleSourceCustomList: {
       address: '0x0000000000000000000000000000000000000000',
     },
   },
+  OUSG: {
+    type: 'stakingTokenWrapper',
+    chain: 'ethereum',
+    method: 'ousg',
+    address: '0x0502c5ae08E7CD64fe1AEDA7D6e229413eCC6abe',
+    underlyingToken: {
+      chain: 'ethereum',
+      symbol: 'USDT',
+      decimals: 6,
+      address: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+    },
+  },
   stZENT: {
     type: 'stakingTokenWrapper',
     chain: 'ethereum',

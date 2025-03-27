@@ -1631,6 +1631,12 @@
     "decimals": 18,
     "address": "0xba073ee3fdeb0fe00fda35e58f7cd75563aec607"
   },
+  "0xba11c5effa33c4d6f8f593cfa394241cfe925811": {
+    "chain": "polygon",
+    "symbol": "OUSG",
+    "decimals": 18,
+    "address": "0xba11c5effa33c4d6f8f593cfa394241cfe925811"
+  },
   "0xba777ae3a3c91fcd83ef85bfe65410592bdd0f7c": {
     "chain": "polygon",
     "symbol": "CONE",
