@@ -98,8 +98,8 @@ export default class SpectraAdapter extends ProtocolAdapter {
         getPriceShareCalls.push({
           abi: PrincialTokenAbi,
           target: ptTokenAddress,
-          method: 'convertToUnderlying',
-          params: [SolidityUnits.OneWad],
+          method: 'getIBTRate',
+          params: [],
         });
       }
       const getPtTokensInfoResults = await this.services.blockchain.evm.multicall({
@@ -139,12 +139,12 @@ export default class SpectraAdapter extends ProtocolAdapter {
 
           if (totalDepositedUsd > 0) {
             const priceShareBefore = formatBigNumberToNumber(
-              before_getPriceShareResults[i] ? before_getPriceShareResults[i].toString() : SolidityUnits.OneWad,
-              18,
+              before_getPriceShareResults[i] ? before_getPriceShareResults[i].toString() : SolidityUnits.OneRay,
+              27,
             );
             const priceShareAfter = formatBigNumberToNumber(
-              after_getPriceShareResults[i] ? after_getPriceShareResults[i].toString() : SolidityUnits.OneWad,
-              18,
+              after_getPriceShareResults[i] ? after_getPriceShareResults[i].toString() : SolidityUnits.OneRay,
+              27,
             );
             const priceShareDiff = priceShareAfter > priceShareBefore ? priceShareAfter - priceShareBefore : 0;
 
