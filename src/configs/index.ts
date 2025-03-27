@@ -183,6 +183,7 @@ import { SpectraConfigs } from './protocols/spectra';
 import { LevelusdConfigs } from './protocols/levelusd';
 import { EulerdaoConfigs } from './protocols/eulerdao';
 import { CeloNativeBridgeConfigs } from './protocols/celo';
+import { ValasfinanceConfigs } from './protocols/valasfinance';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -414,4 +415,5 @@ export const ProtocolConfigs = {
   spectra: SpectraConfigs,
   levelusd: LevelusdConfigs,
   celoNativeBridge: CeloNativeBridgeConfigs,
+  valasfinance: ValasfinanceConfigs,
 };

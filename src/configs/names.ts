@@ -320,4 +320,5 @@ export const ProtocolNames = {
   spectra: 'spectra', // https://www.spectra.finance
   levelusd: 'levelusd', // https://www.level.money
   celoNativeBridge: 'celoNativeBridge',
+  valasfinance: 'valasfinance',
 };

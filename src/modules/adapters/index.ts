@@ -314,5 +314,6 @@ export function getProtocolAdapters(
     spectra: new SpectraAdapter(services, storages, ProtocolConfigs.spectra),
     levelusd: new LevelusdAdapter(services, storages, ProtocolConfigs.levelusd),
     celoNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.celoNativeBridge),
+    valasfinance: new AaveAdapter(services, storages, ProtocolConfigs.valasfinance),
   };
 }
