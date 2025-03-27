@@ -21,7 +21,7 @@ const v2Events = {
   Execution: '0xf2f66294df6fae7ac681cbe2f6d91c6904485929679dce263e8f6539b7d5c559',
   Execution721Packed: '0x1d5e12b51dee5e4d34434576c3fb99714a85f57b0fd546ada4b0bddd736d12b2',
   Execution721MakerFeePacked: '0x7dc5c0699ac8dd5250cbe368a2fc3b4a2daadb120ad07f6cccea29f83482686e',
-  // Execution721TakerFeePacked: '0x0fcf17fac114131b10f37b183c6a60f905911e52802caeeb3e6ea210398b81ab',
+  Execution721TakerFeePacked: '0x0fcf17fac114131b10f37b183c6a60f905911e52802caeeb3e6ea210398b81ab',
 };
 
 export default class BlurAdapter extends ProtocolAdapter {

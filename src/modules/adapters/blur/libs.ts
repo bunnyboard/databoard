@@ -28,6 +28,7 @@ const Events = {
   Execution: '0xf2f66294df6fae7ac681cbe2f6d91c6904485929679dce263e8f6539b7d5c559',
   Execution721Packed: '0x1d5e12b51dee5e4d34434576c3fb99714a85f57b0fd546ada4b0bddd736d12b2',
   Execution721MakerFeePacked: '0x7dc5c0699ac8dd5250cbe368a2fc3b4a2daadb120ad07f6cccea29f83482686e',
+  Execution721TakerFeePacked: '0x0fcf17fac114131b10f37b183c6a60f905911e52802caeeb3e6ea210398b81ab',
 };
 
 export default class BlurMarketplaceLibs {
@@ -62,7 +63,11 @@ export default class BlurMarketplaceLibs {
       const collectionPriceSidePacked = BigInt(event.args.collectionPriceSide.toString());
 
       // Extract orderType (shifted left by 31 * 8 = 248 bits)
-      // const orderType = Number(collectionPriceSidePacked >> BigInt(31 * 8));
+      const orderType = Number(collectionPriceSidePacked >> BigInt(31 * 8));
+
+      if (orderType !== 0) {
+        return result;
+      }
 
       // Extract price (shifted left by 20 * 8 = 160 bits)
       // Mask: 96 bits
@@ -78,7 +83,10 @@ export default class BlurMarketplaceLibs {
       const collectionHex = collectionBigInt.toString(16).padStart(40, '0');
       collection = normalizeAddress('0x' + collectionHex.slice(-40));
 
-      if (options.log.topics[0] === Events.Execution721MakerFeePacked) {
+      if (
+        options.log.topics[0] === Events.Execution721MakerFeePacked ||
+        options.log.topics[0] === Events.Execution721TakerFeePacked
+      ) {
         const feePacked = BigInt(
           event.args.makerFeeRecipientRate
             ? event.args.makerFeeRecipientRate.toString()
