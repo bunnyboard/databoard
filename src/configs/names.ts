@@ -319,4 +319,5 @@ export const ProtocolNames = {
   pendle: 'pendle', // https://pendle.finance
   spectra: 'spectra', // https://www.spectra.finance
   levelusd: 'levelusd', // https://www.level.money
+  celoNativeBridge: 'celoNativeBridge',
 };

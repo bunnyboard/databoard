@@ -11,7 +11,7 @@ import { CompoundConfigs } from './protocols/compound';
 import { CowswapConfigs } from './protocols/cowswap';
 import { CurvelendConfigs } from './protocols/curvelend';
 import { CurveusdConfigs } from './protocols/curveusd';
-import { EulerConfigs, EulerdaoConfigs } from './protocols/euler';
+import { EulerConfigs } from './protocols/euler';
 import { FluidConfigs } from './protocols/fluid';
 import { FraxlendConfigs } from './protocols/fraxlend';
 import { HanaConfigs } from './protocols/hana';
@@ -181,6 +181,8 @@ import { SuperformConfigs } from './protocols/superform';
 import { PendleConfigs } from './protocols/pendle';
 import { SpectraConfigs } from './protocols/spectra';
 import { LevelusdConfigs } from './protocols/levelusd';
+import { EulerdaoConfigs } from './protocols/eulerdao';
+import { CeloNativeBridgeConfigs } from './protocols/celo';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -411,4 +413,5 @@ export const ProtocolConfigs = {
   pendle: PendleConfigs,
   spectra: SpectraConfigs,
   levelusd: LevelusdConfigs,
+  celoNativeBridge: CeloNativeBridgeConfigs,
 };

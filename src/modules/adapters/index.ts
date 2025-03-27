@@ -313,5 +313,6 @@ export function getProtocolAdapters(
     pendle: new PendleAdapter(services, storages, ProtocolConfigs.pendle),
     spectra: new SpectraAdapter(services, storages, ProtocolConfigs.spectra),
     levelusd: new LevelusdAdapter(services, storages, ProtocolConfigs.levelusd),
+    celoNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.celoNativeBridge),
   };
 }
