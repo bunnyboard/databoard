@@ -515,6 +515,12 @@
     "decimals": 18,
     "address": "0xb7f5b452b381a90ba10bdde6d75c6a4fd65a4239"
   },
+  "0xb8d7d88d042880ae87bb61de2dfff8441768766d": {
+    "chain": "zksync",
+    "symbol": "USDa",
+    "decimals": 18,
+    "address": "0xb8d7d88d042880ae87bb61de2dfff8441768766d"
+  },
   "0xbb8d60008a08b1828e02120f1a952d295036ef3d": {
     "chain": "zksync",
     "symbol": "USDT+",

@@ -29,6 +29,12 @@
     "symbol": "TIA",
     "decimals": 6
   },
+  "0x73d23f3778a90be8846e172354a115543df2a7e4": {
+    "chain": "manta",
+    "address": "0x73d23f3778a90be8846e172354a115543df2a7e4",
+    "symbol": "USDz",
+    "decimals": 18
+  },
   "0x7d43aabc515c356145049227cee54b608342c0ad": {
     "chain": "manta",
     "address": "0x7d43aabc515c356145049227cee54b608342c0ad",

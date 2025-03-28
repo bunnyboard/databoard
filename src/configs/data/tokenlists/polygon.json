@@ -1427,6 +1427,12 @@
     "decimals": 18,
     "address": "0x9b034262e0095210ab9ddec60199741a8a1fbfe7"
   },
+  "0x9c9e5fd8bbc25984b178fdce6117defa39d2db39": {
+    "chain": "polygon",
+    "symbol": "BUSD",
+    "decimals": 18,
+    "address": "0x9c9e5fd8bbc25984b178fdce6117defa39d2db39"
+  },
   "0x9e20461bc2c4c980f62f1b279d71734207a6a356": {
     "chain": "polygon",
     "symbol": "OMNI",

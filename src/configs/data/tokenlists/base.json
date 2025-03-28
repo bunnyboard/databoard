@@ -1583,6 +1583,12 @@
     "decimals": 18,
     "address": "0x2816a491dd0b7a88d84cbded842a618e59016888"
   },
+  "0x2840f9d9f96321435ab0f977e7fdbf32ea8b304f": {
+    "chain": "base",
+    "symbol": "USDa",
+    "decimals": 18,
+    "address": "0x2840f9d9f96321435ab0f977e7fdbf32ea8b304f"
+  },
   "0x287f0d88e29a3d7aeb4d0c10bae5b902db69b17d": {
     "chain": "base",
     "symbol": "EPOCH",

@@ -6,8 +6,9 @@ import { StablecoinData } from '../../../types/domains/stablecoin';
 import { StablecoinProtocolConfig } from '../../../configs/protocols/stablecoin';
 import Erc20Abi from '../../../configs/abi/ERC20.json';
 import { formatBigNumberToNumber } from '../../../lib/utils';
-import { Erc20TransferEventSignature } from '../../../configs/constants';
-import { decodeEventLog } from 'viem';
+// import { AddressZero, Erc20TransferEventSignature } from '../../../configs/constants';
+// import { decodeEventLog } from 'viem';
+import CurvePoolHelper from './curve';
 
 export default class StablecoinAdapter extends BoardAdapter {
   public readonly name: string = 'adapter.stablecoin';
@@ -25,7 +26,18 @@ export default class StablecoinAdapter extends BoardAdapter {
     const stablecoinData: StablecoinData = {
       timestamp: options.timestamp,
       coins: {},
+      curvePools: {},
     };
+
+    for (const curvePoolConfig of Object.values(stablecoinConfig.curvePools)) {
+      if (curvePoolConfig.birthday > options.timestamp) {
+        continue;
+      }
+      stablecoinData.curvePools[curvePoolConfig.name] = await CurvePoolHelper.getPoolData({
+        ...options,
+        curvePool: curvePoolConfig,
+      });
+    }
 
     for (const coinConfig of Object.values(stablecoinConfig.coins)) {
       if (coinConfig.birthday > options.timestamp) {
@@ -43,6 +55,8 @@ export default class StablecoinAdapter extends BoardAdapter {
         priceUsd: tokenPriceUsd,
         totalSupply: 0,
         transferVolume: 0,
+        mintVolume: 0,
+        burnVolume: 0,
         chains: {},
       };
 
@@ -51,6 +65,8 @@ export default class StablecoinAdapter extends BoardAdapter {
           stablecoinData.coins[coinConfig.coin].chains[token.chain] = {
             totalSupply: 0,
             transferVolume: 0,
+            mintVolume: 0,
+            burnVolume: 0,
           };
         }
 
@@ -58,11 +74,11 @@ export default class StablecoinAdapter extends BoardAdapter {
           token.chain,
           options.timestamp,
         );
-        const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-          token.chain,
-          options.beginTime,
-        );
-        const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(token.chain, options.endTime);
+        // const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        //   token.chain,
+        //   options.beginTime,
+        // );
+        // const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(token.chain, options.endTime);
 
         const totalSupply = await this.services.blockchain.evm.readContract({
           chain: token.chain,
@@ -73,33 +89,42 @@ export default class StablecoinAdapter extends BoardAdapter {
           blockNumber: blockNumber,
         });
 
-        stablecoinData.coins[coinConfig.coin].totalSupply += formatBigNumberToNumber(
-          totalSupply ? totalSupply.toString() : '0',
-          token.decimals,
-        );
+        const tokenTotalSupply = formatBigNumberToNumber(totalSupply ? totalSupply.toString() : '0', token.decimals);
+        stablecoinData.coins[coinConfig.coin].totalSupply += tokenTotalSupply;
+        stablecoinData.coins[coinConfig.coin].chains[token.chain].totalSupply += tokenTotalSupply;
 
-        const logs = await this.services.blockchain.evm.getContractLogs({
-          chain: token.chain,
-          address: token.address,
-          fromBlock: beginBlock,
-          toBlock: endBlock,
-        });
-        const events: Array<any> = logs
-          .filter((log) => log.topics[0] === Erc20TransferEventSignature)
-          .map((log) =>
-            decodeEventLog({
-              abi: Erc20Abi,
-              topics: log.topics,
-              data: log.data,
-            }),
-          );
+        // const logs = await this.services.blockchain.evm.getContractLogs({
+        //   chain: token.chain,
+        //   address: token.address,
+        //   fromBlock: beginBlock,
+        //   toBlock: endBlock,
+        // });
+        // const events: Array<any> = logs
+        //   .filter((log) => log.topics[0] === Erc20TransferEventSignature)
+        //   .map((log) =>
+        //     decodeEventLog({
+        //       abi: Erc20Abi,
+        //       topics: log.topics,
+        //       data: log.data,
+        //     }),
+        //   );
 
-        for (const event of events) {
-          stablecoinData.coins[coinConfig.coin].transferVolume += formatBigNumberToNumber(
-            event.args.value.toString(),
-            token.decimals,
-          );
-        }
+        // for (const event of events) {
+        //   const volume = formatBigNumberToNumber(
+        //     event.args.value.toString(),
+        //     token.decimals,
+        //   );
+        //   stablecoinData.coins[coinConfig.coin].transferVolume += volume;
+        //   stablecoinData.coins[coinConfig.coin].chains[token.chain].transferVolume += volume;
+
+        //   if (compareAddress(event.args.from, AddressZero)) {
+        //     stablecoinData.coins[coinConfig.coin].mintVolume += volume;
+        //     stablecoinData.coins[coinConfig.coin].chains[token.chain].mintVolume += volume;
+        //   } else if (compareAddress(event.args.to, AddressZero)) {
+        //     stablecoinData.coins[coinConfig.coin].burnVolume += volume;
+        //     stablecoinData.coins[coinConfig.coin].chains[token.chain].burnVolume += volume;
+        //   }
+        // }
       }
     }
 

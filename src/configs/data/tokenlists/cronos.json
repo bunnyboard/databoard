@@ -17,6 +17,12 @@
     "symbol": "CDCETH",
     "decimals": 18
   },
+  "0x87efb3ec1576dec8ed47e58b832bedcd86ee186e": {
+    "chain": "cronos",
+    "address": "0x87efb3ec1576dec8ed47e58b832bedcd86ee186e",
+    "symbol": "TUSD",
+    "decimals": 18
+  },
   "0xbb0a63a6ca2071c6c4bcac11a1a317b20e3e999c": {
     "chain": "cronos",
     "address": "0xbb0a63a6ca2071c6c4bcac11a1a317b20e3e999c",

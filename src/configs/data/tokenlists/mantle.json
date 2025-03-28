@@ -1,4 +1,10 @@
 {
+  "0x075df695b8e7f4361fa7f8c1426c63f11b06e326": {
+    "chain": "mantle",
+    "symbol": "USDa",
+    "decimals": 18,
+    "address": "0x075df695b8e7f4361fa7f8c1426c63f11b06e326"
+  },
   "0x09bc4e0d864854c6afb6eb9a9cdf58ac190d0df9": {
     "chain": "mantle",
     "symbol": "USD COIN",

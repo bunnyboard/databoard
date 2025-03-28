@@ -107,6 +107,12 @@
     "decimals": 18,
     "address": "0x4300000000000000000000000000000000000004"
   },
+  "0x52056ed29fe015f4ba2e3b079d10c0b87f46e8c6": {
+    "chain": "blast",
+    "symbol": "USDz",
+    "decimals": 18,
+    "address": "0x52056ed29fe015f4ba2e3b079d10c0b87f46e8c6"
+  },
   "0x56e0f6df03883611c9762e78d4091e39ad9c420e": {
     "chain": "blast",
     "symbol": "SLP-USDB",
