@@ -19,4 +19,10 @@ export const OracleSourcePythList: { [key: string]: OracleSourcePyth } = {
     address: '0x4305fb66699c3b2702d4d05cf36551390a4c69c6',
     assetId: '0x23d7315113f5b1d3ba7a83604c44b94d79f4fd69af77f804fc7f920a6dc65744',
   },
+  WIF_USD: {
+    type: 'pyth',
+    chain: 'arbitrum',
+    address: '0xff1a0f4744e8582df1ae09d5611b887b6a12925c',
+    assetId: '0x4ca4beeca86f0d164160323817a4e42b10010a724c2217c6ee41b54cd4cc61fc',
+  },
 };
