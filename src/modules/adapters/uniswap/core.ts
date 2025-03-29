@@ -306,16 +306,26 @@ export default class UniswapCore {
       withdrawVolumeUsd: 0,
     };
 
+    // caching for reduce calls to db
+    const cachingPools: { [key: string]: Pool2 | null } = {};
     const logs = await UniswapCore.getLogsFromEtherscan(options);
     for (const log of logs) {
-      const pool2: Pool2 = await options.storages.database.find({
-        collection: envConfig.mongodb.collections.datasyncPool2.name,
-        query: {
-          chain: options.factoryConfig.chain,
-          factory: normalizeAddress(options.factoryConfig.factory),
-          address: normalizeAddress(log.address),
-        },
-      });
+      let pool2: Pool2 | undefined | null = cachingPools[normalizeAddress(log.address)];
+      if (pool2 === undefined) {
+        pool2 = await options.storages.database.find({
+          collection: envConfig.mongodb.collections.datasyncPool2.name,
+          query: {
+            chain: options.factoryConfig.chain,
+            factory: normalizeAddress(options.factoryConfig.factory),
+            address: normalizeAddress(log.address),
+          },
+        });
+        if (pool2) {
+          cachingPools[normalizeAddress(log.address)] = pool2;
+        } else {
+          cachingPools[normalizeAddress(log.address)] = null;
+        }
+      }
 
       if (pool2) {
         const event: any = decodeEventLog({
@@ -426,16 +436,25 @@ export default class UniswapCore {
       withdrawVolumeUsd: 0,
     };
 
+    const cachingPools: { [key: string]: Pool2 | null } = {};
     const logs = await UniswapCore.getLogsFromEtherscan(options);
     for (const log of logs) {
-      const pool2: Pool2 = await options.storages.database.find({
-        collection: envConfig.mongodb.collections.datasyncPool2.name,
-        query: {
-          chain: options.factoryConfig.chain,
-          factory: normalizeAddress(options.factoryConfig.factory),
-          address: normalizeAddress(log.address),
-        },
-      });
+      let pool2: Pool2 | undefined | null = cachingPools[normalizeAddress(log.address)];
+      if (pool2 === undefined) {
+        pool2 = await options.storages.database.find({
+          collection: envConfig.mongodb.collections.datasyncPool2.name,
+          query: {
+            chain: options.factoryConfig.chain,
+            factory: normalizeAddress(options.factoryConfig.factory),
+            address: normalizeAddress(log.address),
+          },
+        });
+        if (pool2) {
+          cachingPools[normalizeAddress(log.address)] = pool2;
+        } else {
+          cachingPools[normalizeAddress(log.address)] = null;
+        }
+      }
       if (pool2) {
         const event: any = decodeEventLog({
           abi: UniswapV3PoolAbi,

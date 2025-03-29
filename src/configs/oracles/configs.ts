@@ -2810,6 +2810,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   },
 
   berachain: {
+    '0x09d9420332bff75522a45fcff4855f82a0a3ff50': OracleSourceConfigs.DINERO,
     '0x69f1e971257419b1e9c405a553f252c64a29a30a': OracleSourceConfigs.iBGT,
     '0xecac9c5f704e954931349da37f60e39f515c11c1': OracleSourceConfigs.LBTC,
     '0x08a38caa631de329ff2dad1656ce789f31af3142': OracleSourceConfigs.YEET,

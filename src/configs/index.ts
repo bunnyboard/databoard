@@ -186,6 +186,7 @@ import { CeloNativeBridgeConfigs } from './protocols/celo';
 import { ValasfinanceConfigs } from './protocols/valasfinance';
 import { BlackrockusdConfigs } from './protocols/blackrock';
 import { StablecoinConfigs } from './protocols/stablecoin';
+import { KodiakConfigs } from './protocols/kodiak';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -423,4 +424,5 @@ export const ProtocolConfigs = {
   celoNativeBridge: CeloNativeBridgeConfigs,
   valasfinance: ValasfinanceConfigs,
   blackrockusd: BlackrockusdConfigs,
+  kodiak: KodiakConfigs,
 };

@@ -328,4 +328,5 @@ export const ProtocolNames = {
   blackrockusd: 'blackrockusd', // https://securitize.io
   ondofinance: 'ondofinance', // https://ondo.finance
   usdtb: 'usdtb', // https://usdtb.money
+  kodiak: 'kodiak', // https://www.kodiak.finance
 };

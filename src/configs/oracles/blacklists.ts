@@ -31,6 +31,7 @@ export const OracleTokenBlacklists: { [key: string]: Array<string> } = {
     '0x05770332d4410b6d7f07fd497e4c00f8f7bfb74a',
   ],
   optimism: [
+    '0x3417e54a51924c225330f8770514ad5560b9098d',
     '0x64831f82e3543006413897c03f59518cecae02b4',
     '0x7eccbbd05830edf593d30005b8f69e965af4d59f',
     '0x2a5139cd86c041aa3467e649f5ee0880a5de2f2f',

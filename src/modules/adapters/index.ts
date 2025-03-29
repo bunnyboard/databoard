@@ -319,5 +319,6 @@ export function getProtocolAdapters(
     valasfinance: new AaveAdapter(services, storages, ProtocolConfigs.valasfinance),
     blackrockusd: new BlackrockusdAdapter(services, storages, ProtocolConfigs.blackrockusd),
     stablecoin: new StablecoinAdapter(services, storages, ProtocolConfigs.stablecoin),
+    kodiak: new UniswapAdapter(services, storages, ProtocolConfigs.kodiak),
   };
 }
