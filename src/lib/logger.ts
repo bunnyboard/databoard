@@ -78,11 +78,11 @@ function formatLevel(entryLevel: string): string {
 }
 
 function formatService(service: string): string {
-  return (service + ':').padEnd(25);
+  return (service + ':').padEnd(20);
 }
 
 function formatMessage(message: string): string {
-  return message.padEnd(60);
+  return message.padEnd(40);
 }
 
 const customFormat = winston.format.printf((entry: any) => {

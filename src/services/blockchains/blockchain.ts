@@ -35,7 +35,7 @@ import BlockDater from './dater';
 import { Token } from '../../types/base';
 
 export default class BlockchainService extends CachingService implements IBlockchainService {
-  public readonly name: string = 'blockchain.evm';
+  public readonly name: string = 'chain.evm';
 
   constructor() {
     super();

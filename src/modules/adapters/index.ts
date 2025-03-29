@@ -320,5 +320,6 @@ export function getProtocolAdapters(
     blackrockusd: new BlackrockusdAdapter(services, storages, ProtocolConfigs.blackrockusd),
     stablecoin: new StablecoinAdapter(services, storages, ProtocolConfigs.stablecoin),
     kodiak: new UniswapAdapter(services, storages, ProtocolConfigs.kodiak),
+    spooky: new UniswapAdapter(services, storages, ProtocolConfigs.spooky),
   };
 }
