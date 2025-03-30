@@ -224,7 +224,6 @@ export const CustomChainIndexWorkers: { [key: string]: number } = {
 };
 
 export const DefaultMemcacheTime = 300; // 5 minutes
-export const DefaultLocaldbDir = '.localdb';
 
 export const TokenList: { [key: string]: { [key: string]: Token } } = TokensBook;
 export const TokenDexBase: { [key: string]: Array<string> } = TokenBookDexBase;

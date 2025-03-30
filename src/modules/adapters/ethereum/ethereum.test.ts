@@ -4,9 +4,8 @@ import BlockchainService from '../../../services/blockchains/blockchain';
 import OracleService from '../../../services/oracle/oracle';
 import EthereumAdapter from './ethereum';
 import { MemcacheService } from '../../../services/caching/memcache';
-import LeveldbService from '../../../services/localdb/level';
 import DatabaseService from '../../../services/database/database';
-import { DefaultLocaldbDir, DefaultMemcacheTime } from '../../../configs';
+import { DefaultMemcacheTime } from '../../../configs';
 import { EthereumConfigs } from '../../../configs/protocols/ethereum';
 
 const blockchain = new BlockchainService();
@@ -14,7 +13,6 @@ const bitcore = new BitcoreService();
 const oracle = new OracleService(blockchain);
 
 const memcache = new MemcacheService(DefaultMemcacheTime);
-const localdb = new LeveldbService(DefaultLocaldbDir);
 const database = new DatabaseService();
 
 const ethereumAdapter = new EthereumAdapter(
@@ -28,7 +26,6 @@ const ethereumAdapter = new EthereumAdapter(
   {
     database: database,
     memcache: memcache,
-    localdb: localdb,
   },
   EthereumConfigs,
 );
