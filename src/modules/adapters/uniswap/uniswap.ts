@@ -37,6 +37,10 @@ export default class UniswapAdapter extends UniswapDatasync {
 
     const config = this.protocolConfig as UniswapProtocolConfig;
     for (const factoryConfig of config.factories) {
+      if (factoryConfig.birthday > options.timestamp) {
+        continue;
+      }
+
       const totalLiquidityUsd = await UniswapCore.getLiquidityUsd({
         storages: this.storages,
         services: this.services,
