@@ -4114,4 +4114,16 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceCustomList.OUSG],
   },
+  lvlwaUSDC: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.lvlwaUSDC],
+  },
+  lvlwaUSDT: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.lvlwaUSDT],
+  },
+  Curve_LP_steCRV: {
+    currency: 'usd',
+    sources: [OracleSourceDexLpTokenList.Curve_LP_steCRV],
+  },
 };

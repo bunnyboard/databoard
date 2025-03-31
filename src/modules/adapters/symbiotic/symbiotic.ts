@@ -4,20 +4,12 @@ import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
 import AdapterDataHelper from '../helpers';
 import { ContractCall } from '../../../services/blockchains/domains';
-import Erc20Abi from '../../../configs/abi/ERC20.json';
 import { formatBigNumberToNumber } from '../../../lib/utils';
 import ProtocolAdapter from '../protocol';
 import { SymbioticProtocolConfig } from '../../../configs/protocols/symbiotic';
-import { decodeEventLog } from 'viem';
 import CollateralAbi from '../../../configs/abi/symbiotic/DefaultCollateral.json';
-
-const Events = {
-  // deposit
-  Deposit: '0x5548c837ab068cf56a2c2479df0882a4922fd203edb7517321831d95078c5f62',
-
-  // withdraw
-  Withdraw: '0x9b1bfa7fa9ee420a16e124f794c35ac9f90472acc99140eb2f6447c714cad8eb',
-};
+import FactoryAbi from '../../../configs/abi/symbiotic/DefaultCollateralFactory.json';
+import VaultAbi from '../../../configs/abi/symbiotic/Vault.json';
 
 export default class SymbioticAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.symbiotic';
@@ -33,107 +25,100 @@ export default class SymbioticAdapter extends ProtocolAdapter {
       protocol: this.protocolConfig.protocol,
       birthday: this.protocolConfig.birthday,
       timestamp: options.timestamp,
-      breakdown: {
-        [symbioticConfig.chain]: {},
-      },
-
+      breakdown: {},
       ...getInitialProtocolCoreMetrics(),
       totalSupplied: 0,
-      volumes: {
-        deposit: 0,
-        withdraw: 0,
-      },
     };
 
-    if (symbioticConfig.birthday > options.timestamp) {
-      return null;
-    }
+    for (const factoryConfig of symbioticConfig.factories) {
+      if (factoryConfig.birthday > options.timestamp) {
+        continue;
+      }
 
-    const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-      symbioticConfig.chain,
-      options.timestamp,
-    );
-    const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-      symbioticConfig.chain,
-      options.beginTime,
-    );
-    const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-      symbioticConfig.chain,
-      options.endTime,
-    );
+      if (!protocolData.breakdown[factoryConfig.chain]) {
+        protocolData.breakdown[factoryConfig.chain] = {};
+      }
 
-    const calls: Array<ContractCall> = symbioticConfig.defaultCollaterals.map((item) => {
-      return {
-        abi: Erc20Abi,
-        target: item.token,
-        method: 'balanceOf',
-        params: [item.address],
-      };
-    });
+      const blockNumber = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        factoryConfig.chain,
+        options.timestamp,
+      );
 
-    const balances = await this.services.blockchain.evm.multicall({
-      chain: symbioticConfig.chain,
-      blockNumber: blockNumber,
-      calls: calls,
-    });
-
-    for (let i = 0; i < symbioticConfig.defaultCollaterals.length; i++) {
-      const token = await this.services.blockchain.evm.getTokenInfo({
-        chain: symbioticConfig.chain,
-        address: symbioticConfig.defaultCollaterals[i].token,
+      const totalEntities = await this.services.blockchain.evm.readContract({
+        chain: factoryConfig.chain,
+        abi: FactoryAbi,
+        target: factoryConfig.factory,
+        method: 'totalEntities',
+        params: [],
+        blockNumber: blockNumber,
       });
-      if (token) {
-        const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-          chain: symbioticConfig.chain,
-          address: token.address,
-          timestamp: options.timestamp,
+
+      const getEntitiesCalls: Array<ContractCall> = [];
+      for (let i = 0; i < Number(totalEntities); i++) {
+        getEntitiesCalls.push({
+          abi: FactoryAbi,
+          target: factoryConfig.factory,
+          method: 'entity',
+          params: [i],
         });
+      }
+      const getEntitiesResults = await this.services.blockchain.evm.multicall({
+        chain: factoryConfig.chain,
+        blockNumber: blockNumber,
+        calls: getEntitiesCalls,
+      });
 
-        const balanceUsd =
-          formatBigNumberToNumber(balances[i] ? balances[i].toString() : '0', token.decimals) * tokenPriceUsd;
-
-        protocolData.totalAssetDeposited += balanceUsd;
-        protocolData.totalValueLocked += balanceUsd;
-        (protocolData.totalSupplied as number) += balanceUsd;
-
-        if (!protocolData.breakdown[token.chain][token.address]) {
-          protocolData.breakdown[token.chain][token.address] = {
-            ...getInitialProtocolCoreMetrics(),
-            totalSupplied: 0,
-            volumes: {
-              deposit: 0,
-              withdraw: 0,
-            },
-          };
-        }
-
-        protocolData.breakdown[token.chain][token.address].totalAssetDeposited += balanceUsd;
-        protocolData.breakdown[token.chain][token.address].totalValueLocked += balanceUsd;
-        (protocolData.breakdown[token.chain][token.address].totalSupplied as number) += balanceUsd;
-
-        const logs = await this.services.blockchain.evm.getContractLogs({
-          chain: symbioticConfig.chain,
-          address: symbioticConfig.defaultCollaterals[i].address,
-          fromBlock: beginBlock,
-          toBlock: endBlock,
+      const getVaultInfoCalls: Array<ContractCall> = [];
+      for (const entity of getEntitiesResults) {
+        getVaultInfoCalls.push({
+          abi: factoryConfig.version === 'default' ? CollateralAbi : VaultAbi,
+          target: entity,
+          method: factoryConfig.version === 'default' ? 'asset' : 'collateral',
+          params: [],
         });
-        for (const log of logs) {
-          if (log.topics[0] === Events.Deposit || log.topics[0] === Events.Withdraw) {
-            const event: any = decodeEventLog({
-              abi: CollateralAbi,
-              topics: log.topics,
-              data: log.data,
-            });
+        getVaultInfoCalls.push({
+          abi: factoryConfig.version === 'default' ? CollateralAbi : VaultAbi,
+          target: entity,
+          method: factoryConfig.version === 'default' ? 'totalSupply' : 'totalStake',
+          params: [],
+        });
+      }
+      const getVaultInfoResults = await this.services.blockchain.evm.multicall({
+        chain: factoryConfig.chain,
+        blockNumber: blockNumber,
+        calls: getVaultInfoCalls,
+      });
 
-            const amountUsd = formatBigNumberToNumber(event.args.amount.toString(), token.decimals) * tokenPriceUsd;
+      for (let i = 0; i < getEntitiesResults.length; i++) {
+        const token = await this.services.blockchain.evm.getTokenInfo({
+          chain: factoryConfig.chain,
+          address: getVaultInfoResults[i * 2],
+        });
+        if (token) {
+          const tokenPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+            chain: token.chain,
+            address: token.address,
+            timestamp: options.timestamp,
+          });
 
-            if (log.topics[0] === Events.Deposit) {
-              (protocolData.volumes.deposit as number) += amountUsd;
-              (protocolData.breakdown[token.chain][token.address].volumes.deposit as number) += amountUsd;
-            } else {
-              (protocolData.volumes.withdraw as number) += amountUsd;
-              (protocolData.breakdown[token.chain][token.address].volumes.withdraw as number) += amountUsd;
+          const balance = getVaultInfoResults[i * 2 + 1];
+          const totalDepositedUsd =
+            formatBigNumberToNumber(balance ? balance.toString() : '0', token.decimals) * tokenPriceUsd;
+
+          if (totalDepositedUsd > 0) {
+            protocolData.totalAssetDeposited += totalDepositedUsd;
+            protocolData.totalValueLocked += totalDepositedUsd;
+            (protocolData.totalSupplied as number) += totalDepositedUsd;
+
+            if (!protocolData.breakdown[token.chain][token.address]) {
+              protocolData.breakdown[token.chain][token.address] = {
+                ...getInitialProtocolCoreMetrics(),
+                totalSupplied: 0,
+              };
             }
+            protocolData.breakdown[token.chain][token.address].totalAssetDeposited += totalDepositedUsd;
+            protocolData.breakdown[token.chain][token.address].totalValueLocked += totalDepositedUsd;
+            (protocolData.breakdown[token.chain][token.address].totalSupplied as number) += totalDepositedUsd;
           }
         }
       }

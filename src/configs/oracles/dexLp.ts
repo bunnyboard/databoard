@@ -129,6 +129,12 @@ export const OracleSourceDexLpTokenList: {
     method: 'curve',
     address: '0x5a6a4d54456819380173272a5e8e9b9904bdf41b',
   },
+  Curve_LP_steCRV: {
+    chain: 'ethereum',
+    type: OracleTypes.dexLpToken,
+    method: 'curve',
+    address: '0xDC24316b9AE028F1497c275EB9192a3Ea0f67022',
+  },
   Pendle_market_stETH: {
     chain: 'ethereum',
     type: OracleTypes.dexLpToken,

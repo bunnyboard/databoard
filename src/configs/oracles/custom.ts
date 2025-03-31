@@ -120,6 +120,20 @@ export const OracleSourceCustomList: {
     address: '0xa663b02cf0a4b149d2ad41910cb81e23e1c41c32',
     underlyingToken: TokensBook.ethereum['0x853d955acef822db058eb8505911ed77f175b99e'],
   },
+  lvlwaUSDC: {
+    type: 'stakingTokenWrapper',
+    chain: 'ethereum',
+    method: 'balance',
+    address: '0x78c6b27be6db520d332b1b44323f94bc831f5e33',
+    underlyingToken: TokensBook.ethereum['0x98c23e9d8f34fefb1b7bd6a91b7ff122f4e16f5c'],
+  },
+  lvlwaUSDT: {
+    type: 'stakingTokenWrapper',
+    chain: 'ethereum',
+    method: 'balance',
+    address: '0xb723377679b807370ae8615ae3e76f6d1e75a5f2',
+    underlyingToken: TokensBook.ethereum['0x23878914efe38d27c4d67ab83ed1b93a74d4086a'],
+  },
   sDOLA: {
     type: 'stakingTokenWrapper',
     chain: 'ethereum',

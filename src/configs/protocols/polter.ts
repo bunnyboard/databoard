@@ -33,5 +33,18 @@ export const PolterConfigs: AaveProtocolConfig = {
         address: '0xc588bF881A1a743d70D9dD3faF9EF4885eDAeDA7',
       },
     },
+    {
+      chain: ChainNames.sonic,
+      marketName: 'Main Market',
+      version: 2,
+      birthday: 1742774400, // Mon Mar 24 2025 00:00:00 GMT+0000
+      lendingPool: '0x4dE3E7E8bE48D6094cFA34323e6cC22308D56b52',
+      dataProvider: '0x60e790911f35226ada3b80dc7deaf5d8a6502131',
+      oracle: {
+        currency: 'usd',
+        decimals: 18,
+        address: '0xdBE14aaF6fb1A076f2744E88a908844cF9111282',
+      },
+    },
   ],
 };
