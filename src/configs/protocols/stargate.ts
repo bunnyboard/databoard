@@ -43,6 +43,8 @@ export const StargateChainIds: { [key: number]: string } = {
   30340: ChainNames.soneium,
   30362: ChainNames.berachain,
   30325: ChainNames.movement,
+  30332: ChainNames.sonic,
+  30145: ChainNames.gnosis,
 };
 
 export interface StargateBridgeConfig {
@@ -575,20 +577,61 @@ export const StargateConfigs: StargateProtocolConfig = {
         },
       ],
     },
-    // {
-    //   chain: ChainNames.taiko,
-    //   version: 2,
-    //   birthday: 1718409600, // Sat Jun 15 2024 00:00:00 GMT+0000
-    //   pools: [
-    //     {
-    //       address: '0x77C71633C34C3784ede189d74223122422492a0f',
-    //       token: '0x19e26B0638bf63aa9fa4d14c6baF8D52eBE86C5C',
-    //     },
-    //     {
-    //       address: '0x1C10CC06DC6D35970d1D53B2A23c76ef370d4135',
-    //       token: '0x9c2dc7377717603eB92b2655c5f2E7997a4945BD',
-    //     },
-    //   ]
-    // },
+    {
+      chain: ChainNames.sonic,
+      version: 2,
+      birthday: 1740009600, // Thu Feb 20 2025 00:00:00 GMT+0000
+      pools: [
+        {
+          address: '0xA272fFe20cFfe769CdFc4b63088DCD2C82a2D8F9',
+          token: '0x29219dd400f2bf60e5a23d13be72b486d4038894',
+        },
+      ],
+    },
+    {
+      chain: ChainNames.gnosis,
+      version: 2,
+      birthday: 1738627200, // Tue Feb 04 2025 00:00:00 GMT+0000
+      pools: [
+        {
+          address: '0xe9aBA835f813ca05E50A6C0ce65D0D74390F7dE7',
+          token: '0x6a023ccd1ff6f2045c3309768ead9e68f978f6e1',
+        },
+        {
+          address: '0xB1EeAD6959cb5bB9B20417d6689922523B2B86C3',
+          token: '0x2a22f9c3b484c3629090feed35f17ff8f88f76f0',
+        },
+      ],
+    },
+    {
+      chain: ChainNames.berachain,
+      version: 2,
+      birthday: 1737676800, // Fri Jan 24 2025 00:00:00 GMT+0000
+      pools: [
+        {
+          address: '0x45f1A95A4D3f3836523F5c83673c797f4d4d263B',
+          token: '0x2f6f07cdcf3588944bf4c42ac74ff24bf56e7590',
+        },
+        {
+          address: '0xAF54BE5B6eEc24d6BFACf1cce4eaF680A8239398',
+          token: '0x549943e04f40284185054145c6e4e9568c1d3241',
+        },
+      ],
+    },
+    {
+      chain: ChainNames.taiko,
+      version: 2,
+      birthday: 1718409600, // Sat Jun 15 2024 00:00:00 GMT+0000
+      pools: [
+        {
+          address: '0x77C71633C34C3784ede189d74223122422492a0f',
+          token: '0x19e26B0638bf63aa9fa4d14c6baF8D52eBE86C5C',
+        },
+        {
+          address: '0x1C10CC06DC6D35970d1D53B2A23c76ef370d4135',
+          token: '0x9c2dc7377717603eB92b2655c5f2E7997a4945BD',
+        },
+      ],
+    },
   ],
 };
