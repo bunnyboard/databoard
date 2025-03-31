@@ -577,7 +577,7 @@ export default class UniswapCore {
 
     for (const topic of topics) {
       const etherscanLogs = await options.services.indexer.etherscan.getLogsByTopic0AutoPaging({
-        database: options.storages.database,
+        database: null,
         chain: options.factoryConfig.chain,
         fromBlock: options.fromBlock,
         toBlock: options.toBlock,

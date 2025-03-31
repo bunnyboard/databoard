@@ -17,7 +17,7 @@ export const SubgraphConfigs: Array<SubgraphConfig> = [
     version: 'univ2',
     feeRate: 0.003,
     factoryAddress: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
-    fromIndex: 85500,
+    fromIndex: 186500,
     endpoint: getSubgraphEndpoint('EYCKATKGBKLWvSfwvBjzfCBmGwYNdVkduYXVivCsLRFu'),
   },
   // {

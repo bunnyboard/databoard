@@ -321,5 +321,6 @@ export function getProtocolAdapters(
     stablecoin: new StablecoinAdapter(services, storages, ProtocolConfigs.stablecoin),
     kodiak: new UniswapAdapter(services, storages, ProtocolConfigs.kodiak),
     spooky: new UniswapAdapter(services, storages, ProtocolConfigs.spooky),
+    hemiNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.hemiNativeBridge),
   };
 }

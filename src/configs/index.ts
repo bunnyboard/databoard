@@ -188,6 +188,7 @@ import { BlackrockusdConfigs } from './protocols/blackrock';
 import { StablecoinConfigs } from './protocols/stablecoin';
 import { KodiakConfigs } from './protocols/kodiak';
 import { SpookyConfigs } from './protocols/spooky';
+import { HemiNativeBridgeConfigs } from './protocols/hemi';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -426,4 +427,5 @@ export const ProtocolConfigs = {
   blackrockusd: BlackrockusdConfigs,
   kodiak: KodiakConfigs,
   spooky: SpookyConfigs,
+  hemiNativeBridge: HemiNativeBridgeConfigs,
 };

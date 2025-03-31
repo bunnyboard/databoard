@@ -97,6 +97,7 @@ export const ChainNames = {
   sui: 'sui',
   aptos: 'aptos',
   movement: 'movement',
+  hemi: 'hemi',
 };
 
 export const ProtocolNames = {
@@ -329,4 +330,5 @@ export const ProtocolNames = {
   ondofinance: 'ondofinance', // https://ondo.finance
   usdtb: 'usdtb', // https://usdtb.money
   kodiak: 'kodiak', // https://www.kodiak.finance
+  hemiNativeBridge: 'hemiNativeBridge',
 };
