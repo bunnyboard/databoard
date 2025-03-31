@@ -7,9 +7,11 @@ import { MemcacheService } from '../../../services/caching/memcache';
 import DatabaseService from '../../../services/database/database';
 import { DefaultMemcacheTime } from '../../../configs';
 import { EthereumConfigs } from '../../../configs/protocols/ethereum';
+import EtherscanService from '../../../services/indexer/etherscan';
 
 const blockchain = new BlockchainService();
 const bitcore = new BitcoreService();
+const etherscan = new EtherscanService(null);
 const oracle = new OracleService(blockchain);
 
 const memcache = new MemcacheService(DefaultMemcacheTime);
@@ -20,6 +22,9 @@ const ethereumAdapter = new EthereumAdapter(
     blockchain: {
       evm: blockchain,
       bitcore: bitcore,
+    },
+    indexer: {
+      etherscan,
     },
     oracle: oracle,
   },

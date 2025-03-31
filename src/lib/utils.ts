@@ -1,5 +1,6 @@
 import BigNumber from 'bignumber.js';
 import dayjs from 'dayjs';
+import crypto from 'crypto';
 
 export async function sleep(seconds: number) {
   return new Promise((resolve) => setTimeout(resolve, seconds * 1000));
@@ -126,4 +127,9 @@ export function removeNullBytes(str: string): string {
     .split('')
     .filter((char) => char.codePointAt(0))
     .join('');
+}
+
+// simple generate hash for given string
+export function generateHashMD5(value: string): string {
+  return crypto.createHash('md5').update(value).digest('hex');
 }

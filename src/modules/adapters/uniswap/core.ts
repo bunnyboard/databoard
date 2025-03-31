@@ -9,7 +9,7 @@ import UniswapV2PairAbi from '../../../configs/abi/uniswap/UniswapV2Pair.json';
 import UniswapV3PoolAbi from '../../../configs/abi/uniswap/UniswapV3Pool.json';
 import { Address, decodeEventLog } from 'viem';
 import { AddressMulticall3 } from '../../../configs/constants';
-import EtherscanLibs, { EtherscanLogItem } from '../../libs/etherscan';
+import { EtherscanLogItem } from '../../libs/etherscan';
 
 interface GetLiquidityDataOptions {
   storages: ContextStorages;
@@ -567,7 +567,7 @@ export default class UniswapCore {
     return result;
   }
 
-  protected static async getLogsFromEtherscan(options: GetLogsDataOptions): Promise<Array<EtherscanLogItem>> {
+  public static async getLogsFromEtherscan(options: GetLogsDataOptions): Promise<Array<EtherscanLogItem>> {
     let logs: Array<EtherscanLogItem> = [];
 
     const topics =
@@ -576,7 +576,8 @@ export default class UniswapCore {
         : Object.values(UniswapV3Events);
 
     for (const topic of topics) {
-      const etherscanLogs = await EtherscanLibs.getLogsByTopic0AutoPaging({
+      const etherscanLogs = await options.services.indexer.etherscan.getLogsByTopic0AutoPaging({
+        database: options.storages.database,
         chain: options.factoryConfig.chain,
         fromBlock: options.fromBlock,
         toBlock: options.toBlock,

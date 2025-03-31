@@ -4,6 +4,7 @@ import BitcoreService from '../services/blockchains/bitcore';
 import BlockchainService from '../services/blockchains/blockchain';
 import { MemcacheService } from '../services/caching/memcache';
 import DatabaseService from '../services/database/database';
+import EtherscanService from '../services/indexer/etherscan';
 import OracleService from '../services/oracle/oracle';
 import { ContextServices, ContextStorages } from '../types/namespaces';
 
@@ -17,11 +18,15 @@ export class BasicCommand {
     const blockchain = new BlockchainService();
     const bitcore = new BitcoreService();
     const oracle = new OracleService(blockchain);
+    const etherscan = new EtherscanService(envConfig.etherscan.etherscanApiKey);
 
     return {
       blockchain: {
         evm: blockchain,
         bitcore: bitcore,
+      },
+      indexer: {
+        etherscan,
       },
       oracle: oracle,
     };

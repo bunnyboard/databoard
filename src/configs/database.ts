@@ -25,6 +25,10 @@ export const DatabaseCollectionConfigs: DatabaseCollectionConfig = {
         transactionHash: 1,
         logIndex: 1,
       },
+      {
+        chain: 1,
+        'topics.0': 1,
+      },
     ],
   },
   blockLogs: {

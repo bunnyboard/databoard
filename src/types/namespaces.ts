@@ -1,6 +1,7 @@
 import { IBitcoreService, IBlockchainService } from '../services/blockchains/domains';
 import { IMemcacheService } from '../services/caching/domains';
 import { IDatabaseService } from '../services/database/domains';
+import { IEtherscanService } from '../services/indexer/domains';
 import { IOracleService } from '../services/oracle/domains';
 import { ProtocolConfig } from './base';
 import {
@@ -25,6 +26,9 @@ export interface ContextServices {
 
     // service for bitcore like chains: bitcoin, litecoin, ...
     bitcore: IBitcoreService;
+  };
+  indexer: {
+    etherscan: IEtherscanService;
   };
   oracle: IOracleService;
 }
