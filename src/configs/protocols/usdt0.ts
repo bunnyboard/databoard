@@ -60,5 +60,27 @@ export const Usdt0Configs: Usdt0ProtocolConfig = {
         address: '0x779ded0c9e1022225f8e0630b35a9b54be713736',
       },
     },
+    {
+      chain: ChainNames.optimism,
+      birthday: 1741996800, // Sat Mar 15 2025 00:00:00 GMT+0000
+      adapter: '0xF03b4d9AC1D5d1E7c4cEf54C2A313b9fe051A0aD',
+      token: {
+        chain: ChainNames.optimism,
+        symbol: 'USDT',
+        decimals: 6,
+        address: '0x01bff41798a0bcf287b996046ca68b395dbc1071',
+      },
+    },
+    {
+      chain: ChainNames.unichain,
+      birthday: 1741996800, // Sat Mar 15 2025 00:00:00 GMT+0000
+      adapter: '0xc07bE8994D035631c36fb4a89C918CeFB2f03EC3',
+      token: {
+        chain: ChainNames.unichain,
+        symbol: 'USDT',
+        decimals: 6,
+        address: '0x9151434b16b9763660705744891fa906f660ecc5',
+      },
+    },
   ],
 };

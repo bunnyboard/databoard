@@ -1319,6 +1319,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0x9c7beba8f6ef6643abd725e45a4e8387ef260649': OracleSourceConfigs.G,
     '0x768be13e1680b5ebe0024c42c896e3db59ec0149': OracleSourceConfigs.SKI,
     '0x211cc4dd073734da055fbf44a2b4667d5e5fe5d2': OracleSourceConfigs.sUSDe,
     '0x1db0c569ebb4a8b57ac01833b9792f526305e062': OracleSourceConfigs.GENOME,
@@ -2232,6 +2233,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
 
   // tokens on scroll
   scroll: {
+    '0x1467b62a6ae5cdcb10a6a8173cfe187dd2c5a136': OracleSourceConfigs.SIS,
     '0xf9af83fc41e0cc2af2fba93644d542df6ea0f2b7': OracleSourceConfigs.POOL,
     '0x087C440F251Ff6Cfe62B86DdE1bE558B95b4bb9b': OracleSourceConfigs.BOLD,
     '0x60d01ec2d5e98ac51c8b4cf84dfcce98d527c747': OracleSourceConfigs.IZI,
@@ -2588,6 +2590,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   },
 
   taiko: {
+    '0xa51894664a773981c6c112c43ce576f315d5b1b6': OracleSourceConfigs.ETH,
     '0x541fd749419ca806a8bc7da8ac23d346f2df8b77': OracleSourceConfigs.SolvBTC,
     '0x9c2dc7377717603eb92b2655c5f2e7997a4945bd': OracleSourceConfigs.USDT,
     '0x19e26b0638bf63aa9fa4d14c6baf8d52ebe86c5c': OracleSourceConfigs.USDC,
@@ -2738,6 +2741,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   },
 
   merlin: {
+    '0xf6d226f9dc15d9bb51182815b320d3fbe324e1ba': OracleSourceConfigs.WBTC,
     '0xb880fd278198bd590252621d4cd071b1842e9bcd': OracleSourceConfigs.BTC,
     '0x41d9036454be47d3745a823c4aacd0e29cfb0f71': OracleSourceConfigs.BTC,
   },

@@ -103,18 +103,18 @@ export const ZerolendConfigs: AaveProtocolConfig = {
         address: '0xff679e5b4178a2f74a56f0e2c0e1fa1c80579385',
       },
     },
-    {
-      chain: ChainNames.base,
-      marketName: 'Main Market',
-      version: 3,
-      birthday: 1727136000, // Tue Sep 24 2024 00:00:00 GMT+0000
-      lendingPool: '0x766f21277087E18967c1b10bF602d8Fe56d0c671',
-      dataProvider: '0xA754b2f1535287957933db6e2AEE2b2FE6f38588',
-      oracle: {
-        currency: 'usd',
-        address: '0xF49Ee3EA9C56D90627881d88004aaBDFc44Fd82c',
-      },
-    },
+    // {
+    //   chain: ChainNames.base,
+    //   marketName: 'Main Market',
+    //   version: 3,
+    //   birthday: 1727136000, // Tue Sep 24 2024 00:00:00 GMT+0000
+    //   lendingPool: '0x766f21277087E18967c1b10bF602d8Fe56d0c671',
+    //   dataProvider: '0xA754b2f1535287957933db6e2AEE2b2FE6f38588',
+    //   oracle: {
+    //     currency: 'usd',
+    //     address: '0xF49Ee3EA9C56D90627881d88004aaBDFc44Fd82c',
+    //   },
+    // },
     {
       chain: ChainNames.zircuit,
       marketName: 'Main Market',
@@ -137,6 +137,54 @@ export const ZerolendConfigs: AaveProtocolConfig = {
       oracle: {
         currency: 'usd',
         address: '0x78ad3d53045b6582841e2a1a688c52be2ca2a7a7',
+      },
+    },
+    {
+      chain: ChainNames.corn,
+      marketName: 'Main Market',
+      version: 3,
+      birthday: 1733875200, // Wed Dec 11 2024 00:00:00 GMT+0000
+      lendingPool: '0x927b3A8e5068840C9758b0b88207b28aeeb7a3fd',
+      dataProvider: '0x2f7e54ff5d45f77bFfa11f2aee67bD7621Eb8a93',
+      oracle: {
+        currency: 'usd',
+        address: '0x67f93d36792c49a4493652B91ad4bD59f428AD15',
+      },
+    },
+    {
+      chain: ChainNames.berachain,
+      marketName: 'Main Market',
+      version: 3,
+      birthday: 1739232000, // Tue Feb 11 2025 00:00:00 GMT+0000
+      lendingPool: '0xE96Feed449e1E5442937812f97dB63874Cd7aB84',
+      dataProvider: '0x26416E170aDb35B0d23800602cf98853dBDeB74F',
+      oracle: {
+        currency: 'usd',
+        address: '0xA249579e05fC7E66B1dbC939AB9A81C1acB1933b',
+      },
+    },
+    {
+      chain: ChainNames.abstract,
+      marketName: 'Main Market',
+      version: 3,
+      birthday: 1738022400, // Tue Jan 28 2025 00:00:00 GMT+0000
+      lendingPool: '0x7C4baE19949D77B7259Dc4A898e64DC5c2d10b02',
+      dataProvider: '0x8EEAE4dD40EBee7Bb6471c47d4d867539CF53ccF',
+      oracle: {
+        currency: 'usd',
+        address: '0xFf2D78CB0db41a99863B05A16457D6316C405ddf',
+      },
+    },
+    {
+      chain: ChainNames.hemi,
+      marketName: 'Main Market',
+      version: 3,
+      birthday: 1741737600, // Wed Mar 12 2025 00:00:00 GMT+0000
+      lendingPool: '0xdB7e029394a7cdbE27aBdAAf4D15e78baC34d6E8',
+      dataProvider: '0x9698FdF843cbe4531610aC231B0047d9FFc13bC6',
+      oracle: {
+        currency: 'usd',
+        address: '0x817A4FEd0A801C060c8627756b2f21077e80AA26',
       },
     },
   ],

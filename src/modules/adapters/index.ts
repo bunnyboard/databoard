@@ -100,6 +100,7 @@ import StarknetNativeBridgeAdapter from './starknet/starknetBridge';
 import SuperformAdapter from './superform/superform';
 import SuperrareAdapter from './superrare/superrare';
 import SwellAdapter from './swell/swell';
+import SymbiosisAdapter from './symbiosis/symbiosis';
 import SymbioticAdapter from './symbiotic/symbiotic';
 import SynapseAdapter from './synapse/synapse';
 import TaikoNativeBridgeAdapter from './taiko/nativeBridge';
@@ -322,5 +323,6 @@ export function getProtocolAdapters(
     kodiak: new UniswapAdapter(services, storages, ProtocolConfigs.kodiak),
     spooky: new UniswapAdapter(services, storages, ProtocolConfigs.spooky),
     hemiNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.hemiNativeBridge),
+    symbiosis: new SymbiosisAdapter(services, storages, ProtocolConfigs.symbiosis),
   };
 }

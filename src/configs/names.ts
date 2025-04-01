@@ -51,6 +51,7 @@ export const ChainNames = {
   immutablezkevm: 'immutablezkevm',
   fuse: 'fuse',
   boba: 'boba',
+  bobabnb: 'bobabnb',
   iotaevm: 'iotaevm',
   rari: 'rari',
   flare: 'flare',
@@ -98,6 +99,8 @@ export const ChainNames = {
   aptos: 'aptos',
   movement: 'movement',
   hemi: 'hemi',
+  corn: 'corn',
+  telos: 'telos',
 };
 
 export const ProtocolNames = {

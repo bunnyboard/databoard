@@ -207,5 +207,11 @@ export const AcrossConfigs: AcrossProtocolConfig = {
       address: '0x3baD7AD0728f9917d1Bf08af5782dCbD516cDd96',
       tokens: ['0x4200000000000000000000000000000000000006', '0xbA9986D2381edf1DA03B0B9c1f8b00dc4AacC369'],
     },
+    {
+      chain: ChainNames.unichain,
+      birthday: 1738713600, // Wed Feb 05 2025 00:00:00 GMT+0000
+      address: '0x09aea4b2242abC8bb4BB78D537A67a245A7bEC64',
+      tokens: ['0x4200000000000000000000000000000000000006', '0x078d782b760474a361dda0af3839290b0ef57ad6'],
+    },
   ],
 };
