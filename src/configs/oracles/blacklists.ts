@@ -58,6 +58,7 @@ export const OracleTokenBlacklists: { [key: string]: Array<string> } = {
     '0x9660af3b1955648a72f5c958e80449032d645755',
   ],
   linea: ['0x0b1a02a7309dfbfad1cd4adc096582c87e8a3ac1'],
+  kava: ['0xfa9343c3897324496a05fc75abed6bac29f8a40f'],
   bnbchain: ['0x94c6b279b5df54b335ae51866d6e2a56bf5ef9b7', '0xb2ea51baa12c461327d12a2069d47b30e680b69d'],
   fraxtal: ['0x5860a0bf37133f8461b2dede7c80e55d6bff3721'],
   polygon: [

@@ -4126,4 +4126,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceDexLpTokenList.Curve_LP_steCRV],
   },
+  TLOS: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.TLOS_WBNB],
+  },
 };

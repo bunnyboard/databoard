@@ -1764,6 +1764,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.BNB,
     [AddressE]: OracleSourceConfigs.BNB,
     [AddressF]: OracleSourceConfigs.BNB,
+    '0xb6c53431608e626ac81a9776ac3e999c5556717c': OracleSourceConfigs.TLOS,
     '0x8ec1877698acf262fe8ad8a295ad94d6ea258988': OracleSourceConfigs.USDT,
     '0x42c95788f791a2be3584446854c8d9bb01be88a9': OracleSourceConfigs.HBR,
     '0x8a420aaca0c92e3f97cdcfdd852e01ac5b609452': OracleSourceConfigs.Univ2_LP_frxETH_WETH,
@@ -2860,5 +2861,11 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   story: {
     '0xf1815bd50389c46847f0bda824ec8da914045d14': OracleSourceConfigs.USDC,
     '0x0000000000000000000000000000000000000000': OracleSourceConfigs.IP,
+  },
+
+  telos: {
+    '0x0000000000000000000000000000000000000000': OracleSourceConfigs.TLOS,
+    '0xd102ce6a4db07d247fcc28f366a623df0938ca9e': OracleSourceConfigs.TLOS,
+    '0x818ec0a7fe18ff94269904fced6ae3dae6d6dc0b': OracleSourceConfigs.USDC,
   },
 };

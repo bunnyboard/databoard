@@ -44,6 +44,10 @@ export default class SymbiosisAdapter extends ProtocolAdapter {
     // docs: https://docs.symbiosis.finance/crosschain-liquidity-engine/symbiosis-routing-contracts
     const portalEvents: { [key: string]: Array<any> } = {};
     for (const portalConfig of symbiosisConfig.portals) {
+      if (portalConfig.birthday > options.timestamp) {
+        continue;
+      }
+
       const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
         portalConfig.chain,
         options.beginTime,
