@@ -4130,4 +4130,16 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'bnb',
     sources: [OracleSourceUniswapv2List.TLOS_WBNB],
   },
+  WIZZ: {
+    currency: 'bera',
+    sources: [OracleSourceBalancerList.WIZZ_WBERA],
+  },
+  bm: {
+    currency: 'bera',
+    sources: [OracleSourceUniswapv2List.bm_WBERA],
+  },
+  BAO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BAO_WETH],
+  },
 };

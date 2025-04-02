@@ -3247,6 +3247,23 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
       address: '0x6969696969696969696969696969696969696969',
     },
   },
+  bm_WBERA: {
+    type: 'univ2',
+    chain: 'berachain',
+    address: '0xf4445f66f0e72b75e24407b1f78441bf7fe15752',
+    baseToken: {
+      chain: 'berachain',
+      symbol: 'bm',
+      decimals: 18,
+      address: '0xb749584f9fc418cf905d54f462fdbfdc7462011b',
+    },
+    quotaToken: {
+      chain: 'berachain',
+      symbol: 'WBERA',
+      decimals: 18,
+      address: '0x6969696969696969696969696969696969696969',
+    },
+  },
   NILE_WETH: {
     type: 'univ2',
     chain: 'linea',
@@ -3603,5 +3620,12 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     address: '0x3edb06e2d182d133864fe7c0f9b4c204bbf61d4e',
     baseToken: TokensBook.bnbchain['0xb6c53431608e626ac81a9776ac3e999c5556717c'],
     quotaToken: TokensBook.bnbchain['0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c'],
+  },
+  BAO_WETH: {
+    type: 'univ2',
+    chain: 'ethereum',
+    address: '0x8d7443530d6b03c35c9291f9e43b1d18b9cfa084',
+    baseToken: TokensBook.ethereum['0xce391315b414d4c7555956120461d21808a69f3a'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
 };

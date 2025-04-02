@@ -252,4 +252,26 @@ export const OracleSourceBalancerList: {
       address: '0x6969696969696969696969696969696969696969',
     },
   },
+  WIZZ_WBERA: {
+    type: 'balv2_Weight',
+    chain: 'berachain',
+    currency: 'bera',
+    vault: '0x4Be03f781C497A489E3cB0287833452cA9B9E80B',
+    address: '0x1b7b061091bd2c900723107889fe44f825d6c921',
+    poolId: '0x1b7b061091bd2c900723107889fe44f825d6c92100020000000000000000010c',
+    baseWeight: 0.5,
+    baseToken: {
+      chain: 'berachain',
+      symbol: 'WIZZ',
+      decimals: 18,
+      address: '0x01c8a5ccad23a4d3764ef71c403862160aa2913a',
+    },
+    quotaWeight: 0.5,
+    quotaToken: {
+      chain: 'berachain',
+      symbol: 'WBERA',
+      decimals: 18,
+      address: '0x6969696969696969696969696969696969696969',
+    },
+  },
 };

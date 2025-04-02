@@ -9,6 +9,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0xce391315b414d4c7555956120461d21808a69f3a': OracleSourceConfigs.BAO,
     '0xe39b5f5638a209c1a6b6cdffe5d37f7ac99fcc84': OracleSourceConfigs.ENA,
     '0x06325440d014e39736583c165c2963ba99faf14e': OracleSourceConfigs.Curve_LP_steCRV,
     '0x475d3eb031d250070b63fa145f0fcfc5d97c304a': OracleSourceConfigs.mETH,
@@ -816,6 +817,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0xdd4ab36f31891ff25a69121fccc732d93eb976dd': OracleSourceConfigs.GYD,
     '0x69420f9e38a4e60a62224c489be4bf7a94402496': OracleSourceConfigs.MONEY,
     '0xe957ce03ccdd88f02ed8b05c9a3a28abef38514a': OracleSourceConfigs.Curve_LP_IBTC_WBTC,
     '0xe62880cc6872c9e9fb1ddd73f400850fdabe798d': OracleSourceConfigs.ETH,
@@ -1319,6 +1321,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0xedfa23602d0ec14714057867a78d01e94176bea0': OracleSourceConfigs.rsETH,
     '0x9c7beba8f6ef6643abd725e45a4e8387ef260649': OracleSourceConfigs.G,
     '0x768be13e1680b5ebe0024c42c896e3db59ec0149': OracleSourceConfigs.SKI,
     '0x211cc4dd073734da055fbf44a2b4667d5e5fe5d2': OracleSourceConfigs.sUSDe,
@@ -2823,6 +2826,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   },
 
   berachain: {
+    '0xb749584f9fc418cf905d54f462fdbfdc7462011b': OracleSourceConfigs.bm,
+    '0x01c8a5ccad23a4d3764ef71c403862160aa2913a': OracleSourceConfigs.WIZZ,
     '0x09d9420332bff75522a45fcff4855f82a0a3ff50': OracleSourceConfigs.DINERO,
     '0x69f1e971257419b1e9c405a553f252c64a29a30a': OracleSourceConfigs.iBGT,
     '0xecac9c5f704e954931349da37f60e39f515c11c1': OracleSourceConfigs.LBTC,
