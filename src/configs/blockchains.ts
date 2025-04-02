@@ -480,7 +480,7 @@ export const BlockchainConfigs: { [key: string]: Blockchain } = {
     name: ChainNames.iotaevm,
     family: 'evm',
     chainId: 8822,
-    nodeRpc: String(process.env.BLOCKCHAIN_IOTA_NODE),
+    nodeRpc: String(process.env.BLOCKCHAIN_IOTAEVM_NODE),
     nativeToken: {
       chain: ChainNames.iotaevm,
       address: AddressZero,
