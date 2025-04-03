@@ -1,0 +1,116 @@
+{
+  "0x096c64d79a85c8fd2e963c4abd9373301d2cf801": {
+    "chain": "sonic",
+    "symbol": "ICR",
+    "decimals": 8,
+    "address": "0x096c64d79a85c8fd2e963c4abd9373301d2cf801"
+  },
+  "0x1249c65afb11d179ffb3ce7d4eedd1d9b98ad006": {
+    "chain": "sonic",
+    "symbol": "ETH",
+    "decimals": 18,
+    "address": "0x1249c65afb11d179ffb3ce7d4eedd1d9b98ad006"
+  },
+  "0x17501034df227d8565a8c11f41df2418f5d403b6": {
+    "chain": "sonic",
+    "symbol": "JST_t",
+    "decimals": 18,
+    "address": "0x17501034df227d8565a8c11f41df2418f5d403b6"
+  },
+  "0x17f235fd5974318e4e2a5e37919a209f7c37a6d1": {
+    "chain": "sonic",
+    "symbol": "USDD_t",
+    "decimals": 18,
+    "address": "0x17f235fd5974318e4e2a5e37919a209f7c37a6d1"
+  },
+  "0x185a4091027e2db459a2433f85f894dc3013aeb5": {
+    "chain": "sonic",
+    "symbol": "BNB",
+    "decimals": 18,
+    "address": "0x185a4091027e2db459a2433f85f894dc3013aeb5"
+  },
+  "0x23181f21dea5936e24163ffaba4ea3b316b57f3c": {
+    "chain": "sonic",
+    "symbol": "WBTT",
+    "decimals": 18,
+    "address": "0x23181f21dea5936e24163ffaba4ea3b316b57f3c"
+  },
+  "0x43559b1786c06d6b826e3cf9aa667ed8840f9106": {
+    "chain": "sonic",
+    "symbol": "ADA_b",
+    "decimals": 18,
+    "address": "0x43559b1786c06d6b826e3cf9aa667ed8840f9106"
+  },
+  "0x53c56ece35f8cab135e13d6d00499dfc7c07a92e": {
+    "chain": "sonic",
+    "symbol": "SUSHI_e",
+    "decimals": 18,
+    "address": "0x53c56ece35f8cab135e13d6d00499dfc7c07a92e"
+  },
+  "0x76accfb75b8bb7c6c295f04d19c1d184d274c853": {
+    "chain": "sonic",
+    "symbol": "SUN_t",
+    "decimals": 18,
+    "address": "0x76accfb75b8bb7c6c295f04d19c1d184d274c853"
+  },
+  "0x9888221fe6b5a2ad4ce7266c7826d2ad74d40ccf": {
+    "chain": "sonic",
+    "symbol": "WBTC_e",
+    "decimals": 8,
+    "address": "0x9888221fe6b5a2ad4ce7266c7826d2ad74d40ccf"
+  },
+  "0x9b5f27f6ea9bbd753ce3793a07cba3c74644330d": {
+    "chain": "sonic",
+    "symbol": "USDT_b",
+    "decimals": 18,
+    "address": "0x9b5f27f6ea9bbd753ce3793a07cba3c74644330d"
+  },
+  "0xad9a21ff0c9d854ca8c1360af28d4fcbdac53b4f": {
+    "chain": "sonic",
+    "symbol": "FTM_e",
+    "decimals": 18,
+    "address": "0xad9a21ff0c9d854ca8c1360af28d4fcbdac53b4f"
+  },
+  "0xae17940943ba9440540940db0f1877f101d39e8b": {
+    "chain": "sonic",
+    "symbol": "USDC_e",
+    "decimals": 6,
+    "address": "0xae17940943ba9440540940db0f1877f101d39e8b"
+  },
+  "0xca424b845497f7204d9301bd13ff87c0e2e86fcf": {
+    "chain": "sonic",
+    "symbol": "USDC_b",
+    "decimals": 18,
+    "address": "0xca424b845497f7204d9301bd13ff87c0e2e86fcf"
+  },
+  "0xdb28719f7f938507dbfe4f0eae55668903d34a15": {
+    "chain": "sonic",
+    "symbol": "USDT_t",
+    "decimals": 6,
+    "address": "0xdb28719f7f938507dbfe4f0eae55668903d34a15"
+  },
+  "0xde47772ac041a4ccf3c865632131d1093e51c02d": {
+    "chain": "sonic",
+    "symbol": "BUSD_b",
+    "decimals": 18,
+    "address": "0xde47772ac041a4ccf3c865632131d1093e51c02d"
+  },
+  "0xe887512ab8bc60bcc9224e1c3b5be68e26048b8b": {
+    "chain": "sonic",
+    "symbol": "USDT_e",
+    "decimals": 6,
+    "address": "0xe887512ab8bc60bcc9224e1c3b5be68e26048b8b"
+  },
+  "0xedf53026aea60f8f75fca25f8830b7e2d6200662": {
+    "chain": "sonic",
+    "symbol": "TRX",
+    "decimals": 6,
+    "address": "0xedf53026aea60f8f75fca25f8830b7e2d6200662"
+  },
+  "0xfd3b093ab6bd4f40810f19e5ff822ac8cc7e3184": {
+    "chain": "sonic",
+    "symbol": "LINK_e",
+    "decimals": 18,
+    "address": "0xfd3b093ab6bd4f40810f19e5ff822ac8cc7e3184"
+  }
+}

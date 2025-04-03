@@ -95,6 +95,12 @@
     "decimals": 18,
     "address": "0x27d0a2b5316b98088294378692f4eabfb3222e36"
   },
+  "0x2878295d69aa3bdcf9004fcf362f0959992d801c": {
+    "chain": "zksync",
+    "symbol": "SolvBTC.BBN",
+    "decimals": 18,
+    "address": "0x2878295d69aa3bdcf9004fcf362f0959992d801c"
+  },
   "0x28a487240e4d45cff4a2980d334cc933b7483842": {
     "chain": "zksync",
     "symbol": "MATIC",
@@ -329,6 +335,12 @@
     "decimals": 18,
     "address": "0x7400793aad94c8ca801aa036357d10f5fd0ce08f"
   },
+  "0x74ed17608cc2b5f30a59d6af07c9ad1b1ab3a5b1": {
+    "chain": "zksync",
+    "symbol": "SolvBTC",
+    "decimals": 18,
+    "address": "0x74ed17608cc2b5f30a59d6af07c9ad1b1ab3a5b1"
+  },
   "0x75c568a970e54a075b2a5475264cfcff672d2b89": {
     "chain": "zksync",
     "symbol": "ZKGROK",
@@ -508,6 +520,18 @@
     "symbol": "USDLR",
     "decimals": 6,
     "address": "0xb6841b40baafedf4e37935270357ff89df42e68e"
+  },
+  "0xb6a09d426861c63722aa0b333a9ce5d5a9b04c4f": {
+    "chain": "zksync",
+    "symbol": "SUSN",
+    "decimals": 18,
+    "address": "0xb6a09d426861c63722aa0b333a9ce5d5a9b04c4f"
+  },
+  "0xb72207e1fb50f341415999732a20b6d25d8127aa": {
+    "chain": "zksync",
+    "symbol": "ZKETH",
+    "decimals": 18,
+    "address": "0xb72207e1fb50f341415999732a20b6d25d8127aa"
   },
   "0xb7f5b452b381a90ba10bdde6d75c6a4fd65a4239": {
     "chain": "zksync",

@@ -28,6 +28,8 @@ const blockchains = {
   zora: 7777777,
   merlin: 4200,
   celo: 42220,
+  berachain: 80094,
+  sonic: 199,
 };
 
 const tokenlists = [
@@ -117,6 +119,13 @@ const tokenlists = [
   // others
   'https://wispy-bird-88a7.uniswap.workers.dev/?url=http://tokenlist.zerion.eth.link',
   'https://raw.githubusercontent.com/ethereum-optimism/ethereum-optimism.github.io/master/optimism.tokenlist.json',
+
+  // kodiak
+  'https://api.panda.kodiak.finance/80094/tokenList.json',
+
+  // spooky
+  'https://assets.spooky.fi/btt_spooky_tokens.json',
+  'https://assets.spooky.fi/ftm_spooky_tokens.json',
 ];
 
 function getChainName(chainId) {

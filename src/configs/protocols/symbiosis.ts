@@ -50,16 +50,16 @@ export const SymbiosisConfigs: SymbiosisProtocolConfig = {
       birthday: 1675987200, // Fri Feb 10 2023 00:00:00 GMT+0000
       portal: '0x292fC50e4eB66C3f6514b9E402dBc25961824D62',
     },
-    {
-      chain: ChainNames.boba,
-      birthday: 1669766400, // Wed Nov 30 2022 00:00:00 GMT+0000
-      portal: '0xb8f275fBf7A959F4BCE59999A2EF122A099e81A8',
-    },
-    {
-      chain: ChainNames.bobabnb,
-      birthday: 1668470400, // Tue Nov 15 2022 00:00:00 GMT+0000
-      portal: '0xb8f275fBf7A959F4BCE59999A2EF122A099e81A8',
-    },
+    // {
+    //   chain: ChainNames.boba,
+    //   birthday: 1669766400, // Wed Nov 30 2022 00:00:00 GMT+0000
+    //   portal: '0xb8f275fBf7A959F4BCE59999A2EF122A099e81A8',
+    // },
+    // {
+    //   chain: ChainNames.bobabnb,
+    //   birthday: 1668470400, // Tue Nov 15 2022 00:00:00 GMT+0000
+    //   portal: '0xb8f275fBf7A959F4BCE59999A2EF122A099e81A8',
+    // },
     {
       chain: ChainNames.zksync,
       birthday: 1701129600, // Tue Nov 28 2023 00:00:00 GMT+0000

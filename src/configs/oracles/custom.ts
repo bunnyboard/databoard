@@ -221,6 +221,25 @@ export const OracleSourceCustomList: {
     address: '0x4737d9b4592b40d51e110b94c9c043c6654067ae',
     underlyingToken: TokensBook.ethereum['0x7c1156e515aa1a2e851674120074968c905aaf37'],
   },
+  scrvUSD: {
+    type: 'stakingTokenWrapper',
+    chain: 'ethereum',
+    method: 'erc4626',
+    address: '0x0655977feb2f289a4ab78af67bab0d17aab84367',
+    underlyingToken: TokensBook.ethereum['0xf939e0a03fb07f59a73314e73794be0e57ac1b4e'],
+  },
+  wmooSiloV2SonicUSDC: {
+    type: 'stakingTokenWrapper',
+    chain: 'sonic',
+    method: 'erc4626',
+    address: '0x7870ddfd5aca4e977b2287e9a212bcbe8fc4135a',
+    underlyingToken: {
+      chain: 'sonic',
+      symbol: 'USDC',
+      decimals: 6,
+      address: '0x29219dd400f2bf60e5a23d13be72b486d4038894',
+    },
+  },
   sUSN: {
     type: 'stakingTokenWrapper',
     chain: 'ethereum',

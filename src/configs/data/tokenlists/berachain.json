@@ -1,0 +1,140 @@
+{
+  "0x0461fa18a6af015984de30a208370aea6ae54573": {
+    "chain": "berachain",
+    "symbol": "BOW",
+    "decimals": 18,
+    "address": "0x0461fa18a6af015984de30a208370aea6ae54573"
+  },
+  "0x0d9ac083dd2760943f773e70ebffe621e950871c": {
+    "chain": "berachain",
+    "symbol": "BTC",
+    "decimals": 18,
+    "address": "0x0d9ac083dd2760943f773e70ebffe621e950871c"
+  },
+  "0x11909a68ae60903c96c35c059fcf262e54df29d5": {
+    "chain": "berachain",
+    "symbol": "BONGA",
+    "decimals": 18,
+    "address": "0x11909a68ae60903c96c35c059fcf262e54df29d5"
+  },
+  "0x1f7210257fa157227d09449229a9266b0d581337": {
+    "chain": "berachain",
+    "symbol": "BERAMO",
+    "decimals": 18,
+    "address": "0x1f7210257fa157227d09449229a9266b0d581337"
+  },
+  "0x231a6bd8eb88cfa42776b7ac575cecaf82bf1e21": {
+    "chain": "berachain",
+    "symbol": "PLUG",
+    "decimals": 18,
+    "address": "0x231a6bd8eb88cfa42776b7ac575cecaf82bf1e21"
+  },
+  "0x34a31c8c9cf59d411b30445e62231c352e639750": {
+    "chain": "berachain",
+    "symbol": "COUCH",
+    "decimals": 18,
+    "address": "0x34a31c8c9cf59d411b30445e62231c352e639750"
+  },
+  "0x38e98c6cfda490966fb6fd952748221cb18e17a0": {
+    "chain": "berachain",
+    "symbol": "BXBT",
+    "decimals": 18,
+    "address": "0x38e98c6cfda490966fb6fd952748221cb18e17a0"
+  },
+  "0x4434bc66eb411f8bf55a6537a592623e4a3857a5": {
+    "chain": "berachain",
+    "symbol": "BOBO",
+    "decimals": 18,
+    "address": "0x4434bc66eb411f8bf55a6537a592623e4a3857a5"
+  },
+  "0x4a4e2bba852a6e294264103fdc30d2800f473ad6": {
+    "chain": "berachain",
+    "symbol": "pookie",
+    "decimals": 18,
+    "address": "0x4a4e2bba852a6e294264103fdc30d2800f473ad6"
+  },
+  "0x51a7688ca5b142456f4c8d44513433485bf599e9": {
+    "chain": "berachain",
+    "symbol": "POLAR",
+    "decimals": 18,
+    "address": "0x51a7688ca5b142456f4c8d44513433485bf599e9"
+  },
+  "0x5558babe9ad82ce3af161e70a061bca7289cd5d7": {
+    "chain": "berachain",
+    "symbol": "SLOTH",
+    "decimals": 18,
+    "address": "0x5558babe9ad82ce3af161e70a061bca7289cd5d7"
+  },
+  "0x66a501076865a2b21df9dbd51fa931317188418b": {
+    "chain": "berachain",
+    "symbol": "BERATARDIO",
+    "decimals": 18,
+    "address": "0x66a501076865a2b21df9dbd51fa931317188418b"
+  },
+  "0x6921619dd6e4bb71169c537cb88ec906d9477597": {
+    "chain": "berachain",
+    "symbol": "$GOOB",
+    "decimals": 18,
+    "address": "0x6921619dd6e4bb71169c537cb88ec906d9477597"
+  },
+  "0x6969696969696969696969696969696969696969": {
+    "chain": "berachain",
+    "symbol": "WBERA",
+    "decimals": 18,
+    "address": "0x6969696969696969696969696969696969696969"
+  },
+  "0x6a0c86fe04f77ec2546ae072be6d8b60f0c8a421": {
+    "chain": "berachain",
+    "symbol": "Neo",
+    "decimals": 18,
+    "address": "0x6a0c86fe04f77ec2546ae072be6d8b60f0c8a421"
+  },
+  "0x6ff4d64976428025cdcc3354ef53b5d19637481e": {
+    "chain": "berachain",
+    "symbol": "ARTIO",
+    "decimals": 18,
+    "address": "0x6ff4d64976428025cdcc3354ef53b5d19637481e"
+  },
+  "0x81fccaf679879e380f6b8f748df7d199467de219": {
+    "chain": "berachain",
+    "symbol": "WifSock",
+    "decimals": 18,
+    "address": "0x81fccaf679879e380f6b8f748df7d199467de219"
+  },
+  "0x8f06863df59a042bcc2c86cc8ca1709ec1ee316b": {
+    "chain": "berachain",
+    "symbol": "JANI",
+    "decimals": 18,
+    "address": "0x8f06863df59a042bcc2c86cc8ca1709ec1ee316b"
+  },
+  "0xafa4fbcfb207e3f13467852a88af9e2763690b12": {
+    "chain": "berachain",
+    "symbol": "bdawg",
+    "decimals": 18,
+    "address": "0xafa4fbcfb207e3f13467852a88af9e2763690b12"
+  },
+  "0xb749584f9fc418cf905d54f462fdbfdc7462011b": {
+    "chain": "berachain",
+    "symbol": "bm",
+    "decimals": 18,
+    "address": "0xb749584f9fc418cf905d54f462fdbfdc7462011b"
+  },
+  "0xc309d1774f7a37062e1e40eed1be94b6c2627286": {
+    "chain": "berachain",
+    "symbol": "PATCHS",
+    "decimals": 18,
+    "address": "0xc309d1774f7a37062e1e40eed1be94b6c2627286"
+  },
+  "0xcc6a16bcfda7d0ebe168f69ef7b946e96a90e67f": {
+    "chain": "berachain",
+    "symbol": "AIBERA",
+    "decimals": 18,
+    "address": "0xcc6a16bcfda7d0ebe168f69ef7b946e96a90e67f"
+  },
+  "0xfbe1b4d0a041c1c107899be08e5acc7d7f276774": {
+    "chain": "berachain",
+    "symbol": "BABAL",
+    "decimals": 18,
+    "address": "0xfbe1b4d0a041c1c107899be08e5acc7d7f276774"
+  }
+}

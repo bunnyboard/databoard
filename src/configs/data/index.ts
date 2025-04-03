@@ -17,6 +17,8 @@ import TokenListScroll from './tokenlists/scroll.json';
 import TokenListZksync from './tokenlists/zksync.json';
 import TokenListCronos from './tokenlists/cronos.json';
 import TokenListRonin from './tokenlists/ronin.json';
+import TokenListSonic from './tokenlists/sonic.json';
+import TokenListBerachain from './tokenlists/berachain.json';
 
 export const TokensBook = {
   ethereum: TokenListEthereum,
@@ -38,6 +40,8 @@ export const TokensBook = {
   merlin: TokenListMerlin,
   cronos: TokenListCronos,
   ronin: TokenListRonin,
+  sonic: TokenListSonic,
+  berachain: TokenListBerachain,
 };
 
 // these tokens will be used for dex data calculation

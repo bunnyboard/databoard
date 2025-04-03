@@ -4142,4 +4142,96 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.BAO_WETH],
   },
+  Zeus: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.Zeus_WETH],
+  },
+  ML: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ML_WETH],
+  },
+  POLY: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.POLY_WETH],
+  },
+  NUZO: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.NUZO_USDT],
+  },
+  fxVERSE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.fxVERSE_WETH],
+  },
+  VOXEL: {
+    currency: 'matic',
+    sources: [OracleSourceUniswapv3List.VOXEL_WPOL],
+  },
+  RSUP: {
+    currency: 'eth',
+    sources: [OracleSourceCurveList.RSUP_WETH],
+  },
+  AVA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.AVA_WETH],
+  },
+  WMC: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.WMC_WETH],
+  },
+  Reach: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.Reach_WETH],
+  },
+  PRISMA: {
+    currency: 'eth',
+    sources: [OracleSourceCurveList.PRISMA_WETH],
+  },
+  SERV: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SERV_WETH],
+  },
+  SYNT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SYNT_WETH],
+  },
+  scrvUSD: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.scrvUSD],
+  },
+  wmooSiloV2SonicUSDC: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.wmooSiloV2SonicUSDC],
+  },
+  OMIKAMI: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv2List.OMIKAMI_USDC],
+  },
+  RYU: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.RYU_WETH],
+  },
+  ZCHF: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.ZCHF_USDT],
+  },
+  DRB: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.DRB_WETH],
+  },
+  BERAMO: {
+    currency: 'bera',
+    sources: [OracleSourceUniswapv2List.BERAMO_WBERA],
+  },
+  PLUG: {
+    currency: 'bera',
+    sources: [OracleSourceUniswapv2List.PLUG_WBERA],
+  },
+  ARTIO: {
+    currency: 'bera',
+    sources: [OracleSourceUniswapv3List.ARTIO_WBERA],
+  },
+  AIBERA: {
+    currency: 'bera',
+    sources: [OracleSourceUniswapv3List.AIBERA_WBERA],
+  },
 };

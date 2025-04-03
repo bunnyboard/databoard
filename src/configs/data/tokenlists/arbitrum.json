@@ -1235,6 +1235,12 @@
     "decimals": 18,
     "address": "0x643b34980e635719c15a2d4ce69571a258f940e9"
   },
+  "0x6491c05a82219b8d1479057361ff1654749b876b": {
+    "chain": "arbitrum",
+    "symbol": "USDS",
+    "decimals": 18,
+    "address": "0x6491c05a82219b8d1479057361ff1654749b876b"
+  },
   "0x655a6beebf2361a19549a99486ff65f709bd2646": {
     "chain": "arbitrum",
     "symbol": "LILAI",
@@ -1444,6 +1450,12 @@
     "symbol": "sUSDX",
     "decimals": 18,
     "address": "0x7788a3538c5fc7f9c7c8a74eac4c898fc8d87d92"
+  },
+  "0x77b7787a09818502305c95d68a2571f090abb135": {
+    "chain": "arbitrum",
+    "symbol": "DRV",
+    "decimals": 18,
+    "address": "0x77b7787a09818502305c95d68a2571f090abb135"
   },
   "0x78055daa07035aa5ebc3e5139c281ce6312e1b22": {
     "chain": "arbitrum",
@@ -1744,6 +1756,12 @@
     "symbol": "taoUSD",
     "decimals": 18,
     "address": "0x966570a84709d693463cdd69dcadb0121b2c9d26"
+  },
+  "0x968be3f7bfef0f8edc3c1ad90232ebb0da0867aa": {
+    "chain": "arbitrum",
+    "symbol": "SWORLD",
+    "decimals": 18,
+    "address": "0x968be3f7bfef0f8edc3c1ad90232ebb0da0867aa"
   },
   "0x969131d8ddc06c2be11a13e6e7facf22cf57d95e": {
     "chain": "arbitrum",
@@ -2423,6 +2441,12 @@
     "decimals": 18,
     "address": "0xdd89a4d3362828e601df52208302a741f08e46c5"
   },
+  "0xddb46999f8891663a8f2828d25298f70416d7610": {
+    "chain": "arbitrum",
+    "symbol": "sUSDS",
+    "decimals": 18,
+    "address": "0xddb46999f8891663a8f2828d25298f70416d7610"
+  },
   "0xddbfbd5dc3ba0feb96cb513b689966b2176d4c09": {
     "chain": "arbitrum",
     "symbol": "STEAK",
@@ -2621,6 +2645,12 @@
     "decimals": 18,
     "address": "0xf18c263ec50cc211ef3f172228549b6618f10613"
   },
+  "0xf18e4466f26b4ca55bbab890b314a54976e45b17": {
+    "chain": "arbitrum",
+    "symbol": "G7",
+    "decimals": 18,
+    "address": "0xf18e4466f26b4ca55bbab890b314a54976e45b17"
+  },
   "0xf19547f9ed24aa66b03c3a552d181ae334fbb8db": {
     "chain": "arbitrum",
     "symbol": "LODE",
@@ -2662,6 +2692,12 @@
     "symbol": "pumpBTC",
     "decimals": 8,
     "address": "0xf469fbd2abcd6b9de8e169d128226c0fc90a012e"
+  },
+  "0xf4acde4d938844751f34659c67056f7e69dbe85a": {
+    "chain": "arbitrum",
+    "symbol": "CLUTCH",
+    "decimals": 18,
+    "address": "0xf4acde4d938844751f34659c67056f7e69dbe85a"
   },
   "0xf4d48ce3ee1ac3651998971541badbb9a14d7234": {
     "chain": "arbitrum",

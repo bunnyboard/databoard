@@ -179,6 +179,12 @@
     "decimals": 18,
     "address": "0x3f817b28da4940f018c6b5c0a11c555ebb1264f9"
   },
+  "0x3ff47c5bf409c86533fe1f4907524d304062428d": {
+    "chain": "linea",
+    "symbol": "EURE",
+    "decimals": 18,
+    "address": "0x3ff47c5bf409c86533fe1f4907524d304062428d"
+  },
   "0x406cde76a3fd20e48bc1e0f60651e60ae204b040": {
     "chain": "linea",
     "symbol": "FRAX",

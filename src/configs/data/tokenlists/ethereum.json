@@ -137,6 +137,12 @@
     "decimals": 9,
     "address": "0x0000003ceede5c40e5187784d3e8dd5b43dc85f6"
   },
+  "0x000000c396558ffbab5ea628f39658bdf61345b3": {
+    "chain": "ethereum",
+    "symbol": "BUNNI",
+    "decimals": 18,
+    "address": "0x000000c396558ffbab5ea628f39658bdf61345b3"
+  },
   "0x000000e29fa2bd3e5c215ffc71aa66b29c9769a2": {
     "chain": "ethereum",
     "symbol": "ETE",
@@ -280,6 +286,12 @@
     "symbol": "STX",
     "decimals": 18,
     "address": "0x006bea43baa3f7a6f765f14f10a1a1b08334ef45"
+  },
+  "0x006e730a6c36ff47a31a99931bedbddccf3de81c": {
+    "chain": "ethereum",
+    "symbol": "RACE",
+    "decimals": 18,
+    "address": "0x006e730a6c36ff47a31a99931bedbddccf3de81c"
   },
   "0x007115416ab6c266329a03b09a8aa39ac2ef7d9d": {
     "chain": "ethereum",
@@ -430,6 +442,12 @@
     "symbol": "JUDGE",
     "decimals": 18,
     "address": "0x01202c9a1adfc1475c960c23bdf7530698330fa0"
+  },
+  "0x0123b0a381348f3ba793091923daeb7356ec5862": {
+    "chain": "ethereum",
+    "symbol": "VXXD",
+    "decimals": 18,
+    "address": "0x0123b0a381348f3ba793091923daeb7356ec5862"
   },
   "0x0128e4fccf5ef86b030b28f0a8a029a3c5397a94": {
     "chain": "ethereum",
@@ -719,6 +737,12 @@
     "decimals": 18,
     "address": "0x0309c98b1bffa350bcb3f9fb9780970ca32a5060"
   },
+  "0x030b69280892c888670edcdcd8b69fd8026a0bf3": {
+    "chain": "ethereum",
+    "symbol": "MMEV",
+    "decimals": 18,
+    "address": "0x030b69280892c888670edcdcd8b69fd8026a0bf3"
+  },
   "0x030ba81f1c18d280636f32af80b9aad02cf0854e": {
     "chain": "ethereum",
     "symbol": "AWETH",
@@ -766,6 +790,12 @@
     "symbol": "VELAR",
     "decimals": 6,
     "address": "0x033bbde722ea3cdcec73cffea6581df9f9c257de"
+  },
+  "0x0341d2c2ce65b62af8887e905245b8cfea2a3b97": {
+    "chain": "ethereum",
+    "symbol": "YAYAGETH",
+    "decimals": 18,
+    "address": "0x0341d2c2ce65b62af8887e905245b8cfea2a3b97"
   },
   "0x0343131c0257ac21ea5a8dc83841f071efd9285c": {
     "chain": "ethereum",
@@ -1085,6 +1115,12 @@
     "decimals": 18,
     "address": "0x04e0af0af1b7f0023c6b12af5a94df59b0e8cf59"
   },
+  "0x04e69ff14a86e1ca9a155a8563e95887973ee175": {
+    "chain": "ethereum",
+    "symbol": "AITV",
+    "decimals": 18,
+    "address": "0x04e69ff14a86e1ca9a155a8563e95887973ee175"
+  },
   "0x04f121600c8c47a754636fc9d75661a9525e05d5": {
     "chain": "ethereum",
     "symbol": "STARS",
@@ -1181,6 +1217,12 @@
     "decimals": 7,
     "address": "0x0578779e746d7186253a36cf651ea786acfcf087"
   },
+  "0x058d411ab9911f90c74f471bdc9d2bb4cf9b309c": {
+    "chain": "ethereum",
+    "symbol": "RIZ",
+    "decimals": 8,
+    "address": "0x058d411ab9911f90c74f471bdc9d2bb4cf9b309c"
+  },
   "0x0590cc9232ebf68d81f6707a119898219342ecb9": {
     "chain": "ethereum",
     "symbol": "BCAT",
@@ -1240,6 +1282,12 @@
     "symbol": "EVEAI",
     "decimals": 18,
     "address": "0x05fe069626543842439ef90d9fa1633640c50cf1"
+  },
+  "0x05fed61f7a3eca96dc7f9a41b38fa7c5f0e62158": {
+    "chain": "ethereum",
+    "symbol": "KOD",
+    "decimals": 18,
+    "address": "0x05fed61f7a3eca96dc7f9a41b38fa7c5f0e62158"
   },
   "0x06113abcef9d163c026441b112e70c82ee1c4a79": {
     "chain": "ethereum",
@@ -1457,6 +1505,12 @@
     "decimals": 18,
     "address": "0x075b1bb99792c9e1041ba13afef80c91a1e70fb3"
   },
+  "0x075f23b9cdfce2cc0ca466f4ee6cb4bd29d83bef": {
+    "chain": "ethereum",
+    "symbol": "PUNDIAI",
+    "decimals": 18,
+    "address": "0x075f23b9cdfce2cc0ca466f4ee6cb4bd29d83bef"
+  },
   "0x0763fdccf1ae541a5961815c0872a8c5bc6de4d7": {
     "chain": "ethereum",
     "symbol": "SUKU",
@@ -1637,6 +1691,18 @@
     "decimals": 9,
     "address": "0x0880164084017b8d49baa0a33f545ad55914e9fd"
   },
+  "0x0885f91c72a8de62a5349d4c89ca31b4ef650929": {
+    "chain": "ethereum",
+    "symbol": "ALF",
+    "decimals": 18,
+    "address": "0x0885f91c72a8de62a5349d4c89ca31b4ef650929"
+  },
+  "0x088828f0a8e2dc8511e957230f4681371451fa1d": {
+    "chain": "ethereum",
+    "symbol": "BOXXD",
+    "decimals": 18,
+    "address": "0x088828f0a8e2dc8511e957230f4681371451fa1d"
+  },
   "0x089453742936dd35134383aee9d78bee63a69b01": {
     "chain": "ethereum",
     "symbol": "GOLD",
@@ -1799,6 +1865,12 @@
     "decimals": 18,
     "address": "0x0981d9774a59a703db85f5eaa23672283ea31106"
   },
+  "0x0994bd54cde8f83eab517d833a581b4be5b6f919": {
+    "chain": "ethereum",
+    "symbol": "PALCOIN",
+    "decimals": 4,
+    "address": "0x0994bd54cde8f83eab517d833a581b4be5b6f919"
+  },
   "0x09a3ecafa817268f77be1283176b946c4ff2e608": {
     "chain": "ethereum",
     "symbol": "MIR",
@@ -1810,6 +1882,12 @@
     "symbol": "DFL",
     "decimals": 18,
     "address": "0x09ce2b746c32528b7d864a1e3979bd97d2f095ab"
+  },
+  "0x09d4214c03d01f49544c0448dbe3a27f768f2b34": {
+    "chain": "ethereum",
+    "symbol": "RUSD",
+    "decimals": 18,
+    "address": "0x09d4214c03d01f49544c0448dbe3a27f768f2b34"
   },
   "0x09d6f0f5a21f5be4f59e209747e2d07f50bc694c": {
     "chain": "ethereum",
@@ -1828,6 +1906,12 @@
     "symbol": "YNETH",
     "decimals": 18,
     "address": "0x09db87a538bd693e9d08544577d5ccfaa6373a48"
+  },
+  "0x09de9c8fbe90271e8886b55d66e3b37130e3a3da": {
+    "chain": "ethereum",
+    "symbol": "CCLD",
+    "decimals": 18,
+    "address": "0x09de9c8fbe90271e8886b55d66e3b37130e3a3da"
   },
   "0x09df6a5ca936be45f5ae45c7e58c9b4602011fcd": {
     "chain": "ethereum",
@@ -1858,6 +1942,12 @@
     "symbol": "XAI",
     "decimals": 9,
     "address": "0x0a13a5929e5f0ff0eaba4bd9e9512c91fce40280"
+  },
+  "0x0a27c31f087cd3d30cdad339731bede4194531a4": {
+    "chain": "ethereum",
+    "symbol": "CSCOD",
+    "decimals": 18,
+    "address": "0x0a27c31f087cd3d30cdad339731bede4194531a4"
   },
   "0x0a2a015a15a8e019abc386fee88b8a6d7a0d90df": {
     "chain": "ethereum",
@@ -2069,6 +2159,24 @@
     "decimals": 8,
     "address": "0x0af55d5ff28a3269d69b98680fd034f115dd53ac"
   },
+  "0x0af5b873df94efeba34c0b0a9fa34a8c13e078cd": {
+    "chain": "ethereum",
+    "symbol": "YUMD",
+    "decimals": 18,
+    "address": "0x0af5b873df94efeba34c0b0a9fa34a8c13e078cd"
+  },
+  "0x0aff507ac29b8cea2fb10d2ad14408c2d79a35ad": {
+    "chain": "ethereum",
+    "symbol": "TALK",
+    "decimals": 18,
+    "address": "0x0aff507ac29b8cea2fb10d2ad14408c2d79a35ad"
+  },
+  "0x0b010000b7624eb9b3dfbc279673c76e9d29d5f7": {
+    "chain": "ethereum",
+    "symbol": "OBOL",
+    "decimals": 18,
+    "address": "0x0b010000b7624eb9b3dfbc279673c76e9d29d5f7"
+  },
   "0x0b0a8c7c34374c1d0c649917a97eee6c6c929b1b": {
     "chain": "ethereum",
     "symbol": "SHEPE",
@@ -2098,6 +2206,12 @@
     "symbol": "API3",
     "decimals": 18,
     "address": "0x0b38210ea11411557c13457d4da7dc6ea731b88a"
+  },
+  "0x0b3eaead748facdb9d943d3407011f16eb17d0cf": {
+    "chain": "ethereum",
+    "symbol": "PMX",
+    "decimals": 18,
+    "address": "0x0b3eaead748facdb9d943d3407011f16eb17d0cf"
   },
   "0x0b452278223d3954f4ac050949d7998e373e7e43": {
     "chain": "ethereum",
@@ -2398,6 +2512,12 @@
     "symbol": "BPT",
     "decimals": 18,
     "address": "0x0cf5a2775de7f4e915f79b26b72cb6115153a31d"
+  },
+  "0x0cf7356e2d13ae2b57e77286284984a5fc8f88b3": {
+    "chain": "ethereum",
+    "symbol": "SCOT",
+    "decimals": 18,
+    "address": "0x0cf7356e2d13ae2b57e77286284984a5fc8f88b3"
   },
   "0x0d00214ee1d4462770ef3a9f1e32c1e420a84ef7": {
     "chain": "ethereum",
@@ -2818,6 +2938,12 @@
     "symbol": "LOVELY",
     "decimals": 18,
     "address": "0x0f6d4d4643a514132f84f4a270946db3c7cb701c"
+  },
+  "0x0f719591e2bcb6fcc3e68b16d2a88c89c6ae0d42": {
+    "chain": "ethereum",
+    "symbol": "EVOLVE",
+    "decimals": 18,
+    "address": "0x0f719591e2bcb6fcc3e68b16d2a88c89c6ae0d42"
   },
   "0x0f71b8de197a1c84d31de0f1fa7926c365f052b3": {
     "chain": "ethereum",
@@ -3251,6 +3377,12 @@
     "decimals": 18,
     "address": "0x116c4b65e14449947bc6fa1bbe844cb16a162d53"
   },
+  "0x1194e99f23c8b99cb55a328160aeb0bb010bf0c3": {
+    "chain": "ethereum",
+    "symbol": "UFOD",
+    "decimals": 18,
+    "address": "0x1194e99f23c8b99cb55a328160aeb0bb010bf0c3"
+  },
   "0x119707f0f9812af4db8a119ca44e5a1313ca52b8": {
     "chain": "ethereum",
     "symbol": "BPT",
@@ -3401,6 +3533,12 @@
     "decimals": 18,
     "address": "0x12996c7b23c4012149bf9f5663ff9aa08a9cf2e4"
   },
+  "0x129e5915326ed86f831b0e035acda34b209633d5": {
+    "chain": "ethereum",
+    "symbol": "PAPPLE",
+    "decimals": 9,
+    "address": "0x129e5915326ed86f831b0e035acda34b209633d5"
+  },
   "0x12b19d3e2ccc14da04fae33e63652ce469b3f2fd": {
     "chain": "ethereum",
     "symbol": "GRID",
@@ -3418,6 +3556,12 @@
     "symbol": "RACA",
     "decimals": 18,
     "address": "0x12bb890508c125661e03b09ec06e404bc9289040"
+  },
+  "0x12c88a3c30a7aabc1dd7f2c08a97145f5dccd830": {
+    "chain": "ethereum",
+    "symbol": "G7",
+    "decimals": 18,
+    "address": "0x12c88a3c30a7aabc1dd7f2c08a97145f5dccd830"
   },
   "0x12e2b8033420270db2f3b328e32370cb5b2ca134": {
     "chain": "ethereum",
@@ -4181,6 +4325,12 @@
     "decimals": 9,
     "address": "0x173e552bf97bbd50b455514ac52991ef639ba703"
   },
+  "0x17418038ecf73ba4026c4f428547bf099706f27b": {
+    "chain": "ethereum",
+    "symbol": "ACRED",
+    "decimals": 6,
+    "address": "0x17418038ecf73ba4026c4f428547bf099706f27b"
+  },
   "0x174897edd3ce414084a009d22db31c7b7826400d": {
     "chain": "ethereum",
     "symbol": "JOON",
@@ -4426,6 +4576,12 @@
     "symbol": "tWAR",
     "decimals": 18,
     "address": "0x188ca46aa2c7ae10c14a931512b62991d5901453"
+  },
+  "0x188d12eb13a5eadd0867074ce8354b1ad6f4790b": {
+    "chain": "ethereum",
+    "symbol": "DFX",
+    "decimals": 18,
+    "address": "0x188d12eb13a5eadd0867074ce8354b1ad6f4790b"
   },
   "0x188e817b02e635d482ae4d81e25dda98a97c4a42": {
     "chain": "ethereum",
@@ -4775,6 +4931,12 @@
     "decimals": 9,
     "address": "0x1a4e7febd24b6689704b10685857d8b30885f05e"
   },
+  "0x1a4f71b0ff3c22540887bcf83b50054a213c673d": {
+    "chain": "ethereum",
+    "symbol": "WBMSTR",
+    "decimals": 18,
+    "address": "0x1a4f71b0ff3c22540887bcf83b50054a213c673d"
+  },
   "0x1a57367c6194199e5d9aea1ce027431682dfb411": {
     "chain": "ethereum",
     "symbol": "MDF",
@@ -4834,6 +4996,12 @@
     "symbol": "JEFF",
     "decimals": 18,
     "address": "0x1a8b8e526d093476ac5c488a3ea057f8de9c0dee"
+  },
+  "0x1a91b61e884ddd93a0aa83cd6908a4bc07e6f3eb": {
+    "chain": "ethereum",
+    "symbol": "ATN",
+    "decimals": 9,
+    "address": "0x1a91b61e884ddd93a0aa83cd6908a4bc07e6f3eb"
   },
   "0x1a963df363d01eebb2816b366d61c917f20e1ebe": {
     "chain": "ethereum",
@@ -5153,6 +5321,12 @@
     "decimals": 18,
     "address": "0x1c9491865a1de77c5b6e19d2e6a5f1d7a6f2b25f"
   },
+  "0x1c95519d3fc922fc04fcf5d099be4a1ed8b15240": {
+    "chain": "ethereum",
+    "symbol": "GROK",
+    "decimals": 9,
+    "address": "0x1c95519d3fc922fc04fcf5d099be4a1ed8b15240"
+  },
   "0x1c95b093d6c236d3ef7c796fe33f9cc6b8606714": {
     "chain": "ethereum",
     "symbol": "BOMB",
@@ -5351,6 +5525,12 @@
     "decimals": 18,
     "address": "0x1d7ca62f6af49ec66f6680b8606e634e55ef22c1"
   },
+  "0x1d88713b483a8e45cff0e5cd7c2e15e5fab4534d": {
+    "chain": "ethereum",
+    "symbol": "STO",
+    "decimals": 18,
+    "address": "0x1d88713b483a8e45cff0e5cd7c2e15e5fab4534d"
+  },
   "0x1d96fd43ee07aa79f8fd003cbdf404fb5ce41ad2": {
     "chain": "ethereum",
     "symbol": "QWLA",
@@ -5380,6 +5560,18 @@
     "symbol": "DAR",
     "decimals": 18,
     "address": "0x1db11e86fa9b9a87813a4dd3f747eef12ed55a55"
+  },
+  "0x1db1afd9552eeb28e2e36597082440598b7f1320": {
+    "chain": "ethereum",
+    "symbol": "XRPL",
+    "decimals": 18,
+    "address": "0x1db1afd9552eeb28e2e36597082440598b7f1320"
+  },
+  "0x1de6289894e1763b6ea01401ed638dc1184b0e9b": {
+    "chain": "ethereum",
+    "symbol": "INFY",
+    "decimals": 18,
+    "address": "0x1de6289894e1763b6ea01401ed638dc1184b0e9b"
   },
   "0x1e0275806c3cd0bdb5c99916a064d36b5e8eae8d": {
     "chain": "ethereum",
@@ -5645,6 +5837,12 @@
     "decimals": 18,
     "address": "0x1f7e5118521b550bb1a9b435727c003eb033fc51"
   },
+  "0x1f82284c1658ad71c576f7230e6c2dee7901c1fa": {
+    "chain": "ethereum",
+    "symbol": "WBTSLA",
+    "decimals": 18,
+    "address": "0x1f82284c1658ad71c576f7230e6c2dee7901c1fa"
+  },
   "0x1f8a626883d7724dbd59ef51cbd4bf1cf2016d13": {
     "chain": "ethereum",
     "symbol": "STAK",
@@ -5668,6 +5866,12 @@
     "symbol": "SCA",
     "decimals": 18,
     "address": "0x1fbd3df007eb8a7477a1eab2c63483dcc24effd6"
+  },
+  "0x1fc122fe8b6fa6b8598799baf687539b5d3b2783": {
+    "chain": "ethereum",
+    "symbol": "QUEST",
+    "decimals": 6,
+    "address": "0x1fc122fe8b6fa6b8598799baf687539b5d3b2783"
   },
   "0x1fc5ef0337aea85c5f9198853a6e3a579a7a6987": {
     "chain": "ethereum",
@@ -5746,6 +5950,12 @@
     "symbol": "ASTRA",
     "decimals": 18,
     "address": "0x201332bd45c8628d814f870bfb584b385a7c351e"
+  },
+  "0x20157dbabb84e3bbfe68c349d0d44e48ae7b5ad2": {
+    "chain": "ethereum",
+    "symbol": "IBTC",
+    "decimals": 8,
+    "address": "0x20157dbabb84e3bbfe68c349d0d44e48ae7b5ad2"
   },
   "0x201b5b64438843553e3c3671810ae671c93c685c": {
     "chain": "ethereum",
@@ -6539,6 +6749,12 @@
     "decimals": 18,
     "address": "0x24d73bca2bd9c3a61e99dfc7cb86d3c379ebded7"
   },
+  "0x24d7ad9402717f429a81925fe7643b78918eda8b": {
+    "chain": "ethereum",
+    "symbol": "XION",
+    "decimals": 6,
+    "address": "0x24d7ad9402717f429a81925fe7643b78918eda8b"
+  },
   "0x24da31e7bb182cb2cabfef1d88db19c2ae1f5572": {
     "chain": "ethereum",
     "symbol": "SHIK",
@@ -6586,6 +6802,12 @@
     "symbol": "SAFE2",
     "decimals": 18,
     "address": "0x250a3500f48666561386832f1f1f1019b89a2699"
+  },
+  "0x251530c7f24d6904a31425b9afa24b0e1e5aafde": {
+    "chain": "ethereum",
+    "symbol": "PHOD",
+    "decimals": 18,
+    "address": "0x251530c7f24d6904a31425b9afa24b0e1e5aafde"
   },
   "0x2516e7b3f76294e03c42aa4c5b5b4dce9c436fb8": {
     "chain": "ethereum",
@@ -6833,6 +7055,12 @@
     "decimals": 8,
     "address": "0x267eb2a9a13dc304a9deff4277abe850d0852c5f"
   },
+  "0x26827f7f51769ea21f94ba98ba64f5d0dc8988f9": {
+    "chain": "ethereum",
+    "symbol": "FAME",
+    "decimals": 18,
+    "address": "0x26827f7f51769ea21f94ba98ba64f5d0dc8988f9"
+  },
   "0x26869045311fc5e5353eadcfa654cd47ddc20356": {
     "chain": "ethereum",
     "symbol": "QTDAO",
@@ -6982,6 +7210,12 @@
     "symbol": "DOGIUS",
     "decimals": 18,
     "address": "0x270ca21eb1a37cfe0e9a0e7582d8f897e013cdff"
+  },
+  "0x2711018a5489df0d9816bdb7670d58ba23fb2d5e": {
+    "chain": "ethereum",
+    "symbol": "SPTED",
+    "decimals": 18,
+    "address": "0x2711018a5489df0d9816bdb7670d58ba23fb2d5e"
   },
   "0x27206f5a9afd0c51da95f20972885545d3b33647": {
     "chain": "ethereum",
@@ -7133,6 +7367,12 @@
     "decimals": 18,
     "address": "0x281fd2b2a74d39ab555241fd59d0b9d8f28856fc"
   },
+  "0x282a69142bac47855c3fbe1693fcc4ba3b4d5ed6": {
+    "chain": "ethereum",
+    "symbol": "CARROT",
+    "decimals": 18,
+    "address": "0x282a69142bac47855c3fbe1693fcc4ba3b4d5ed6"
+  },
   "0x283344eea472f0fe04d6f722595a2fffefe1901a": {
     "chain": "ethereum",
     "symbol": "CODE",
@@ -7228,6 +7468,12 @@
     "symbol": "ARGO",
     "decimals": 18,
     "address": "0x28cca76f6e8ec81e4550ecd761f899110b060e97"
+  },
+  "0x28cfe98c33b8a8bb5f5ac5068a95d9db6bee5ffd": {
+    "chain": "ethereum",
+    "symbol": "SOUP",
+    "decimals": 18,
+    "address": "0x28cfe98c33b8a8bb5f5ac5068a95d9db6bee5ffd"
   },
   "0x28dee01d53fed0edf5f6e310bf8ef9311513ae40": {
     "chain": "ethereum",
@@ -7528,6 +7774,12 @@
     "symbol": "TOKA",
     "decimals": 18,
     "address": "0x2a85556a6701a02e75bc4de8ec340c6de1b29f72"
+  },
+  "0x2a897de60073e13c1f34f672033c1c1d08657fbb": {
+    "chain": "ethereum",
+    "symbol": "DAWAE",
+    "decimals": 9,
+    "address": "0x2a897de60073e13c1f34f672033c1c1d08657fbb"
   },
   "0x2a8bf9e7c91c6e3237095e07eb3defbce358df00": {
     "chain": "ethereum",
@@ -8849,6 +9101,12 @@
     "decimals": 18,
     "address": "0x3256cade5f8cb1256ac2bd1e2d854dec6d667bdf"
   },
+  "0x325dc9ebcec31940c658acaca45f8293418d811e": {
+    "chain": "ethereum",
+    "symbol": "SOLVBTCENA",
+    "decimals": 18,
+    "address": "0x325dc9ebcec31940c658acaca45f8293418d811e"
+  },
   "0x3261902514414a131202e792a5ef763db795e639": {
     "chain": "ethereum",
     "symbol": "REPX",
@@ -8872,6 +9130,12 @@
     "symbol": "MZERO",
     "decimals": 18,
     "address": "0x328a268b191ef593b72498a9e8a481c086eb21be"
+  },
+  "0x328a9bc033b22de0b82762c49762ce1440b45d4b": {
+    "chain": "ethereum",
+    "symbol": "PALLD",
+    "decimals": 18,
+    "address": "0x328a9bc033b22de0b82762c49762ce1440b45d4b"
   },
   "0x328c4c80bc7aca0834db37e6600a6c49e12da4de": {
     "chain": "ethereum",
@@ -9299,6 +9563,12 @@
     "decimals": 18,
     "address": "0x3472a5a71965499acd81997a54bba8d852c6e53d"
   },
+  "0x3482968ed0e10bf7446706a6680e8a8f486f61b0": {
+    "chain": "ethereum",
+    "symbol": "SNOWD",
+    "decimals": 18,
+    "address": "0x3482968ed0e10bf7446706a6680e8a8f486f61b0"
+  },
   "0x34950ff2b487d9e5282c5ab342d08a2f712eb79f": {
     "chain": "ethereum",
     "symbol": "WOZX",
@@ -9598,6 +9868,12 @@
     "symbol": "YNLSDE",
     "decimals": 18,
     "address": "0x35ec69a77b79c255e5d47d5a3bdbefefe342630c"
+  },
+  "0x35f15275041b53324df461d5ccc952ee19d4a982": {
+    "chain": "ethereum",
+    "symbol": "xKTON",
+    "decimals": 18,
+    "address": "0x35f15275041b53324df461d5ccc952ee19d4a982"
   },
   "0x35f3bad2fcc8053869086885f7898a3d4309db4e": {
     "chain": "ethereum",
@@ -10391,6 +10667,12 @@
     "decimals": 18,
     "address": "0x39b46b212bdf15b42b166779b9d1787a68b9d0c3"
   },
+  "0x39b8b6385416f4ca36a20319f70d28621895279d": {
+    "chain": "ethereum",
+    "symbol": "EURE",
+    "decimals": 18,
+    "address": "0x39b8b6385416f4ca36a20319f70d28621895279d"
+  },
   "0x39c6b3e42d6a679d7d776778fe880bc9487c2eda": {
     "chain": "ethereum",
     "symbol": "AKNC",
@@ -10510,6 +10792,12 @@
     "symbol": "TRIAS",
     "decimals": 18,
     "address": "0x3a856d4effa670c54585a5d523e96513e148e95d"
+  },
+  "0x3a872ae95f645acdd17db8aa961f4d39e0f5bc39": {
+    "chain": "ethereum",
+    "symbol": "BRLN",
+    "decimals": 18,
+    "address": "0x3a872ae95f645acdd17db8aa961f4d39e0f5bc39"
   },
   "0x3a880652f47bfaa771908c07dd8673a787daed3a": {
     "chain": "ethereum",
@@ -10750,6 +11038,12 @@
     "symbol": "XCREDI",
     "decimals": 18,
     "address": "0x3bbfb303842dd4a76da4c927be644e9cf3170afd"
+  },
+  "0x3bce5cb273f0f148010bbea2470e7b5df84c7812": {
+    "chain": "ethereum",
+    "symbol": "SCETH",
+    "decimals": 18,
+    "address": "0x3bce5cb273f0f148010bbea2470e7b5df84c7812"
   },
   "0x3bd7d4f524d09f4e331577247a048d56e4b67a7f": {
     "chain": "ethereum",
@@ -11002,6 +11296,12 @@
     "symbol": "CARDS",
     "decimals": 18,
     "address": "0x3d6f0dea3ac3c607b3998e6ce14b6350721752d9"
+  },
+  "0x3d7975eccfc61a2102b08925cbba0a4d4dbb6555": {
+    "chain": "ethereum",
+    "symbol": "USDD",
+    "decimals": 18,
+    "address": "0x3d7975eccfc61a2102b08925cbba0a4d4dbb6555"
   },
   "0x3d806324b6df5af3c1a81acba14a8a62fe6d643f": {
     "chain": "ethereum",
@@ -11309,6 +11609,12 @@
     "decimals": 18,
     "address": "0x3f68e7b44e9bcb486c2feadb7a2289d9cdfc9088"
   },
+  "0x3f80b1c54ae920be41a77f8b902259d48cf24ccf": {
+    "chain": "ethereum",
+    "symbol": "KERNEL",
+    "decimals": 18,
+    "address": "0x3f80b1c54ae920be41a77f8b902259d48cf24ccf"
+  },
   "0x3f817b28da4940f018c6b5c0a11c555ebb1264f9": {
     "chain": "ethereum",
     "symbol": "A3A",
@@ -11422,6 +11728,12 @@
     "symbol": "DRV3",
     "decimals": 18,
     "address": "0x4022754bf8857395383c63326391f289d1bb14b9"
+  },
+  "0x4026f916beda6ca2b347c44517a83f5efab3f569": {
+    "chain": "ethereum",
+    "symbol": "JPMD",
+    "decimals": 18,
+    "address": "0x4026f916beda6ca2b347c44517a83f5efab3f569"
   },
   "0x405154cfaf5ea4ef57b65b86959c73dd079fa312": {
     "chain": "ethereum",
@@ -11687,6 +11999,12 @@
     "decimals": 18,
     "address": "0x419777d3e39aa9b00405724eace5ea57620c9062"
   },
+  "0x419905009e4656fdc02418c7df35b1e61ed5f726": {
+    "chain": "ethereum",
+    "symbol": "RSUP",
+    "decimals": 18,
+    "address": "0x419905009e4656fdc02418c7df35b1e61ed5f726"
+  },
   "0x419c4db4b9e25d6db2ad9691ccb832c8d9fda05e": {
     "chain": "ethereum",
     "symbol": "DRGN",
@@ -11944,6 +12262,12 @@
     "symbol": "ISIKC",
     "decimals": 4,
     "address": "0x42726d074bba68ccc15200442b72afa2d495a783"
+  },
+  "0x4274cd7277c7bb0806bd5fe84b9adae466a8da0a": {
+    "chain": "ethereum",
+    "symbol": "YUSD",
+    "decimals": 18,
+    "address": "0x4274cd7277c7bb0806bd5fe84b9adae466a8da0a"
   },
   "0x4278a8944cf63753b13e9f726bbc1192412988d8": {
     "chain": "ethereum",
@@ -12221,11 +12545,23 @@
     "decimals": 18,
     "address": "0x43ab765ee05075d78ad8aa79dcb1978ca3079258"
   },
+  "0x43c5034469bce262d32f64c5e7f9f359f5b1495f": {
+    "chain": "ethereum",
+    "symbol": "DOPE",
+    "decimals": 9,
+    "address": "0x43c5034469bce262d32f64c5e7f9f359f5b1495f"
+  },
   "0x43c553e474920e0a8769e1723cefcbbf0a9b237f": {
     "chain": "ethereum",
     "symbol": "BPT",
     "decimals": 18,
     "address": "0x43c553e474920e0a8769e1723cefcbbf0a9b237f"
+  },
+  "0x43c72ea1736072f42f785e704e5244cc5b9a6779": {
+    "chain": "ethereum",
+    "symbol": "GLDD",
+    "decimals": 18,
+    "address": "0x43c72ea1736072f42f785e704e5244cc5b9a6779"
   },
   "0x43d4a3cd90ddd2f8f4f693170c9c8098163502ad": {
     "chain": "ethereum",
@@ -12268,6 +12604,12 @@
     "symbol": "RPILL",
     "decimals": 18,
     "address": "0x43fe2b0c5485c10e772a1843e32a7642ace5b88c"
+  },
+  "0x440017a1b021006d556d7fc06a54c32e42eb745b": {
+    "chain": "ethereum",
+    "symbol": "G",
+    "decimals": 18,
+    "address": "0x440017a1b021006d556d7fc06a54c32e42eb745b"
   },
   "0x44017598f2af1bd733f9d87b5017b4e7c1b28dde": {
     "chain": "ethereum",
@@ -12424,6 +12766,12 @@
     "symbol": "BPT",
     "decimals": 18,
     "address": "0x44f30675a3496df4bc5792954b4022798da6dd1b"
+  },
+  "0x44f49ff0da2498bcb1d3dc7c0f999578f67fd8c6": {
+    "chain": "ethereum",
+    "symbol": "CORN",
+    "decimals": 18,
+    "address": "0x44f49ff0da2498bcb1d3dc7c0f999578f67fd8c6"
   },
   "0x44f5909e97e1cbf5fbbdf0fc92fd83cde5d5c58a": {
     "chain": "ethereum",
@@ -12664,6 +13012,12 @@
     "symbol": "UNO",
     "decimals": 18,
     "address": "0x4604151d4c98d1eea200b0d6bffb79a2613182aa"
+  },
+  "0x461ad31f69e694e2e20b2070d8be1105626110c3": {
+    "chain": "ethereum",
+    "symbol": "RBLXD",
+    "decimals": 18,
+    "address": "0x461ad31f69e694e2e20b2070d8be1105626110c3"
   },
   "0x461b71cff4d4334bba09489ace4b5dc1a1813445": {
     "chain": "ethereum",
@@ -13024,6 +13378,12 @@
     "symbol": "PXG",
     "decimals": 18,
     "address": "0x47e67ba66b0699500f18a53f94e2b9db3d47437e"
+  },
+  "0x47fe8ab9ee47dd65c24df52324181790b9f47efc": {
+    "chain": "ethereum",
+    "symbol": "AWETH",
+    "decimals": 18,
+    "address": "0x47fe8ab9ee47dd65c24df52324181790b9f47efc"
   },
   "0x4800c063baeebcbd1d952f942836ba29436de562": {
     "chain": "ethereum",
@@ -13931,6 +14291,12 @@
     "decimals": 9,
     "address": "0x4d67edef87a5ff910954899f4e5a0aaf107afd42"
   },
+  "0x4d8d9f6ced39288a1e8961621bbbc2b698a3b102": {
+    "chain": "ethereum",
+    "symbol": "HSETH",
+    "decimals": 18,
+    "address": "0x4d8d9f6ced39288a1e8961621bbbc2b698a3b102"
+  },
   "0x4d953cf077c0c95ba090226e59a18fcf97db44ec": {
     "chain": "ethereum",
     "symbol": "MINI",
@@ -14182,6 +14548,12 @@
     "symbol": "ALTDOM-MAR2021",
     "decimals": 18,
     "address": "0x4e83b6287588a96321b2661c5e041845ff7814af"
+  },
+  "0x4e9623b7e5b6438542458f5ee828d65c24d3af8c": {
+    "chain": "ethereum",
+    "symbol": "JYAI",
+    "decimals": 18,
+    "address": "0x4e9623b7e5b6438542458f5ee828d65c24d3af8c"
   },
   "0x4e9e4ab99cfc14b852f552f5fb3aa68617825b6c": {
     "chain": "ethereum",
@@ -14441,6 +14813,12 @@
     "decimals": 18,
     "address": "0x5008cb267846e05dd3e36657a7b2d7e2db973a95"
   },
+  "0x5019fe1867d8ccfd76d8d5abd85db5efce548fba": {
+    "chain": "ethereum",
+    "symbol": "INT",
+    "decimals": 18,
+    "address": "0x5019fe1867d8ccfd76d8d5abd85db5efce548fba"
+  },
   "0x50253dc4a01c6408fab9646e804fcbfdb74e3e4c": {
     "chain": "ethereum",
     "symbol": "INSFRAX",
@@ -14608,6 +14986,12 @@
     "symbol": "GXE",
     "decimals": 18,
     "address": "0x510975eda48a97e0ca228dd04d1217292487bea6"
+  },
+  "0x51129dad3db1c28d693616308ae1062e43280ed7": {
+    "chain": "ethereum",
+    "symbol": "ZAI",
+    "decimals": 18,
+    "address": "0x51129dad3db1c28d693616308ae1062e43280ed7"
   },
   "0x512a2dd77b5f42a1ef0e742f27b28b0cff1a82eb": {
     "chain": "ethereum",
@@ -14873,6 +15257,12 @@
     "decimals": 18,
     "address": "0x5283d291dbcf85356a21ba090e6db59121208b44"
   },
+  "0x52926f7f983d3d7ddcbe644a809d67bbe4a9e785": {
+    "chain": "ethereum",
+    "symbol": "XOMD",
+    "decimals": 18,
+    "address": "0x52926f7f983d3d7ddcbe644a809d67bbe4a9e785"
+  },
   "0x52928c95c4c7e934e0efcfab08853a0e4558861d": {
     "chain": "ethereum",
     "symbol": "HART",
@@ -14902,6 +15292,12 @@
     "symbol": "ABC",
     "decimals": 18,
     "address": "0x52b552c4a698c9b1de4c7fe0dd4462af141f7c3e"
+  },
+  "0x52bd2411f090af9b1fc688fcf3c4242ab0e7ddaf": {
+    "chain": "ethereum",
+    "symbol": "MELID",
+    "decimals": 18,
+    "address": "0x52bd2411f090af9b1fc688fcf3c4242ab0e7ddaf"
   },
   "0x52d134c6db5889fad3542a09eaf7aa90c0fdf9e4": {
     "chain": "ethereum",
@@ -15059,6 +15455,12 @@
     "decimals": 18,
     "address": "0x53c8395465a84955c95159814461466053dedede"
   },
+  "0x53cce6d10e43d1b3d11872ad22ec2acd8d2537b8": {
+    "chain": "ethereum",
+    "symbol": "SMOL",
+    "decimals": 18,
+    "address": "0x53cce6d10e43d1b3d11872ad22ec2acd8d2537b8"
+  },
   "0x53dfea0a8cc2a2a2e425e1c174bc162999723ea0": {
     "chain": "ethereum",
     "symbol": "jCHF",
@@ -15172,6 +15574,12 @@
     "symbol": "SIDUS",
     "decimals": 18,
     "address": "0x549020a9cb845220d66d3e9c6d9f9ef61c981102"
+  },
+  "0x54991328ab43c7d5d31c19d1b9fa048e77b5cd16": {
+    "chain": "ethereum",
+    "symbol": "SOIL",
+    "decimals": 18,
+    "address": "0x54991328ab43c7d5d31c19d1b9fa048e77b5cd16"
   },
   "0x54b2b9e2f5418db7f8aad6ccb495a0d2a1418e82": {
     "chain": "ethereum",
@@ -15563,6 +15971,12 @@
     "decimals": 6,
     "address": "0x56fb1acaff95c0b6ebcd17c8361a63d98b1a5a11"
   },
+  "0x570f09ac53b96929e3868f71864e36ff6b1b67d7": {
+    "chain": "ethereum",
+    "symbol": "ARCAS",
+    "decimals": 17,
+    "address": "0x570f09ac53b96929e3868f71864e36ff6b1b67d7"
+  },
   "0x571042b7138ee957a96a6820fce79c48fe2da816": {
     "chain": "ethereum",
     "symbol": "ESLBR",
@@ -15670,6 +16084,12 @@
     "symbol": "IQ",
     "decimals": 18,
     "address": "0x579cea1889991f68acc35ff5c3dd0621ff29b0c9"
+  },
+  "0x57ab1e0003f623289cd798b1824be09a793e4bec": {
+    "chain": "ethereum",
+    "symbol": "REUSD",
+    "decimals": 18,
+    "address": "0x57ab1e0003f623289cd798b1824be09a793e4bec"
   },
   "0x57ab1ec28d129707052df4df418d58a2d46d5f51": {
     "chain": "ethereum",
@@ -15910,6 +16330,12 @@
     "symbol": "FLAPPY",
     "decimals": 9,
     "address": "0x590246bfbf89b113d8ac36faeea12b7589f7fe5b"
+  },
+  "0x590830dfdf9a3f68afcdde2694773debdf267774": {
+    "chain": "ethereum",
+    "symbol": "GIZA",
+    "decimals": 18,
+    "address": "0x590830dfdf9a3f68afcdde2694773debdf267774"
   },
   "0x590968dfd7a246966a60683d97d1b97afe6fdc6a": {
     "chain": "ethereum",
@@ -16421,6 +16847,12 @@
     "decimals": 18,
     "address": "0x5c6ee304399dbdb9c8ef030ab642b10820db8f56"
   },
+  "0x5c7cc28ff152c397dc2e17349661db67113d6ce3": {
+    "chain": "ethereum",
+    "symbol": "VRTX",
+    "decimals": 18,
+    "address": "0x5c7cc28ff152c397dc2e17349661db67113d6ce3"
+  },
   "0x5c811ab9ab669c6e5bfa6cad1a1f3eed34ef2e80": {
     "chain": "ethereum",
     "symbol": "BPT",
@@ -16444,6 +16876,12 @@
     "symbol": "CART",
     "decimals": 18,
     "address": "0x5c8c8d560048f34e5f7f8ad71f2f81a89dbd273e"
+  },
+  "0x5c8d0c48810fd37a0a824d074ee290e64f7a8fa2": {
+    "chain": "ethereum",
+    "symbol": "AVL",
+    "decimals": 18,
+    "address": "0x5c8d0c48810fd37a0a824d074ee290e64f7a8fa2"
   },
   "0x5ca135cb8527d76e932f34b5145575f9d8cbe08e": {
     "chain": "ethereum",
@@ -16618,6 +17056,12 @@
     "symbol": "NAS",
     "decimals": 18,
     "address": "0x5d65d971895edc438f465c17db6992698a52318d"
+  },
+  "0x5d6cae0422a950dbd7918d1e74434a35156b3ba4": {
+    "chain": "ethereum",
+    "symbol": "NVG8",
+    "decimals": 18,
+    "address": "0x5d6cae0422a950dbd7918d1e74434a35156b3ba4"
   },
   "0x5d6f4e7b3f57b238eea545f16f9d6d17b77ec2fb": {
     "chain": "ethereum",
@@ -16816,6 +17260,12 @@
     "symbol": "sETH",
     "decimals": 18,
     "address": "0x5e74c9036fb86bd7ecdcb084a0673efc32ea31cb"
+  },
+  "0x5e796f7e42117ca82b1db3eb227bef11b7a48aa0": {
+    "chain": "ethereum",
+    "symbol": "WALRFD",
+    "decimals": 18,
+    "address": "0x5e796f7e42117ca82b1db3eb227bef11b7a48aa0"
   },
   "0x5e7f20e72c21f6d0bf0a2814fd4164176401cf8e": {
     "chain": "ethereum",
@@ -17182,6 +17632,12 @@
     "symbol": "BPT",
     "decimals": 18,
     "address": "0x604fd4ca4e1d42954f85b1c5c3960d6cefbe2db8"
+  },
+  "0x6055dc6ff1077eebe5e6d2ba1a1f53d7ef8430de": {
+    "chain": "ethereum",
+    "symbol": "ES",
+    "decimals": 6,
+    "address": "0x6055dc6ff1077eebe5e6d2ba1a1f53d7ef8430de"
   },
   "0x6069c9223e8a5da1ec49ac5525d4bb757af72cd8": {
     "chain": "ethereum",
@@ -17555,6 +18011,12 @@
     "decimals": 9,
     "address": "0x62431de84c503e152a8957ff51c8945aaaa7d929"
   },
+  "0x6243558a24cc6116abe751f27e6d7ede50abfc76": {
+    "chain": "ethereum",
+    "symbol": "LVVA",
+    "decimals": 18,
+    "address": "0x6243558a24cc6116abe751f27e6d7ede50abfc76"
+  },
   "0x6243d8cea23066d098a15582d81a598b4e8391f4": {
     "chain": "ethereum",
     "symbol": "FLX",
@@ -17710,6 +18172,12 @@
     "symbol": "PEAK",
     "decimals": 8,
     "address": "0x630d98424efe0ea27fb1b3ab7741907dffeaad78"
+  },
+  "0x63230728bc219d991d2995ce92e96c16fcf8beb6": {
+    "chain": "ethereum",
+    "symbol": "KCT",
+    "decimals": 18,
+    "address": "0x63230728bc219d991d2995ce92e96c16fcf8beb6"
   },
   "0x6325cf7b3b645de6355e37e0e88f6ff0030f9e97": {
     "chain": "ethereum",
@@ -18983,6 +19451,12 @@
     "decimals": 9,
     "address": "0x696733ce8f387c7a648443d9e21c6c1ee8519b94"
   },
+  "0x6967f0974d76d34e140cae27efea32cdf546b58e": {
+    "chain": "ethereum",
+    "symbol": "GMRT",
+    "decimals": 18,
+    "address": "0x6967f0974d76d34e140cae27efea32cdf546b58e"
+  },
   "0x69681f8fde45345c3870bcd5eaf4a05a60e7d227": {
     "chain": "ethereum",
     "symbol": "ibGBP",
@@ -19607,6 +20081,12 @@
     "decimals": 18,
     "address": "0x6bd361e10c1afed0d95259e7c0115f3a60e4ea99"
   },
+  "0x6bdde71cf0c751eb6d5edb8418e43d3d9427e436": {
+    "chain": "ethereum",
+    "symbol": "BTREE",
+    "decimals": 18,
+    "address": "0x6bdde71cf0c751eb6d5edb8418e43d3d9427e436"
+  },
   "0x6be61833fc4381990e82d7d4a9f4c9b3f67ea941": {
     "chain": "ethereum",
     "symbol": "HTB",
@@ -20117,6 +20597,12 @@
     "decimals": 9,
     "address": "0x6e79b51959cf968d87826592f46f819f92466615"
   },
+  "0x6e7f11641c1ec71591828e531334192d622703f7": {
+    "chain": "ethereum",
+    "symbol": "OIK",
+    "decimals": 18,
+    "address": "0x6e7f11641c1ec71591828e531334192d622703f7"
+  },
   "0x6e8908cfa881c9f6f2c64d3436e7b80b1bf0093f": {
     "chain": "ethereum",
     "symbol": "BIST",
@@ -20134,6 +20620,12 @@
     "symbol": "AUR",
     "decimals": 18,
     "address": "0x6e98e5401adcb0d76f4debfc3d794b3031f48790"
+  },
+  "0x6eb64894cfb6a7d00749781ad01975584822dd5f": {
+    "chain": "ethereum",
+    "symbol": "TWG",
+    "decimals": 18,
+    "address": "0x6eb64894cfb6a7d00749781ad01975584822dd5f"
   },
   "0x6ec8a24cabdc339a06a172f8223ea557055adaa5": {
     "chain": "ethereum",
@@ -20705,6 +21197,12 @@
     "decimals": 18,
     "address": "0x71ba91dc68c6a206db0a6a92b4b1de3f9271432d"
   },
+  "0x71d898c440af10566cea48e12c01f435ec788c7a": {
+    "chain": "ethereum",
+    "symbol": "MAI",
+    "decimals": 18,
+    "address": "0x71d898c440af10566cea48e12c01f435ec788c7a"
+  },
   "0x71da932ccda723ba3ab730c976bc66daaf9c598c": {
     "chain": "ethereum",
     "symbol": "MAG",
@@ -20903,6 +21401,12 @@
     "decimals": 6,
     "address": "0x72adadb447784dd7ab1f472467750fc485e4cb2d"
   },
+  "0x72b658bd674f9c2b4954682f517c17d14476e417": {
+    "chain": "ethereum",
+    "symbol": "OPTR",
+    "decimals": 18,
+    "address": "0x72b658bd674f9c2b4954682f517c17d14476e417"
+  },
   "0x72b886d09c117654ab7da13a14d603001de0b777": {
     "chain": "ethereum",
     "symbol": "XDEFI",
@@ -21047,6 +21551,12 @@
     "decimals": 18,
     "address": "0x735fa792e731a2e8f83f32eb539841b7b72e6d8f"
   },
+  "0x736ecc5237b31edec6f1ab9a396fae2416b1d96e": {
+    "chain": "ethereum",
+    "symbol": "GASP",
+    "decimals": 18,
+    "address": "0x736ecc5237b31edec6f1ab9a396fae2416b1d96e"
+  },
   "0x737f98ac8ca59f2c68ad658e3c3d8c8963e40a4c": {
     "chain": "ethereum",
     "symbol": "AMN",
@@ -21058,6 +21568,12 @@
     "symbol": "AGRS",
     "decimals": 8,
     "address": "0x738865301a9b7dd80dc3666dd48cf034ec42bdda"
+  },
+  "0x738d1115b90efa71ae468f1287fc864775e23a31": {
+    "chain": "ethereum",
+    "symbol": "SRUSD",
+    "decimals": 18,
+    "address": "0x738d1115b90efa71ae468f1287fc864775e23a31"
   },
   "0x73968b9a57c6e53d41345fd57a6e6ae27d6cdb2f": {
     "chain": "ethereum",
@@ -21449,6 +21965,12 @@
     "decimals": 18,
     "address": "0x761d38e5ddf6ccf6cf7c55759d5210750b5d60f3"
   },
+  "0x7636d8722fdf7cd34232a915e48e96aa3eb386bf": {
+    "chain": "ethereum",
+    "symbol": "SFI",
+    "decimals": 18,
+    "address": "0x7636d8722fdf7cd34232a915e48e96aa3eb386bf"
+  },
   "0x7645ddfeeceda57e41f92679c4acd83c56a81d14": {
     "chain": "ethereum",
     "symbol": "FLUX",
@@ -21809,6 +22331,12 @@
     "decimals": 18,
     "address": "0x7815bda662050d84718b988735218cffd32f75ea"
   },
+  "0x781d201db8c837ea2aefea7394554071da45ff0f": {
+    "chain": "ethereum",
+    "symbol": "ATAI",
+    "decimals": 18,
+    "address": "0x781d201db8c837ea2aefea7394554071da45ff0f"
+  },
   "0x781fbc4c6edf7a37dcc08a3b323f122e8a09eac5": {
     "chain": "ethereum",
     "symbol": "OAT",
@@ -21844,6 +22372,12 @@
     "symbol": "BPT",
     "decimals": 18,
     "address": "0x784b6fc736aa93f5b413df2aacd6023cd74c7430"
+  },
+  "0x784f4004cffdf43d13e490f81bcbd762b60d0e21": {
+    "chain": "ethereum",
+    "symbol": "AX",
+    "decimals": 9,
+    "address": "0x784f4004cffdf43d13e490f81bcbd762b60d0e21"
   },
   "0x785c34312dfa6b74f6f1829f79ade39042222168": {
     "chain": "ethereum",
@@ -21976,6 +22510,12 @@
     "symbol": "TOONS",
     "decimals": 18,
     "address": "0x792833b894775bd769b3c602ba7172e59a83ab3f"
+  },
+  "0x792905a8b7c0a22d56e78e849f95c162018a4e2d": {
+    "chain": "ethereum",
+    "symbol": "RENTA",
+    "decimals": 18,
+    "address": "0x792905a8b7c0a22d56e78e849f95c162018a4e2d"
   },
   "0x79349edd0b8e83ffaa1af2e6ba0c8ce87731c267": {
     "chain": "ethereum",
@@ -22751,6 +23291,12 @@
     "decimals": 9,
     "address": "0x7dbbcae15d4db168e01673400d7844870cc1e36f"
   },
+  "0x7dc9748da8e762e569f9269f48f69a1a9f8ea761": {
+    "chain": "ethereum",
+    "symbol": "ZEUSD",
+    "decimals": 6,
+    "address": "0x7dc9748da8e762e569f9269f48f69a1a9f8ea761"
+  },
   "0x7dd7d5ca67df3e0f5a7f004af3653444b1fcfb76": {
     "chain": "ethereum",
     "symbol": "BRRR",
@@ -22858,6 +23404,12 @@
     "symbol": "FIONA",
     "decimals": 9,
     "address": "0x7e7ef0ee0305c1c195fcae22fd7b207a813eef86"
+  },
+  "0x7e8101a1c322d394b3961498c7d40d2dfa94c392": {
+    "chain": "ethereum",
+    "symbol": "WBNVDA",
+    "decimals": 18,
+    "address": "0x7e8101a1c322d394b3961498c7d40d2dfa94c392"
   },
   "0x7e877b99897d514da01bd1d177e693ec639961af": {
     "chain": "ethereum",
@@ -23099,6 +23651,12 @@
     "decimals": 9,
     "address": "0x8070dee687fc754b55101374e3ca6e4fd024a39e"
   },
+  "0x8074836637eb9cc73a01a65d5700907fc639c4e9": {
+    "chain": "ethereum",
+    "symbol": "DNOW",
+    "decimals": 18,
+    "address": "0x8074836637eb9cc73a01a65d5700907fc639c4e9"
+  },
   "0x807534b396919783b7e30383fe57d857bc084338": {
     "chain": "ethereum",
     "symbol": "TEST",
@@ -23182,6 +23740,12 @@
     "symbol": "DEA",
     "decimals": 18,
     "address": "0x80ab141f324c3d6f2b18b030f1c4e95d4d658778"
+  },
+  "0x80ac24aa929eaf5013f6436cda2a7ba190f5cc0b": {
+    "chain": "ethereum",
+    "symbol": "SYRUPUSDC",
+    "decimals": 6,
+    "address": "0x80ac24aa929eaf5013f6436cda2a7ba190f5cc0b"
   },
   "0x80c62fe4487e1351b47ba49809ebd60ed085bf52": {
     "chain": "ethereum",
@@ -23350,6 +23914,12 @@
     "symbol": "ODDS",
     "decimals": 9,
     "address": "0x81de7654a08b0a37d136eb6e31a54543cdabeb15"
+  },
+  "0x81e32d4652be82ae225dedd1bd0bf3bcba8fee07": {
+    "chain": "ethereum",
+    "symbol": "xRING",
+    "decimals": 18,
+    "address": "0x81e32d4652be82ae225dedd1bd0bf3bcba8fee07"
   },
   "0x81f8f0bb1cb2a06649e51913a151f0e7ef6fa321": {
     "chain": "ethereum",
@@ -24017,6 +24587,12 @@
     "decimals": 18,
     "address": "0x856c4efb76c1d1ae02e20ceb03a2a6a08b0b8dc3"
   },
+  "0x856d602e73545deaa1491a3726cf628d49f74f51": {
+    "chain": "ethereum",
+    "symbol": "GRAM",
+    "decimals": 18,
+    "address": "0x856d602e73545deaa1491a3726cf628d49f74f51"
+  },
   "0x8578530205cecbe5db83f7f29ecfeec860c297c2": {
     "chain": "ethereum",
     "symbol": "AOG",
@@ -24185,6 +24761,12 @@
     "decimals": 9,
     "address": "0x86b874397ecc811c5d9c1db2d8b68f3425d61a61"
   },
+  "0x86ccbf2471be7ebca2c2c92a12fcf7089a44b4df": {
+    "chain": "ethereum",
+    "symbol": "SBUXD",
+    "decimals": 18,
+    "address": "0x86ccbf2471be7ebca2c2c92a12fcf7089a44b4df"
+  },
   "0x86eab36585eddb7a949a0b4771ba733d942a8aa7": {
     "chain": "ethereum",
     "symbol": "REDDIT",
@@ -24220,6 +24802,12 @@
     "symbol": "LQDX",
     "decimals": 18,
     "address": "0x872952d3c1caf944852c5adda65633f1ef218a26"
+  },
+  "0x8730762cad4a27816a467fac54e3dd1e2e9617a1": {
+    "chain": "ethereum",
+    "symbol": "GX",
+    "decimals": 18,
+    "address": "0x8730762cad4a27816a467fac54e3dd1e2e9617a1"
   },
   "0x873259322be8e50d80a4b868d186cc5ab148543a": {
     "chain": "ethereum",
@@ -24340,6 +24928,12 @@
     "symbol": "ISME",
     "decimals": 18,
     "address": "0x87c22db324b8b0637c8f09d2670ae7777651dbb8"
+  },
+  "0x87c9053c819bb28e0d73d33059e1b3da80afb0cf": {
+    "chain": "ethereum",
+    "symbol": "MRE7YIELD",
+    "decimals": 18,
+    "address": "0x87c9053c819bb28e0d73d33059e1b3da80afb0cf"
   },
   "0x87d73e916d7057945c9bcd8cdd94e42a6f47f776": {
     "chain": "ethereum",
@@ -24617,6 +25211,12 @@
     "decimals": 18,
     "address": "0x88ce174c655b6d11210a069b2c106632dabdb068"
   },
+  "0x88cee7bf66435f6fdbb681a6a522f26598fe39a2": {
+    "chain": "ethereum",
+    "symbol": "HYMBD",
+    "decimals": 18,
+    "address": "0x88cee7bf66435f6fdbb681a6a522f26598fe39a2"
+  },
   "0x88d50b466be55222019d71f9e8fae17f5f45fca1": {
     "chain": "ethereum",
     "symbol": "CPT",
@@ -24754,6 +25354,12 @@
     "symbol": "LEMON",
     "decimals": 18,
     "address": "0x898843fb909e3562c82f2b96f4e3d0693af041df"
+  },
+  "0x89a8c847f41c0dfa6c8b88638bacca8a0b777da7": {
+    "chain": "ethereum",
+    "symbol": "ELX",
+    "decimals": 18,
+    "address": "0x89a8c847f41c0dfa6c8b88638bacca8a0b777da7"
   },
   "0x89ab32156e46f46d02ade3fecbe5fc4243b9aaed": {
     "chain": "ethereum",
@@ -25090,6 +25696,12 @@
     "symbol": "SMART",
     "decimals": 9,
     "address": "0x8b68f1d0246320d5caf8cd9828faab28d66ba749"
+  },
+  "0x8b7cf3a97c1f840bcf490dfd7d6a16a96dd5dd0c": {
+    "chain": "ethereum",
+    "symbol": "QS",
+    "decimals": 9,
+    "address": "0x8b7cf3a97c1f840bcf490dfd7d6a16a96dd5dd0c"
   },
   "0x8b802513d4aa6f349b197a4ea4c26563cd6fd5b2": {
     "chain": "ethereum",
@@ -25439,6 +26051,12 @@
     "decimals": 18,
     "address": "0x8cedb0680531d26e62abdbd0f4c5428b7fdc26d5"
   },
+  "0x8d0d000ee44948fc98c9b98a4fa4921476f08b0d": {
+    "chain": "ethereum",
+    "symbol": "USD1",
+    "decimals": 18,
+    "address": "0x8d0d000ee44948fc98c9b98a4fa4921476f08b0d"
+  },
   "0x8d137e3337eb1b58a222fef2b2cc7c423903d9cf": {
     "chain": "ethereum",
     "symbol": "SQGL",
@@ -25613,6 +26231,12 @@
     "decimals": 18,
     "address": "0x8e0789d39db454dbe9f4a77acef6dc7c69f6d552"
   },
+  "0x8e0b3e3cb4468b6aa07a64e69deb72aea8eddc6f": {
+    "chain": "ethereum",
+    "symbol": "SANJI",
+    "decimals": 18,
+    "address": "0x8e0b3e3cb4468b6aa07a64e69deb72aea8eddc6f"
+  },
   "0x8e0cdae2263de5cc4bc81d8faed9a7e1987d1d0e": {
     "chain": "ethereum",
     "symbol": "NSFW",
@@ -25696,6 +26320,12 @@
     "symbol": "ARCX",
     "decimals": 18,
     "address": "0x8e4d27d772099e18900caf5dcc36cb612dcee886"
+  },
+  "0x8e4f1ce473b292d56934c36976356e3e22c35585": {
+    "chain": "ethereum",
+    "symbol": "FIAS",
+    "decimals": 18,
+    "address": "0x8e4f1ce473b292d56934c36976356e3e22c35585"
   },
   "0x8e57c27761ebbd381b0f9d09bb92ceb51a358abb": {
     "chain": "ethereum",
@@ -26111,6 +26741,12 @@
     "decimals": 18,
     "address": "0x90bc3ba3087d6e6e8a22ef41d66f4855071cd8f7"
   },
+  "0x90ce5720c17587d28e4af120ae2d313b3bad1722": {
+    "chain": "ethereum",
+    "symbol": "OVER",
+    "decimals": 18,
+    "address": "0x90ce5720c17587d28e4af120ae2d313b3bad1722"
+  },
   "0x90d1964873ddd741f49ed3ca9c47ceb470313a09": {
     "chain": "ethereum",
     "symbol": "HENLO",
@@ -26152,6 +26788,12 @@
     "symbol": "YD-ETH-MAR21",
     "decimals": 18,
     "address": "0x90f802c7e8fb5d40b0de583e34c065a3bd2020d8"
+  },
+  "0x90fa6faf82ddcbbbd48f66ee70b8515a7a626ac3": {
+    "chain": "ethereum",
+    "symbol": "TJXD",
+    "decimals": 18,
+    "address": "0x90fa6faf82ddcbbbd48f66ee70b8515a7a626ac3"
   },
   "0x910524678c0b1b23ffb9285a81f99c29c11cbaed": {
     "chain": "ethereum",
@@ -26326,6 +26968,12 @@
     "symbol": "BPT",
     "decimals": 18,
     "address": "0x921e221035ff6e00ba6ab118371d23578410015d"
+  },
+  "0x92217ccaedbdbc54c76c15fea18823db1558fdc9": {
+    "chain": "ethereum",
+    "symbol": "FULA",
+    "decimals": 18,
+    "address": "0x92217ccaedbdbc54c76c15fea18823db1558fdc9"
   },
   "0x922d8563631b03c2c4cf817f4d18f6883aba0109": {
     "chain": "ethereum",
@@ -26657,6 +27305,12 @@
     "decimals": 18,
     "address": "0x940bdcb99a0ee5fb008a606778ae87ed9789f257"
   },
+  "0x94314a14df63779c99c0764a30e0cd22fa78fc0e": {
+    "chain": "ethereum",
+    "symbol": "EPIC",
+    "decimals": 18,
+    "address": "0x94314a14df63779c99c0764a30e0cd22fa78fc0e"
+  },
   "0x943af2ece93118b973c95c2f698ee9d15002e604": {
     "chain": "ethereum",
     "symbol": "DUEL",
@@ -26890,6 +27544,12 @@
     "symbol": "FEI",
     "decimals": 18,
     "address": "0x956f47f50a910163d8bf957cf5846d573e7f87ca"
+  },
+  "0x957c7fa189a408e78543113412f6ae1a9b4022c4": {
+    "chain": "ethereum",
+    "symbol": "LF",
+    "decimals": 18,
+    "address": "0x957c7fa189a408e78543113412f6ae1a9b4022c4"
   },
   "0x958a03181806cb8807bef40e864e55f89b3393d3": {
     "chain": "ethereum",
@@ -27437,6 +28097,12 @@
     "decimals": 9,
     "address": "0x984ac33e3c6031b7190444aed92d617b92ef2c37"
   },
+  "0x98509e66fbf5a68d18ebb01dc4a52ce020fc8d1f": {
+    "chain": "ethereum",
+    "symbol": "MCTP",
+    "decimals": 18,
+    "address": "0x98509e66fbf5a68d18ebb01dc4a52ce020fc8d1f"
+  },
   "0x98585dfc8d9e7d48f0b1ae47ce33332cf4237d96": {
     "chain": "ethereum",
     "symbol": "NEWO",
@@ -27593,6 +28259,12 @@
     "decimals": 18,
     "address": "0x993864e43caa7f7f12953ad6feb1d1ca635b875f"
   },
+  "0x993d9ca16686746fef44e320e7f091578710cd18": {
+    "chain": "ethereum",
+    "symbol": "ITAD",
+    "decimals": 18,
+    "address": "0x993d9ca16686746fef44e320e7f091578710cd18"
+  },
   "0x994bf19e32584255d82896d1477488e87012f209": {
     "chain": "ethereum",
     "symbol": "CPU",
@@ -27736,6 +28408,12 @@
     "symbol": "METHX",
     "decimals": 18,
     "address": "0x9a1722b1f4a1bb2f271211ade8e851afc54f77e5"
+  },
+  "0x9a1741e151233a82cf69209a2f1bc7442b1fb29c": {
+    "chain": "ethereum",
+    "symbol": "DGI",
+    "decimals": 18,
+    "address": "0x9a1741e151233a82cf69209a2f1bc7442b1fb29c"
   },
   "0x9a2af0abb12bee5369b180976be01e8c80d0e7b6": {
     "chain": "ethereum",
@@ -28019,6 +28697,12 @@
     "decimals": 18,
     "address": "0x9ba021b0a9b958b5e75ce9f6dff97c7ee52cb3e6"
   },
+  "0x9ba08fa0428db35dde85d6c515184642c6301199": {
+    "chain": "ethereum",
+    "symbol": "FD",
+    "decimals": 18,
+    "address": "0x9ba08fa0428db35dde85d6c515184642c6301199"
+  },
   "0x9ba60ba98413a60db4c651d4afe5c937bbd8044b": {
     "chain": "ethereum",
     "symbol": "YLA",
@@ -28036,6 +28720,12 @@
     "symbol": "HANDZ",
     "decimals": 18,
     "address": "0x9baa12a9e3b9dc355f162082762f95626367d087"
+  },
+  "0x9bbe8f42b9c2333fe2a80323028ab107379646c7": {
+    "chain": "ethereum",
+    "symbol": "POWER",
+    "decimals": 18,
+    "address": "0x9bbe8f42b9c2333fe2a80323028ab107379646c7"
   },
   "0x9bd20ed5be5e1b50cdbb28270a2f0815d9d23af3": {
     "chain": "ethereum",
@@ -28150,6 +28840,12 @@
     "symbol": "WOLF",
     "decimals": 18,
     "address": "0x9c7d4fb43919def524c1a9d92fe836169eaf0615"
+  },
+  "0x9c879a1c2021bd0594750c148f37176395be0b8f": {
+    "chain": "ethereum",
+    "symbol": "SPSKD",
+    "decimals": 18,
+    "address": "0x9c879a1c2021bd0594750c148f37176395be0b8f"
   },
   "0x9ca8530ca349c966fe9ef903df17a75b8a778927": {
     "chain": "ethereum",
@@ -28529,6 +29225,12 @@
     "decimals": 18,
     "address": "0x9e6be44cc1236eef7e1f197418592d363bedcd5a"
   },
+  "0x9e6dbde4211e6853b33b8bcd5ce82144997c63ba": {
+    "chain": "ethereum",
+    "symbol": "SQD",
+    "decimals": 18,
+    "address": "0x9e6dbde4211e6853b33b8bcd5ce82144997c63ba"
+  },
   "0x9e78b8274e1d6a76a0dbbf90418894df27cbceb5": {
     "chain": "ethereum",
     "symbol": "UNIFI",
@@ -28552,6 +29254,12 @@
     "symbol": "DELTA",
     "decimals": 18,
     "address": "0x9ea3b5b4ec044b70375236a281986106457b20ef"
+  },
+  "0x9ea59db651a3c79a8d52a394a49da8e9a214d6ae": {
+    "chain": "ethereum",
+    "symbol": "BALLS",
+    "decimals": 9,
+    "address": "0x9ea59db651a3c79a8d52a394a49da8e9a214d6ae"
   },
   "0x9ebb0895bd9c7c9dfab0d8d877c66ba613ac98ea": {
     "chain": "ethereum",
@@ -29027,6 +29735,12 @@
     "decimals": 18,
     "address": "0xa10bf0aba0c7953f279c4cb8192d3b5de5ea56e8"
   },
+  "0xa110260a67fbbb6226f563844eeaf29e8c018bb7": {
+    "chain": "ethereum",
+    "symbol": "CHDD",
+    "decimals": 18,
+    "address": "0xa110260a67fbbb6226f563844eeaf29e8c018bb7"
+  },
   "0xa1116930326d21fb917d5a27f1e9943a9595fb47": {
     "chain": "ethereum",
     "symbol": "STKABPT",
@@ -29326,6 +30040,12 @@
     "symbol": "ATX",
     "decimals": 18,
     "address": "0xa28cbb24313df3907b8d87685bab2c1d0bd46b60"
+  },
+  "0xa29c9a740de8194e4016747e9a04a84946ada0a5": {
+    "chain": "ethereum",
+    "symbol": "NUMI",
+    "decimals": 18,
+    "address": "0xa29c9a740de8194e4016747e9a04a84946ada0a5"
   },
   "0xa2a54f1ec1f09316ef12c1770d32ed8f21b1fb6a": {
     "chain": "ethereum",
@@ -29855,6 +30575,12 @@
     "decimals": 18,
     "address": "0xa5ca62d95d24a4a350983d5b8ac4eb8638887396"
   },
+  "0xa5cdea03b11042fc10b52af9eca48bb17a2107d2": {
+    "chain": "ethereum",
+    "symbol": "MVRWA",
+    "decimals": 18,
+    "address": "0xa5cdea03b11042fc10b52af9eca48bb17a2107d2"
+  },
   "0xa5ef74068d04ba0809b7379dd76af5ce34ab7c57": {
     "chain": "ethereum",
     "symbol": "LUCHOW",
@@ -30088,6 +30814,12 @@
     "symbol": "IMGNAI",
     "decimals": 9,
     "address": "0xa735a3af76cc30791c61c10d585833829d36cbe0"
+  },
+  "0xa73b792906c79509d73fdfaaa78561e195010706": {
+    "chain": "ethereum",
+    "symbol": "PIPO",
+    "decimals": 18,
+    "address": "0xa73b792906c79509d73fdfaaa78561e195010706"
   },
   "0xa74a05b17d72e9b0781d973e7963dfaacd266b94": {
     "chain": "ethereum",
@@ -30407,6 +31139,12 @@
     "decimals": 18,
     "address": "0xa93d5cfaa41193b13321c035b4bdd2b534172762"
   },
+  "0xa93d86af16fe83f064e3c0e2f3d129f7b7b002b0": {
+    "chain": "ethereum",
+    "symbol": "COCORO",
+    "decimals": 9,
+    "address": "0xa93d86af16fe83f064e3c0e2f3d129f7b7b002b0"
+  },
   "0xa94a4ed3b3414bb2468e5c200d68e56d4ce180f9": {
     "chain": "ethereum",
     "symbol": "BPT",
@@ -30629,6 +31367,12 @@
     "decimals": 18,
     "address": "0xaa8330fb2b4d5d07abfe7a72262752a8505c6b37"
   },
+  "0xaa88ab7413f909eef5bd69bb2a2b6f97dc6743b8": {
+    "chain": "ethereum",
+    "symbol": "PGD",
+    "decimals": 18,
+    "address": "0xaa88ab7413f909eef5bd69bb2a2b6f97dc6743b8"
+  },
   "0xaa8da83b0b8fca779c36f3e39fa93df2a3906617": {
     "chain": "ethereum",
     "symbol": "TONT",
@@ -30742,6 +31486,12 @@
     "symbol": "BPT",
     "decimals": 18,
     "address": "0xaaf841fd6409c136fa4b960e22a92b45b26c9b41"
+  },
+  "0xaafec8e08d524d534327fa13fb306f440b5f88eb": {
+    "chain": "ethereum",
+    "symbol": "WCTC",
+    "decimals": 18,
+    "address": "0xaafec8e08d524d534327fa13fb306f440b5f88eb"
   },
   "0xab068e351a94c9021c233c662645747c2c29a5ea": {
     "chain": "ethereum",
@@ -30958,6 +31708,12 @@
     "symbol": "AIEPK",
     "decimals": 18,
     "address": "0xac5b038058bcd0424c9c252c6487c25f032e5ddc"
+  },
+  "0xac6708e83698d34cd5c09d48249b0239008d0ccf": {
+    "chain": "ethereum",
+    "symbol": "FORTKNOX",
+    "decimals": 18,
+    "address": "0xac6708e83698d34cd5c09d48249b0239008d0ccf"
   },
   "0xac6db8954b73ebf10e84278ac8b9b22a781615d9": {
     "chain": "ethereum",
@@ -31265,6 +32021,12 @@
     "decimals": 8,
     "address": "0xae1eaae3f627aaca434127644371b67b18444051"
   },
+  "0xae3013789c836345dfd63a9df713e3c23fb3a664": {
+    "chain": "ethereum",
+    "symbol": "GEOFF",
+    "decimals": 18,
+    "address": "0xae3013789c836345dfd63a9df713e3c23fb3a664"
+  },
   "0xae3359ed3c567482fb0102c584c23daa2693eacf": {
     "chain": "ethereum",
     "symbol": "DORK",
@@ -31421,11 +32183,23 @@
     "decimals": 8,
     "address": "0xaef4f02e31cdbf007f8d98da4ae365188a0e9ecc"
   },
+  "0xaf04f0912e793620824f4442b03f4d984af29853": {
+    "chain": "ethereum",
+    "symbol": "HYDRA",
+    "decimals": 18,
+    "address": "0xaf04f0912e793620824f4442b03f4d984af29853"
+  },
   "0xaf05ce8a2cef336006e933c02fc89887f5b3c726": {
     "chain": "ethereum",
     "symbol": "LMI",
     "decimals": 18,
     "address": "0xaf05ce8a2cef336006e933c02fc89887f5b3c726"
+  },
+  "0xaf0db65b7296c02ab043f5cb17300c8ee949f247": {
+    "chain": "ethereum",
+    "symbol": "SHAO",
+    "decimals": 18,
+    "address": "0xaf0db65b7296c02ab043f5cb17300c8ee949f247"
   },
   "0xaf162491c0b21900c01f4cc0f7110238aacdebe7": {
     "chain": "ethereum",
@@ -31522,6 +32296,12 @@
     "symbol": "MODAI",
     "decimals": 18,
     "address": "0xafa42b8ba6ba9dace46dae129a2a1ef54b73fa8b"
+  },
+  "0xafb942e2a12ac0861ad81b5c37682f588912c1d9": {
+    "chain": "ethereum",
+    "symbol": "PRIVIX",
+    "decimals": 9,
+    "address": "0xafb942e2a12ac0861ad81b5c37682f588912c1d9"
   },
   "0xafcdd4f666c84fed1d8bd825aa762e3714f652c9": {
     "chain": "ethereum",
@@ -32261,6 +33041,12 @@
     "decimals": 18,
     "address": "0xb45ad160634c528cc3d2926d9807104fa3157305"
   },
+  "0xb45ffb51984d626ee758b336c61cf20990c6bf13": {
+    "chain": "ethereum",
+    "symbol": "RBNT",
+    "decimals": 18,
+    "address": "0xb45ffb51984d626ee758b336c61cf20990c6bf13"
+  },
   "0xb4725590574bb8afae4a3f44f05f9c0f5ebd8f4b": {
     "chain": "ethereum",
     "symbol": "HOLE",
@@ -32296,6 +33082,12 @@
     "symbol": "FREEDOM",
     "decimals": 18,
     "address": "0xb49bf1dbdc567b997733093880734f030174474c"
+  },
+  "0xb49e40e97b41b253ecfe6b01a11f1a4f021724f9": {
+    "chain": "ethereum",
+    "symbol": "SONYD",
+    "decimals": 18,
+    "address": "0xb49e40e97b41b253ecfe6b01a11f1a4f021724f9"
   },
   "0xb49fa25978abf9a248b8212ab4b87277682301c0": {
     "chain": "ethereum",
@@ -33107,6 +33899,12 @@
     "decimals": 18,
     "address": "0xb94acdf8662cd955f137e0c9c9fba535c87b57b4"
   },
+  "0xb96682a8f558b8199a2dc039b1dd8911e5068faf": {
+    "chain": "ethereum",
+    "symbol": "ECT",
+    "decimals": 9,
+    "address": "0xb96682a8f558b8199a2dc039b1dd8911e5068faf"
+  },
   "0xb97048628db6b661d4c2aa833e95dbe1a905b280": {
     "chain": "ethereum",
     "symbol": "PAY",
@@ -33401,6 +34199,12 @@
     "decimals": 9,
     "address": "0xbabe3ce7835665464228df00b03246115c30730a"
   },
+  "0xbad6c59d72d44512616f25b3d160c79db5a69ddf": {
+    "chain": "ethereum",
+    "symbol": "VATAN",
+    "decimals": 18,
+    "address": "0xbad6c59d72d44512616f25b3d160c79db5a69ddf"
+  },
   "0xbadff0ef41d2a68f22de21eabca8a59aaf495cf0": {
     "chain": "ethereum",
     "symbol": "KABOSU",
@@ -33472,6 +34276,12 @@
     "symbol": "CHAT",
     "decimals": 18,
     "address": "0xbb3d7f42c58abd83616ad7c8c72473ee46df2678"
+  },
+  "0xbb51e2a15a9158ebe2b0ceb8678511e063ab7a55": {
+    "chain": "ethereum",
+    "symbol": "MEDGE",
+    "decimals": 18,
+    "address": "0xbb51e2a15a9158ebe2b0ceb8678511e063ab7a55"
   },
   "0xbb556b0ee2cbd89ed95ddea881477723a3aa8f8b": {
     "chain": "ethereum",
@@ -33970,6 +34780,12 @@
     "symbol": "mBTC",
     "decimals": 8,
     "address": "0xbdf245957992bfbc62b07e344128a1eec7b7ee3f"
+  },
+  "0xbdf43ecadc5cef51b7d1772f722e40596bc1788b": {
+    "chain": "ethereum",
+    "symbol": "SEI",
+    "decimals": 18,
+    "address": "0xbdf43ecadc5cef51b7d1772f722e40596bc1788b"
   },
   "0xbe00734799a67a62af2819825580318ac1b1e4ec": {
     "chain": "ethereum",
@@ -34733,6 +35549,12 @@
     "decimals": 9,
     "address": "0xc1f33e0cf7e40a67375007104b929e49a581bafe"
   },
+  "0xc214a0b73ce4c30594b4173219e885691254801b": {
+    "chain": "ethereum",
+    "symbol": "TOTO",
+    "decimals": 9,
+    "address": "0xc214a0b73ce4c30594b4173219e885691254801b"
+  },
   "0xc21db71648b18c5b9e038d88393c9b254cf8eac8": {
     "chain": "ethereum",
     "symbol": "ERY",
@@ -34888,6 +35710,12 @@
     "symbol": "CRYN",
     "decimals": 8,
     "address": "0xc31cebf8f9e825d1d1244d73d0a65e44bd5210db"
+  },
+  "0xc3260a0e1dd1f7ac6508ae29cb00f4fa4b544ba7": {
+    "chain": "ethereum",
+    "symbol": "RKLBD",
+    "decimals": 18,
+    "address": "0xc3260a0e1dd1f7ac6508ae29cb00f4fa4b544ba7"
   },
   "0xc328a59e7321747aebbc49fd28d1b32c1af8d3b2": {
     "chain": "ethereum",
@@ -35117,6 +35945,12 @@
     "decimals": 18,
     "address": "0xc49ba70588430cca11aa8ac6d523754e4ddd6527"
   },
+  "0xc49da7892155ccc603f0b88eaedaa3b57910096f": {
+    "chain": "ethereum",
+    "symbol": "CVXD",
+    "decimals": 18,
+    "address": "0xc49da7892155ccc603f0b88eaedaa3b57910096f"
+  },
   "0xc4a217a8b2cdf85eb8206391ae3723d72b3a4e04": {
     "chain": "ethereum",
     "symbol": "BITBD",
@@ -35158,6 +35992,12 @@
     "symbol": "MEZZ",
     "decimals": 18,
     "address": "0xc4c346edc55504574cceb00aa1091d22404a4bc3"
+  },
+  "0xc4c6213024d9adc5132707942905918df7fbbbe8": {
+    "chain": "ethereum",
+    "symbol": "EZBCD",
+    "decimals": 18,
+    "address": "0xc4c6213024d9adc5132707942905918df7fbbbe8"
   },
   "0xc4c75f2a0cb1a9acc33929512dc9733ea1fd6fde": {
     "chain": "ethereum",
@@ -35327,6 +36167,12 @@
     "decimals": 18,
     "address": "0xc5807183a9661a533cb08cbc297594a0b864dc12"
   },
+  "0xc580919e2e4b083321f9e4c5ed56bc862f275916": {
+    "chain": "ethereum",
+    "symbol": "SOXLD",
+    "decimals": 18,
+    "address": "0xc580919e2e4b083321f9e4c5ed56bc862f275916"
+  },
   "0xc581b735a1688071a1746c968e0798d642ede491": {
     "chain": "ethereum",
     "symbol": "EURT",
@@ -35410,6 +36256,12 @@
     "symbol": "TSUKA",
     "decimals": 9,
     "address": "0xc5fb36dd2fb59d3b98deff88425a3f425ee469ed"
+  },
+  "0xc60a9145d9e9f1152218e7da6df634b7a74ae444": {
+    "chain": "ethereum",
+    "symbol": "CGETHHASHKEY",
+    "decimals": 18,
+    "address": "0xc60a9145d9e9f1152218e7da6df634b7a74ae444"
   },
   "0xc61edb127f58f42f47a8be8aebe83cf602a53878": {
     "chain": "ethereum",
@@ -36125,6 +36977,12 @@
     "decimals": 18,
     "address": "0xca93a5d889e445cecb42e5386f7d516511d2820f"
   },
+  "0xca9b8d6df0729d85dcfc8ef8bb18af1ad1990786": {
+    "chain": "ethereum",
+    "symbol": "CATBOY",
+    "decimals": 18,
+    "address": "0xca9b8d6df0729d85dcfc8ef8bb18af1ad1990786"
+  },
   "0xca9de1f80df74331c5fcb7eee2d05e746d47bfb2": {
     "chain": "ethereum",
     "symbol": "RSVETH",
@@ -36520,6 +37378,12 @@
     "symbol": "BTMX",
     "decimals": 18,
     "address": "0xcca0c9c383076649604ee31b20248bc04fdf61ca"
+  },
+  "0xccb365d2e11ae4d6d74715c680f56cf58bf4bf10": {
+    "chain": "ethereum",
+    "symbol": "WEPE",
+    "decimals": 18,
+    "address": "0xccb365d2e11ae4d6d74715c680f56cf58bf4bf10"
   },
   "0xccba0b2bc4babe4cbfb6bd2f1edc2a9e86b7845f": {
     "chain": "ethereum",
@@ -36935,6 +37799,12 @@
     "decimals": 18,
     "address": "0xcf55a7f92d5e0c6683debbc1fc20c0a6e056df13"
   },
+  "0xcf5905de7d83dce7cd109485c42723bb76eba5a6": {
+    "chain": "ethereum",
+    "symbol": "EROD",
+    "decimals": 18,
+    "address": "0xcf5905de7d83dce7cd109485c42723bb76eba5a6"
+  },
   "0xcf62f905562626cfcdd2261162a51fd02fc9c5b6": {
     "chain": "ethereum",
     "symbol": "SFRXUSD",
@@ -37312,6 +38182,12 @@
     "symbol": "GUARDAI",
     "decimals": 18,
     "address": "0xd1679946ba555ebf5cb38e8b089ef1e1e5d2abb1"
+  },
+  "0xd16acb3147bcafd8469ffb288f45db52cc04ae68": {
+    "chain": "ethereum",
+    "symbol": "USHYD",
+    "decimals": 18,
+    "address": "0xd16acb3147bcafd8469ffb288f45db52cc04ae68"
   },
   "0xd16c79c8a39d44b2f3eb45d2019cd6a42b03e2a9": {
     "chain": "ethereum",
@@ -37997,6 +38873,12 @@
     "decimals": 18,
     "address": "0xd50825f50384bc40d5a10118996ef503b3670afd"
   },
+  "0xd50b9bbf136d1bd5cd5ac6ed9b3f26c458a6d4a6": {
+    "chain": "ethereum",
+    "symbol": "AUSDC",
+    "decimals": 18,
+    "address": "0xd50b9bbf136d1bd5cd5ac6ed9b3f26c458a6d4a6"
+  },
   "0xd50c1746d835d2770dda3703b69187bffeb14126": {
     "chain": "ethereum",
     "symbol": "iETC",
@@ -38104,6 +38986,12 @@
     "symbol": "PEUSD",
     "decimals": 18,
     "address": "0xd585aaafa2b58b1cd75092b51ade9fa4ce52f247"
+  },
+  "0xd58826d2c0babf1a60d8b508160b52e9c19aff07": {
+    "chain": "ethereum",
+    "symbol": "CYBRO",
+    "decimals": 18,
+    "address": "0xd58826d2c0babf1a60d8b508160b52e9c19aff07"
   },
   "0xd588d30b9070247e1ac72a45bfe6b723d0fed17e": {
     "chain": "ethereum",
@@ -38621,6 +39509,12 @@
     "decimals": 18,
     "address": "0xd8912c10681d8b21fd3742244f44658dba12264e"
   },
+  "0xd89cc9d79ad3c49e2cd477a8bbc8e63dee53f82e": {
+    "chain": "ethereum",
+    "symbol": "KEE",
+    "decimals": 18,
+    "address": "0xd89cc9d79ad3c49e2cd477a8bbc8e63dee53f82e"
+  },
   "0xd8a2f109bec88d9c9df6f4958c3301bd9d1929fd": {
     "chain": "ethereum",
     "symbol": "CLX",
@@ -38999,6 +39893,12 @@
     "decimals": 18,
     "address": "0xdab396ccf3d84cf2d07c4454e10c8a6f5b008d2b"
   },
+  "0xdac070102b0cfde1493026454c9c608924f6db71": {
+    "chain": "ethereum",
+    "symbol": "POPG",
+    "decimals": 18,
+    "address": "0xdac070102b0cfde1493026454c9c608924f6db71"
+  },
   "0xdac17f958d2ee523a2206206994597c13d831ec7": {
     "chain": "ethereum",
     "symbol": "USDT",
@@ -39034,6 +39934,12 @@
     "symbol": "",
     "decimals": 18,
     "address": "0xdadb4ae5b5d3099dd1f586f990b845f2404a1c4c"
+  },
+  "0xdae0fafd65385e7775cf75b1398735155ef6acd2": {
+    "chain": "ethereum",
+    "symbol": "TRUU",
+    "decimals": 10,
+    "address": "0xdae0fafd65385e7775cf75b1398735155ef6acd2"
   },
   "0xdaedbc924dbbccef96c25bb84806e794a4ff3140": {
     "chain": "ethereum",
@@ -39149,6 +40055,12 @@
     "decimals": 18,
     "address": "0xdb8d6d3ac21e4efe3675bbb18514010ac9c5558f"
   },
+  "0xdb99b0477574ac0b2d9c8cec56b42277da3fdb82": {
+    "chain": "ethereum",
+    "symbol": "DECT",
+    "decimals": 18,
+    "address": "0xdb99b0477574ac0b2d9c8cec56b42277da3fdb82"
+  },
   "0xdb9bd37c6d5fe195923d7487ad50a1e3c5b9bd42": {
     "chain": "ethereum",
     "symbol": "HGAI",
@@ -39232,6 +40144,12 @@
     "symbol": "LUSH",
     "decimals": 18,
     "address": "0xdc247546a6551117c8ea82db2cc0ad6e048e5f6e"
+  },
+  "0xdc300854b0ef52650057158e8a33afe703525539": {
+    "chain": "ethereum",
+    "symbol": "BMR",
+    "decimals": 18,
+    "address": "0xdc300854b0ef52650057158e8a33afe703525539"
   },
   "0xdc349913d53b446485e98b76800b6254f43df695": {
     "chain": "ethereum",
@@ -39430,6 +40348,12 @@
     "symbol": "BPT",
     "decimals": 18,
     "address": "0xdd32e83cb5e441d52dd16d437449afd291c0688d"
+  },
+  "0xdd3878ac92166d6c4e46b26ddd162b72c00d1623": {
+    "chain": "ethereum",
+    "symbol": "EON",
+    "decimals": 18,
+    "address": "0xdd3878ac92166d6c4e46b26ddd162b72c00d1623"
   },
   "0xdd3b11ef34cd511a2da159034a05fcb94d806686": {
     "chain": "ethereum",
@@ -39695,6 +40619,12 @@
     "decimals": 9,
     "address": "0xdec41db0c33f3f6f3cb615449c311ba22d418a8d"
   },
+  "0xdec933e2392ad908263e70a386fbf34e703ffe8f": {
+    "chain": "ethereum",
+    "symbol": "WBCOIN",
+    "decimals": 18,
+    "address": "0xdec933e2392ad908263e70a386fbf34e703ffe8f"
+  },
   "0xdecade1c6bf2cd9fb89afad73e4a519c867adcf5": {
     "chain": "ethereum",
     "symbol": "WIS",
@@ -39839,6 +40769,12 @@
     "decimals": 18,
     "address": "0xdf8ef8fef6fa5489d097652dedfb6617ce28a0d6"
   },
+  "0xdf9be795fee855aaeb82dc112b0f27b62524a17b": {
+    "chain": "ethereum",
+    "symbol": "SPUSD",
+    "decimals": 18,
+    "address": "0xdf9be795fee855aaeb82dc112b0f27b62524a17b"
+  },
   "0xdfbc9050f5b01df53512dcc39b4f2b2bbacd517a": {
     "chain": "ethereum",
     "symbol": "JOB",
@@ -39910,6 +40846,12 @@
     "symbol": "SOR",
     "decimals": 18,
     "address": "0xe021baa5b70c62a9ab2468490d3f8ce0afdd88df"
+  },
+  "0xe0396ef787f8b0385f0e73d30acf8b922b1761f1": {
+    "chain": "ethereum",
+    "symbol": "OCAI",
+    "decimals": 9,
+    "address": "0xe0396ef787f8b0385f0e73d30acf8b922b1761f1"
   },
   "0xe03b2642a5111ad0efc0cbce766498c2dd562ae9": {
     "chain": "ethereum",
@@ -40157,6 +41099,12 @@
     "decimals": 18,
     "address": "0xe18ab3568fa19e0ed38bc1d974eddd501e61e12d"
   },
+  "0xe19d1c837b8a1c83a56cd9165b2c0256d39653ad": {
+    "chain": "ethereum",
+    "symbol": "SDFXN",
+    "decimals": 18,
+    "address": "0xe19d1c837b8a1c83a56cd9165b2c0256d39653ad"
+  },
   "0xe19f85c920b572ca48942315b06d6cac86585c87": {
     "chain": "ethereum",
     "symbol": "PLEB",
@@ -40307,6 +41255,12 @@
     "decimals": 18,
     "address": "0xe2432110c32d0717e33c245fe0cfa2b26c07f47a"
   },
+  "0xe24a3dc889621612422a64e6388927901608b91d": {
+    "chain": "ethereum",
+    "symbol": "SUSN",
+    "decimals": 18,
+    "address": "0xe24a3dc889621612422a64e6388927901608b91d"
+  },
   "0xe2512a2f19f0388ad3d7a5263eaa82acd564827b": {
     "chain": "ethereum",
     "symbol": "SHIDO",
@@ -40318,6 +41272,12 @@
     "symbol": "SHIP",
     "decimals": 18,
     "address": "0xe25b0bba01dc5630312b6a21927e578061a13f55"
+  },
+  "0xe2616122ed554bd693335e9143c47df187a86ef3": {
+    "chain": "ethereum",
+    "symbol": "IMT",
+    "decimals": 18,
+    "address": "0xe2616122ed554bd693335e9143c47df187a86ef3"
   },
   "0xe27f31b020f95f90f0db2ae0a5fae3b505df7a3e": {
     "chain": "ethereum",
@@ -40468,6 +41428,12 @@
     "symbol": "sADA",
     "decimals": 18,
     "address": "0xe36e2d3c7c34281fa3bc737950a68571736880a1"
+  },
+  "0xe36fb561dcc177492da42a6ba5fd4a9d0987bfe2": {
+    "chain": "ethereum",
+    "symbol": "SIVRD",
+    "decimals": 18,
+    "address": "0xe36fb561dcc177492da42a6ba5fd4a9d0987bfe2"
   },
   "0xe38149abc673a117abeb8af7d1ff3d0d1aa5af15": {
     "chain": "ethereum",
@@ -40805,6 +41771,12 @@
     "decimals": 8,
     "address": "0xe5acbb03d73267c03349c76ead672ee4d941f499"
   },
+  "0xe5ad37798daa0231279859d4699cf8f466e8b020": {
+    "chain": "ethereum",
+    "symbol": "COSTD",
+    "decimals": 18,
+    "address": "0xe5ad37798daa0231279859d4699cf8f466e8b020"
+  },
   "0xe5b826ca2ca02f09c1725e9bd98d9a8874c30532": {
     "chain": "ethereum",
     "symbol": "ZEON",
@@ -41093,6 +42065,12 @@
     "decimals": 18,
     "address": "0xe7976c4efc60d9f4c200cc1bcef1a1e3b02c73e7"
   },
+  "0xe7ae30c03395d66f30a26c49c91edae151747911": {
+    "chain": "ethereum",
+    "symbol": "CLBTC",
+    "decimals": 18,
+    "address": "0xe7ae30c03395d66f30a26c49c91edae151747911"
+  },
   "0xe7b84fe4179a9402fc19615fc0558c9668939969": {
     "chain": "ethereum",
     "symbol": "BPT",
@@ -41116,6 +42094,12 @@
     "symbol": "BPT",
     "decimals": 18,
     "address": "0xe7c88913d6ab13956462fdf321918984f192546f"
+  },
+  "0xe7dee4823ee18f1347f1cf7997f70b94efde2e1f": {
+    "chain": "ethereum",
+    "symbol": "FORM",
+    "decimals": 18,
+    "address": "0xe7dee4823ee18f1347f1cf7997f70b94efde2e1f"
   },
   "0xe7eaec9bca79d537539c00c58ae93117fb7280b9": {
     "chain": "ethereum",
@@ -41194,6 +42178,12 @@
     "symbol": "ESGC",
     "decimals": 18,
     "address": "0xe857734840dc188b4283d5af14ab8685467ab87d"
+  },
+  "0xe86142af1321eaac4270422081c1eda31eecff0c": {
+    "chain": "ethereum",
+    "symbol": "YAYSTONE",
+    "decimals": 18,
+    "address": "0xe86142af1321eaac4270422081c1eda31eecff0c"
   },
   "0xe8663a64a96169ff4d95b4299e7ae9a76b905b31": {
     "chain": "ethereum",
@@ -41302,6 +42292,12 @@
     "symbol": "RNBW",
     "decimals": 18,
     "address": "0xe94b97b6b43639e238c851a7e693f50033efd75c"
+  },
+  "0xe94db607eba8f76a377d9bcc327c9856ed90fbde": {
+    "chain": "ethereum",
+    "symbol": "NINA",
+    "decimals": 9,
+    "address": "0xe94db607eba8f76a377d9bcc327c9856ed90fbde"
   },
   "0xe94e8e29bd3db22917e83d019af7babdf8b9adf6": {
     "chain": "ethereum",
@@ -42605,6 +43601,12 @@
     "decimals": 18,
     "address": "0xf0dcf786ee29e662215d263434940d6ec5643dd8"
   },
+  "0xf0e9e98ef4b78ddfbbfafba519345d877eb7a81e": {
+    "chain": "ethereum",
+    "symbol": "EEMD",
+    "decimals": 18,
+    "address": "0xf0e9e98ef4b78ddfbbfafba519345d877eb7a81e"
+  },
   "0xf0edac27aa3e85e2d176f689b0025f90c154393a": {
     "chain": "ethereum",
     "symbol": "LOVESNOOPY",
@@ -42845,6 +43847,12 @@
     "decimals": 18,
     "address": "0xf21661d0d1d76d3ecb8e1b9f1c923dbfffae4097"
   },
+  "0xf222b0e892f419c35e61892cddf0a8ec190c4b9d": {
+    "chain": "ethereum",
+    "symbol": "RDX",
+    "decimals": 18,
+    "address": "0xf222b0e892f419c35e61892cddf0a8ec190c4b9d"
+  },
   "0xf23114fa21af278fa342d980740cb8b89fc82105": {
     "chain": "ethereum",
     "symbol": "ARG",
@@ -42880,6 +43888,12 @@
     "symbol": "DOGECOIN",
     "decimals": 8,
     "address": "0xf257a2783f6633a149b5966e32432b5bb3462c96"
+  },
+  "0xf27441230eadeac85b764610325cc9a0d7859689": {
+    "chain": "ethereum",
+    "symbol": "ASTR",
+    "decimals": 18,
+    "address": "0xf27441230eadeac85b764610325cc9a0d7859689"
   },
   "0xf278c1ca969095ffddded020290cf8b5c424ace2": {
     "chain": "ethereum",
@@ -42940,6 +43954,12 @@
     "symbol": "DCE",
     "decimals": 9,
     "address": "0xf2c5780e2dda407781c0c5eccc9320d5988ea0a6"
+  },
+  "0xf2c88757f8d03634671208935974b60a2a28bdb3": {
+    "chain": "ethereum",
+    "symbol": "SHELL",
+    "decimals": 18,
+    "address": "0xf2c88757f8d03634671208935974b60a2a28bdb3"
   },
   "0xf2cdf38e24738ba379ffa38d47bc88a941df5627": {
     "chain": "ethereum",
@@ -43078,6 +44098,12 @@
     "symbol": "CAI",
     "decimals": 18,
     "address": "0xf36c5f04127f7470834ed6f98bddc1be62aba48d"
+  },
+  "0xf373c3d96996ede40ea161f6929fd457cda8111c": {
+    "chain": "ethereum",
+    "symbol": "DALD",
+    "decimals": 18,
+    "address": "0xf373c3d96996ede40ea161f6929fd457cda8111c"
   },
   "0xf3768d6e78e65fc64b8f12ffc824452130bd5394": {
     "chain": "ethereum",
@@ -43222,6 +44248,12 @@
     "symbol": "GIGACHAD",
     "decimals": 18,
     "address": "0xf43f21384d03b5cbbddd58d2de64071e4ce76ab0"
+  },
+  "0xf4445049080ae2fde75aaf0c6e603fb55875f02c": {
+    "chain": "ethereum",
+    "symbol": "DGK",
+    "decimals": 18,
+    "address": "0xf4445049080ae2fde75aaf0c6e603fb55875f02c"
   },
   "0xf453579d18a6f8ca07db9250e0e0100eb8ccb206": {
     "chain": "ethereum",
@@ -43673,6 +44705,12 @@
     "decimals": 8,
     "address": "0xf68d4d917592f3a62417ace42592f15296cc33a0"
   },
+  "0xf6ad4965f7779c6b8ae4d25bf2a2e009a47c3dae": {
+    "chain": "ethereum",
+    "symbol": "LEARN",
+    "decimals": 18,
+    "address": "0xf6ad4965f7779c6b8ae4d25bf2a2e009a47c3dae"
+  },
   "0xf6aeaf0fe66cf2ef2e738ba465fb531ffe39b4e2": {
     "chain": "ethereum",
     "symbol": "ATR",
@@ -43997,6 +45035,12 @@
     "decimals": 18,
     "address": "0xf8ebf4849f1fa4faf0dff2106a173d3a6cb2eb3a"
   },
+  "0xf8f173e20e15f3b6cb686fb64724d370689de083": {
+    "chain": "ethereum",
+    "symbol": "HEI",
+    "decimals": 18,
+    "address": "0xf8f173e20e15f3b6cb686fb64724d370689de083"
+  },
   "0xf90924b4064d88fdf9189d6ffd737ed85c01b9b7": {
     "chain": "ethereum",
     "symbol": "GFN",
@@ -44129,6 +45173,12 @@
     "decimals": 18,
     "address": "0xf97e2a78f1f3d1fd438ff7cc3bb7de01e5945b83"
   },
+  "0xf983da3ca66964c02628189ea8ca99fa9e24f66c": {
+    "chain": "ethereum",
+    "symbol": "WANLOG",
+    "decimals": 12,
+    "address": "0xf983da3ca66964c02628189ea8ca99fa9e24f66c"
+  },
   "0xf986408a1788ceb3bb4b4be4aa96a43914168554": {
     "chain": "ethereum",
     "symbol": "FASTAI",
@@ -44140,6 +45190,12 @@
     "symbol": "KIRA",
     "decimals": 8,
     "address": "0xf98ab0874b13a7fdc39d7295dedd49850a5d426b"
+  },
+  "0xf9902edfca4f49dcaebc335c73aebd82c79c2886": {
+    "chain": "ethereum",
+    "symbol": "ADO",
+    "decimals": 18,
+    "address": "0xf9902edfca4f49dcaebc335c73aebd82c79c2886"
   },
   "0xf995771a957c19319a7d8d58b4082b049420340f": {
     "chain": "ethereum",
@@ -44237,6 +45293,12 @@
     "decimals": 18,
     "address": "0xfa2562da1bba7b954f26c74725df51fb62646313"
   },
+  "0xfa2b947eec368f42195f24f36d2af29f7c24cec2": {
+    "chain": "ethereum",
+    "symbol": "USDF",
+    "decimals": 18,
+    "address": "0xfa2b947eec368f42195f24f36d2af29f7c24cec2"
+  },
   "0xfa3118b34522580c35ae27f6cf52da1dbb756288": {
     "chain": "ethereum",
     "symbol": "LET",
@@ -44309,6 +45371,12 @@
     "decimals": 15,
     "address": "0xfa704148d516b209d52c2d75f239274c8f8eaf1a"
   },
+  "0xfa7ed49eb24a6117d8a3168eee69d26b45c40c63": {
+    "chain": "ethereum",
+    "symbol": "AZCHF",
+    "decimals": 18,
+    "address": "0xfa7ed49eb24a6117d8a3168eee69d26b45c40c63"
+  },
   "0xfa816739edaac4ebf329219d4ef575085cc28037": {
     "chain": "ethereum",
     "symbol": "0XSEARCH",
@@ -44380,6 +45448,12 @@
     "symbol": "NAKA",
     "decimals": 18,
     "address": "0xfae30394a76796dc3df37c2714f5fc12083dfdb0"
+  },
+  "0xfae8f97cafea5133159992e83a4b30e1aae88328": {
+    "chain": "ethereum",
+    "symbol": "SPWOD",
+    "decimals": 18,
+    "address": "0xfae8f97cafea5133159992e83a4b30e1aae88328"
   },
   "0xfafdf0c4c1cb09d430bf88c75d88bb46dae09967": {
     "chain": "ethereum",
@@ -44476,6 +45550,12 @@
     "symbol": "ANIM",
     "decimals": 18,
     "address": "0xfbcb5cbedeebcc55dcd136d34db1daaf74cf67e8"
+  },
+  "0xfbcb83037d770b28f758530022897362521b6141": {
+    "chain": "ethereum",
+    "symbol": "BYB",
+    "decimals": 9,
+    "address": "0xfbcb83037d770b28f758530022897362521b6141"
   },
   "0xfbd5fd3f85e9f4c5e8b40eec9f8b8ab1caaa146b": {
     "chain": "ethereum",

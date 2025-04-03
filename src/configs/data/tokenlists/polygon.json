@@ -1781,6 +1781,12 @@
     "decimals": 18,
     "address": "0xc68e83a305b0fad69e264a1769a0a070f190d2d6"
   },
+  "0xc708d6f2153933daa50b2d0758955be0a93a8fec": {
+    "chain": "polygon",
+    "symbol": "fxVERSE",
+    "decimals": 18,
+    "address": "0xc708d6f2153933daa50b2d0758955be0a93a8fec"
+  },
   "0xca955fa61a0506f7acf0c9b2e08c217a334d81c3": {
     "chain": "polygon",
     "symbol": "NML",
