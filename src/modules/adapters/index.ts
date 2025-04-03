@@ -324,5 +324,6 @@ export function getProtocolAdapters(
     spooky: new UniswapAdapter(services, storages, ProtocolConfigs.spooky),
     hemiNativeBridge: new OptimismNativeBridgeAdapter(services, storages, ProtocolConfigs.hemiNativeBridge),
     symbiosis: new SymbiosisAdapter(services, storages, ProtocolConfigs.symbiosis),
+    hyperithm: new GauntletAdapter(services, storages, ProtocolConfigs.hyperithm),
   };
 }

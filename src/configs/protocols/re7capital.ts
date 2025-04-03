@@ -19,6 +19,7 @@ export const Re7capitalConfigs: GauntletProtocolConfig = {
         '0x60d715515d4411f7F43e4206dc5d4a3677f0eC78',
         '0xE87ed29896B91421ff43f69257ABF78300e40c7a',
         '0x43fD147d5319B8Cf39a6e57143684Efca9CF3613',
+        '0x64964E162Aa18d32f91eA5B24a09529f811AEB8e',
       ],
       eulerVaults: [
         '0xcf47fBe97aaE77B8ABEa5e1F59c9bcb808A8d47d',

@@ -165,6 +165,10 @@ export const EulerConfigs: EulerProtocolConfig = {
       birthday: 1724025600, // Mon Aug 19 2024 00:00:00 GMT+0000
       factory: '0x29a56a1b8214D9Cf7c5561811750D5cBDb45CC8e',
       vaults: [
+        '0x75f66ed34c274eaD52CFA25De9388E98e12Edb33',
+        '0xE27A96f4c9528e3d32E6f31c6aCa9281EbEA0338',
+        '0x29847715A8D621BBD34DB7380cE8164F69Be88A7',
+        '0x1f193dB3d813aF14927577817ae4FC3a42f25694',
         '0xF037eeEBA7729c39114B9711c75FbccCa4A343C8',
         '0x797DD80692c3b2dAdabCe8e30C07fDE5307D48a9',
         '0xD8b27CF359b7D15710a5BE299AF6e7Bf904984C2',
@@ -313,6 +317,8 @@ export const EulerConfigs: EulerProtocolConfig = {
       birthday: 1738368000, // Sat Feb 01 2025 00:00:00 GMT+0000
       factory: '0xf075cc8660b51d0b8a4474e3f47edac5fa034cfb',
       vaults: [
+        '0xD506F1E4AdFCf1196B7C5D2EbF4e858E33d7A93E',
+        '0xdBc46ff39Cae7f37c39363B0CA474497dAD1d3cf',
         '0x4c0AF5d6Bcb10B3C05FB5F3a846999a3d87534C7',
         '0x0806af1762Bdd85B167825ab1a64E31CF9497038',
         '0xB38D431e932fEa77d1dF0AE0dFE4400c97e597B8',
@@ -353,6 +359,9 @@ export const EulerConfigs: EulerProtocolConfig = {
       birthday: 1739318400, // Wed Feb 12 2025 00:00:00 GMT+0000
       factory: '0x5c13fb43ae9bae8470f646ea647784534e9543af',
       vaults: [
+        '0x558B16E07b8558b2a54946cA973b7b20B86A8b87',
+        '0xB8064453B25a91D7a4e8b7e7883A817D5742dE34',
+        '0x3de0CA4AF11108c94c9066a935ee67e53b7f9447',
         '0xad9e5E2647EFb9137B6B8D688d4906fa51476870',
         '0x89FD57175EcEEC45992e07c206e5A864Fa6aF433',
         '0x6D976915bD9DE43De1A60C39e128e320dadda000',

@@ -190,6 +190,7 @@ import { KodiakConfigs } from './protocols/kodiak';
 import { SpookyConfigs } from './protocols/spooky';
 import { HemiNativeBridgeConfigs } from './protocols/hemi';
 import { SymbiosisConfigs } from './protocols/symbiosis';
+import { HyperithmConfigs } from './protocols/hyperithm';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -430,4 +431,5 @@ export const ProtocolConfigs = {
   spooky: SpookyConfigs,
   hemiNativeBridge: HemiNativeBridgeConfigs,
   symbiosis: SymbiosisConfigs,
+  hyperithm: HyperithmConfigs,
 };

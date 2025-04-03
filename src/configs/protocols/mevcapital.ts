@@ -19,6 +19,7 @@ export const MevcapitalConfigs: GauntletProtocolConfig = {
         '0x1265a81d42d513Df40d0031f8f2e1346954d665a',
         '0xfbDEE8670b273E12b019210426E70091464b02Ab',
         '0x225C119fFaf1CaddCfCDb493283eDF4b816Bf773',
+        '0xD50DA5F859811A91fD1876C9461fD39c23C747Ad',
       ],
       eulerVaults: [
         '0xe2D6A2a16ff6d3bbc4C90736A7e6F7Cc3C9B8fa9',
@@ -41,6 +42,10 @@ export const MevcapitalConfigs: GauntletProtocolConfig = {
         '0x6f2Ab32A6487A2996c74Ed2b173dFDF3d5EEDB58',
         '0x1cDA7E7B2023C3f3c94Aa1999937358fA9D01Aab',
         '0xeeaaB5c863f4b1c5356aF138F384AdC25Cb70Da6',
+        '0xF6E2ddf7a149C171E591C8d58449e371E6dc7570',
+        '0xFFFC9d22304CF49784e9B31dDBEB066344b2B856',
+        '0xdBc46ff39Cae7f37c39363B0CA474497dAD1d3cf',
+        '0xD506F1E4AdFCf1196B7C5D2EbF4e858E33d7A93E',
       ],
     },
     {
@@ -48,6 +53,9 @@ export const MevcapitalConfigs: GauntletProtocolConfig = {
       birthday: 1739318400, // Wed Feb 12 2025 00:00:00 GMT+0000
       morphoVaults: [],
       eulerVaults: [
+        '0x558B16E07b8558b2a54946cA973b7b20B86A8b87',
+        '0xB8064453B25a91D7a4e8b7e7883A817D5742dE34',
+        '0x3de0CA4AF11108c94c9066a935ee67e53b7f9447',
         '0xad9e5E2647EFb9137B6B8D688d4906fa51476870',
         '0x6D976915bD9DE43De1A60C39e128e320dadda000',
         '0x1371dD58ce95eCD624340F072f97212A2661A280',

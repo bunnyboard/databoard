@@ -24,6 +24,7 @@ export const ApostroConfigs: GauntletProtocolConfig = {
         '0xC605471aE09e0b7daA9e8813707d0DDbf9429Ad2',
         '0xD7B67cF0e7EDA8268b0f42de82dF87DfCC9a8537',
         '0xf9a23b059858CdD0e3ED0DDE89864BB82B88aa19',
+        '0x4EDfaB296F8Eb15aC0907CF9eCb7079b1679Da57',
       ],
     },
     {
