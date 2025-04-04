@@ -2289,4 +2289,18 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.berachain['0xcc6a16bcfda7d0ebe168f69ef7b946e96a90e67f'],
     quotaToken: TokensBook.berachain['0x6969696969696969696969696969696969696969'],
   },
+  SOIL_USDT: {
+    type: 'univ3',
+    chain: 'polygon',
+    address: '0x11bcc5b9fbcd882952fec8ae95214036a981797b',
+    baseToken: TokensBook.polygon['0x43c73b90e0c2a355784dcf0da12f477729b31e77'],
+    quotaToken: TokensBook.polygon['0xc2132d05d31c914a87c6611c10748aeb04b58e8f'],
+  },
+  USDFI_WBNB: {
+    type: 'univ3',
+    chain: 'bnbchain',
+    address: '0x6a04c8b5eab555c7590c5dcf619ccde558ae35e4',
+    baseToken: TokensBook.bnbchain['0xc9f5955f6da20e44a068f3d58fb2404f56f9a6f2'],
+    quotaToken: TokensBook.bnbchain['0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c'],
+  },
 };

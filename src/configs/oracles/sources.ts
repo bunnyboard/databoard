@@ -4258,4 +4258,20 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.DEXTF_WETH],
   },
+  OVER: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.OVER_WETH],
+  },
+  SAS: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SAS_WETH],
+  },
+  SOIL: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.SOIL_USDT],
+  },
+  USDFI: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv3List.USDFI_WBNB],
+  },
 };

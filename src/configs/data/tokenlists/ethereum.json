@@ -7457,6 +7457,12 @@
     "decimals": 9,
     "address": "0x28b7f370a2b0fd04a9f420c8863b12f35c0f791a"
   },
+  "0x28be7e8cd8125cb7a74d2002a5862e1bfd774cd9": {
+    "chain": "ethereum",
+    "symbol": "SAS",
+    "decimals": 18,
+    "address": "0x28be7e8cd8125cb7a74d2002a5862e1bfd774cd9"
+  },
   "0x28cb7e841ee97947a86b06fa4090c8451f64c0be": {
     "chain": "ethereum",
     "symbol": "YFL",

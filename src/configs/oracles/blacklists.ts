@@ -2,6 +2,7 @@
 
 export const OracleTokenBlacklists: { [key: string]: Array<string> } = {
   ethereum: [
+    '0x6b7774cb12ed7573a7586e7d0e62a2a563ddd3f0', // SOPH
     '0xfa59075dfce274e028b58bddfcc3d709960f594a',
     '0x76bf2d1e6dfda645c0c17440b17eccc181dfc351',
     '0x3b5cc7d992f8ed1b4e1f9f660984adcd61fc1aca',

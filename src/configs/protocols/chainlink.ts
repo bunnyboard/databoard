@@ -36,9 +36,24 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
         [ChainNames.mode]: '0xeA6d4a24B262aB3e61a8A62f018A30beCD086f82',
         [ChainNames.optimism]: '0x3455D8E039736944e66e19eAc77a42e8077B07bf',
         [ChainNames.polygon]: '0x15a9D79d6b3485F70bF82bC49dDD1fcB37A7149c',
-        [ChainNames.ronin]: '0xdC5b578ff3AFcC4A4a6E149892b9472390b50844',
         [ChainNames.scroll]: '0x362A221C3cfd7F992DFE221687323F0BA9BA8187',
         [ChainNames.zksync]: '0x362A221C3cfd7F992DFE221687323F0BA9BA8187',
+        [ChainNames.berachain]: '0xBeFfEF56Cd6FA063d2e04E126cF1b93269886c42',
+        [ChainNames.bitlayer]: '0x4FB5407d6911DaA0B8bde58A754E7D01CB8b05c5',
+        [ChainNames.bob]: '0x1B960560324c03db5565545B353198fdd07A195d',
+        [ChainNames.core]: '0xa6D806e4EB8726542cf536518fC47f39d68cCb48',
+        [ChainNames.corn]: '0x7B78f8D16C4ae6E51c29295D58f05dCC67180A2b',
+        [ChainNames.cronos]: '0x03CB4C67D01a78F44289541281E57C33E6b834d9',
+        [ChainNames.cronoszkevm]: '0x8b858ED23502611aB86109717C8842A7A8f117ec',
+        [ChainNames.fraxtal]: '0x31ee106a4585a796caacC645172B9F7e9c2f8D37',
+        [ChainNames.ink]: '0xEEe2AE1d0Fa6D1D38BBBa555A7C7B90C8734a8e2',
+        [ChainNames.soneium]: '0x093844Bd4b26792791cD4038e94Bec70f88CaD63',
+        [ChainNames.sonic]: '0x4fdAaDe22bd05537EeaB204cF7319589CE595D6a',
+        [ChainNames.unichain]: '0x5E7397CA539C94185BBD950706F0Dd8628587E04',
+        [ChainNames.worldchain]: '0xdB6ebB3ea15595E516dEf4a9875479573a4F19b6',
+        [ChainNames.zircuit]: '0x4Cc3D95d9384D3287724B83099f01BC3025702c0',
+        [ChainNames.xlayer]: '0xBA1Aa22D51692AA0D7746F996cBE657781653332',
+        [ChainNames.zksync]: '0x9B14AE850653dD0E30fBC93ab7f77D0d638a365B',
       },
     },
     {
@@ -57,6 +72,8 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
         [ChainNames.optimism]: '0xAFECc7b67c6a8e606e94ce4e2F70D83C2206C2cb',
         [ChainNames.polygon]: '0x6087d6C33946670232DF09Fe93eECbaEa3D6864d',
         [ChainNames.zksync]: '0xd67F6713Fa4448548c984a9a7DCFBD13B0fB78D6',
+        [ChainNames.soneium]: '0xbB7c7AAf81D359C9367d31eDFDBF6C2Af73F17F6',
+        [ChainNames.sonic]: '0x6cb060f7f8b0F8C58A4032C82dCf917c6d438f46',
       },
     },
     {
@@ -78,6 +95,7 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
       birthday: 1727913600, // Thu Oct 03 2024 00:00:00 GMT+0000
       outbound: {
         [ChainNames.ethereum]: '0xB1C908A7CF6f5FB1ed18a73aD60ffF9CC8276eC1',
+        [ChainNames.soneium]: '0x6F7EC920478A7d1d236282AeC7F1d1B3a1fAf49E',
       },
     },
     {
@@ -94,7 +112,9 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
         [ChainNames.mode]: '0xEB50Fc6F57AAc6bf060A2Dfc6479fED592e6e184',
         [ChainNames.optimism]: '0x362E6bE957c18e268ad91046CA6b47EB09AD98C1',
         [ChainNames.polygon]: '0xd3Bde678BB706Cf727A512515C254BcF021dD203',
-        [ChainNames.ronin]: '0x5dE068a87f081Ea01932769807CA569265E4f622',
+        [ChainNames.ink]: '0xbe6B55A0D720c4106bfca7beA3908a77ce3C31A2',
+        [ChainNames.sonic]: '0xBc8e6602aEa1FE65Dc5656b77360ddAbBB52f894',
+        [ChainNames.zksync]: '0x757DaD0B4017fca8E3399B4B3b23e0a6587723D1',
       },
     },
     {
@@ -121,6 +141,10 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
         [ChainNames.mode]: '0x9d4d125788A548C2f69fAC7f8C3A64FA21d18C9e',
         [ChainNames.optimism]: '0x3A3649852A518ab180f41f28288c6c9184563616',
         [ChainNames.polygon]: '0x1C88e3Fd2B0a8735D1b19A77AA6e2333555BB95c',
+        [ChainNames.ink]: '0x2Bac5BC6c0a073831a4cf6E0c996140B7A76F296',
+        [ChainNames.berachain]: '0x004405d927caD243358A270c2dD3D51c8303A390',
+        [ChainNames.soneium]: '0x0390B87B43974b45e3fE21824A008A3cd46605De',
+        [ChainNames.sonic]: '0xF54f6623f1E714985839ac451BFA8B34007487E0',
       },
     },
     {
@@ -128,6 +152,15 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
       birthday: 1727913600, // Thu Oct 03 2024 00:00:00 GMT+0000
       outbound: {
         [ChainNames.ethereum]: '0xc319484eF6cdA3a7f4D470e660b343FB569e9A1e',
+        [ChainNames.arbitrum]: '0xf27b5D3205fEa8aD6Ce8Fbe3b6178867428E5732',
+        [ChainNames.base]: '0xD5cCB283797A708125C807C63a6E944a99EEd288',
+        [ChainNames.ink]: '0x1b531048F438571d3CF6806e55957C361C0b2d75',
+        [ChainNames.optimism]: '0x5Cc4b917DfD93E9833cC33BaA38A8B0091d5ade0',
+        [ChainNames.polygon]: '0x42504890DD261Bf17Aa05Dca6C293a6c6225f961',
+        [ChainNames.soneium]: '0xB3C5D43d6114B99E5Bc79cC340C563DC44A4B2B2',
+        [ChainNames.unichain]: '0x6cAa43a0D82614a95F8e7D30C358268f464D0B3c',
+        [ChainNames.worldchain]: '0xa841C3aD09133d1d2148b259fe1ceA3bbacbeed8',
+        [ChainNames.zksync]: '0x7171AeF438a34427D255BF323C13416B6a1848F0',
       },
     },
     {
@@ -160,6 +193,7 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
       birthday: 1729036800, // Wed Oct 16 2024 00:00:00 GMT+0000
       outbound: {
         [ChainNames.ethereum]: '0xa18BC8b64a863DB34199F7e59F3A3d051ABa413d',
+        [ChainNames.arbitrum]: '0x6B074861f43077e537972cc55f0e986849A46095',
       },
     },
     {
@@ -179,6 +213,8 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
         [ChainNames.bnbchain]: '0xeb7E8c40E95Cd31666359AaeB1F2CccaAB935643',
         [ChainNames.ethereum]: '0x7d2aF78868993a5a86676BA639eC0412709707D9',
         [ChainNames.optimism]: '0x7AB4329D19A0255DA90Ee8dbAA60f8f0cB7950C1',
+        [ChainNames.celo]: '0xf81c7385064bBB58a01004E1eEC4D9B0785AECa7',
+        [ChainNames.sonic]: '0xD5Fa7faca37be1644f88bB17A0E4f0df12279339',
       },
     },
     {
@@ -193,6 +229,9 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
         [ChainNames.gnosis]: '0x604a9dda2e27D56cfCe457E437a61f4ED0De9dE6',
         [ChainNames.mode]: '0xc6d9Cb39e34D83d21A021504024887A0e96D4e94',
         [ChainNames.polygon]: '0x9c725164b60E3f6d4d5b7A2841C63E9FD0988805',
+        [ChainNames.celo]: '0x746ddB61Af7B1516B819F6d81AcD729e4C867a55',
+        [ChainNames.sonic]: '0xED13113a043C823d550d2505aa9a97e40766Dc49',
+        [ChainNames.zksync]: '0x793Aa8C07195C6a07F75C5cbDF17070564e69499',
       },
     },
     {
@@ -206,14 +245,8 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
         [ChainNames.ethereum]: '0x1DAcBae00c779913e6E9fc1A3323FbA4847ba53C',
         [ChainNames.gnosis]: '0xcc4A8CFd756895d91B476Dd5461286b300914aBf',
         [ChainNames.optimism]: '0x868B71490B36674B3B9006fa8711C6fA26A26631',
-      },
-    },
-    {
-      chain: ChainNames.ronin,
-      birthday: 1730419200, // Fri Nov 01 2024 00:00:00 GMT+0000
-      outbound: {
-        [ChainNames.base]: '0x261fE8A0C492a1Ede8cf966AED16619C772198F5',
-        [ChainNames.ethereum]: '0x02b60267bceeaFDC45005e0Fa0dd783eFeBc9F1b',
+        [ChainNames.celo]: '0x608e3993854607dE4FC8f7926ab6b7c5AB3cA8Fc',
+        [ChainNames.zksync]: '0x2655242E3200b99201f7d62CfF4aF04bBCfCa44C',
       },
     },
     {
@@ -230,6 +263,50 @@ export const ChainlinkCcipConfigs: ChainlinkCcipProtocolConfig = {
       outbound: {
         [ChainNames.arbitrum]: '0x66EcB7c8c122d74f19Fc28b275f213Ef8991B7AB',
         [ChainNames.ethereum]: '0xD1B33FAd3fF7a793EE39473f865630e3b6371086',
+        [ChainNames.celo]: '0x366CE743c19E8cb2966C3DDe2Ae1216EF9A76d6D',
+        [ChainNames.base]: '0x73B95bd224a9F5054B87577104106cD36237BaDc',
+        [ChainNames.optimism]: '0xbD9148D567260c4580f00A6dd5a2bB0e626eFd62',
+        [ChainNames.polygon]: '0x37CbA662E9c373F2166CcA0D9c576dd089D7209a',
+      },
+    },
+    {
+      chain: ChainNames.unichain,
+      birthday: 1739491200, // Fri Feb 14 2025 00:00:00 GMT+0000
+      outbound: {
+        [ChainNames.ethereum]: '0x139839036FF1Df22f47427740f40fE300184Fb8a',
+        [ChainNames.celo]: '0xc4F901dDF548c689C3D072F0507EAAb763AB5589',
+      },
+    },
+    {
+      chain: ChainNames.berachain,
+      birthday: 1739491200, // Fri Feb 14 2025 00:00:00 GMT+0000
+      outbound: {
+        [ChainNames.ethereum]: '0x2c99dC698745B655d4D0741eF5Ef8623578c45c0',
+        [ChainNames.bnbchain]: '0x9519DEF016b11BBeFB617Fe128AaA67680a82A95',
+      },
+    },
+    {
+      chain: ChainNames.ink,
+      birthday: 1736899200, // Wed Jan 15 2025 00:00:00 GMT+0000
+      outbound: {
+        [ChainNames.ethereum]: '0x288Ad43143e135C4e350B23162c538E83fF1FCF5',
+        [ChainNames.base]: '0x271315a46CD922C6977aC91ba425ed421279B783',
+        [ChainNames.bnbchain]: '0x363788B5d323c57fa7469BE8FBbB99e554731e52',
+        [ChainNames.celo]: '0x6314dFcF1430aF590e388Cb77D963c23406553f6',
+        [ChainNames.sonic]: '0x9da03ab4d9D126cDCC83fbb84cD2197776302D35',
+      },
+    },
+    {
+      chain: ChainNames.sonic,
+      birthday: 1733961600, // Thu Dec 12 2024 00:00:00 GMT+0000
+      outbound: {
+        [ChainNames.ethereum]: '0xF487000Fe6FE14Fd5E7E86514219994eCEaB6bA7',
+        [ChainNames.arbitrum]: '0xF0592475d795FB9Ef80B2ddB511d8c6Eb14D821F',
+        [ChainNames.base]: '0xf54853C3502716D9673E1D71BbC94E16C20277E7',
+        [ChainNames.bnbchain]: '0xb24d54916EC661B655AfFC93c04647032E7e46Ac',
+        [ChainNames.ink]: '0x0b3a51B27855e6D7a1CE7a47F6fF3922c2CfB0C8',
+        [ChainNames.mode]: '0xc6a4FD636d6b05506b771373484C9Eb29d46b8e0',
+        [ChainNames.optimism]: '0xCe92bcE99a58cA396C0CE622f1521850535A6064',
       },
     },
   ],
