@@ -2,13 +2,6 @@ import { OracleSourcePool2 } from '../../types/oracles';
 import { TokensBook } from '../data';
 
 export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
-  RAI_DAI: {
-    type: 'univ3',
-    chain: 'ethereum',
-    address: '0xcb0c5d9d92f4f2f80cce7aa271a1e148c226e19d',
-    baseToken: TokensBook.ethereum['0x03ab458634910aad20ef5f1c8ee96f1d6ac54919'],
-    quotaToken: TokensBook.ethereum['0x6b175474e89094c44da98b954eedeac495271d0f'],
-  },
   ENS_WETH: {
     type: 'univ3',
     chain: 'ethereum',

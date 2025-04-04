@@ -56,7 +56,14 @@ export const ZksyncBridgeTokens: Array<string> = [
   '0x5f98805a4e8be255a32880fdec7f6728c6568ba0',
   '0xf655c8567e0f213e6c634cd2a68d992152161dc6',
   '0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce',
+  '0xc28eb2250d1ae32c7e74cfb6d6b86afc9beb6509',
+  '0x5f64ab1544d28732f0a24f4713c2c8ec0da089f0',
+  '0x1ff1dc3cb9eedbc6eb2d99c03b30a05ca625fb5a',
 ];
+
+// zksync upgrade their contract
+// move assets from share bridge contract to l1 asset vault contract
+export const ZksyncL1ContractUpgradeDay = 1743379200; // Mon Mar 31 2025 00:00:00 GMT+0000
 
 export const ZksyncNativeBridgeConfigs: ZksyncNativeBridgeProtocolConfig = {
   protocol: ProtocolNames.zksyncNativeBridge,

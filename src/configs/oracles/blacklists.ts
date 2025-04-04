@@ -2,6 +2,12 @@
 
 export const OracleTokenBlacklists: { [key: string]: Array<string> } = {
   ethereum: [
+    '0xfa59075dfce274e028b58bddfcc3d709960f594a',
+    '0x76bf2d1e6dfda645c0c17440b17eccc181dfc351',
+    '0x3b5cc7d992f8ed1b4e1f9f660984adcd61fc1aca',
+    '0x1cf0f3aabe4d12106b27ab44df5473974279c524',
+    '0x123151402076fc819b7564510989e475c9cd93ca',
+    '0x478bbc744811ee8310b461514bdc29d03739084d',
     '0xce6b17c16df188fa721632b770a2ee5530589716',
     '0xf94473bf6ef648638a7b1eeef354fe440721ef41',
     '0x67f6128d83d63d40f7bc1aba64fd01582366fd50',

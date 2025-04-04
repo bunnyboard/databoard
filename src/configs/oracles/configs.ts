@@ -9,6 +9,14 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0x1ff1dc3cb9eedbc6eb2d99c03b30a05ca625fb5a': OracleSourceConfigs.GHO,
+    '0x5f64ab1544d28732f0a24f4713c2c8ec0da089f0': OracleSourceConfigs.DEXTF,
+    '0xf65b5c5104c4fafd4b709d9d60a185eae063276c': OracleSourceConfigs.TRU,
+    '0x476c5e26a75bd202a9683ffd34359c0cc15be0ff': OracleSourceConfigs.SRM,
+    '0x27054b13b1b798b345b591a4d22e6562d47ea75a': OracleSourceConfigs.AST,
+    '0xf1f955016ecbcd7321c7266bccfb96c68ea5e49b': OracleSourceConfigs.RLY,
+    '0x389ca39546d4c6b481f553277c145773776849c2': OracleSourceConfigs.DAI,
+    '0x35a18000230da775cac24873d00ff85bccded550': OracleSourceConfigs.cUNI,
     '0x090185f2135308bad17527004364ebcc2d37e5f6': OracleSourceConfigs.SPELL,
     '0xb58e61c3098d85632df34eecfb899a1ed80921cb': OracleSourceConfigs.ZCHF,
     '0xba3f535bbcccca2a154b573ca6c5a49baae0a3ea': OracleSourceConfigs.EUR,
@@ -2902,6 +2910,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   },
 
   telos: {
+    '0xe6e5f3d264117e030c21920356641dbd5b3d660c': OracleSourceConfigs.USDC,
     '0x0000000000000000000000000000000000000000': OracleSourceConfigs.TLOS,
     '0xd102ce6a4db07d247fcc28f366a623df0938ca9e': OracleSourceConfigs.TLOS,
     '0x818ec0a7fe18ff94269904fced6ae3dae6d6dc0b': OracleSourceConfigs.USDC,

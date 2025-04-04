@@ -275,6 +275,13 @@ export const OracleSourceCustomList: {
     address: '0xa07c5b74c9b40447a954e1466938b865b6bbea36',
     underlyingToken: TokensBook.bnbchain['0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c'],
   },
+  cUNI: {
+    type: 'stakingTokenWrapper',
+    chain: 'ethereum',
+    method: 'cToken',
+    address: '0x35a18000230da775cac24873d00ff85bccded550',
+    underlyingToken: TokensBook.ethereum['0x1f9840a85d5af5bf1d1762f925bdaddc4201f984'],
+  },
   stakehouseLRT: {
     type: 'stakingTokenWrapper',
     chain: 'ethereum',

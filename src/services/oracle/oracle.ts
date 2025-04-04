@@ -245,10 +245,11 @@ export default class OracleService extends CachingService implements IOracleServ
             return formatBigNumberToString(balance.toString(10), config.underlyingToken.decimals);
           }
         } else if (config.method === 'cToken') {
-          return await CompoundLibs.getCTokenPriceVsUnderlying({
+          return await CompoundLibs.getCTokenPriceUsd({
             chain: source.chain,
             cToken: source.address,
             underlying: (source as OracleSourceStakingTokenWrapper).underlyingToken,
+            timestamp: timestamp,
             blockNumber: blockNumber,
           });
         } else if (config.method === 'gmxGLP') {

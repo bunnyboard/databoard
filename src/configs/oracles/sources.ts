@@ -160,8 +160,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceChainlinkList.FIL_USD],
   },
   RAI: {
-    currency: 'usd',
-    sources: [OracleSourceUniswapv3List.RAI_DAI],
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.RAI_WETH],
   },
   USDP: {
     currency: 'usd',
@@ -236,7 +236,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   },
   RPL: {
     currency: 'eth',
-    sources: [OracleSourceUniswapv3List.RPL_WETH],
+    sources: [OracleSourceUniswapv2List.RPL_WETH, OracleSourceUniswapv3List.RPL_WETH],
   },
   sDAI: {
     currency: 'usd',
@@ -3735,7 +3735,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceDexLpTokenList.Univ2_LP_HBR_WBNB],
   },
   venusBNB: {
-    currency: 'bnb',
+    currency: 'usd',
     sources: [OracleSourceCustomList.venusBNB],
   },
   Curve_LP_FRAX_USDC: {
@@ -4233,5 +4233,29 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   AIBERA: {
     currency: 'bera',
     sources: [OracleSourceUniswapv3List.AIBERA_WBERA],
+  },
+  cUNI: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.cUNI],
+  },
+  RLY: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.RLY_WETH],
+  },
+  AST: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.AST_WETH],
+  },
+  SRM: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SRM_WETH],
+  },
+  TRU: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.TRU_WETH],
+  },
+  DEXTF: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.DEXTF_WETH],
   },
 };
