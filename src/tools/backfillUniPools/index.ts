@@ -76,8 +76,8 @@ import Uniswapv2FactoryAbi from '../../configs/abi/uniswap/UniswapV2Factory.json
           const parseData = parseDataPoolsV2(endpointConfig, responseData.data);
           factoryAddress = parseData.factoryAddress;
           pools = parseData.pools;
-        } else if (endpointConfig.version === 'univ3') {
-          const responseData = await queryPoolsV3(endpointConfig.endpoint, latestId);
+        } else if (endpointConfig.version === 'univ3' || endpointConfig.version === 'algebra') {
+          const responseData = await queryPoolsV3(endpointConfig, latestId);
           const parseData = parseDataPoolsV3(endpointConfig, responseData.data);
           factoryAddress = parseData.factoryAddress;
           pools = parseData.pools;

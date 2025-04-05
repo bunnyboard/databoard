@@ -191,6 +191,7 @@ import { SpookyConfigs } from './protocols/spooky';
 import { HemiNativeBridgeConfigs } from './protocols/hemi';
 import { SymbiosisConfigs } from './protocols/symbiosis';
 import { HyperithmConfigs } from './protocols/hyperithm';
+import { CamelotConfigs } from './protocols/camelot';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -432,4 +433,5 @@ export const ProtocolConfigs = {
   hemiNativeBridge: HemiNativeBridgeConfigs,
   symbiosis: SymbiosisConfigs,
   hyperithm: HyperithmConfigs,
+  camelot: CamelotConfigs,
 };

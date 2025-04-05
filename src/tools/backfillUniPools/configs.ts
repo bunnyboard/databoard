@@ -3,23 +3,25 @@ import { getSubgraphEndpoint } from '../helpers/subgraph';
 
 export interface SubgraphConfig {
   chain: string;
-  version: 'univ2' | 'univ3' | 'univ2Messari';
+  version: 'univ2' | 'univ3' | 'algebra';
   feeRate: number;
   factoryAddress?: string;
   fromIndex?: number | string;
   endpoint: string;
+
+  feeRateField?: string;
 }
 
 export const SubgraphConfigs: Array<SubgraphConfig> = [
   // ======================= uniswap v2 =======================
-  {
-    chain: ChainNames.ethereum,
-    version: 'univ2',
-    feeRate: 0.003,
-    factoryAddress: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
-    fromIndex: 186500,
-    endpoint: getSubgraphEndpoint('EYCKATKGBKLWvSfwvBjzfCBmGwYNdVkduYXVivCsLRFu'),
-  },
+  // {
+  //   chain: ChainNames.ethereum,
+  //   version: 'univ2',
+  //   feeRate: 0.003,
+  //   factoryAddress: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+  //   fromIndex: 186500,
+  //   endpoint: getSubgraphEndpoint('EYCKATKGBKLWvSfwvBjzfCBmGwYNdVkduYXVivCsLRFu'),
+  // },
   // {
   //   chain: ChainNames.avalanche,
   //   version: 'univ2',
@@ -260,4 +262,21 @@ export const SubgraphConfigs: Array<SubgraphConfig> = [
   //   endpoint:
   //     'https://api.0xgraph.xyz/api/public/28820bd2-ad8b-4d40-a142-ce8d7c786f66/subgraphs/spookyswap/v3/v0.0.1/gn',
   // },
+
+  // ======================= camelot =======================
+  {
+    chain: ChainNames.arbitrum,
+    version: 'univ2',
+    feeRate: 0.003, // 0.3% per swap
+    // factoryAddress: '0x6EcCab422D763aC031210895C81787E87B43A652',
+    endpoint: getSubgraphEndpoint('8zagLSufxk5cVhzkzai3tyABwJh53zxn9tmUYJcJxijG'),
+  },
+  {
+    chain: ChainNames.arbitrum,
+    version: 'algebra',
+    feeRate: 0, // don't use
+    // factoryAddress: '0x6EcCab422D763aC031210895C81787E87B43A652',
+    endpoint: getSubgraphEndpoint('3utanEBA9nqMjPnuQP1vMCCys6enSM3EawBpKTVwnUw2'),
+    feeRateField: 'feeOtZ',
+  },
 ];

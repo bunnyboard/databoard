@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { Pool2, Pool2Types } from '../../types/domains/pool2';
+import { Pool2 } from '../../types/domains/pool2';
 import { normalizeAddress } from '../../lib/utils';
 import { SubgraphConfig } from './configs';
 
-export async function queryPoolsV3(endpoint: string, latestId: string): Promise<any> {
+export async function queryPoolsV3(endpointConfig: SubgraphConfig, latestId: string): Promise<any> {
   return (
-    await axios.post(endpoint, {
+    await axios.post(endpointConfig.endpoint, {
       query: `
         {
           factories(first: 1) {
@@ -14,7 +14,7 @@ export async function queryPoolsV3(endpoint: string, latestId: string): Promise<
 
           pools(first: 1000, where: {id_gt: "${latestId}"}, orderBy: id) {
             id
-            feeTier
+            ${endpointConfig.feeRateField ? endpointConfig.feeRateField : 'feeTier'}
             token0 {
               id
               symbol
@@ -44,12 +44,14 @@ export function parseDataPoolsV3(
   const factoryAddress = normalizeAddress(data.factories[0].id);
   const pools: Array<Pool2> = [];
 
+  const feeRateField = subgraphConfig.feeRateField ? subgraphConfig.feeRateField : 'feeTier';
+
   for (const rawPool of data.pools) {
     const pool: Pool2 = {
       chain: subgraphConfig.chain,
       factory: normalizeAddress(factoryAddress),
-      type: Pool2Types.univ3,
-      feeRate: Number(rawPool.feeTier) / 1e6,
+      type: subgraphConfig.version,
+      feeRate: Number(rawPool[feeRateField]) / 1e6,
       address: normalizeAddress(rawPool.id),
       token0: {
         chain: subgraphConfig.chain,
