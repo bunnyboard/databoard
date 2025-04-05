@@ -1,10 +1,12 @@
 import { OracleConfig } from '../../types/oracles';
+import { OracleSourceAlgebraList } from './algebra';
 import { OracleSourceBalancerList } from './balancer';
 import { OracleSourceChainlinkList } from './chainlink';
 import { OracleCurrencyBaseConfigs } from './currency';
 import { OracleSourceCurveList } from './curve';
 import { OracleSourceCustomList } from './custom';
 import { OracleSourceDexLpTokenList } from './dexLp';
+import { OracleSourceLBookList } from './lbook';
 import { OracleSourcePythList } from './pyth';
 import { OracleSourceUniswapv2List } from './uniswapv2';
 import { OracleSourceUniswapv3List } from './uniswapv3';
@@ -2906,10 +2908,6 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.DIP_WETH],
   },
-  VRTX: {
-    currency: 'eth',
-    sources: [OracleSourceUniswapv2List.VRTX_WETH],
-  },
   hyETH: {
     currency: 'eth',
     sources: [OracleSourceUniswapv3List.hyETH_WETH],
@@ -4273,5 +4271,13 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   USDFI: {
     currency: 'bnb',
     sources: [OracleSourceUniswapv3List.USDFI_WBNB],
+  },
+  VRTX: {
+    currency: 'usd',
+    sources: [OracleSourceAlgebraList.VRTX_USDC],
+  },
+  COOK: {
+    currency: 'mnt',
+    sources: [OracleSourceLBookList.COOK_WMNT],
   },
 };

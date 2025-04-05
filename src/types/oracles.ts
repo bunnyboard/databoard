@@ -16,6 +16,7 @@ export type OracleCurrencyBase =
   | 'bera'
   | 'ip'
   | 'celo'
+  | 'mnt'
   | 'klay';
 
 export const OracleTypes = {
@@ -31,6 +32,12 @@ export const OracleTypes = {
 
   // uniswap pool2 version 3
   uniswapv3: 'univ3',
+
+  // https://algebra.finance
+  algebra: 'algebra',
+
+  // liquidity from https://docs.lfj.gg/V2
+  lbook: 'lbook',
 
   // https://etherscan.io/token/0x83F20F44975D03b1b09e64809B757c47f942BEeA
   savingDai: 'savingDai',

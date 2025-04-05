@@ -321,4 +321,11 @@ export const OracleSourceChainlinkList: { [key: string]: OracleSourceChainlink }
     address: '0xc76dFb89fF298145b417d221B2c747d84952e01d',
     decimals: 8,
   },
+  MNT_USD: {
+    type: 'chainlink',
+    chain: 'mantle',
+    currency: 'usd',
+    address: '0xD97F20bEbeD74e8144134C4b148fE93417dd0F96',
+    decimals: 8,
+  },
 };

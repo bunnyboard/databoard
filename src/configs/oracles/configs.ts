@@ -2398,6 +2398,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   },
 
   mantle: {
+    '0x9f0c013016e8656bc256f948cd4b79ab25c7b94d': OracleSourceConfigs.COOK,
     '0x93919784c523f39cacaa98ee0a9d96c3f32b593e': OracleSourceConfigs.uniBTC,
     '0xa68d25fc2af7278db4bcdcaabce31814252642a9': OracleSourceConfigs.SolvBTC,
     '0x26a6b0dcdcfb981362afa56d581e4a7dba3be140': OracleSourceConfigs.PUFF,

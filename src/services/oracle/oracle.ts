@@ -42,6 +42,8 @@ import PythLibs from '../../modules/libs/pyth';
 import CompoundLibs from '../../modules/libs/compound';
 import PendleLibs from '../../modules/libs/pendle';
 import GmxLibs from '../../modules/libs/gmx';
+import AlgebraLibs from '../../modules/libs/algebra';
+import LBookLibs from '../../modules/libs/lbook';
 
 export default class OracleService extends CachingService implements IOracleService {
   public readonly name: string = 'oracle';
@@ -115,6 +117,24 @@ export default class OracleService extends CachingService implements IOracleServ
       }
       case 'univ3': {
         const answer = await UniswapLibs.getPricePool2(source as OracleSourcePool2, blockNumber);
+        if (answer) {
+          await this.setCachingData(sourceCachingKey, answer);
+          return answer;
+        }
+
+        break;
+      }
+      case 'algebra': {
+        const answer = await AlgebraLibs.getPricePool2(source as OracleSourcePool2, blockNumber);
+        if (answer) {
+          await this.setCachingData(sourceCachingKey, answer);
+          return answer;
+        }
+
+        break;
+      }
+      case 'lbook': {
+        const answer = await LBookLibs.getPricePool2(source as OracleSourcePool2, blockNumber);
         if (answer) {
           await this.setCachingData(sourceCachingKey, answer);
           return answer;

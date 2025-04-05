@@ -232,12 +232,13 @@ export default class YearnAdapter extends ProtocolAdapter {
         );
 
         if (tokenPriceMap[tokenAddress] === 0) {
-          tokenPriceMap[tokenAddress] = await UniswapLibs.getPool2LpPriceUsd({
+          const lpPrice = await UniswapLibs.getUniv2LpTokenPriceUsd({
             chain: v2Config.chain,
             address: tokenAddress,
             blockNumber: blockNumber,
             timestamp: options.timestamp,
           });
+          tokenPriceMap[tokenAddress] = lpPrice ? Number(lpPrice) : 0;
         }
 
         const vaultAddresses = getTokenVaultsResults.slice(vaultIndex, vaultIndex + numVaults);
