@@ -1,4 +1,4 @@
-import { UniswapProtocolConfig } from '../../../configs/protocols/uniswap';
+import { UniswapFactoryConfig, UniswapProtocolConfig } from '../../../configs/protocols/uniswap';
 import logger from '../../../lib/logger';
 import { getTimestamp } from '../../../lib/utils';
 import { ProtocolConfig } from '../../../types/base';
@@ -6,6 +6,7 @@ import { Pool2Types } from '../../../types/domains/pool2';
 import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/domains/protocol';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions, TestAdapterOptions } from '../../../types/options';
+import AlgebraCore from '../algebra/algebra';
 import AdapterDataHelper from '../helpers';
 import ProtocolAdapter from '../protocol';
 import { IDexCore } from './core';
@@ -17,6 +18,18 @@ export default class UniswapAdapter extends ProtocolAdapter {
 
   constructor(services: ContextServices, storages: ContextStorages, protocolConfig: ProtocolConfig) {
     super(services, storages, protocolConfig);
+  }
+
+  private getDexAdapter(factoryConfig: UniswapFactoryConfig): IDexCore | null {
+    if (factoryConfig.version === Pool2Types.univ2) {
+      return new UniswapV2Core(this.services, this.storages, factoryConfig);
+    } else if (factoryConfig.version === Pool2Types.univ3) {
+      return new UniswapV3Core(this.services, this.storages, factoryConfig);
+    } else if (factoryConfig.version === Pool2Types.algebra) {
+      return new AlgebraCore(this.services, this.storages, factoryConfig);
+    }
+
+    return null;
   }
 
   public async getProtocolData(options: GetProtocolDataOptions): Promise<ProtocolData | null> {
@@ -35,31 +48,13 @@ export default class UniswapAdapter extends ProtocolAdapter {
       breakdownChains: {},
     };
 
-    // sync pools from factory logs
-    const protocolConfig = this.protocolConfig as UniswapProtocolConfig;
-    for (const factoryConfig of protocolConfig.factories) {
-      if (factoryConfig.version === Pool2Types.univ2) {
-        const syncer = new UniswapV2Core(this.services, this.storages, factoryConfig);
-        await syncer.indexPools();
-      } else if (factoryConfig.version === Pool2Types.univ3) {
-        const syncer = new UniswapV3Core(this.services, this.storages, factoryConfig);
-        await syncer.indexPools();
-      }
-    }
-
     const config = this.protocolConfig as UniswapProtocolConfig;
     for (const factoryConfig of config.factories) {
       if (factoryConfig.birthday > options.timestamp) {
         continue;
       }
 
-      let coreAdapter: IDexCore | null = null;
-      if (factoryConfig.version === Pool2Types.univ2) {
-        coreAdapter = new UniswapV2Core(this.services, this.storages, factoryConfig);
-      } else if (factoryConfig.version === Pool2Types.univ3) {
-        coreAdapter = new UniswapV3Core(this.services, this.storages, factoryConfig);
-      }
-
+      const coreAdapter = this.getDexAdapter(factoryConfig);
       if (coreAdapter === null) {
         logger.warn('failed to get dex core adapter for factory', {
           service: this.name,
@@ -69,6 +64,9 @@ export default class UniswapAdapter extends ProtocolAdapter {
         });
         continue;
       }
+
+      // sync pools from factory logs
+      await coreAdapter.indexPools();
 
       const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
         factoryConfig.chain,

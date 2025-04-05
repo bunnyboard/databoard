@@ -63,4 +63,5 @@ export const EventSignatures = {
 
   UniswapV2Factory_PairCreated: '0x0d3648bd0f6ba80134a33ba9275ac585d9d315f0ad8355cddefde31afa28d0e9',
   UniswapV3Factory_PoolCreated: '0x783cca1c0412dd0d695e784568c96da2e9c22ff989357a2e8b1d9b2b4e6b7118',
+  AlgebraFactory_PoolCreated: '0x91ccaa7a278130b65168c3a0c8d3bcae84cf5e43704342bd3ec0b59e59c036db',
 };
