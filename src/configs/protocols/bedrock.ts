@@ -87,13 +87,13 @@ export const BedrockConfigs: BedrockProtocolConfig = {
       vault: '0x84E5C854A7fF9F49c888d69DECa578D406C26800',
       tokens: ['0x59889b7021243dB5B1e065385F918316cD90D46c', '0xcDd475325D6F564d27247D1DddBb0DAc6fA0a5CF'],
     },
-    {
-      chain: ChainNames.merlin,
-      birthday: 1720742400, // Fri Jul 12 2024 00:00:00 GMT+0000
-      uniBTC: '0x93919784C523f39CACaa98Ee0a9d96c3F32b593e',
-      vault: '0xF9775085d726E782E83585033B58606f7731AB18',
-      tokens: ['0xB880fd278198bd590252621d4CD071b1842E9Bcd'],
-    },
+    // {
+    //   chain: ChainNames.merlin,
+    //   birthday: 1720742400, // Fri Jul 12 2024 00:00:00 GMT+0000
+    //   uniBTC: '0x93919784C523f39CACaa98Ee0a9d96c3F32b593e',
+    //   vault: '0xF9775085d726E782E83585033B58606f7731AB18',
+    //   tokens: ['0xB880fd278198bd590252621d4CD071b1842E9Bcd'],
+    // },
     {
       chain: ChainNames.bitlayer,
       birthday: 1720742400, // Fri Jul 12 2024 00:00:00 GMT+0000

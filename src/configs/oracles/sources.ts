@@ -4280,4 +4280,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'mnt',
     sources: [OracleSourceLBookList.COOK_WMNT],
   },
+  USDO: {
+    currency: 'usd',
+    sources: [OracleSourceCurveList.USDO_USDC],
+  },
 };
