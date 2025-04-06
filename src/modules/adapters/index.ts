@@ -326,5 +326,6 @@ export function getProtocolAdapters(
     symbiosis: new SymbiosisAdapter(services, storages, ProtocolConfigs.symbiosis),
     hyperithm: new GauntletAdapter(services, storages, ProtocolConfigs.hyperithm),
     camelot: new UniswapAdapter(services, storages, ProtocolConfigs.camelot),
+    quickswap: new UniswapAdapter(services, storages, ProtocolConfigs.quickswap),
   };
 }

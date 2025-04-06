@@ -37,8 +37,6 @@ export default class CompoundLibs {
       timestamp: options.timestamp,
     });
 
-    console.log(priceVsUnderlying, underlyingPriceUsd);
-
     return (priceVsUnderlying * underlyingPriceUsd).toString();
   }
 }

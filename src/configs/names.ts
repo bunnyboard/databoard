@@ -334,5 +334,6 @@ export const ProtocolNames = {
   usdtb: 'usdtb', // https://usdtb.money
   kodiak: 'kodiak', // https://www.kodiak.finance
   hemiNativeBridge: 'hemiNativeBridge',
-  hyperithm: 'hyperithm', // https://www.hyperithm.com/
+  hyperithm: 'hyperithm', // https://www.hyperithm.com
+  quickswap: 'quickswap', // https://quickswap.exchange
 };

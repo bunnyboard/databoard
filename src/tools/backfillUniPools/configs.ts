@@ -264,19 +264,36 @@ export const SubgraphConfigs: Array<SubgraphConfig> = [
   // },
 
   // ======================= camelot =======================
+  // {
+  //   chain: ChainNames.arbitrum,
+  //   version: 'univ2',
+  //   feeRate: 0.003, // 0.3% per swap
+  //   // factoryAddress: '0x6EcCab422D763aC031210895C81787E87B43A652',
+  //   endpoint: getSubgraphEndpoint('8zagLSufxk5cVhzkzai3tyABwJh53zxn9tmUYJcJxijG'),
+  // },
+  // {
+  //   chain: ChainNames.arbitrum,
+  //   version: 'algebra',
+  //   feeRate: 0, // don't use
+  //   // factoryAddress: '0x6EcCab422D763aC031210895C81787E87B43A652',
+  //   endpoint: getSubgraphEndpoint('3utanEBA9nqMjPnuQP1vMCCys6enSM3EawBpKTVwnUw2'),
+  //   feeRateField: 'feeOtZ',
+  // },
+
+  // ======================= quickswap =======================
   {
-    chain: ChainNames.arbitrum,
+    chain: ChainNames.polygon,
     version: 'univ2',
     feeRate: 0.003, // 0.3% per swap
     // factoryAddress: '0x6EcCab422D763aC031210895C81787E87B43A652',
-    endpoint: getSubgraphEndpoint('8zagLSufxk5cVhzkzai3tyABwJh53zxn9tmUYJcJxijG'),
+    endpoint: getSubgraphEndpoint('6K19ca6rG5cDS7ZPdfVbEtgUAT3B7wjqTu6wpyXvqNJJ'),
   },
   {
-    chain: ChainNames.arbitrum,
+    chain: ChainNames.polygon,
     version: 'algebra',
     feeRate: 0, // don't use
     // factoryAddress: '0x6EcCab422D763aC031210895C81787E87B43A652',
-    endpoint: getSubgraphEndpoint('3utanEBA9nqMjPnuQP1vMCCys6enSM3EawBpKTVwnUw2'),
-    feeRateField: 'feeOtZ',
+    endpoint: getSubgraphEndpoint('FqsRcH1XqSjqVx9GRTvEJe959aCbKrcyGgDWBrUkG24g'),
+    feeRateField: 'feesToken0',
   },
 ];

@@ -2,6 +2,7 @@ import { UniswapFactoryConfig } from '../../../configs/protocols/uniswap';
 import { Pool2 } from '../../../types/domains/pool2';
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { EventSignatures } from '../../../configs/constants';
+import { normalizeAddress } from '../../../lib/utils';
 
 export interface GetDexDataOptions {
   timestamp: number;
@@ -40,7 +41,7 @@ export interface IDexCore {
 }
 
 export default class DexCore implements IDexCore {
-  public readonly name: string = 'adapter.uniswap 🦄';
+  public readonly name: string = 'adapter.dexcore';
   public readonly services: ContextServices;
   public readonly storages: ContextStorages;
   public readonly factoryConfig: UniswapFactoryConfig;
@@ -53,6 +54,10 @@ export default class DexCore implements IDexCore {
 
     // need to override this event log
     this.poolCreatedEventSignature = EventSignatures.UniswapV2Factory_PairCreated;
+  }
+
+  public getPoolsIndexingKey(): string {
+    return `factory-pools-sync-${this.factoryConfig.chain}-${normalizeAddress(this.factoryConfig.factory)}`;
   }
 
   public async indexPools(): Promise<void> {}

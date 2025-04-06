@@ -32,7 +32,7 @@ export default class UniswapV2Core extends DexCore {
     let startBlock = this.factoryConfig.factoryBirthblock;
 
     // get the latest index number from db if any
-    const syncStateKey = `factory-pools-sync-${this.factoryConfig.chain}-${normalizeAddress(this.factoryConfig.factory)}`;
+    const syncStateKey = this.getPoolsIndexingKey();
     const syncState = await this.storages.database.find({
       collection: envConfig.mongodb.collections.caching.name,
       query: {

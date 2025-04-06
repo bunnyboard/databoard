@@ -104,10 +104,6 @@ export default class EulerLibs {
           const totalBorrowedUsd =
             formatBigNumberToNumber(totalBorrowed ? totalBorrowed.toString() : '0', token.decimals) * tokenPriceUsd;
 
-          if (totalAssetDepositedUsd > 1000000000) {
-            console.log(token.address, tokenPriceUsd, totalAssets);
-          }
-
           const borrowRate =
             formatBigNumberToNumber(interestRate.toString(), SolidityUnits.RayDecimals) * TimeUnits.SecondsPerYear;
 

@@ -769,7 +769,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   },
   NMR: {
     currency: 'eth',
-    sources: [OracleSourceUniswapv3List.NMR_WETH],
+    sources: [OracleSourceUniswapv2List.NMR_WETH],
   },
   INST: {
     currency: 'eth',
@@ -4283,5 +4283,9 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   USDO: {
     currency: 'usd',
     sources: [OracleSourceCurveList.USDO_USDC],
+  },
+  SWAP: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SWAP_WETH],
   },
 };
