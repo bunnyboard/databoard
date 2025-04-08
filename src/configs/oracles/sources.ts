@@ -1821,7 +1821,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   },
   SCR: {
     currency: 'eth',
-    sources: [OracleSourceUniswapv2List.SCR_WETH],
+    sources: [OracleSourceUniswapv3List.SCR_WETH],
   },
   WIGO: {
     currency: 'ftm',
@@ -4287,5 +4287,97 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   SWAP: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.SWAP_WETH],
+  },
+  VEIL: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.VEIL_WETH],
+  },
+  TRUE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.TRUE_WETH],
+  },
+  cmETH: {
+    currency: 'eth',
+    sources: [OracleSourceLBookList.cmETH_WETH],
+  },
+  NODL: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.NODL_WETH],
+  },
+  PHAR: {
+    currency: 'avax',
+    sources: [OracleSourceUniswapv2List.PHAR_WAVAX],
+  },
+  WINK: {
+    currency: 'avax',
+    sources: [OracleSourceUniswapv2List.WINK_WAVAX],
+  },
+  KET: {
+    currency: 'avax',
+    sources: [OracleSourceUniswapv2List.KET_WAVAX],
+  },
+  BLUB: {
+    currency: 'avax',
+    sources: [OracleSourceUniswapv2List.BLUB_WAVAX],
+  },
+  X33: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv3List.X33_WS],
+  },
+  COAL: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv3List.COAL_WS],
+  },
+  NAVI: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv3List.NAVI_WS],
+  },
+  METRO: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv2List.METRO_WS],
+  },
+  SHADOW: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv3List.SHADOW_WS],
+  },
+  DERP: {
+    currency: 'ftm',
+    sources: [OracleSourceUniswapv3List.DERP_WS],
+  },
+  EDU: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.EDU_USDT],
+  },
+  TKO: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.TKO_WBNB],
+  },
+  QANX: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.QANX_WBNB],
+  },
+  IOTA: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.IOTA_WBNB],
+  },
+  AION: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.AION_WETH],
+  },
+  NURI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.NURI_WETH],
+  },
+  HashAI: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.HashAI_WETH],
+  },
+  BONE: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.BONE_WETH],
+  },
+  MOODENG: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.MOODENG_WETH],
   },
 };

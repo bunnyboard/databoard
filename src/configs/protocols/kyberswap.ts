@@ -80,5 +80,15 @@ export const KyberswapConfigs: KyberswapProtocolConfig = {
       birthday: 1673308800, // Tue Jan 10 2023 00:00:00 GMT+0000
       address: '0x6131B5fae19EA4f9D964eAc0408E4408b66337b5',
     },
+    {
+      chain: ChainNames.sonic,
+      birthday: 1734480000, // Wed Dec 18 2024 00:00:00 GMT+0000
+      address: '0x6131B5fae19EA4f9D964eAc0408E4408b66337b5',
+    },
+    {
+      chain: ChainNames.berachain,
+      birthday: 1739145600, // Mon Feb 10 2025 00:00:00 GMT+0000
+      address: '0x6131B5fae19EA4f9D964eAc0408E4408b66337b5',
+    },
   ],
 };

@@ -159,6 +159,7 @@ export default class OdosAdapter extends ProtocolAdapter {
             (protocolData.volumes.trade as number) += volumeUsd;
 
             (protocolData.breakdownChains as any)[routerConfig.chain].totalFees += feeUsd;
+            (protocolData.breakdownChains as any)[routerConfig.chain].protocolRevenue += feeUsd;
             ((protocolData.breakdownChains as any)[routerConfig.chain].volumes.trade as number) += volumeUsd;
           }
         }

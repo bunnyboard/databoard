@@ -1,4 +1,10 @@
 {
+  "0x039e2fb66102314ce7b64ce5ce3e5183bc94ad38": {
+    "chain": "sonic",
+    "symbol": "WS",
+    "decimals": 18,
+    "address": "0x039e2fb66102314ce7b64ce5ce3e5183bc94ad38"
+  },
   "0x096c64d79a85c8fd2e963c4abd9373301d2cf801": {
     "chain": "sonic",
     "symbol": "ICR",
@@ -35,6 +41,18 @@
     "decimals": 18,
     "address": "0x23181f21dea5936e24163ffaba4ea3b316b57f3c"
   },
+  "0x3333111a391cc08fa51353e9195526a70b333333": {
+    "chain": "sonic",
+    "symbol": "X33",
+    "decimals": 18,
+    "address": "0x3333111a391cc08fa51353e9195526a70b333333"
+  },
+  "0x3333b97138d4b086720b5ae8a7844b1345a33333": {
+    "chain": "sonic",
+    "symbol": "SHADOW",
+    "decimals": 18,
+    "address": "0x3333b97138d4b086720b5ae8a7844b1345a33333"
+  },
   "0x43559b1786c06d6b826e3cf9aa667ed8840f9106": {
     "chain": "sonic",
     "symbol": "ADA_b",
@@ -46,6 +64,18 @@
     "symbol": "SUSHI_e",
     "decimals": 18,
     "address": "0x53c56ece35f8cab135e13d6d00499dfc7c07a92e"
+  },
+  "0x6881b80ea7c858e4aeef63893e18a8a36f3682f3": {
+    "chain": "sonic",
+    "symbol": "NAVI",
+    "decimals": 18,
+    "address": "0x6881b80ea7c858e4aeef63893e18a8a36f3682f3"
+  },
+  "0x71e99522ead5e21cf57f1f542dc4ad2e841f7321": {
+    "chain": "sonic",
+    "symbol": "METRO",
+    "decimals": 18,
+    "address": "0x71e99522ead5e21cf57f1f542dc4ad2e841f7321"
   },
   "0x76accfb75b8bb7c6c295f04d19c1d184d274c853": {
     "chain": "sonic",
@@ -83,6 +113,12 @@
     "decimals": 18,
     "address": "0xca424b845497f7204d9301bd13ff87c0e2e86fcf"
   },
+  "0xcbfe13919530cb054b9cabbf9cda1dd1d811e3e6": {
+    "chain": "sonic",
+    "symbol": "COAL",
+    "decimals": 18,
+    "address": "0xcbfe13919530cb054b9cabbf9cda1dd1d811e3e6"
+  },
   "0xdb28719f7f938507dbfe4f0eae55668903d34a15": {
     "chain": "sonic",
     "symbol": "USDT_t",
@@ -100,6 +136,12 @@
     "symbol": "USDT_e",
     "decimals": 6,
     "address": "0xe887512ab8bc60bcc9224e1c3b5be68e26048b8b"
+  },
+  "0xe920d1da9a4d59126dc35996ea242d60efca1304": {
+    "chain": "sonic",
+    "symbol": "DERP",
+    "decimals": 18,
+    "address": "0xe920d1da9a4d59126dc35996ea242d60efca1304"
   },
   "0xedf53026aea60f8f75fca25f8830b7e2d6200662": {
     "chain": "sonic",

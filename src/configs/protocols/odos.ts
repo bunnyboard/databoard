@@ -94,5 +94,17 @@ export const OdosConfigs: OdosProtocolConfig = {
       router: '0xd0c22a5435f4e8e5770c1fafb5374015fc12f7cd',
       limitOrderRouter: '0x8c8c3E8465B911186aDeC83a53C7De8c587eDDaB',
     },
+    {
+      chain: ChainNames.sonic,
+      birthday: 1735516800, // Mon Dec 30 2024 00:00:00 GMT+0000
+      router: '0xaC041Df48dF9791B0654f1Dbbf2CC8450C5f2e9D',
+      limitOrderRouter: '0xB9CBD870916e9Ffc52076Caa714f85a022B7f330',
+    },
+    {
+      chain: ChainNames.fraxtal,
+      birthday: 1731974400, // Tue Nov 19 2024 00:00:00 GMT+0000
+      router: '0x56c85a254dd12ee8d9c04049a4ab62769ce98210',
+      limitOrderRouter: '0x5E0aFaD0f658f9689806296e0509AfFC191d9a09',
+    },
   ],
 };

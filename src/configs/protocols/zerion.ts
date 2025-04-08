@@ -11,6 +11,7 @@ export interface ZerionProtocolConfig extends ProtocolConfig {
   routers: Array<ZerionRouterConfig>;
 }
 
+// https://github.com/zeriontech/defi-sdk/blob/router/docs/addresses.md
 export const ZerionConfigs: ZerionProtocolConfig = {
   protocol: ProtocolNames.zerion,
   birthday: 1646870400, // Thu Mar 10 2022 00:00:00 GMT+0000

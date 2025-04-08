@@ -59,6 +59,12 @@
     "decimals": 18,
     "address": "0xa25b25548b4c98b0c7d3d27dca5d5ca743d68b7f"
   },
+  "0xaaae8378809bb8815c08d3c59eb0c7d1529ad769": {
+    "chain": "scroll",
+    "symbol": "NURI",
+    "decimals": 18,
+    "address": "0xaaae8378809bb8815c08d3c59eb0c7d1529ad769"
+  },
   "0xca77eb3fefe3725dc33bccb54edefc3d9f764f97": {
     "chain": "scroll",
     "symbol": "DAI",

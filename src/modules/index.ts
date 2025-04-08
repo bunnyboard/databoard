@@ -72,6 +72,7 @@ import MorphoAdapter from './adapters/morpho/morpho';
 import MovementNativeBridgeAdapter from './adapters/movement/nativeBridge';
 import OdosAdapter from './adapters/odos/odos';
 import Okxweb3Adapter from './adapters/okx/okxweb3';
+import OpenoceanAdapter from './adapters/openocean/openocean';
 import OpenseaAdapter from './adapters/opensea/opensea';
 import OptimismNativeBridgeAdapter from './adapters/optimism/nativeBridge';
 import OptimismNativeBridgeLegacyAdapter from './adapters/optimism/nativeBridgeLegacy';
@@ -327,5 +328,6 @@ export function getProtocolAdapters(
     hyperithm: new GauntletAdapter(services, storages, ProtocolConfigs.hyperithm),
     camelot: new UniswapAdapter(services, storages, ProtocolConfigs.camelot),
     quickswap: new UniswapAdapter(services, storages, ProtocolConfigs.quickswap),
+    openocean: new OpenoceanAdapter(services, storages, ProtocolConfigs.openocean),
   };
 }

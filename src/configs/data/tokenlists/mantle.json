@@ -70,5 +70,11 @@
     "symbol": "ETH",
     "decimals": 18,
     "address": "0xdeaddeaddeaddeaddeaddeaddeaddeaddead1111"
+  },
+  "0xe6829d9a7ee3040e1276fa75293bde931859e8fa": {
+    "chain": "mantle",
+    "symbol": "cmETH",
+    "decimals": 18,
+    "address": "0xe6829d9a7ee3040e1276fa75293bde931859e8fa"
   }
 }

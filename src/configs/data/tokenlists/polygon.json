@@ -1145,6 +1145,12 @@
     "decimals": 18,
     "address": "0x774b995b7753b2e142dc4feb58c5dd4581f0fa03"
   },
+  "0x7844f79fc841e4f92d974c417031c76f8578c2d5": {
+    "chain": "polygon",
+    "symbol": "OPN",
+    "decimals": 18,
+    "address": "0x7844f79fc841e4f92d974c417031c76f8578c2d5"
+  },
   "0x7cc15fef543f205bf21018f038f591c6bada941c": {
     "chain": "polygon",
     "symbol": "POLYCUB",

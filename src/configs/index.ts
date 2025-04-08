@@ -193,6 +193,7 @@ import { SymbiosisConfigs } from './protocols/symbiosis';
 import { HyperithmConfigs } from './protocols/hyperithm';
 import { CamelotConfigs } from './protocols/camelot';
 import { QuickswapConfigs } from './protocols/quickswap';
+import { OpenoceanConfigs } from './protocols/openocean';
 
 export const DefaultQueryContractLogsBlockRange = 1000;
 export const CustomQueryContractLogsBlockRange: { [key: string]: number } = {
@@ -436,4 +437,5 @@ export const ProtocolConfigs = {
   hyperithm: HyperithmConfigs,
   camelot: CamelotConfigs,
   quickswap: QuickswapConfigs,
+  openocean: OpenoceanConfigs,
 };

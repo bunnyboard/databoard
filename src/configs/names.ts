@@ -336,4 +336,5 @@ export const ProtocolNames = {
   hemiNativeBridge: 'hemiNativeBridge',
   hyperithm: 'hyperithm', // https://www.hyperithm.com
   quickswap: 'quickswap', // https://quickswap.exchange
+  openocean: 'openocean', // https://openocean.finance
 };
