@@ -2281,7 +2281,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   },
   PAR: {
     currency: 'usd',
-    sources: [OracleSourceUniswapv3List.PAR_USDC],
+    sources: [OracleSourceUniswapv2List.PAR_USDC],
   },
   FOLD: {
     currency: 'eth',

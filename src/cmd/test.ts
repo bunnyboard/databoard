@@ -1,6 +1,6 @@
 import { ProtocolConfigs } from '../configs';
 import { BasicCommand } from './basic';
-import { getProtocolAdapters } from '../modules/adapters';
+import { getProtocolAdapters } from '../modules';
 import { ContextServices, ContextStorages } from '../types/namespaces';
 
 export class TestCommand extends BasicCommand {

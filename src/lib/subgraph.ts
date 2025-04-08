@@ -1,9 +1,26 @@
 import axios from 'axios';
 import logger from './logger';
 import { sleep } from './utils';
+import envConfig from '../configs/envConfig';
 
-export function getQueryEndpoint(subgraphId: string, apiKey: string): string {
-  return `https://gateway.thegraph.com/api/${apiKey}/subgraphs/id/${subgraphId}`;
+interface GetTheGraphEndpointOptions {
+  subgraphId?: string;
+  deploymentId?: string;
+}
+
+// docs: https://thegraph.com/docs/en/subgraphs/querying/subgraph-id-vs-deployment-id
+export function getTheGraphEndpoint(options: GetTheGraphEndpointOptions): string {
+  if (envConfig.thegraph.thegraphApiKey !== '') {
+    if (options.subgraphId) {
+      return `https://gateway.thegraph.com/api/${envConfig.thegraph.thegraphApiKey}/subgraphs/id/${options.subgraphId}`;
+    } else if (options.deploymentId) {
+      return `https://gateway-arbitrum.network.thegraph.com/api/${envConfig.thegraph.thegraphApiKey}/deployments/id/${options.deploymentId}`;
+    } else {
+      return '';
+    }
+  }
+
+  return '';
 }
 
 export async function querySubgraph(endpoint: string, query: string): Promise<any> {

@@ -1,11 +1,16 @@
+import { getTheGraphEndpoint } from '../../lib/subgraph';
 import { Pool2Types } from '../../types/domains/pool2';
 import { ChainNames, ProtocolNames } from '../names';
-import { UniswapProtocolConfig } from './uniswap';
+import {
+  UniswapProtocolConfig,
+  UniswapV2SubgraphQueryFieldsDefault,
+  UniswapV3SubgraphQueryFieldsDefault,
+} from './uniswap';
 
 // https://docs.camelot.exchange/tokenomics/protocol-earnings
 export const CamelotConfigs: UniswapProtocolConfig = {
   protocol: ProtocolNames.camelot,
-  birthday: 1667520000, // Fri Nov 04 2022 00:00:00 GMT+0000
+  birthday: 1672531200, // Sun Jan 01 2023 00:00:00 GMT+0000
   factories: [
     // v2
     {
@@ -13,9 +18,15 @@ export const CamelotConfigs: UniswapProtocolConfig = {
       version: Pool2Types.univ2,
       factory: '0x6EcCab422D763aC031210895C81787E87B43A652',
       factoryBirthblock: 35061163,
-      birthday: 1667520000, // Fri Nov 04 2022 00:00:00 GMT+0000
+      birthday: 1672531200, // Sun Jan 01 2023 00:00:00 GMT+0000
       feeRateForLiquidityProviders: 0.0018, // 60% of 0.3% swap fee -> LP
       feeRateForProtocol: 0.0012, // // 60% of 0.3% swap fee -> protocol
+      subgraph: {
+        endpoint: getTheGraphEndpoint({
+          subgraphId: '8zagLSufxk5cVhzkzai3tyABwJh53zxn9tmUYJcJxijG',
+        }),
+        queryFields: UniswapV2SubgraphQueryFieldsDefault,
+      },
     },
 
     // v3
@@ -26,6 +37,15 @@ export const CamelotConfigs: UniswapProtocolConfig = {
       factoryBirthblock: 101163738,
       birthday: 1686787200, // Thu Jun 15 2023 00:00:00 GMT+0000
       feeRateForProtocol: 0.15, // 15% swap fees
+      subgraph: {
+        endpoint: getTheGraphEndpoint({
+          subgraphId: '3utanEBA9nqMjPnuQP1vMCCys6enSM3EawBpKTVwnUw2',
+        }),
+        queryFields: {
+          ...UniswapV3SubgraphQueryFieldsDefault,
+          poolFeesRate: 'feeOtZ',
+        },
+      },
     },
   ],
 };

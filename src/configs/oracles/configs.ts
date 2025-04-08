@@ -1617,6 +1617,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.MATIC,
     [AddressE]: OracleSourceConfigs.MATIC,
     [AddressF]: OracleSourceConfigs.MATIC,
+    '0xf501dd45a1198c2e1b5aef5314a68b9006d842e0': OracleSourceConfigs.MTA,
+    '0xdbf31df14b66535af65aac99c32e9ea844e14501': OracleSourceConfigs.renBTC,
     '0x43c73b90e0c2a355784dcf0da12f477729b31e77': OracleSourceConfigs.SOIL,
     '0xd0258a3fd00f38aa8090dfee343f10a9d4d30d3f': OracleSourceConfigs.VOXEL,
     '0xc708d6f2153933daa50b2d0758955be0a93a8fec': OracleSourceConfigs.fxVERSE,

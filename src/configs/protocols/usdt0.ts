@@ -82,5 +82,16 @@ export const Usdt0Configs: Usdt0ProtocolConfig = {
         address: '0x9151434b16b9763660705744891fa906f660ecc5',
       },
     },
+    {
+      chain: ChainNames.corn,
+      birthday: 1741478400, // Sun Mar 09 2025 00:00:00 GMT+0000
+      adapter: '0x3f82943338a8a76c35BFA0c1828aA27fd43a34E4',
+      token: {
+        chain: ChainNames.corn,
+        symbol: 'USDT',
+        decimals: 6,
+        address: '0xb8ce59fc3717ada4c02eadf9682a9e934f625ebb',
+      },
+    },
   ],
 };

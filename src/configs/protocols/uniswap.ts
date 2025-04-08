@@ -1,6 +1,42 @@
+import { getTheGraphEndpoint } from '../../lib/subgraph';
 import { ProtocolConfig } from '../../types/base';
-import { Pool2Type } from '../../types/domains/pool2';
-import { ProtocolNames } from '../names';
+import { Pool2Type, Pool2Types } from '../../types/domains/pool2';
+import { ChainNames, ProtocolNames } from '../names';
+
+export interface UniswapSubgraphQueryFields {
+  factories: string;
+  totalLiquidityUSD: string;
+  totalVolumeUSD: string;
+  totalFeesUSD: string;
+
+  pools: string;
+  poolFeesRate: string;
+}
+
+export interface UniswapSubgraphConfig {
+  endpoint: string;
+  queryFields: UniswapSubgraphQueryFields;
+}
+
+export const UniswapV2SubgraphQueryFieldsDefault: UniswapSubgraphQueryFields = {
+  factories: 'uniswapFactories',
+  totalLiquidityUSD: 'totalLiquidityUSD',
+  totalVolumeUSD: 'totalVolumeUSD',
+  pools: 'pairs',
+
+  // dont' use for v2
+  totalFeesUSD: '', // don't use
+  poolFeesRate: '', // don't use
+};
+
+export const UniswapV3SubgraphQueryFieldsDefault: UniswapSubgraphQueryFields = {
+  factories: 'factories',
+  totalLiquidityUSD: 'totalValueLockedUSD',
+  totalVolumeUSD: 'totalVolumeUSD',
+  totalFeesUSD: 'totalFeesUSD',
+  pools: 'pools',
+  poolFeesRate: 'feeTier',
+};
 
 export interface UniswapFactoryConfig {
   chain: string;
@@ -26,6 +62,9 @@ export interface UniswapFactoryConfig {
 
   // ignore these ppols
   blacklistPools?: Array<string>;
+
+  // support subgraph query if any
+  subgraph?: UniswapSubgraphConfig;
 }
 
 export interface UniswapProtocolConfig extends ProtocolConfig {
@@ -41,16 +80,19 @@ export const UniswapConfigs: UniswapProtocolConfig = {
 
   factories: [
     /////////////////// v2
-    // {
-    //   chain: ChainNames.ethereum,
-    //   version: Pool2Types.univ2,
-    //   factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
-    //   birthday: 1588636800, // Tue May 05 2020 00:00:00 GMT+0000
-    //   subgraph: {
-    //     provider: 'thegraph',
-    //     subgraphIdOrEndpoint: 'EYCKATKGBKLWvSfwvBjzfCBmGwYNdVkduYXVivCsLRFu',
-    //   },
-    // },
+    {
+      chain: ChainNames.ethereum,
+      version: Pool2Types.univ2,
+      factory: '0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f',
+      factoryBirthblock: 10000835,
+      birthday: 1588636800, // Tue May 05 2020 00:00:00 GMT+0000
+      subgraph: {
+        endpoint: getTheGraphEndpoint({
+          subgraphId: 'A3Np3RQbaBA6oKJgiwDJeo5T3zrYfGHPWFYayMwtNDum',
+        }),
+        queryFields: UniswapV2SubgraphQueryFieldsDefault,
+      },
+    },
     // {
     //   chain: ChainNames.arbitrum,
     //   version: Pool2Types.univ2,

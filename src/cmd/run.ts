@@ -2,7 +2,7 @@ import { ProtocolConfigs } from '../configs';
 import envConfig from '../configs/envConfig';
 import logger from '../lib/logger';
 import { sleep } from '../lib/utils';
-import { getProtocolAdapters } from '../modules/adapters';
+import { getProtocolAdapters } from '../modules';
 import { ContextServices, ContextStorages } from '../types/namespaces';
 import { BasicCommand } from './basic';
 import * as Sentry from '@sentry/node';

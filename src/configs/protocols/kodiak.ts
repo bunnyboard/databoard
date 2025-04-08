@@ -16,6 +16,11 @@ export const KodiakConfigs: UniswapProtocolConfig = {
       birthday: 1737417600, // Tue Jan 21 2025 00:00:00 GMT+0000
       feeRateForLiquidityProviders: 0.0025,
       feeRateForProtocol: 0.0005,
+      // subgraph: {
+      //   endpoint:
+      //     'https://api.goldsky.com/api/public/project_clpx84oel0al201r78jsl0r3i/subgraphs/kodiak-v2-berachain-mainnet/latest/gn',
+      //   queryFields: UniswapV2SubgraphQueryFieldsDefault,
+      // },
     },
 
     // v3
@@ -26,6 +31,11 @@ export const KodiakConfigs: UniswapProtocolConfig = {
       birthday: 1737417600, // Tue Jan 21 2025 00:00:00 GMT+0000
       factoryBirthblock: 12314,
       feeRateForProtocol: 0.35, // 35% swap fees
+      // subgraph: {
+      //   endpoint:
+      //     'https://api.goldsky.com/api/public/project_clpx84oel0al201r78jsl0r3i/subgraphs/kodiak-v3-berachain-mainnet/latest/gn',
+      //   queryFields: UniswapV3SubgraphQueryFieldsDefault,
+      // },
     },
   ],
 };
