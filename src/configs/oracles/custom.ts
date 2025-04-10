@@ -338,4 +338,11 @@ export const OracleSourceCustomList: {
     address: '0x4307fbdcd9ec7aea5a1c2958decaa6f316952bab',
     underlyingToken: TokensBook.arbitrum['0xaf88d065e77c8cc2239327c5edb3a432268e5831'], // USDC
   },
+  savUSD: {
+    type: 'stakingTokenWrapper',
+    chain: 'avalanche',
+    method: 'erc4626',
+    address: '0x06d47f3fb376649c3a9dafe069b3d6e35572219e',
+    underlyingToken: TokensBook.avalanche['0x24de8771bc5ddb3362db529fc3358f2df3a0e346'],
+  },
 };

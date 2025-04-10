@@ -75,11 +75,11 @@ export const SymbiosisConfigs: SymbiosisProtocolConfig = {
       birthday: 1689552000, // Mon Jul 17 2023 00:00:00 GMT+0000
       portal: '0x292fC50e4eB66C3f6514b9E402dBc25961824D62',
     },
-    {
-      chain: ChainNames.mantle,
-      birthday: 1689724800, // Wed Jul 19 2023 00:00:00 GMT+0000
-      portal: '0x292fC50e4eB66C3f6514b9E402dBc25961824D62',
-    },
+    // {
+    //   chain: ChainNames.mantle,
+    //   birthday: 1689724800, // Wed Jul 19 2023 00:00:00 GMT+0000
+    //   portal: '0x292fC50e4eB66C3f6514b9E402dBc25961824D62',
+    // },
     {
       chain: ChainNames.base,
       birthday: 1693872000, // Tue Sep 05 2023 00:00:00 GMT+0000

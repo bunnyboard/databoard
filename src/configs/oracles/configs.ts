@@ -2049,6 +2049,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.AVAX,
     [AddressE]: OracleSourceConfigs.AVAX,
     [AddressF]: OracleSourceConfigs.AVAX,
+    '0x06d47f3fb376649c3a9dafe069b3d6e35572219e': OracleSourceConfigs.savUSD,
+    '0x24de8771bc5ddb3362db529fc3358f2df3a0e346': OracleSourceConfigs.avUSD,
     '0x0f669808d88b2b0b3d23214dcd2a1cc6a8b1b5cd': OracleSourceConfigs.BLUB,
     '0xffff003a6bad9b743d658048742935fffe2b6ed7': OracleSourceConfigs.KET,
     '0x7698a5311da174a95253ce86c21ca7272b9b05f8': OracleSourceConfigs.WINK,

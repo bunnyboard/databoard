@@ -89,5 +89,21 @@ export const Re7capitalConfigs: GauntletProtocolConfig = {
         '0xe318d262290ABab80FC6e217c514801e2c0EF999',
       ],
     },
+    {
+      chain: ChainNames.avalanche,
+      birthday: 1742860800, // Tue Mar 25 2025 00:00:00 GMT+0000
+      morphoVaults: [],
+      eulerVaults: [
+        '0x39dE0f00189306062D79eDEC6DcA5bb6bFd108f9',
+        '0x2137568666f12fc5A026f5430Ae7194F1C1362aB',
+        '0x72F92a966f1874f74e1b601BEe7CF57031B53A03',
+        '0x6c718a70239fA548c0bD268fE88F37EBE8b6E2ea',
+        '0xb52a9c3aea75939a78287F81b53A9e965e058eec',
+        '0x38a559c2b6eF3fF7Cdc40a800D6351a2B70b2243',
+        '0xABA9d2D4b6B93C3dc8976D8eb0690CCA56431FE4',
+        '0x4eC5B9a4d4FD9E35d4f881D35AAB9877bfdA5803',
+        '0x7485484Dab196C615AE21453C3ABd732977562f2',
+      ],
+    },
   ],
 };

@@ -64,5 +64,15 @@ export const MevcapitalConfigs: GauntletProtocolConfig = {
         '0x91e1Ec1e948F635c127dad41eaE1aF899399F15a',
       ],
     },
+    {
+      chain: ChainNames.avalanche,
+      birthday: 1743033600, // Thu Mar 27 2025 00:00:00 GMT+0000
+      morphoVaults: [],
+      eulerVaults: [
+        '0x69B07dB605d0A08fbE9245c1466880AA36c8E1A7',
+        '0x91bFd7192990c2A56dF4AceFf5Fe063B75b636A5',
+        '0x5cB6F04682299eB196F7d673c09a04DF68028071',
+      ],
+    },
   ],
 };

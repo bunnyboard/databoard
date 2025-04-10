@@ -4380,4 +4380,12 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.MOODENG_WETH],
   },
+  avUSD: {
+    currency: 'usd',
+    sources: [OracleSourceLBookList.avUSD_USDC],
+  },
+  savUSD: {
+    currency: 'usd',
+    sources: [OracleSourceCustomList.savUSD],
+  },
 };
