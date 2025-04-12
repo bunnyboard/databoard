@@ -9,6 +9,9 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0xf24d8651578a55b0c119b9910759a351a3458895': OracleSourceConfigs.BAL,
+    '0x55296f69f40ea6d20e478533c15a6b08b654e758': OracleSourceConfigs.XYO,
+    '0x744d70fdbe2ba4cf95131626614a1763df805b9e': OracleSourceConfigs.SNT,
     '0x28561b8a2360f463011c16b6cc0b0cbef8dbbcad': OracleSourceConfigs.MOODENG,
     '0x9813037ee2218799597d83d4a5b6f3b6778218d9': OracleSourceConfigs.BONE,
     '0x292fcdd1b104de5a00250febba9bc6a5092a0076': OracleSourceConfigs.HashAI,
@@ -848,6 +851,12 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0xcf6c2bb97a8978321c9e207afe8a2037fa9be45c': OracleSourceConfigs.ETH,
+    '0x4ce13a79f45c1be00bdabd38b764ac28c082704e': OracleSourceConfigs.ETH,
+    '0x895e15020c3f52ddd4d8e9514eb83c39f53b1579': OracleSourceConfigs.yUSD,
+    '0x4ff50c17df0d1b788d021acd85039810a1aa68a1': OracleSourceConfigs.ezETH,
+    '0x657e8c867d8b37dcc18fa4caead9c45eb088c642': OracleSourceConfigs.eBTC,
+    '0x52dc1feefa4f9a99221f93d79da46ae89b8c0967': OracleSourceConfigs.WBTC,
     '0x07715ee7219b07b8e01cc7d2787f4e5e75860383': OracleSourceConfigs.SDT,
     '0x249c48e22e95514ca975de31f473f30c2f3c0916': OracleSourceConfigs.USDFI,
     '0x999faf0af2ff109938eefe6a7bf91ca56f0d07e1': OracleSourceConfigs.LDY,
@@ -1360,6 +1369,8 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0x73582df1cad3187cd0746b7a473d65c06386837e': OracleSourceConfigs.DEUS,
+    '0xc63529297de076eb15fcbe873ae9136e446cfbb9': OracleSourceConfigs.GYFI,
     '0x4e65fe4dba92790696d040ac24aa414708f5c0ab': OracleSourceConfigs.USDC,
     '0xfc48314ad4ad5bd36a84e8307b86a68a01d95d9c': OracleSourceConfigs.AION,
     '0x21cfcfc3d8f98fc728f48341d10ad8283f6eb7ab': OracleSourceConfigs.TRUE,
@@ -1626,6 +1637,10 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.MATIC,
     [AddressE]: OracleSourceConfigs.MATIC,
     [AddressF]: OracleSourceConfigs.MATIC,
+    '0xe2aa7db6da1dae97c5f5c6914d285fbfcc32a128': OracleSourceConfigs.EUR,
+    '0x0a02d33031917d836bd7af02f9f7f6c74d67805f': OracleSourceConfigs.KLAY,
+    '0x236aa50979d5f3de3bd1eeb40e81137f22ab794b': OracleSourceConfigs.tBTCv2,
+    '0x2f6f07cdcf3588944bf4c42ac74ff24bf56e7590': OracleSourceConfigs.STG,
     '0x0000000000000000000000000000000000001010': OracleSourceConfigs.MATIC,
     '0x7844f79fc841e4f92d974c417031c76f8578c2d5': OracleSourceConfigs.OPN,
     '0xa4d94019934d8333ef880abffbf2fdd611c762bd': OracleSourceConfigs.USDC,
@@ -1822,6 +1837,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.BNB,
     [AddressE]: OracleSourceConfigs.BNB,
     [AddressF]: OracleSourceConfigs.BNB,
+    '0x12bb890508c125661e03b09ec06e404bc9289040': OracleSourceConfigs.RACA,
     '0xd944f1d1e9d5f9bb90b62f9d45e447d989580782': OracleSourceConfigs.IOTA,
     '0xaaa9214f675316182eaa21c85f0ca99160cc3aaa': OracleSourceConfigs.QANX,
     '0x9f589e3eabe42ebc94a44727b3f3531c0c877809': OracleSourceConfigs.TKO,
@@ -2260,6 +2276,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
 
   // tokens on gnosis
   gnosis: {
+    '0x3e76f9caaf9b47089810b4579c598228735e7a11': OracleSourceConfigs.PAXG,
     '0x71850b7e9ee3f13ab46d67167341e4bdc905eef9': OracleSourceConfigs.HNY,
     '0xf0e7ec247b918311afa054e0aedb99d74c31b809': OracleSourceConfigs.USDC,
     '0x7c16f0185a26db0ae7a9377f23bc18ea7ce5d644': OracleSourceConfigs.GNO,
@@ -2382,6 +2399,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
 
   // token on linea
   linea: {
+    '0x6ef95b6f3b0f39508e3e04054be96d5ee39ede0d': OracleSourceConfigs.SIS,
     '0x5a7a183b6b44dc4ec2e3d2ef43f98c5152b1d76d': OracleSourceConfigs.ETH,
     '0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34': OracleSourceConfigs.USDe,
     '0x211cc4dd073734da055fbf44a2b4667d5e5fe5d2': OracleSourceConfigs.sUSDe,

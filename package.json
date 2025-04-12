@@ -29,5 +29,5 @@
     "winston": "^3.9.0",
     "yargs": "^17.4.0"
   },
-  "packageManager": "yarn@4.0.2"
+  "packageManager": "yarn@4.9.1"
 }

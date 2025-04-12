@@ -53,7 +53,7 @@ export default class UniswapLibs {
       }
     } else if (source.type === 'univ3') {
       // https://blog.uniswap.org/uniswap-v3-math-primer
-      const [token0, token1, slot0] = await blockchain.multicall({
+      let [token0, token1, slot0] = await blockchain.multicall({
         chain: source.chain,
         blockNumber: blockNumber,
         calls: [
@@ -77,6 +77,57 @@ export default class UniswapLibs {
           },
         ],
       });
+
+      if (slot0 === null) {
+        // aerodrome slipstream pool
+        slot0 = await blockchain.readContract({
+          chain: source.chain,
+          abi: [
+            {
+              inputs: [],
+              name: 'slot0',
+              outputs: [
+                {
+                  internalType: 'uint160',
+                  name: 'sqrtPriceX96',
+                  type: 'uint160',
+                },
+                {
+                  internalType: 'int24',
+                  name: 'tick',
+                  type: 'int24',
+                },
+                {
+                  internalType: 'uint16',
+                  name: 'observationIndex',
+                  type: 'uint16',
+                },
+                {
+                  internalType: 'uint16',
+                  name: 'observationCardinality',
+                  type: 'uint16',
+                },
+                {
+                  internalType: 'uint16',
+                  name: 'observationCardinalityNext',
+                  type: 'uint16',
+                },
+                {
+                  internalType: 'bool',
+                  name: 'unlocked',
+                  type: 'bool',
+                },
+              ],
+              stateMutability: 'view',
+              type: 'function',
+            },
+          ],
+          target: source.address,
+          method: 'slot0',
+          params: [],
+          blockNumber: blockNumber,
+        });
+      }
 
       if (token0 && token1 && slot0) {
         // slot0.sqrtPriceX96

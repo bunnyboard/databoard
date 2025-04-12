@@ -438,8 +438,8 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     sources: [OracleSourceUniswapv2List.ALPACA_WBNB],
   },
   RACA: {
-    currency: 'usd',
-    sources: [OracleSourceUniswapv2List.RACA_BUSD],
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.RACA_WBNB],
   },
   BSW: {
     currency: 'bnb',
@@ -4387,5 +4387,21 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   savUSD: {
     currency: 'usd',
     sources: [OracleSourceCustomList.savUSD],
+  },
+  SNT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.SNT_WETH],
+  },
+  XYO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.XYO_WETH],
+  },
+  GYFI: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.GYFI_USDC],
+  },
+  yUSD: {
+    currency: 'usd',
+    sources: [OracleSourceCurveList.yUSD_USDC],
   },
 };

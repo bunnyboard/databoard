@@ -1631,6 +1631,12 @@
     "decimals": 18,
     "address": "0x894134a25a5fac1c2c26f1d8fbf05111a3cb9487"
   },
+  "0x895e15020c3f52ddd4d8e9514eb83c39f53b1579": {
+    "chain": "arbitrum",
+    "symbol": "yUSD",
+    "decimals": 18,
+    "address": "0x895e15020c3f52ddd4d8e9514eb83c39f53b1579"
+  },
   "0x89c49a3fa372920ac23ce757a029e6936c0b8e02": {
     "chain": "arbitrum",
     "symbol": "CU",

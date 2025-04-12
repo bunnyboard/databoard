@@ -10,6 +10,7 @@ import {
 export const SushiConfigs: UniswapProtocolConfig = {
   protocol: ProtocolNames.sushi,
   birthday: 1599264000, // Sat Sep 05 2020 00:00:00 GMT+0000
+  factorySync: true,
   factories: [
     // v2
     {

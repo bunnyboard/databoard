@@ -23,21 +23,22 @@ export default class UniswapAdapter extends ProtocolAdapter {
     super(services, storages, protocolConfig);
   }
 
-  private getDexAdapter(factoryConfig: UniswapFactoryConfig): IDexCore | null {
+  public getDexAdapter(factoryConfig: UniswapFactoryConfig): IDexCore | null {
+    const config = this.protocolConfig as UniswapProtocolConfig;
     if (factoryConfig.version === Pool2Types.univ2) {
-      if (factoryConfig.subgraph) {
+      if (factoryConfig.subgraph && !config.factorySync) {
         return new UniswapV2Graph(this.services, this.storages, factoryConfig);
       } else {
         return new UniswapV2Core(this.services, this.storages, factoryConfig);
       }
     } else if (factoryConfig.version === Pool2Types.univ3) {
-      if (factoryConfig.subgraph) {
+      if (factoryConfig.subgraph && !config.factorySync) {
         return new UniswapV3Graph(this.services, this.storages, factoryConfig);
       } else {
         return new UniswapV3Core(this.services, this.storages, factoryConfig);
       }
     } else if (factoryConfig.version === Pool2Types.algebra) {
-      if (factoryConfig.subgraph) {
+      if (factoryConfig.subgraph && !config.factorySync) {
         return new AlgebraGraph(this.services, this.storages, factoryConfig);
       } else {
         return new AlgebraCore(this.services, this.storages, factoryConfig);
@@ -81,7 +82,7 @@ export default class UniswapAdapter extends ProtocolAdapter {
       }
 
       // sync pools from factory logs
-      await coreAdapter.indexPools();
+      // await coreAdapter.indexPools();
 
       const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
         factoryConfig.chain,

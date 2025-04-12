@@ -50,6 +50,7 @@ import KelpdaoAdapter from './adapters/kelpdao/kelpdao';
 import KyberswapAdapter from './adapters/kyberswap/kyberswap';
 import LayerbankAdapter from './adapters/layerbank/layerbank';
 import LevelusdAdapter from './adapters/levelusd/levelusd';
+import LfjAdapter from './adapters/lfj/lfj';
 import LfjlendAdapter from './adapters/lfj/lfjlend';
 import LidoAdapter from './adapters/lido/lido';
 import LifiAdapter from './adapters/lifi/lifi';
@@ -199,7 +200,7 @@ export function getProtocolAdapters(
     cbridge: new CbridgeAdapter(services, storages, ProtocolConfigs.cbridge),
     hop: new HopAdapter(services, storages, ProtocolConfigs.hop),
     gnosisNativeBridge: new GnosisNativeBridgeAdapter(services, storages, ProtocolConfigs.gnosisNativeBridge),
-    lfj: new UniswapAdapter(services, storages, ProtocolConfigs.lfj),
+    lfj: new LfjAdapter(services, storages, ProtocolConfigs.lfj),
     lfjlend: new LfjlendAdapter(services, storages, ProtocolConfigs.lfjlend),
     eigenlayer: new EigenLayerAdapter(services, storages, ProtocolConfigs.eigenlayer),
     symbiotic: new SymbioticAdapter(services, storages, ProtocolConfigs.symbiotic),

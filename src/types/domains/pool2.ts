@@ -4,6 +4,7 @@ export const Pool2Types = {
   univ2: 'univ2',
   univ3: 'univ3',
   algebra: 'algebra',
+  lbook: 'lbook',
 };
 const AllPool2Types = Object.values(Pool2Types);
 export type Pool2Type = (typeof AllPool2Types)[number];

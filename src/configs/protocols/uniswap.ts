@@ -68,6 +68,8 @@ export interface UniswapFactoryConfig {
 }
 
 export interface UniswapProtocolConfig extends ProtocolConfig {
+  // force to sync data use onchain factory method
+  factorySync?: boolean;
   factories: Array<UniswapFactoryConfig>;
 }
 
@@ -77,6 +79,9 @@ export const UniswapConfigs: UniswapProtocolConfig = {
   // v2 deployed
   // Tue May 05 2020 00:00:00 GMT+0000
   birthday: 1588636800,
+
+  // force to sync data use onchain factory method
+  factorySync: true,
 
   factories: [
     /////////////////// v2
