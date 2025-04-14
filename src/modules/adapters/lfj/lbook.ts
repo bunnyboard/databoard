@@ -227,7 +227,7 @@ export default class LfjLiquidityBookCore extends UniswapV2Core {
 
         switch (event.eventName) {
           case 'Swap': {
-            console.log(event)
+            console.log(event);
             const amount0In = formatBigNumberToNumber(
               fromHex(event.args.amountsIn.slice(0, 32), 'bigint').toString(),
               pool2.token0.decimals,
@@ -312,7 +312,7 @@ export default class LfjLiquidityBookCore extends UniswapV2Core {
               swapVolumeUsd = totalAmountIn * token1PriceUsd;
             }
 
-            console.log(log.transactionHash, swapVolumeUsd, protocolFeesUsd, swapFeesUsd)
+            console.log(log.transactionHash, swapVolumeUsd, protocolFeesUsd, swapFeesUsd);
 
             result.swapVolumeUsd += swapVolumeUsd;
             result.protocolRevenueUsd += protocolFeesUsd;

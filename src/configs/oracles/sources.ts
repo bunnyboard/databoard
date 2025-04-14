@@ -4404,4 +4404,12 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'usd',
     sources: [OracleSourceCurveList.yUSD_USDC],
   },
+  ANZ: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.ANZ_WETH],
+  },
+  LISTA: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv3List.LISTA_WBNB],
+  },
 };
