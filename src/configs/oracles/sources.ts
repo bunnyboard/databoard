@@ -4412,4 +4412,16 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'bnb',
     sources: [OracleSourceUniswapv3List.LISTA_WBNB],
   },
+  WCT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.WCT_WETH],
+  },
+  ACH: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ACH_WETH],
+  },
+  YUSD: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv3List.YUSD_WBNB],
+  },
 };

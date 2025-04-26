@@ -455,6 +455,12 @@
     "decimals": 18,
     "address": "0x5ac3f9edb4896db1edc0ef9d91421e740083e6e8"
   },
+  "0x5e0f5388896a6b6232abf076ee89bc6dfc043685": {
+    "chain": "optimism",
+    "symbol": "AJNA",
+    "decimals": 18,
+    "address": "0x5e0f5388896a6b6232abf076ee89bc6dfc043685"
+  },
   "0x5e70affe232e2919792f77eb94e566db0320fa88": {
     "chain": "optimism",
     "symbol": "MOM",
@@ -1306,6 +1312,12 @@
     "symbol": "DHK",
     "decimals": 18,
     "address": "0xe85d2c93f7e26b99a46a8bb9350cbfb965fa4f82"
+  },
+  "0xe9185ee218cae427af7b9764a011bb89fea761b4": {
+    "chain": "optimism",
+    "symbol": "BRZ",
+    "decimals": 18,
+    "address": "0xe9185ee218cae427af7b9764a011bb89fea761b4"
   },
   "0xea129ae043c4cb73dcb241aaa074f9e667641ba0": {
     "chain": "optimism",

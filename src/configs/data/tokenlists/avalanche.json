@@ -23,6 +23,12 @@
     "decimals": 18,
     "address": "0x008e26068b3eb40b443d3ea88c1ff99b789c10f7"
   },
+  "0x00da149c4e01e4a391ab86deddaae66e906b6fb7": {
+    "chain": "avalanche",
+    "symbol": "KIB",
+    "decimals": 18,
+    "address": "0x00da149c4e01e4a391ab86deddaae66e906b6fb7"
+  },
   "0x00ee200df31b869a321b10400da10b561f3ee60d": {
     "chain": "avalanche",
     "symbol": "ACRE",
@@ -521,6 +527,12 @@
     "decimals": 18,
     "address": "0x264c1383ea520f73dd837f915ef3a732e204a493"
   },
+  "0x26debd39d5ed069770406fca10a0e4f8d2c743eb": {
+    "chain": "avalanche",
+    "symbol": "WGUN",
+    "decimals": 18,
+    "address": "0x26debd39d5ed069770406fca10a0e4f8d2c743eb"
+  },
   "0x2905106e44b72c1a0d29735fcaaa19280e59436d": {
     "chain": "avalanche",
     "symbol": "KOAVA",
@@ -808,6 +820,12 @@
     "symbol": "BERNX",
     "decimals": 18,
     "address": "0x3f95aa88ddbb7d9d484aa3d482bf0a80009c52c9"
+  },
+  "0x3fe4902b275caf603c46c81f3d921bb8515b5bc0": {
+    "chain": "avalanche",
+    "symbol": "JACK",
+    "decimals": 18,
+    "address": "0x3fe4902b275caf603c46c81f3d921bb8515b5bc0"
   },
   "0x4036f3d9c45a20f44f0b8b85dd6ca33005ff9654": {
     "chain": "avalanche",
@@ -1433,6 +1451,12 @@
     "decimals": 18,
     "address": "0x6afd5a1ea4b793cc1526d6dc7e99a608b356ef7b"
   },
+  "0x6b1ecf0c181afff3d7096b26c3d2bc31f55ceab9": {
+    "chain": "avalanche",
+    "symbol": "MUON",
+    "decimals": 18,
+    "address": "0x6b1ecf0c181afff3d7096b26c3d2bc31f55ceab9"
+  },
   "0x6b289cceaa8639e3831095d75a3e43520fabf552": {
     "chain": "avalanche",
     "symbol": "CTSI",
@@ -1738,6 +1762,12 @@
     "symbol": "VPND",
     "decimals": 18,
     "address": "0x83a283641c6b4df383bcddf807193284c84c5342"
+  },
+  "0x841aef70237a88027ccb2d15c1bbaf88a669674a": {
+    "chain": "avalanche",
+    "symbol": "SPACE",
+    "decimals": 18,
+    "address": "0x841aef70237a88027ccb2d15c1bbaf88a669674a"
   },
   "0x846d50248baf8b7ceaa9d9b53bfd12d7d7fbb25a": {
     "chain": "avalanche",
@@ -2056,6 +2086,12 @@
     "symbol": "GM",
     "decimals": 8,
     "address": "0x99aeecf3717ec6b369d847e3d62d14e14251e4d4"
+  },
+  "0x99f2bdf00acd067c65a79a0b6a3914c555196ea4": {
+    "chain": "avalanche",
+    "symbol": "KULA",
+    "decimals": 18,
+    "address": "0x99f2bdf00acd067c65a79a0b6a3914c555196ea4"
   },
   "0x9a8e0217cd870783c3f2317985c57bf570969153": {
     "chain": "avalanche",

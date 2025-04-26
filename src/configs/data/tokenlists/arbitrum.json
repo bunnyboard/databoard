@@ -35,6 +35,12 @@
     "decimals": 18,
     "address": "0x004626a008b1acdc4c74ab51644093b155e59a23"
   },
+  "0x010700ab046dd8e92b0e3587842080df36364ed3": {
+    "chain": "arbitrum",
+    "symbol": "K",
+    "decimals": 18,
+    "address": "0x010700ab046dd8e92b0e3587842080df36364ed3"
+  },
   "0x02150e97271fdc0d6e3a16d9094a0948266f07dd": {
     "chain": "arbitrum",
     "symbol": "HAMI",
@@ -808,6 +814,12 @@
     "symbol": "JOE",
     "decimals": 18,
     "address": "0x371c7ec6d8039ff7933a2aa28eb827ffe1f52f07"
+  },
+  "0x374c5fb7979d5fdbaad2d95409e235e5cbdfd43c": {
+    "chain": "arbitrum",
+    "symbol": "MLK",
+    "decimals": 8,
+    "address": "0x374c5fb7979d5fdbaad2d95409e235e5cbdfd43c"
   },
   "0x37a645648df29205c6261289983fb04ecd70b4b3": {
     "chain": "arbitrum",

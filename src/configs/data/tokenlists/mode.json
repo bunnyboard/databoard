@@ -17,6 +17,12 @@
     "decimals": 18,
     "address": "0x04c0599ae5a44757c0af6f9ec3b93da8976c150a"
   },
+  "0x06d6a7bdffafa3c953d7b9842f7f414a6e0beb4a": {
+    "chain": "mode",
+    "symbol": "SMT",
+    "decimals": 18,
+    "address": "0x06d6a7bdffafa3c953d7b9842f7f414a6e0beb4a"
+  },
   "0x2416092f143378750bb29b79ed961ab195cceea5": {
     "chain": "mode",
     "symbol": "ezETH",

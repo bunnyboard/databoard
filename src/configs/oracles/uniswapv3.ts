@@ -2359,4 +2359,25 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.bnbchain['0xfceb31a79f71ac9cbdcf853519c1b12d379edc46'],
     quotaToken: TokensBook.bnbchain['0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c'],
   },
+  WCT_WETH: {
+    type: 'univ3',
+    chain: 'optimism',
+    address: '0x7de4c593fe83417ca6ef98d7cf59c99d304f41c9',
+    baseToken: TokensBook.optimism['0xef4461891dfb3ac8572ccf7c794664a8dd927945'],
+    quotaToken: TokensBook.optimism['0x4200000000000000000000000000000000000006'],
+  },
+  ACH_WETH: {
+    type: 'univ3',
+    chain: 'ethereum',
+    address: '0xeb4626c5149894022c2066120ea7f20f217995fb',
+    baseToken: TokensBook.ethereum['0xed04915c23f00a313a544955524eb7dbd823143d'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
+  YUSD_WBNB: {
+    type: 'univ3',
+    chain: 'bnbchain',
+    address: '0x210a5c87b921e713862331509ac4b4efd6ecab73',
+    baseToken: TokensBook.bnbchain['0xab3dbcd9b096c3ff76275038bf58eac10d22c61f'],
+    quotaToken: TokensBook.bnbchain['0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c'],
+  },
 };

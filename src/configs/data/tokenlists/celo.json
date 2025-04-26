@@ -119,6 +119,12 @@
     "decimals": 18,
     "address": "0x74c0c58b99b68cf16a717279ac2d056a34ba2bfe"
   },
+  "0x75184c282e55a7393053f0b8f4f3e7beae067fdc": {
+    "chain": "celo",
+    "symbol": "CRV",
+    "decimals": 18,
+    "address": "0x75184c282e55a7393053f0b8f4f3e7beae067fdc"
+  },
   "0x765de816845861e75a25fca122bb6898b8b1282a": {
     "chain": "celo",
     "symbol": "cUSD",
@@ -136,6 +142,12 @@
     "symbol": "USDT",
     "decimals": 6,
     "address": "0x88eec49252c8cbc039dcdb394c0c2ba2f1637ea0"
+  },
+  "0x8ac2901dd8a1f17a1a4768a6ba4c3751e3995b2d": {
+    "chain": "celo",
+    "symbol": "WBTC",
+    "decimals": 8,
+    "address": "0x8ac2901dd8a1f17a1a4768a6ba4c3751e3995b2d"
   },
   "0x8e0c1cdceeb773139b471fd1137502a28588178a": {
     "chain": "celo",
@@ -191,6 +203,12 @@
     "decimals": 18,
     "address": "0xd15ec721c2a896512ad29c671997dd68f9593226"
   },
+  "0xd221812de1bd094f35587ee8e174b07b6167d9af": {
+    "chain": "celo",
+    "symbol": "WETH",
+    "decimals": 18,
+    "address": "0xd221812de1bd094f35587ee8e174b07b6167d9af"
+  },
   "0xd629eb00deced2a080b7ec630ef6ac117e614f1b": {
     "chain": "celo",
     "symbol": "cBTC",
@@ -227,6 +245,12 @@
     "decimals": 6,
     "address": "0xeb466342c4d449bc9f53a865d5cb90586f405215"
   },
+  "0xee571697998ec64e32b57d754d700c4dda2f2a0e": {
+    "chain": "celo",
+    "symbol": "UNI",
+    "decimals": 18,
+    "address": "0xee571697998ec64e32b57d754d700c4dda2f2a0e"
+  },
   "0xef4229c8c3250c675f21bcefa42f58efbff6002a": {
     "chain": "celo",
     "symbol": "USDCv2",
@@ -244,5 +268,11 @@
     "symbol": "cMeta",
     "decimals": 18,
     "address": "0xf3608f846ca73147f08fde8d57f45e27ceea4d61"
+  },
+  "0xf6a54aff8c97f7af3cc86dbaee88af6a7aab6288": {
+    "chain": "celo",
+    "symbol": "AAVE",
+    "decimals": 18,
+    "address": "0xf6a54aff8c97f7af3cc86dbaee88af6a7aab6288"
   }
 }

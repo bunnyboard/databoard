@@ -29,6 +29,12 @@
     "decimals": 18,
     "address": "0x231a6bd8eb88cfa42776b7ac575cecaf82bf1e21"
   },
+  "0x3048a894c03d9cfc7d0452ea5f90aaa552d75edb": {
+    "chain": "berachain",
+    "symbol": "bear",
+    "decimals": 18,
+    "address": "0x3048a894c03d9cfc7d0452ea5f90aaa552d75edb"
+  },
   "0x34a31c8c9cf59d411b30445e62231c352e639750": {
     "chain": "berachain",
     "symbol": "COUCH",
@@ -118,6 +124,12 @@
     "symbol": "bm",
     "decimals": 18,
     "address": "0xb749584f9fc418cf905d54f462fdbfdc7462011b"
+  },
+  "0xc1d59516bccf10aeb33bade931de8b9d4d18a51e": {
+    "chain": "berachain",
+    "symbol": "BERJAK",
+    "decimals": 18,
+    "address": "0xc1d59516bccf10aeb33bade931de8b9d4d18a51e"
   },
   "0xc309d1774f7a37062e1e40eed1be94b6c2627286": {
     "chain": "berachain",

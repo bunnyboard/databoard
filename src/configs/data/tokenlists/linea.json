@@ -449,6 +449,12 @@
     "decimals": 18,
     "address": "0xba2f9e7ae9f5f03fce7d560f986743659e768bbf"
   },
+  "0xc53ac24320e3a54c7211e4993c8095078a0cb3cf": {
+    "chain": "linea",
+    "symbol": "WGC",
+    "decimals": 6,
+    "address": "0xc53ac24320e3a54c7211e4993c8095078a0cb3cf"
+  },
   "0xcf0f95e34f25d1bb3d9cad3cbb2eb40dab7c3841": {
     "chain": "linea",
     "symbol": "IBEX",
@@ -472,6 +478,12 @@
     "symbol": "LXP",
     "decimals": 18,
     "address": "0xd83af4fbd77f3ab65c3b1dc4b38d7e67aecf599a"
+  },
+  "0xd96536b77ae5500fe850add2253bcf640e7824c1": {
+    "chain": "linea",
+    "symbol": "SIDUS",
+    "decimals": 18,
+    "address": "0xd96536b77ae5500fe850add2253bcf640e7824c1"
   },
   "0xdd3b8084af79b9bae3d1b668c0de08ccc2c9429a": {
     "chain": "linea",
