@@ -1,11 +1,6 @@
-import { getTheGraphEndpoint } from '../../lib/subgraph';
 import { Pool2Types } from '../../types/domains/pool2';
 import { ChainNames, ProtocolNames } from '../names';
-import {
-  UniswapProtocolConfig,
-  UniswapV2SubgraphQueryFieldsDefault,
-  UniswapV3SubgraphQueryFieldsDefault,
-} from './uniswap';
+import { UniswapProtocolConfig } from './uniswap';
 
 export const SushiConfigs: UniswapProtocolConfig = {
   protocol: ProtocolNames.sushi,
@@ -21,12 +16,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       birthday: 1599264000, // Sat Sep 05 2020 00:00:00 GMT+0000
       feeRateForLiquidityProviders: 0.0025,
       feeRateForProtocol: 0.0005,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmQ2h69a3vnE6N3TN7Ys9K1vpjYiJSi8fexnj1pWpRc6uY',
-        }),
-        queryFields: UniswapV2SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmQ2h69a3vnE6N3TN7Ys9K1vpjYiJSi8fexnj1pWpRc6uY',
+      //   }),
+      //   queryFields: UniswapV2SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.arbitrum,
@@ -36,12 +31,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       birthday: 1622505600, // Tue Jun 01 2021 00:00:00 GMT+0000
       feeRateForLiquidityProviders: 0.0025,
       feeRateForProtocol: 0.0005,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmV5qTnwjz65z6TH63DYngLr1gj52KQ6Lr6m8aeNj6yxxb',
-        }),
-        queryFields: UniswapV2SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmV5qTnwjz65z6TH63DYngLr1gj52KQ6Lr6m8aeNj6yxxb',
+      //   }),
+      //   queryFields: UniswapV2SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.avalanche,
@@ -51,12 +46,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       factoryBirthblock: 506190,
       feeRateForLiquidityProviders: 0.0025,
       feeRateForProtocol: 0.0005,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmfLnYXftuf2PNPoC3mMusey27KyJi4UUuY741Nz3vZQ3q',
-        }),
-        queryFields: UniswapV2SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmfLnYXftuf2PNPoC3mMusey27KyJi4UUuY741Nz3vZQ3q',
+      //   }),
+      //   queryFields: UniswapV2SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.base,
@@ -66,12 +61,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       factoryBirthblock: 2631214,
       feeRateForLiquidityProviders: 0.0025,
       feeRateForProtocol: 0.0005,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmQfYe5Ygg9A3mAiuBZYj5a64bDKLF4gF6sezfhgxKvb9y',
-        }),
-        queryFields: UniswapV2SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmQfYe5Ygg9A3mAiuBZYj5a64bDKLF4gF6sezfhgxKvb9y',
+      //   }),
+      //   queryFields: UniswapV2SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.blast,
@@ -81,11 +76,11 @@ export const SushiConfigs: UniswapProtocolConfig = {
       factoryBirthblock: 285621,
       feeRateForLiquidityProviders: 0.0025,
       feeRateForProtocol: 0.0005,
-      subgraph: {
-        endpoint:
-          'https://api.goldsky.com/api/public/project_clslspm3c0knv01wvgfb2fqyq/subgraphs/sushiswap/v2-blast/gn',
-        queryFields: UniswapV2SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint:
+      //     'https://api.goldsky.com/api/public/project_clslspm3c0knv01wvgfb2fqyq/subgraphs/sushiswap/v2-blast/gn',
+      //   queryFields: UniswapV2SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.bnbchain,
@@ -95,12 +90,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       factoryBirthblock: 5205069,
       feeRateForLiquidityProviders: 0.0025,
       feeRateForProtocol: 0.0005,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmUJcdUCSApCahz2ZtxEBwLqBX5YPfy3NNzHGUXyERAdmi',
-        }),
-        queryFields: UniswapV2SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmUJcdUCSApCahz2ZtxEBwLqBX5YPfy3NNzHGUXyERAdmi',
+      //   }),
+      //   queryFields: UniswapV2SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.celo,
@@ -110,12 +105,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       factoryBirthblock: 7253488,
       feeRateForLiquidityProviders: 0.0025,
       feeRateForProtocol: 0.0005,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmWX1tYofCvtw675s6ccE8ovWDkuikRBkkLk4PQpT79jRD',
-        }),
-        queryFields: UniswapV2SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmWX1tYofCvtw675s6ccE8ovWDkuikRBkkLk4PQpT79jRD',
+      //   }),
+      //   queryFields: UniswapV2SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.gnosis,
@@ -125,12 +120,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       factoryBirthblock: 14735904,
       feeRateForLiquidityProviders: 0.0025,
       feeRateForProtocol: 0.0005,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmUwneRXVUqTsPEZqScQytg257Rij3nSApe4pdDAtuG4s4',
-        }),
-        queryFields: UniswapV2SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmUwneRXVUqTsPEZqScQytg257Rij3nSApe4pdDAtuG4s4',
+      //   }),
+      //   queryFields: UniswapV2SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.linea,
@@ -140,12 +135,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       factoryBirthblock: 631714,
       feeRateForLiquidityProviders: 0.0025,
       feeRateForProtocol: 0.0005,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmcrH1y6zx6wzTBL9cKVdA81fHkPzytcx5Gy1iVJLP1Vfw',
-        }),
-        queryFields: UniswapV2SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmcrH1y6zx6wzTBL9cKVdA81fHkPzytcx5Gy1iVJLP1Vfw',
+      //   }),
+      //   queryFields: UniswapV2SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.optimism,
@@ -155,12 +150,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       factoryBirthblock: 110882086,
       feeRateForLiquidityProviders: 0.0025,
       feeRateForProtocol: 0.0005,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmdMmVsnaVRxQyunaXrG1oFrpcUFp8iV3TcpRa3hVYaPUD',
-        }),
-        queryFields: UniswapV2SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmdMmVsnaVRxQyunaXrG1oFrpcUFp8iV3TcpRa3hVYaPUD',
+      //   }),
+      //   queryFields: UniswapV2SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.scroll,
@@ -170,12 +165,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       factoryBirthblock: 81841,
       feeRateForLiquidityProviders: 0.0025,
       feeRateForProtocol: 0.0005,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmecR8pDHLNaRGQtKxA1ZvSSyBh23haXPdYZppPzALQmzt',
-        }),
-        queryFields: UniswapV2SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmecR8pDHLNaRGQtKxA1ZvSSyBh23haXPdYZppPzALQmzt',
+      //   }),
+      //   queryFields: UniswapV2SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.polygon,
@@ -185,12 +180,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       factoryBirthblock: 11333218,
       feeRateForLiquidityProviders: 0.0025,
       feeRateForProtocol: 0.0005,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmebwDJ8a8uGf5sW6inqVfJwDGgYrvCvif19wnQqHN8GzQ',
-        }),
-        queryFields: UniswapV2SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmebwDJ8a8uGf5sW6inqVfJwDGgYrvCvif19wnQqHN8GzQ',
+      //   }),
+      //   queryFields: UniswapV2SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.sonic,
@@ -216,12 +211,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       birthday: 1680393600,
       factoryBirthblock: 16955547,
       feeRateForProtocol: 0.25, // 25% swap fees
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmSDPnHzyW8yfnuhB423ssVY5r4bQrr5C1rXT8qMroNgmv',
-        }),
-        queryFields: UniswapV3SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmSDPnHzyW8yfnuhB423ssVY5r4bQrr5C1rXT8qMroNgmv',
+      //   }),
+      //   queryFields: UniswapV3SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.polygon,
@@ -230,12 +225,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       birthday: 1680393600,
       feeRateForProtocol: 0.25, // 25% swap fees
       factoryBirthblock: 41024971,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmfTAHYV86ymwV2Vm6kw9cNzTCmDhe9EWghQ3U3pD7jEGZ',
-        }),
-        queryFields: UniswapV3SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmfTAHYV86ymwV2Vm6kw9cNzTCmDhe9EWghQ3U3pD7jEGZ',
+      //   }),
+      //   queryFields: UniswapV3SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.scroll,
@@ -244,12 +239,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       birthday: 1697587200,
       feeRateForProtocol: 0.25, // 25% swap fees
       factoryBirthblock: 82522,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmR6VP1qoF8nxhtMaGEg9VMmkaTDFqyeM8nJWkakP6nHes',
-        }),
-        queryFields: UniswapV3SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmR6VP1qoF8nxhtMaGEg9VMmkaTDFqyeM8nJWkakP6nHes',
+      //   }),
+      //   queryFields: UniswapV3SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.optimism,
@@ -258,12 +253,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       birthday: 1680393600,
       feeRateForProtocol: 0.25, // 25% swap fees
       factoryBirthblock: 85432013,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmbT6ZsxJEZKUrbzLrAWV5EnQfSKZeYtZ265mQUaB552vK',
-        }),
-        queryFields: UniswapV3SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmbT6ZsxJEZKUrbzLrAWV5EnQfSKZeYtZ265mQUaB552vK',
+      //   }),
+      //   queryFields: UniswapV3SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.linea,
@@ -272,12 +267,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       birthday: 1690329600,
       feeRateForProtocol: 0.25, // 25% swap fees
       factoryBirthblock: 53256,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmNZ9ePvxGRDHAEhb7cLsb3AvtCCPJ3qAwh1CDvDn39RMa',
-        }),
-        queryFields: UniswapV3SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmNZ9ePvxGRDHAEhb7cLsb3AvtCCPJ3qAwh1CDvDn39RMa',
+      //   }),
+      //   queryFields: UniswapV3SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.gnosis,
@@ -286,12 +281,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       birthday: 1680393600, // Sun Apr 02 2023 00:00:00 GMT+0000
       feeRateForProtocol: 0.25, // 25% swap fees
       factoryBirthblock: 27232871,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmS9uxga2rzpWyHKFATGYas6ntdHLpX7w45EKAatBTZJ25',
-        }),
-        queryFields: UniswapV3SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmS9uxga2rzpWyHKFATGYas6ntdHLpX7w45EKAatBTZJ25',
+      //   }),
+      //   queryFields: UniswapV3SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.bnbchain,
@@ -300,12 +295,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       birthday: 1680393600,
       feeRateForProtocol: 0.25, // 25% swap fees
       factoryBirthblock: 26976538,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmXsPN4TD4PUhT1ZWd5d1mdQPePFNMdJwUr6guSh1z9ZzA',
-        }),
-        queryFields: UniswapV3SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmXsPN4TD4PUhT1ZWd5d1mdQPePFNMdJwUr6guSh1z9ZzA',
+      //   }),
+      //   queryFields: UniswapV3SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.blast,
@@ -314,11 +309,11 @@ export const SushiConfigs: UniswapProtocolConfig = {
       birthday: 1709424000,
       feeRateForProtocol: 0.25, // 25% swap fees
       factoryBirthblock: 284122,
-      subgraph: {
-        endpoint:
-          'https://api.goldsky.com/api/public/project_clslspm3c0knv01wvgfb2fqyq/subgraphs/sushiswap/v3-blast-2/gn',
-        queryFields: UniswapV3SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint:
+      //     'https://api.goldsky.com/api/public/project_clslspm3c0knv01wvgfb2fqyq/subgraphs/sushiswap/v3-blast-2/gn',
+      //   queryFields: UniswapV3SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.avalanche,
@@ -327,12 +322,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       birthday: 1680393600,
       feeRateForProtocol: 0.25, // 25% swap fees
       factoryBirthblock: 28186391,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'Qmcdd4SGVwG9VY4itrXBnBPWBVsQvsxfzaib9bVny9C8jT',
-        }),
-        queryFields: UniswapV3SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'Qmcdd4SGVwG9VY4itrXBnBPWBVsQvsxfzaib9bVny9C8jT',
+      //   }),
+      //   queryFields: UniswapV3SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.base,
@@ -341,12 +336,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       birthday: 1690329600,
       feeRateForProtocol: 0.25, // 25% swap fees
       factoryBirthblock: 1759510,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmZ2R9ABG9ienaZdGyPLcDWDNDkG187RhXmh6fFuEtUaaS',
-        }),
-        queryFields: UniswapV3SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmZ2R9ABG9ienaZdGyPLcDWDNDkG187RhXmh6fFuEtUaaS',
+      //   }),
+      //   queryFields: UniswapV3SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.arbitrum,
@@ -355,12 +350,12 @@ export const SushiConfigs: UniswapProtocolConfig = {
       birthday: 1680393600,
       feeRateForProtocol: 0.25, // 25% swap fees
       factoryBirthblock: 75998697,
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          deploymentId: 'QmS9GKBA49mDpWchU2Us1PJ7kmu4S7tWa4gAmRvE3HK42w',
-        }),
-        queryFields: UniswapV3SubgraphQueryFieldsDefault,
-      },
+      // subgraph: {
+      //   endpoint: getTheGraphEndpoint({
+      //     deploymentId: 'QmS9GKBA49mDpWchU2Us1PJ7kmu4S7tWa4gAmRvE3HK42w',
+      //   }),
+      //   queryFields: UniswapV3SubgraphQueryFieldsDefault,
+      // },
     },
     {
       chain: ChainNames.sonic,
