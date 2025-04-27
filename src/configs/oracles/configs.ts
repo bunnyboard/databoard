@@ -2978,6 +2978,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   },
 
   berachain: {
+    '0x657e8c867d8b37dcc18fa4caead9c45eb088c642': OracleSourceConfigs.eBTC,
     '0x211cc4dd073734da055fbf44a2b4667d5e5fe5d2': OracleSourceConfigs.sUSDe,
     '0x5475611dffb8ef4d697ae39df9395513b6e947d7': OracleSourceConfigs.USDT,
     '0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34': OracleSourceConfigs.USDe,

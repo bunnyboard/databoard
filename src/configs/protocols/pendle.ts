@@ -408,7 +408,17 @@ export const PendleConfigs: PendleProtocolConfig = {
     {
       chain: ChainNames.berachain,
       birthday: 1738972800, // Sat Feb 08 2025 00:00:00 GMT+0000
-      markets: ['0xfd6eb71bd81d3745afa6ca740d5ba7f007726212'],
+      markets: [
+        '0xfd6eb71bd81d3745afa6ca740d5ba7f007726212',
+        '0xd8079e0929d67390067529974b116212903cac69',
+        '0x0651c3f8ba59e312529d9a92fcebd8bb159cbaed',
+        '0xd8f42a92a0e2995eee9aed66d630de00a9b49e22',
+        '0xbfc42d9cb3358603e4804ac9ab54159fd5a85098',
+        '0x34634a7bbe5a3c234b931c79d4cc6785c5dd54c4',
+        '0x227d4a2e5734b500fa0bed940e4df54bdda25636',
+        '0x5200c9900436f649b4659dfc79213837dcccaab1',
+        '0x31ed9f16c7bbc26ae3404b14abc68adc7611b1a6',
+      ],
     },
     {
       chain: ChainNames.base,
