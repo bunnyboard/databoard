@@ -3908,4 +3908,11 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.base['0xeec468333ccc16d4bf1cef497a56cf8c0aae4ca3'],
     quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
   },
+  YGG_WTH: {
+    type: 'univ2',
+    chain: 'ethereum',
+    address: '0x99b42f2b49c395d2a77d973f6009abb5d67da343',
+    baseToken: TokensBook.ethereum['0x25f8087ead173b73d6e8b84329989a8eea16cf73'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
 };
