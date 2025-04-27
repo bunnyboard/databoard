@@ -265,6 +265,14 @@ export default class ZksyncNativeBridgeAdapter extends ProtocolAdapter {
           data: log.data,
         });
 
+        const tokenAddress = await this.services.blockchain.evm.readContract({
+          chain: zksyncConfig.chain,
+          abi: L1NativeTokenVaultAbi,
+          target: l1NativeVault,
+          method: 'tokenAddress',
+          params: [event.args.assetId],
+        });
+
         const chainId = Number(event.args.chainId);
         if (chainId !== zksyncConfig.layer2ChainId) {
           continue;
@@ -274,13 +282,6 @@ export default class ZksyncNativeBridgeAdapter extends ProtocolAdapter {
         let tokenAmount = 0;
 
         if (log.topics[0] === Events.BridgehubDepositBaseTokenInitiated) {
-          const tokenAddress = await this.services.blockchain.evm.readContract({
-            chain: zksyncConfig.chain,
-            abi: L1NativeTokenVaultAbi,
-            target: l1NativeVault,
-            method: 'tokenAddress',
-            params: [event.args.assetId],
-          });
           token = await this.services.blockchain.evm.getTokenInfo({
             chain: zksyncConfig.chain,
             address: tokenAddress,
@@ -297,7 +298,7 @@ export default class ZksyncNativeBridgeAdapter extends ProtocolAdapter {
 
           token = await this.services.blockchain.evm.getTokenInfo({
             chain: zksyncConfig.chain,
-            address: params[2],
+            address: tokenAddress,
           });
 
           if (token) {
