@@ -3,6 +3,7 @@ import { Token } from '../base';
 export const Pool2Types = {
   univ2: 'univ2',
   univ3: 'univ3',
+  univ4: 'univ4',
   algebra: 'algebra',
   lbook: 'lbook',
 };

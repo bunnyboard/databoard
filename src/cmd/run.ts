@@ -53,6 +53,7 @@ export class RunCommand extends BasicCommand {
       service: 'configs',
       configs: {
         'database mongo name': envConfig.mongodb.databaseName,
+        'database mongo uri': envConfig.mongodb.connectionUri,
       },
     });
 

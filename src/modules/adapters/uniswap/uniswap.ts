@@ -15,6 +15,7 @@ import UniswapV2Core from './univ2';
 import UniswapV2Graph from './univ2graph';
 import UniswapV3Core from './univ3';
 import UniswapV3Graph from './univ3graph';
+import UniswapV4Core from './univ4';
 
 export default class UniswapAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.uniswap 🦄';
@@ -37,6 +38,8 @@ export default class UniswapAdapter extends ProtocolAdapter {
       } else {
         return new UniswapV3Core(this.services, this.storages, factoryConfig);
       }
+    } else if (factoryConfig.version === Pool2Types.univ4) {
+      return new UniswapV4Core(this.services, this.storages, factoryConfig);
     } else if (factoryConfig.version === Pool2Types.algebra) {
       if (factoryConfig.subgraph && !config.factorySync) {
         return new AlgebraGraph(this.services, this.storages, factoryConfig);

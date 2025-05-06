@@ -3,15 +3,14 @@ import BigNumber from 'bignumber.js';
 import ERC20Abi from '../../configs/abi/ERC20.json';
 import UniswapV2PairAbi from '../../configs/abi/uniswap/UniswapV2Pair.json';
 import UniswapV3PoolAbi from '../../configs/abi/uniswap/UniswapV3Pool.json';
+import UniswapV4PositionManagerAbi from '../../configs/abi/uniswap/UniswapV4PositionManager.json';
+import UniswapV4StateViewAbi from '../../configs/abi/uniswap/UniswapV4StateView.json';
 import { compareAddress, formatBigNumberToNumber } from '../../lib/utils';
 import BlockchainService from '../../services/blockchains/blockchain';
-import { Token } from '../../types/base';
 import { OracleSourcePool2 } from '../../types/oracles';
 import OracleService from '../../services/oracle/oracle';
-
-export interface LiquidityPoolConfig extends Token {
-  tokens: Array<Token>;
-}
+import { Pool2Types } from '../../types/domains/pool2';
+import { slice } from 'viem';
 
 export interface GetPool2LpPriceUsdOptions {
   chain: string;
@@ -24,7 +23,7 @@ export default class UniswapLibs {
   public static async getPricePool2(source: OracleSourcePool2, blockNumber: number): Promise<string | null> {
     const blockchain = new BlockchainService();
 
-    if (source.type === 'univ2') {
+    if (source.type === Pool2Types.univ2) {
       const [baseTokenBalance, quotaTokenBalance] = await blockchain.multicall({
         chain: source.chain,
         blockNumber: blockNumber,
@@ -51,7 +50,7 @@ export default class UniswapLibs {
           .dividedBy(new BigNumber(10).pow(source.quotaToken.decimals))
           .toString(10);
       }
-    } else if (source.type === 'univ3') {
+    } else if (source.type === Pool2Types.univ3) {
       // https://blog.uniswap.org/uniswap-v3-math-primer
       let [token0, token1, slot0] = await blockchain.multicall({
         chain: source.chain,
@@ -139,6 +138,43 @@ export default class UniswapLibs {
             const decimals = 10 ** source.quotaToken.decimals / 10 ** source.baseToken.decimals;
             return buyOneOfToken0.dividedBy(decimals).toString(10);
           } else if (compareAddress(source.baseToken.address, token1)) {
+            const decimals = 10 ** source.baseToken.decimals / 10 ** source.quotaToken.decimals;
+            return new BigNumber(1).dividedBy(buyOneOfToken0.dividedBy(decimals)).toString(10);
+          }
+        }
+      }
+    } else if (source.type === Pool2Types.univ4) {
+      const [positionManager, stateView, poolId] = source.address.split(':');
+      const poolIdBytes25 = slice(poolId as `0x${string}`, 0, 25);
+      const [poolKeys, slot0] = await blockchain.multicall({
+        chain: source.chain,
+        blockNumber: blockNumber,
+        calls: [
+          {
+            target: positionManager,
+            abi: UniswapV4PositionManagerAbi,
+            method: 'poolKeys',
+            params: [poolIdBytes25],
+          },
+          {
+            target: stateView,
+            abi: UniswapV4StateViewAbi,
+            method: 'getSlot0',
+            params: [poolId],
+          },
+        ],
+      });
+
+      if (poolKeys && slot0) {
+        // slot0.sqrtPriceX96
+        const sqrtPriceX96 = new BigNumber(slot0[0].toString());
+        const buyOneOfToken0 = sqrtPriceX96.dividedBy(2 ** 96).pow(2);
+
+        if (buyOneOfToken0.gt(0)) {
+          if (compareAddress(source.baseToken.address, poolKeys[0])) {
+            const decimals = 10 ** source.quotaToken.decimals / 10 ** source.baseToken.decimals;
+            return buyOneOfToken0.dividedBy(decimals).toString(10);
+          } else if (compareAddress(source.baseToken.address, poolKeys[1])) {
             const decimals = 10 ** source.baseToken.decimals / 10 ** source.quotaToken.decimals;
             return new BigNumber(1).dividedBy(buyOneOfToken0.dividedBy(decimals)).toString(10);
           }

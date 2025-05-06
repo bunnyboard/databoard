@@ -169,6 +169,14 @@ export default class CompoundCore extends ProtocolAdapter {
                   underlyingPrice = underlyingPrice * (ethPrice ? Number(ethPrice) : 0);
                 }
               }
+
+              if (underlyingPrice && underlyingPrice > 1e18) {
+                underlyingPrice = await this.services.oracle.getTokenPriceUsdRounded({
+                  chain: underlying.chain,
+                  address: underlying.address,
+                  timestamp: timestamp,
+                });
+              }
             } catch (e: any) {}
           }
 
