@@ -4097,6 +4097,12 @@
     "decimals": 18,
     "address": "0x5a4342f4268a731f4459cd0be22d4744a86d635d"
   },
+  "0x5a70be406ce7471a44f0183b8d7091f4ad751db5": {
+    "chain": "base",
+    "symbol": "SATO",
+    "decimals": 18,
+    "address": "0x5a70be406ce7471a44f0183b8d7091f4ad751db5"
+  },
   "0x5a75a61032143575067de2b38ef38d601976091e": {
     "chain": "base",
     "symbol": "SHARBI",

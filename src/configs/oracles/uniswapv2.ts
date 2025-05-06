@@ -3915,4 +3915,32 @@ export const OracleSourceUniswapv2List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.ethereum['0x25f8087ead173b73d6e8b84329989a8eea16cf73'],
     quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
   },
+  SPC_WETH: {
+    type: 'univ2',
+    chain: 'ethereum',
+    address: '0xe364992388319410c62eb4595d848c8ceb41172b',
+    baseToken: TokensBook.ethereum['0x86ed939b500e121c0c5f493f399084db596dad20'],
+    quotaToken: TokensBook.ethereum['0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'],
+  },
+  SATO_WETH: {
+    type: 'univ2',
+    chain: 'base',
+    address: '0xd17a8609b5d95a5f49b290c4d787949bfec5279e',
+    baseToken: TokensBook.base['0x5a70be406ce7471a44f0183b8d7091f4ad751db5'],
+    quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
+  },
+  KTA_WETH: {
+    type: 'univ2',
+    chain: 'base',
+    address: '0xd9edc75a3a797ec92ca370f19051babebfb2edee',
+    baseToken: TokensBook.base['0xc0634090f2fe6c6d75e61be2b949464abb498973'],
+    quotaToken: TokensBook.base['0x4200000000000000000000000000000000000006'],
+  },
+  VON_WBNB: {
+    type: 'univ2',
+    chain: 'bnbchain',
+    address: '0xa860a936ab8fae92b51afe8c5b988e5a4de11679',
+    baseToken: TokensBook.bnbchain['0xa4c3497b57c8b6d510f3707a1e9694fd791f45fb'],
+    quotaToken: TokensBook.bnbchain['0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c'],
+  },
 };

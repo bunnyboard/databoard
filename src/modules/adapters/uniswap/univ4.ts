@@ -175,7 +175,6 @@ export default class UniswapV4Core extends UniswapV2Core {
               chain: pool2.token1.chain,
               address: pool2.token1.address,
               timestamp: options.timestamp,
-              disableWarning: true,
             });
             volumeUsd = (amount1 * token1PriceUsd) / (1 - feeRate);
           }
@@ -194,7 +193,6 @@ export default class UniswapV4Core extends UniswapV2Core {
               chain: pool2.token1.chain,
               address: pool2.token1.address,
               timestamp: options.timestamp,
-              disableWarning: true,
             });
             volumeUsd = (amount0 * token0PriceUsd) / (1 - feeRate);
           }

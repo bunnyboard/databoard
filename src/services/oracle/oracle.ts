@@ -106,16 +106,9 @@ export default class OracleService extends CachingService implements IOracleServ
 
         break;
       }
-      case 'univ2': {
-        const answer = await UniswapLibs.getPricePool2(source as OracleSourcePool2, blockNumber);
-        if (answer) {
-          await this.setCachingData(sourceCachingKey, answer);
-          return answer;
-        }
-
-        break;
-      }
-      case 'univ3': {
+      case 'univ2':
+      case 'univ3':
+      case 'univ4': {
         const answer = await UniswapLibs.getPricePool2(source as OracleSourcePool2, blockNumber);
         if (answer) {
           await this.setCachingData(sourceCachingKey, answer);

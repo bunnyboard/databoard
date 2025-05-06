@@ -263,27 +263,27 @@ export const UniswapConfigs: UniswapProtocolConfig = {
       birthday: 1737676800, // Fri Jan 24 2025 00:00:00 GMT+0000
       factoryBirthblock: 14377311,
     },
-    {
-      chain: ChainNames.worldchain,
-      version: Pool2Types.univ4,
-      factory: '0xb1860d529182ac3bc1f51fa2abd56662b7d13f33',
-      birthday: 1737676800, // Fri Jan 24 2025 00:00:00 GMT+0000
-      factoryBirthblock: 9111872,
-    },
-    {
-      chain: ChainNames.ink,
-      version: Pool2Types.univ4,
-      factory: '0x360e68faccca8ca495c1b759fd9eee466db9fb32',
-      birthday: 1738108800, // Wed Jan 29 2025 00:00:00 GMT+0000
-      factoryBirthblock: 4580556,
-    },
-    {
-      chain: ChainNames.soneium,
-      version: Pool2Types.univ4,
-      factory: '0x360e68faccca8ca495c1b759fd9eee466db9fb32',
-      birthday: 1738108800, // Wed Jan 29 2025 00:00:00 GMT+0000
-      factoryBirthblock: 2473300,
-    },
+    // {
+    //   chain: ChainNames.worldchain,
+    //   version: Pool2Types.univ4,
+    //   factory: '0xb1860d529182ac3bc1f51fa2abd56662b7d13f33',
+    //   birthday: 1737676800, // Fri Jan 24 2025 00:00:00 GMT+0000
+    //   factoryBirthblock: 9111872,
+    // },
+    // {
+    //   chain: ChainNames.ink,
+    //   version: Pool2Types.univ4,
+    //   factory: '0x360e68faccca8ca495c1b759fd9eee466db9fb32',
+    //   birthday: 1738108800, // Wed Jan 29 2025 00:00:00 GMT+0000
+    //   factoryBirthblock: 4580556,
+    // },
+    // {
+    //   chain: ChainNames.soneium,
+    //   version: Pool2Types.univ4,
+    //   factory: '0x360e68faccca8ca495c1b759fd9eee466db9fb32',
+    //   birthday: 1738108800, // Wed Jan 29 2025 00:00:00 GMT+0000
+    //   factoryBirthblock: 2473300,
+    // },
     {
       chain: ChainNames.avalanche,
       version: Pool2Types.univ4,

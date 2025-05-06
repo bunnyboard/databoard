@@ -10,6 +10,7 @@ import { OracleSourceLBookList } from './lbook';
 import { OracleSourcePythList } from './pyth';
 import { OracleSourceUniswapv2List } from './uniswapv2';
 import { OracleSourceUniswapv3List } from './uniswapv3';
+import { OracleSourceUniswapv4List } from './uniswapv4';
 
 // symbol => OracleConfig
 export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
@@ -4427,5 +4428,49 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   YGG: {
     currency: 'eth',
     sources: [OracleSourceUniswapv2List.YGG_WTH],
+  },
+  SUPR: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv4List.SUPR_ETH],
+  },
+  WMINIMA: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.WMINIMA_USDT],
+  },
+  SPC: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SPC_WETH],
+  },
+  PORK: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.PORK_WETH],
+  },
+  ELMT: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv3List.ELMT_WETH],
+  },
+  HOOF: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv4List.HOOF_ETH],
+  },
+  SATO: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.SATO_WETH],
+  },
+  ZORA: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.ZORA_USDC],
+  },
+  KTA: {
+    currency: 'eth',
+    sources: [OracleSourceUniswapv2List.KTA_WETH],
+  },
+  PROMT: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.PROMT_USDC],
+  },
+  VON: {
+    currency: 'bnb',
+    sources: [OracleSourceUniswapv2List.VON_WBNB],
   },
 };

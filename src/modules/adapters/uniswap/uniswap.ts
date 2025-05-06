@@ -85,7 +85,7 @@ export default class UniswapAdapter extends ProtocolAdapter {
       }
 
       // sync pools from factory logs
-      // await coreAdapter.indexPools();
+      await coreAdapter.indexPools();
 
       const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
         factoryConfig.chain,

@@ -4457,6 +4457,12 @@
     "decimals": 18,
     "address": "0x178d493c8225fc4d3f96cc88dd55e8003aca760f"
   },
+  "0x17906b1cd88aa8efaefc5e82891b52a22219bd45": {
+    "chain": "ethereum",
+    "symbol": "SUPR",
+    "decimals": 18,
+    "address": "0x17906b1cd88aa8efaefc5e82891b52a22219bd45"
+  },
   "0x1796ae0b0fa4862485106a0de9b654efe301d0b2": {
     "chain": "ethereum",
     "symbol": "PMON",
