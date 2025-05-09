@@ -5,21 +5,22 @@ import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions } from '../../../types/options';
 import ProtocolAdapter from '../protocol';
 import EVaultAbi from '../../../configs/abi/euler/EVault.json';
-import { formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
+import { compareAddress, formatBigNumberToNumber, normalizeAddress } from '../../../lib/utils';
 import { SolidityUnits, TimeUnits } from '../../../configs/constants';
 import AdapterDataHelper from '../helpers';
 import EulerMarketsAbi from '../../../configs/abi/euler/Markets.json';
 import Erc20Abi from '../../../configs/abi/ERC20.json';
 import GenericFactoryAbi from '../../../configs/abi/euler/GenericFactory.json';
 import { ContractCall } from '../../../services/blockchains/domains';
+import { decodeEventLog } from 'viem';
 
-// const EulerEvents = {
-//   Deposit: '0xdcbc1c05240f31ff3ad067ef1ee35ce4997762752e3a095284754544f4c709d7',
-//   Withdraw: '0xfbde797d201c681b91056529119e0b02407c7bb96a4a2c75c01fc9667232c8db',
-//   Borrow: '0xcbc04eca7e9da35cb1393a6135a199ca52e450d5e9251cbd99f7847d33a36750',
-//   Repay: '0x5c16de4f8b59bd9caf0f49a545f25819a895ed223294290b408242e72a594231',
-//   Liquidate: '0x8246cc71ab01533b5bebc672a636df812f10637ad720797319d5741d5ebb3962',
-// };
+const EulerEvents = {
+  Deposit: '0xdcbc1c05240f31ff3ad067ef1ee35ce4997762752e3a095284754544f4c709d7',
+  Withdraw: '0xfbde797d201c681b91056529119e0b02407c7bb96a4a2c75c01fc9667232c8db',
+  Borrow: '0xcbc04eca7e9da35cb1393a6135a199ca52e450d5e9251cbd99f7847d33a36750',
+  Repay: '0x5c16de4f8b59bd9caf0f49a545f25819a895ed223294290b408242e72a594231',
+  Liquidate: '0x8246cc71ab01533b5bebc672a636df812f10637ad720797319d5741d5ebb3962',
+};
 
 // const EulerV1Events = {
 //   Deposit: '0x5548c837ab068cf56a2c2479df0882a4922fd203edb7517321831d95078c5f62',
@@ -33,15 +34,15 @@ const FixedRate: { [key: string]: number } = {
   '0xdd629e5241cbc5919847783e6c96b2de4754e438': 1, // fixed at $1
 };
 
-// function containVault(vaults: Array<string>, vault: string): boolean {
-//   for (const item of vaults) {
-//     if (compareAddress(item, vault)) {
-//       return true;
-//     }
-//   }
+function containVault(vaults: Array<string>, vault: string): boolean {
+  for (const item of vaults) {
+    if (compareAddress(item, vault)) {
+      return true;
+    }
+  }
 
-//   return false;
-// }
+  return false;
+}
 
 export default class EulerAdapter extends ProtocolAdapter {
   public readonly name: string = 'adapter.euler';
@@ -348,14 +349,14 @@ export default class EulerAdapter extends ProtocolAdapter {
         factoryConfig.chain,
         options.timestamp,
       );
-      // const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-      //   factoryConfig.chain,
-      //   options.beginTime,
-      // );
-      // const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
-      //   factoryConfig.chain,
-      //   options.endTime,
-      // );
+      const beginBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        factoryConfig.chain,
+        options.beginTime,
+      );
+      const endBlock = await this.services.blockchain.evm.tryGetBlockNumberAtTimestamp(
+        factoryConfig.chain,
+        options.endTime,
+      );
 
       if (!protocolData.breakdown[factoryConfig.chain]) {
         protocolData.breakdown[factoryConfig.chain] = {};
@@ -384,8 +385,6 @@ export default class EulerAdapter extends ProtocolAdapter {
         blockNumber: blockNumber,
         calls: proxyListCalls,
       });
-
-      console.log(vaultProxyList.length);
 
       for (const vault of vaultProxyList) {
         const [asset, totalAssets, totalBorrows, interestRate, protocolFeeShare] =
@@ -485,97 +484,97 @@ export default class EulerAdapter extends ProtocolAdapter {
             protocolData.breakdown[factoryConfig.chain][token.address].supplySideRevenue += supplySideRevenue;
             protocolData.breakdown[factoryConfig.chain][token.address].protocolRevenue += protocolRevenue;
 
-            // if (containVault(factoryConfig.vaults, vault)) {
-            //   // process vault events
-            //   const vaultLogs = await this.services.blockchain.evm.getContractLogs({
-            //     chain: factoryConfig.chain,
-            //     address: vault,
-            //     fromBlock: beginBlock,
-            //     toBlock: endBlock,
-            //   });
-            //   for (const log of vaultLogs) {
-            //     const signature = log.topics[0];
-            //     if (Object.values(EulerEvents).includes(signature)) {
-            //       const event: any = decodeEventLog({
-            //         abi: EVaultAbi,
-            //         topics: log.topics,
-            //         data: log.data,
-            //       });
+            if (containVault(factoryConfig.vaults, vault)) {
+              // process vault events
+              const vaultLogs = await this.services.blockchain.evm.getContractLogs({
+                chain: factoryConfig.chain,
+                address: vault,
+                fromBlock: beginBlock,
+                toBlock: endBlock,
+              });
+              for (const log of vaultLogs) {
+                const signature = log.topics[0];
+                if (Object.values(EulerEvents).includes(signature)) {
+                  const event: any = decodeEventLog({
+                    abi: EVaultAbi,
+                    topics: log.topics,
+                    data: log.data,
+                  });
 
-            //       if (signature === EulerEvents.Liquidate) {
-            //         const repayAmountUsd =
-            //           formatBigNumberToNumber(event.args.repayAssets.toString(), token.decimals) * tokenPriceUsd;
+                  if (signature === EulerEvents.Liquidate) {
+                    const repayAmountUsd =
+                      formatBigNumberToNumber(event.args.repayAssets.toString(), token.decimals) * tokenPriceUsd;
 
-            //         (protocolData.volumes.repay as number) += repayAmountUsd;
-            //         (protocolData.breakdown[factoryConfig.chain][token.address].volumes.repay as number) +=
-            //           repayAmountUsd;
+                    (protocolData.volumes.repay as number) += repayAmountUsd;
+                    (protocolData.breakdown[factoryConfig.chain][token.address].volumes.repay as number) +=
+                      repayAmountUsd;
 
-            //         // liquidator will reveive collateral vault token
-            //         const collateralAddress = await this.services.blockchain.evm.readContract({
-            //           chain: factoryConfig.chain,
-            //           abi: EVaultAbi,
-            //           target: event.args.collateral,
-            //           method: 'asset',
-            //           params: [],
-            //         });
-            //         const collateralToken = await this.services.blockchain.evm.getTokenInfo({
-            //           chain: factoryConfig.chain,
-            //           address: collateralAddress,
-            //         });
-            //         if (collateralToken) {
-            //           const collateralPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
-            //             chain: factoryConfig.chain,
-            //             address: collateralToken.address,
-            //             timestamp: options.timestamp,
-            //           });
-            //           const collateralAmount = await this.services.blockchain.evm.readContract({
-            //             chain: factoryConfig.chain,
-            //             abi: EVaultAbi,
-            //             target: event.args.collateral,
-            //             method: 'convertToAssets',
-            //             params: [event.args.yieldBalance.toString()],
-            //           });
-            //           const collateralAmountUsd =
-            //             formatBigNumberToNumber(collateralAmount.toString(), collateralToken.decimals) *
-            //             collateralPriceUsd;
+                    // liquidator will reveive collateral vault token
+                    const collateralAddress = await this.services.blockchain.evm.readContract({
+                      chain: factoryConfig.chain,
+                      abi: EVaultAbi,
+                      target: event.args.collateral,
+                      method: 'asset',
+                      params: [],
+                    });
+                    const collateralToken = await this.services.blockchain.evm.getTokenInfo({
+                      chain: factoryConfig.chain,
+                      address: collateralAddress,
+                    });
+                    if (collateralToken) {
+                      const collateralPriceUsd = await this.services.oracle.getTokenPriceUsdRounded({
+                        chain: factoryConfig.chain,
+                        address: collateralToken.address,
+                        timestamp: options.timestamp,
+                      });
+                      const collateralAmount = await this.services.blockchain.evm.readContract({
+                        chain: factoryConfig.chain,
+                        abi: EVaultAbi,
+                        target: event.args.collateral,
+                        method: 'convertToAssets',
+                        params: [event.args.yieldBalance.toString()],
+                      });
+                      const collateralAmountUsd =
+                        formatBigNumberToNumber(collateralAmount.toString(), collateralToken.decimals) *
+                        collateralPriceUsd;
 
-            //           (protocolData.volumes.liquidation as number) += collateralAmountUsd;
-            //           (protocolData.breakdown[factoryConfig.chain][token.address].volumes.liquidation as number) +=
-            //             collateralAmountUsd;
-            //         }
-            //       } else {
-            //         const amountUsd =
-            //           formatBigNumberToNumber(event.args.assets.toString(), token.decimals) * tokenPriceUsd;
-            //         switch (signature) {
-            //           case EulerEvents.Deposit: {
-            //             (protocolData.volumes.deposit as number) += amountUsd;
-            //             (protocolData.breakdown[factoryConfig.chain][token.address].volumes.deposit as number) +=
-            //               amountUsd;
-            //             break;
-            //           }
-            //           case EulerEvents.Withdraw: {
-            //             (protocolData.volumes.withdraw as number) += amountUsd;
-            //             (protocolData.breakdown[factoryConfig.chain][token.address].volumes.withdraw as number) +=
-            //               amountUsd;
-            //             break;
-            //           }
-            //           case EulerEvents.Borrow: {
-            //             (protocolData.volumes.borrow as number) += amountUsd;
-            //             (protocolData.breakdown[factoryConfig.chain][token.address].volumes.borrow as number) +=
-            //               amountUsd;
-            //             break;
-            //           }
-            //           case EulerEvents.Repay: {
-            //             (protocolData.volumes.repay as number) += amountUsd;
-            //             (protocolData.breakdown[factoryConfig.chain][token.address].volumes.repay as number) +=
-            //               amountUsd;
-            //             break;
-            //           }
-            //         }
-            //       }
-            //     }
-            //   }
-            // }
+                      (protocolData.volumes.liquidation as number) += collateralAmountUsd;
+                      (protocolData.breakdown[factoryConfig.chain][token.address].volumes.liquidation as number) +=
+                        collateralAmountUsd;
+                    }
+                  } else {
+                    const amountUsd =
+                      formatBigNumberToNumber(event.args.assets.toString(), token.decimals) * tokenPriceUsd;
+                    switch (signature) {
+                      case EulerEvents.Deposit: {
+                        (protocolData.volumes.deposit as number) += amountUsd;
+                        (protocolData.breakdown[factoryConfig.chain][token.address].volumes.deposit as number) +=
+                          amountUsd;
+                        break;
+                      }
+                      case EulerEvents.Withdraw: {
+                        (protocolData.volumes.withdraw as number) += amountUsd;
+                        (protocolData.breakdown[factoryConfig.chain][token.address].volumes.withdraw as number) +=
+                          amountUsd;
+                        break;
+                      }
+                      case EulerEvents.Borrow: {
+                        (protocolData.volumes.borrow as number) += amountUsd;
+                        (protocolData.breakdown[factoryConfig.chain][token.address].volumes.borrow as number) +=
+                          amountUsd;
+                        break;
+                      }
+                      case EulerEvents.Repay: {
+                        (protocolData.volumes.repay as number) += amountUsd;
+                        (protocolData.breakdown[factoryConfig.chain][token.address].volumes.repay as number) +=
+                          amountUsd;
+                        break;
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
