@@ -65,6 +65,12 @@
     "decimals": 18,
     "address": "0x32a9fe697a32135bfd313a6ac28792dae4d9979d"
   },
+  "0x3776228836bfcfc87cac36c28830b67759c02707": {
+    "chain": "celo",
+    "symbol": "XAUt",
+    "decimals": 6,
+    "address": "0x3776228836bfcfc87cac36c28830b67759c02707"
+  },
   "0x46c9757c5497c5b1f2eb73ae79b6b67d119b0b58": {
     "chain": "celo",
     "symbol": "PACT",

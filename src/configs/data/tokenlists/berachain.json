@@ -125,6 +125,12 @@
     "decimals": 18,
     "address": "0xb749584f9fc418cf905d54f462fdbfdc7462011b"
   },
+  "0xbd6a2abc6bad35530ef589932a21e940b0d11e03": {
+    "chain": "berachain",
+    "symbol": "TEST",
+    "decimals": 18,
+    "address": "0xbd6a2abc6bad35530ef589932a21e940b0d11e03"
+  },
   "0xc1d59516bccf10aeb33bade931de8b9d4d18a51e": {
     "chain": "berachain",
     "symbol": "BERJAK",

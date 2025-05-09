@@ -4473,4 +4473,16 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
     currency: 'bnb',
     sources: [OracleSourceUniswapv2List.VON_WBNB],
   },
+  RLUSD: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.RLUSD_USDC],
+  },
+  NECT: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.NECT_HONEY],
+  },
+  USD1: {
+    currency: 'usd',
+    sources: [OracleSourceUniswapv3List.USD1_USDT],
+  },
 };

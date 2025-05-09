@@ -2415,4 +2415,35 @@ export const OracleSourceUniswapv3List: { [key: string]: OracleSourcePool2 } = {
     baseToken: TokensBook.base['0x30c7235866872213f68cb1f08c37cb9eccb93452'],
     quotaToken: TokensBook.base['0x833589fcd6edb6e08f4c7c32d4f71b54bda02913'],
   },
+  RLUSD_USDC: {
+    type: 'univ3',
+    chain: 'ethereum',
+    address: '0xcc6d2f26d363836f85a42d249e145ec0320d3e55',
+    baseToken: TokensBook.ethereum['0x8292bb45bf1ee4d140127049757c2e0ff06317ed'],
+    quotaToken: TokensBook.ethereum['0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'],
+  },
+  NECT_HONEY: {
+    type: 'univ3',
+    chain: 'berachain',
+    address: '0x56a5ac11ba0f2c6b887d3e3aa154e3dd9859eac2',
+    baseToken: {
+      chain: 'berachain',
+      symbol: 'NECT',
+      decimals: 18,
+      address: '0x1ce0a25d13ce4d52071ae7e02cf1f6606f4c79d3',
+    },
+    quotaToken: {
+      chain: 'berachain',
+      symbol: 'HONEY',
+      decimals: 18,
+      address: '0xfcbd14dc51f0a4d49d5e53c2e0950e0bc26d0dce',
+    },
+  },
+  USD1_USDT: {
+    type: 'univ3',
+    chain: 'bnbchain',
+    address: '0x9c4ee895e4f6ce07ada631c508d1306db7502cce',
+    baseToken: TokensBook.bnbchain['0x8d0d000ee44948fc98c9b98a4fa4921476f08b0d'],
+    quotaToken: TokensBook.bnbchain['0x55d398326f99059ff775485246999027b3197955'],
+  },
 };

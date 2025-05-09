@@ -365,6 +365,12 @@
     "decimals": 18,
     "address": "0x1b88d7ad51626044ec62ef9803ea264da4442f32"
   },
+  "0x1bfa7fd90de1285deb09a734112ab6bcd935fc6a": {
+    "chain": "avalanche",
+    "symbol": "H4SH",
+    "decimals": 18,
+    "address": "0x1bfa7fd90de1285deb09a734112ab6bcd935fc6a"
+  },
   "0x1c20e891bab6b1727d14da358fae2984ed9b59eb": {
     "chain": "avalanche",
     "symbol": "TUSD",
@@ -466,6 +472,12 @@
     "symbol": "VCHF",
     "decimals": 18,
     "address": "0x228a48df6819ccc2eca01e2192ebafffdad56c19"
+  },
+  "0x22bc1c924a6174eb9b2c98035f8d2f20e8bc4a1e": {
+    "chain": "avalanche",
+    "symbol": "SUP",
+    "decimals": 18,
+    "address": "0x22bc1c924a6174eb9b2c98035f8d2f20e8bc4a1e"
   },
   "0x22d4002028f537599be9f666d1c4fa138522f9c8": {
     "chain": "avalanche",
@@ -2291,6 +2303,12 @@
     "decimals": 18,
     "address": "0xa7e951c0ae1e93af39d73bf3d2f24f72cab73181"
   },
+  "0xa813d175675c7f19bb7fd541f5ad1bcaf2117fe7": {
+    "chain": "avalanche",
+    "symbol": "PEON",
+    "decimals": 18,
+    "address": "0xa813d175675c7f19bb7fd541f5ad1bcaf2117fe7"
+  },
   "0xa9ef87eb3fdc2f08ef5ee401326f7331d4d312cf": {
     "chain": "avalanche",
     "symbol": "IXAD",
@@ -2344,6 +2362,12 @@
     "symbol": "BMSTR",
     "decimals": 18,
     "address": "0xac28c9178acc8ba4a11a29e013a3a2627086e422"
+  },
+  "0xacc95afa65768aa74044e6f6e267ad6417cd3e55": {
+    "chain": "avalanche",
+    "symbol": "BOI",
+    "decimals": 18,
+    "address": "0xacc95afa65768aa74044e6f6e267ad6417cd3e55"
   },
   "0xacfb898cff266e53278cc0124fc2c7c94c8cb9a5": {
     "chain": "avalanche",
@@ -3448,6 +3472,12 @@
     "symbol": "WXT",
     "decimals": 18,
     "address": "0xfcde4a87b8b6fa58326bb462882f1778158b02f1"
+  },
+  "0xfd91ed44fc13f7faff758fe6d339d5790c4a85ec": {
+    "chain": "avalanche",
+    "symbol": "VRTX",
+    "decimals": 18,
+    "address": "0xfd91ed44fc13f7faff758fe6d339d5790c4a85ec"
   },
   "0xfda866cfece71f4c17b4a5e5f9a00ac08c72eadc": {
     "chain": "avalanche",

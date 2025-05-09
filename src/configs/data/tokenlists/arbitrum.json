@@ -83,6 +83,12 @@
     "decimals": 8,
     "address": "0x050c24dbf1eec17babe5fc585f06116a259cc77a"
   },
+  "0x05905af7933f89280ab258919f0dfa056ced8e43": {
+    "chain": "arbitrum",
+    "symbol": "CLUTCH",
+    "decimals": 18,
+    "address": "0x05905af7933f89280ab258919f0dfa056ced8e43"
+  },
   "0x05cbef357cb14f9861c01f90ac7d5c90ce0ef05e": {
     "chain": "arbitrum",
     "symbol": "TBANK",

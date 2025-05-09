@@ -29,6 +29,12 @@
     "decimals": 18,
     "address": "0x01b8b6384298d4848e3be63d4c9d17830eee488a"
   },
+  "0x01bff41798a0bcf287b996046ca68b395dbc1071": {
+    "chain": "optimism",
+    "symbol": "USD₮0",
+    "decimals": 6,
+    "address": "0x01bff41798a0bcf287b996046ca68b395dbc1071"
+  },
   "0x01c77e8a099e97b7b0dca2f987d9bd1911cdde50": {
     "chain": "optimism",
     "symbol": "yvVelo-SNX-USDC.e-f",

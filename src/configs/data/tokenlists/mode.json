@@ -23,6 +23,12 @@
     "decimals": 18,
     "address": "0x06d6a7bdffafa3c953d7b9842f7f414a6e0beb4a"
   },
+  "0x102d758f688a4c1c5a80b116bd945d4455460282": {
+    "chain": "mode",
+    "symbol": "USD₮0",
+    "decimals": 6,
+    "address": "0x102d758f688a4c1c5a80b116bd945d4455460282"
+  },
   "0x2416092f143378750bb29b79ed961ab195cceea5": {
     "chain": "mode",
     "symbol": "ezETH",

@@ -68,7 +68,12 @@ export const OracleTokenBlacklists: { [key: string]: Array<string> } = {
   ],
   linea: ['0x0b1a02a7309dfbfad1cd4adc096582c87e8a3ac1'],
   kava: ['0xfa9343c3897324496a05fc75abed6bac29f8a40f'],
-  bnbchain: ['0x94c6b279b5df54b335ae51866d6e2a56bf5ef9b7', '0xb2ea51baa12c461327d12a2069d47b30e680b69d'],
+  bnbchain: [
+    '0x94c6b279b5df54b335ae51866d6e2a56bf5ef9b7',
+    '0xb2ea51baa12c461327d12a2069d47b30e680b69d',
+    '0xfb0d7a36998aae560e791c86a54c5c0036770258',
+    '0xd9edeba7f3580f5e22821a52fc1ba8508f4e34d0',
+  ],
   fraxtal: ['0x5860a0bf37133f8461b2dede7c80e55d6bff3721'],
   polygon: [
     '0xfa7940b63f9d5ad2540d7f8bae5267a747b8590a',
@@ -84,6 +89,12 @@ export const OracleTokenBlacklists: { [key: string]: Array<string> } = {
     '0x88a838e792931e303a986508d072c14ffa9e4f8c',
   ],
   fantom: ['0x66eed5ff1701e6ed8470dc391f05e27b1d0657eb'],
+  avalanche: ['0x66f9e7c1a356aed33551a31a7f58d222ac4c87a9'],
   sonic: ['0xb5b781b61814bd32d1b2bf8864e8992a8037f8bc'],
-  berachain: ['0xb6168f597cd37a232cb7cb94cd1786be20ead156', '0xfaf4c16847bd0ebac546c49a9c9c6b81abd4b08c'],
+  berachain: [
+    '0xb6168f597cd37a232cb7cb94cd1786be20ead156',
+    '0xfaf4c16847bd0ebac546c49a9c9c6b81abd4b08c',
+    '0x08da74f12ab643d6092b1a67b37ff26152f3e99d',
+  ],
+  bob: ['0x589f02cfaebf48f835ce43a8686f91857d7929cc'],
 };
