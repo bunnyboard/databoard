@@ -2687,6 +2687,12 @@
     "decimals": 18,
     "address": "0xc06e17bdc3f008f4ce08d27d364416079289e729"
   },
+  "0xc09a033927f9fd558c92cf7aeabe34b71ce4b31e": {
+    "chain": "avalanche",
+    "symbol": "PLYR",
+    "decimals": 18,
+    "address": "0xc09a033927f9fd558c92cf7aeabe34b71ce4b31e"
+  },
   "0xc0c5aa69dbe4d6dddfbc89c0957686ec60f24389": {
     "chain": "avalanche",
     "symbol": "XEN",
@@ -2854,6 +2860,12 @@
     "symbol": "GAU",
     "decimals": 18,
     "address": "0xca8ebfb8e1460aaac7c272cb9053b3d42412aac2"
+  },
+  "0xcac4904e1db1589aa17a2ec742f5a6bcf4c4d037": {
+    "chain": "avalanche",
+    "symbol": "EROL",
+    "decimals": 18,
+    "address": "0xcac4904e1db1589aa17a2ec742f5a6bcf4c4d037"
   },
   "0xcaf5191fc480f43e4df80106c7695eca56e48b18": {
     "chain": "avalanche",

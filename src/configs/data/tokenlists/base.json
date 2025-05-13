@@ -2273,6 +2273,12 @@
     "decimals": 18,
     "address": "0x2f6c17fa9f9bc3600346ab4e48c0701e1d5962ae"
   },
+  "0x2f74f818e81685c8086dd783837a4605a90474b8": {
+    "chain": "base",
+    "symbol": "NATION",
+    "decimals": 18,
+    "address": "0x2f74f818e81685c8086dd783837a4605a90474b8"
+  },
   "0x2fa824bb2e06d6cac7dbab00be37dc0f3d440e8b": {
     "chain": "base",
     "symbol": "🇺🇸",
@@ -2446,6 +2452,12 @@
     "symbol": "FTW",
     "decimals": 9,
     "address": "0x3347453ced85bd288d783d85cdec9b01ab90f9d8"
+  },
+  "0x33479a07983561ab5e27ad435399fc88159eea8b": {
+    "chain": "base",
+    "symbol": "VIBES",
+    "decimals": 18,
+    "address": "0x33479a07983561ab5e27ad435399fc88159eea8b"
   },
   "0x33ac788bc9ccb27e9ec558fb2bde79950a6b9d5b": {
     "chain": "base",
@@ -2938,6 +2950,12 @@
     "symbol": "BENG",
     "decimals": 18,
     "address": "0x3e05d37cfbd8caaad9e3322d35cc727afaff63e3"
+  },
+  "0x3e12b9d6a4d12cd9b4a6d613872d0eb32f68b380": {
+    "chain": "base",
+    "symbol": "FLOWER",
+    "decimals": 18,
+    "address": "0x3e12b9d6a4d12cd9b4a6d613872d0eb32f68b380"
   },
   "0x3e1a6d23303be04403badc8bff348027148fef27": {
     "chain": "base",
@@ -5495,6 +5513,12 @@
     "decimals": 18,
     "address": "0x777b2839832982b35213063d850848369390ee16"
   },
+  "0x77a4b0bfe5c7257f67a1de1b99aa7e157035b1b2": {
+    "chain": "base",
+    "symbol": "7007",
+    "decimals": 18,
+    "address": "0x77a4b0bfe5c7257f67a1de1b99aa7e157035b1b2"
+  },
   "0x77ba5713f0afcedb4a10fa155b5e95218a7b658e": {
     "chain": "base",
     "symbol": "SUDO",
@@ -5524,6 +5548,12 @@
     "symbol": "BSWAP",
     "decimals": 18,
     "address": "0x78a087d713be963bf307b18f2ff8122ef9a63ae9"
+  },
+  "0x78aca94075efdfa7220cd7aae02ac1488a8c5134": {
+    "chain": "base",
+    "symbol": "KART",
+    "decimals": 18,
+    "address": "0x78aca94075efdfa7220cd7aae02ac1488a8c5134"
   },
   "0x78b3c724a2f663d11373c4a1978689271895256f": {
     "chain": "base",
@@ -5950,6 +5980,12 @@
     "symbol": "PAT",
     "decimals": 18,
     "address": "0x8300e8e6b258147972972dbcf87719da7b817a9c"
+  },
+  "0x83190636c344cf1220ffcbfc0c1198f7867b3667": {
+    "chain": "base",
+    "symbol": "JMX",
+    "decimals": 18,
+    "address": "0x83190636c344cf1220ffcbfc0c1198f7867b3667"
   },
   "0x8319767a7b602f88e376368dca1b92d38869b9b4": {
     "chain": "base",
@@ -10786,6 +10822,12 @@
     "symbol": "UCRO",
     "decimals": 18,
     "address": "0xf653e8b6fcbd2a63246c6b7722d1e9d819611241"
+  },
+  "0xf697a91e2fbf7f0f6c09c9b32d6523628ec5d3f6": {
+    "chain": "base",
+    "symbol": "AMPD",
+    "decimals": 9,
+    "address": "0xf697a91e2fbf7f0f6c09c9b32d6523628ec5d3f6"
   },
   "0xf6e932ca12afa26665dc4dde7e27be02a7c02e50": {
     "chain": "base",

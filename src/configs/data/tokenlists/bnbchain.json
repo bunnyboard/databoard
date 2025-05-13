@@ -35957,6 +35957,12 @@
     "decimals": 18,
     "address": "0x87c91dd4552c67a4b82f8008fa08458ca5e62008"
   },
+  "0x87d00066cf131ff54b72b134a217d5401e5392b6": {
+    "chain": "bnbchain",
+    "symbol": "PUFFER",
+    "decimals": 18,
+    "address": "0x87d00066cf131ff54b72b134a217d5401e5392b6"
+  },
   "0x87d829adc494475ef96c9fca988b9593cdb40349": {
     "chain": "bnbchain",
     "symbol": "PEPEVERSE",

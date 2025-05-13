@@ -473,5 +473,24 @@ export const MorphoConfigs: MorphoProtocolConfig = {
         '0xff239fbfcc8fc3b579ee12496554a51f0187e2fa04e44d6439dca4ed79c167c8',
       ],
     },
+    {
+      chain: ChainNames.worldchain,
+      birthday: 1743638400, // Thu Apr 03 2025 00:00:00 GMT+0000
+      birthblock: 12184965,
+      morphoBlue: '0xE741BC7c34758b4caE05062794E8Ae24978AF432',
+      morphoFactory: '0x4DBB3a642a2146d5413750Cca3647086D9ba5F12',
+      whitelistedMarketIds: [
+        '0x64e6d549f61bef88b55e80dbff9258c23386675af8fa7734393d0848b5ffe610',
+        '0xe920c120b2e1c79e9f97c5219ab092f96e06ed0b58882737fe863b029395f36f',
+        '0xbbd1d8744e318a00263da279332945e48c3e0bb9e91175c3606f7f9ec2dae5da',
+        '0x8300f219adb24bd8e3bf0c33a1963e2aaaf13a3da7447ecdd3b4b0e6f96ee7a9',
+        '0xba0ae12a5cdbf9a458566be68055f30c859771612950b5e43428a51becc6f6e9',
+        '0x5fadb14df6523eb13a939f8024dbc54b10bdb4e521741e9995e2951337134b53',
+        '0x787c5ff694f04e20cc6b3932cd662425161109bb0d63b189c48d99e714a3bd69',
+        '0x655106914fc7605be5142315b123c51e6001086571bc6589c4687c3739403e4d',
+        '0x19c682c3a37025075074cefea866fbe54656abc0fb6a7355b62a53f45b959abf',
+        '0x2ae67b7981d566c5b86cadca5d5a9d66dd77e4f04297d2856f27da94ae635f9b',
+      ],
+    },
   ],
 };

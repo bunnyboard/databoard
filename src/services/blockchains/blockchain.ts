@@ -323,29 +323,22 @@ export default class BlockchainService extends CachingService implements IBlockc
   }
 
   public async multicall(options: MulticallOptions): Promise<any> {
-    // first try with multicall3
-    try {
-      const multicall3Response: any = await this.multicall3(options);
-      if (multicall3Response) {
-        return multicall3Response;
+    const results: Array<any> = [];
+
+    const callsPerBatch = 200;
+    for (let startIndex = 0; startIndex < options.calls.length; startIndex += callsPerBatch) {
+      const calls = options.calls.slice(startIndex, startIndex + callsPerBatch);
+      const _results = await this._multicall({
+        chain: options.chain,
+        calls: calls,
+        blockNumber: options.blockNumber,
+      });
+      for (const _result of _results) {
+        results.push(_result);
       }
-    } catch (e: any) {}
+    }
 
-    try {
-      const responses: Array<any> = [];
-      for (const call of options.calls) {
-        const response = await this.readContract({
-          chain: options.chain,
-          blockNumber: options.blockNumber,
-
-          ...call,
-        });
-        responses.push(response);
-      }
-      return responses;
-    } catch (e: any) {}
-
-    return null;
+    return results;
   }
 
   public async multicall3(options: MulticallOptions): Promise<any> {
@@ -400,5 +393,31 @@ export default class BlockchainService extends CachingService implements IBlockc
     await this.setCachingData(cachingKey, blockNumber);
 
     return blockNumber;
+  }
+
+  private async _multicall(options: MulticallOptions): Promise<any> {
+    // first try with multicall3
+    try {
+      const multicall3Response: any = await this.multicall3(options);
+      if (multicall3Response) {
+        return multicall3Response;
+      }
+    } catch (e: any) {}
+
+    try {
+      const responses: Array<any> = [];
+      for (const call of options.calls) {
+        const response = await this.readContract({
+          chain: options.chain,
+          blockNumber: options.blockNumber,
+
+          ...call,
+        });
+        responses.push(response);
+      }
+      return responses;
+    } catch (e: any) {}
+
+    return null;
   }
 }
