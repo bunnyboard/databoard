@@ -9,6 +9,8 @@ export const SteakhouseConfigs: GauntletProtocolConfig = {
       chain: ChainNames.ethereum,
       birthday: 1704326400, // Thu Jan 04 2024 00:00:00 GMT+0000
       morphoVaults: [
+        '0xbEEf11C63d7173BdCC2037e7220eE9Bd0cCDA862',
+        '0xbEEF36A5C1372F8D7d211527FCE9f83FE02d8A73',
         '0xBEEF01735c132Ada46AA9aA4c54623cAA92A64CB',
         '0xBEeFFF209270748ddd194831b3fa287a5386f5bC',
         '0xBeEf11eCb698f4B5378685C05A210bdF71093521',

@@ -43,4 +43,6 @@ const ProtocolSubgraphs: Array<any> = [
       }
     }
   }
+
+  process.exit(1);
 })();

@@ -441,5 +441,20 @@ export const EulerConfigs: EulerProtocolConfig = {
         '0xe54DFfd36177975938A3873e522dEE535ADebe01',
       ],
     },
+    {
+      chain: ChainNames.unichain,
+      birthday: 1745539200, // Fri Apr 25 2025 00:00:00 GMT+0000
+      factory: '0xbad8b5bdfb2bcbcd78cc9f1573d3aad6e865e752',
+      vaults: [
+        '0x6eAe95ee783e4D862867C4e0E4c3f4B95AA682Ba',
+        '0xD49181c522eCDB265f0D9C175Cf26FFACE64eAD3',
+        '0x1f3134C3f3f8AdD904B9635acBeFC0eA0D0E1ffC',
+        '0xe36DA4Ea4D07E54B1029eF26A896A656A3729f86',
+        '0x576f68B0395738AEF01811b8F8EeC25302829F1d',
+        '0x54ff502df96CD9B9585094EaCd86AAfCe902d06A',
+        '0x45b41B20B11cD2e71A6BF3021bdbc3F8aFEa5538',
+        '0x59215f65cB2F5Ddf048eFA8136Fc2C19F9A6C416',
+      ],
+    },
   ],
 };

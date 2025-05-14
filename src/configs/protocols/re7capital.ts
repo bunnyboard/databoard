@@ -9,6 +9,7 @@ export const Re7capitalConfigs: GauntletProtocolConfig = {
       chain: ChainNames.ethereum,
       birthday: 1706659200, // Wed Jan 31 2024 00:00:00 GMT+0000
       morphoVaults: [
+        '0x341193ED21711472e71aECa4A942123452bd0ddA',
         '0x78Fc2c2eD1A4cDb5402365934aE5648aDAd094d0',
         '0xE0C98605f279e4D7946d25B75869c69802823763',
         '0x95EeF579155cd2C5510F312c8fA39208c3Be01a8',
@@ -22,6 +23,18 @@ export const Re7capitalConfigs: GauntletProtocolConfig = {
         '0x64964E162Aa18d32f91eA5B24a09529f811AEB8e',
       ],
       eulerVaults: [
+        '0xa8CC68e15D50c1c586b5B0D6e1D4D0Ef620fdd10',
+        '0x6173b0709dEA144CC3662894870B57C53564cfA2',
+        '0xe3b66cA897B4B844d5a8ee7A30982FAc0d126760',
+        '0xBd9A8701B0F56b758bCd4aCe08DAF097e236E0CB',
+        '0x117576B8854a03aB7C3dF1Cf1cd8E04767BfA866',
+        '0x586719300c3966130B3Ce15F563b1080271193E8',
+        '0xc40A68b5E536632b6572283F996B830B34607d01',
+        '0x27052EA5E307B6e8566D9eE560231C6742a6c03c',
+        '0xeE8693c11acE62839bB96beaE86696c1e78Aba3F',
+        '0xAc73efA7696DC1c1617BbC20aeC64422c8b70EDa',
+        '0xe3eb096CD9A87c271567b0134f6dE061c112A9E7',
+        '0x940FCa4Be8e0d43Be75Acc8136342f936f2179E8',
         '0xcf47fBe97aaE77B8ABEa5e1F59c9bcb808A8d47d',
         '0x8dDE384022D4dE1D6C67891a8865f551c444dc4C',
         '0xce45EF0414dE3516cAF1BCf937bF7F2Cf67873De',
@@ -61,6 +74,8 @@ export const Re7capitalConfigs: GauntletProtocolConfig = {
       birthday: 1738540800, // Mon Feb 03 2025 00:00:00 GMT+0000
       morphoVaults: [],
       eulerVaults: [
+        '0x2ad7546A19eb5D5eDb37EC88A4775995078d1CAd',
+        '0x8537a336fC74EA742527E8300175A7b07a108c9E',
         '0xeEb1DC1Ca7ffC5b54aD1cc4c1088Db4E5657Cb6c',
         '0x3D9e5462A940684073EED7e4a13d19AE0Dcd13bc',
         '0x4c0AF5d6Bcb10B3C05FB5F3a846999a3d87534C7',
@@ -84,6 +99,7 @@ export const Re7capitalConfigs: GauntletProtocolConfig = {
       birthday: 1739318400, // Wed Feb 12 2025 00:00:00 GMT+0000
       morphoVaults: [],
       eulerVaults: [
+        '0x5ba8763891D6a4F934B197B9817757d887B78fec',
         '0x89FD57175EcEEC45992e07c206e5A864Fa6aF433',
         '0x66f233ac844C3948A516857CA769872E5941f91c',
         '0xe318d262290ABab80FC6e217c514801e2c0EF999',
@@ -94,6 +110,11 @@ export const Re7capitalConfigs: GauntletProtocolConfig = {
       birthday: 1742860800, // Tue Mar 25 2025 00:00:00 GMT+0000
       morphoVaults: [],
       eulerVaults: [
+        '0x27807C61F6b376754b7ce208AA8b17D2DA56d582',
+        '0xB1Ec13C66fdb12205C6C82c392a5A3b393207388',
+        '0xA45189636c04388ADBb4D865100DD155e55682EC',
+        '0xA06e66646292b2C2042495B955fe07c4036f6635',
+        '0xFECebF56f150A68dDd197c3a6101da35C46693Ac',
         '0x39dE0f00189306062D79eDEC6DcA5bb6bFd108f9',
         '0x2137568666f12fc5A026f5430Ae7194F1C1362aB',
         '0x72F92a966f1874f74e1b601BEe7CF57031B53A03',
@@ -103,6 +124,23 @@ export const Re7capitalConfigs: GauntletProtocolConfig = {
         '0xABA9d2D4b6B93C3dc8976D8eb0690CCA56431FE4',
         '0x4eC5B9a4d4FD9E35d4f881D35AAB9877bfdA5803',
         '0x7485484Dab196C615AE21453C3ABd732977562f2',
+      ],
+    },
+    {
+      chain: ChainNames.bnbchain,
+      birthday: 1744761600, // Wed Apr 16 2025 00:00:00 GMT+0000
+      morphoVaults: [],
+      eulerVaults: [
+        '0xc4dB46B082B415c16C54c91c5750Df8e2f90EF36',
+        '0x69A93DbAB609266af96f05658b2e22d020de2E19',
+        '0x266D3F3219680624DE4D66c716444512A2B9a72F',
+        '0x7a455f66FD2D2d5C69ae403a971ED513C852F9D7',
+        '0xa0b6d76452B1f417a94Ae309b835D523a081FbB9',
+        '0xF72aB1726e6f379891dDAE8114C75074d972FdAc',
+        '0x3ac88AfbC38Bb41443457eeB027b60e85B815538',
+        '0xfEb1D6259De6C052A0d0f986b4Df4D8Fd8B371F4',
+        '0xCB9c9FE7d1509955d8b860E6831d91bf3F0B6240',
+        '0xcCD520c8cE2aC576429bE0aD8cc14cDc0e3E44fc',
       ],
     },
   ],
