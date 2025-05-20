@@ -5,15 +5,16 @@ import envConfig from '../../configs/envConfig';
 import DatabaseService from '../../services/database/database';
 import { Pool2Types, PoolBalancerTypes } from '../../types/domains/pool2';
 import { getBalancerPools } from './balancer';
-import { SushiSubgraphs } from './configs';
+import { UniswapSubgraphs } from './configs';
+// import { SushiSubgraphs } from './configs';
 import { getUniswapV2Pools } from './uniswapv2';
 import { getUniswapV3Pools } from './uniswapv3';
 import { getUniswapV4Pools } from './uniswapv4';
 
 const ProtocolSubgraphs: Array<any> = [
   // BalancerSubgraphs,
-  SushiSubgraphs,
-  // UniswapSubgraphs,
+  // SushiSubgraphs,
+  UniswapSubgraphs,
 ];
 
 (async function () {

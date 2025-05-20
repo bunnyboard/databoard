@@ -35,11 +35,7 @@ export interface EvmChainBlockMetrics {
   // total gas used
   gasUsed: string;
 
-  // new contracts were dployed
-  totalDeployedContracts: number;
-
-  // total transaction fees paid
-  // in native coin
+  // total transaction fees paid in native coin
   totalFee: string;
 
   // total fees were burnt if any
@@ -87,11 +83,7 @@ export interface EvmChainData {
   // total gas used
   gasUsed: string;
 
-  // new contracts were dployed
-  totalDeployedContracts: number;
-
-  // total transaction fees paid
-  // in native coin
+  // total transaction fees paid in native coin
   totalFee: string;
 
   // total fees were burnt if any

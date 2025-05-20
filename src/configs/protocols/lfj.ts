@@ -1,8 +1,7 @@
-import { getTheGraphEndpoint } from '../../lib/subgraph';
 import { Pool2Types } from '../../types/domains/pool2';
 import { ChainNames, ProtocolNames } from '../names';
 import { CompoundProtocolConfig } from './compound';
-import { UniswapProtocolConfig, UniswapV2SubgraphQueryFieldsDefault } from './uniswap';
+import { UniswapProtocolConfig } from './uniswap';
 
 export const LfjlendConfigs: CompoundProtocolConfig = {
   protocol: ProtocolNames.lfjlend,
@@ -85,16 +84,6 @@ export const LfjConfigs: UniswapProtocolConfig = {
       factory: '0xb43120c4745967fa9b93E79C149E66B0f2D6Fe0c',
       factoryBirthblock: 46536129,
       birthday: 1718064000, // Tue Jun 11 2024 00:00:00 GMT+0000
-      subgraph: {
-        endpoint: getTheGraphEndpoint({
-          subgraphId: '5CWwUmgj193AdNUMbd6zLTWLh1y7SYJTXH98A7BD8P4b',
-        }),
-        queryFields: {
-          ...UniswapV2SubgraphQueryFieldsDefault,
-          factories: 'lbfactories',
-          pools: 'lbpairs',
-        },
-      },
     },
     // {
     //   chain: ChainNames.arbitrum,

@@ -58,5 +58,16 @@ export const LiquityConfigs: LiquityProtocolConfig = {
       },
       collateralRegistry: '0xd99de73b95236f69a559117ecd6f519af780f3f7',
     },
+    {
+      chain: ChainNames.ethereum,
+      birthday: 1747699200, // Tue May 20 2025 00:00:00 GMT+0000
+      stablecoin: {
+        chain: 'ethereum',
+        symbol: 'BOLD',
+        decimals: 18,
+        address: '0x6440f144b7e50d6a8439336510312d2f54beb01d',
+      },
+      collateralRegistry: '0xf949982b91c8c61e952b3ba942cbbfaef5386684',
+    },
   ],
 };

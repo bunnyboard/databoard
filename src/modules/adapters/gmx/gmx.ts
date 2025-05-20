@@ -552,7 +552,6 @@ export default class GmxAdapter extends ProtocolAdapter {
         address: vaultConfig.eventEmitter,
         fromBlock: beginBlock,
         toBlock: endBlock,
-        blockRange: 2000,
       });
       for (const log of logs) {
         if (log.topics[0] === Events.Event1) {

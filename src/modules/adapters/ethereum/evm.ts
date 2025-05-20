@@ -40,15 +40,9 @@ export default class EvmChainAdapter extends BlockchainAdapter {
   }
 
   public transformBlockData(block: any, receipts: Array<any>): any {
-    const feeBurnt = new BigNumber(block.baseFeePerGas, 16).multipliedBy(new BigNumber(block.gasUsed, 16)).toString(10);
-
-    let deployedContracts = 0;
-    for (const transaction of block.transactions) {
-      // https://ethereum.stackexchange.com/a/129744
-      if (!transaction.to && transaction.input !== '' && transaction.input !== '0x') {
-        deployedContracts += 1;
-      }
-    }
+    const feeBurnt = block.baseFeePerGas
+      ? new BigNumber(block.baseFeePerGas, 16).multipliedBy(new BigNumber(block.gasUsed, 16)).toString(10)
+      : '0';
 
     let totalFee = new BigNumber(0);
     const senderAddresses: { [key: string]: SenderAddressMetrics } = {};
@@ -127,7 +121,6 @@ export default class EvmChainAdapter extends BlockchainAdapter {
       totalTxns: block.transactions.length,
       senderAddresses: senderAddresses,
       recipientAddresses: recipientAddresses,
-      totalDeployedContracts: deployedContracts,
       gasLimit: new BigNumber(block.gasLimit, 16).toString(10),
       gasUsed: new BigNumber(block.gasUsed, 16).toString(10),
       totalFee: totalFee.toString(10),
@@ -367,7 +360,6 @@ export default class EvmChainAdapter extends BlockchainAdapter {
       totalTxns: 0,
       totalFee: '0',
       totalFeeBurn: '0',
-      totalDeployedContracts: 0,
       gasLimit: '0',
       gasUsed: '0',
     };
@@ -383,7 +375,6 @@ export default class EvmChainAdapter extends BlockchainAdapter {
       if (blockMetrics) {
         chainData.totalBlocks += 1;
         chainData.totalTxns += blockMetrics.totalTxns;
-        chainData.totalDeployedContracts += blockMetrics.totalDeployedContracts;
         chainData.totalFee = new BigNumber(chainData.totalFee).plus(new BigNumber(blockMetrics.totalFee)).toString(10);
         chainData.gasLimit = new BigNumber(chainData.gasLimit).plus(new BigNumber(blockMetrics.gasLimit)).toString(10);
         chainData.gasUsed = new BigNumber(chainData.gasUsed).plus(new BigNumber(blockMetrics.gasUsed)).toString(10);

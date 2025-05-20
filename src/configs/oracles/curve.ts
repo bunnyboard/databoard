@@ -364,4 +364,19 @@ export const OracleSourceCurveList: {
     quotaToken: TokensBook.arbitrum['0xaf88d065e77c8cc2239327c5edb3a432268e5831'],
     quotaTokenIndex: 0,
   },
+  BOLDv2_USDC: {
+    type: 'curveFactoryPool',
+    chain: 'ethereum',
+    currency: 'usd',
+    address: '0xefc6516323fbd28e80b85a497b65a86243a54b3e',
+    baseToken: {
+      chain: 'ethereum',
+      symbol: 'BOLD',
+      decimals: 18,
+      address: '0x6440f144b7e50d6a8439336510312d2f54beb01d',
+    },
+    baseTokenIndex: 0,
+    quotaToken: TokensBook.ethereum['0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'],
+    quotaTokenIndex: 1,
+  },
 };

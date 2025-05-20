@@ -12,11 +12,6 @@ export interface UniswapSubgraphQueryFields {
   poolFeesRate: string;
 }
 
-export interface UniswapSubgraphConfig {
-  endpoint: string;
-  queryFields: UniswapSubgraphQueryFields;
-}
-
 export const UniswapV2SubgraphQueryFieldsDefault: UniswapSubgraphQueryFields = {
   factories: 'uniswapFactories',
   totalLiquidityUSD: 'totalLiquidityUSD',
@@ -61,9 +56,6 @@ export interface UniswapFactoryConfig {
 
   // ignore these ppols
   blacklistPools?: Array<string>;
-
-  // support subgraph query if any
-  subgraph?: UniswapSubgraphConfig;
 }
 
 export interface UniswapProtocolConfig extends ProtocolConfig {

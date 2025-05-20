@@ -2879,7 +2879,7 @@ export const OracleSourceConfigs: { [key: string]: OracleConfig } = {
   },
   BOLD: {
     currency: 'usd',
-    sources: [OracleSourceCurveList.BOLD_USDC],
+    sources: [OracleSourceCurveList.BOLD_USDC, OracleSourceCurveList.BOLDv2_USDC],
   },
   ANIME: {
     currency: 'eth',

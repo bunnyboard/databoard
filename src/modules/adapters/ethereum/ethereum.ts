@@ -93,7 +93,6 @@ export default class EthereumAdapter extends EvmChainAdapter {
       totalTxns: 0,
       totalFee: '0',
       totalFeeBurn: '0',
-      totalDeployedContracts: 0,
       gasLimit: '0',
       gasUsed: '0',
       totaBeaconlDeposited: '0',
@@ -111,7 +110,6 @@ export default class EthereumAdapter extends EvmChainAdapter {
       if (blockMetrics) {
         chainData.totalBlocks += 1;
         chainData.totalTxns += blockMetrics.totalTxns;
-        chainData.totalDeployedContracts += blockMetrics.totalDeployedContracts;
         chainData.totalFee = new BigNumber(chainData.totalFee).plus(new BigNumber(blockMetrics.totalFee)).toString(10);
         chainData.gasLimit = new BigNumber(chainData.gasLimit).plus(new BigNumber(blockMetrics.gasLimit)).toString(10);
         chainData.gasUsed = new BigNumber(chainData.gasUsed).plus(new BigNumber(blockMetrics.gasUsed)).toString(10);

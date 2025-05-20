@@ -7,14 +7,11 @@ import { getInitialProtocolCoreMetrics, ProtocolData } from '../../../types/doma
 import { ContextServices, ContextStorages } from '../../../types/namespaces';
 import { GetProtocolDataOptions, TestAdapterOptions } from '../../../types/options';
 import AlgebraCore from '../algebra/algebra';
-import AlgebraGraph from '../algebra/graph';
 import AdapterDataHelper from '../helpers';
 import ProtocolAdapter from '../protocol';
 import { IDexCore } from './core';
 import UniswapV2Core from './univ2';
-import UniswapV2Graph from './univ2graph';
 import UniswapV3Core from './univ3';
-import UniswapV3Graph from './univ3graph';
 import UniswapV4Core from './univ4';
 
 export default class UniswapAdapter extends ProtocolAdapter {
@@ -25,27 +22,14 @@ export default class UniswapAdapter extends ProtocolAdapter {
   }
 
   public getDexAdapter(factoryConfig: UniswapFactoryConfig): IDexCore | null {
-    const config = this.protocolConfig as UniswapProtocolConfig;
     if (factoryConfig.version === Pool2Types.univ2) {
-      if (factoryConfig.subgraph && !config.factorySync) {
-        return new UniswapV2Graph(this.services, this.storages, factoryConfig);
-      } else {
-        return new UniswapV2Core(this.services, this.storages, factoryConfig);
-      }
+      return new UniswapV2Core(this.services, this.storages, factoryConfig);
     } else if (factoryConfig.version === Pool2Types.univ3) {
-      if (factoryConfig.subgraph && !config.factorySync) {
-        return new UniswapV3Graph(this.services, this.storages, factoryConfig);
-      } else {
-        return new UniswapV3Core(this.services, this.storages, factoryConfig);
-      }
+      return new UniswapV3Core(this.services, this.storages, factoryConfig);
     } else if (factoryConfig.version === Pool2Types.univ4) {
       return new UniswapV4Core(this.services, this.storages, factoryConfig);
     } else if (factoryConfig.version === Pool2Types.algebra) {
-      if (factoryConfig.subgraph && !config.factorySync) {
-        return new AlgebraGraph(this.services, this.storages, factoryConfig);
-      } else {
-        return new AlgebraCore(this.services, this.storages, factoryConfig);
-      }
+      return new AlgebraCore(this.services, this.storages, factoryConfig);
     }
 
     return null;

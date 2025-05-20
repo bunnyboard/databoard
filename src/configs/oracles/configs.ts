@@ -9,6 +9,7 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
     [AddressZero]: OracleSourceConfigs.ETH,
     [AddressE]: OracleSourceConfigs.ETH,
     [AddressF]: OracleSourceConfigs.ETH,
+    '0x6440f144b7e50d6a8439336510312d2f54beb01d': OracleSourceConfigs.BOLD,
     '0x3b3fb9c57858ef816833dc91565efcd85d96f634': OracleSourceConfigs.sUSDe,
     '0x933b9ffee0ad3ef8e4dbb52688ea905826d73755': OracleSourceConfigs.USDO,
     '0x7cf7e938312afed7e9d7885783e642b1e1f8618c': OracleSourceConfigs.sUSN,
@@ -3065,6 +3066,9 @@ export const OracleConfigs: { [key: string]: { [key: string]: OracleConfig } } =
   },
 
   unichain: {
+    '0xc3eacf0612346366db554c991d7858716db09f58': OracleSourceConfigs.rsETH,
+    '0xc02fe7317d4eb8753a02c35fe019786854a92001': OracleSourceConfigs.wstETH,
+    '0x7dcc39b4d1c53cb31e1abc0e358b43987fef80f7': OracleSourceConfigs.weETH,
     '0x927b51f251480a681271180da4de28d44ec4afb8': OracleSourceConfigs.WBTC,
     '0x9151434b16b9763660705744891fa906f660ecc5': OracleSourceConfigs.USDT,
     '0x39538c45f6fd0b0dd3e595ed1c2671875fee9f17': OracleSourceConfigs.HOOF,

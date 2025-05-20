@@ -33,16 +33,16 @@ export const GmxConfigs: GmxProtocolConfig = {
   protocol: ProtocolNames.gmx,
   birthday: 1630454400, // Wed Sep 01 2021 00:00:00 GMT+0000
   v1Vaults: [
-    {
-      chain: ChainNames.arbitrum,
-      birthday: 1630454400, // Wed Sep 01 2021 00:00:00 GMT+0000
-      vault: '0x489ee077994b6658eafa855c308275ead8097c4a',
-    },
-    {
-      chain: ChainNames.avalanche,
-      birthday: 1639785600, // Sat Dec 18 2021 00:00:00 GMT+0000
-      vault: '0x9ab2De34A33fB459b538c43f251eB825645e8595',
-    },
+    // {
+    //   chain: ChainNames.arbitrum,
+    //   birthday: 1630454400, // Wed Sep 01 2021 00:00:00 GMT+0000
+    //   vault: '0x489ee077994b6658eafa855c308275ead8097c4a',
+    // },
+    // {
+    //   chain: ChainNames.avalanche,
+    //   birthday: 1639785600, // Sat Dec 18 2021 00:00:00 GMT+0000
+    //   vault: '0x9ab2De34A33fB459b538c43f251eB825645e8595',
+    // },
   ],
   v2Vaults: [
     {
